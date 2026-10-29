@@ -2,7 +2,7 @@
 
 **Cập nhật:** 30/10/2026 (Asia/Saigon)  
 **Phạm vi kiểm toán:** bản `game.rar` người dùng gửi; đối chiếu với checkout `C:\Users\triba\OneDrive\Desktop\game` cùng HEAD `872bf5fa80815cace7699457a1eac2a4f110e02f`.  
-**Trạng thái:** beta cục bộ đã kiểm chứng; **chưa phát hành lên GitHub Pages**.
+**Trạng thái hiện tại:** beta đã phát hành công khai, CI và live browser QA VERIFIED PASS. URL: https://johnathanjjnbao.github.io/mot-kiep-viet/. Phần kiểm toán HEAD 872bf5f bên dưới được giữ làm lịch sử.
 
 Tài liệu này là điểm bắt đầu cho Codex ở các lượt sau. Mã nguồn, bài test và cấu hình hiện hành là bằng chứng kỹ thuật; `docs/HANDOFF.md` là báo cáo lịch sử của bản beta. Khi thay đổi tính năng hay triển khai, cập nhật tài liệu này theo kết quả thực tế, ghi rõ ngày, commit và điều chưa xác minh. Không giữ một trạng thái “PASS” chỉ vì báo cáo cũ nói vậy.
 
@@ -74,3 +74,16 @@ Thử trên điện thoại thật và nhiều trình duyệt; ghi thời lượ
 ## Đợt phát hành GitHub Pages — 30/10/2026
 
 Repository công khai đã tạo: https://github.com/Johnathanjjnbao/mot-kiep-viet. Pages source đã đặt workflow. Build base /mot-kiep-viet/, không đổi engine/content. Local verify 22/22 test, lint/typecheck/content/build PASS; production subpath smoke và browser desktop/mobile (chọn, tiến thời gian, autosave reload, manual slot load, font/assets) PASS. Audit 0 CVE được biết, quét file/history chưa thấy credential. Workflow và URL công khai đang chờ xác minh, G5 INCOMPLETE. Trạng thái đợt phát hành này thay phần mô tả chưa có remote ở báo cáo baseline phía trên; giữ baseline làm lịch sử.
+
+## Kết quả phát hành đã xác minh
+
+- Phiên bản beta 0.1.0, engine/content 1.0.0 giữ nguyên. 72 event, 3 arc, 10 nghề không đổi.
+- Repo: https://github.com/Johnathanjjnbao/mot-kiep-viet ; website công khai: https://johnathanjjnbao.github.io/mot-kiep-viet/ .
+- Code phát hành: 8245d8d5932567977b27e6059e3efecaccd1be29. Workflow 40943722482 completed/success cả build/deploy: https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/40943722482 .
+- GitHub đã npm ci sạch, verify (22 test), scan secrets, 6 E2E Chromium và production smoke PASS. Lượt 5936c79 thất bại ở nhận diện log có màu của smoke, đã sửa bằng HTTP readiness; không có deploy bản lỗi.
+- Live QA trên Edge 1440x1000 và 375x812: tạo đời, lựa chọn, tiến thời gian, autosave reload, slot save/load, font/asset, không tràn ngang; 0 lỗi page/network. Bằng chứng docs/evidence/pages-live.json.
+- G5: PASS cho phát hành beta Pages đầu tiên, không chứng nhận cân bằng hay mọi trình duyệt. Chưa playtest người thật/điện thoại thật/Safari/Firefox. Không chạy lại mô phỏng vì không đổi engine.
+- Global skills kiểm kê: 22 thư mục tại .agents/skills và 5 system skills. Thực dùng Security Review, Secret Scanning, Webapp Testing; không cài thêm. Không có GitHub CLI; dùng Git Credential Manager hiện có và REST API, không ghi hoặc in token.
+- Từ phiên sau: đọc AGENTS.md; qua gates, commit/push main, theo dõi workflow tới success rồi chạy node scripts/check-pages.mjs trên URL thật, cập nhật tài liệu. Nếu sửa luật/content/save mới chạy 1.000 seed.
+- Ưu tiên tiếp: thiết kế Advanced Character Creator và chính sách save; backlog còn lại trong ROADMAP. Lưu từ localhost cần export/import; IndexedDB cùng origin có thể chung giữa subpath.
+- Commit bổ sung tài liệu sau code phát hành không đổi dist; workflow của HEAD bàn giao phải kiểm tra lại, SHA cuối ghi trong chat/git log.

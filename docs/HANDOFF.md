@@ -127,3 +127,11 @@ Tiêu chí: có dữ liệu 8 lượt thật; ít nhất 80% người chơi tự
 ## Bổ sung: phát hành GitHub Pages, 30/10/2026
 
 Giữ nguyên bàn giao local ở trên. Đã chuẩn bị public repository Johnathanjjnbao/mot-kiep-viet, Pages Actions, Vite base /mot-kiep-viet/, kiểm tra subpath desktop/mobile và workflow chặn deploy khi build/tests lỗi. Engine/content không đổi nên không chạy lại 1.000 seed. Remote deployment đang chờ xác minh; chưa gọi là live PASS.
+
+### Kết quả online thay trạng thái đang chờ ở mục bổ sung
+
+Repository https://github.com/Johnathanjjnbao/mot-kiep-viet và game https://johnathanjjnbao.github.io/mot-kiep-viet/ đã hoạt động. Commit ứng dụng 8245d8d5932567977b27e6059e3efecaccd1be29, workflow 40943722482 success (build và deploy). npm ci sạch, verify 22 test, scan file/history, 6 E2E Chromium, production smoke đều qua trên GitHub. Live Edge desktop/mobile đã kiểm tra asset/font, start, choice, advance, autosave reload và manual slot save/load: 0 lỗi trang/mạng, không tràn ngang. G5 PASS trong phạm vi beta online đầu tiên; human playtest và browser khác vẫn NOT RUN.
+
+Đã thêm AGENTS, ROADMAP, RELEASE_SECURITY, PROJECT_STATUS, pages.yml, hai script scan/check; sửa Vite base theo VITE_BASE_PATH, smoke hỗ trợ subpath và HTTP readiness, Playwright hỗ trợ base và bản build tĩnh. Không sửa engine hoặc mở backlog. Một E2E dev-mode bị reload và lần CI đầu bị định dạng log có màu; kiểm thử chuyển sang bản build tĩnh và readiness HTTP đã qua, không bỏ gate.
+
+Skills thực dùng: security-review, secret-scanning, webapp-testing. Không có gh CLI, dùng GCM/REST hiện có không lưu token. Bản public có metadata tác giả/đường dẫn môi trường trong lịch sử đã rà soát; không có credential được tìm thấy. Hướng dẫn cập nhật ở AGENTS và PROJECT_STATUS. Tiếp theo: thiết kế Character Creator, cấu trúc gia đình và tương thích save, chưa triển khai trong đợt này. HEAD tài liệu cuối và workflow cuối được xác minh trong chat bàn giao; lưu các kết quả ở docs/evidence/pages-*.json.

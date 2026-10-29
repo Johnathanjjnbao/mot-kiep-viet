@@ -49,3 +49,9 @@ Autosave và 3 slot nằm trong IndexedDB. Ô có dữ liệu cần chọn “Th
 - [Báo cáo bàn giao và bằng chứng](docs/HANDOFF.md)
 
 Nền kinh tế dùng đSM, đơn vị thiết kế, không phải số liệu VNĐ lịch sử. Từ 2027 là tương lai giả định. Chưa có playtest người thật để xác nhận thời lượng hoặc cân bằng. Dự án không có backend, tài khoản, runtime AI, hay triển khai công khai.
+
+## Chơi online
+
+Bản beta công khai: https://johnathanjjnbao.github.io/mot-kiep-viet/ . Repository: https://github.com/Johnathanjjnbao/mot-kiep-viet . Mỗi push main qua toàn bộ gates sẽ tự phát hành Pages; đọc AGENTS.md trước cập nhật. Dữ liệu localhost không tự chuyển sang Pages, dùng export/import.
+
+Build đúng Pages trên PowerShell: đặt $env:VITE_BASE_PATH='/mot-kiep-viet/' rồi npm.cmd run build; giữ biến này khi preview. Local dev mặc định base /. node scripts/check-pages.mjs kiểm tra URL thật trên desktop/mobile. Engine không đổi trong đợt phát hành; không chạy lại 1.000 seed.
