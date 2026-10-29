@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:4173/mot-kiep-viet/",
+  "status": "VERIFIED PASS",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "VERIFIED PASS",
+      "checks": [
+        "HTML and assets",
+        "new life",
+        "choice and time advance",
+        "autosave reload",
+        "manual slot save/load",
+        "fonts",
+        "no horizontal overflow",
+        "no page/network errors"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "status": "VERIFIED PASS",
+      "checks": [
+        "HTML and assets",
+        "new life",
+        "choice and time advance",
+        "autosave reload",
+        "manual slot save/load",
+        "fonts",
+        "no horizontal overflow",
+        "no page/network errors"
+      ]
+    }
+  ],
+  "errors": []
+}

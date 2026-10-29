@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 async function start(page: Page) {
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('button', { name: 'Bắt đầu một kiếp mới' }).click();
   await page.getByRole('button', { name: 'Tự chọn bối cảnh' }).click();
   await page.getByRole('radio', { name: /1995/ }).check();
@@ -70,7 +70,7 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
 test('responsive pages, keyboard dialogs, settings, and accessibility', async ({
   page,
 }, testInfo) => {
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.getByRole('heading', { name: /Nếu được sống/ })).toBeVisible();
   await page.screenshot({
     path: `docs/evidence/home-${testInfo.project.name}.png`,
@@ -129,13 +129,11 @@ test('adult career, savings, household costs, and invalid import feedback work t
   await expect(page.locator('.housing-card')).toContainText('Một căn phòng trọ');
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole('button', { name: 'Lưu và tải game' }).click();
-  await page
-    .getByLabel('Chọn tệp game đã lưu')
-    .setInputFiles({
-      name: 'broken.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from('{invalid'),
-    });
+  await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+    name: 'broken.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from('{invalid'),
+  });
   await expect(page.getByRole('status')).toContainText('không phải JSON hợp lệ');
   await expect(page.getByRole('dialog')).toBeVisible();
 });

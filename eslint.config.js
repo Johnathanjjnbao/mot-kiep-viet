@@ -2,8 +2,15 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import hooks from 'eslint-plugin-react-hooks';
 export default tseslint.config(
-  { files: ['scripts/**/*.mjs'], languageOptions: { globals: { process: 'readonly' } } },
-  { ignores: ['dist/**', 'node_modules/**', 'test-results/**', 'playwright-report/**'] },
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: { process: 'readonly', document: 'readonly', innerWidth: 'readonly' },
+    },
+  },
+  {
+    ignores: ['.local/**', 'dist/**', 'node_modules/**', 'test-results/**', 'playwright-report/**'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { chromium, expect } from '@playwright/test';
 
 const report = {
@@ -10,6 +10,7 @@ const report = {
   checks: [],
   errors: [],
 };
+const base = readFileSync('dist/index.html', 'utf8').match(/src="([^"]*)assets\//)?.[1] ?? '/';
 let browser;
 let serverOutput = '';
 const server = spawn(
@@ -41,10 +42,12 @@ try {
   browser = await chromium.launch({ channel: report.browser });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   page.on('pageerror', (error) => report.errors.push(error.message));
-  const response = await page.goto(report.origin);
+  const response = await page.goto(report.origin + base);
   expect(response.status()).toBe(200);
   report.checks.push('built HTML returns 200');
-  expect((await page.request.get(report.origin + '/licenses/newsreader.txt')).status()).toBe(200);
+  expect((await page.request.get(report.origin + base + 'licenses/newsreader.txt')).status()).toBe(
+    200,
+  );
   report.checks.push('font license included in distribution');
   await page.getByRole('button', { name: 'Bắt đầu một kiếp mới' }).click();
   await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();

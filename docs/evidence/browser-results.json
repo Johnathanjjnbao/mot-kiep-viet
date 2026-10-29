@@ -71,7 +71,7 @@
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
         "use": {
-          "baseURL": "http://127.0.0.1:5173",
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
           "trace": "retain-on-failure",
           "screenshot": "only-on-failure",
           "launchOptions": {
@@ -111,7 +111,7 @@
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
         "use": {
-          "baseURL": "http://127.0.0.1:5173",
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
           "trace": "retain-on-failure",
           "screenshot": "only-on-failure",
           "launchOptions": {
@@ -154,8 +154,8 @@
     "version": "1.64.1",
     "workers": 1,
     "webServer": {
-      "command": "npm run dev -- --port 5173 --strictPort",
-      "url": "http://127.0.0.1:5173",
+      "command": "npm run preview -- --port 5173 --strictPort",
+      "url": "http://127.0.0.1:5173/mot-kiep-viet/",
       "reuseExistingServer": true,
       "timeout": 30000
     }
@@ -183,12 +183,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 24770,
+                  "duration": 20603,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:09:48.492Z",
+                  "startTime": "2026-10-29T19:46:51.590Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -217,12 +217,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2813,
+                  "duration": 2538,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:10:13.507Z",
+                  "startTime": "2026-10-29T19:47:12.466Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -251,12 +251,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6744,
+                  "duration": 6184,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:10:16.329Z",
+                  "startTime": "2026-10-29T19:47:15.018Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -285,12 +285,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 24590,
+                  "duration": 23845,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:10:24.051Z",
+                  "startTime": "2026-10-29T19:47:22.088Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -319,12 +319,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2763,
+                  "duration": 2524,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:10:48.910Z",
+                  "startTime": "2026-10-29T19:47:46.188Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -353,12 +353,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7117,
+                  "duration": 6671,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-29T19:10:51.683Z",
+                  "startTime": "2026-10-29T19:47:48.725Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -376,8 +376,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-29T19:09:47.930Z",
-    "duration": 71315.45199999999,
+    "startTime": "2026-10-29T19:46:50.093Z",
+    "duration": 66020.374,
     "expected": 6,
     "skipped": 0,
     "unexpected": 0,

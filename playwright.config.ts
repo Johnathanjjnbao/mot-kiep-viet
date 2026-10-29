@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+const localURL = 'http://127.0.0.1:5173' + (process.env.VITE_BASE_PATH || '/');
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: false,
@@ -6,7 +7,7 @@ export default defineConfig({
   timeout: 90000,
   reporter: [['list'], ['json', { outputFile: 'docs/evidence/browser-results.json' }]],
   use: {
-    baseURL: 'http://127.0.0.1:5173',
+    baseURL: localURL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     launchOptions: { channel: process.env.CI ? 'chromium' : 'msedge' },
@@ -27,8 +28,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev -- --port 5173 --strictPort',
-    url: 'http://127.0.0.1:5173',
+    command:
+      process.env.E2E_PRODUCTION === '1'
+        ? 'npm run preview -- --port 5173 --strictPort'
+        : 'npm run dev -- --port 5173 --strictPort',
+    url: localURL,
     reuseExistingServer: !process.env.CI,
     timeout: 30000,
   },

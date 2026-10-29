@@ -123,3 +123,7 @@ Máy chủ thử nghiệm do agent mở được dừng sau QA; không có dịc
 Phạm vi: ít nhất 8 người chơi thật, đủ ba cohort, ghi thời lượng, chỗ bỏ cuộc, lựa chọn không hiểu, độ nặng của nợ, tính lặp của arc và cảm nhận giọng văn. Kiểm tra Android Chrome/iOS Safari thật và một lượt bàn phím/screen reader. Không tự thu analytics hoặc đưa dữ liệu ra ngoài khi chưa có đồng ý.
 
 Tiêu chí: có dữ liệu 8 lượt thật; ít nhất 80% người chơi tự đi đến kết thúc hợp lệ; median session trong 15–25 phút hoặc có thay đổi nhịp được kiểm tra lại; không còn blocker/critical; lưu/tải trên hai thiết bị thật đã qua; mọi sửa luật có regression, 1.000-seed check và phiên bản/replay được xử lý rõ. Remote CI và phát hành chỉ thực hiện khi có ủy quyền tiếp.
+
+## Bổ sung: phát hành GitHub Pages, 30/10/2026
+
+Giữ nguyên bàn giao local ở trên. Đã chuẩn bị public repository Johnathanjjnbao/mot-kiep-viet, Pages Actions, Vite base /mot-kiep-viet/, kiểm tra subpath desktop/mobile và workflow chặn deploy khi build/tests lỗi. Engine/content không đổi nên không chạy lại 1.000 seed. Remote deployment đang chờ xác minh; chưa gọi là live PASS.
