@@ -33,12 +33,17 @@ server.stderr.on('data', (chunk) => {
   serverOutput += chunk.toString();
 });
 try {
-  for (let i = 0; i < 100 && !serverOutput.includes('http://127.0.0.1:4173'); i++) {
+  let ready = false;
+  for (let i = 0; i < 100 && !ready; i++) {
     if (server.exitCode !== null) throw new Error(serverOutput);
-    await delay(100);
+    try {
+      ready = (await fetch(report.origin + base)).ok;
+    } catch {
+      /* Starting. */
+    }
+    if (!ready) await delay(100);
   }
-  if (!serverOutput.includes('http://127.0.0.1:4173'))
-    throw new Error('Preview did not become ready.');
+  if (!ready) throw new Error('Preview did not become ready.');
   browser = await chromium.launch({ channel: report.browser });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   page.on('pageerror', (error) => report.errors.push(error.message));

@@ -5,7 +5,12 @@ export default tseslint.config(
   {
     files: ['scripts/**/*.mjs'],
     languageOptions: {
-      globals: { process: 'readonly', document: 'readonly', innerWidth: 'readonly' },
+      globals: {
+        process: 'readonly',
+        document: 'readonly',
+        innerWidth: 'readonly',
+        fetch: 'readonly',
+      },
     },
   },
   {
