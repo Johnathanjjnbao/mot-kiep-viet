@@ -14,7 +14,7 @@ MVP cục bộ, React + TypeScript strict + Vite, không tài khoản/backend. N
 
 ## Lịch và sự kiện
 
-Tháng 0 là sinh nhật đầu tiên (0 tuổi). Tuổi = floor(month/12), năm = birthYear + tuổi. Mỗi bước đi tới mốc tuổi; trong khoảng đó xử lý từng tháng theo thứ tự: cập nhật thế giới/NPC → sổ cái → lão hóa → hiệu ứng đến hạn → kết thúc nếu cần. Nhân vật dừng ở tuổi 82 bằng hồi ký nếu chưa mất. Chọn xong hiển thị kết quả; nút tiếp tục mới đi đến mốc kế. Không có tháng rỗng cần click. Sự kiện chỉ đang chờ một lần, lựa chọn sai/hành động khi đã kết thúc bị từ chối. DelayedEffect có ID ổn định, đánh dấu thực hiện; không chạy lại sau tải.
+Tháng 0 là thời điểm chào đời (0 tuổi). Tuổi = floor(month/12), năm = birthYear + tuổi. Mỗi bước đi tới mốc tuổi; trong khoảng đó xử lý từng tháng theo thứ tự: cập nhật thế giới/NPC → sổ cái → lão hóa → hiệu ứng đến hạn → kết thúc nếu cần. Nhân vật dừng ở tuổi 82 bằng hồi ký nếu chưa mất. Chọn xong hiển thị kết quả; nút tiếp tục mới đi đến mốc kế. Không có tháng rỗng cần click. Sự kiện chỉ đang chờ một lần, lựa chọn sai/hành động khi đã kết thúc bị từ chối. DelayedEffect có ID ổn định, đánh dấu thực hiện; không chạy lại sau tải.
 
 ## Kinh tế thiết kế
 

@@ -1,0 +1,19 @@
+{
+  "dateLocal": "2026-10-30",
+  "timezone": "Asia/Saigon",
+  "scope": "Local Windows MVP. Summary of directly observed tool results, not remote CI.",
+  "node": "24.20.0",
+  "npm": "11.19.0",
+  "applicationCommit": "357f5ccb3b310035e5ba1aa2e452d6ba30c6cd4e",
+  "verify": {"command": "npm.cmd run verify", "exitCode": 0, "testFiles": 5, "testsPassed": 22, "typecheck": "VERIFIED PASS", "lint": "VERIFIED PASS", "build": "VERIFIED PASS"},
+  "content": {"templates": 72, "careers": 10, "arcs": 3, "errors": 0},
+  "simulation": {"command": "npm.cmd run simulate", "exitCode": 0, "distinctSeeds": 1000, "seedSetRuns": 2, "lastRunInvariantViolations": 0, "details": "simulation.json"},
+  "browser": {"command": "npm.cmd run test:e2e", "exitCode": 0, "passed": 6, "failed": 0, "flaky": 0, "viewports": ["1440x1000", "375x812", "812x375"], "largeText": true, "reducedMotion": true, "axeViolationsInScannedStates": 0, "details": "browser-results.json"},
+  "productionBundle": {"command": "npm.cmd run test:production", "exitCode": 0, "status": "VERIFIED PASS", "details": "production-smoke.json"},
+  "dependencyAudit": {"command": "npm.cmd audit --json", "knownVulnerabilities": 0, "details": "dependency-audit.json"},
+  "remoteCI": "NOT RUN",
+  "deployment": "NOT RUN",
+  "humanPlaytest": "NOT RUN",
+  "physicalMobileBrowsers": "NOT RUN",
+  "gates": {"G0": "VERIFIED PASS", "G1": "VERIFIED PASS", "G2": "VERIFIED PASS", "G3": "VERIFIED PASS", "G4": "VERIFIED PASS", "G5": "INCOMPLETE"}
+}

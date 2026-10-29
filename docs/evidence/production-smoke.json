@@ -1,0 +1,12 @@
+{
+  "status": "VERIFIED PASS",
+  "origin": "http://127.0.0.1:4173",
+  "browser": "msedge",
+  "checks": [
+    "built HTML returns 200",
+    "font license included in distribution",
+    "new life, event choice, time advance and autosave",
+    "reload resumes exact active event"
+  ],
+  "errors": []
+}
