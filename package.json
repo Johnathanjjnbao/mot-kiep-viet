@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:production": "node scripts/smoke-production.mjs",
     "validate:content": "tsx scripts/validate-content.ts",
     "simulate": "tsx scripts/simulate.ts",
     "verify": "npm run typecheck && npm run lint && npm test && npm run validate:content && npm run build"
