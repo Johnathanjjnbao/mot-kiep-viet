@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@import '@fontsource/newsreader/400.css';
+@import '@fontsource/be-vietnam-pro/400.css';
+:root{font-family:'Be Vietnam Pro',sans-serif;color:#292d29;background:#f5f1e8}body{margin:0}main{max-width:1000px;margin:auto;padding:48px}h1,h2{font-family:Newsreader,serif}button{font:inherit;cursor:pointer;padding:14px 20px;margin:8px;border:1px solid #b5b4a9;border-radius:6px;background:#fffdf6}button:focus-visible{outline:3px solid #9e4837;outline-offset:4px}

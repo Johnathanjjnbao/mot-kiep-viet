@@ -1,0 +1,33 @@
+# Thiết kế triển khai · Một Kiếp Việt
+
+MVP cục bộ, React + TypeScript strict + Vite, không tài khoản/backend. Nguồn được tạo mới trong thư mục trống; không có HEAD ban đầu. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows. Graft có sẵn, đã đọc help; dự án mới dùng tìm kiếm thông thường, không init/graph. Các phiên bản phụ thuộc được xác nhận bằng npm registry và khóa trong package-lock.json.
+
+## Trách nhiệm và quyền sở hữu
+
+- `src/domain/model.ts`: GameRun sở hữu Player, WorldState, Household, NPC/Relationship, EducationRecord, CareerRecord, FinancialAccount, Transaction, Asset/Liability, HealthState, EventInstance, ChoiceRecord, ScheduledEffect, LifeJournal. Dữ liệu thuần JSON, không Date/function/class.
+- `src/engine`: chỉ các hành động createRun, advance, choose, manage mới tạo trạng thái mới; UI không sửa luật. RNG Mulberry32 dùng số nguyên 32 bit, hai luồng world/event. Seed + scenario + phiên bản + danh sách hành động tái dựng được run.
+- `src/content`: Region, Era, CareerDefinition, EventDefinition và StoryArc; điều kiện được xét trước khi chọn bằng trọng số. Không thực thi mã từ save.
+- `src/application`: điều phối phiên chơi và hàng đợi lưu.
+- `src/persistence`: IndexedDB (autosave độc lập + 3 slot), schema và kiểm chứng bằng replay. Mỗi slot chỉ ghi khi người chơi chọn lưu; không tự thay thế slot.
+- `src/ui`: các màn hình, trình bày kết quả; setting về chữ và chuyển động chỉ thuộc UI.
+- `tests`, `scripts`: unit, tích hợp, replay, đối soát sổ cái, mô phỏng 1.000 seed và trình duyệt.
+
+## Lịch và sự kiện
+
+Tháng 0 là sinh nhật đầu tiên (0 tuổi). Tuổi = floor(month/12), năm = birthYear + tuổi. Mỗi bước đi tới mốc tuổi; trong khoảng đó xử lý từng tháng theo thứ tự: cập nhật thế giới/NPC → sổ cái → lão hóa → hiệu ứng đến hạn → kết thúc nếu cần. Nhân vật dừng ở tuổi 82 bằng hồi ký nếu chưa mất. Chọn xong hiển thị kết quả; nút tiếp tục mới đi đến mốc kế. Không có tháng rỗng cần click. Sự kiện chỉ đang chờ một lần, lựa chọn sai/hành động khi đã kết thúc bị từ chối. DelayedEffect có ID ổn định, đánh dấu thực hiện; không chạy lại sau tải.
+
+## Kinh tế thiết kế
+
+Đơn vị `đSM` = đồng sức mua trong game, không phải VNĐ, số liệu lương/giá thực. Một năm sinh hoạt cơ bản tương đương khoảng 120–200 đSM. Era thay đổi hệ số thiết kế. Ghi sổ theo tháng, mọi thay đổi tiền mặt/tiết kiệm/nợ/tài sản qua transaction có ID duy nhất. Thu nhập nghề, trợ cấp gia đình khi còn nhỏ, lương hưu thiết kế, chi phí sinh hoạt, lãi vay và tiết kiệm đều có nguồn/nhãn. Chi phí bắt buộc thiếu tiền tạo khoản vay sinh hoạt có sổ cái; chi tùy chọn bị chặn nếu không đủ tiền. Vay chủ động tối đa 300 đSM, lãi vay 0,4%/tháng; lãi tiết kiệm 0,15%/tháng. Trả nợ không vượt số dư nợ/tiền. Tài sản nhà ở tạo bút toán mua, giảm phí thuê; không tự sinh tài sản.
+
+## Đời sống
+
+NPC có ID cố định và birthYear, alive. Quan hệ tham chiếu NPC, tối đa một partner, ex chỉ hình thành sau chia tay, không có con trước tuổi trưởng thành. Cha mẹ già và qua đời theo ngưỡng thiết kế; sức mạnh quan hệ ảnh hưởng áp lực. Giáo dục, kỹ năng, era, tuổi ảnh hưởng điều kiện nghề; thu nhập gắn kinh nghiệm/kỹ năng/stress. Thất nghiệp không nhận lương. Sức khỏe chịu ảnh hưởng tuổi, nợ, stress, thói quen; không dùng như dự đoán y khoa.
+
+## Lưu và tương thích
+
+Engine 1.0.0/content 1.0.0; schema 2. Save gồm metadata + snapshot và action log. Giới hạn 5 MiB, schema strict, số hữu hạn, tham chiếu, đối soát và replay trước chấp nhận. Schema 1 nội bộ (snapshot→run, bổ sung versions) được di trú; engine/content khác bị từ chối rõ ràng, không âm thầm diễn giải lại. Export JSON không chứa mã thực thi. Bản chính thức tiếp theo cần giữ engine cũ hoặc thêm migration có test.
+
+## Giới hạn chủ ý
+
+Không mô phỏng chính xác dân số/kinh tế Việt Nam, không AI runtime, multiplayer, y khoa, thị trường thật hay lịch sử tương lai. Ba bối cảnh là hư cấu có chủ đích, không đại diện toàn vùng. Địa danh dùng vùng rộng tránh giả định tên tỉnh qua các lần thay đổi. Mốc Đổi Mới và COVID có nguồn; nghề, công nghệ, biến cố cá nhân đều là xấp xỉ thiết kế được gắn metadata. Không có playtest con người xác nhận thời lượng 15–25 phút.
