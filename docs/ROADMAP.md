@@ -11,9 +11,9 @@ Ngày cập nhật: 30/10/2026. v0.2 triển khai Character Creator, lựa chọ
 
 Thiết kế: [CLOUD_ACCOUNTS_PLAN.md](CLOUD_ACCOUNTS_PLAN.md). **NOT RUN**: chưa có Auth/tài khoản/cloud thực tế.
 
-## Đợt lớn tiếp theo — Supernatural Longevity
+## v0.4 — Supernatural Longevity
 
-- Ít nhất 20 sự kiện kỳ bí và 5 tuyến truyện dài, ghi rõ là hư cấu.
+- Ít nhất 24 sự kiện kỳ bí và 5 tuyến truyện dài, ghi rõ là hư cấu.
 - Cơ duyên hiếm, tình cờ, có đánh đổi; không buộc mọi nhân vật bất tử.
 - Khả năng sống 100, 500, 1.000 năm và xa hơn tùy nhánh.
 - Tách tuổi sinh học và tuổi theo lịch; rà lại sức khỏe, nghề, quan hệ, hồi ký, điều kiện sự kiện.
@@ -23,6 +23,10 @@ Thiết kế: [CLOUD_ACCOUNTS_PLAN.md](CLOUD_ACCOUNTS_PLAN.md). **NOT RUN**: ch�
 - Thiết kế version/save mới và regression cho đời thường/trường thọ trước đổi luật.
 
 **OUT OF SCOPE v0.2.** Chưa triển khai kỳ bí hay bỏ trần 82 tuổi của luật hiện tại.
+
+## v0.5 — International Life
+
+Du học, làm việc quốc tế, đoàn tụ gia đình, di cư/định cư; tuyến truyện về đàn áp chính trị và tìm kiếm bảo hộ cần bối cảnh lịch sử/pháp lý phù hợp. Gợi ý nơi đến theo hoàn cảnh và thời đại, quan hệ/tài chính/nghề nghiệp dài hạn ở nước ngoài. Chỉ là backlog, không triển khai trong v0.3.
 
 ## Chơi thử và cải tiến
 

@@ -1,5 +1,7 @@
 # Tài khoản cá nhân và đồng bộ — kế hoạch sau v0.2
 
+**Cập nhật triển khai v0.3: INCOMPLETE.** Có mã SQL/RLS/repository/AuthProvider/cache/sync và 15 tests mới cục bộ; chưa nối UI/session và chưa có project thật. Không đổi trạng thái tài khoản của vợ thành COMPLETE. Xem [V03_PROGRESS](V03_PROGRESS.md), [SUPABASE_SETUP](SUPABASE_SETUP.md). Phần kế hoạch ban đầu dưới đây là bối cảnh v0.2.
+
 **Trạng thái: NOT RUN.** v0.2 chỉ có dữ liệu trên thiết bị. Chưa tạo Supabase project, tài khoản cho vợ chủ dự án, đăng nhập hay đồng bộ; không có dịch vụ trả phí hoặc thông tin đăng nhập trong frontend. Đây là thiết kế cho người bảo trì ở đợt phát triển kế tiếp.
 
 ## Trải nghiệm cần đạt

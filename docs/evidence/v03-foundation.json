@@ -1,0 +1,20 @@
+{
+  "scope": "v0.3 inactive foundation; guest runtime unchanged",
+  "baseline": "479fa05fcaef005700919e0cfc3ee7dcad46cf9e",
+  "verify": {"status":"VERIFIED PASS","testFiles":8,"testsPassed":64,"newCloudTests":15,"basePath":"/mot-kiep-viet/"},
+  "sqlRlsFixtures": {"status":"VERIFIED PASS","runtime":"PGlite PostgreSQL 0.5.13","tests":8,"roles":["anon","authenticated"],"bypassRls":false,"superuserForAssertions":false},
+  "queueAndConfigTests":{"status":"VERIFIED PASS","tests":7},
+  "productionGuestSmoke":"VERIFIED PASS",
+  "npmAuditAdvisories":0,
+  "engineChanged":false,
+  "simulation1000":"NOT RUN: engine/content/replay unchanged",
+  "supabaseProject":"BLOCKED: waiting for owner project selection and public configuration",
+  "productionMigration":"NOT RUN",
+  "realAuth":"NOT RUN",
+  "wifeInvitation":"NOT RUN",
+  "realCrossDeviceSync":"NOT RUN",
+  "cloudHistoryEndToEnd":"NOT RUN",
+  "guestMigrationUi":"INCOMPLETE",
+  "accountUiAndSessionIntegration":"INCOMPLETE",
+  "v03Release":"INCOMPLETE"
+}

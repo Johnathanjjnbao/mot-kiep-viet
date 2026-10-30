@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Đang triển khai v0.3 — 30/10/2026
+
+Tiếp tục từ 479fa05, không làm lại v0.2. Nền tảng cloud/RLS/cache đã có mã, 15 test mới cục bộ PASS; chưa nối UI/session, chưa áp SQL production hay xác minh Auth thực. Đang chờ chủ dự án cung cấp project Supabase URL/publishable key và xác nhận đích trước migration. Không có secret/service-role, email hay password thật trong repo. [Checkpoint](V03_PROGRESS.md), [setup](SUPABASE_SETUP.md). Website công khai hiện vẫn là v0.2 đã kiểm chứng bên dưới; không gọi v0.3/tài khoản vợ COMPLETE.
+
 ## Hiện hành — beta v0.2, 30/10/2026
 
 Tiếp tục từ baseline main 3508765374d94b8150e852ff0aa74b9678cd8940 tại C:\Users\triba\OneDrive\Desktop\game. Đã triển khai Creator nâng cao, lựa chọn trên đủ 72 mẫu và Life History IndexedDB riêng. Engine/content 2.0.0, schema 3; v1 đóng băng cho save cũ chỉ đọc, không xóa ba slot. Chi tiết phạm vi/bằng chứng: [V02_REPORT.md](V02_REPORT.md).

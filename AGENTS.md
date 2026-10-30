@@ -11,6 +11,8 @@ Vai trò: duy trì game và phát hành có bằng chứng. Luôn đọc PROJECT
 
 ## Bảo vệ engine
 
+Nền tảng v0.3 trong src/cloud và account-cache đang INCOMPLETE, chưa import vào App/phiên chơi. Migration supabase/migrations không tự chạy production/CI; cần xác nhận project và quyền trước áp dụng. RLS fixture PGlite không chứng minh Supabase Auth/email/JWT thật. Không bật cloud hoặc gọi tài khoản sẵn sàng khi chưa có kiểm chứng thật. Đọc docs/V03_PROGRESS.md trước tiếp tục.
+
 Bản hiện hành beta 0.2.0: engine/content 2.0.0, save schema 3. `src/legacy/v1` là luật/nội dung 1.0.0 đóng băng để kiểm chứng và đọc save schema 1/2; không sửa cùng luật mới, không phát lại save cũ dưới v2. Golden v1 giữ nguyên; golden v2 khóa riêng. Mỗi sự kiện hiển thị phải có ít nhất 4 lựa chọn khả dụng, kể cả fallback. Lịch sử `mot-kiep-viet-history` độc lập autosave/3 slot; UUID cuộc đời ngoài RNG, không dùng seed làm khóa. Không ghi đè/xóa hồi ký để lưu kiếp mới.
 
 Không sửa state từ UI; không Math.random trong luật; mọi thay đổi tiền đi qua giao dịch. Không đổi engine/content/save nếu không có kế hoạch version và regression. Công việc deploy không thay gameplay. Không xóa save của người chơi. Save trên localhost không tự chuyển sang github.io: dùng export/import. Các game cùng origin có thể dùng chung IndexedDB, vì vậy giữ ID database hiện tại và không host bản game khác dùng cùng ID trên tài khoản này.

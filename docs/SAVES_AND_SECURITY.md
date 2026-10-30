@@ -1,5 +1,7 @@
 # Lưu game, tương thích và giới hạn an toàn
 
+Checkpoint v0.3: đã thêm contract/repository cloud và cache/queue riêng theo project + UUID người dùng, nhưng **chưa nối vào UI/session**. Luồng guest bên dưới giữ nguyên; cloud mặc định tắt. Migration chỉ áp vào project được xác nhận và cho phép; không có service-role trong frontend. PostgreSQL fixtures kiểm tra quyền dưới roles không superuser; Auth/email/two-device thật chưa chạy. Xem V03_PROGRESS và SUPABASE_SETUP, không dùng trạng thái này để gọi cloud COMPLETE.
+
 ## Lưu trên máy
 
 IndexedDB `mot-kiep-viet`, store `saves`: autosave riêng và `slot-1`, `slot-2`, `slot-3`. Autosave theo mỗi trạng thái mới; các lần ghi xếp hàng. Ba slot chỉ thay khi người chơi lưu vào đó; slot có dữ liệu cần thao tác “Thay bản lưu”. Nhập/tải slot sẽ thành cuộc đời hiện tại và được tự lưu. Bản cũ trong slot khác không bị sửa.

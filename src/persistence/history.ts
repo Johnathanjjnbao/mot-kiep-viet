@@ -25,7 +25,7 @@ const recordSchema = z
   .strict();
 export const MAX_HISTORY_BYTES = 20 * 1024 * 1024,
   MAX_RECORDS = 50;
-function validated(raw: unknown): LifeRecord {
+export function validateLifeRecord(raw: unknown): LifeRecord {
   const r = recordSchema.parse(raw),
     save = parseSave(JSON.stringify(r.save));
   if (save.run.status !== 'ended') throw new Error('Chỉ lưu cuộc đời đã kết thúc vào lịch sử.');
@@ -38,7 +38,7 @@ export async function listHistory(): Promise<LifeRecord[]> {
   const d = await db();
   try {
     return (await d.getAll('lives'))
-      .map(validated)
+      .map(validateLifeRecord)
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   } finally {
     d.close();
@@ -100,7 +100,7 @@ export async function importHistory(text: string) {
     })
     .strict()
     .parse(JSON.parse(text));
-  const records = input.records.map(validated);
+  const records = input.records.map(validateLifeRecord);
   if (new Set(records.map((r) => r.id)).size !== records.length)
     throw new Error('Tệp có mã lịch sử trùng.');
   await insert(records);
