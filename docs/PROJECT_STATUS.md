@@ -1,5 +1,10 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Life Expansion — M1 v0.3.2, 31/10/2026
+
+Tiếp tục baseline sạch `a204bd0bba62f341eda66e3b6788c87f18c545f3` trên main. M1 thêm avatar gốc nhiều lớp/sáu tuổi, identity theo seed, biểu cảm và giao diện đồng bộ creator/HUD/history/memoir; không đổi engine/content2/schema3. Local verify81 và E2E24/production smoke PASS; six viewport20decisions đo avatar/HUD/story/choice trước input. CI/live mới đang kiểm tra, chưa gọi G5 PASS. Migration mở tuple3/schema4 đã được chủ dự án duyệt đúng hash và áp đúng project; không đổi RLS/dữ liệu. M2–M4 chưa xong, không gọi Life Expansion complete. Chi tiết [LIFE_EXPANSION](LIFE_EXPANSION.md).
+
+
 ## Hiện hành — v0.3.1 đã phát hành, VERIFIED PASS, 30/10/2026
 
 Tiếp tục main `53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8`, working tree sạch trước sửa. Sửa đúng hai lỗi chủ dự án báo: stats ẩn/scroll khỏi màn hình và căn card nhưng lựa chọn vẫn thấp. HUD lấy trực tiếp GameRun, desktop sticky bên trái, mobile strip đủ sáu chỉ số; landscape chia narrative/choices hai cột. Nội dung truyện giữ nguyên, chỉ danh sách lựa chọn cuộn theo ngân sách chiều cao thực. Focus/resize/fonts cập nhật viewport, không reset inner-scroll do observer; giữ v0.3 guards/actions/cloud/save.

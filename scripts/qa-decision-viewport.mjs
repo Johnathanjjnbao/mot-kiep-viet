@@ -1,6 +1,6 @@
 import { chromium, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import {
   assertDecisionViewport,
@@ -17,7 +17,9 @@ export const viewportCases = [
   { name: 'large-text', width: 375, height: 667, mobile: true, large: true },
 ];
 
-export async function viewportJourney(browser, target, config, evidencePrefix = 'v031-local') {
+export const viewportVersion = 'v' + JSON.parse(readFileSync('package.json', 'utf8')).version.replaceAll('.', '');
+
+export async function viewportJourney(browser, target, config, evidencePrefix = viewportVersion + '-local') {
   const context = await browser.newContext({
     viewport: { width: config.width, height: config.height },
     hasTouch: Boolean(config.mobile),
@@ -127,7 +129,7 @@ export async function viewportJourney(browser, target, config, evidencePrefix = 
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const target = process.argv[2] ?? 'http://127.0.0.1:4173/mot-kiep-viet/';
-  const prefix = target.includes('github.io') ? 'v031-live' : 'v031-local';
+  const prefix = viewportVersion + (target.includes('github.io') ? '-live' : '-local');
   const browser = await chromium.launch({ channel: process.env.CI ? 'chromium' : 'msedge' }),
     reports = [];
   try {

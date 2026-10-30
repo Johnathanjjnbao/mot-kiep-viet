@@ -1,5 +1,10 @@
 # Master Plan — Một Kiếp Việt
 
+## Life Expansion v0.3.2–v0.3.5 — phạm vi được giao
+
+M1: hệ thị giác và avatar sống sáu tuổi (local gates đã qua, đang phát hành). M2: cửa hàng/tủ đồ ≥24 món, ledger đSM và social context. M3: ≥3 NPC độc lập, hẹn hò/thỏa thuận/hôn nhân/ngoại tình với agency. M4: nhiều con, hành vi nuôi dạy tích lũy và đường trưởng thành tự quyết. Từng mốc qua test/commit/push/CI/live rồi tiếp tục; trạng thái thực và save plan ở [LIFE_EXPANSION](LIFE_EXPANSION.md). Không mở rộng sang ba mốc tương lai bên dưới.
+
+
 Cập nhật 30/10/2026. Đây là kế hoạch sản phẩm; không tự mở phạm vi triển khai. Trạng thái phát hành thực ở PROJECT_STATUS/V03_HANDOFF. Không thay tính xác định của engine hay xóa dữ liệu để thêm tính năng.
 
 ## v0.3 — hoàn tất nền tảng tài khoản và nhịp chơi

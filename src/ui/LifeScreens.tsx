@@ -14,6 +14,7 @@ import { activeDefinition, choiceReason } from '../engine/engine';
 import { CATEGORIES, STAT_NAMES, downloadFile, money } from './common';
 import { birthplaceOf, familyText } from '../domain/creator';
 import { Scenery } from './Scenery';
+import { Avatar } from './Avatar';
 import { useLayoutEffect, useRef } from 'react';
 import { decisionKey, recentResults } from '../application/story-flow';
 export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void }) {
@@ -22,6 +23,9 @@ export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void
     <section className="birth-page">
       <div className="birth-picture">
         <Scenery />
+        <div className="birth-avatar">
+          <Avatar run={run} />
+        </div>
         <div className="postcard-stamp">
           VIỆT NAM
           <br />
@@ -77,7 +81,13 @@ export function Character({ run }: { run: GameRun }) {
           : 'Chưa có việc';
   return (
     <div className="character-hud" data-testid="character-hud">
+      <div className="hud-illustration">
+        <Avatar run={run} />
+      </div>
       <div className="character-head">
+        <div className="hud-mini-avatar">
+          <Avatar run={run} portrait />
+        </div>
         <div>
           <h2>{run.player.name}</h2>
           <p>
@@ -321,6 +331,9 @@ export function Summary({
         </h1>
       </div>
       <article className="summary-card">
+        <div className="memoir-avatar">
+          <Avatar run={run} />
+        </div>
         <span className="eyebrow">HỒI KÝ CỦA</span>
         <h2>{run.player.name}</h2>
         <p className="summary-years">

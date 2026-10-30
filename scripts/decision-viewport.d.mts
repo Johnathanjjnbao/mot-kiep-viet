@@ -16,6 +16,7 @@ export interface DecisionMeasurement {
   viewport: { width: number; height: number };
   documentScroll: number;
   hud: MeasuredElement;
+  avatar: MeasuredElement;
   narrative: MeasuredElement;
   firstChoice: MeasuredElement;
   list: ViewportRect;

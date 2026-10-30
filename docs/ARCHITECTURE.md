@@ -1,5 +1,10 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## Life Expansion: lớp trình bày v0.3.2
+
+`ui/appearance.ts` là hàm thuần hash seed có namespace, tách identity (màu da/tóc, preset mặt/vóc dáng) khỏi tuổi và biểu cảm. `Avatar.tsx` vẽ SVG lớp body/top/bottom/head/face/hair; biologicalAge tùy chọn để không buộc rendering vào tuổi lịch về sau. Không tiêu thụ RNG engine, không ghi thêm save field. Creator tạo seed UI trước preview và gửi lại đúng seed ấy. HUD responsive dùng cùng artwork với crop portrait. Xem [LIFE_EXPANSION](LIFE_EXPANSION.md) cho version plan và bằng chứng từng mốc.
+
+
 Beta v0.3, React + TypeScript strict + Vite, GitHub Pages công khai. Guest lưu trên máy; tài khoản được mời dùng Supabase Auth/PostgreSQL qua cache/outbox riêng. Xem CLOUD_ARCHITECTURE.md. Phát triển tiếp từ bản v0.1 đã phát hành; không thay ứng dụng. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows; dependencies khóa trong package-lock.json.
 
 ## Trách nhiệm và quyền sở hữu

@@ -33,6 +33,11 @@ export async function decisionMeasurement(page) {
       viewport: { width: innerWidth, height: innerHeight },
       documentScroll: scrollY,
       hud: visible(hud),
+      avatar: visible(
+        [...hud.querySelectorAll('.living-avatar')].find(
+          (n) => n.getBoundingClientRect().width > 0,
+        ),
+      ),
       narrative: visible(narrative),
       firstChoice: visible(first),
       list: rect(list),
@@ -62,6 +67,7 @@ export async function assertDecisionViewport(page) {
   expect(m.overflow).toBe(false);
   for (const [name, r] of [
     ['HUD', m.hud],
+    ['avatar', m.avatar],
     ['narrative', m.narrative],
     ['first choice', m.firstChoice],
     ...m.stats.map((s) => [s.key, s]),

@@ -3472,3 +3472,130 @@ meter::-moz-meter-bar {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+/* Life Expansion — paper, ink and a portrait that belongs to the same story. */
+.living-avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 240px;
+}
+.hud-illustration {
+  height: 176px;
+  margin: -8px -5px 14px;
+}
+.hud-mini-avatar {
+  display: none;
+}
+.birth-picture {
+  position: relative;
+}
+.birth-avatar {
+  position: absolute;
+  width: 42%;
+  height: 68%;
+  bottom: 8%;
+  left: 29%;
+  filter: drop-shadow(0 8px 10px #2e352e18);
+}
+.preview-avatar {
+  width: 110px;
+  height: 155px;
+  float: right;
+  margin: 0 0 16px 20px;
+}
+.creator .mini-scenery {
+  height: 220px;
+  background: transparent;
+  border: 0;
+}
+.creator .mini-scenery .living-avatar {
+  max-height: 220px;
+}
+.memoir-avatar {
+  width: 128px;
+  height: 175px;
+  margin: 0 auto 20px;
+}
+.history-avatar {
+  width: 56px;
+  height: 62px;
+  float: right;
+  margin: 0 0 8px 12px;
+}
+:root {
+  --gold: #a47b43;
+  --portrait-wash: #e9e3d3;
+}
+.character-hud {
+  border-top: 3px solid var(--gold);
+  background: linear-gradient(165deg, #fcfaf5, #f2eddf);
+}
+.game-shell .story-card {
+  border-top: 3px solid var(--rust);
+  box-shadow: 0 8px 30px #493d3408;
+}
+.game-shell .choice {
+  border-color: #ccc3b1;
+  border-radius: 6px;
+  background: #fffdf7;
+  transition:
+    background-color 0.12s,
+    border-color 0.12s;
+}
+.game-shell .choice:hover:not(:disabled) {
+  border-color: var(--rust);
+  background: #f3e8d8;
+}
+.game-shell .choice-letter {
+  color: var(--rust);
+  border-color: #b49b79;
+  background: #f4eee0;
+}
+.game-shell .recent-outcome {
+  border-left: 2px solid var(--gold);
+  padding-left: 12px;
+}
+.history-grid > article,
+.creator-preview,
+.summary-card {
+  border-top: 3px solid var(--gold);
+}
+.game-tabs {
+  font-weight: 500;
+}
+@media (max-width: 900px), (max-height: 520px) {
+  .hud-illustration {
+    display: none;
+  }
+  .hud-mini-avatar {
+    display: block;
+    width: 32px;
+    height: 38px;
+    flex: 0 0 32px;
+  }
+  .character-hud .character-head {
+    gap: 8px;
+  }
+  .character-hud .character-head > div:nth-child(2) {
+    flex: 1;
+    min-width: 0;
+  }
+  .character-hud .character-head > .hud-cash {
+    flex: 0 0 auto;
+  }
+}
+@media (max-height: 520px) and (min-width: 580px) {
+  .hud-mini-avatar {
+    width: 25px;
+    height: 26px;
+    flex-basis: 25px;
+  }
+  .character-hud .character-head > div:first-child {
+    display: block;
+  }
+  .character-hud .character-head > div:nth-child(2) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+}

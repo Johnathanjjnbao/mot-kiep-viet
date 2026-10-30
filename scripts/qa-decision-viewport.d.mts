@@ -25,3 +25,5 @@ export function viewportJourney(
   };
   run: GameRun;
 }>;
+
+export const viewportVersion: string;

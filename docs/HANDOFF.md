@@ -1,5 +1,10 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Bàn giao tiếp nối Life Expansion — 31/10/2026
+
+M1 v0.3.2 đã qua local verify81/E2E24/production smoke; avatar sáu tuổi/seed ổn định, phong cách giấy ngà và HUD ưu tiên câu chuyện. Đang theo dõi phát hành; CI/live sẽ ghi bằng chứng riêng trong [LIFE_EXPANSION](LIFE_EXPANSION.md). M2 wardrobe, M3 romance, M4 parenting chưa hoàn tất. Giữ save engine2/schema3 và mọi guest/cloud/history. Migration003 chỉ mở tuple mới đã được duyệt/áp, không thay bảng/RLS. Phần bên dưới giữ nguyên lịch sử bàn giao trước đây.
+
+
 Ngày kiểm chứng: **30/10/2026**, múi giờ người dùng Asia/Saigon. Trạng thái: **local beta đã kiểm chứng**, chưa phải phát hành production.
 
 ## 1. Executive Summary

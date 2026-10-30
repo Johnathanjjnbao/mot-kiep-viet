@@ -1,5 +1,10 @@
 # Backlog sau beta v0.3
 
+## Life Expansion đang triển khai
+
+v0.3.2 avatar6tuổi/visual: local gates PASS, phát hành đang kiểm tra. v0.3.3 wardrobe ≥24món; v0.3.4 romance/agreement/agency; v0.3.5 parenting/generations: chưa hoàn tất. Xem [LIFE_EXPANSION](LIFE_EXPANSION.md); không coi backlog là tính năng đã có. Mục kỳ bí/quốc tế/kinh tế VNĐ bên dưới tiếp tục là roadmap.
+
+
 Ngày cập nhật: 30/10/2026. v0.2 triển khai Character Creator, lựa chọn trên 72 sự kiện và lịch sử cục bộ. Kết quả phát hành nằm trong PROJECT_STATUS/V02_REPORT. Backlog không tự mở phạm vi phiên hiện tại.
 
 ## v0.3 — Personal Cloud Account và One-Click Gameplay

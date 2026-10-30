@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { viewportCases, viewportJourney } from '../../scripts/qa-decision-viewport.mjs';
+import { viewportCases, viewportJourney, viewportVersion } from '../../scripts/qa-decision-viewport.mjs';
 import { replay } from '../../src/engine/engine';
 import { readFileSync, writeFileSync } from 'node:fs';
 for (const config of viewportCases) {
@@ -10,7 +10,7 @@ for (const config of viewportCases) {
     const { report, run } = await viewportJourney(browser, baseURL!, config);
     expect(report.status).toBe('VERIFIED PASS');
     expect(replay(run.seed, run.setup, run.actions)).toEqual(run);
-    const file = 'docs/evidence/v031-local-viewport.json';
+    const file = `docs/evidence/${viewportVersion}-local-viewport.json`;
     const previous =
       config.name === viewportCases[0].name ? [] : JSON.parse(readFileSync(file, 'utf8')).reports;
     previous.push(report);

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import type { GameRun } from '../domain/model';
 import { exportHistory, MAX_HISTORY_BYTES, type LifeRecord } from '../persistence/history';
 import { Summary } from './LifeScreens';
+import { Avatar } from './Avatar';
 import { Journal } from './Journal';
 import { birthplaceOf, familyText, PARENT_TRAITS } from '../domain/creator';
 import { ageOf, CAREERS } from '../content/world';
@@ -129,6 +130,9 @@ export function LifeHistory({
       <div className="history-grid">
         {records.map((record) => (
           <article key={record.id}>
+            <div className="history-avatar">
+              <Avatar run={record.save.run} portrait />
+            </div>
             <span>
               {record.save.run.player.birthYear} — {record.save.run.world.year} ·{' '}
               {ageOf(record.save.run)} tuổi

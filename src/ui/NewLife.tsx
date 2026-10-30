@@ -3,7 +3,8 @@ import { ArrowLeft, ArrowRight, Dices } from 'lucide-react';
 import type { GameRun, RunSetup, ParentTrait } from '../domain/model';
 import { COHORTS, REGIONS } from '../content/world';
 import { setupSchema, WEALTH, FAMILIES, PARENT_TRAITS } from '../domain/creator';
-import { Scenery } from './Scenery';
+import { Avatar } from './Avatar';
+import { createRun } from '../engine/engine';
 export function NewLife({
   run,
   onStart,
@@ -15,6 +16,9 @@ export function NewLife({
   onBack: () => void;
   onSave: () => void;
 }) {
+  const [generatedSeed] = useState(
+    () => `viet-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36)}`,
+  );
   const [custom, setCustom] = useState(false),
     [seed, setSeed] = useState(''),
     [setup, setSetup] = useState<RunSetup>({
@@ -30,6 +34,10 @@ export function NewLife({
     }),
     [preview, setPreview] = useState(false),
     [error, setError] = useState('');
+  const portraitRun = createRun(
+    seed.trim().slice(0, 100) || generatedSeed,
+    custom && setupSchema.safeParse(setup).success ? setup : undefined,
+  );
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
     setError('');
@@ -91,7 +99,7 @@ export function NewLife({
         return;
       }
       setPreview(true);
-    } else onStart(seed);
+    } else onStart(seed.trim() || generatedSeed);
   }
   const availableSetup = {
     ...setup,
@@ -113,7 +121,7 @@ export function NewLife({
           <h1>Đặt tên cho một cuộc đời.</h1>
           <p>Chọn một khởi đầu, rồi xem điều gì thay đổi qua những năm tháng.</p>
           <div className="mini-scenery">
-            <Scenery small />
+            <Avatar run={portraitRun} />
           </div>
           <p className="fine-print creator-explainer">
             Năm sinh 1975–2026. Vùng mô phỏng dùng dữ liệu thiết kế chung, địa danh cụ thể do bạn
@@ -148,6 +156,9 @@ export function NewLife({
           {preview ? (
             <section className="creator-preview">
               <h2>Xem lại khởi đầu</h2>
+              <div className="preview-avatar">
+                <Avatar run={portraitRun} />
+              </div>
               <h3>{setup.name}</h3>
               <dl>
                 <dt>Năm sinh</dt>
@@ -176,7 +187,7 @@ export function NewLife({
               </button>
               <button
                 className="button primary full-width"
-                onClick={() => onStart(seed, availableSetup)}
+                onClick={() => onStart(seed.trim() || generatedSeed, availableSetup)}
               >
                 Bắt đầu với nhân vật này
                 <ArrowRight size={17} aria-hidden="true" />
