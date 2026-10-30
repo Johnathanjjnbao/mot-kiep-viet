@@ -1,0 +1,16 @@
+{
+  "releaseCommit": "a108d25036af58db8034369db06085a88e4e66fe",
+  "status": "VERIFIED PASS",
+  "checks": [
+    {
+      "path": "/mot-kiep-viet/assets/index-Cjor93-M.js",
+      "sha256": "2b96537784960052c74b986c776051aed4eb74027e52b785354b2439a9685ba8",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/index-DBLJm58J.css",
+      "sha256": "3e20346049314e3986b58747a8dc1dc8af145329d6e786d3d36456a72da00a2e",
+      "status": "VERIFIED PASS"
+    }
+  ]
+}

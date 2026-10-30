@@ -7,19 +7,90 @@
   "contentVersion": "2.0.0",
   "schemaVersion": 3,
   "baselineCommit": "3508765374d94b8150e852ff0aa74b9678cd8940",
-  "verify": {"command": "npm.cmd run verify", "exitCode": 0, "testFiles": 6, "testsPassed": 49, "typecheck": "VERIFIED PASS", "lint": "VERIFIED PASS", "build": "VERIFIED PASS", "basePath": "/mot-kiep-viet/"},
-  "content": {"templates": 72, "definedChoices": 361, "fallbackChoices": 4, "careers": 10, "arcs": 3, "errors": 0},
-  "simulation": {"command": "npm.cmd run simulate", "exitCode": 0, "distinctSeeds": 1000, "invariantViolations": 0, "failures": 0, "enabledChoices": {"min": 4, "max": 6, "eventsChecked": 35045}, "sampledBirthYears": 41, "unitTestBirthYears": 52, "details": "simulation.json"},
-  "browser": {"command": "npm.cmd run test:e2e", "exitCode": 0, "passed": 10, "failed": 0, "flaky": 0, "viewports": ["1440x1000", "375x812", "812x375"], "largeText": true, "reducedMotion": true, "axeViolationsInScannedStates": 0, "details": "browser-results.json"},
-  "localExtendedQA": {"command": "node scripts/check-pages.mjs http://127.0.0.1:4173/mot-kiep-viet/", "exitCode": 0, "status": "VERIFIED PASS", "details": "pages-local.json"},
-  "productionBundle": {"command": "npm.cmd run test:production", "exitCode": 0, "status": "VERIFIED PASS", "details": "production-smoke.json"},
-  "dependencyAudit": {"command": "npm.cmd audit --json", "knownVulnerabilities": 0, "details": "dependency-audit.json"},
-  "secretScan": {"scope": "working files and all reachable Git blobs", "findings": 0},
-  "remoteCI": "PENDING",
-  "deployment": "PENDING",
+  "verify": {
+    "command": "npm.cmd run verify",
+    "exitCode": 0,
+    "testFiles": 6,
+    "testsPassed": 49,
+    "typecheck": "VERIFIED PASS",
+    "lint": "VERIFIED PASS",
+    "build": "VERIFIED PASS",
+    "basePath": "/mot-kiep-viet/"
+  },
+  "content": {
+    "templates": 72,
+    "definedChoices": 361,
+    "fallbackChoices": 4,
+    "careers": 10,
+    "arcs": 3,
+    "errors": 0
+  },
+  "simulation": {
+    "command": "npm.cmd run simulate",
+    "exitCode": 0,
+    "distinctSeeds": 1000,
+    "invariantViolations": 0,
+    "failures": 0,
+    "enabledChoices": {
+      "min": 4,
+      "max": 6,
+      "eventsChecked": 35045
+    },
+    "sampledBirthYears": 41,
+    "unitTestBirthYears": 52,
+    "details": "simulation.json"
+  },
+  "browser": {
+    "command": "npm.cmd run test:e2e",
+    "exitCode": 0,
+    "passed": 10,
+    "failed": 0,
+    "flaky": 0,
+    "viewports": [
+      "1440x1000",
+      "375x812",
+      "812x375"
+    ],
+    "largeText": true,
+    "reducedMotion": true,
+    "axeViolationsInScannedStates": 0,
+    "details": "browser-results.json"
+  },
+  "localExtendedQA": {
+    "command": "node scripts/check-pages.mjs http://127.0.0.1:4173/mot-kiep-viet/",
+    "exitCode": 0,
+    "status": "VERIFIED PASS",
+    "details": "pages-local.json"
+  },
+  "productionBundle": {
+    "command": "npm.cmd run test:production",
+    "exitCode": 0,
+    "status": "VERIFIED PASS",
+    "details": "production-smoke.json"
+  },
+  "dependencyAudit": {
+    "command": "npm.cmd audit --json",
+    "knownVulnerabilities": 0,
+    "details": "dependency-audit.json"
+  },
+  "secretScan": {
+    "scope": "working files and all reachable Git blobs",
+    "findings": 0
+  },
+  "remoteCI": "VERIFIED PASS: 41007485656",
+  "deployment": "VERIFIED PASS",
   "humanPlaytest": "NOT RUN",
   "physicalMobileBrowsers": "NOT RUN",
   "cloudAccounts": "NOT RUN",
   "supernaturalLongevity": "NOT RUN",
-  "gates": {"G0": "VERIFIED PASS", "G1": "VERIFIED PASS", "G2": "VERIFIED PASS", "G3": "VERIFIED PASS", "G4": "VERIFIED PASS", "G5": "INCOMPLETE"}
+  "gates": {
+    "G0": "VERIFIED PASS",
+    "G1": "VERIFIED PASS",
+    "G2": "VERIFIED PASS",
+    "G3": "VERIFIED PASS",
+    "G4": "VERIFIED PASS",
+    "G5": "VERIFIED PASS"
+  },
+  "applicationCommit": "a108d25036af58db8034369db06085a88e4e66fe",
+  "liveQA": "VERIFIED PASS: pages-live.json and pages-assets-v02.json"
 }

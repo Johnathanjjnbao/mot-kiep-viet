@@ -2,7 +2,7 @@
 
 ## 1. Kết quả chính
 
-Tiếp tục checkout hiện có tại C:\Users\triba\OneDrive\Desktop\game, không dựng lại game. Baseline main 3508765374d94b8150e852ff0aa74b9678cd8940 và lịch sử commit trước được giữ. Ba nhóm tính năng đã triển khai và qua gates cục bộ. Chưa tuyên bố deployed v0.2 trước khi CI/live đạt.
+Beta v0.2 đã triển khai và xác minh trên [GitHub Pages](https://johnathanjjnbao.github.io/mot-kiep-viet/): **G5 VERIFIED PASS**. Tiếp tục checkout C:\Users\triba\OneDrive\Desktop\game, không dựng lại game. Baseline main 3508765374d94b8150e852ff0aa74b9678cd8940 và mọi commit trước được giữ. Ba nhóm tính năng, gates cục bộ, CI sạch và live desktop/mobile đều đã qua trong phạm vi bên dưới.
 
 ## 2. Tính năng thực tế
 
@@ -19,8 +19,8 @@ Gia cảnh thay tiền khởi đầu/trợ cấp; tính cách ảnh hưởng ki�
 | E2E cuối desktop/mobile              | VERIFIED PASS, 10/10 luồng, 0 flaky                    | tests/e2e/game.spec.ts                         |
 | Production base /mot-kiep-viet/      | VERIFIED PASS trên build base đúng                     | evidence/production-smoke.json                 |
 | Audit phụ thuộc                      | VERIFIED PASS, 0 advisory theo npm audit tại phiên này | evidence/dependency-audit.json                 |
-| Secret scan working files/history    | VERIFIED PASS, 240 text objects, 0 findings            | scripts/scan-secrets.mjs                       |
-| CI và live v0.2                      | Chưa chạy                                              | evidence/pages-workflows.json, pages-live.json |
+| Secret scan working files/history    | VERIFIED PASS, working files/history, 0 findings       | scripts/scan-secrets.mjs                       |
+| CI và live v0.2                      | VERIFIED PASS, build/deploy và live hai viewport       | evidence/pages-workflows.json, pages-live.json |
 
 Một lượt verify có 48 PASS/1 FAIL do batch hoàn tất + replay 52 năm mất 33,9 giây vượt timeout 30 giây. Đặt riêng batch hữu hạn này 120 giây, giữ nguyên mọi assertion; lượt cuối đã qua 49/49 trong tổng 24,92 giây. Không đổi engine để xử lý timeout.
 
@@ -30,7 +30,7 @@ Giữ đủ 72 mẫu sự kiện, 3 arc và 10 nghề. Bổ sung 216 lựa chọ
 
 ## 5. Phân nhánh và phân bố
 
-Mô phỏng kiểm tra 35.045 lần sự kiện: enabled min 4, max 6; quan sát 72/72 mẫu. Kết thúc sức khỏe/hồi ký 282/718; tuổi min/mean/max 64/79,45/82; tài sản ròng −52.047/11.112/40.025 đSM. Arc làm ăn/gia đình/hồi phục hoàn tất 500/800/219; làm ăn có lãi/lỗ/rút vốn 137/125/61. Đây là phân bố chính sách test, không đo tính đại diện Việt Nam hoặc độ cân bằng.
+Mô phỏng kiểm tra 35.045 lần sự kiện: enabled min 4, max 6; quan sát 72/72 mẫu. Trong 361 lựa chọn định nghĩa, 77 chứa schedule trong effects (không tính nhánh chance). Kết thúc sức khỏe/hồi ký 282/718; tuổi min/mean/max 64/79,45/82; tài sản ròng −52.047/11.112/40.025 đSM. Arc làm ăn/gia đình/hồi phục hoàn tất 500/800/219; làm ăn có lãi/lỗ/rút vốn 137/125/61. Đây là phân bố chính sách test, không đo tính đại diện Việt Nam hoặc độ cân bằng.
 
 Ví dụ thực: education-path có hướng đi làm rồi học (kỹ năng/stress và kiến thức trễ), học từ thợ (kỹ năng tức thời), tự học có lịch (kiến thức/stress). business-invitation thử việc rồi mở nhánh đánh giá 24 tháng; career-collapse có đào tạo lại nối trở lại; family-call nối thăm hỏi/hồi tưởng sau 24 tháng. Lựa chọn mới nối hoặc đóng arc bằng flag/schedule, không để nhánh mới mất dấu.
 
@@ -52,15 +52,15 @@ Kiểm kê 22 thư mục global và 5 system ở đầu phiên. Dùng Frontend D
 
 ## 10. Git và trạng thái bàn giao
 
-Nhánh main; remote https://github.com/Johnathanjjnbao/mot-kiep-viet. Thay đổi chưa commit trong khi hoàn tất gates. SHA phát hành và HEAD bàn giao ghi ở phần kết quả xác minh cuối dưới đây, không viết SHA của chính commit vào nội dung nó.
+Nhánh main; remote https://github.com/Johnathanjjnbao/mot-kiep-viet. Code phát hành a108d25036af58db8034369db06085a88e4e66fe đã push. Giữ toàn bộ 7 commit trước baseline. Tài liệu/bằng chứng live sẽ được bổ sung bằng commit riêng; HEAD bàn giao báo trong chat/git log, tránh ghi SHA của chính commit vào nội dung nó.
 
 ## 11. GitHub Actions
 
-Chờ push v0.2. pages.yml build với npm ci, verify, secret scan, Chromium E2E, production smoke; deploy phụ thuộc build. Không dùng kết quả CI v0.1 thay cho bản mới.
+[Workflow 41007485656](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41007485656) cho a108d25 completed/success cả build và deploy. Log: npm ci sạch, verify 49/49 test (19,06 giây), secret scan 0 findings, 10/10 E2E Chromium, production smoke, upload artifact đều success. Bằng chứng evidence/ci-v02.json và pages-workflows.json. Commit tài liệu kế sau không đổi mã/bundle; workflow HEAD cuối được kiểm tra trước trả lời bàn giao.
 
 ## 12. URL thực
 
-[Repo](https://github.com/Johnathanjjnbao/mot-kiep-viet), [game](https://johnathanjjnbao.github.io/mot-kiep-viet/). Cần xác minh footer 0.2, random/custom/5 gia đình, chơi hết một đời, ít nhất 4 lựa chọn, save/load, history và tài nguyên trên desktop/mobile. HTTP 200 không đủ; trạng thái đang chờ.
+[Repo](https://github.com/Johnathanjjnbao/mot-kiep-viet), [game](https://johnathanjjnbao.github.io/mot-kiep-viet/). VERIFIED PASS ở 1440×1000 và 375×812 trên Edge: footer 0.2, random/custom/5 gia đình và preview/edit, trọn đời với ≥4 lựa chọn, autosave/reload và manual slot load, lịch sử xuất/nhập dedup/đọc hồi ký/giữ sau đổi kiếp và reload, font/assets, không tràn ngang, 0 lỗi page/network. evidence/pages-live.json ghi từng kiểm tra. SHA-256 JS/CSS live khớp build cục bộ (pages-assets-v02.json); không chỉ dựa HTTP 200.
 
 ## 13. Giới hạn
 

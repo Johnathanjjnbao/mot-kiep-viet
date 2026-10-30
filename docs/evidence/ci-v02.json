@@ -1,0 +1,19 @@
+{
+  "releaseCommit": "a108d25036af58db8034369db06085a88e4e66fe",
+  "workflowRun": 41007485656,
+  "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41007485656",
+  "status": "completed",
+  "conclusion": "success",
+  "buildJob": 123905562734,
+  "deployJob": 123906324850,
+  "observedFrom": "GitHub Actions jobs API and decoded build job log",
+  "checks": {
+    "npmCi": "VERIFIED PASS",
+    "verify": {"testFiles": 6, "testsPassed": 49, "durationSeconds": 19.06, "status": "VERIFIED PASS"},
+    "secretScan": {"findings": [], "status": "VERIFIED PASS"},
+    "chromiumE2E": {"passed": 10, "failed": 0, "status": "VERIFIED PASS"},
+    "productionSmoke": "VERIFIED PASS",
+    "artifactUpload": "VERIFIED PASS",
+    "pagesDeployment": "VERIFIED PASS"
+  }
+}
