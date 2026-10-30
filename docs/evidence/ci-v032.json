@@ -1,0 +1,10 @@
+{
+  "commit": "403509669f237d410f40c6027bd80a030b0da39d",
+  "run": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41096367741",
+  "status": "completed",
+  "conclusion": "success",
+  "build": "success",
+  "deploy": "success",
+  "artifactId": 12995149488,
+  "artifactSha256": "a134826d6e9ee86669ab010806d6eb810d330d68a53c2d1ccf065eca45495f2b"
+}

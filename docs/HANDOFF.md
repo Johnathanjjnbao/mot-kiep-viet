@@ -1,5 +1,7 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+**G5 M1 v0.3.2 VERIFIED PASS.** Code403509669f237d410f40c6027bd80a030b0da39d/main đã push/deploy; [workflow41096367741](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41096367741) completed/success. Live guest,6viewport×20decision,23realAuth/cloud và artifact CSS/JS/SW hashes PASS. Owner tự nhập tài khoản NOT RUN. M2–M4 đang làm, chưa nghiệm thu. Chi tiết [LIFE_EXPANSION](LIFE_EXPANSION.md).
+
 ## Bàn giao tiếp nối Life Expansion — 31/10/2026
 
 M1 v0.3.2 đã qua local verify81/E2E24/production smoke; avatar sáu tuổi/seed ổn định, phong cách giấy ngà và HUD ưu tiên câu chuyện. Đang theo dõi phát hành; CI/live sẽ ghi bằng chứng riêng trong [LIFE_EXPANSION](LIFE_EXPANSION.md). M2 wardrobe, M3 romance, M4 parenting chưa hoàn tất. Giữ save engine2/schema3 và mọi guest/cloud/history. Migration003 chỉ mở tuple mới đã được duyệt/áp, không thay bảng/RLS. Phần bên dưới giữ nguyên lịch sử bàn giao trước đây.

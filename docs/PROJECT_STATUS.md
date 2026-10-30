@@ -1,5 +1,7 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+**G5 M1 v0.3.2 VERIFIED PASS.** Code403509669f237d410f40c6027bd80a030b0da39d/main đã push/deploy; [workflow41096367741](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41096367741) completed/success. Live guest,6viewport×20decision,23realAuth/cloud và artifact CSS/JS/SW hashes PASS. Owner tự nhập tài khoản NOT RUN. M2–M4 đang làm, chưa nghiệm thu. Chi tiết [LIFE_EXPANSION](LIFE_EXPANSION.md).
+
 ## Life Expansion — M1 v0.3.2, 31/10/2026
 
 Tiếp tục baseline sạch `a204bd0bba62f341eda66e3b6788c87f18c545f3` trên main. M1 thêm avatar gốc nhiều lớp/sáu tuổi, identity theo seed, biểu cảm và giao diện đồng bộ creator/HUD/history/memoir; không đổi engine/content2/schema3. Local verify81 và E2E24/production smoke PASS; six viewport20decisions đo avatar/HUD/story/choice trước input. CI/live mới đang kiểm tra, chưa gọi G5 PASS. Migration mở tuple3/schema4 đã được chủ dự án duyệt đúng hash và áp đúng project; không đổi RLS/dữ liệu. M2–M4 chưa xong, không gọi Life Expansion complete. Chi tiết [LIFE_EXPANSION](LIFE_EXPANSION.md).

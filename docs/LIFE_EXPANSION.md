@@ -25,7 +25,7 @@ M1 vẫn engine/content2/schema3. M2 dự kiến engine/content3/schema4, giữ 
 
 ## Trạng thái
 
-M1 local VERIFIED PASS (phát hành đang kiểm tra). M2/M3/M4 NOT RUN; chưa có shop/romance/parenting mở rộng. Wearables mới0, events mới0, arcs mới0. Không kỳ bí/trường thọ/quốc tế/VNĐ trong phạm vi này. Mỗi mốc sẽ ghi commit/CI/live và giới hạn riêng.
+M1 VERIFIED PASS và đã phát hành. M2/M3/M4 NOT RUN; chưa có shop/romance/parenting mở rộng. Wearables mới0, events mới0, arcs mới0. Không kỳ bí/trường thọ/quốc tế/VNĐ trong phạm vi này. Mỗi mốc sẽ ghi commit/CI/live và giới hạn riêng.
 
 ## M1 — v0.3.2, 31/10/2026
 
@@ -35,9 +35,11 @@ M1 local VERIFIED PASS (phát hành đang kiểm tra). M2/M3/M4 NOT RUN; chưa c
 - Hai lượt E2E từng chồng máy chủ làm connection refused; chạy sạch riêng24/24. Một production smoke thiếu biến base path làm asset không tải; chạy lại đúng `/mot-kiep-viet/` PASS. Không lấy kết quả lỗi làm PASS.
 - Simulation1000 không chạy lại ở M1 vì engine/content không đổi; không dùng kết quả lịch sử như kết quả mới. Các mốc authoritative sau phải chạy lại.
 - Migration `202610300003_life_expansion.sql` đã được chủ dự án duyệt đúng SHA A4F089D74B3E9EBD77EE148A63DE742F4FD749A1B3C1599D9421D3B3F719C26B và áp đúng project `kqnapcyceddwvrvkquvg` qua CLI db query. Trước validator chưa có3.0.0, sau có3.0.0, md5 function `56acd647c63bb2c93c5af6acb6e2f278`. Giữ tuple cũ, bảng/RLS/grants/giới hạn5MiB/actions512; không sửa/xóa user data. PGlite kiểm thử mới giữ grants và chặn identity/header/version/actions sai. M1 vẫn chỉ ghi schema3.
-- Cloud/Auth local23/23 VERIFIED PASS bằng hai synthetic users với JWT thường và browser contexts độc lập (`v032-local-authenticated.json`): RLS A/B/guest,3slot,outbox/offline,retry,conflict,archive đều qua. Secret Scanning0 findings trên working/public/history và npm audit production0 advisory. CI/live mới đang chạy, chưa tuyên bố deployed. Owner tự đăng nhập tài khoản hiện có NOT RUN; automation chỉ dùng synthetic fixture riêng, không xóa production và không ghi credentials.
+- Cloud/Auth local23/23 VERIFIED PASS bằng hai synthetic users với JWT thường và browser contexts độc lập (`v032-local-authenticated.json`): RLS A/B/guest,3slot,outbox/offline,retry,conflict,archive đều qua. Secret Scanning0 findings trên working/public/history và npm audit production0 advisory. Code commit403509669f237d410f40c6027bd80a030b0da39d đã deploy qua [workflow41096367741](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41096367741), completed/success. Live guest desktop/mobile,6viewport×20decision, Auth/cloud23/23 và0page/network lỗi VERIFIED PASS. CSS/JS/SW khớp từng byte với artifact GitHub12995149488 của đúng SHA (ZIP SHA256 a134826d6e9ee86669ab010806d6eb810d330d68a53c2d1ccf065eca45495f2b); local precommit assets khác tên CI nên không dùng làm bằng chứng khớp, xác minh trực tiếp artifact đã deploy. Evidence `v032-live-guest/authenticated/assets/viewport.json`, ảnh đã xem trực tiếp. Owner tự đăng nhập tài khoản hiện có NOT RUN; automation chỉ dùng synthetic fixture riêng, không xóa production và không ghi credentials.
 - Skills thực dùng: Context Map, Frontend Design, UI/UX Pro Max, Webapp Testing, Web Design Reviewer, Secret Scanning, Documentation Writer. Không cài thêm skill/library, không Antigravity. User đã cho phép tự cập nhật tài liệu nên không chờ outline approval của skill.
 
 ## Tiếp tục M2–M4
 
 Freeze v2 trước đổi luật. Schema4/engine-content3 dùng setup có ruleset bất biến để replay các đời wardrobe/social/family đúng luật đã tạo; UI không tự thêm inventory/relationship state. Áp ledger và action IDs cho mua/equip; validate replay cả snapshot và archive; kiểm tra old schema3 vẫn chơi được bằng frozen2. Không xóa hoặc tự nâng các đời đang chơi. M2 cần ≥24 item và social contexts có thật; M3–M4 cần35–50 event mới/≥4arc, agency và tham chiếu gia đình. Những mục này chưa triển khai ở M1.
+
+Migration003 đã ghi nhận applied vào lịch sử CLI bằng migration repair sau khi kiểm tra function thực tế; không chạy lại SQL lần hai.
