@@ -39,8 +39,8 @@ export function adult(seed = 'adult'): GameRun {
   return run;
 }
 describe('authored content and eligibility', () => {
-  it('validates all 99 templates, categories, careers, and 3 arcs', () => {
-    expect(validateContent()).toMatchObject({ total: 99, arcs: 5, errors: [] });
+  it('validates all 115 templates, categories, careers, and 3 arcs', () => {
+    expect(validateContent()).toMatchObject({ total: 115, arcs: 7, errors: [] });
   });
   it('detects duplicate IDs and broken references', () => {
     const events = structuredClone(EVENTS);

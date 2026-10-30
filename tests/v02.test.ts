@@ -123,7 +123,7 @@ describe('v0.2 creator and families', () => {
 });
 describe('choice guarantees and legacy compatibility', () => {
   it('authors 5–6 paths per template and four for the quiet-year fallback', () => {
-    expect(EVENTS).toHaveLength(99);
+    expect(EVENTS).toHaveLength(115);
     for (const e of EVENTS) expect(e.choices.length).toBeGreaterThanOrEqual(e.version === 2 ? 5 : 4);
     expect(FALLBACK.choices).toHaveLength(4);
   });

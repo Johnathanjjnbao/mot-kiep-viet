@@ -278,7 +278,12 @@ export function monthlyIncome(run: GameRun) {
 }
 export function monthlyExpense(run: GameRun) {
   const children = run.npcs.filter(
-    (n) => n.role === 'child' && n.alive && run.world.year - n.birthYear < 18,
+    (n) =>
+      n.role === 'child' &&
+      n.alive &&
+      (run.family?.children.some((c) => c.npcId === n.id)
+        ? run.month - run.family.children.find((c) => c.npcId === n.id)!.bornMonth < 216
+        : run.world.year - n.birthYear < 18),
   ).length;
   return Math.round(
     (ageOf(run) < 18
@@ -286,7 +291,7 @@ export function monthlyExpense(run: GameRun) {
       : 10 +
         (run.setup.environment === 'urban' ? 2 : 0) +
         (run.household.housing === 'rent' ? 6 : 0) +
-        (run.social?.people.some(p=>p.cohabiting) ? 3 : 0) +
+        (run.social?.people.some((p) => p.cohabiting) ? 3 : 0) +
         children * 3) * run.world.costFactor,
   );
 }

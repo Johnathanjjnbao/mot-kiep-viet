@@ -16,7 +16,13 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
     throw Error('Thao tác đã cũ; tủ đồ của bạn vẫn được giữ.');
   if (
     input.actions.filter((a) => a.type === 'wardrobe').length >= 160 ||
-    input.actions.filter((a) => a.type === 'manage' || a.type === 'wardrobe' || a.type === 'social').length >= (input.social ? 250 : 350)
+    input.actions.filter(
+      (a) =>
+        a.type === 'manage' ||
+        a.type === 'wardrobe' ||
+        a.type === 'social' ||
+        a.type === 'family-talk',
+    ).length >= (input.family ? 120 : input.social ? 250 : 350)
   )
     throw Error('Đã đạt giới hạn thao tác tủ đồ trong một đời.');
   const run = structuredClone(input),
@@ -32,7 +38,12 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
   let message: string;
   if (action.operation === 'save-outfit') {
     const name = action.item.trim();
-    if (!name || name.length > 40 || /[<>]/.test(name) || Array.from(name).some(c => c.charCodeAt(0) < 32))
+    if (
+      !name ||
+      name.length > 40 ||
+      /[<>]/.test(name) ||
+      Array.from(name).some((c) => c.charCodeAt(0) < 32)
+    )
       throw Error('Tên bộ đồ cần 1–40 ký tự thường.');
     if (w.outfits.length >= 8) throw Error('Đã lưu đủ tám bộ đồ.');
     checkEquipped(w.equipped);

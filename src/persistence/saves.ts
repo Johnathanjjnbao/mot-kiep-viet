@@ -28,7 +28,22 @@ const career = z.enum([
 ]);
 const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
   z.object({ type: z.literal('advance') }).strict(),
-  z.object({type:z.literal('social'),templateId:z.string().min(1).max(60),npcId:z.string().min(1).max(60),expected:z.number().int().min(0).max(511)}).strict(),
+  z
+    .object({
+      type: z.literal('family-talk'),
+      templateId: z.string().min(1).max(60),
+      childId: z.string().min(1).max(60),
+      expected: z.number().int().min(0).max(511),
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal('social'),
+      templateId: z.string().min(1).max(60),
+      npcId: z.string().min(1).max(60),
+      expected: z.number().int().min(0).max(511),
+    })
+    .strict(),
   z
     .object({
       type: z.literal('wardrobe'),

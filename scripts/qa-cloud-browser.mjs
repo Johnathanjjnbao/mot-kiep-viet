@@ -83,15 +83,45 @@ export async function browserCloudQA(users, check) {
       await close(p);
       await login(p, a);
     });
-    await check('complex social marriage and per-NPC memories load through authenticated UI', async () => {
-      await p.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
-      await p.getByRole('button', { name: 'Người thân', exact: true }).click();
-      await expect(p.locator('[data-social-person="friend"]')).toContainText('Đã kết hôn');
-      const own = await row();
-      expect(own.snapshot.run.social.primaryId).toBe('friend');
-      expect(own.snapshot.run.social.people[0].memories.length).toBeGreaterThan(5);
-      await p.getByRole('button', { name: 'Trang đầu', exact: true }).click();
-    });
+    await check(
+      'complex social marriage and per-NPC memories load through authenticated UI',
+      async () => {
+        await p.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+        await p.getByRole('button', { name: 'Người thân', exact: true }).click();
+        await expect(p.locator('[data-social-person="friend"]')).toContainText('Đã kết hôn');
+        const own = await row();
+        expect(own.snapshot.run.social.primaryId).toBe('friend');
+        expect(own.snapshot.run.social.people[0].memories.length).toBeGreaterThan(5);
+        await p.getByRole('button', { name: 'Trang đầu', exact: true }).click();
+      },
+    );
+    await check(
+      'child development, career and immutable parent references load on an independent mobile session',
+      async () => {
+        const context = await browser.newContext({
+          viewport: { width: 375, height: 812 },
+          isMobile: true,
+          hasTouch: true,
+        });
+        try {
+          const page = await context.newPage();
+          await page.goto(target);
+          await login(page, a);
+          await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+          await page.getByRole('button', { name: 'Người thân', exact: true }).click();
+          const own = await row();
+          expect(own.snapshot.run.family.children.length).toBeGreaterThan(0);
+          const child = own.snapshot.run.family.children[0];
+          await expect(page.locator('[data-family-child]').first()).toContainText(child.occupation);
+          expect(child.parents).toEqual(['player:' + own.snapshot.run.id, 'friend']);
+          await expect(page.locator('[data-family-child]').first()).toContainText(
+            'Cha mẹ được ghi nhận',
+          );
+        } finally {
+          await context.close();
+        }
+      },
+    );
     await check('guest migration is explicit and preserves guest data', async () => {
       const before = await row();
       expect(before.snapshot.run.player.name).not.toBe('Đời Khách Kiểm Thử');
@@ -148,20 +178,32 @@ export async function browserCloudQA(users, check) {
       await expect(q.getByText('Đã tự lưu trên máy')).toBeVisible();
       await assertDecisionViewport(q);
     });
-    await check('wardrobe purchase and equipment synchronize to an independent mobile browser', async () => {
-      await p.getByRole('button', { name: 'Tủ đồ', exact: true }).click();
-      const card = p.locator('[data-clothing="indigo-tee"]');
-      await card.getByRole('button', { name: /Mua/ }).click();
-      await card.getByRole('button', { name: 'Mặc', exact: true }).click();
-      await expect.poll(async () => (await row())?.snapshot.run.wardrobe?.equipped.top, { timeout: 25000 }).toBe('indigo-tee');
-      await p.getByRole('button', { name: 'Câu chuyện', exact: true }).click();
-      await q.reload();
-      await q.getByRole('button', { name: /Tiếp tục cuộc đời của Đời Đám Mây Kiểm Thử/ }).click();
-      await expect(q.locator('.character-hud .living-avatar:visible')).toHaveAttribute('data-wearing', /indigo-tee/);
-      const saved = await row();
-      expect(saved.snapshot.run.wardrobe.owned.filter(id => id === 'indigo-tee')).toHaveLength(1);
-      expect(saved.snapshot.run.finance.transactions.filter(t => t.id === 'wardrobe:buy:indigo-tee')).toHaveLength(1);
-    });
+    await check(
+      'wardrobe purchase and equipment synchronize to an independent mobile browser',
+      async () => {
+        await p.getByRole('button', { name: 'Tủ đồ', exact: true }).click();
+        const card = p.locator('[data-clothing="indigo-tee"]');
+        await card.getByRole('button', { name: /Mua/ }).click();
+        await card.getByRole('button', { name: 'Mặc', exact: true }).click();
+        await expect
+          .poll(async () => (await row())?.snapshot.run.wardrobe?.equipped.top, { timeout: 25000 })
+          .toBe('indigo-tee');
+        await p.getByRole('button', { name: 'Câu chuyện', exact: true }).click();
+        await q.reload();
+        await q.getByRole('button', { name: /Tiếp tục cuộc đời của Đời Đám Mây Kiểm Thử/ }).click();
+        await expect(q.locator('.character-hud .living-avatar:visible')).toHaveAttribute(
+          'data-wearing',
+          /indigo-tee/,
+        );
+        const saved = await row();
+        expect(saved.snapshot.run.wardrobe.owned.filter((id) => id === 'indigo-tee')).toHaveLength(
+          1,
+        );
+        expect(
+          saved.snapshot.run.finance.transactions.filter((t) => t.id === 'wardrobe:buy:indigo-tee'),
+        ).toHaveLength(1);
+      },
+    );
     await check('all three manual slots save and load through authenticated UI', async () => {
       const title = await p.locator('.story-card h2').textContent();
       await p.getByRole('button', { name: 'Lưu và tải game' }).click();

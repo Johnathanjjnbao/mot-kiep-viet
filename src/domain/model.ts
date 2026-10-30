@@ -1,3 +1,4 @@
+import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
 export const ENGINE_VERSION = '3.0.0';
 export const CONTENT_VERSION = '3.0.0';
@@ -143,6 +144,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'parenting'; style: ParentingStyle }
   | { kind: 'social'; operation: SocialOperation }
   | { kind: 'presentation'; context: PresentationContext }
   | { kind: 'stat'; stat: Stat; amount: number }
@@ -242,6 +244,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | FamilyAction
   | SocialAction
   | WardrobeAction
   | { type: 'advance' }
@@ -262,6 +265,7 @@ export interface RunSetup {
 export interface GameRun {
   wardrobe?: Wardrobe;
   social?: SocialState;
+  family?: FamilyState;
   engineVersion: string;
   contentVersion: string;
   id: string;

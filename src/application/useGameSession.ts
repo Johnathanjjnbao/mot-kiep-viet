@@ -62,6 +62,17 @@ export function useGameSession(repository: GameRepository = guestRepository) {
   const act = useCallback((action: RunAction, expectedDecision?: string) => {
     if (!currentRun.current) return;
     try {
+      // Preserve historical replay rules while reserving room for the rest of the story.
+      if (
+        !['choose', 'advance'].includes(action.type) &&
+        currentRun.current.actions.length +
+          2 * (84 - Math.floor(currentRun.current.month / 12)) +
+          20 >=
+          512
+      )
+        throw Error(
+          'Cần giữ phần bản lưu còn lại cho câu chuyện; hãy tiếp tục cuộc đời trước khi quản lý thêm.',
+        );
       const next = storyAction(currentRun.current, action, expectedDecision);
       if (next === currentRun.current) return;
       currentRun.current = next;

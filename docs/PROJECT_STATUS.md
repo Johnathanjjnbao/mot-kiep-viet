@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+M4 v0.3.5: source complete, local verify117/117 and production smoke VERIFIED PASS; final simulation/E2E/real cloud in progress. NOT deployed yet. M3 v0.3.4 remains verified production. Owner personal login NOT RUN; no production SQL/Auth changes.
+
+M3 v0.3.4 G5 VERIFIED PASS: d2e9c810/main, CI41132580664 completed/success; live4social/sixviewport×20/25cloud/asset hashes PASS.102unit/32E2E/1000replay0violations. Owner tự đăng nhập NOT RUN. M4 family đang làm; M5 NOT RUN. Không có SQL production mới.
+
 M3 v0.3.4 local VERIFIED PASS:102unit,32E2E,1000seed/replay/0vi phạm,25realAuth/cloud,scan0/audit0.99templates/5arcs;22new social/2arcs/3NPC. Đang phát hành CI/live, chưa gọi M3 G5. Oldruleset/goldens/saveIDs giữ nguyên; không SQL mới. Baseline fd0409c, checkpoint Graft9260746. Xem LIFE_EXPANSION.
 
 M3 v0.3.4 đang chốt local gates:22social templates/2arc,3NPC riêng, full relationship/dialogue/resume/household. E2E32/production PASS; simulation/cloud đang chạy. Chưa push/deploy M3. Oldruleset vẫn giữ nguyên, không SQL production. Xem LIFE_EXPANSION.

@@ -1,5 +1,9 @@
 # Life Expansion — bốn mốc phát hành
 
+M4 v0.3.5: source complete, local verify117/117 and production smoke VERIFIED PASS; final simulation/E2E/real cloud in progress. NOT deployed yet. M3 v0.3.4 remains verified production. Owner personal login NOT RUN; no production SQL/Auth changes.
+
+M3 v0.3.4 G5 VERIFIED PASS: d2e9c810/main, CI41132580664 completed/success; live4social/sixviewport×20/25cloud/asset hashes PASS.102unit/32E2E/1000replay0violations. Owner tự đăng nhập NOT RUN. M4 family đang làm; M5 NOT RUN. Không có SQL production mới.
+
 Baseline main sạch `a204bd0bba62f341eda66e3b6788c87f18c545f3`, v0.3.1; engine/content2, schema3, 72 event. Không dùng PASS cũ thay kiểm thử mới.
 
 ## Context map đã review
@@ -85,3 +89,18 @@ Final verify102/102; full E2E32/32, six viewport×20decisions and social/wardrob
 Real Supabase25groups PASS, including complex married snapshot/memories through JWT-scoped UI,3slots,guestmigration/logout isolation,offline/retry,409conflict,two tabs,completedLives across browsers. First archive test failed because source memoir changed after the preview build; rebuilt consistently and full25 rerun PASS. Synthetic accounts disabled, data preserved. No ownercredentials or Auth settings changed. Secret scan0 across674text objects/publicdist/reachableGit, npm audit0. Graft663nodes/1551edges/126files synchronized. Build warning: JS~1MB/~308KB gzip, no chunk-size failure; frozen compatibility contributes to bundle. No physical-device/Safari/Firefox QA.
 
 Source is being committed/pushed; M3 CI/live pending. M4/M5 NOT RUN yet. No production SQL/migrations in this session.
+
+
+## M4 — v0.3.5 implementation checkpoint, 31/10/2026
+
+New lives use immutable family ruleset; wardrobe/social/frozen saves retain their original routes. Added16 parenting templates,64 choices and2 family arcs:115 total templates/7 arcs,43 templates and4 arcs added since baseline72/3. Every presented scene still requires4 enabled choices. No migration or dependency was added.
+
+Each of up to4 children has a stable NPC ID, exact birth month, immutable recorded parents, current caregivers/visits, independent temperament/interest,8 accumulated parenting patterns, wellbeing/bond/skills, schooling, aspirations and eventual occupation. Birth is mutually planned with a living adult partner; a one-year queue cannot duplicate children. Education and career follow the child's preferences and opportunities, with vocational and creative paths alongside university. Adult children can move out, form a concise family record, and remain in the memoir without generating an unbounded tree.
+
+Divorce, death and remarriage preserve parents and memories; step-caregivers never replace recorded parents. A changed household produces one seeded, child-specific adjustment response. Deceased children retain records and stop receiving development milestones. Cross-system focus guards preserve parenting decisions and the interrupted story. The Family section uses existing People UI, bounded recent memories, and narrative choices.
+
+Forced15 family tests cover birth→career, two children,8 parenting patterns, divergent guidance/preferences, divorce/visits, death/guardian, remarriage, stale references, cross-focus guards, archive import/dedup, canonical replay and separate golden2051297714. Wardrobe1173022751/social520037075/frozen2 4148875142 and frozen1 remain unchanged. Local verify117 PASS. Final E2E/simulation/real-cloud gates are still running at this checkpoint; not a deployment claim.
+
+Budget correction: the historical manage branch still allowed400 operations, while wardrobe guarded combined budgets. Historical replay semantics are preserved. New family runs share a120 discretionary-operation budget (social40), and the UI reserves room for the remaining story on all runs. Family events use existing choose/advance logs. JSON512-action/5MiB caps remain.
+
+Production smoke initially raced the autosave status of the preceding event. The check now waits for a persisted action-count change before reload; the rebuilt production smoke passes. Family screenshots were inspected at1440/375: no horizontal overflow, existing ivory/terracotta typography retained. The six pre-input viewport measurements remain required.

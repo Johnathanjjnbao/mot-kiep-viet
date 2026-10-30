@@ -208,13 +208,15 @@ export function requestSocial(input: GameRun, a: SocialAction) {
   if (
     input.engineVersion !== '3.0.0' ||
     !input.social ||
+    !!input.family?.focus ||
     a.expected !== input.actions.length ||
     input.status !== 'playing'
   )
     throw Error('Yêu cầu trò chuyện không còn hợp lệ.');
   if (
-    input.actions.filter((a) => a.type === 'social').length >= 80 ||
-    input.actions.filter((a) => ['manage', 'wardrobe', 'social'].includes(a.type)).length >= 250
+    input.actions.filter((a) => a.type === 'social').length >= (input.family ? 40 : 80) ||
+    input.actions.filter((a) => ['manage', 'wardrobe', 'social', 'family-talk'].includes(a.type))
+      .length >= (input.family ? 120 : 250)
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
   const r = structuredClone(input);

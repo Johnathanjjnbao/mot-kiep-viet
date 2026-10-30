@@ -1,4 +1,5 @@
-import {SocialPanel} from './SocialPanel';
+import { FamilyPanel } from './FamilyPanel';
+import { SocialPanel } from './SocialPanel';
 import {
   BriefcaseBusiness,
   Check,
@@ -260,46 +261,53 @@ export function PeoplePanel({ run, act }: Props) {
         chung.
       </p>
       <SocialPanel run={run} act={act} />
+      <FamilyPanel run={run} act={act} />
       <div className="people-list">
-        {run.relationships.filter(r=>!run.social?.people.some(p=>p.npcId===r.npcId)).map((r) => {
-          const npc = run.npcs.find((n) => n.id === r.npcId)!;
-          return (
-            <article className="person" key={r.npcId}>
-              <div className="person-avatar">
-                <Heart size={20} aria-hidden="true" />
-              </div>
-              <div>
-                <span className="eyebrow">
-                  {types[r.type]} ·{' '}
-                  {npc.presence === 'unknown'
-                    ? 'Chưa rõ thông tin'
-                    : npc.presence === 'nonresident'
-                      ? 'Không sống cùng'
-                      : npc.alive
-                        ? `${run.world.year - npc.birthYear} tuổi`
-                        : 'Đã qua đời'}
-                </span>
-                <h3>{npc.name}</h3>
-                {!!npc.personality?.length && (
-                  <p>{npc.personality.map((t) => PARENT_TRAITS[t]).join(', ')}</p>
-                )}
-                <p>
-                  {r.strength >= 70
-                    ? 'Gắn bó'
-                    : r.strength >= 40
-                      ? 'Còn những điều muốn hiểu nhau'
-                      : 'Có khoảng cách'}{' '}
-                  · {Math.round(r.strength)}/100
-                </p>
-                {r.history.slice(-2).map((h, i) => (
-                  <p className="fine-print" key={i}>
-                    {h}
+        {run.relationships
+          .filter(
+            (r) =>
+              !run.social?.people.some((p) => p.npcId === r.npcId) &&
+              !run.family?.children.some((c) => c.npcId === r.npcId),
+          )
+          .map((r) => {
+            const npc = run.npcs.find((n) => n.id === r.npcId)!;
+            return (
+              <article className="person" key={r.npcId}>
+                <div className="person-avatar">
+                  <Heart size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <span className="eyebrow">
+                    {types[r.type]} ·{' '}
+                    {npc.presence === 'unknown'
+                      ? 'Chưa rõ thông tin'
+                      : npc.presence === 'nonresident'
+                        ? 'Không sống cùng'
+                        : npc.alive
+                          ? `${run.world.year - npc.birthYear} tuổi`
+                          : 'Đã qua đời'}
+                  </span>
+                  <h3>{npc.name}</h3>
+                  {!!npc.personality?.length && (
+                    <p>{npc.personality.map((t) => PARENT_TRAITS[t]).join(', ')}</p>
+                  )}
+                  <p>
+                    {r.strength >= 70
+                      ? 'Gắn bó'
+                      : r.strength >= 40
+                        ? 'Còn những điều muốn hiểu nhau'
+                        : 'Có khoảng cách'}{' '}
+                    · {Math.round(r.strength)}/100
                   </p>
-                ))}
-              </div>
-            </article>
-          );
-        })}
+                  {r.history.slice(-2).map((h, i) => (
+                    <p className="fine-print" key={i}>
+                      {h}
+                    </p>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
       </div>
     </section>
   );

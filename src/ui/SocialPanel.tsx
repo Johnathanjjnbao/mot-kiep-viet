@@ -76,6 +76,7 @@ export function SocialPanel({ run, act }: { run: GameRun; act: (a: RunAction) =>
                   </label>
                   <button
                     className="button secondary small"
+                    disabled={!!run.family?.focus}
                     onClick={() =>
                       act({
                         type: 'social',

@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { chromium, expect } from '@playwright/test';
+import { readGuestRun } from './decision-viewport.mjs';
 
 const report = {
   status: 'FAIL',
@@ -57,7 +58,12 @@ try {
   await page.getByRole('button', { name: 'Bắt đầu một kiếp mới' }).click();
   await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
+  await expect.poll(async () => (await readGuestRun(page))?.activeEvent?.id).toBeTruthy();
+  const before = await readGuestRun(page);
   await page.locator('[data-testid="event-choice"]:not(:disabled)').first().click();
+  await expect
+    .poll(async () => (await readGuestRun(page)).actions.length)
+    .toBeGreaterThan(before.actions.length);
   await expect(page.getByTestId('advance-life')).toHaveCount(0);
   await expect(page.locator('#event-heading')).toBeFocused();
   const event = await page.locator('.story-card h2').textContent();

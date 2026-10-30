@@ -1,4 +1,15 @@
 import {
+  initFamily,
+  planBirth,
+  tickFamily,
+  syncCare,
+  requestFamily,
+  familyDefinition,
+  nextFamily,
+  applyParenting,
+  childAge,
+} from './family';
+import {
   initSocial,
   refreshSocial,
   socialDefinition,
@@ -172,9 +183,10 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     motherTraits: setup.motherTraits ?? [],
     fatherTraits: setup.fatherTraits ?? [],
   };
-  run.setup.expansion = setup.expansion ?? 'social';
+  run.setup.expansion = setup.expansion ?? 'family';
   run.wardrobe = defaultWardrobe();
-  if (run.setup.expansion === 'social') initSocial(run);
+  if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
+  if (run.setup.expansion === 'family') initFamily(run);
   run.id = `life:${hashSeed(seed + JSON.stringify(run.setup)).toString(16)}`;
   run.household.resources = run.setup.wealth!;
   for (const npc of run.npcs.filter((n) => ['mother', 'father'].includes(n.id))) {
@@ -250,7 +262,13 @@ export function eligible(run: GameRun, c: Condition): boolean {
         n.presence !== 'unknown' &&
         n.presence !== 'deceased' &&
         (c.npc === 'adult-child'
-          ? n.role === 'child' && run.world.year - n.birthYear >= 18
+          ? n.role === 'child' &&
+            (run.family?.children.some((c) => c.npcId === n.id)
+              ? childAge(
+                  run,
+                  run.family.children.find((c) => c.npcId === n.id)!,
+                ) >= 18
+              : run.world.year - n.birthYear >= 18)
           : n.id === c.npc || n.role === c.npc),
     )
   )
@@ -289,8 +307,11 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   return null;
 }
 export const activeDefinition = (run: GameRun) =>
-  socialDefinition(run) ?? allEvents().find((e) => e.id === run.activeEvent?.id);
+  familyDefinition(run) ??
+  socialDefinition(run) ??
+  allEvents().find((e) => e.id === run.activeEvent?.id);
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 5) return false;
   const last = run.seen[event.id];
   return (
     eligible(run, event.condition) &&
@@ -315,6 +336,7 @@ function selectEvent(run: GameRun) {
   let options = EVENTS.filter((e) => eventEligible(run, e));
   if (!options.length) options = [FALLBACK];
   const priority = Math.max(...options.map((e) => e.priority));
+  if (priority <= 0 && nextFamily(run)) return;
   if (priority > 0) options = options.filter((e) => e.priority === priority);
   const job = CAREERS.find((c) => c.id === currentCareer(run)?.id);
   const weight = (e: typeof FALLBACK) =>
@@ -350,8 +372,14 @@ function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'parenting': {
+      const text = applyParenting(run, e.style);
+      run.lastOutcome = text;
+      break;
+    }
     case 'social': {
-      const result = applySocial(run, e.operation);
+      let result = applySocial(run, e.operation);
+      if (e.operation === 'plan-child' && run.family) result += planBirth(run);
       note(run, 'Một lời đối thoại', result, 'relationship');
       run.lastOutcome = result;
       break;
@@ -481,9 +509,11 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
 }
 function conclude(run: GameRun, ending: 'death' | 'memoir') {
   if (run.social) run.social.focus = null;
+  if (run.family) run.family.focus = null;
   run.ending = ending;
   run.status = 'ended';
   run.player.alive = ending !== 'death';
+  syncCare(run);
   run.activeEvent = null;
   const job = currentCareer(run);
   if (job) job.endMonth = run.month;
@@ -582,6 +612,7 @@ function tick(run: GameRun) {
       note(run, effect.label, 'Một quyết định trước đây vừa để lại hệ quả.', 'life');
     }
   tickSocial(run);
+  tickFamily(run);
   if (stats.health <= 0) conclude(run, 'death');
   else if (age >= 82) conclude(run, 'memoir');
 }
@@ -599,7 +630,7 @@ export function advance(input: GameRun): GameRun {
   const next = MILESTONES.find((age) => age * 12 > run.month) ?? 82;
   while (run.month < next * 12 && !run.ending) {
     tick(run);
-    if (socialInterrupt(run)) break;
+    if (socialInterrupt(run) || run.family?.queue.length) break;
   }
   if (!run.ending) selectEvent(run);
   return run;
@@ -623,7 +654,7 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     source = `choice:${run.choices.length}:${eventId}`;
   selected.effects.forEach((e, i) => applyEffect(run, e, source, i));
   let outcome = selected.outcome;
-  if (run.social?.focus) outcome += ' ' + (run.lastOutcome ?? '');
+  if (run.social?.focus || run.family?.focus) outcome += ' ' + (run.lastOutcome ?? '');
   if (selected.chance) {
     const success = random(run, 'event') < selected.chance.probability;
     (success ? selected.chance.success : selected.chance.failure).forEach((e, i) =>
@@ -660,6 +691,15 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
       }
     }
   }
+  if (input.family?.focus && run.family?.focus?.instanceId === eventId) {
+    const f = run.family.focus;
+    run.family.focus = null;
+    run.activeEvent = f.resume;
+  }
+  if (run.family) {
+    syncCare(run);
+    if (!run.activeEvent) nextFamily(run);
+  }
   refreshSocial(run);
   if (run.player.stats.health <= 0) conclude(run, 'death');
   return run;
@@ -674,6 +714,12 @@ export function manage(
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   if (input.status === 'ended' || ageOf(input) < 18)
     throw new Error('Chưa thể thực hiện hành động này.');
+  if (
+    input.family &&
+    input.actions.filter((a) => ['manage', 'wardrobe', 'social', 'family-talk'].includes(a.type))
+      .length >= 120
+  )
+    throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
   if (input.actions.filter((a) => a.type === 'manage').length >= 400)
     throw new Error('Đã đạt 350 thao tác quản lý/tủ đồ cho một cuộc đời. Hãy tiếp tục câu chuyện.');
   const run = structuredClone(input),
@@ -746,6 +792,7 @@ export function manage(
   return run;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  if (action.type === 'family-talk') return requestFamily(run, action);
   if (action.type === 'social') return requestSocial(run, action);
   if (action.type === 'wardrobe') {
     const next = applyWardrobe(run, action),

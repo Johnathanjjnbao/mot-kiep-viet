@@ -1,4 +1,4 @@
-import {SOCIAL_LABELS} from '../engine/social';
+import { SOCIAL_LABELS } from '../engine/social';
 import { lifeSummary as v2Summary } from '../legacy/v2/application/summary';
 import { lifeSummary as legacySummary } from '../legacy/v1/application/summary';
 import { birthplaceOf, familyText } from '../domain/creator';
@@ -24,9 +24,38 @@ export function lifeSummary(run: GameRun) {
     ].includes(c.eventId),
   );
   const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.wardrobe?.memories.length ? `Tủ đồ giữ ${run.wardrobe.memories.length} dấu mốc mua sắm.` : ''} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
-  const socialText=run.social ? ` Những người đã đi cùng: ${run.social.people.filter(p=>p.known).map(p=>run.npcs.find(n=>n.id===p.npcId)!.name+' ('+SOCIAL_LABELS[p.status]+', '+p.memories.length+' ký ức)').join(', ') || 'chưa có đối thoại riêng'}.` : '';
+  const socialText = run.social
+    ? ` Những người đã đi cùng: ${
+        run.social.people
+          .filter((p) => p.known)
+          .map(
+            (p) =>
+              run.npcs.find((n) => n.id === p.npcId)!.name +
+              ' (' +
+              SOCIAL_LABELS[p.status] +
+              ', ' +
+              p.memories.length +
+              ' ký ức)',
+          )
+          .join(', ') || 'chưa có đối thoại riêng'
+      }.`
+    : '';
   return {
-    biography: biography+socialText,
+    biography:
+      biography +
+      socialText +
+      (run.family?.children.length
+        ? ' Những chặng đường của con: ' +
+          run.family.children
+            .map(
+              (c) =>
+                run.npcs.find((n) => n.id === c.npcId)!.name +
+                ' — ' +
+                (c.occupation ?? c.education),
+            )
+            .join('; ') +
+          '.'
+        : ''),
     jobs,
     children,
     important: titles,

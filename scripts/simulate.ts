@@ -11,6 +11,8 @@ if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Cho
 const report = {
   runs: 0,
   replayChecked: 0,
+  familyChildren: 0,
+  adultChildren: 0,
   wardrobePurchases: 0,
   maxSaveBytes: 0,
   seedPattern: 'stress-0 … stress-N (N = runs - 1)',
@@ -39,7 +41,7 @@ for (let i = 0; i < total; i++) {
     const run = simulateLife(
       seed,
       {
-        expansion: i % 4 === 0 ? 'wardrobe' : 'social',
+        expansion: i % 4 === 0 ? 'wardrobe' : i % 4 === 1 ? 'social' : 'family',
         cohort,
         region,
         name: `Nguyễn An ${i}`,
@@ -61,12 +63,17 @@ for (let i = 0; i < total; i++) {
         }
       },
     );
-    if (canonical(replay(run.seed,run.setup,run.actions)) !== canonical(run)) throw Error('Replay divergence');
+    if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
+      throw Error('Replay divergence');
     report.replayChecked++;
+    report.familyChildren += run.family?.children.length ?? 0;
+    report.adultChildren += run.family?.children.filter((c) => c.occupation).length ?? 0;
     const bytes = new TextEncoder().encode(JSON.stringify(snapshot(run))).length;
-    report.maxSaveBytes = Math.max(report.maxSaveBytes,bytes);
+    report.maxSaveBytes = Math.max(report.maxSaveBytes, bytes);
     if (bytes > MAX_SAVE_BYTES || run.actions.length > 512) throw Error('Save limit');
-    report.wardrobePurchases += run.finance.transactions.filter(t=>t.id.startsWith('wardrobe:buy:')).length;
+    report.wardrobePurchases += run.finance.transactions.filter((t) =>
+      t.id.startsWith('wardrobe:buy:'),
+    ).length;
     report.families[family] = (report.families[family] ?? 0) + 1;
     report.runs++;
     report.cohorts[cohort] = (report.cohorts[cohort] ?? 0) + 1;
@@ -98,7 +105,10 @@ report.ages.mean = Number((report.ages.mean / report.runs).toFixed(2));
 report.finances.meanNetWorth = Math.round(report.finances.meanNetWorth / report.runs);
 report.observedEventIds = [...observed].sort();
 mkdirSync('docs/evidence', { recursive: true });
-writeFileSync(process.env.MKV_SIMULATION_REPORT ?? 'docs/evidence/simulation.json', JSON.stringify(report, null, 2) + '\n');
+writeFileSync(
+  process.env.MKV_SIMULATION_REPORT ?? 'docs/evidence/simulation.json',
+  JSON.stringify(report, null, 2) + '\n',
+);
 console.log(
   JSON.stringify({ ...report, observedEventIds: `${observed.size} distinct events` }, null, 2),
 );

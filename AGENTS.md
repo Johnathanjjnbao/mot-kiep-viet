@@ -82,3 +82,5 @@ re-read whole files.
 After big code changes, refresh the graph with `graft build` (deterministic,
 no API key, $0).
 <!-- graft:end -->
+
+M4 continuation: family ruleset is explicit/immutable; frozen, wardrobe and social goldens remain independent. Children retain recorded parents across divorce/remarriage; caregivers can change, deceased children stop milestones. Social/family focus cannot nest. Shared120 discretionary-operation budget applies only to family runs; UI reserves remaining story log capacity without rewriting legacy replay rules. Current release evidence in LIFE_EXPANSION supersedes historical status paragraphs above.
