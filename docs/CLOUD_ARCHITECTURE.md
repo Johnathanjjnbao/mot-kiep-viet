@@ -1,5 +1,7 @@
 # Cloud v0.3 — ranh giới dữ liệu và vận hành
 
+Migration003 đã duyệt/applied đúng project: mkv_valid_save nhận thêm schema4/engine-content3, giữ tuple cũ và toàn bộ RLS/grants. Inventory trong JSON snapshot, dùng cùng CAS/receipt/outbox/recovery/immutable archive. QA bổ sung mua/mặc và tải mobile, không credentials trong report.
+
 App beta 0.3.0 giữ engine/content 2.0.0, schema save 3. Luật v1 vẫn đóng băng. Không đổi RNG, số tiền hay action log để đưa một cuộc đời lên cloud.
 
 ```mermaid

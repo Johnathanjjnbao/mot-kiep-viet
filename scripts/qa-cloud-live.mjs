@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
 import { randomUUID, randomBytes } from 'node:crypto';
 import assert from 'node:assert/strict';
-import { createRun } from '../src/engine/engine.ts';
+import { createRun, dispatch, activeDefinition, choiceReason } from '../src/engine/engine.ts';
 import { simulateLife } from '../src/diagnostics/simulation.ts';
 import { snapshot, parseSave } from '../src/persistence/saves.ts';
 import { lifeSummary } from '../src/application/summary.ts';
@@ -117,8 +117,36 @@ try {
     assert.equal(ok(await a.client.rpc('mkv_invited')), true);
     assert.equal(ok(await b.client.rpc('mkv_invited')), true);
   });
+  let wardrobeRun = createRun('real-cloud-qa', {
+    cohort: 1995,
+    region: 'northern-village',
+    wealth: 4,
+    family: 'both',
+  });
+  while (wardrobeRun.month < 72) {
+    wardrobeRun = dispatch(
+      wardrobeRun,
+      wardrobeRun.activeEvent
+        ? {
+            type: 'choose',
+            eventId: wardrobeRun.activeEvent.id,
+            choiceId: activeDefinition(wardrobeRun).choices.find(
+              (c) => !choiceReason(wardrobeRun, c),
+            ).id,
+          }
+        : { type: 'advance' },
+    );
+  }
+  if (wardrobeRun.wardrobe)
+    for (const operation of ['buy', 'equip'])
+      wardrobeRun = dispatch(wardrobeRun, {
+        type: 'wardrobe',
+        operation,
+        item: 'indigo-tee',
+        expected: wardrobeRun.actions.length,
+      });
   const life = randomUUID(),
-    save = snapshot(createRun('real-cloud-qa'), life),
+    save = snapshot(wardrobeRun, life),
     op = randomUUID();
   const args = {
     p_slot: 'autosave',
@@ -140,6 +168,8 @@ try {
     const rows = ok(await second.from('cloud_saves').select('*'));
     assert.equal(rows.length, 1);
     assert.deepEqual(parseSave(JSON.stringify(rows[0].snapshot)).run, save.run);
+    assert.deepEqual(rows[0].snapshot.run.wardrobe, save.run.wardrobe);
+    if (save.run.wardrobe) assert.equal(rows[0].snapshot.run.wardrobe.equipped.top, 'indigo-tee');
   });
   await check('A/B isolation and ownership/CAS bypass/delete denied', async () => {
     assert.deepEqual(ok(await b.client.from('cloud_saves').select('*')), []);

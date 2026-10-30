@@ -1,0 +1,44 @@
+import { lifeSummary as legacySummary } from '../../v1/application/summary';
+import { birthplaceOf, familyText } from '../domain/creator';
+import type { GameRun } from '../domain/model';
+import { CAREERS, ageOf } from '../content/world';
+import { netWorth } from '../engine/finance';
+export function lifeSummary(run: GameRun) {
+  if (run.engineVersion === '1.0.0')
+    return legacySummary(run as Parameters<typeof legacySummary>[0]);
+  const jobs = [
+    ...new Set(run.player.careers.map((c) => CAREERS.find((j) => j.id === c.id)!.name)),
+  ];
+  const children = run.npcs.filter((n) => n.role === 'child').length;
+  const titles = run.choices.filter((c) =>
+    [
+      'business-crossroads',
+      'family-legacy',
+      'career-comeback',
+      'education-path',
+      'meet-partner',
+      'welcome-child',
+    ].includes(c.eventId),
+  );
+  const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
+  return {
+    biography,
+    jobs,
+    children,
+    important: titles,
+    humor: run.journal.filter((j) => j.category === 'humor'),
+    netWorth: netWorth(run),
+    careerYears: Math.floor(
+      run.player.careers.reduce((n, c) => n + (c.endMonth ?? run.month) - c.startMonth, 0) / 12,
+    ),
+  };
+}
+export function summaryCardSvg(run: GameRun) {
+  const escape = (s: string) =>
+    s.replace(
+      /[&<>"']/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]!,
+    );
+  const summary = lifeSummary(run);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600"><rect width="900" height="600" fill="#f5f1e8"/><rect x="28" y="28" width="844" height="544" rx="4" fill="none" stroke="#9e4837"/><text x="64" y="91" font-family="serif" font-size="26" fill="#9e4837">MỘT KIẾP VIỆT · MỘT ĐỜI NGƯỜI, VẠN NGÃ RẼ</text><path d="M64 120H836" stroke="#c8c1b2"/><text x="64" y="216" font-family="serif" font-size="52" fill="#292d29">${escape(run.player.name)}</text><text x="64" y="268" font-family="sans-serif" font-size="25" fill="#555d52">${run.player.birthYear} — ${run.world.year} · ${ageOf(run)} tuổi</text><text x="64" y="340" font-family="sans-serif" font-size="23" fill="#292d29">${run.choices.length} ngã rẽ · ${summary.careerYears} năm đi làm · ${summary.children} người con</text><text x="64" y="392" font-family="sans-serif" font-size="23" fill="#292d29">Tài sản ròng: ${summary.netWorth} đSM (đơn vị thiết kế)</text><text x="64" y="463" font-family="serif" font-style="italic" font-size="30" fill="#9e4837">Mỗi điều bình thường, một lần thành ký ức.</text><text x="64" y="528" font-family="sans-serif" font-size="17" fill="#555d52">Hồi ký từ dữ liệu đã chơi · Hạt giống: ${escape(run.seed.slice(0, 50))}</text></svg>`;
+}

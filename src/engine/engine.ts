@@ -1,3 +1,6 @@
+import * as frozen2 from '../legacy/v2/engine/engine';
+import { defaultWardrobe, applyWardrobe } from './wardrobe';
+import { presentationScore } from '../content/clothing';
 import {
   CONTENT_VERSION,
   ENGINE_VERSION,
@@ -158,6 +161,8 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     motherTraits: setup.motherTraits ?? [],
     fatherTraits: setup.fatherTraits ?? [],
   };
+  run.setup.expansion = setup.expansion ?? 'wardrobe';
+  run.wardrobe = defaultWardrobe();
   run.id = `life:${hashSeed(seed + JSON.stringify(run.setup)).toString(16)}`;
   run.household.resources = run.setup.wealth!;
   for (const npc of run.npcs.filter((n) => ['mother', 'father'].includes(n.id))) {
@@ -316,6 +321,18 @@ function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'presentation': {
+      const value = presentationScore(run, e.context);
+      const key = e.context === 'exercise' ? 'skill' : 'social';
+      run.player.stats[key] = clamp(run.player.stats[key] + value);
+      note(
+        run,
+        'Bộ đồ và hoàn cảnh',
+        `Cách ăn mặc ở dịp này: ${value >= 0 ? '+' : ''}${value} ${key === 'skill' ? 'tay nghề' : 'giao tiếp'}. Không phải đánh giá giá trị con người.`,
+        'relationship',
+      );
+      break;
+    }
     case 'stat':
       run.player.stats[e.stat] = clamp(run.player.stats[e.stat] + e.amount);
       break;
@@ -532,6 +549,8 @@ function tick(run: GameRun) {
   else if (age >= 82) conclude(run, 'memoir');
 }
 export function advance(input: GameRun): GameRun {
+  if (input.engineVersion === '2.0.0')
+    return frozen2.advance(input as Parameters<typeof frozen2.advance>[0]);
   if (input.engineVersion !== ENGINE_VERSION)
     throw new Error('Bản lưu v1 chỉ mở để đọc và xuất lại; hãy bắt đầu kiếp v0.2 mới.');
   if (input.status === 'ended' || input.activeEvent)
@@ -546,6 +565,8 @@ export function advance(input: GameRun): GameRun {
   return run;
 }
 export function choose(input: GameRun, eventId: string, choiceId: string): GameRun {
+  if (input.engineVersion === '2.0.0')
+    return frozen2.choose(input as Parameters<typeof frozen2.choose>[0], eventId, choiceId);
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   const definition = activeDefinition(input);
   if (
@@ -583,11 +604,13 @@ export function manage(
   action: ManageAction,
   career?: Parameters<typeof careerReason>[1],
 ): GameRun {
+  if (input.engineVersion === '2.0.0')
+    return frozen2.manage(input as Parameters<typeof frozen2.manage>[0], action, career);
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   if (input.status === 'ended' || ageOf(input) < 18)
     throw new Error('Chưa thể thực hiện hành động này.');
   if (input.actions.filter((a) => a.type === 'manage').length >= 400)
-    throw new Error('Đã đạt 400 thao tác quản lý cho một cuộc đời. Hãy tiếp tục câu chuyện.');
+    throw new Error('Đã đạt 350 thao tác quản lý/tủ đồ cho một cuộc đời. Hãy tiếp tục câu chuyện.');
   const run = structuredClone(input),
     id = `manage:${run.actions.length}`;
   let message = '';
@@ -658,10 +681,18 @@ export function manage(
   return run;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  if (action.type === 'wardrobe') {
+    const next = applyWardrobe(run, action), active = activeDefinition(next);
+    if (active && (!eligible(next, active.condition) || active.choices.filter(c => !choiceReason(next, c)).length < 4))
+      throw Error('Hãy giải quyết câu chuyện đang chờ trước khi chi khoản này. Tiền và tủ đồ chưa thay đổi.');
+    return next;
+  }
   if (action.type === 'advance') return advance(run);
   if (action.type === 'choose') return choose(run, action.eventId, action.choiceId);
   return manage(run, action.action, action.career);
 }
 export function replay(seed: string, setup: RunSetup, actions: RunAction[]): GameRun {
+  if (!setup.expansion)
+    return frozen2.replay(seed, setup, actions as Parameters<typeof frozen2.replay>[2]);
   return actions.reduce(dispatch, createRun(seed, setup));
 }

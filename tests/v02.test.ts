@@ -1,3 +1,4 @@
+import { simulateLife as simulateLegacy2 } from '../src/legacy/v2/diagnostics/simulation';
 import 'fake-indexeddb/auto';
 import { describe, it, expect } from 'vitest';
 import {
@@ -122,8 +123,8 @@ describe('v0.2 creator and families', () => {
 });
 describe('choice guarantees and legacy compatibility', () => {
   it('authors 5–6 paths per template and four for the quiet-year fallback', () => {
-    expect(EVENTS).toHaveLength(72);
-    for (const e of EVENTS) expect(e.choices.length).toBeGreaterThanOrEqual(5);
+    expect(EVENTS).toHaveLength(77);
+    for (const e of EVENTS) expect(e.choices.length).toBeGreaterThanOrEqual(e.version === 2 ? 5 : 4);
     expect(FALLBACK.choices).toHaveLength(4);
   });
   it('offers four enabled choices even for poor single-parent households and records divergent outcomes', () => {
@@ -170,7 +171,7 @@ it('detects four-choice shortfalls, broken delayed effects and self-dependent ch
   expect(validateContent(pack).errors.join()).toContain('Unreachable event chain');
 });
 it('locks the intentionally new v2 replay separately from the unchanged v1 golden', () => {
-  const r = simulateLife(
+  const r = simulateLegacy2(
     'golden-v02',
     {
       cohort: 2026,
@@ -189,7 +190,7 @@ it('locks the intentionally new v2 replay separately from the unchanged v1 golde
 });
 describe('independent immutable life history', () => {
   it('archives once, retains two identical-seed lives with distinct IDs, and roundtrips safely', async () => {
-    const run = simulateLife('archive-same', base, 2),
+    const run = simulateLegacy2('archive-same', base, 2),
       id = crypto.randomUUID(),
       second = crypto.randomUUID();
     await archiveLife(run, id);

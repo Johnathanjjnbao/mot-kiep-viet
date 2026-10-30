@@ -139,6 +139,20 @@ export async function browserCloudQA(users, check) {
       await expect(q.getByText('Đã tự lưu trên máy')).toBeVisible();
       await assertDecisionViewport(q);
     });
+    await check('wardrobe purchase and equipment synchronize to an independent mobile browser', async () => {
+      await p.getByRole('button', { name: 'Tủ đồ', exact: true }).click();
+      const card = p.locator('[data-clothing="indigo-tee"]');
+      await card.getByRole('button', { name: /Mua/ }).click();
+      await card.getByRole('button', { name: 'Mặc', exact: true }).click();
+      await expect.poll(async () => (await row())?.snapshot.run.wardrobe?.equipped.top, { timeout: 25000 }).toBe('indigo-tee');
+      await p.getByRole('button', { name: 'Câu chuyện', exact: true }).click();
+      await q.reload();
+      await q.getByRole('button', { name: /Tiếp tục cuộc đời của Đời Đám Mây Kiểm Thử/ }).click();
+      await expect(q.locator('.character-hud .living-avatar:visible')).toHaveAttribute('data-wearing', /indigo-tee/);
+      const saved = await row();
+      expect(saved.snapshot.run.wardrobe.owned.filter(id => id === 'indigo-tee')).toHaveLength(1);
+      expect(saved.snapshot.run.finance.transactions.filter(t => t.id === 'wardrobe:buy:indigo-tee')).toHaveLength(1);
+    });
     await check('all three manual slots save and load through authenticated UI', async () => {
       const title = await p.locator('.story-card h2').textContent();
       await p.getByRole('button', { name: 'Lưu và tải game' }).click();

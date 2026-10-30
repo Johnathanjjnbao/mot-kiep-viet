@@ -1,0 +1,368 @@
+import type { GameRun, PresentationContext, WearSlot } from '../domain/model';
+export type ClothingShape =
+  | 'tee'
+  | 'shirt'
+  | 'dress'
+  | 'trousers'
+  | 'skirt'
+  | 'jacket'
+  | 'vest'
+  | 'aodai'
+  | 'sport'
+  | 'shoes'
+  | 'ribbon'
+  | 'hat'
+  | 'scarf'
+  | 'glasses';
+export interface ClothingItem {
+  id: string;
+  name: string;
+  slot: WearSlot;
+  shape: ClothingShape;
+  color: string;
+  price: number;
+  minAge: number;
+  from: number;
+  tags: string[];
+  description: string;
+}
+const item = (
+  id: string,
+  name: string,
+  slot: WearSlot,
+  shape: ClothingShape,
+  color: string,
+  price: number,
+  minAge: number,
+  tags: string[],
+  description: string,
+  from = 1975,
+): ClothingItem => ({ id, name, slot, shape, color, price, minAge, from, tags, description });
+export const CLOTHING: ClothingItem[] = [
+  item(
+    'plain-top',
+    'Áo vải gia đình may',
+    'top',
+    'tee',
+    '#b7a47d',
+    0,
+    0,
+    ['simple', 'comfort'],
+    'Mềm, dễ giặt; bộ đồ đầu tiên được gia đình chuẩn bị.',
+  ),
+  item(
+    'plain-bottom',
+    'Quần vải căn bản',
+    'bottom',
+    'trousers',
+    '#48545a',
+    0,
+    0,
+    ['simple'],
+    'Ống rộng vừa phải, mặc được qua nhiều mùa.',
+  ),
+  item(
+    'canvas-shoes',
+    'Đôi giày vải quen',
+    'shoes',
+    'shoes',
+    '#65564a',
+    0,
+    0,
+    ['simple', 'comfort'],
+    'Đôi giày trong bộ đồ mặc định, không phải mua.',
+  ),
+  item(
+    'indigo-tee',
+    'Áo chàm cổ tròn',
+    'top',
+    'tee',
+    '#365c70',
+    12,
+    6,
+    ['simple', 'comfort'],
+    'Cotton màu chàm, thích hợp một buổi dạo chơi.',
+  ),
+  item(
+    'striped-tee',
+    'Áo sọc nắng',
+    'top',
+    'tee',
+    '#bc8054',
+    16,
+    6,
+    ['creative', 'comfort'],
+    'Sọc ngang nhỏ, dễ nhận ra giữa sân trường.',
+  ),
+  item(
+    'linen-shirt',
+    'Sơ mi lanh màu kem',
+    'top',
+    'shirt',
+    '#e8d7b4',
+    24,
+    13,
+    ['formal', 'simple'],
+    'Cổ áo gọn, không cần cầu kỳ để lịch sự.',
+  ),
+  item(
+    'white-shirt',
+    'Sơ mi trắng đứng cổ',
+    'top',
+    'shirt',
+    '#eee7d5',
+    28,
+    13,
+    ['formal'],
+    'Phù hợp buổi phỏng vấn, không thay thế việc chuẩn bị.',
+  ),
+  item(
+    'floral-dress',
+    'Váy hoa đồng nội',
+    'top',
+    'dress',
+    '#a86a6b',
+    35,
+    6,
+    ['creative'],
+    'Tà váy xòe có họa tiết lá, mặc thay cả áo và quần.',
+  ),
+  item(
+    'evening-dress',
+    'Đầm xanh dự tiệc',
+    'top',
+    'dress',
+    '#376b62',
+    85,
+    18,
+    ['formal', 'showy'],
+    'Dáng dài trang trọng; không phải ai cũng thích vẻ nổi bật.',
+  ),
+  item(
+    'work-trousers',
+    'Quần âu than',
+    'bottom',
+    'trousers',
+    '#424c50',
+    25,
+    13,
+    ['formal'],
+    'Ống thẳng, dễ phối với sơ mi.',
+  ),
+  item(
+    'denim',
+    'Quần bò xanh',
+    'bottom',
+    'trousers',
+    '#456784',
+    32,
+    13,
+    ['creative'],
+    'Đường chỉ sáng và hai túi rộng.',
+  ),
+  item(
+    'shorts',
+    'Quần lửng đi dạo',
+    'bottom',
+    'trousers',
+    '#a69371',
+    14,
+    6,
+    ['comfort'],
+    'Nhẹ, hợp sinh hoạt và vận động ngoài trời.',
+  ),
+  item(
+    'pleated-skirt',
+    'Chân váy xếp nếp',
+    'bottom',
+    'skirt',
+    '#786882',
+    26,
+    6,
+    ['creative'],
+    'Nếp vải chuyển nhẹ khi bước đi.',
+  ),
+  item(
+    'linen-skirt',
+    'Chân váy lanh dài',
+    'bottom',
+    'skirt',
+    '#8b9b77',
+    29,
+    13,
+    ['simple', 'comfort'],
+    'Màu lá dịu, không cần phụ kiện đắt tiền.',
+  ),
+  item(
+    'denim-jacket',
+    'Áo khoác bò',
+    'outer',
+    'jacket',
+    '#506b7d',
+    48,
+    13,
+    ['creative'],
+    'Hai túi ngực và đường viền nổi.',
+  ),
+  item(
+    'rain-jacket',
+    'Áo gió mùa mưa',
+    'outer',
+    'jacket',
+    '#b8914d',
+    38,
+    6,
+    ['comfort'],
+    'Nhẹ, tiện cho đường xa và những ngày trở gió.',
+  ),
+  item(
+    'formal-vest',
+    'Áo ghi lê dự lễ',
+    'outer',
+    'vest',
+    '#514b58',
+    65,
+    18,
+    ['formal', 'showy'],
+    'Ve áo rõ nét, hợp dịp trang trọng hơn lúc tập thể thao.',
+  ),
+  item(
+    'silk-aodai',
+    'Áo dài lụa đất nung',
+    'top',
+    'aodai',
+    '#a95140',
+    90,
+    18,
+    ['traditional', 'formal'],
+    'Tà dài xẻ hai bên, phối quần sáng; không mặc chồng chân váy.',
+  ),
+  item(
+    'school-aodai',
+    'Áo dài trắng học trò',
+    'top',
+    'aodai',
+    '#e9e3d4',
+    45,
+    15,
+    ['traditional', 'formal', 'simple'],
+    'Tà áo thanh nhã cho một buổi lễ của trường.',
+  ),
+  item(
+    'sport-top',
+    'Áo thể thao xanh lá',
+    'top',
+    'sport',
+    '#4c806b',
+    22,
+    6,
+    ['sport', 'comfort'],
+    'Đường phối màu giúp nhận ra bộ đồ vận động.',
+  ),
+  item(
+    'sport-pants',
+    'Quần thể thao',
+    'bottom',
+    'trousers',
+    '#33494e',
+    20,
+    6,
+    ['sport', 'comfort'],
+    'Cạp mềm và sọc dọc hai bên.',
+  ),
+  item(
+    'running-shoes',
+    'Giày chạy bộ',
+    'shoes',
+    'shoes',
+    '#b85c46',
+    42,
+    6,
+    ['sport', 'comfort'],
+    'Đế êm; tăng sự phù hợp khi vận động, không tăng sức hấp dẫn chung.',
+  ),
+  item(
+    'leather-shoes',
+    'Giày da nâu',
+    'shoes',
+    'shoes',
+    '#704a36',
+    56,
+    18,
+    ['formal', 'showy'],
+    'Mũi giày tròn và đế tối cho dịp cần chỉn chu.',
+  ),
+  item(
+    'sandals',
+    'Dép quai hậu',
+    'shoes',
+    'shoes',
+    '#af9568',
+    15,
+    6,
+    ['simple', 'comfort'],
+    'Thoáng, dễ đi; không phải lựa chọn trang trọng nhất.',
+  ),
+  item(
+    'hair-ribbon',
+    'Nơ tóc đỏ gạch',
+    'hair',
+    'ribbon',
+    '#a34b46',
+    9,
+    3,
+    ['creative'],
+    'Một dải vải buộc tóc, dùng với mọi kiểu thể hiện bản thân.',
+  ),
+  item(
+    'cloth-hat',
+    'Mũ vải vành nhỏ',
+    'hair',
+    'hat',
+    '#c2aa7e',
+    18,
+    3,
+    ['comfort', 'simple'],
+    'Che nắng nhẹ, vừa với đầu theo từng tuổi.',
+  ),
+  item(
+    'silk-scarf',
+    'Khăn lụa họa tiết lá',
+    'accessory',
+    'scarf',
+    '#b9a351',
+    30,
+    13,
+    ['creative', 'traditional'],
+    'Nút khăn nhỏ tạo điểm nhấn cho bộ đồ.',
+  ),
+  item(
+    'round-glasses',
+    'Kính gọng tròn trang trí',
+    'accessory',
+    'glasses',
+    '#71564a',
+    25,
+    13,
+    ['creative'],
+    'Phụ kiện trang trí, không làm tăng tri thức hay trí thông minh.',
+  ),
+];
+export const DEFAULT_CLOTHES = ['plain-top', 'plain-bottom', 'canvas-shoes'];
+export const clothingById = (id: string) => CLOTHING.find((i) => i.id === id);
+export const wearable = (run: GameRun, item: ClothingItem) =>
+  run.month >= item.minAge * 12 && run.world.year >= item.from;
+export function presentationScore(run: GameRun, context: PresentationContext) {
+  const tags = Object.values(run.wardrobe?.equipped ?? {}).flatMap(
+    (id) => clothingById(id!)?.tags ?? [],
+  );
+  const n = (t: string) => tags.filter((x) => x === t).length;
+  const scores = {
+    interview: n('formal') * 2 - n('sport'),
+    ceremony: n('traditional') * 2 + n('formal'),
+    exercise: n('comfort') + n('sport') - n('formal') * 2,
+    creative: n('creative') * 2,
+    thrifty: n('simple') - n('showy') * 2,
+  };
+  return Math.max(-4, Math.min(5, scores[context]));
+}

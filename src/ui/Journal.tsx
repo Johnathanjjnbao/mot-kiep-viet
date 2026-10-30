@@ -38,7 +38,7 @@ export function Journal({ run, compact = false }: { run: GameRun; compact?: bool
               <h3>{j.title}</h3>
               {j.choice && !compact && <p className="journal-choice">Bạn đã chọn: {j.choice}</p>}
               <p>{j.text}</p>
-              {j.month === 0 && !compact && run.engineVersion === '2.0.0' && (
+              {j.month === 0 && !compact && run.engineVersion !== '1.0.0' && (
                 <p>
                   {run.setup.environment === 'urban' ? 'Môi trường đô thị' : 'Môi trường nông thôn'}
                   .{' '}

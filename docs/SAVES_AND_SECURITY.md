@@ -1,5 +1,7 @@
 # Lưu game, tương thích và giới hạn an toàn
 
+Schema4/engine-content3: WardrobeAction có expected-sequence, inventory/equipment/outfits/memories được replay+canonical. Schema3 route frozen2 vẫn chơi tiếp, v1 chỉ đọc. Không đổi ID IndexedDB/UUID/CAS/archives. SQL003 mở tuple có phê duyệt; xem LIFE_EXPANSION.
+
 v0.3 đã nối repository guest/account vào UI/session. Cache account theo project + UUID, giữ database guest gốc; Auth/RLS và hai browser context thật đã kiểm tra. Dùng tài khoản Email/Password được tạo thủ công; SMTP/invitation ngoài phạm vi, bước chủ dự án tự đăng nhập live NOT RUN. Hai migration production đã được review/phê duyệt riêng. Không service-role trong frontend. Xem CLOUD_ARCHITECTURE, V03_REPORT và SUPABASE_SETUP.
 
 ## Lưu trên máy

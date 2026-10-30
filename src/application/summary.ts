@@ -1,9 +1,11 @@
+import { lifeSummary as v2Summary } from '../legacy/v2/application/summary';
 import { lifeSummary as legacySummary } from '../legacy/v1/application/summary';
 import { birthplaceOf, familyText } from '../domain/creator';
 import type { GameRun } from '../domain/model';
 import { CAREERS, ageOf } from '../content/world';
 import { netWorth } from '../engine/finance';
 export function lifeSummary(run: GameRun) {
+  if (run.engineVersion === '2.0.0') return v2Summary(run as Parameters<typeof v2Summary>[0]);
   if (run.engineVersion === '1.0.0')
     return legacySummary(run as Parameters<typeof legacySummary>[0]);
   const jobs = [
@@ -20,7 +22,7 @@ export function lifeSummary(run: GameRun) {
       'welcome-child',
     ].includes(c.eventId),
   );
-  const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
+  const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.wardrobe?.memories.length ? `Tủ đồ giữ ${run.wardrobe.memories.length} dấu mốc mua sắm.` : ''} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
   return {
     biography,
     jobs,

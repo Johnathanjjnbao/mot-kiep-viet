@@ -1,3 +1,4 @@
+import { parseSave as parseV2 } from '../legacy/v2/persistence/saves';
 import { parseSave as parseLegacy } from '../legacy/v1/persistence/saves';
 import { setupSchema } from '../domain/creator';
 import { openDB } from 'idb';
@@ -27,6 +28,14 @@ const career = z.enum([
 ]);
 const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
   z.object({ type: z.literal('advance') }).strict(),
+  z
+    .object({
+      type: z.literal('wardrobe'),
+      operation: z.enum(['buy', 'equip', 'unequip', 'save-outfit', 'wear-outfit']),
+      item: z.string().min(1).max(60),
+      expected: z.number().int().min(0).max(511),
+    })
+    .strict(),
   z
     .object({
       type: z.literal('choose'),
@@ -82,7 +91,8 @@ export function canonical(value: unknown, depth = 0): string {
 }
 export function snapshot(run: GameRun, identity?: string): SaveSnapshot {
   return {
-    schemaVersion: run.engineVersion === '1.0.0' ? 2 : SAVE_VERSION,
+    schemaVersion:
+      run.engineVersion === '1.0.0' ? 2 : run.engineVersion === '2.0.0' ? 3 : SAVE_VERSION,
     engineVersion: run.engineVersion,
     contentVersion: run.contentVersion,
     ...(identity ? { identity } : {}),
@@ -113,6 +123,8 @@ export function parseSave(text: string): SaveSnapshot {
       ...(identity ? { identity: String(identity) } : {}),
     };
   }
+  if (raw && typeof raw === 'object' && 'schemaVersion' in raw && raw.schemaVersion === 3)
+    return parseV2(text);
   const parsed = envelope.safeParse(raw);
   if (!parsed.success)
     throw new Error('Tệp lưu bị thiếu dữ liệu hoặc không tương thích phiên bản hiện tại.');

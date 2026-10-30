@@ -52,6 +52,12 @@ export const conditionSchema = z
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
     z
+      .object({
+        kind: z.literal('presentation'),
+        context: z.enum(['interview', 'ceremony', 'exercise', 'creative', 'thrifty']),
+      })
+      .strict(),
+    z
       .object({ kind: z.literal('stat'), stat, amount: z.number().int().min(-100).max(100) })
       .strict(),
     z
@@ -243,7 +249,7 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
     humor: 8,
   };
   for (const [cat, count] of Object.entries(targets))
-    if (counts[cat] !== count) errors.push(`${cat}: ${counts[cat]} / ${count}`);
+    if ((counts[cat] ?? 0) < count) errors.push(`${cat}: ${counts[cat]} / ${count}`);
   if (CAREERS.length !== 10 || new Set(CAREERS.map((c) => c.id)).size !== 10)
     errors.push('Career catalog');
   return { total: events.length, counts, arcs: STORY_ARCS.length, errors };

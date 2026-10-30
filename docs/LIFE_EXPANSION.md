@@ -25,7 +25,7 @@ M1 vẫn engine/content2/schema3. M2 dự kiến engine/content3/schema4, giữ 
 
 ## Trạng thái
 
-M1 VERIFIED PASS và đã phát hành. M2/M3/M4 NOT RUN; chưa có shop/romance/parenting mở rộng. Wearables mới0, events mới0, arcs mới0. Không kỳ bí/trường thọ/quốc tế/VNĐ trong phạm vi này. Mỗi mốc sẽ ghi commit/CI/live và giới hạn riêng.
+M1 VERIFIED PASS và đã phát hành. M2 local VERIFIED PASS, CI/live đang kiểm tra; M3/M4 NOT RUN; chưa có shop/romance/parenting mở rộng. Wearables28 (3mặc định), events mới5, arcs mới0; tổng77templates/3arcs. Không kỳ bí/trường thọ/quốc tế/VNĐ trong phạm vi này. Mỗi mốc sẽ ghi commit/CI/live và giới hạn riêng.
 
 ## M1 — v0.3.2, 31/10/2026
 
@@ -43,3 +43,17 @@ M1 VERIFIED PASS và đã phát hành. M2/M3/M4 NOT RUN; chưa có shop/romance/
 Freeze v2 trước đổi luật. Schema4/engine-content3 dùng setup có ruleset bất biến để replay các đời wardrobe/social/family đúng luật đã tạo; UI không tự thêm inventory/relationship state. Áp ledger và action IDs cho mua/equip; validate replay cả snapshot và archive; kiểm tra old schema3 vẫn chơi được bằng frozen2. Không xóa hoặc tự nâng các đời đang chơi. M2 cần ≥24 item và social contexts có thật; M3–M4 cần35–50 event mới/≥4arc, agency và tham chiếu gia đình. Những mục này chưa triển khai ở M1.
 
 Migration003 đã ghi nhận applied vào lịch sử CLI bằng migration repair sau khi kiểm tra function thực tế; không chạy lại SQL lần hai.
+
+## M2 — v0.3.3, chốt phát hành
+
+Đời mới engine/content3.0.0/schema4 có setup.expansion=wardrobe bất biến; chưa chấp nhận social/family chưa phát hành. Frozen v2 giữ nguyên bộ luật cũ, schema3 vẫn chơi đúng luật cũ, golden4148875142 và v1 không đổi. Golden wardrobe1173022751 khóa riêng cho các mốc sau. Không đổi ID database,3slots,UUID,history,CAS/receipt; không tự nâng/xóa save. Parser strict action + replay + canonical mọi field, từ chối inventory/outfit tự gán.
+
+28 wearable (25 mua +3 mặc định),14 kiểu cắt/phụ kiện,6 vị trí mặc. Có SVG áo dài/váy/áo khoác/giày/nơ/mũ/khăn/kính và thumbnails gốc. Shop lọc loại, thử không lưu, mua qua ledger, chỉ mặc đồ sở hữu, tháo về mặc định, lưu8 bộ và mặc lại. Engine xét tuổi/era, trẻ dùng khoản gia đình trong kinh tế có sẵn. Giá đSM, không VNĐ; không tự vay mua đồ. Chặn duplicate/stale và gesture kép. Ngân sách350 thao tác manage+wardrobe (wardrobe160) để log cả đời dưới512.
+
+Thêm5 template thực (phỏng vấn/nghi lễ/vận động/nhóm sáng tạo/tiết kiệm), mỗi template4 lựa chọn có hệ quả khác và delayed effects. Tổng77 template/3arc. Presentation theo context capped -4..5, có lợi/bất lợi khác nhau; không cộng tri thức/attraction chung. Purchase memories vào journal/memoir/archive. Chưa làm M3/M4.
+
+Local89 tests,24 nhóm real Auth/cloud (mua+mặc desktop→reload mobile, chỉ1ledger/item),1.000seed/1.000replay/0vi phạm/1.000mua;77/77event quan sát,34.997scene có4–6choices, maxsave397.942bytes. Full E2E26 PASS trước visual refinement; lượt final đang chạy. Không tính lượt E2E đã dừng để bổ sung gesture guard là PASS. Không lặp simulation khi chỉ sửa CSS/buttons. CI/live M2 chưa xác nhận.
+
+Security Review: UI chỉ dispatch, preview không ghi state; không innerHTML/eval/secrets mới. Replay/canonical chống forge/import sai; SQL authorize/giới hạn envelope, không chống người dùng cố ý tự sửa JSON riêng qua REST. RLS/JWT mới là biên riêng tư;8 SQL auth tests và24 backend/browser groups qua. Không thay policy/grant/SECURITY DEFINER; migration003 đã được duyệt/applied, không SQL production khác.
+
+M2 final local gates: verify89/89, E2E26/26 (có shop axe0, double-click, outfit/reload,6viewport×20choice), production subpath smoke PASS. Ảnh shop desktop/mobile đã xem và chỉnh button/thumbnail/HUD để không che nội dung quản lý. Secret scan0 findings; simulation1000/replay1000/0 violations chỉ chạy một lần sau luật ổn định. Chưa gọi M2 G5 trước CI/live.

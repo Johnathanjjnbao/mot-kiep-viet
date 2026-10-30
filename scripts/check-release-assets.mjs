@@ -1,8 +1,10 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
+import { join } from 'node:path';
 const target = new URL(process.argv[2] ?? 'https://johnathanjjnbao.github.io/mot-kiep-viet/');
-const local = readFileSync('dist/index.html', 'utf8');
+const directory = process.env.MKV_ASSET_DIR ?? 'dist';
+const local = readFileSync(join(directory, 'index.html'), 'utf8');
 const response = await fetch(target, { cache: 'no-store' });
 if (!response.ok) throw new Error('Live HTML unavailable');
 const remote = await response.text();
@@ -20,7 +22,7 @@ for (const path of expected) {
   const r = await fetch(new URL(path, target.origin), { cache: 'no-store' });
   if (!r.ok) throw new Error('Live asset unavailable');
   const bytes = Buffer.from(await r.arrayBuffer()),
-    localBytes = readFileSync('dist/' + path.replace('/mot-kiep-viet/', ''));
+    localBytes = readFileSync(join(directory, path.replace('/mot-kiep-viet/', '')));
   if (sha(bytes) !== sha(localBytes)) throw new Error('Live asset content mismatch');
   checks.push({ path, sha256: sha(bytes), status: 'VERIFIED PASS' });
 }

@@ -28,7 +28,7 @@ describe('save boundary', () => {
     const save = snapshot(createRun('tampered'));
     save.schemaVersion = 99;
     expect(() => parseSave(JSON.stringify(save))).toThrow();
-    save.schemaVersion = 3;
+    save.schemaVersion = 4;
     save.run.finance.cash++;
     expect(() => parseSave(JSON.stringify(save))).toThrow(/không khớp/);
     const bad = snapshot(createRun('malicious'));

@@ -36,3 +36,7 @@ Workflow pages.yml: push main/manual → npm ci → verify/secret scan/browser/p
 ## Tài liệu và bàn giao
 
 Cập nhật PROJECT_STATUS và HANDOFF sau mỗi thay đổi; giữ phần bàn giao lịch sử. ROADMAP chỉ là backlog, không tự mở phạm vi. Commit/push tài liệu bổ sung và kiểm tra workflow cuối. Báo URL repo/live, SHA, lệnh/kết quả, CI, browser, lỗi và G5. Không tuyên bố PASS/deployed khi chưa có bằng chứng; nếu thiếu quyền, ghi BLOCKED và hướng dẫn đăng nhập, không xin token qua chat.
+
+## Life Expansion compatibility
+
+Frozen v1/v2 không sửa luật. Schema3 chơi qua frozen2; schema4 engine/content3 dùng setup.expansion bất biến. Giữ golden từng ruleset, không tự thêm cơ chế vào đời cũ. Wardrobe qua dispatch/ledger; inventory và ngân sách action512 có invariant. Migration003 đã duyệt/applied; SQL production mới vẫn cần duyệt.

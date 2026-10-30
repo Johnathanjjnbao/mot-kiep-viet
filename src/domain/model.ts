@@ -1,6 +1,6 @@
-export const ENGINE_VERSION = '2.0.0';
-export const CONTENT_VERSION = '2.0.0';
-export const SAVE_VERSION = 3;
+export const ENGINE_VERSION = '3.0.0';
+export const CONTENT_VERSION = '3.0.0';
+export const SAVE_VERSION = 4;
 export type RegionId = 'southern-city' | 'northern-village' | 'central-coast';
 export type Cohort = number;
 export type FamilyStructure =
@@ -142,6 +142,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'presentation'; context: PresentationContext }
   | { kind: 'stat'; stat: Stat; amount: number }
   | { kind: 'cash'; amount: number; label: string }
   | { kind: 'flag'; flag: string; value: boolean }
@@ -224,11 +225,27 @@ export type ManageAction =
   | 'move-home'
   | 'apply-job'
   | 'quit-job';
+export type WardrobeAction = {
+  type: 'wardrobe';
+  operation: 'buy' | 'equip' | 'unequip' | 'save-outfit' | 'wear-outfit';
+  item: string;
+  expected: number;
+};
+export type WearSlot = 'top' | 'bottom' | 'outer' | 'shoes' | 'hair' | 'accessory';
+export interface Wardrobe {
+  owned: string[];
+  equipped: Partial<Record<WearSlot, string>>;
+  outfits: { id: string; name: string; equipped: Partial<Record<WearSlot, string>> }[];
+  memories: string[];
+}
+export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | WardrobeAction
   | { type: 'advance' }
   | { type: 'choose'; eventId: string; choiceId: string }
   | { type: 'manage'; action: ManageAction; career?: CareerId };
 export interface RunSetup {
+  expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
   name?: string;
@@ -240,6 +257,7 @@ export interface RunSetup {
   fatherTraits?: ParentTrait[];
 }
 export interface GameRun {
+  wardrobe?: Wardrobe;
   engineVersion: string;
   contentVersion: string;
   id: string;

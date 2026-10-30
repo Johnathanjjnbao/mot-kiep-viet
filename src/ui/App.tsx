@@ -1,3 +1,4 @@
+import { Wardrobe } from './Wardrobe';
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowLeft,
@@ -11,6 +12,7 @@ import {
   Sprout,
   Users,
   Wallet,
+  Shirt,
 } from 'lucide-react';
 import { useGameSession } from '../application/useGameSession';
 import { ERAS, ageOf } from '../content/world';
@@ -27,7 +29,7 @@ import { useAccount } from '../application/useAccount';
 import { AccountPanel } from './AccountPanel';
 import { guestRepository } from '../persistence/repository';
 type Screen = 'home' | 'new' | 'play' | 'journal' | 'history';
-type GameTab = 'story' | 'career' | 'finance' | 'people';
+type GameTab = 'story' | 'career' | 'finance' | 'people' | 'wardrobe';
 type Dialog = 'help' | 'settings' | 'saves' | 'account' | null;
 function readSetting(key: string) {
   try {
@@ -201,7 +203,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
               onJournal={() => setScreen('journal')}
             />
           ) : (
-            <div className="game-shell">
+            <div className={`game-shell ${tab === 'story' ? 'story-shell' : 'management-shell'}`}>
               <div className="chapter-bar">
                 <div>
                   <span className="eyebrow">
@@ -241,6 +243,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                         { id: 'career', label: 'Nghề nghiệp', Icon: BriefcaseBusiness },
                         { id: 'finance', label: 'Tài chính', Icon: Wallet },
                         { id: 'people', label: 'Người thân', Icon: Users },
+                        { id: 'wardrobe', label: 'Tủ đồ', Icon: Shirt },
                       ] as const
                     ).map((t) => (
                       <button
@@ -266,6 +269,8 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                     <CareerPanel run={run} act={act} />
                   ) : tab === 'finance' ? (
                     <FinancePanel run={run} act={act} />
+                  ) : tab === 'wardrobe' ? (
+                    <Wardrobe run={run} act={act} />
                   ) : (
                     <PeoplePanel run={run} />
                   )}
@@ -323,7 +328,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.3.2</span>
+        <span className="footer-version">BETA · 0.3.3</span>
       </footer>
       {dialog && (
         <Modal

@@ -1,6 +1,7 @@
 import type { GameRun, RunSetup } from '../domain/model';
 import { CAREERS, ageOf, careerReason, currentCareer } from '../content/world';
 import {
+  dispatch,
   activeDefinition,
   advance,
   choiceReason,
@@ -50,6 +51,11 @@ export function simulateLife(
       const option = preferred ?? choices[Math.floor(random() * choices.length)];
       run = choose(run, e.id, option.id);
     } else {
+      const clothing = policy % 2 ? 'linen-shirt' : 'sport-top';
+      if (run.wardrobe && ageOf(run) >= 18 && !run.wardrobe.owned.includes(clothing) && run.finance.cash >= 24) {
+        run = dispatch(run, {type:'wardrobe', operation:'buy', item:clothing, expected:run.actions.length});
+        run = dispatch(run, {type:'wardrobe', operation:'equip', item:clothing, expected:run.actions.length});
+      }
       if (policy !== 3 && ageOf(run) >= 18 && ageOf(run) < 65 && !currentCareer(run)) {
         const jobs = CAREERS.filter((j) => !careerReason(run, j.id));
         if (jobs.length)

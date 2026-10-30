@@ -1,5 +1,7 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+v0.3.3: domain/engine/content3/schema4, setup.expansion=wardrobe. Legacy/v2 giữ nguyên engine/content/parser/summary/simulation để save3 vẫn chơi đúng luật cũ. Wardrobe qua dispatch/ownership/age/expected/ledger; UI thử đồ chỉ trình bày. Fashion5scene dùng context capped -4..5. Giữ golden trước thêm ruleset.
+
 ## Life Expansion: lớp trình bày v0.3.2
 
 `ui/appearance.ts` là hàm thuần hash seed có namespace, tách identity (màu da/tóc, preset mặt/vóc dáng) khỏi tuổi và biểu cảm. `Avatar.tsx` vẽ SVG lớp body/top/bottom/head/face/hair; biologicalAge tùy chọn để không buộc rendering vào tuổi lịch về sau. Không tiêu thụ RNG engine, không ghi thêm save field. Creator tạo seed UI trước preview và gửi lại đúng seed ấy. HUD responsive dùng cùng artwork với crop portrait. Xem [LIFE_EXPANSION](LIFE_EXPANSION.md) cho version plan và bằng chứng từng mốc.

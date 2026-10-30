@@ -3479,6 +3479,36 @@ meter::-moz-meter-bar {
   height: 100%;
   max-height: 240px;
 }
+
+.wardrobe-layout { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(0, 2fr); gap: 24px; align-items: start; }
+.management-shell .profile { position: static !important; align-self: start; }
+.wardrobe-preview { display: flex; flex-direction: column; gap: 12px; background: #f2eddf; padding: 16px; border: 1px solid var(--line); border-radius: 4px; }
+.wardrobe-preview > .living-avatar { max-height: 260px; width: 100%; }
+.wardrobe-preview strong { font-family: var(--font-serif); font-size: 19px; font-weight: 500; }
+.wardrobe-preview label, .wardrobe-stock > label { display: flex; flex-direction: column; gap: 8px; margin-block: 16px; }
+.wardrobe-preview input, .wardrobe-stock select { width: 100%; padding: 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); font: inherit; }
+.wardrobe-stock { min-width: 0; }
+.clothing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px; }
+.clothing-card { padding: 16px; background: #fcfaf5; border: 1px solid #d7cbb6; border-radius: 4px; display: flex; flex-direction: column; gap: 12px; }
+.clothing-card.is-equipped { border-color: var(--rust); box-shadow: inset 0 3px var(--rust); }
+.clothing-card h3 { font-family: var(--font-serif); font-size: 22px; line-height: 1.2; margin-bottom: 8px; }
+.clothing-card p { font-size: 13px; margin-bottom: 12px; }
+.clothing-card strong { font-size: 13px; color: #704d35; }
+.cloth-swatch { height: 90px; border-radius: 30px 30px 6px 6px; background: #f1ecdf; display: grid; place-items: center; }
+.garment-illustration { width: 90px; height: 90px; }
+.clothing-actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
+.clothing-actions button { flex: 1; font-size: 12px; padding: 10px 8px; min-height: 44px; }
+.equipped-list { list-style: none; margin: 0; padding: 0; }
+.equipped-list li { display: flex; align-items: center; gap: 8px; justify-content: space-between; font-size: 12px; border-bottom: 1px solid #d7cbb6; }
+.equipped-list button { min-height: 44px; }
+@media(max-width: 650px) {
+  .wardrobe-layout { grid-template-columns: 1fr; gap: 18px; }
+  .wardrobe-preview > .living-avatar { height: 200px; }
+  .clothing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .clothing-card { padding: 12px; }
+  .clothing-actions { flex-direction: column; }
+  .clothing-card h3 { font-size: 19px; }
+}
 .hud-illustration {
   height: 176px;
   margin: -8px -5px 14px;

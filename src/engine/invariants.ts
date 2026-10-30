@@ -1,7 +1,12 @@
+import { assertRun as assertFrozen2 } from '../legacy/v2/engine/invariants';
+import { assertWardrobe } from './wardrobe';
 import type { GameRun } from '../domain/model';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
 import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
+  if (run.engineVersion === '2.0.0')
+    return assertFrozen2(run as Parameters<typeof assertFrozen2>[0]);
+  assertWardrobe(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };
@@ -92,7 +97,7 @@ export function assertRun(run: GameRun) {
   const active = activeDefinition(run);
   if (active && active.choices.filter((c) => !choiceReason(run, c)).length < 4)
     fail('fewer than four enabled choices');
-  if (run.engineVersion === '2.0.0') {
+  if (run.engineVersion === '3.0.0') {
     if (run.setup.cohort < 1975 || run.setup.cohort > 2026) fail('birth year');
     for (const n of run.npcs.filter((n) => n.id === 'mother' || n.id === 'father')) {
       if (!n.presence) fail('parent presence');

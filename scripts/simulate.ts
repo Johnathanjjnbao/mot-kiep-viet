@@ -1,14 +1,18 @@
+import { canonical, snapshot, MAX_SAVE_BYTES } from '../src/persistence/saves';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { COHORTS, REGIONS, ageOf } from '../src/content/world';
 import { netWorth } from '../src/engine/finance';
 import { simulateLife } from '../src/diagnostics/simulation';
-import { activeDefinition, choiceReason } from '../src/engine/engine';
+import { activeDefinition, choiceReason, replay } from '../src/engine/engine';
 import { FAMILIES, PARENT_TRAITS } from '../src/domain/creator';
 import type { RunSetup, ParentTrait } from '../src/domain/model';
 const total = Number(process.argv[2] ?? 1000);
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
+  replayChecked: 0,
+  wardrobePurchases: 0,
+  maxSaveBytes: 0,
   seedPattern: 'stress-0 … stress-N (N = runs - 1)',
   invariantViolations: 0,
   endings: { death: 0, memoir: 0 },
@@ -56,6 +60,12 @@ for (let i = 0; i < total; i++) {
         }
       },
     );
+    if (canonical(replay(run.seed,run.setup,run.actions)) !== canonical(run)) throw Error('Replay divergence');
+    report.replayChecked++;
+    const bytes = new TextEncoder().encode(JSON.stringify(snapshot(run))).length;
+    report.maxSaveBytes = Math.max(report.maxSaveBytes,bytes);
+    if (bytes > MAX_SAVE_BYTES || run.actions.length > 512) throw Error('Save limit');
+    report.wardrobePurchases += run.finance.transactions.filter(t=>t.id.startsWith('wardrobe:buy:')).length;
     report.families[family] = (report.families[family] ?? 0) + 1;
     report.runs++;
     report.cohorts[cohort] = (report.cohorts[cohort] ?? 0) + 1;
@@ -87,7 +97,7 @@ report.ages.mean = Number((report.ages.mean / report.runs).toFixed(2));
 report.finances.meanNetWorth = Math.round(report.finances.meanNetWorth / report.runs);
 report.observedEventIds = [...observed].sort();
 mkdirSync('docs/evidence', { recursive: true });
-writeFileSync('docs/evidence/simulation.json', JSON.stringify(report, null, 2) + '\n');
+writeFileSync(process.env.MKV_SIMULATION_REPORT ?? 'docs/evidence/simulation.json', JSON.stringify(report, null, 2) + '\n');
 console.log(
   JSON.stringify({ ...report, observedEventIds: `${observed.size} distinct events` }, null, 2),
 );

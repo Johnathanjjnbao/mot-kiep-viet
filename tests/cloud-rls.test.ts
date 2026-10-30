@@ -30,6 +30,7 @@ beforeAll(async () => {
   await db.query('insert into auth.users values ($1),($2),($3)', [A, B, C]);
   await db.exec(readFileSync('supabase/migrations/202610300001_cloud.sql', 'utf8'));
   await db.exec(readFileSync('supabase/migrations/202610300002_conflict_http.sql', 'utf8'));
+  await db.exec(readFileSync('supabase/migrations/202610300003_life_expansion.sql', 'utf8'));
   await db.query('insert into mkv_private.invited_users(user_id) values($1),($2)', [A, B]);
 }, 120000);
 afterAll(async () => {
