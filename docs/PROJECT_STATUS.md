@@ -1,5 +1,7 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+M4 v0.3.5 local gates VERIFIED PASS:117unit/36E2E/1000seed+replay/0violations/26realAuth-cloud, production smoke, secrets0/audit0. Source77acc1a/main; CI/live pending. M3 G5 remains PASS; M5 preparation only. Owner personal login NOT RUN.
+
 M4 v0.3.5: source complete, local verify117/117 and production smoke VERIFIED PASS; final simulation/E2E/real cloud in progress. NOT deployed yet. M3 v0.3.4 remains verified production. Owner personal login NOT RUN; no production SQL/Auth changes.
 
 M3 v0.3.4 G5 VERIFIED PASS: d2e9c810/main, CI41132580664 completed/success; live4social/sixviewport×20/25cloud/asset hashes PASS.102unit/32E2E/1000replay0violations. Owner tự đăng nhập NOT RUN. M4 family đang làm; M5 NOT RUN. Không có SQL production mới.

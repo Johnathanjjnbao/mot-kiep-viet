@@ -1,5 +1,7 @@
 # Life Expansion — bốn mốc phát hành
 
+M4 v0.3.5 local gates VERIFIED PASS:117unit/36E2E/1000seed+replay/0violations/26realAuth-cloud, production smoke, secrets0/audit0. Source77acc1a/main; CI/live pending. M3 G5 remains PASS; M5 preparation only. Owner personal login NOT RUN.
+
 M4 v0.3.5: source complete, local verify117/117 and production smoke VERIFIED PASS; final simulation/E2E/real cloud in progress. NOT deployed yet. M3 v0.3.4 remains verified production. Owner personal login NOT RUN; no production SQL/Auth changes.
 
 M3 v0.3.4 G5 VERIFIED PASS: d2e9c810/main, CI41132580664 completed/success; live4social/sixviewport×20/25cloud/asset hashes PASS.102unit/32E2E/1000replay0violations. Owner tự đăng nhập NOT RUN. M4 family đang làm; M5 NOT RUN. Không có SQL production mới.
@@ -104,3 +106,10 @@ Forced15 family tests cover birth→career, two children,8 parenting patterns, d
 Budget correction: the historical manage branch still allowed400 operations, while wardrobe guarded combined budgets. Historical replay semantics are preserved. New family runs share a120 discretionary-operation budget (social40), and the UI reserves room for the remaining story on all runs. Family events use existing choose/advance logs. JSON512-action/5MiB caps remain.
 
 Production smoke initially raced the autosave status of the preceding event. The check now waits for a persisted action-count change before reload; the rebuilt production smoke passes. Family screenshots were inspected at1440/375: no horizontal overflow, existing ivory/terracotta typography retained. The six pre-input viewport measurements remain required.
+
+
+M4 final local gates: verify117/117,36/36 E2E (desktop/mobile,6viewport×20 decisions), production subpath smoke,1000unique seeded lives with1000canonical replays and0invariant failures,26real Auth/cloud groups PASS. Snapshot max569041bytes;96708 decisions all4–6enabled choices. Random policy sampled114/115 authored templates; sibling scene covered by forced two-child path, ordinary-days fallback not sampled. Only2children/2adult children arose naturally under this mixed random policy;15forced family tests supply the targeted birth-to-career/divorce/care/death/multiple-child coverage. Do not infer broad family-distribution balance from2random births.
+
+Real JWT tests verify A/B/anon isolation, denied forged ownership/writes/invalid versions,3slots/idempotent409conflict,offline queue/reconnect/two tabs,immutable history across browsers, complex marriage plus child education/career/parents on a third independent mobile context. Synthetic identities disabled; all production data preserved. First browser cloud attempt used a preview without the production base-path environment and could not load JS; restarted preview with the correct subpath, all26groups rerun PASS. No product/Auth/SQL change was needed.
+
+Secret scan:0findings across750text objects including public assets and reachable Git; audit0advisories. Frozen source unchanged; all4 existing goldens and new family golden pass. Graft133files/701nodes/1695edges synchronized, deep layer not generated. Skills this continuation: Security Review,Humanizer,Frontend Design,Webapp Testing,Secret Scanning,Documentation Writer. G5/CI/live still pending until the next evidence entry.

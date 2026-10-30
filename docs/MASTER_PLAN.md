@@ -1,5 +1,18 @@
 # Master Plan — Một Kiếp Việt
 
+## Next phase after verified M3/M4 — M5 preparation
+
+M3 relationships is live v0.3.4; M4 family source is checkpointed locally and remains under final gates. M5 is INCOMPLETE, no university/military/digital-career expansion is exposed yet. Do not enable new rules on an existing wardrobe/social/family save.
+
+1. Creator vertical slice: one seeded, pure randomizer per player/father/mother, compatible combinations under the same schema as manual selection, independent reroll counters, and explicit lock controls for randomize-all. Show selected traits in preview. Preserve all manually selected fields. A persisted optional player-trait setup field must gate new behavior; consume the historical RNG draw even when overriding it so old worlds do not shift. Parent modifiers continue through the existing resident-parent childhood rules. Test input immutability, same seed/counter determinism, locks, conflicting sets, old goldens, replay/reload/cloud and mobile keyboard controls.
+2. Education: add an immutable education-ruleset switch or new version tuple before changing existing degree semantics. Define12 distinct programs (IT, engineering, healthcare, business, accounting, finance, law, education, Korean, English, design/arts, communications) with duration, tuition, entry conditions, skills and career links. Keep all tuition/aid/part-time income in ledger; tie scholarship, burnout, internships, changing majors, dropout and delayed graduation to stable program records and seeded choices. Record attempted/completed qualifications separately.
+3. Work: applications produce reproducible acceptance/rejection from qualification, skill, experience, era and market context. Bound retries and record rejection/unemployment, allow out-of-field and lower-qualification work, retraining, layoffs and recoverable job searches. Volatile digital/creative careers require era/platform availability, operating costs, burnout and losses; follower count is not guaranteed income. No external platform APIs or real money.
+4. Military: research primary historical/legal sources for separate periods before implementing eligibility. Do not reuse current law across1975–2026 or force all characters into service. Keep fictional gameplay eligibility clear; enforce age/health/education/context inside engine and test eligible/ineligible periods. No speculative legal table in production.
+5. Release gates: old frozen/current goldens, strict schema/replay and ledger invariants,1000 unique seeds after authoritative rule changes,4 enabled choices per scene,6 viewport×20 decisions, real A/B/anon RLS and complex-save sync, source/public/history secret scan, verify/E2E/Pages smoke, main commit/push and exact-SHA CI/live proof. Any new production SQL requires owner review; prepare/test first, keep old production safe if approval is unavailable.
+
+M5 full acceptance additionally requires all12 programs, graduation/failure/dropout, rejection and prolonged unemployment, out-of-field work/career switching, era-gated online jobs, military eligibility, and independent creator randomization. A creator-only release must be labeled partial M5; it is not Education & Career completion. Supernatural longevity/international/VND remain later roadmap.
+
+
 Life Expansion: M1 v0.3.2 và M2 v0.3.3 VERIFIED PASS/deployed; M3 v0.3.4 (22scene nháp) INCOMPLETE, M4 v0.3.5 NOT RUN. Không thay ba mốc tương lai kỳ bí/quốc tế/VNĐ. Trạng thái và bước tiếp tục ở LIFE_EXPANSION.
 
 ## Life Expansion v0.3.2–v0.3.5 — phạm vi được giao

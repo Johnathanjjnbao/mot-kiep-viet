@@ -1,5 +1,7 @@
 # Backlog sau beta v0.3
 
+Current continuation: M1/M2/M3 deployed VERIFIED PASS; M4 v0.3.5 local gates PASS, release verification pending. M5 is conditional INCOMPLETE; implementation plan in MASTER_PLAN. v0.4–v0.6 remain backlog. Older status paragraphs below are historical checkpoints.
+
 Life Expansion: M1 v0.3.2 và M2 v0.3.3 VERIFIED PASS/deployed; M3 v0.3.4 (22scene nháp) INCOMPLETE, M4 v0.3.5 NOT RUN. Không thay ba mốc tương lai kỳ bí/quốc tế/VNĐ. Trạng thái và bước tiếp tục ở LIFE_EXPANSION.
 
 ## Life Expansion đang triển khai

@@ -1,5 +1,7 @@
 # Personal Cloud Account — v0.3
 
+Life Expansion M4: engine/content3/schema4 retains immutable wardrobe/social/family rulesets and frozen v1/v2 routes. FamilyAction and per-child state are canonical-replayed; recorded parents never follow a changed spouse. Migrations001/002/003 already approved/applied, no production SQL in this continuation. Real A/B/anon and complex-family cloud26groups PASS locally; live pending. This is private-save isolation/integrity, not server anti-cheat against editing one's own JSON. Owner personal login stays NOT RUN.
+
 Tiếp tục main 9bbffbc, giữ uncommitted cloud implementation. Đã nối Auth Email/Password, account cache/outbox, autosave/ba slot, immutable history, explicit guest migration, CAS/receipt và recovery branches vào game v0.2.
 
 Quyết định mới: chỉ tài khoản đã được admin tạo/confirmed/cấp quyền. SMTP, invitation và email recovery ngoài phạm vi. Tài khoản hiện có đã kiểm tra confirmed/password/allowlist; chủ dự án tự đăng nhập trên live, không đưa credential vào chat.

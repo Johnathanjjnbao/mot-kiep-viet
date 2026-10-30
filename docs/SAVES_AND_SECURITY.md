@@ -1,5 +1,7 @@
 # Lưu game, tương thích và giới hạn an toàn
 
+Life Expansion M4: engine/content3/schema4 retains immutable wardrobe/social/family rulesets and frozen v1/v2 routes. FamilyAction and per-child state are canonical-replayed; recorded parents never follow a changed spouse. Migrations001/002/003 already approved/applied, no production SQL in this continuation. Real A/B/anon and complex-family cloud26groups PASS locally; live pending. This is private-save isolation/integrity, not server anti-cheat against editing one's own JSON. Owner personal login stays NOT RUN.
+
 Schema4/engine-content3: WardrobeAction có expected-sequence, inventory/equipment/outfits/memories được replay+canonical. Schema3 route frozen2 vẫn chơi tiếp, v1 chỉ đọc. Không đổi ID IndexedDB/UUID/CAS/archives. SQL003 mở tuple có phê duyệt; xem LIFE_EXPANSION.
 
 v0.3 đã nối repository guest/account vào UI/session. Cache account theo project + UUID, giữ database guest gốc; Auth/RLS và hai browser context thật đã kiểm tra. Dùng tài khoản Email/Password được tạo thủ công; SMTP/invitation ngoài phạm vi, bước chủ dự án tự đăng nhập live NOT RUN. Hai migration production đã được review/phê duyệt riêng. Không service-role trong frontend. Xem CLOUD_ARCHITECTURE, V03_REPORT và SUPABASE_SETUP.
