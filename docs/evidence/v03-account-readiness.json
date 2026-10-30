@@ -1,0 +1,14 @@
+{
+  "projectRef": "kqnapcyceddwvrvkquvg",
+  "checkedAt": "2026-10-30",
+  "existingOwnerAccount": {
+    "confirmed": true,
+    "passwordPresent": true,
+    "gameAllowlist": true,
+    "ownerManualLogin": "NOT RUN"
+  },
+  "passwordProvider": "VERIFIED PASS: synthetic confirmed users signed in with password",
+  "publicSignup": "VERIFIED PASS: disabled and actual signup denied",
+  "smtpInvitationEmailRecovery": "OUT OF SCOPE",
+  "credentialsReadOrUsedForOwner": false
+}

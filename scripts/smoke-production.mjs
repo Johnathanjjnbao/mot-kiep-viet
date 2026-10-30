@@ -58,7 +58,8 @@ try {
   await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
   await page.locator('[data-testid="event-choice"]:not(:disabled)').first().click();
-  await page.getByTestId('advance-life').click();
+  await expect(page.getByTestId('advance-life')).toHaveCount(0);
+  await expect(page.locator('#event-heading')).toBeFocused();
   const event = await page.locator('.story-card h2').textContent();
   await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
   report.checks.push('new life, event choice, time advance and autosave');

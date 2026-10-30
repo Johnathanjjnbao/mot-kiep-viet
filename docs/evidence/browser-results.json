@@ -183,12 +183,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 25618,
+                  "duration": 4613,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:11:44.651Z",
+                  "startTime": "2026-10-30T10:57:07.379Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -217,12 +217,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2949,
+                  "duration": 2113,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:10.543Z",
+                  "startTime": "2026-10-30T10:57:12.200Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -232,7 +232,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-17f08172d296b358deba",
           "file": "game.spec.ts",
-          "line": 90,
+          "line": 91,
           "column": 1
         },
         {
@@ -251,12 +251,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6897,
+                  "duration": 2382,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:13.506Z",
+                  "startTime": "2026-10-30T10:57:14.319Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -266,7 +266,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-3afde50e1dd027f57cd2",
           "file": "game.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 1
         },
         {
@@ -285,12 +285,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4154,
+                  "duration": 3384,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:20.414Z",
+                  "startTime": "2026-10-30T10:57:16.707Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -300,7 +300,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-acd6187f41b6264150f8",
           "file": "game.spec.ts",
-          "line": 160,
+          "line": 161,
           "column": 1
         },
         {
@@ -319,12 +319,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 715,
+                  "duration": 648,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:24.580Z",
+                  "startTime": "2026-10-30T10:57:20.096Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -334,7 +334,109 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-1e2594a118302f626a9b",
           "file": "game.spec.ts",
-          "line": 189,
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "production shell preserves guest progress through an offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:20.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-f67a6830f86bbd1a5819",
+          "file": "game.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "one-tap decisions reject double clicks, keep focus and viewport, and restore autosave",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:21.974Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-068db6af3a7cabe52e35",
+          "file": "game.spec.ts",
+          "line": 260,
+          "column": 1
+        },
+        {
+          "title": "continuous choices support keyboard, large text and reduced motion without layout overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:23.754Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-12530f617994b77406f7",
+          "file": "game.spec.ts",
+          "line": 305,
           "column": 1
         },
         {
@@ -353,12 +455,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26253,
+                  "duration": 4551,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:26.297Z",
+                  "startTime": "2026-10-30T10:57:26.039Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -387,12 +489,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3344,
+                  "duration": 2032,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:52.805Z",
+                  "startTime": "2026-10-30T10:57:30.795Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -402,7 +504,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-361794f4021c5921bc84",
           "file": "game.spec.ts",
-          "line": 90,
+          "line": 91,
           "column": 1
         },
         {
@@ -421,12 +523,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7366,
+                  "duration": 2312,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:12:56.169Z",
+                  "startTime": "2026-10-30T10:57:32.835Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -436,7 +538,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-29fdefc4ae6bb1f21ff7",
           "file": "game.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 1
         },
         {
@@ -455,12 +557,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4175,
+                  "duration": 3377,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:13:03.549Z",
+                  "startTime": "2026-10-30T10:57:35.155Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -470,7 +572,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-1b08cfd5ec4409de4eb3",
           "file": "game.spec.ts",
-          "line": 160,
+          "line": 161,
           "column": 1
         },
         {
@@ -489,12 +591,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 927,
+                  "duration": 701,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T05:13:07.742Z",
+                  "startTime": "2026-10-30T10:57:38.539Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -504,7 +606,109 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-2dc443997993adffcad0",
           "file": "game.spec.ts",
-          "line": 189,
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "production shell preserves guest progress through an offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:39.253Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-8d02144aed85f93a860e",
+          "file": "game.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "one-tap decisions reject double clicks, keep focus and viewport, and restore autosave",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:40.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-6fe81ebd520de4ec9c3b",
+          "file": "game.spec.ts",
+          "line": 260,
+          "column": 1
+        },
+        {
+          "title": "continuous choices support keyboard, large text and reduced motion without layout overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T10:57:42.343Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b1bb1493a64c9fc3ab6-ab9a1d00e19ec4f232e9",
+          "file": "game.spec.ts",
+          "line": 305,
           "column": 1
         }
       ]
@@ -512,9 +716,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-30T05:11:42.011Z",
-    "duration": 87602.15800000001,
-    "expected": 10,
+    "startTime": "2026-10-30T10:57:05.763Z",
+    "duration": 38585.292,
+    "expected": 16,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

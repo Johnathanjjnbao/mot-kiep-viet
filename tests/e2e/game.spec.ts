@@ -32,7 +32,8 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   page.on('pageerror', (e) => errors.push(e.message));
   await start(page);
   await page.locator('[data-testid="event-choice"]:not(:disabled)').first().click();
-  await expect(page.getByTestId('advance-life')).toBeVisible();
+  await expect(page.getByTestId('advance-life')).toHaveCount(0);
+  await expect(page.getByTestId('event-choice').first()).toBeVisible();
   for (let i = 0; i < 7; i++) await step(page);
   const year = await page.locator('.year-stamp strong').textContent();
   const event = await page.locator('.story-card h2').textContent();
@@ -192,13 +193,11 @@ test('imports a v0.1 save as a readable checkpoint without showing incompatible 
   await page.goto('./');
   await page.getByRole('button', { name: 'Lưu và tải game' }).click();
   const old = legacyAdvance(legacyRun('old-browser'));
-  await page
-    .getByLabel('Chọn tệp game đã lưu')
-    .setInputFiles({
-      name: 'old-save.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(JSON.stringify(legacySnapshot(old))),
-    });
+  await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+    name: 'old-save.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(legacySnapshot(old))),
+  });
   await expect(page.getByRole('heading', { name: 'Cuộc đời từ bản v0.1' })).toBeVisible();
   await expect(page.getByTestId('event-choice')).toHaveCount(0);
   await expect(
@@ -211,4 +210,119 @@ test('imports a v0.1 save as a readable checkpoint without showing incompatible 
   await page.reload();
   await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
   await expect(page.getByRole('heading', { name: 'Cuộc đời từ bản v0.1' })).toBeVisible();
+});
+
+test('production shell preserves guest progress through an offline reload', async ({
+  page,
+  context,
+}) => {
+  test.skip(
+    process.env.E2E_PRODUCTION !== '1',
+    'Offline shell uses the production service worker.',
+  );
+  await start(page);
+  await step(page);
+  await step(page);
+  await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+  const title = await page.locator('.story-card h2').textContent(),
+    year = await page.locator('.year-stamp strong').textContent();
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await expect
+    .poll(() => page.evaluate(() => Boolean(navigator.serviceWorker.controller)))
+    .toBe(true);
+  await context.setOffline(true);
+  await page.reload();
+  await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+  await expect(page.locator('.story-card h2')).toHaveText(title!);
+  await expect(page.locator('.year-stamp strong')).toHaveText(year!);
+  await context.setOffline(false);
+});
+
+async function storedRun(page: Page) {
+  return page.evaluate(
+    () =>
+      new Promise<import('../../src/domain/model').GameRun>((resolve, reject) => {
+        const request = indexedDB.open('mot-kiep-viet', 1);
+        request.onerror = reject;
+        request.onsuccess = () => {
+          const db = request.result;
+          const item = db.transaction('saves').objectStore('saves').get('autosave');
+          item.onerror = reject;
+          item.onsuccess = () => {
+            resolve(JSON.parse(item.result).run);
+            db.close();
+          };
+        };
+      }),
+  );
+}
+
+test('one-tap decisions reject double clicks, keep focus and viewport, and restore autosave', async ({
+  page,
+}, testInfo) => {
+  await start(page);
+  await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+  const before = await storedRun(page);
+  await page.getByTestId('event-choice').first().dblclick();
+  await expect(page.locator('#event-heading')).toBeFocused();
+  await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+  const after = await storedRun(page);
+  expect(after.choices.length).toBe(before.choices.length + 1);
+  expect(after.actions.filter((a) => a.type === 'choose').length).toBe(1);
+  expect(after.activeEvent).toBeTruthy();
+  await expect(page.getByTestId('advance-life')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^Xác nhận$/ })).toHaveCount(0);
+  await expect(page.locator('.recent-outcome')).toContainText(after.choices.at(-1)!.outcome);
+  for (let i = 0; i < 5; i++) {
+    const previous = await storedRun(page);
+    await page.getByTestId('event-choice').first().click();
+    await expect(page.locator('#event-heading')).toBeFocused();
+    await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+    expect((await storedRun(page)).choices.length).toBe(previous.choices.length + 1);
+    const position = await page.locator('.story-card').boundingBox();
+    expect(position!.y).toBeGreaterThanOrEqual(0);
+    expect(position!.y).toBeLessThan(40);
+    await expect(page.getByTestId('event-choice').first()).toBeInViewport();
+  }
+  const saved = await storedRun(page);
+  const title = await page.locator('#event-heading').textContent();
+  await page.reload();
+  await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+  await expect(page.locator('#event-heading')).toHaveText(title!);
+  await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+  expect(await storedRun(page)).toEqual(saved);
+  if (testInfo.project.name === 'mobile-edge') {
+    const first = await page.getByTestId('event-choice').first().boundingBox();
+    await page.touchscreen.tap(first!.x + first!.width / 2, first!.y + first!.height / 2);
+    const second = await page.getByTestId('event-choice').first().boundingBox();
+    await page.touchscreen.tap(second!.x + second!.width / 2, second!.y + second!.height / 2);
+    await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+    expect((await storedRun(page)).choices.length).toBe(saved.choices.length + 1);
+    await expect(page.locator('#event-heading')).toBeFocused();
+  }
+});
+
+test('continuous choices support keyboard, large text and reduced motion without layout overflow', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Cài đặt', exact: true }).click();
+  await page.getByLabel('Chữ lớn hơn').check();
+  await page.keyboard.press('Escape');
+  await start(page);
+  for (const key of ['Enter', 'Space', 'Enter']) {
+    await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+    const before = await storedRun(page);
+    await page.getByTestId('event-choice').first().focus();
+    await page.keyboard.press(key);
+    await expect(page.locator('#event-heading')).toBeFocused();
+    await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+    expect((await storedRun(page)).choices.length).toBe(before.choices.length + 1);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await expect(page.getByTestId('event-choice').first()).toBeInViewport();
+  }
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });

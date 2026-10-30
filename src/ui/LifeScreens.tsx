@@ -18,6 +18,8 @@ import { activeDefinition, choiceReason } from '../engine/engine';
 import { CATEGORIES, STAT_NAMES, downloadFile, money } from './common';
 import { birthplaceOf, familyText } from '../domain/creator';
 import { Scenery } from './Scenery';
+import { useLayoutEffect, useRef } from 'react';
+import { decisionKey, recentResults } from '../application/story-flow';
 export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void }) {
   const region = REGIONS.find((r) => r.id === run.player.region)!;
   return (
@@ -156,12 +158,30 @@ export function Story({
   onAdvance,
 }: {
   run: GameRun;
-  onChoice: (eventId: string, choiceId: string) => void;
+  onChoice: (eventId: string, choiceId: string, token: string) => void;
   onAdvance: () => void;
 }) {
   const event = activeDefinition(run);
+  const token = decisionKey(run);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const card = useRef<HTMLElement>(null);
+  const touchInput = useRef(false),
+    lastTouchDecision = useRef(-Infinity);
+  const results = recentResults(run);
+  useLayoutEffect(() => {
+    heading.current?.focus({ preventScroll: true });
+    const top = card.current?.getBoundingClientRect().top;
+    const header = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
+    const offset = Math.max(16, header > 0 && header < 160 ? header + 16 : 16);
+    if (top !== undefined) window.scrollBy({ top: top - offset, behavior: 'instant' });
+  }, [token]);
   return (
-    <section className="story-card" key={event?.id ?? 'outcome'}>
+    <section
+      className="story-card"
+      ref={card}
+      aria-labelledby="event-heading"
+      onDoubleClick={() => heading.current?.focus({ preventScroll: true })}
+    >
       <div className="story-top">
         <span className="eyebrow">
           {event ? CATEGORIES[event.category] : 'MỘT LỰA CHỌN ĐÃ THÀNH KÝ ỨC'}
@@ -173,7 +193,9 @@ export function Story({
         <Feather size={22} strokeWidth={1.1} aria-hidden="true" />
         <span />
       </div>
-      <h2>{event?.title ?? 'Rồi đời sẽ kể tiếp.'}</h2>
+      <h2 id="event-heading" ref={heading} tabIndex={-1}>
+        {event?.title ?? 'Rồi đời sẽ kể tiếp.'}
+      </h2>
       <p className="story-text">
         {event?.text ?? run.lastOutcome ?? 'Bạn đã sẵn sàng cho trang tiếp theo.'}
       </p>
@@ -199,8 +221,29 @@ export function Story({
                   className="choice"
                   data-testid="event-choice"
                   disabled={Boolean(reason)}
-                  key={choice.id}
-                  onClick={() => onChoice(event.id, choice.id)}
+                  key={i}
+                  onPointerDown={(e) => {
+                    touchInput.current = e.pointerType === 'touch';
+                  }}
+                  onClick={(e) => {
+                    // Touch click.detail may stay 1 across two taps. Guard only
+                    // the brief gesture boundary, with no loading delay or timer.
+                    if (
+                      e.detail > 1 ||
+                      (e.detail !== 0 &&
+                        touchInput.current &&
+                        e.timeStamp - lastTouchDecision.current < 300)
+                    ) {
+                      heading.current?.focus({ preventScroll: true });
+                      return;
+                    }
+                    if (e.detail !== 0 && touchInput.current)
+                      lastTouchDecision.current = e.timeStamp;
+                    onChoice(event.id, choice.id, token);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.repeat && (e.key === 'Enter' || e.key === ' ')) e.preventDefault();
+                  }}
                 >
                   <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
                   <span className="choice-copy">
@@ -230,6 +273,28 @@ export function Story({
             <ArrowRight size={18} aria-hidden="true" />
           </button>
         </div>
+      )}
+      <div className="recent-outcome" role="status" aria-live="polite" aria-atomic="true">
+        {results.length > 0 && (
+          <p>
+            <strong>Vừa xảy ra:</strong> {results[0].text}
+          </p>
+        )}
+      </div>
+      {results.length > 1 && (
+        <details className="recent-details">
+          <summary>Những điều diễn ra trước cảnh này ({results.length - 1})</summary>
+          <ol>
+            {results.slice(1).map((entry) => (
+              <li key={entry.id}>
+                <strong>
+                  {run.player.birthYear + Math.floor(entry.month / 12)} · {entry.title}.
+                </strong>{' '}
+                {entry.text}
+              </li>
+            ))}
+          </ol>
+        </details>
       )}
       <div className="story-footnote">
         {run.world.fictional

@@ -3,6 +3,18 @@ import tseslint from 'typescript-eslint';
 import hooks from 'eslint-plugin-react-hooks';
 export default tseslint.config(
   {
+    files: ['public/sw.js'],
+    languageOptions: {
+      globals: {
+        self: 'readonly',
+        URL: 'readonly',
+        fetch: 'readonly',
+        caches: 'readonly',
+        Response: 'readonly',
+      },
+    },
+  },
+  {
     files: ['scripts/**/*.mjs'],
     languageOptions: {
       globals: {
@@ -10,6 +22,11 @@ export default tseslint.config(
         document: 'readonly',
         innerWidth: 'readonly',
         fetch: 'readonly',
+        console: 'readonly',
+        URL: 'readonly',
+        Buffer: 'readonly',
+        navigator: 'readonly',
+        indexedDB: 'readonly',
       },
     },
   },

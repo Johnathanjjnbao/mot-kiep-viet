@@ -1,26 +1,23 @@
-import { useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import type { GameRun } from '../domain/model';
-import {
-  archiveLife,
-  exportHistory,
-  importHistory,
-  listHistory,
-  MAX_HISTORY_BYTES,
-  type LifeRecord,
-} from '../persistence/history';
+import { exportHistory, MAX_HISTORY_BYTES, type LifeRecord } from '../persistence/history';
 import { Summary } from './LifeScreens';
 import { Journal } from './Journal';
 import { birthplaceOf, familyText, PARENT_TRAITS } from '../domain/creator';
 import { ageOf, CAREERS } from '../content/world';
 import { downloadFile } from './common';
+import { guestRepository, type GameRepository } from '../persistence/repository';
+import { AccountRepository } from '../cloud/account';
 export function LifeHistory({
   run,
   identity,
   onNew,
+  repository = guestRepository,
 }: {
   run: GameRun | null;
   identity: string;
   onNew: () => void;
+  repository?: GameRepository;
 }) {
   const [records, setRecords] = useState<LifeRecord[]>([]),
     [selected, setSelected] = useState<LifeRecord | null>(null),
@@ -28,17 +25,24 @@ export function LifeHistory({
     [message, setMessage] = useState('Đang đọc lịch sử…'),
     [busy, setBusy] = useState(false);
   const file = useRef<HTMLInputElement>(null);
-  async function refresh() {
+  const refresh = useCallback(async () => {
     try {
-      setRecords(await listHistory());
+      setRecords(await repository.history());
       setMessage('');
     } catch {
       setMessage('Không đọc được lịch sử trên trình duyệt. Các ô lưu vẫn được giữ nguyên.');
     }
-  }
+  }, [repository]);
   useEffect(() => {
     void refresh();
-  }, []);
+    if (repository instanceof AccountRepository)
+      void repository
+        .moreHistory()
+        .then(refresh)
+        .catch(() =>
+          setMessage('Chưa tải được lịch sử đám mây. Những bản trên thiết bị vẫn đọc được.'),
+        );
+  }, [repository, refresh]);
   async function perform(fn: () => Promise<unknown>) {
     setBusy(true);
     try {
@@ -69,9 +73,13 @@ export function LifeHistory({
         <button
           className="button secondary"
           disabled={busy || !records.length}
-          onClick={() => downloadFile(exportHistory(records), 'mot-kiep-viet-lich-su.json')}
+          onClick={() =>
+            downloadFile(exportHistory(records.slice(0, 50)), 'mot-kiep-viet-lich-su.json')
+          }
         >
-          Xuất toàn bộ lịch sử
+          {repository instanceof AccountRepository
+            ? 'Xuất lịch sử đã tải (tối đa 50)'
+            : 'Xuất toàn bộ lịch sử'}
         </button>
         <button className="button secondary" disabled={busy} onClick={() => file.current?.click()}>
           Nhập lịch sử
@@ -80,7 +88,7 @@ export function LifeHistory({
           <button
             className="text-button"
             disabled={busy}
-            onClick={() => void perform(() => archiveLife(run, identity))}
+            onClick={() => void perform(() => repository.archive(run, identity))}
           >
             Thử lưu lại kiếp vừa kết thúc
           </button>
@@ -96,12 +104,21 @@ export function LifeHistory({
             if (f)
               void perform(async () => {
                 if (f.size > MAX_HISTORY_BYTES) throw new Error('Tệp vượt 20 MiB.');
-                await importHistory(await f.text());
+                await repository.importHistory(await f.text());
                 if (file.current) file.current.value = '';
               });
           }}
         />
       </div>
+      {repository instanceof AccountRepository && (
+        <button
+          className="button secondary"
+          disabled={busy}
+          onClick={() => void perform(() => repository.moreHistory())}
+        >
+          Tải thêm lịch sử từ đám mây
+        </button>
+      )}
       <p role="status">{busy ? 'Đang xử lý…' : message}</p>
       {!records.length && !busy && (
         <p className="history-empty">
@@ -170,8 +187,9 @@ export function LifeHistory({
         </div>
       )}
       <p className="fine-print">
-        Lưu trên thiết bị, tối đa 50 kiếp; tệp nhập tối đa 20 MiB. Tài khoản đám mây và đồng bộ
-        thiết bị chưa có trong bản này.
+        {repository instanceof AccountRepository
+          ? 'Lịch sử riêng theo tài khoản, tải theo từng trang. Bản trên thiết bị giúp bạn đọc lại khi mất mạng; tệp nhập tối đa 50 kiếp và 20 MiB.'
+          : 'Lưu trên thiết bị, tối đa 50 kiếp; tệp nhập tối đa 20 MiB. Đăng nhập tài khoản được mời để dùng lịch sử đám mây.'}
       </p>
     </section>
   );

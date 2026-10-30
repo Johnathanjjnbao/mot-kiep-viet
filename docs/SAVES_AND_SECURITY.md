@@ -1,12 +1,12 @@
 # Lưu game, tương thích và giới hạn an toàn
 
-Checkpoint v0.3: đã thêm contract/repository cloud và cache/queue riêng theo project + UUID người dùng, nhưng **chưa nối vào UI/session**. Luồng guest bên dưới giữ nguyên; cloud mặc định tắt. Migration chỉ áp vào project được xác nhận và cho phép; không có service-role trong frontend. PostgreSQL fixtures kiểm tra quyền dưới roles không superuser; Auth/email/two-device thật chưa chạy. Xem V03_PROGRESS và SUPABASE_SETUP, không dùng trạng thái này để gọi cloud COMPLETE.
+v0.3 đã nối repository guest/account vào UI/session. Cache account theo project + UUID, giữ database guest gốc; Auth/RLS và hai browser context thật đã kiểm tra. Dùng tài khoản Email/Password được tạo thủ công; SMTP/invitation ngoài phạm vi, bước chủ dự án tự đăng nhập live NOT RUN. Hai migration production đã được review/phê duyệt riêng. Không service-role trong frontend. Xem CLOUD_ARCHITECTURE, V03_REPORT và SUPABASE_SETUP.
 
 ## Lưu trên máy
 
 IndexedDB `mot-kiep-viet`, store `saves`: autosave riêng và `slot-1`, `slot-2`, `slot-3`. Autosave theo mỗi trạng thái mới; các lần ghi xếp hàng. Ba slot chỉ thay khi người chơi lưu vào đó; slot có dữ liệu cần thao tác “Thay bản lưu”. Nhập/tải slot sẽ thành cuộc đời hiện tại và được tự lưu. Bản cũ trong slot khác không bị sửa.
 
-Dữ liệu gắn với trình duyệt và origin (giao thức, máy, cổng). `localhost` và `127.0.0.1`, cổng 5173 và 4173 có vùng lưu khác nhau. Xóa dữ liệu trình duyệt hoặc dùng cửa sổ riêng tư có thể mất tiến độ; xuất JSON để sao lưu. Không có đồng bộ đám mây hoặc bảo vệ xung đột nhiều tab. Không mở nhiều tab cùng chơi một bản tự lưu.
+Dữ liệu gắn với trình duyệt và origin (giao thức, máy, cổng). `localhost` và `127.0.0.1`, cổng 5173 và 4173 có vùng lưu khác nhau. Xóa dữ liệu trình duyệt hoặc dùng cửa sổ riêng tư có thể mất tiến độ; xuất JSON để sao lưu. Guest không đồng bộ đám mây hay chống xung đột nhiều tab. Account dùng CAS/recovery theo CLOUD_ARCHITECTURE; không ghép action log.
 
 ## Định dạng
 
@@ -28,7 +28,7 @@ Giới hạn thao tác quản lý 400/life để luôn nằm trong ngưỡng rep
 
 - Không `eval`, `dangerouslySetInnerHTML`, ghi `innerHTML` hay tải nội dung từ tệp nhập thành chương trình. React hiển thị tên/seed/văn bản như text.
 - Thẻ SVG sinh bởi mẫu cố định, escape `& < > " '` cho dữ liệu người dùng. Chỉ tải xuống khi được bấm; không chia sẻ dữ liệu ra dịch vụ khác.
-- Không backend, auth, khóa API, analytics, runtime AI hay yêu cầu mạng cho mô phỏng. Font được đóng gói cục bộ, tranh vector tự vẽ.
+- Engine/guest không cần mạng sau khi app đã tải. Account có Auth/Supabase với publishable key công khai; không có privileged key/SMTP secret trong bundle, analytics hay runtime AI. Font đóng gói cục bộ.
 - Audit phụ thuộc và kiểm tra bản lưu sai định dạng, quá lớn, phiên bản lạ, chỉnh tiền, action không hợp lệ nằm trong test evidence.
 - Chỉ hai liên kết tham khảo lịch sử được mở khi người chơi chọn đọc; dùng `rel=noreferrer` cho tab mới.
 
@@ -44,7 +44,7 @@ Database riêng `mot-kiep-viet-history` version 1, store lives, key UUID. Record
 
 Định dạng export mot-kiep-viet-history, version 1. Xuất một/tất cả, import tối đa 20 MiB và 50 record; kiểm tra schema, UUID, thời điểm, save replay, ended và memoir khớp trước giao dịch. Trùng ID trong tệp bị từ chối. Xung đột/quá 50 bản hủy toàn bộ transaction, giữ bản cũ. Trùng bản đã có thì bỏ qua. UUID là định danh, không phải thông tin xác thực.
 
-Lỗi quota/bộ nhớ được báo, cho xuất save/thử lại; không tự xóa lịch sử. Giới hạn 50 chưa có tăng dung lượng/phân trang. Lịch sử theo origin/trình duyệt, không tự đồng bộ hay chống người có DevTools sửa tại máy. Đọc danh sách có replay nên chậm hơn khi nhiều đời. [Tài khoản cloud](CLOUD_ACCOUNTS_PLAN.md) chưa triển khai.
+Lỗi quota/bộ nhớ được báo, cho xuất save/thử lại; không tự xóa lịch sử. Giới hạn 50 chưa có tăng dung lượng/phân trang. Lịch sử theo origin/trình duyệt, không tự đồng bộ hay chống người có DevTools sửa tại máy. Đọc danh sách có replay nên chậm hơn khi nhiều đời. [Tài khoản cloud v0.3](CLOUD_ARCHITECTURE.md) có cache/outbox và phân trang riêng; bước chủ dự án tự đăng nhập được theo dõi riêng.
 
 Trước thay engine/content: xuất các save mẫu, giữ bản engine tương ứng, bổ sung migration có test hoặc báo không tương thích rõ ràng. Đừng đổi luật nhưng giữ nguyên version sau phát hành.
 

@@ -147,3 +147,20 @@ Tài khoản mời riêng cho vợ/đồng bộ Supabase và kỳ bí/trường 
 ## Checkpoint v0.3 — đang triển khai 30/10/2026
 
 Baseline 479fa05, không sửa engine/content/replay. Có migration SQL/RLS/allowlist/CAS/receipt, cloud repositories, AuthProvider và account cache/sync riêng. 15 test mới cục bộ PASS; chưa tích hợp UI/session/cloud history outbox/guest migration/conflict UI. Chưa có Supabase project/config thực, đã để câu hỏi cho chủ dự án (chỉ public URL/publishable key). Production SQL/Auth/lời mời/đồng bộ thật NOT RUN; không tạo tài khoản cho vợ hay dịch vụ trả phí. Website v0.2 hiện giữ nguyên. Đọc V03_PROGRESS và SUPABASE_SETUP để tiếp tục; chưa ghi PASS cho cloud hoặc phát hành v0.3.
+
+## v0.3 — triển khai cloud trên project thật, 30/10/2026
+
+Tiếp tục từ 9bbffbc. CLI 2.122.0 link đúng kqnapcyceddwvrvkquvg. Người dùng đã duyệt riêng SQL 202610300001 (SHA-256 8BC4FD0A180416406137649F8342B3F684B0AD7F77D5BD92EEB96FFED83158B0) và bản sửa PT409 202610300002 (BF9464E459B8EF604B2AE630702F28B383A2596A52AE25EE7C3D72A5168DB8E8); cả hai đã áp dụng, local/remote khớp. Auth registration disabled, URLs đúng Pages/local, không đổi SMTP qua config push. Bản sửa giải quyết gateway 504 ở nhánh conflict; tests thực trả409/PT409.
+
+Đã nối Auth/repositories/session/slots/history/outbox/conflict/guest migration và shell offline. Guest E2E 12/12, real backend 13 checks và real 2-browser/invite/recovery 23 checks PASS; generated links không chứng minh email delivery. Account screenshot/axe desktop/mobile không tràn ngang/vi phạm trong trạng thái quét. Tài khoản QA dọn hết, không credentials trong report. Full verify/production/secret scan và release CI/live cuối đang chốt, SHA kết quả sẽ ghi sau kiểm chứng.
+
+Chủ dự án chọn SMTP, tự nhập credential trên Dashboard; email/vợ thật chưa vào repo và onboarding vẫn INCOMPLETE. Báo cáo 15 mục V03_REPORT, kiến trúc CLOUD_ARCHITECTURE, vận hành SUPABASE_SETUP. Engine/content/save không đổi, không chạy lặp1.000 seed. Giữ mọi bàn giao cũ phía trên.
+
+
+## Resume theo chỉ thị unattended — 30/10/2026
+
+Mục này thay yêu cầu SMTP/invitation của checkpoint v0.3 phía trên; giữ nguyên lịch sử. HEAD đầu 9bbffbc, uncommitted cloud code được bảo toàn. Chủ dự án đã tạo tài khoản confirmed/password; cấp quyền allowlist đúng tài khoản hiện có, không dùng credentials người chơi. SMTP/email invitation/recovery ngoài phạm vi. Owner tự đăng nhập live NOT RUN.
+
+Thêm bounded storyAction dùng choose/advance cũ, action token + ref chặn stale/duplicate, focus/scroll vùng story và feedback/journal; không đổi engine/content2/schema3. Regression one-tap/replay/scheduled/ending/save/history. Thêm local CAS cho hai tab cùng cache, giữ nhánh stale vào recovery. Hai migration approved giữ nguyên hash và remote state. Không áp SQL mới/xóa production. QA identities mới chỉ disabled, dữ liệu giữ nguyên theo chỉ thị mới.
+
+Gates local mới: 77 unit/integration, 16 E2E desktop/mobile, 1.000 seed/0 vi phạm. E2E ban đầu phát hiện accessible name và focus sau double-click mobile, đã sửa; preview QA từng thiếu base env, đã khởi động lại đúng subpath. Supabase/live/CI đang chốt; kết quả cuối tại V03_HANDOFF, V03_REPORT và evidence. MASTER_PLAN/ROADMAP chỉ thiết kế v0.4–v0.6, không triển khai kinh tế VNĐ/trường thọ/quốc tế.

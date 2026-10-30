@@ -1,0 +1,60 @@
+{
+  "projectRef": "kqnapcyceddwvrvkquvg",
+  "browserUrl": "http://127.0.0.1:4173/mot-kiep-viet/",
+  "emailDelivery": "OUT OF SCOPE: existing confirmed Email/Password accounts",
+  "physicalDevices": "NOT RUN: independent browser contexts",
+  "status": "VERIFIED PASS",
+  "checks": [
+    {
+      "name": "real Auth login and ordinary authenticated JWTs",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "uninvited account denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "invited sessions recognized by server",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "unauthenticated access denied on all tables and save RPC",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "save, idempotent retry and second-device replay",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "A/B isolation and ownership/CAS bypass/delete denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "competing revision rejected",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "invalid version denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "completed life dedup, original replay, immutable and private",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "public registration disabled",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "logout revokes local session",
+      "status": "VERIFIED PASS"
+    }
+  ],
+  "fixtureDisposition": "VERIFIED PASS: synthetic identities disabled; production data preserved",
+  "conflictDiagnostic": {
+    "status": 409,
+    "code": "PT409",
+    "message": "Revision conflict"
+  },
+  "scope": "Backend assertions extracted from the same verified real-browser run"
+}

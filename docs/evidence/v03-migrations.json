@@ -1,0 +1,20 @@
+{
+  "projectRef": "kqnapcyceddwvrvkquvg",
+  "checkedAt": "2026-10-30",
+  "status": "VERIFIED PASS",
+  "newProductionMigrationDuringResume": false,
+  "migrations": [
+    {
+      "file": "202610300001_cloud.sql",
+      "sha256": "8BC4FD0A180416406137649F8342B3F684B0AD7F77D5BD92EEB96FFED83158B0",
+      "approval": "Explicit owner approval in chat before application",
+      "localRemote": "match"
+    },
+    {
+      "file": "202610300002_conflict_http.sql",
+      "sha256": "BF9464E459B8EF604B2AE630702F28B383A2596A52AE25EE7C3D72A5168DB8E8",
+      "approval": "Explicit owner approval in chat before application",
+      "localRemote": "match"
+    }
+  ]
+}

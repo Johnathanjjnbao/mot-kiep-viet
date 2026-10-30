@@ -9,7 +9,7 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Mở địa chỉ cục bộ được in ra (mặc định http://127.0.0.1:5173). Không có dịch vụ trả phí hoặc backend.
+Mở địa chỉ cục bộ được in ra (mặc định http://127.0.0.1:5173). Guest chạy cục bộ; tài khoản tùy chọn dùng Supabase đã cấu hình.
 
 ```powershell
 npm.cmd run verify
@@ -18,7 +18,7 @@ npm.cmd run test:e2e
 npm.cmd run test:production
 ```
 
-Beta 0.2 có tạo nhân vật (1975–2026, tên/nơi sinh/gia đình/tính cách), 72 mẫu sự kiện với ít nhất 4 lựa chọn khả dụng, 3 tuyến truyện, 10 nghề, sổ tiền, quan hệ, sức khỏe và hồi ký. Lịch sử hoàn tất riêng với autosave/3 slot, có xuất/nhập. Giao diện hỗ trợ desktop/mobile, bàn phím, chữ lớn và giảm chuyển động.
+Beta 0.3 có tạo nhân vật (1975–2026, tên/nơi sinh/gia đình/tính cách), 72 mẫu sự kiện với ít nhất 4 lựa chọn khả dụng, 3 tuyến truyện, 10 nghề, sổ tiền, quan hệ, sức khỏe và hồi ký. Lịch sử hoàn tất riêng với autosave/3 slot, có xuất/nhập. Chạm một lựa chọn để thực thi và đến quyết định kế tiếp; kết quả vẫn hiện và được ghi vào nhật ký. Giao diện hỗ trợ desktop/mobile, bàn phím, chữ lớn và giảm chuyển động.
 
 ## Chơi trên Windows
 
@@ -34,11 +34,11 @@ Mở http://127.0.0.1:5173. Chọn “Bắt đầu một kiếp mới”, rồi 
 
 ## Giữ tiến độ
 
-Autosave và 3 slot nằm trong IndexedDB. Ô có dữ liệu cần chọn “Thay bản lưu” để ghi đè. Xuất JSON để sao lưu/chuyển thiết bị; save nhập tối đa 5 MiB, kiểm tra phiên bản/replay. Lịch sử riêng tối đa 50 kiếp, import 20 MiB. Save v0.1 mở chỉ đọc bằng luật cũ, không bị mô phỏng lại bằng v0.2. Không có đồng bộ cloud; không dùng nhiều tab chơi cùng bản tự lưu.
+Autosave và 3 slot nằm trong IndexedDB. Ô có dữ liệu cần chọn “Thay bản lưu” để ghi đè. Xuất JSON để sao lưu/chuyển thiết bị; save nhập tối đa 5 MiB, kiểm tra phiên bản/replay. Lịch sử riêng tối đa 50 kiếp, import 20 MiB. Save v0.1 mở chỉ đọc bằng luật cũ, không bị mô phỏng lại bằng v0.2. Tài khoản được chủ dự án tạo/cấp quyền dùng Supabase để đồng bộ và giữ lịch sử riêng; guest vẫn lưu cục bộ. Xem docs/SUPABASE_SETUP.md.
 
 ## Kiểm chứng
 
-`npm.cmd run verify`: typecheck, ESLint, unit/integration, nội dung và build. `npm.cmd run simulate`: 1.000 đời seed stress-0–stress-999. E2E dùng Edge trên Windows, Chromium trên CI. test:production mở build cổng 4173, kiểm tra chơi/lưu/tải và tự đóng. Kết quả hiện hành ở [V02_REPORT](docs/V02_REPORT.md); không dùng số liệu beta cũ để chứng minh luật mới.
+`npm.cmd run verify`: typecheck, ESLint, unit/integration, nội dung và build. `npm.cmd run simulate`: 1.000 đời seed stress-0–stress-999. E2E dùng Edge trên Windows, Chromium trên CI. test:production mở build cổng 4173, kiểm tra chơi/lưu/tải và tự đóng. Kết quả hiện hành ở [V03_REPORT](docs/V03_REPORT.md); không dùng số liệu beta cũ để chứng minh luật mới.
 
 ## Tài liệu
 
@@ -48,10 +48,10 @@ Autosave và 3 slot nằm trong IndexedDB. Ô có dữ liệu cần chọn “Th
 - [Nguồn lịch sử và mô hình cân bằng](docs/HISTORY_AND_BALANCE.md)
 - [Báo cáo bàn giao và bằng chứng](docs/HANDOFF.md)
 
-Nền kinh tế dùng đSM, đơn vị thiết kế, không phải số liệu VNĐ lịch sử. Từ 2027 là tương lai giả định. Chưa có playtest người thật xác nhận thời lượng/cân bằng. Không có backend, tài khoản hay runtime AI. [Kế hoạch tài khoản cloud](docs/CLOUD_ACCOUNTS_PLAN.md) và [roadmap](docs/ROADMAP.md) chưa được triển khai.
+Nền kinh tế dùng đSM, đơn vị thiết kế, không phải số liệu VNĐ lịch sử. Từ 2027 là tương lai giả định. Chưa có playtest người thật xác nhận thời lượng/cân bằng. Account dùng Supabase Auth/PostgreSQL; không có runtime AI. [Cloud v0.3](docs/CLOUD_ARCHITECTURE.md) đã tích hợp; không cần SMTP/invitation. Chủ dự án tự nhập tài khoản đã có để nghiệm thu. [Roadmap](docs/ROADMAP.md) giữ các tính năng tương lai.
 
 ## Chơi online
 
 Bản beta công khai: https://johnathanjjnbao.github.io/mot-kiep-viet/ . Repository: https://github.com/Johnathanjjnbao/mot-kiep-viet . Mỗi push main qua toàn bộ gates sẽ tự phát hành Pages; đọc AGENTS.md trước cập nhật. Dữ liệu localhost không tự chuyển sang Pages, dùng export/import.
 
-Build đúng Pages trên PowerShell: đặt $env:VITE_BASE_PATH='/mot-kiep-viet/' rồi npm.cmd run build; giữ biến này khi preview. Local dev mặc định base /. node scripts/check-pages.mjs kiểm tra URL thật trên desktop/mobile. Luật v0.2 đã đổi nên chạy 1.000 seed mới; không chạy lặp khi chỉ sửa tài liệu/triển khai.
+Build đúng Pages trên PowerShell: đặt $env:VITE_BASE_PATH='/mot-kiep-viet/' rồi npm.cmd run build; giữ biến này khi preview. Local dev mặc định base /. node scripts/check-pages.mjs kiểm tra URL thật trên desktop/mobile. v0.3 giữ engine/content/replay; chỉ chạy lại 1.000 seed khi đổi luật hoặc có lý do kiểm thử cụ thể.

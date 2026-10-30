@@ -1,7 +1,7 @@
 {
   "name": "mot-kiep-viet",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -15,7 +15,8 @@
     "test:production": "node scripts/smoke-production.mjs",
     "validate:content": "tsx scripts/validate-content.ts",
     "simulate": "tsx scripts/simulate.ts",
-    "verify": "npm run typecheck && npm run lint && npm test && npm run validate:content && npm run build"
+    "verify": "npm run typecheck && npm run lint && npm test && npm run validate:content && npm run build",
+    "test:cloud:live": "node --env-file-if-exists=.env.local --import tsx scripts/qa-cloud-live.mjs"
   },
   "engines": {
     "node": ">=24.0.0"
@@ -45,6 +46,7 @@
     "eslint-plugin-react-refresh": "^0.5.7",
     "fake-indexeddb": "^6.2.6",
     "prettier": "^3.9.10",
+    "supabase": "2.122.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",

@@ -1,15 +1,15 @@
-# Backlog sau beta v0.2
+# Backlog sau beta v0.3
 
 Ngày cập nhật: 30/10/2026. v0.2 triển khai Character Creator, lựa chọn trên 72 sự kiện và lịch sử cục bộ. Kết quả phát hành nằm trong PROJECT_STATUS/V02_REPORT. Backlog không tự mở phạm vi phiên hiện tại.
 
-## Đợt lớn kế tiếp — Personal Cloud Account
+## v0.3 — Personal Cloud Account và One-Click Gameplay
 
-- Tài khoản chỉ qua lời mời cho vợ chủ dự án, đăng nhập/khôi phục an toàn.
-- Giữ chế độ khách; save/lịch sử riêng có RLS theo người dùng.
-- Đồng bộ nhiều thiết bị, offline/retry, xử lý xung đột và chuyển dữ liệu khách có xác nhận.
-- Xác minh hai người dùng/hai thiết bị trước khi gọi hoàn tất.
+- Đăng nhập Email/Password bằng tài khoản admin đã tạo/confirmed/cấp quyền, không SMTP/invitation/public signup.
+- Guest riêng; autosave/ba slot/history cloud có RLS, offline queue/retry, CAS/receipt, recovery và migration có xác nhận.
+- Một chạm thực thi lựa chọn, tự đến sự kiện kế tiếp; không chọn thay, giữ outcome/delayed effects/replay, focus/scroll desktop/mobile.
+- Bằng chứng kỹ thuật QA và bước chủ dự án tự nhập tài khoản live được báo riêng.
 
-Thiết kế: [CLOUD_ACCOUNTS_PLAN.md](CLOUD_ACCOUNTS_PLAN.md). **NOT RUN**: chưa có Auth/tài khoản/cloud thực tế.
+Chi tiết: [V03_REPORT](V03_REPORT.md), [CLOUD_ACCOUNTS_PLAN](CLOUD_ACCOUNTS_PLAN.md), [MASTER_PLAN](MASTER_PLAN.md).
 
 ## v0.4 — Supernatural Longevity
 
@@ -22,11 +22,22 @@ Thiết kế: [CLOUD_ACCOUNTS_PLAN.md](CLOUD_ACCOUNTS_PLAN.md). **NOT RUN**: ch�
 - Nhảy thời gian hiệu quả, ngân sách bước hữu hạn và điều kiện kết thúc; không vòng lặp vô hạn.
 - Thiết kế version/save mới và regression cho đời thường/trường thọ trước đổi luật.
 
-**OUT OF SCOPE v0.2.** Chưa triển khai kỳ bí hay bỏ trần 82 tuổi của luật hiện tại.
+**OUT OF SCOPE v0.3.** Chưa triển khai kỳ bí hay bỏ trần 82 tuổi của luật hiện tại.
 
 ## v0.5 — International Life
 
 Du học, làm việc quốc tế, đoàn tụ gia đình, di cư/định cư; tuyến truyện về đàn áp chính trị và tìm kiếm bảo hộ cần bối cảnh lịch sử/pháp lý phù hợp. Gợi ý nơi đến theo hoàn cảnh và thời đại, quan hệ/tài chính/nghề nghiệp dài hạn ở nước ngoài. Chỉ là backlog, không triển khai trong v0.3.
+
+## v0.6 — Economy & Asset Shop
+
+- Chuyển tiền mô phỏng sang VNĐ chỉ với versioning, save/replay migration và kế hoạch ledger/inflation/balancing; không chuyển trong v0.3.
+- Lương theo vùng/năm/nghề, không một mức cố định mọi thời đại; không giới hạn cứng tổng tài sản.
+- Nhà đô thị/nông thôn, chi phí sở hữu và tác động nghề/tài chính.
+- Xe máy/ô tô thương hiệu thực bán tại Việt Nam, availability theo thời đại.
+- Điện thoại theo thương hiệu/đời máy; PC Builder chọn linh kiện tương thích.
+- Aura/social impression, bảo trì/hao mòn, nợ, bán lại và sự kiện liên quan.
+
+Chỉ chuẩn bị thiết kế. Không refactor kinh tế hay thêm shop khi v0.3 chưa nghiệm thu.
 
 ## Chơi thử và cải tiến
 

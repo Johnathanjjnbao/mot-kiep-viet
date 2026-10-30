@@ -1,40 +1,35 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Download, FolderOpen, Save, Upload } from 'lucide-react';
 import type { GameRun, SaveSnapshot } from '../domain/model';
-import {
-  MAX_SAVE_BYTES,
-  listSlots,
-  parseSave,
-  readSave,
-  snapshot,
-  writeSave,
-  type SaveKey,
-} from '../persistence/saves';
+import { MAX_SAVE_BYTES, listSlots, parseSave, snapshot, type SaveKey } from '../persistence/saves';
 import { ageOf } from '../content/world';
 import { downloadFile } from './common';
+import { guestRepository, type GameRepository } from '../persistence/repository';
 export function SaveManager({
   run,
   identity,
   onLoad,
+  repository = guestRepository,
 }: {
   run: GameRun | null;
   identity: string;
   onLoad: (save: SaveSnapshot) => void;
+  repository?: GameRepository;
 }) {
   const [slots, setSlots] = useState<Awaited<ReturnType<typeof listSlots>>>([]),
     [busy, setBusy] = useState(false),
     [message, setMessage] = useState(''),
     [overwrite, setOverwrite] = useState<SaveKey | null>(null);
   const file = useRef<HTMLInputElement>(null);
-  const refresh = () => listSlots().then(setSlots);
+  const refresh = useCallback(() => repository.slots().then(setSlots), [repository]);
   useEffect(() => {
     void refresh();
-  }, []);
+  }, [refresh]);
   async function save(key: SaveKey) {
     if (!run) return;
     setBusy(true);
     try {
-      await writeSave(key, run, identity);
+      await repository.write(key, run, identity);
       await refresh();
       setMessage('Đã lưu vào ô bạn chọn.');
       setOverwrite(null);
@@ -47,7 +42,7 @@ export function SaveManager({
   async function load(key: SaveKey) {
     setBusy(true);
     try {
-      const s = await readSave(key);
+      const s = await repository.read(key);
       if (s) onLoad(s);
     } catch (e) {
       setMessage(e instanceof Error ? e.message : 'Không tải được.');

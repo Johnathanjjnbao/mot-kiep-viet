@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-30",
+  "baseline": "9bbffbc853a42582517bdd7f67ea7826c19fec79",
+  "engineVersion": "2.0.0",
+  "contentVersion": "2.0.0",
+  "saveSchema": 3,
+  "local": {
+    "verify": {
+      "status": "VERIFIED PASS",
+      "testsPassed": 77,
+      "testFiles": 9,
+      "typecheck": "PASS",
+      "lint": "PASS",
+      "content": "PASS",
+      "pagesBaseBuild": "PASS"
+    },
+    "productionE2E": {
+      "status": "VERIFIED PASS",
+      "passed": 16,
+      "failed": 0,
+      "viewports": [
+        "1440x1000",
+        "375x812"
+      ],
+      "nativeTouchRapidTap": "PASS"
+    },
+    "simulation": {
+      "runs": 1000,
+      "violations": 0,
+      "failures": 0
+    },
+    "realAuthBackendBrowsers": {
+      "status": "VERIFIED PASS",
+      "checks": 23,
+      "evidence": "v03-real-browser.json"
+    },
+    "productionSmoke": "VERIFIED PASS",
+    "dependencyAdvisories": 0,
+    "secretFindings": 0,
+    "loginAxeViolations": 0
+  },
+  "remoteRelease": "PENDING",
+  "ownerManualLogin": "NOT RUN",
+  "smtpInvitationEmailRecovery": "OUT OF SCOPE",
+  "physicalDeviceTest": "NOT RUN",
+  "productionMigrationDuringResume": false,
+  "productionDataDeletedDuringResume": false
+}

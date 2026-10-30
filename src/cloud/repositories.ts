@@ -23,7 +23,7 @@ function checked(save: SaveSnapshot) {
   return parseSave(JSON.stringify(save));
 }
 function handle(error: { code?: string } | null) {
-  if (error?.code === '40001') throw new RevisionConflict();
+  if (error?.code === '40001' || error?.code === 'PT409') throw new RevisionConflict();
   if (error) throw new Error('Chưa đồng bộ được. Bản lưu trên thiết bị vẫn được giữ.');
 }
 export class CloudSaveRepository implements SaveRepository {

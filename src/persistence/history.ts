@@ -89,7 +89,7 @@ export async function archiveLife(run: GameRun, identity: string) {
 export function exportHistory(records: LifeRecord[]) {
   return JSON.stringify({ format: 'mot-kiep-viet-history', version: 1, records });
 }
-export async function importHistory(text: string) {
+export function parseHistory(text: string) {
   if (new TextEncoder().encode(text).length > MAX_HISTORY_BYTES)
     throw new Error('Tệp lịch sử vượt 20 MiB.');
   const input = z
@@ -103,6 +103,10 @@ export async function importHistory(text: string) {
   const records = input.records.map(validateLifeRecord);
   if (new Set(records.map((r) => r.id)).size !== records.length)
     throw new Error('Tệp có mã lịch sử trùng.');
+  return records;
+}
+export async function importHistory(text: string) {
+  const records = parseHistory(text);
   await insert(records);
   return records.length;
 }

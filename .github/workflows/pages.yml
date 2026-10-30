@@ -15,6 +15,10 @@ jobs:
     env:
       VITE_BASE_PATH: /mot-kiep-viet/
       E2E_PRODUCTION: '1'
+      VITE_CLOUD_ENABLED: 'true'
+      VITE_SUPABASE_URL: https://kqnapcyceddwvrvkquvg.supabase.co
+      # Intentionally public client key. Never place a secret/service-role key here.
+      VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_36fkaACnrCtpGy2dYggmjA_KKdt3h5Z
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

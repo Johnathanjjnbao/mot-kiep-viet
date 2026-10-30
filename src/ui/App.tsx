@@ -23,9 +23,12 @@ import { LifeHistory } from './LifeHistory';
 import { LegacyLife } from './LegacyLife';
 import { Journal } from './Journal';
 import { CareerPanel, FinancePanel, PeoplePanel } from './Panels';
+import { useAccount } from '../application/useAccount';
+import { AccountPanel } from './AccountPanel';
+import { guestRepository } from '../persistence/repository';
 type Screen = 'home' | 'new' | 'play' | 'journal' | 'history';
 type GameTab = 'story' | 'career' | 'finance' | 'people';
-type Dialog = 'help' | 'settings' | 'saves' | null;
+type Dialog = 'help' | 'settings' | 'saves' | 'account' | null;
 function readSetting(key: string) {
   try {
     return localStorage.getItem(key) === 'true';
@@ -34,7 +37,18 @@ function readSetting(key: string) {
   }
 }
 export function App() {
-  const session = useGameSession(),
+  const auth = useAccount();
+  if (auth.loading)
+    return (
+      <main className="account-loading" role="status">
+        Đang mở dữ liệu của bạn…
+      </main>
+    );
+  return <GameApp key={auth.account?.userId ?? 'guest'} auth={auth} />;
+}
+function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
+  const repository = auth.account ?? guestRepository;
+  const session = useGameSession(repository),
     { run, act } = session;
   const [screen, setScreen] = useState<Screen>('home'),
     [dialog, setDialog] = useState<Dialog>(null),
@@ -53,9 +67,10 @@ export function App() {
     }
   }, [largeText, still]);
   useEffect(() => {
+    if (screen === 'play' && tab === 'story' && run?.status === 'playing') return;
     focusRef.current?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [screen, tab, run?.activeEvent?.id, run?.status]);
+  }, [screen, tab, run?.status]);
   const resume = () => {
     setTab('story');
     setScreen('play');
@@ -105,6 +120,15 @@ export function App() {
         </nav>
         <div className="header-actions">
           <button
+            className="account-trigger"
+            onClick={() => setDialog('account')}
+            title={auth.account ? 'Tài khoản của tôi' : 'Đăng nhập'}
+            aria-label={auth.account ? 'Tài khoản của tôi' : 'Đăng nhập'}
+          >
+            <Users size={18} aria-hidden="true" />
+            <span>{auth.account ? 'Tài khoản của tôi' : 'Đăng nhập'}</span>
+          </button>
+          <button
             className="icon-button"
             aria-label="Lưu và tải game"
             onClick={() => setDialog('saves')}
@@ -122,13 +146,26 @@ export function App() {
       </header>
       <main id="main-content" ref={focusRef} tabIndex={-1}>
         {screen === 'home' && (
-          <HomeScreen
-            ready={session.ready}
-            run={run}
-            onNew={() => setScreen('new')}
-            onContinue={resume}
-            onHelp={() => setDialog('help')}
-          />
+          <>
+            {!auth.account && (
+              <div className="guest-entry">
+                <button
+                  className="text-button"
+                  disabled={!session.ready}
+                  onClick={() => setScreen('new')}
+                >
+                  Chơi không đăng nhập
+                </button>
+              </div>
+            )}
+            <HomeScreen
+              ready={session.ready}
+              run={run}
+              onNew={() => setScreen('new')}
+              onContinue={resume}
+              onHelp={() => setDialog('help')}
+            />
+          </>
         )}
         {screen === 'new' && (
           <NewLife
@@ -143,7 +180,13 @@ export function App() {
           />
         )}
         {screen === 'history' && (
-          <LifeHistory run={run} identity={session.identity} onNew={() => setScreen('new')} />
+          <LifeHistory
+            key={auth.account?.userId ?? 'guest'}
+            repository={repository}
+            run={run}
+            identity={session.identity}
+            onNew={() => setScreen('new')}
+          />
         )}
         {screen === 'play' &&
           run &&
@@ -222,7 +265,9 @@ export function App() {
                   {tab === 'story' ? (
                     <Story
                       run={run}
-                      onChoice={(eventId, choiceId) => act({ type: 'choose', eventId, choiceId })}
+                      onChoice={(eventId, choiceId, token) =>
+                        act({ type: 'choose', eventId, choiceId }, token)
+                      }
                       onAdvance={() => act({ type: 'advance' })}
                     />
                   ) : tab === 'career' ? (
@@ -286,22 +331,34 @@ export function App() {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.2</span>
+        <span className="footer-version">BETA · 0.3</span>
       </footer>
       {dialog && (
         <Modal
           title={
-            dialog === 'saves'
-              ? 'Giữ lại một cuộc đời'
-              : dialog === 'settings'
-                ? 'Chậm lại một chút'
-                : 'Vài điều trước khi sống'
+            dialog === 'account'
+              ? 'Tài khoản của tôi'
+              : dialog === 'saves'
+                ? 'Giữ lại một cuộc đời'
+                : dialog === 'settings'
+                  ? 'Chậm lại một chút'
+                  : 'Vài điều trước khi sống'
           }
-          wide={dialog === 'saves'}
+          wide={dialog === 'saves' || dialog === 'account'}
           onClose={() => setDialog(null)}
         >
-          {dialog === 'saves' ? (
+          {dialog === 'account' ? (
+            <AccountPanel
+              auth={auth}
+              onLoad={(s) => {
+                session.restore(s);
+                setDialog(null);
+                setScreen('play');
+              }}
+            />
+          ) : dialog === 'saves' ? (
             <SaveManager
+              repository={repository}
               identity={session.identity}
               run={run}
               onLoad={(loaded) => {

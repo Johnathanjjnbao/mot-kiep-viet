@@ -1,6 +1,6 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
-Beta v0.2, React + TypeScript strict + Vite, GitHub Pages công khai, dữ liệu trên máy và không tài khoản/backend. Phát triển tiếp từ bản v0.1 đã phát hành; không thay ứng dụng. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows; dependencies khóa trong package-lock.json.
+Beta v0.3, React + TypeScript strict + Vite, GitHub Pages công khai. Guest lưu trên máy; tài khoản được mời dùng Supabase Auth/PostgreSQL qua cache/outbox riêng. Xem CLOUD_ARCHITECTURE.md. Phát triển tiếp từ bản v0.1 đã phát hành; không thay ứng dụng. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows; dependencies khóa trong package-lock.json.
 
 ## Trách nhiệm và quyền sở hữu
 

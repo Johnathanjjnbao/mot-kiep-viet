@@ -1,5 +1,9 @@
 import { chromium, expect } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+const version = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+  .version.split('.')
+  .slice(0, 2)
+  .join('.');
 const url = process.argv[2] ?? 'https://johnathanjjnbao.github.io/mot-kiep-viet/';
 const report = { url, status: 'FAIL', viewports: [], errors: [] };
 const browser = await chromium.launch({ channel: process.env.CI ? 'chromium' : 'msedge' });
@@ -21,7 +25,8 @@ try {
     await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
     await page.locator('[data-testid="event-choice"]:not(:disabled)').first().click();
-    await page.getByTestId('advance-life').click();
+    await expect(page.getByTestId('advance-life')).toHaveCount(0);
+    await expect(page.locator('.story-card h2')).toBeFocused();
     const event = await page.locator('.story-card h2').textContent();
     await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
     await page.getByRole('button', { name: 'Lưu và tải game' }).click();
@@ -39,7 +44,7 @@ try {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    await expect(page.locator('.footer-version')).toContainText('0.2');
+    await expect(page.locator('.footer-version')).toContainText(version);
     for (const family of ['both', 'father-only', 'mother-only', 'with-father', 'with-mother']) {
       await page.getByTitle('Về trang đầu').click();
       await page.getByRole('button', { name: 'Bắt đầu một kiếp mới' }).click();
@@ -88,7 +93,7 @@ try {
       viewport,
       status: 'VERIFIED PASS',
       checks: [
-        'release UI version 0.2',
+        `release UI version ${version}`,
         'five custom household forms and preview/edit',
         'four or more choices throughout a complete life',
         'immutable history, export/import dedup and retention after new run/reload',

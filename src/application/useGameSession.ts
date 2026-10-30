@@ -1,20 +1,24 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { GameRun, RunAction, RunSetup, SaveSnapshot } from '../domain/model';
-import { archiveLife } from '../persistence/history';
-import { createRun, dispatch } from '../engine/engine';
-import { readSave, writeSave } from '../persistence/saves';
-export function useGameSession() {
+import { guestRepository, type GameRepository } from '../persistence/repository';
+import { createRun } from '../engine/engine';
+import { storyAction } from './story-flow';
+import { LocalBranchConflict } from '../persistence/account-cache';
+export function useGameSession(repository: GameRepository = guestRepository) {
   const [identity, setIdentity] = useState('');
+  const currentRun = useRef<GameRun | null>(null);
   const [run, setRun] = useState<GameRun | null>(null),
     [ready, setReady] = useState(false),
     [saveStatus, setSaveStatus] = useState('Chưa có cuộc đời đang chơi'),
     [error, setError] = useState('');
   useEffect(() => {
     let cancelled = false;
-    readSave('autosave')
+    repository
+      .read('autosave')
       .then((s) => {
         if (!cancelled) {
-          setRun(s?.run ?? null);
+          currentRun.current = s?.run ?? null;
+          setRun(currentRun.current);
           setIdentity(s?.identity ?? crypto.randomUUID());
           setReady(true);
         }
@@ -28,51 +32,56 @@ export function useGameSession() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [repository]);
   useEffect(() => {
     if (!run || !ready || !identity) return;
     let cancelled = false;
     setSaveStatus('Đang tự lưu…');
-    writeSave('autosave', run, identity)
+    repository
+      .write('autosave', run, identity)
       .then(async () => {
-        if (run.status === 'ended') await archiveLife(run, identity);
+        if (run.status === 'ended') await repository.archive(run, identity);
       })
       .then(() => {
         if (!cancelled) setSaveStatus('Đã tự lưu trên máy');
       })
-      .catch(() => {
+      .catch((e) => {
         if (!cancelled) {
           setSaveStatus('Chưa lưu được');
           setError(
-            'Chưa giữ được đầy đủ bản lưu/lịch sử. Hãy xuất tệp trong mục Lưu game; mở Lịch sử cuộc đời để thử lưu lại.',
+            e instanceof LocalBranchConflict
+              ? e.message
+              : 'Chưa giữ được đầy đủ bản lưu/lịch sử. Hãy xuất tệp trong mục Lưu game; mở Lịch sử cuộc đời để thử lưu lại.',
           );
         }
       });
     return () => {
       cancelled = true;
     };
-  }, [run, ready, identity]);
-  const act = useCallback(
-    (action: RunAction) => {
-      if (!run) return;
-      try {
-        setRun(dispatch(run, action));
-        setError('');
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Không thực hiện được lựa chọn.');
-      }
-    },
-    [run],
-  );
+  }, [run, ready, identity, repository]);
+  const act = useCallback((action: RunAction, expectedDecision?: string) => {
+    if (!currentRun.current) return;
+    try {
+      const next = storyAction(currentRun.current, action, expectedDecision);
+      if (next === currentRun.current) return;
+      currentRun.current = next;
+      setRun(next);
+      setError('');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Không thực hiện được lựa chọn.');
+    }
+  }, []);
   const start = useCallback((seed: string, setup?: RunSetup) => {
     const actual =
       seed.trim() || `viet-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36)}`;
-    setRun(createRun(actual, setup));
+    currentRun.current = createRun(actual, setup);
+    setRun(currentRun.current);
     setIdentity(crypto.randomUUID());
     setError('');
   }, []);
   const restore = (s: SaveSnapshot) => {
-    setRun(s.run);
+    currentRun.current = s.run;
+    setRun(currentRun.current);
     setIdentity(s.identity ?? crypto.randomUUID());
     setError('');
   };

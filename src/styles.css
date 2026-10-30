@@ -2975,3 +2975,120 @@ meter::-moz-meter-bar {
     grid-template-columns: 90px 1fr;
   }
 }
+
+.account-panel {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+.account-panel form {
+  display: grid;
+  gap: 1rem;
+  margin-block: 1.25rem;
+}
+.account-panel label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+}
+.account-panel input:not([type='checkbox']) {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  font-size: 16px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.account-panel details {
+  margin-block: 1.25rem;
+}
+.account-panel summary {
+  cursor: pointer;
+  padding-block: 0.7rem;
+}
+.account-panel article {
+  border-top: 1px solid var(--line);
+  padding-block: 1rem;
+}
+.account-panel .account-confirm {
+  display: flex;
+  align-items: flex-start;
+  margin-block: 1rem;
+  line-height: 1.7;
+}
+.account-panel .account-confirm input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+.account-panel button {
+  min-height: 44px;
+}
+.account-loading {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+@media (max-width: 600px) {
+  .account-panel .button-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .account-panel .button {
+    width: 100%;
+  }
+  .account-panel p {
+    overflow-wrap: anywhere;
+  }
+}
+/* The next decision keeps a stable column. Feedback grows below the choices. */
+.story-card {
+  scroll-margin-top: 20px;
+  min-height: 36rem;
+  overflow-anchor: none;
+}
+.story-card h2:focus {
+  outline: none;
+}
+.recent-outcome {
+  margin-top: 22px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.recent-outcome strong {
+  color: var(--leaf);
+}
+.recent-details {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+.recent-details ol {
+  padding-left: 22px;
+}
+.recent-details li {
+  margin: 10px 0;
+}
+.account-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 0.75rem;
+}
+.guest-entry {
+  max-width: 1510px;
+  margin: auto;
+  padding: 8px 5% 0;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .account-trigger span {
+    display: none;
+  }
+}

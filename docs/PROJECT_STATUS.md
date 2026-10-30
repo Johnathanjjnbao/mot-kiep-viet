@@ -1,6 +1,14 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
-## Đang triển khai v0.3 — 30/10/2026
+## Hiện hành — v0.3 resume, 30/10/2026
+
+Khôi phục đúng main `9bbffbc853a42582517bdd7f67ea7826c19fec79`, giữ toàn bộ uncommitted cloud implementation từ phiên ngắt. Đã nối Auth/account/guest repositories, autosave/ba slot/history, offline shell/outbox, conflict/recovery và explicit guest migration. Bổ sung continuous one-click bằng action choose/advance cũ, guard duplicate/stale, focus/scroll và outcome không chặn. Local CAS chặn hai tab dùng chung cache ghi đè nhánh cũ. Engine/content 2.0.0, schema3 và legacy v1 giữ nguyên.
+
+Chủ dự án thay yêu cầu SMTP/invitation bằng tài khoản Email/Password đã tạo thủ công. Đã kiểm tra tài khoản confirmed/có password và cấp allowlist chính tài khoản đó; không tạo lại, không dùng mật khẩu người chơi. Chủ dự án tự đăng nhập live: **NOT RUN**. Không có nút gửi email recovery; hướng dẫn quản trị an toàn ở SUPABASE_SETUP. Hai migration đã duyệt/applied khớp hash; không migration production mới, không nới RLS, không xóa production. QA mới giữ dữ liệu synthetic và vô hiệu hóa đúng các identity tự tạo.
+
+Local verify 77/77, guest production E2E 16/16 và simulation 1.000 đời/0 vi phạm đã qua trong lượt resume; real Supabase23/production smoke/secret scan0 PASS; đang commit/push/CI/live. Không dùng số PASS cũ thay bằng chứng mới. Chi tiết [V03_RESUME](V03_RESUME.md), [V03_REPORT](V03_REPORT.md), [V03_HANDOFF](V03_HANDOFF.md). v0.4–v0.6 chỉ chuẩn bị thiết kế trong MASTER_PLAN/ROADMAP.
+
+## Checkpoint 9bbffbc — lịch sử nền tảng v0.3
 
 Tiếp tục từ 479fa05, không làm lại v0.2. Nền tảng cloud/RLS/cache đã có mã, 15 test mới cục bộ PASS; chưa nối UI/session, chưa áp SQL production hay xác minh Auth thực. Đang chờ chủ dự án cung cấp project Supabase URL/publishable key và xác nhận đích trước migration. Không có secret/service-role, email hay password thật trong repo. [Checkpoint](V03_PROGRESS.md), [setup](SUPABASE_SETUP.md). Website công khai hiện vẫn là v0.2 đã kiểm chứng bên dưới; không gọi v0.3/tài khoản vợ COMPLETE.
 

@@ -1,0 +1,5 @@
+project_id = "mot-kiep-viet"
+[auth]
+enable_signup = false
+site_url = "https://johnathanjjnbao.github.io/mot-kiep-viet/"
+additional_redirect_urls = ["https://johnathanjjnbao.github.io/mot-kiep-viet/", "http://127.0.0.1:4173/mot-kiep-viet/", "http://127.0.0.1:5173/mot-kiep-viet/"]

@@ -1,11 +1,12 @@
 import 'fake-indexeddb/auto';
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { AccountCache } from '../src/persistence/account-cache';
 import { SyncCoordinator } from '../src/cloud/sync';
 import { RevisionConflict, type SaveRepository } from '../src/cloud/contracts';
 import { createRun, advance } from '../src/engine/engine';
 import { snapshot, writeSave, readSave } from '../src/persistence/saves';
-import { cloudConfig } from '../src/cloud/auth';
+import { cloudConfig, scopedDataClient } from '../src/cloud/auth';
+import { CloudSaveRepository } from '../src/cloud/repositories';
 const project = 'https://test-project.supabase.co';
 const fresh = () => new AccountCache(project, crypto.randomUUID());
 const save = () => snapshot(createRun('account-test'), crypto.randomUUID());
@@ -146,4 +147,149 @@ it('stops UI updates and later operations when the account leaves during an in-f
   await a.writeLocal('slot-1', s, 0);
   await sync.flush();
   expect(await a.pending()).toHaveLength(1);
+});
+
+it('keeps an in-flight account client bound to its own JWT across switching and refresh', async () => {
+  const headers: string[] = [];
+  const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async (_input, init) => {
+    headers.push(new Headers(init?.headers).get('Authorization') ?? '');
+    return new Response('[]', { headers: { 'Content-Type': 'application/json' } });
+  });
+  try {
+    const config = { url: project, publishableKey: 'sb_publishable_test' },
+      a = { token: 'qa-user-a' },
+      b = { token: 'qa-user-b' };
+    const clientA = scopedDataClient(config, () => a.token),
+      clientB = scopedDataClient(config, () => b.token);
+    await clientA.from('cloud_saves').select('*');
+    await clientB.from('cloud_saves').select('*');
+    a.token = 'qa-user-a-refreshed';
+    await clientA.from('cloud_saves').select('*');
+    a.token = '';
+    await clientA.from('cloud_saves').select('*');
+    expect(headers).toEqual([
+      'Bearer qa-user-a',
+      'Bearer qa-user-b',
+      'Bearer qa-user-a-refreshed',
+      '',
+    ]);
+  } finally {
+    fetchMock.mockRestore();
+  }
+});
+it('preserves both conflict branches and uses the chosen remote revision', async () => {
+  const a = fresh(),
+    local = save(),
+    remote = save();
+  await a.writeLocal('autosave', local, 0);
+  await a.resolve('autosave', remote, 4, false);
+  expect((await a.read('autosave'))?.save).toEqual(remote);
+  expect(await a.pending()).toHaveLength(0);
+  expect((await a.recoveries())[0]).toEqual(local);
+  await a.writeLocal('autosave', local, 4);
+  await a.resolve('autosave', remote, 5, true);
+  expect((await a.read('autosave'))?.save).toEqual(local);
+  expect((await a.pending())[0].expectedRevision).toBe(5);
+});
+it('keeps repeated guest branch copies idempotent without altering guest data', async () => {
+  const a = fresh(),
+    s = save();
+  delete s.identity;
+  const first = await a.preserveBranch(s),
+    second = await a.preserveBranch({ ...s, savedAt: new Date().toISOString() });
+  expect(first.identity).toBe(second.identity);
+  expect(await a.recoveries()).toHaveLength(1);
+  expect(s.identity).toBeUndefined();
+});
+it('keeps the latest local save after a bounded queue fills', async () => {
+  const a = fresh(),
+    s = save();
+  for (let i = 0; i < 64; i++) {
+    await a.writeLocal('autosave', s, 0);
+    await a.markAttempt((await a.pending()).at(-1)!.id, 0);
+  }
+  const latest = snapshot(advance(s.run), s.identity);
+  await expect(a.writeLocal('autosave', latest, 0)).rejects.toThrow(/Hàng đợi đầy/);
+  expect((await a.read('autosave'))?.save).toEqual(latest);
+  await a.acknowledge((await a.pending())[0].id, 1);
+  expect((await a.read('autosave'))?.status).toBe('error');
+});
+
+it('forks the losing identity when two branches of the same life compete', async () => {
+  const a = fresh(),
+    local = save(),
+    remote = snapshot(advance(local.run), local.identity);
+  await a.writeLocal('autosave', local, 0);
+  await a.resolve('autosave', remote, 2, false);
+  const recovery = (await a.recoveries())[0];
+  expect(recovery.run).toEqual(local.run);
+  expect(recovery.identity).not.toBe(local.identity);
+  expect((await a.read('autosave'))?.save.identity).toBe(local.identity);
+});
+
+it('does not reset an exhausted retry budget merely because connectivity returns', async () => {
+  const a = fresh(),
+    s = save();
+  await a.writeLocal('autosave', s, 0);
+  const id = (await a.pending())[0].id;
+  for (let i = 0; i < 8; i++) await a.markAttempt(id, 0);
+  await a.retry(false);
+  let calls = 0;
+  const sync = new SyncCoordinator(
+    a,
+    remote(async () => {
+      calls++;
+      return 1;
+    }),
+    () => {},
+  );
+  await sync.flush(1);
+  expect(calls).toBe(0);
+  expect((await a.pending())[0].attempts).toBe(8);
+  await a.retry();
+  await sync.flush(1);
+  expect(calls).toBe(1);
+  expect(await a.pending()).toHaveLength(0);
+});
+it('translates the server HTTP 409 contract into a preserved-branch conflict', async () => {
+  const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(
+    async () =>
+      new Response(
+        JSON.stringify({
+          code: 'PT409',
+          message: 'Revision conflict',
+          hint: null,
+          details: null,
+        }),
+        { status: 409, headers: { 'Content-Type': 'application/json' } },
+      ),
+  );
+  try {
+    const client = scopedDataClient(
+      { url: project, publishableKey: 'sb_publishable_test' },
+      () => 'qa-user-token',
+    );
+    const repo = new CloudSaveRepository(client, crypto.randomUUID());
+    await expect(repo.write('autosave', save(), 0, crypto.randomUUID())).rejects.toBeInstanceOf(
+      RevisionConflict,
+    );
+  } finally {
+    fetchMock.mockRestore();
+  }
+});
+
+it('atomically rejects two local tabs writing from the same stale cache branch', async () => {
+  const userId = crypto.randomUUID(),
+    a = new AccountCache(project, userId),
+    b = new AccountCache(project, userId);
+  const original = save();
+  await a.acceptRemote('autosave', original, 1);
+  const tabA = (await a.read('autosave'))!.save;
+  const tabB = (await b.read('autosave'))!.save;
+  const first = snapshot(advance(original.run), original.identity);
+  await a.writeLocal('autosave', first, 1, tabA);
+  await expect(b.writeLocal('autosave', original, 1, tabB)).rejects.toThrow(/tab khác/);
+  expect((await a.read('autosave'))!.save.run).toEqual(first.run);
+  expect(await a.pending()).toHaveLength(1);
+  expect((await a.pending())[0].save.run).toEqual(first.run);
 });

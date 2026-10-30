@@ -3,6 +3,12 @@ export interface CloudConfig {
   url: string;
   publishableKey: string;
 }
+export function scopedDataClient(config: CloudConfig, token: () => string) {
+  return createClient(config.url, config.publishableKey, {
+    accessToken: async () => token(),
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+  });
+}
 export function cloudConfig(env: Record<string, unknown>): CloudConfig | null {
   if (env.VITE_CLOUD_ENABLED !== 'true') return null;
   const url = String(env.VITE_SUPABASE_URL ?? ''),
@@ -25,7 +31,7 @@ export function createAuthProvider(config: CloudConfig) {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
-      detectSessionInUrl: true,
+      detectSessionInUrl: false,
       storageKey: `mkv-auth:${new URL(config.url).hostname}`,
     },
   });
@@ -41,10 +47,6 @@ export class AuthProvider {
     if (error)
       throw new Error('Không đăng nhập được. Kiểm tra thông tin hoặc thử lại khi có mạng.');
     return data.session;
-  }
-  async recover(email: string, redirectTo: string) {
-    const { error } = await this.client.auth.resetPasswordForEmail(email.trim(), { redirectTo });
-    if (error) throw new Error('Chưa gửi được yêu cầu khôi phục. Vui lòng thử lại sau.');
   }
   async setPassword(password: string) {
     if (password.length < 12) throw new Error('Dùng mật khẩu ít nhất 12 ký tự.');
