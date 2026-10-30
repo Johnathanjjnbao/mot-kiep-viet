@@ -1,3 +1,14 @@
+import {
+  initSocial,
+  refreshSocial,
+  socialDefinition,
+  socialTarget,
+  focusSocial,
+  requestSocial,
+  applySocial,
+  tickSocial,
+  socialInterrupt,
+} from './social';
 import * as frozen2 from '../legacy/v2/engine/engine';
 import { defaultWardrobe, applyWardrobe } from './wardrobe';
 import { presentationScore } from '../content/clothing';
@@ -161,8 +172,9 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     motherTraits: setup.motherTraits ?? [],
     fatherTraits: setup.fatherTraits ?? [],
   };
-  run.setup.expansion = setup.expansion ?? 'wardrobe';
+  run.setup.expansion = setup.expansion ?? 'social';
   run.wardrobe = defaultWardrobe();
+  if (run.setup.expansion === 'social') initSocial(run);
   run.id = `life:${hashSeed(seed + JSON.stringify(run.setup)).toString(16)}`;
   run.household.resources = run.setup.wealth!;
   for (const npc of run.npcs.filter((n) => ['mother', 'father'].includes(n.id))) {
@@ -277,16 +289,29 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   return null;
 }
 export const activeDefinition = (run: GameRun) =>
-  allEvents().find((e) => e.id === run.activeEvent?.id);
+  socialDefinition(run) ?? allEvents().find((e) => e.id === run.activeEvent?.id);
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   const last = run.seen[event.id];
   return (
     eligible(run, event.condition) &&
+    (event.version < 4 || !!socialTarget(run, event.id)) &&
+    (!run.social || !event.choices.some((c) => c.effects.some((e) => e.kind === 'family'))) &&
     (last === undefined || (!event.once && run.month - last >= event.cooldown)) &&
     event.choices.filter((c) => !choiceReason(run, c)).length >= 4
   );
 }
 function selectEvent(run: GameRun) {
+  if (run.social?.discoveryPending) {
+    const id = run.social.breach?.primaryId;
+    if (id) {
+      focusSocial(run, 'soc-discovery', id, true);
+      return;
+    }
+  }
+  if (run.social?.lossPending) {
+    focusSocial(run, 'soc-loss', run.social.lossPending, true);
+    return;
+  }
   let options = EVENTS.filter((e) => eventEligible(run, e));
   if (!options.length) options = [FALLBACK];
   const priority = Math.max(...options.map((e) => e.priority));
@@ -296,6 +321,10 @@ function selectEvent(run: GameRun) {
     e.weight * (e.id === 'career-collapse' && job ? 0.2 + (1 - job.stability) * 3 : 1);
   let value = random(run, 'event') * options.reduce((n, e) => n + weight(e), 0);
   const selected = options.find((e) => (value -= weight(e)) < 0) ?? options[options.length - 1];
+  if (selected.version === 4) {
+    focusSocial(run, selected.id, socialTarget(run, selected.id)!);
+    return;
+  }
   run.activeEvent = { id: selected.id, month: run.month };
 }
 function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null) {
@@ -321,6 +350,12 @@ function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'social': {
+      const result = applySocial(run, e.operation);
+      note(run, 'Một lời đối thoại', result, 'relationship');
+      run.lastOutcome = result;
+      break;
+    }
     case 'presentation': {
       const value = presentationScore(run, e.context);
       const key = e.context === 'exercise' ? 'skill' : 'social';
@@ -445,6 +480,7 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   }
 }
 function conclude(run: GameRun, ending: 'death' | 'memoir') {
+  if (run.social) run.social.focus = null;
   run.ending = ending;
   run.status = 'ended';
   run.player.alive = ending !== 'death';
@@ -545,6 +581,7 @@ function tick(run: GameRun) {
       effect.effects.forEach((e, i) => applyEffect(run, e, `scheduled:${effect.id}`, i));
       note(run, effect.label, 'Một quyết định trước đây vừa để lại hệ quả.', 'life');
     }
+  tickSocial(run);
   if (stats.health <= 0) conclude(run, 'death');
   else if (age >= 82) conclude(run, 'memoir');
 }
@@ -560,7 +597,10 @@ export function advance(input: GameRun): GameRun {
   run.status = 'playing';
   run.lastOutcome = null;
   const next = MILESTONES.find((age) => age * 12 > run.month) ?? 82;
-  while (run.month < next * 12 && !run.ending) tick(run);
+  while (run.month < next * 12 && !run.ending) {
+    tick(run);
+    if (socialInterrupt(run)) break;
+  }
   if (!run.ending) selectEvent(run);
   return run;
 }
@@ -583,6 +623,7 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     source = `choice:${run.choices.length}:${eventId}`;
   selected.effects.forEach((e, i) => applyEffect(run, e, source, i));
   let outcome = selected.outcome;
+  if (run.social?.focus) outcome += ' ' + (run.lastOutcome ?? '');
   if (selected.chance) {
     const success = random(run, 'event') < selected.chance.probability;
     (success ? selected.chance.success : selected.chance.failure).forEach((e, i) =>
@@ -596,6 +637,30 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
   run.choices.push({ eventId, choiceId, month: run.month, outcome });
   run.actions.push({ type: 'choose', eventId, choiceId });
   note(run, definition.title, outcome, definition.category, selected.text);
+  if (run.social?.focus) {
+    const f = run.social.focus;
+    run.seen[f.templateId] = run.month;
+    run.social.focus = null;
+    if (f.templateId === 'soc-loss') run.social.lossPending = null;
+    run.activeEvent = f.resume;
+    if (run.activeEvent) {
+      const d = activeDefinition(run);
+      if (
+        !d ||
+        !eligible(run, d.condition) ||
+        d.choices.filter((c) => !choiceReason(run, c)).length < 4
+      ) {
+        note(
+          run,
+          'Hoàn cảnh đã thay đổi',
+          'Hoàn cảnh đã thay đổi sau cuộc đối thoại; câu chuyện được chọn lại.',
+        );
+        run.activeEvent = null;
+        selectEvent(run);
+      }
+    }
+  }
+  refreshSocial(run);
   if (run.player.stats.health <= 0) conclude(run, 'death');
   return run;
 }
@@ -681,10 +746,18 @@ export function manage(
   return run;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  if (action.type === 'social') return requestSocial(run, action);
   if (action.type === 'wardrobe') {
-    const next = applyWardrobe(run, action), active = activeDefinition(next);
-    if (active && (!eligible(next, active.condition) || active.choices.filter(c => !choiceReason(next, c)).length < 4))
-      throw Error('Hãy giải quyết câu chuyện đang chờ trước khi chi khoản này. Tiền và tủ đồ chưa thay đổi.');
+    const next = applyWardrobe(run, action),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error(
+        'Hãy giải quyết câu chuyện đang chờ trước khi chi khoản này. Tiền và tủ đồ chưa thay đổi.',
+      );
     return next;
   }
   if (action.type === 'advance') return advance(run);

@@ -1,3 +1,4 @@
+import {SocialPanel} from './SocialPanel';
 import {
   BriefcaseBusiness,
   Check,
@@ -238,7 +239,7 @@ export function FinancePanel({ run, act }: Props) {
     </section>
   );
 }
-export function PeoplePanel({ run }: Pick<Props, 'run'>) {
+export function PeoplePanel({ run, act }: Props) {
   const types = {
     family: 'Gia đình',
     friend: 'Bạn bè',
@@ -258,8 +259,9 @@ export function PeoplePanel({ run }: Pick<Props, 'run'>) {
         Quan hệ gần gũi giúp giảm áp lực. Những lần sẻ chia hay xa cách được giữ lại trong ký ức
         chung.
       </p>
+      <SocialPanel run={run} act={act} />
       <div className="people-list">
-        {run.relationships.map((r) => {
+        {run.relationships.filter(r=>!run.social?.people.some(p=>p.npcId===r.npcId)).map((r) => {
           const npc = run.npcs.find((n) => n.id === r.npcId)!;
           return (
             <article className="person" key={r.npcId}>

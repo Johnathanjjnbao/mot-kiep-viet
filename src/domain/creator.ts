@@ -59,7 +59,7 @@ const label = z
   );
 export const setupSchema = z
   .object({
-    expansion: z.literal('wardrobe').optional(),
+    expansion: z.enum(['wardrobe','social']).optional(),
     cohort: z.number().int().min(1975).max(2026),
     region: z.enum(['southern-city', 'northern-village', 'central-coast']),
     name: label.optional(),

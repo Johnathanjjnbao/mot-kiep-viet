@@ -286,6 +286,7 @@ export function monthlyExpense(run: GameRun) {
       : 10 +
         (run.setup.environment === 'urban' ? 2 : 0) +
         (run.household.housing === 'rent' ? 6 : 0) +
+        (run.social?.people.some(p=>p.cohabiting) ? 3 : 0) +
         children * 3) * run.world.costFactor,
   );
 }

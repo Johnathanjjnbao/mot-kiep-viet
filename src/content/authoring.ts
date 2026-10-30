@@ -24,7 +24,7 @@ export function event(
     title,
     text,
     condition: id === 'first-rain' ? { ...condition, npc: 'mother' } : condition,
-    choices: extra.version === 3 ? choices : [...choices, ...additions(id)],
+    choices: (extra.version ?? 2) >= 3 ? choices : [...choices, ...additions(id)],
     weight: 10,
     cooldown: 60,
     once: true,

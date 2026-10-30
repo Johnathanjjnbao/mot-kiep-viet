@@ -272,7 +272,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                   ) : tab === 'wardrobe' ? (
                     <Wardrobe run={run} act={act} />
                   ) : (
-                    <PeoplePanel run={run} />
+                    <PeoplePanel run={run} act={a=>{act(a);setTab('story');}} />
                   )}
                 </div>
                 <aside className="world-sidebar" aria-label="Thời cuộc và ký ức">
@@ -328,7 +328,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.3.3</span>
+        <span className="footer-version">BETA · 0.3.4</span>
       </footer>
       {dialog && (
         <Modal

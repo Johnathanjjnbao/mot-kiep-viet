@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+M3 v0.3.4 local VERIFIED PASS:102unit,32E2E,1000seed/replay/0vi phạm,25realAuth/cloud,scan0/audit0.99templates/5arcs;22new social/2arcs/3NPC. Đang phát hành CI/live, chưa gọi M3 G5. Oldruleset/goldens/saveIDs giữ nguyên; không SQL mới. Baseline fd0409c, checkpoint Graft9260746. Xem LIFE_EXPANSION.
+
+M3 v0.3.4 đang chốt local gates:22social templates/2arc,3NPC riêng, full relationship/dialogue/resume/household. E2E32/production PASS; simulation/cloud đang chạy. Chưa push/deploy M3. Oldruleset vẫn giữ nguyên, không SQL production. Xem LIFE_EXPANSION.
+
 ## Hiện hành — v0.3.3, 31/10/2026
 
 M1 avatar/visual và M2 wardrobe: **VERIFIED PASS, đã deploy**. Code `a2388aee7a44d7189a6ef08fa1beaaf21466111b` / main; [CI41100506471](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41100506471) completed/success. Local89 tests,26E2E +2bổ sung schema3,1000seed/replay/0vi phạm. Live guest,6viewport×20decisions,24realAuth/cloud,oldsave desktop/mobile và asset hashes PASS. 28wearable,77event/3arc,6avatarages. Migration003 approved/applied; no RLS loosening/deletes. Owner tự nhập account NOT RUN. M3draft22scene chưa nối engine/UI; M4 NOT RUN; Life Expansion INCOMPLETE. Tiếp tục chính checkpoint này, không làm lại M1/M2. Chi tiết [LIFE_EXPANSION](LIFE_EXPANSION.md). Các mục pending phía dưới là lịch sử trước khi chốt G5.

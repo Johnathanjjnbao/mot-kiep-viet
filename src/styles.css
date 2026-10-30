@@ -3629,3 +3629,16 @@ meter::-moz-meter-bar {
     align-items: baseline;
   }
 }
+.social-panel { margin: 24px 0; border-top: 1px solid var(--line); padding-top: 24px; }
+.social-people { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:20px; }
+.social-person { border:1px solid var(--line); border-top:3px solid #a47b43; background:var(--surface); padding:20px; border-radius:4px; min-width:0; }
+.social-person h3 { font:500 1.8rem/1.2 var(--font-serif); margin:10px 0; }
+.social-person p { margin:12px 0; }
+.social-person label { display:flex; flex-direction:column; gap:8px; font-size:.85rem; margin:16px 0; }
+.social-person select { font:inherit; width:100%; min-height:44px; padding:8px; border:1px solid var(--line); background:var(--paper); }
+.social-person details { margin-top:16px; }
+.social-person summary { cursor:pointer; min-height:44px; }
+.social-metrics { display:flex; flex-wrap:wrap; gap:18px; padding:12px 0; border-block:1px solid var(--line); }
+.social-metrics dt { font-size:.75rem; color:var(--muted); }
+.social-metrics dd { font-size:1.2rem; }
+.social-panel > h2 { font:500 1.8rem/1.2 var(--font-serif); margin:12px 0; }

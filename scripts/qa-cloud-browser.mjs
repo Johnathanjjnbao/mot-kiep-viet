@@ -83,6 +83,15 @@ export async function browserCloudQA(users, check) {
       await close(p);
       await login(p, a);
     });
+    await check('complex social marriage and per-NPC memories load through authenticated UI', async () => {
+      await p.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+      await p.getByRole('button', { name: 'Người thân', exact: true }).click();
+      await expect(p.locator('[data-social-person="friend"]')).toContainText('Đã kết hôn');
+      const own = await row();
+      expect(own.snapshot.run.social.primaryId).toBe('friend');
+      expect(own.snapshot.run.social.people[0].memories.length).toBeGreaterThan(5);
+      await p.getByRole('button', { name: 'Trang đầu', exact: true }).click();
+    });
     await check('guest migration is explicit and preserves guest data', async () => {
       const before = await row();
       expect(before.snapshot.run.player.name).not.toBe('Đời Khách Kiểm Thử');

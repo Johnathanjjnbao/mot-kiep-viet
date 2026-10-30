@@ -39,6 +39,7 @@ for (let i = 0; i < total; i++) {
     const run = simulateLife(
       seed,
       {
+        expansion: i % 4 === 0 ? 'wardrobe' : 'social',
         cohort,
         region,
         name: `Nguyễn An ${i}`,
@@ -85,7 +86,7 @@ for (let i = 0; i < total; i++) {
     if (run.flags['business-profited']) report.business.profit++;
     if (run.flags['business-lost']) report.business.loss++;
     if (run.flags['business-exited']) report.business.exited++;
-    run.choices.forEach((c) => observed.add(c.eventId));
+    run.choices.forEach((c) => observed.add(c.eventId.split('@')[0]));
   } catch (error) {
     report.invariantViolations++;
     report.failures.push({ seed, message: error instanceof Error ? error.message : String(error) });

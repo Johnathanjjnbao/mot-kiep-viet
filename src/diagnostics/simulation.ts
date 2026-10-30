@@ -1,3 +1,4 @@
+import {socialEligible,requestSocial} from '../engine/social';
 import type { GameRun, RunSetup } from '../domain/model';
 import { CAREERS, ageOf, careerReason, currentCareer } from '../content/world';
 import {
@@ -25,9 +26,14 @@ export function simulateLife(
     rng = next;
     return n;
   };
-  while (run.status !== 'ended' && steps++ < 180) {
+  while (run.status !== 'ended' && steps++ < (run.social ? 320 : 180)) {
     assertRun(run);
     onStep?.(run);
+    if(run.social&&!run.social.focus&&ageOf(run)>=18&&run.actions.filter(a=>a.type==='social').length<60) {
+      const ids=policy===3?['soc-meet','soc-listen','soc-book','soc-boundary','soc-date','soc-exclusive','soc-cohabit','soc-proposal','soc-temptation','soc-secret','soc-confession','soc-separate','soc-divorce','soc-new-start']:['soc-meet','soc-listen','soc-book','soc-boundary','soc-date','soc-exclusive','soc-cohabit','soc-proposal','soc-budget','soc-study','soc-child-plan','soc-repair'];
+      const candidate=run.social.people.flatMap(p=>ids.map(id=>({id,npcId:p.npcId}))).find(x=>socialEligible(run,x.id,x.npcId,true));
+      if(candidate) {run=requestSocial(run,{type:'social',templateId:candidate.id,npcId:candidate.npcId,expected:run.actions.length});continue;}
+    }
     if (run.activeEvent) {
       const e = activeDefinition(run)!,
         choices = e.choices.filter((c) => !choiceReason(run, c));

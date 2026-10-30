@@ -51,6 +51,7 @@ export const conditionSchema = z
   .strict();
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
+    z.object({kind:z.literal('social'),operation:z.enum(['meet','listen','learn','share','flirt','date','exclusive','cohabit','propose','wait','respect','leave','secret','confess','repair','separate','divorce','support','blame','decline','plan-child','grieve'])}).strict(),
     z
       .object({
         kind: z.literal('presentation'),

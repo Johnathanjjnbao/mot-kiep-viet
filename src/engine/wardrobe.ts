@@ -16,7 +16,7 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
     throw Error('Thao tác đã cũ; tủ đồ của bạn vẫn được giữ.');
   if (
     input.actions.filter((a) => a.type === 'wardrobe').length >= 160 ||
-    input.actions.filter((a) => a.type === 'manage' || a.type === 'wardrobe').length >= 350
+    input.actions.filter((a) => a.type === 'manage' || a.type === 'wardrobe' || a.type === 'social').length >= (input.social ? 250 : 350)
   )
     throw Error('Đã đạt giới hạn thao tác tủ đồ trong một đời.');
   const run = structuredClone(input),

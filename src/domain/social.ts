@@ -1,0 +1,100 @@
+import type { EventInstance } from './model';
+export type SocialStatus =
+  | 'acquaintance'
+  | 'friend'
+  | 'flirting'
+  | 'dating'
+  | 'exclusive'
+  | 'cohabiting'
+  | 'married'
+  | 'separated'
+  | 'divorced'
+  | 'former'
+  | 'secret'
+  | 'widowed';
+export type SocialOperation =
+  | 'meet'
+  | 'listen'
+  | 'learn'
+  | 'share'
+  | 'flirt'
+  | 'date'
+  | 'exclusive'
+  | 'cohabit'
+  | 'propose'
+  | 'wait'
+  | 'respect'
+  | 'leave'
+  | 'secret'
+  | 'confess'
+  | 'repair'
+  | 'separate'
+  | 'divorce'
+  | 'support'
+  | 'blame'
+  | 'decline'
+  | 'plan-child'
+  | 'grieve';
+export interface SocialMemory {
+  month: number;
+  title: string;
+  text: string;
+}
+export interface SocialPerson {
+  npcId: string;
+  known: boolean;
+  status: SocialStatus;
+  preference: 'learning' | 'creativity' | 'security';
+  personality: string[];
+  values: string[];
+  interests: string[];
+  romanticOpen: boolean;
+  exclusivityOpen: boolean;
+  marriageOpen: boolean;
+  secretWilling: boolean;
+  wantsChildren: boolean;
+  reconciliationOpen: boolean;
+  trust: number;
+  affection: number;
+  attraction: number;
+  compatibility: number;
+  interest: 'none' | 'admiration' | 'crush';
+  emotionalState: 'steady' | 'hopeful' | 'hurt' | 'grieving';
+  memories: SocialMemory[];
+  metMonth: number | null;
+  datingMonth: number | null;
+  marriedMonth: number | null;
+  separatedMonth: number | null;
+  separatedFrom: 'exclusive' | 'cohabiting' | 'married' | null;
+  cohabiting: boolean;
+  studyingUntil: number;
+  lastContact: number;
+}
+export interface SocialFocus {
+  templateId: string;
+  npcId: string;
+  instanceId: string;
+  resume: EventInstance | null;
+}
+export interface SocialState {
+  people: SocialPerson[];
+  empathy: number;
+  regulation: number;
+  reputation: number;
+  primaryId: string | null;
+  secretId: string | null;
+  breach: { primaryId: string; otherId: string; month: number; revealed: boolean } | null;
+  discoveryMonth: number | null;
+  discoveryPending: boolean;
+  childrenPlanned: boolean;
+  lossPending: string | null;
+  focus: SocialFocus | null;
+  encounters: Record<string, number>;
+  lastNaturalMonth: number;
+}
+export interface SocialAction {
+  type: 'social';
+  templateId: string;
+  npcId: string;
+  expected: number;
+}

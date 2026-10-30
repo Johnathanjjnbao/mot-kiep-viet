@@ -1,3 +1,4 @@
+import { romanceEvents } from './romance-events';
 import { fashionEvents } from './fashion-events';
 import type { EventDefinition } from '../domain/model';
 import { choice, event, stat } from './authoring';
@@ -7,6 +8,7 @@ import { relationshipEvents, financeEvents } from './everyday';
 import { historyEvents, humorEvents } from './world-events';
 // The original eight-event vertical slice is retained, with the verified content expansion below.
 export const EVENTS: EventDefinition[] = [
+  ...romanceEvents,
   ...fashionEvents,
   event(
     'first-rain',

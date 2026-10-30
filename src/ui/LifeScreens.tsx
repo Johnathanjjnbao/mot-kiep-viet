@@ -1,3 +1,4 @@
+import {STORY_ARCS} from '../content/arcs';
 import {
   ArrowRight,
   BookOpen,
@@ -194,11 +195,7 @@ export function Story({
         {event?.arc && (
           <div className="story-thread">
             Một câu chuyện dài <span>·</span>{' '}
-            {event.arc === 'business'
-              ? 'Tiệm nhỏ của hai người'
-              : event.arc === 'family'
-                ? 'Mái nhà qua mùa mưa'
-                : 'Sau ca làm cuối'}
+            {STORY_ARCS.find(a=>a.id===event.arc)?.title ?? 'Những năm tháng đi cùng nhau'}
           </div>
         )}
       </div>

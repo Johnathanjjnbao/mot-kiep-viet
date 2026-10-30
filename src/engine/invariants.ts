@@ -1,3 +1,4 @@
+import {assertSocial} from './social';
 import { assertRun as assertFrozen2 } from '../legacy/v2/engine/invariants';
 import { assertWardrobe } from './wardrobe';
 import type { GameRun } from '../domain/model';
@@ -7,6 +8,7 @@ export function assertRun(run: GameRun) {
   if (run.engineVersion === '2.0.0')
     return assertFrozen2(run as Parameters<typeof assertFrozen2>[0]);
   assertWardrobe(run);
+  assertSocial(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

@@ -1,3 +1,4 @@
+import {married} from './social-fixture.ts';
 import { spawnSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
@@ -137,6 +138,7 @@ try {
         : { type: 'advance' },
     );
   }
+  wardrobeRun = married();
   if (wardrobeRun.wardrobe)
     for (const operation of ['buy', 'equip'])
       wardrobeRun = dispatch(wardrobeRun, {
