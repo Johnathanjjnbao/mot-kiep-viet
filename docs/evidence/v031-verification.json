@@ -49,8 +49,20 @@
     }
   },
   "simulation": "NOT RUN: unchanged engine/content, reuse v0.3 evidence",
-  "productionSqlOrPermissionsChanged": false,
   "productionDataDeleted": false,
   "ownerCredentialsUsed": false,
-  "release": "PENDING CI/deploy/live"
+  "release": {
+    "status": "VERIFIED PASS",
+    "codeCommit": "3db40a426e59bb08c776acebb72446be3c16fc56",
+    "ci": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41089793438",
+    "ciConclusion": "completed/success build and deploy",
+    "liveViewportCases": 6,
+    "liveMixedDecisions": 120,
+    "preInputMeasurements": 126,
+    "liveAuthCloudChecks": 23,
+    "liveGuest": "VERIFIED PASS desktop/mobile",
+    "liveAssetsSha256": "match"
+  },
+  "productionSchemaOrExistingAccountPermissionsChanged": false,
+  "qaFixtures": "synthetic test identities only; allowlist setup and disable; data retained"
 }

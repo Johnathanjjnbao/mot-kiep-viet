@@ -13,7 +13,7 @@ Chi tiết: [V03_REPORT](V03_REPORT.md), [CLOUD_ACCOUNTS_PLAN](CLOUD_ACCOUNTS_PL
 
 ## v0.3.1 — Persistent Stats + Zero-Scroll Continuous Decisions
 
-Sửa stats ẩn và vùng chọn thấp: HUD luôn hiện, bố cục riêng desktop/phone/landscape, đo actual viewport trước click qua20 quyết định mỗi case. Giữ v0.3 Auth/cloud/save/engine và chỉ triển khai sau gates + live QA. Trạng thái thực ở V031_REPORT/PROJECT_STATUS. Chưa mở gameplay mới.
+Sửa stats ẩn và vùng chọn thấp: HUD luôn hiện, bố cục riêng desktop/phone/landscape, đo actual viewport trước click qua20 quyết định mỗi case. Đã giữ v0.3 Auth/cloud/save/engine, qua77 unit/22 E2E và live6×20/Auth23; CI/deploy VERIFIED PASS. Trạng thái thực ở V031_REPORT/PROJECT_STATUS. Chưa mở gameplay mới.
 
 ## v0.4 — Supernatural Longevity
 

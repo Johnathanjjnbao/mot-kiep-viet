@@ -4,7 +4,7 @@ Ngày30/10/2026 (Asia/Saigon). Báo cáo phân biệt local/CI/live và đo trư
 
 ## 1. HEAD đầu và cuối
 
-HEAD đầu `53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8`, main sạch, remote [Johnathanjjnbao/mot-kiep-viet](https://github.com/Johnathanjjnbao/mot-kiep-viet). HEAD/CI phát hành được bổ sung sau gates; final docs HEAD qua git log/chat để tránh self-reference. Không reset/clean/force push.
+HEAD đầu `53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8`, main sạch, remote [Johnathanjjnbao/mot-kiep-viet](https://github.com/Johnathanjjnbao/mot-kiep-viet). Code phát hành `3db40a426e59bb08c776acebb72446be3c16fc56` trên main; final docs HEAD/workflow được xác minh trong git log/chat để tránh self-reference. Không reset/clean/force push.
 
 ## 2. Thay đổi UI
 
@@ -37,7 +37,22 @@ Local mới nhất (px, max qua mọi frame; toàn bộ bounds chi tiết trong 
 | landscape   | 667×375  | 68.6         | 363                       | 266.4                        | 20/20     |
 | large-text  | 375×667  | 159.1        | 460.5                     | 600.6                        | 20/20     |
 
-Ảnh trước/sau trong evidence/v031-before-* và v031-local-_-0/10/20.png; live tương ứng v031-live-_ sau deploy. Landscape narrative bottom363 vẫn nằm trên height375; chữ lớn cũng giữ lựa chọn đầu đầy đủ trong height667 (số mới trong bảng).
+Ảnh trước/sau trong evidence/v031-before-* và các ảnh v031-local theo case/bước0,10,20; live dùng v031-live tương ứng. Landscape narrative bottom363 vẫn nằm trên height375; chữ lớn cũng giữ lựa chọn đầu đầy đủ trong height667 (số mới trong bảng).
+
+Đo lại trực tiếp trên website thật (px, max qua21 frame/case):
+
+| Case        | Viewport | HUD cao nhất | Narrative bottom cao nhất | First choice bottom cao nhất | Decisions |
+| ----------- | -------- | ------------ | ------------------------- | ---------------------------- | --------- |
+| desktop1440 | 1440×900 | 394.6        | 303.1                     | 407.5                        | 20/20     |
+| desktop1366 | 1366×768 | 394.6        | 231.0                     | 335.3                        | 20/20     |
+| mobile390   | 390×844  | 111.6        | 363.3                     | 467.7                        | 20/20     |
+| mobile375   | 375×667  | 111.6        | 363.3                     | 487.6                        | 20/20     |
+| landscape   | 667×375  | 68.6         | 363                       | 266.4                        | 20/20     |
+| large-text  | 375×667  | 159.1        | 460.5                     | 600.6                        | 20/20     |
+
+![HUD mobile chữ lớn sau20 quyết định trên live](evidence/v031-live-large-text-20.png)
+
+[Ảnh desktop live](evidence/v031-live-desktop1440-20.png) · [Ảnh landscape live](evidence/v031-live-landscape-20.png) · [Bằng chứng đo live](evidence/v031-live-viewport.json) · [Auth/cloud live](evidence/v031-cloud-live.json).
 
 ## 7. Repeated-choice E2E
 
@@ -57,15 +72,15 @@ Kiểm kê22 global directories +5 system. Context Map, Frontend Design, Webapp 
 
 ## 11. Commit
 
-PENDING sau gates. Version0.3.1 trong package/lock/footer. Chỉ stage file dự án; ignored .env.local/.local/.temp không vào Git. Các báo cáo/bàn giao v0.3 giữ nguyên và có addendum patch.
+Code commit `3db40a426e59bb08c776acebb72446be3c16fc56` đã push/deploy; sau đó commit tài liệu/bằng chứng live. Version0.3.1 trong package/lock/footer. Chỉ stage file dự án; ignored .env.local/.local/.temp không vào Git. Các báo cáo/bàn giao v0.3 giữ nguyên và có addendum patch.
 
 ## 12. GitHub Actions
 
-PENDING đúng SHA patch. Workflow Pages giữ npm ci/verify/scan/Chromium E2E/production/artifact/deploy phụ thuộc build, quyền tối thiểu. CI mới có6 viewport journeys chung với local. Sau success còn phải kiểm live, không gọi CI là UX/cloud proof.
+[CI41089793438](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41089793438) đúng SHA `3db40a4`: build/deploy completed/success; 77 unit/integration,22 E2E, scan0 và production smoke PASS. Workflow Pages giữ npm ci/verify/scan/Chromium E2E/production/artifact/deploy phụ thuộc build, quyền tối thiểu. CI mới có6 viewport journeys chung với local. Sau CI đã kiểm riêng live UX/cloud, không dùng CI đơn lẻ làm UX proof.
 
 ## 13. Website thật
 
-[Production](https://johnathanjjnbao.github.io/mot-kiep-viet/). Live6 viewport×20/raw input, guest flow, Auth/cloud và JS/CSS/SW hash verification PENDING sau deploy. Chưa dùng số PASS local/v0.3 thay bằng chứng live v0.3.1.
+[Production](https://johnathanjjnbao.github.io/mot-kiep-viet/). VERIFIED PASS trên live: 6 viewport×20 decisions/raw mouse-touch input,126 pre-input measurements, đủ4/5/6 choices, full HUD/narrative/first option và label/value không chồng lấn. Guest desktop/mobile creator/save/load/complete life/history PASS; Auth/cloud23 nhóm PASS, gồmoffline/reconnect/conflict/hai tab/history. JS/CSS/SW hashes khớp build. Không dùng số PASS local/v0.3 thay bằng chứng này.
 
 ## 14. Giới hạn
 

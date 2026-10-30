@@ -18,7 +18,7 @@ npm.cmd run test:e2e
 npm.cmd run test:production
 ```
 
-Beta 0.3 có tạo nhân vật (1975–2026, tên/nơi sinh/gia đình/tính cách), 72 mẫu sự kiện với ít nhất 4 lựa chọn khả dụng, 3 tuyến truyện, 10 nghề, sổ tiền, quan hệ, sức khỏe và hồi ký. Lịch sử hoàn tất riêng với autosave/3 slot, có xuất/nhập. Chạm một lựa chọn để thực thi và đến quyết định kế tiếp; kết quả vẫn hiện và được ghi vào nhật ký. Giao diện hỗ trợ desktop/mobile, bàn phím, chữ lớn và giảm chuyển động.
+Beta 0.3.1 có tạo nhân vật (1975–2026, tên/nơi sinh/gia đình/tính cách), 72 mẫu sự kiện với ít nhất 4 lựa chọn khả dụng, 3 tuyến truyện, 10 nghề, sổ tiền, quan hệ, sức khỏe và hồi ký. Lịch sử hoàn tất riêng với autosave/3 slot, có xuất/nhập. Chạm một lựa chọn để thực thi và đến quyết định kế tiếp; kết quả vẫn hiện và được ghi vào nhật ký. HUD luôn hiện sáu chỉ số khi chơi; mobile có bố cục gọn và danh sách lựa chọn cuộn khi cần. Giao diện hỗ trợ desktop/mobile, bàn phím, chữ lớn và giảm chuyển động.
 
 ## Chơi trên Windows
 

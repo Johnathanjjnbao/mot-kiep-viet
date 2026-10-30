@@ -1,10 +1,12 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
-## Hiện hành — v0.3.1 đang kiểm chứng, 30/10/2026
+## Hiện hành — v0.3.1 đã phát hành, VERIFIED PASS, 30/10/2026
 
 Tiếp tục main `53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8`, working tree sạch trước sửa. Sửa đúng hai lỗi chủ dự án báo: stats ẩn/scroll khỏi màn hình và căn card nhưng lựa chọn vẫn thấp. HUD lấy trực tiếp GameRun, desktop sticky bên trái, mobile strip đủ sáu chỉ số; landscape chia narrative/choices hai cột. Nội dung truyện giữ nguyên, chỉ danh sách lựa chọn cuộn theo ngân sách chiều cao thực. Focus/resize/fonts cập nhật viewport, không reset inner-scroll do observer; giữ v0.3 guards/actions/cloud/save.
 
-Bằng chứng trước sửa v031-before.json/screenshots; acceptance mới đo trước mọi click, hit test HUD/narrative/full first option, kiểm viewport CSS khớp device để bắt auto-zoom, chọn đầu/giữa/cuối 20 lần mỗi case và xác minh đúng choice ID/HUD/save/replay. Lỗi năm trang trí tràn ở chữ lớn đã sửa. Engine/content2/schema3, SQL/RLS/account permissions không đổi; không chạy lại mô phỏng1.000 seed cho UI-only. Gates/deploy/live đang chốt, xem [V031_REPORT](V031_REPORT.md). Các phần dưới giữ lịch sử v0.3/v0.2.
+Bằng chứng trước sửa v031-before.json/screenshots; acceptance mới đo trước mọi click, hit test HUD/narrative/full first option, kiểm viewport CSS khớp device để bắt auto-zoom, chọn đầu/giữa/cuối 20 lần mỗi case và xác minh đúng choice ID/HUD/save/replay. Lỗi năm trang trí tràn ở chữ lớn đã sửa. Engine/content2/schema3, SQL/RLS/account permissions không đổi; không chạy lại mô phỏng1.000 seed cho UI-only. Gates/deploy/live VERIFIED PASS, xem [V031_REPORT](V031_REPORT.md). Các phần dưới giữ lịch sử v0.3/v0.2.
+
+**G5 v0.3.1 VERIFIED PASS.** Code `3db40a426e59bb08c776acebb72446be3c16fc56`, [CI41089793438](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41089793438) build/deploy completed/success. Local/CI77 unit,22 E2E, production smoke, scan0/audit0. Local và live sáu case×20=120 choices mỗi lượt;126 measurements trước input, toàn bộ HUD/sáu chỉ số/narrative/first choice rõ và trong viewport, label/value không chồng, innerWidth/Height khớp device. Auth/cloud thật23 nhóm trên cả local/live PASS. JS/CSS/SW live khớp SHA256 build. Bằng chứng ci-v031, v031-live-viewport/cloud-live/guest/assets. Docs/evidence bổ sung commit/push và theo dõi workflow cuối; final HEAD/workflow báo trong chat/git log.
 
 ## Hiện hành — v0.3 resume, 30/10/2026
 

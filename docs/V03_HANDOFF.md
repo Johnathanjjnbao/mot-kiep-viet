@@ -27,3 +27,5 @@ Code và bằng chứng được bảo toàn trong GitHub. Thứ tự tiếp t�
 ## Addendum v0.3.1
 
 Bản vá tiếp tục từ final HEAD v0.3 `53802c8`; giữ nguyên nội dung bàn giao phía trên. Chỉ sửa HUD persistent và decision viewport/responsive, không làm lại cloud hoặc thay SQL/quyền tài khoản. Báo cáo/bằng chứng/gates/live của patch nằm tại [V031_REPORT](V031_REPORT.md); không dùng kết quả v0.3 trước đó thay acceptance mới.
+
+Patch v0.3.1 code `3db40a426e59bb08c776acebb72446be3c16fc56` đã phát hành, [CI41089793438](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41089793438) success; live6×20 viewport và23 Auth/cloud checks VERIFIED PASS. V031_REPORT giữ bảng đo/ảnh, final docs HEAD/workflow xem git log/chat.
