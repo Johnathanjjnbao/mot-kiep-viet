@@ -20,6 +20,7 @@ import {
 } from '../content/world';
 import { netWorth } from '../engine/finance';
 import { money } from './common';
+import { PARENT_TRAITS } from '../domain/creator';
 type Props = { run: GameRun; act: (a: RunAction) => void };
 export function CareerPanel({ run, act }: Props) {
   const current = currentCareer(run),
@@ -268,9 +269,18 @@ export function PeoplePanel({ run }: Pick<Props, 'run'>) {
               <div>
                 <span className="eyebrow">
                   {types[r.type]} ·{' '}
-                  {npc.alive ? `${run.world.year - npc.birthYear} tuổi` : 'Đã qua đời'}
+                  {npc.presence === 'unknown'
+                    ? 'Chưa rõ thông tin'
+                    : npc.presence === 'nonresident'
+                      ? 'Không sống cùng'
+                      : npc.alive
+                        ? `${run.world.year - npc.birthYear} tuổi`
+                        : 'Đã qua đời'}
                 </span>
                 <h3>{npc.name}</h3>
+                {!!npc.personality?.length && (
+                  <p>{npc.personality.map((t) => PARENT_TRAITS[t]).join(', ')}</p>
+                )}
                 <p>
                   {r.strength >= 70
                     ? 'Gắn bó'

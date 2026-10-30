@@ -281,7 +281,11 @@ export function monthlyExpense(run: GameRun) {
     (n) => n.role === 'child' && n.alive && run.world.year - n.birthYear < 18,
   ).length;
   return Math.round(
-    (ageOf(run) < 18 ? 1 : 10 + (run.household.housing === 'rent' ? 6 : 0) + children * 3) *
-      run.world.costFactor,
+    (ageOf(run) < 18
+      ? 1
+      : 10 +
+        (run.setup.environment === 'urban' ? 2 : 0) +
+        (run.household.housing === 'rent' ? 6 : 0) +
+        children * 3) * run.world.costFactor,
   );
 }

@@ -1,4 +1,5 @@
 import type { GameRun, Transaction } from '../domain/model';
+import { residentParents } from '../domain/creator';
 import { ageOf, currentCareer, monthlyExpense, monthlyIncome } from '../content/world';
 export const netWorth = (r: GameRun) =>
   r.finance.cash +
@@ -62,7 +63,12 @@ export function settleMonth(run: GameRun) {
   const job = currentCareer(run);
   const income = monthlyIncome(run);
   if (income) transact(run, `${key}:income`, 'Thu nhập công việc', { cash: income });
-  if (age < 18) transact(run, `${key}:family`, 'Gia đình cho tiền sinh hoạt', { cash: 2 });
+  if (age < 18)
+    transact(run, `${key}:family`, 'Gia đình cho tiền sinh hoạt', {
+      cash:
+        [1, 2, 3, 4, 6][run.household.resources] +
+        residentParents(run).filter((p) => p.personality?.includes('generous')).length,
+    });
   // A deliberately designed safety floor; career history increases this modest pension.
   if (age >= 65)
     transact(run, `${key}:pension`, 'Trợ cấp tuổi già (thiết kế)', {

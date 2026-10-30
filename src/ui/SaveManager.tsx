@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Download, FolderOpen, Save, Upload } from 'lucide-react';
-import type { GameRun } from '../domain/model';
+import type { GameRun, SaveSnapshot } from '../domain/model';
 import {
   MAX_SAVE_BYTES,
   listSlots,
@@ -14,10 +14,12 @@ import { ageOf } from '../content/world';
 import { downloadFile } from './common';
 export function SaveManager({
   run,
+  identity,
   onLoad,
 }: {
   run: GameRun | null;
-  onLoad: (run: GameRun) => void;
+  identity: string;
+  onLoad: (save: SaveSnapshot) => void;
 }) {
   const [slots, setSlots] = useState<Awaited<ReturnType<typeof listSlots>>>([]),
     [busy, setBusy] = useState(false),
@@ -32,7 +34,7 @@ export function SaveManager({
     if (!run) return;
     setBusy(true);
     try {
-      await writeSave(key, run);
+      await writeSave(key, run, identity);
       await refresh();
       setMessage('Đã lưu vào ô bạn chọn.');
       setOverwrite(null);
@@ -46,7 +48,7 @@ export function SaveManager({
     setBusy(true);
     try {
       const s = await readSave(key);
-      if (s) onLoad(s.run);
+      if (s) onLoad(s);
     } catch (e) {
       setMessage(e instanceof Error ? e.message : 'Không tải được.');
     } finally {
@@ -58,7 +60,7 @@ export function SaveManager({
     try {
       if (f.size > MAX_SAVE_BYTES) throw new Error('Tệp lưu vượt giới hạn 5 MiB.');
       const s = parseSave(await f.text());
-      onLoad(s.run);
+      onLoad(s);
     } catch (e) {
       setMessage(e instanceof Error ? e.message : 'Không nhập được tệp.');
     } finally {
@@ -129,7 +131,7 @@ export function SaveManager({
           onClick={() =>
             run &&
             downloadFile(
-              JSON.stringify(snapshot(run)),
+              JSON.stringify(snapshot(run, identity)),
               `mot-kiep-viet-${run.id.split(':')[1]}.json`,
             )
           }

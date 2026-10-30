@@ -2744,3 +2744,234 @@ meter::-moz-meter-bar {
     scroll-behavior: auto !important;
   }
 }
+
+/* v0.2: a birth record beside a grouped creator; finished lives read as a shelf of memoirs. */
+.creator .new-life-intro {
+  align-self: start;
+  position: sticky;
+  top: 28px;
+}
+.creator .new-life-intro h1 {
+  font-size: 3.8rem;
+}
+.creator-explainer {
+  margin-top: 24px;
+  max-width: 30em;
+}
+.creator form > fieldset {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.creator form > fieldset > legend {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  padding: 0 9px 0 0;
+}
+.creator label[for] {
+  display: block;
+  margin: 14px 0 7px;
+  font-size: 0.83rem;
+}
+.creator input:not([type='checkbox']):not([type='radio']),
+.creator select {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 16px;
+}
+.name-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.name-entry > input {
+  min-width: 0;
+  flex: 1;
+}
+.name-entry button {
+  white-space: nowrap;
+  font-size: 0.72rem;
+}
+.creator .cohort-options {
+  margin-top: 12px;
+}
+.trait-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+.trait-options label {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  padding: 8px;
+  font-size: 0.85rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.trait-options input {
+  flex-shrink: 0;
+}
+.creator-error {
+  color: var(--rust);
+  padding: 8px 0;
+  font-size: 0.8rem;
+}
+.creator-preview {
+  padding-top: 25px;
+}
+.creator-preview h2 {
+  font-size: 2rem;
+}
+.creator-preview h3 {
+  font-size: 1.8rem;
+  margin: 20px 0;
+}
+.creator-preview dl {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 13px;
+  margin: 20px 0;
+}
+.creator-preview dt {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.creator-preview dd {
+  margin: 0;
+  font-size: 0.82rem;
+}
+.creator-preview > p {
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+}
+.creator-preview .full-width {
+  margin-top: 20px;
+}
+.history-page {
+  max-width: 1160px;
+  padding: 45px 5%;
+  margin: auto;
+}
+.history-page > header h1 {
+  font-size: 3.3rem;
+  margin-bottom: 20px;
+}
+.history-page > header > p {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+.history-page > [role='status'] {
+  color: var(--rust);
+  min-height: 28px;
+  margin: 18px 0;
+}
+.history-empty {
+  padding: 40px 0;
+  max-width: 40em;
+}
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+.history-grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 4px;
+}
+.history-grid article > span {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.history-grid article > h2 {
+  font-size: 2rem;
+  margin: 14px 0;
+}
+.history-grid article > p {
+  font-size: 0.78rem;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+.history-grid article .text-button {
+  margin-right: 20px;
+}
+.history-reading {
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+.history-reading > .lead {
+  margin: 18px 0;
+}
+.history-reading .summary-page {
+  padding: 25px 0;
+}
+.history-reading details p {
+  margin: 10px 0;
+}
+.site-header nav {
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .creator .new-life-intro h1 {
+    font-size: 3rem;
+  }
+  .creator .new-life-grid {
+    gap: 25px;
+  }
+  .site-header nav {
+    gap: 14px;
+  }
+}
+@media (max-width: 640px) {
+  .creator .new-life-intro {
+    position: static;
+  }
+  .creator .new-life-intro h1 {
+    font-size: 2.7rem;
+  }
+  .creator .new-life-form {
+    padding: 17px;
+  }
+  .creator-explainer {
+    margin-top: 15px;
+  }
+  .creator .trait-options {
+    grid-template-columns: 1fr 1fr;
+  }
+  .creator .trait-options label {
+    font-size: 0.85rem;
+  }
+  .name-entry {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .name-entry > input {
+    flex-basis: 100%;
+  }
+  .history-grid {
+    grid-template-columns: 1fr;
+  }
+  .history-page > header h1 {
+    font-size: 2.8rem;
+  }
+  .site-header nav {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .site-header nav button {
+    font-size: 0.64rem;
+  }
+  .creator-preview dl {
+    grid-template-columns: 90px 1fr;
+  }
+}

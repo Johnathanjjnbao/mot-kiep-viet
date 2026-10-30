@@ -135,3 +135,11 @@ Repository https://github.com/Johnathanjjnbao/mot-kiep-viet và game https://joh
 Đã thêm AGENTS, ROADMAP, RELEASE_SECURITY, PROJECT_STATUS, pages.yml, hai script scan/check; sửa Vite base theo VITE_BASE_PATH, smoke hỗ trợ subpath và HTTP readiness, Playwright hỗ trợ base và bản build tĩnh. Không sửa engine hoặc mở backlog. Một E2E dev-mode bị reload và lần CI đầu bị định dạng log có màu; kiểm thử chuyển sang bản build tĩnh và readiness HTTP đã qua, không bỏ gate.
 
 Skills thực dùng: security-review, secret-scanning, webapp-testing. Không có gh CLI, dùng GCM/REST hiện có không lưu token. Bản public có metadata tác giả/đường dẫn môi trường trong lịch sử đã rà soát; không có credential được tìm thấy. Hướng dẫn cập nhật ở AGENTS và PROJECT_STATUS. Tiếp theo: thiết kế Character Creator, cấu trúc gia đình và tương thích save, chưa triển khai trong đợt này. HEAD tài liệu cuối và workflow cuối được xác minh trong chat bàn giao; lưu các kết quả ở docs/evidence/pages-*.json.
+
+## Bàn giao beta v0.2 — 30/10/2026
+
+Tiếp tục trên checkout hiện có, baseline main 3508765374d94b8150e852ff0aa74b9678cd8940. Đã triển khai Creator nâng cao, 216 lựa chọn bổ sung trên 72 mẫu, fallback 4 hướng, lịch sử hoàn tất riêng, lưu/xuất/nhập/dedup và save v1 chỉ đọc bằng luật đóng băng. Engine/content 2.0.0, schema 3; không xóa ba slot cũ.
+
+Báo cáo 14 mục và ma trận kiểm chứng: [V02_REPORT.md](V02_REPORT.md). Luật mới đã chạy 1.000 seed: 0 vi phạm, 72/72 mẫu, enabled 4–6 trên 35.045 sự kiện. Gates cuối và CI/live đang chờ xác minh, G5 v0.2 INCOMPLETE. Giữ nguyên toàn bộ bàn giao cũ phía trên làm lịch sử. SHA phát hành và kết quả cuối sẽ được bổ sung sau khi kiểm chứng.
+
+Tài khoản mời riêng cho vợ/đồng bộ Supabase và kỳ bí/trường thọ chưa làm; chỉ có CLOUD_ACCOUNTS_PLAN và ROADMAP. Không có credential hoặc tài khoản giả trong frontend.

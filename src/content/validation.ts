@@ -132,7 +132,7 @@ export const eventSchema = z
     cooldown: z.number().int().nonnegative(),
     once: z.boolean(),
     priority: z.number().int().nonnegative(),
-    choices: z.array(choice).min(2).max(5),
+    choices: z.array(choice).min(4).max(6),
     sensitivity: z.array(z.string()),
     provenance: z
       .object({
@@ -166,6 +166,10 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
     if (ids.has(e.id)) errors.push(`Duplicate ID ${e.id}`);
     ids.add(e.id);
     counts[e.category] = (counts[e.category] ?? 0) + 1;
+    const signatures = e.choices.map((c) => JSON.stringify([c.effects, c.chance]));
+    if (new Set(signatures).size !== signatures.length) errors.push(`Identical paths ${e.id}`);
+    if (e.choices.some((c) => !c.effects.length && !c.chance))
+      errors.push(`Inconsequential path ${e.id}`);
     if (new Set(e.choices.map((c) => c.id)).size !== e.choices.length)
       errors.push(`Duplicate choice ${e.id}`);
     if (
@@ -180,6 +184,18 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
       e.condition,
       ...e.choices.map((c) => c.requires).filter((c) => c !== undefined),
     ]) {
+      if (
+        condition.minAge !== undefined &&
+        condition.maxAge !== undefined &&
+        condition.minAge > condition.maxAge
+      )
+        errors.push(`Contradictory age ${e.id}`);
+      if (
+        condition.minYear !== undefined &&
+        condition.maxYear !== undefined &&
+        condition.minYear > condition.maxYear
+      )
+        errors.push(`Contradictory year ${e.id}`);
       for (const f of [...(condition.flags ?? []), ...(condition.absent ?? [])])
         if (!produced.has(f)) errors.push(`Unresolved flag ${e.id}/${f}`);
       if (condition.flags?.some((f) => condition.absent?.includes(f)))
@@ -200,6 +216,23 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
     for (const stage of arc.stages)
       if (!events.some((e) => e.id === stage && e.arc === arc.id))
         errors.push(`Unresolved arc ${arc.id}/${stage}`);
+  const reachable = new Set<string>();
+  for (let pass = 0; pass < events.length; pass++)
+    for (const e of events) {
+      if ((e.condition.flags ?? []).every((f) => reachable.has(f)))
+        for (const c of e.choices) {
+          if ((c.requires?.flags ?? []).every((f) => reachable.has(f)))
+            for (const effect of walk([
+              ...c.effects,
+              ...(c.chance?.success ?? []),
+              ...(c.chance?.failure ?? []),
+            ]))
+              if (effect.kind === 'flag' && effect.value) reachable.add(effect.flag);
+        }
+    }
+  for (const e of events)
+    if ((e.condition.flags ?? []).some((f) => !reachable.has(f)))
+      errors.push(`Unreachable event chain ${e.id}`);
   const targets = {
     childhood: 8,
     education: 12,

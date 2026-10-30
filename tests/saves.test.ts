@@ -1,4 +1,6 @@
 import 'fake-indexeddb/auto';
+import { createRun as oldRun } from '../src/legacy/v1/engine/engine';
+import { snapshot as oldSnapshot } from '../src/legacy/v1/persistence/saves';
 import { describe, expect, it } from 'vitest';
 import { advance, createRun, replay } from '../src/engine/engine';
 import {
@@ -26,7 +28,7 @@ describe('save boundary', () => {
     const save = snapshot(createRun('tampered'));
     save.schemaVersion = 99;
     expect(() => parseSave(JSON.stringify(save))).toThrow();
-    save.schemaVersion = 2;
+    save.schemaVersion = 3;
     save.run.finance.cash++;
     expect(() => parseSave(JSON.stringify(save))).toThrow(/không khớp/);
     const bad = snapshot(createRun('malicious'));
@@ -34,7 +36,7 @@ describe('save boundary', () => {
     expect(() => parseSave(JSON.stringify(bad))).toThrow(/tái hiện/);
   });
   it('migrates the supported internal v1 envelope', () => {
-    const s = snapshot(createRun('legacy'));
+    const s = oldSnapshot(oldRun('legacy'));
     expect(
       parseSave(JSON.stringify({ schemaVersion: 1, savedAt: s.savedAt, snapshot: s.run })),
     ).toEqual(s);

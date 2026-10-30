@@ -1,8 +1,21 @@
-export const ENGINE_VERSION = '1.0.0';
-export const CONTENT_VERSION = '1.0.0';
-export const SAVE_VERSION = 2;
+export const ENGINE_VERSION = '2.0.0';
+export const CONTENT_VERSION = '2.0.0';
+export const SAVE_VERSION = 3;
 export type RegionId = 'southern-city' | 'northern-village' | 'central-coast';
-export type Cohort = 1975 | 1995 | 2005;
+export type Cohort = number;
+export type FamilyStructure =
+  'both' | 'father-only' | 'mother-only' | 'with-father' | 'with-mother';
+export type ParentTrait =
+  | 'gentle'
+  | 'strict'
+  | 'easygoing'
+  | 'ambitious'
+  | 'frugal'
+  | 'generous'
+  | 'anxious'
+  | 'adventurous'
+  | 'distant'
+  | 'academic';
 export type Stat = 'health' | 'mood' | 'knowledge' | 'skill' | 'social' | 'stress';
 export type Stats = Record<Stat, number>;
 export type EducationLevel = 'none' | 'general' | 'vocational' | 'university' | 'self';
@@ -65,11 +78,13 @@ export interface Household {
   moved: boolean;
 }
 export interface NPC {
+  presence?: 'resident' | 'nonresident' | 'unknown' | 'deceased';
+  personality?: ParentTrait[];
   id: string;
   name: string;
   role: 'mother' | 'father' | 'friend' | 'partner' | 'child';
   birthYear: number;
-  alive: boolean;
+  alive: boolean | null;
 }
 export interface Relationship {
   npcId: string;
@@ -216,6 +231,13 @@ export type RunAction =
 export interface RunSetup {
   cohort: Cohort;
   region: RegionId;
+  name?: string;
+  birthplace?: string;
+  environment?: 'urban' | 'rural';
+  wealth?: 0 | 1 | 2 | 3 | 4;
+  family?: FamilyStructure;
+  motherTraits?: ParentTrait[];
+  fatherTraits?: ParentTrait[];
 }
 export interface GameRun {
   engineVersion: string;
@@ -244,6 +266,7 @@ export interface GameRun {
   lastOutcome: string | null;
 }
 export interface SaveSnapshot {
+  identity?: string;
   schemaVersion: number;
   engineVersion: string;
   contentVersion: string;

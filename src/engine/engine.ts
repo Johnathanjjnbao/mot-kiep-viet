@@ -21,6 +21,14 @@ import {
   worldFor,
 } from '../content/world';
 import { EVENTS, FALLBACK, allEvents } from '../content/events';
+import {
+  setupSchema,
+  WEALTH,
+  residentParents,
+  parentAvailable,
+  familyText,
+  birthplaceOf,
+} from '../domain/creator';
 import { hashSeed, nextRandom } from './random';
 import { mandatoryCost, settleMonth, transact } from './finance';
 
@@ -61,11 +69,13 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   if (!seed.length || seed.length > 100) throw new Error('Hạt giống cần từ 1 đến 100 ký tự.');
   const [a, s] = nextRandom(hashSeed(seed + ':setup'));
   const [b] = nextRandom(s);
-  const setup: RunSetup = requested ?? {
-    cohort: COHORTS[Math.floor(a * COHORTS.length)],
-    region: REGIONS[Math.floor(b * REGIONS.length)].id,
-  };
-  if (!COHORTS.includes(setup.cohort) || !REGIONS.some((r) => r.id === setup.region))
+  const setup: RunSetup = setupSchema.parse(
+    requested ?? {
+      cohort: COHORTS[Math.floor(a * COHORTS.length)],
+      region: REGIONS[Math.floor(b * REGIONS.length)].id,
+    },
+  );
+  if (setup.cohort < 1975 || setup.cohort > 2026 || !REGIONS.some((r) => r.id === setup.region))
     throw new Error('Bối cảnh không hợp lệ.');
   const run: GameRun = {
     engineVersion: ENGINE_VERSION,
@@ -130,23 +140,64 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     lastOutcome: null,
   };
   run.player.name = names[Math.floor(random(run, 'world') * names.length)];
-  run.household.resources = Math.floor(random(run, 'world') * 3);
-  run.household.background = [
-    'Gia đình chắt chiu',
-    'Một mái nhà đủ đầy',
-    'Gia đình có chút dành dụm',
-  ][run.household.resources];
+  run.player.name = setup.name ?? run.player.name;
+  const wealthRoll = Math.floor(random(run, 'world') * 5) as 0 | 1 | 2 | 3 | 4,
+    familyRoll = Math.floor(random(run, 'world') * 5);
+  run.setup = {
+    cohort: setup.cohort,
+    region: setup.region,
+    name: run.player.name,
+    birthplace: setup.birthplace ?? REGIONS.find((r) => r.id === setup.region)!.short,
+    environment:
+      setup.environment ??
+      (REGIONS.find((r) => r.id === setup.region)!.environment === 'urban' ? 'urban' : 'rural'),
+    wealth: setup.wealth ?? wealthRoll,
+    family:
+      setup.family ??
+      (['both', 'father-only', 'mother-only', 'with-father', 'with-mother'] as const)[familyRoll],
+    motherTraits: setup.motherTraits ?? [],
+    fatherTraits: setup.fatherTraits ?? [],
+  };
+  run.id = `life:${hashSeed(seed + JSON.stringify(run.setup)).toString(16)}`;
+  run.household.resources = run.setup.wealth!;
+  for (const npc of run.npcs.filter((n) => ['mother', 'father'].includes(n.id))) {
+    const family = run.setup.family!;
+    npc.presence =
+      family === 'both' ||
+      (family === 'father-only' && npc.id === 'father') ||
+      (family === 'mother-only' && npc.id === 'mother') ||
+      (family === 'with-father' && npc.id === 'father') ||
+      (family === 'with-mother' && npc.id === 'mother')
+        ? 'resident'
+        : family.startsWith('with-')
+          ? 'nonresident'
+          : 'unknown';
+    npc.personality = npc.id === 'mother' ? run.setup.motherTraits : run.setup.fatherTraits;
+    if (npc.presence === 'unknown') npc.alive = null;
+  }
+  run.relationships = run.relationships.filter(
+    (r) => !['mother', 'father'].includes(r.npcId) || parentAvailable(run, r.npcId),
+  );
+  for (const rel of run.relationships) {
+    const npc = run.npcs.find((n) => n.id === rel.npcId)!;
+    if (npc.presence === 'nonresident') rel.strength = 45;
+    if (npc.personality?.includes('gentle')) rel.strength = 85;
+    if (npc.personality?.includes('distant')) rel.strength = 35;
+  }
+  run.household.background = WEALTH[run.household.resources];
   run.player.traits = [traits[Math.floor(random(run, 'world') * traits.length)]];
   if (run.player.traits.includes('Hay tò mò')) run.player.stats.knowledge += 5;
   if (run.player.traits.includes('Khéo tay')) run.player.stats.skill += 7;
   if (run.player.traits.includes('Dễ gần')) run.player.stats.social += 8;
   transact(run, 'opening', 'Khoản gia đình để dành cho bạn', {
-    cash: 90 + run.household.resources * 60,
+    cash:
+      [25, 70, 150, 300, 600][run.household.resources] +
+      residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
   });
   note(
     run,
     'Một cuộc đời bắt đầu',
-    `${run.player.name} chào đời tại ${REGIONS.find((r) => r.id === setup.region)!.short.toLowerCase()}, trong một ${run.household.background.toLowerCase()}.`,
+    `${run.player.name} chào đời tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}.`,
     'life',
   );
   return run;
@@ -179,6 +230,8 @@ export function eligible(run: GameRun, c: Condition): boolean {
     !run.npcs.some(
       (n) =>
         n.alive &&
+        n.presence !== 'unknown' &&
+        n.presence !== 'deceased' &&
         (c.npc === 'adult-child'
           ? n.role === 'child' && run.world.year - n.birthYear >= 18
           : n.id === c.npc || n.role === c.npc),
@@ -202,6 +255,12 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
     .reduce((s, e) => s + (e.kind === 'cash' ? e.amount : 0), 0);
   if (cost > run.finance.cash) return `Cần ${cost} đSM tiền mặt.`;
   for (const effect of choice.effects) {
+    if (
+      effect.kind === 'relationship' &&
+      ['mother', 'father'].includes(effect.target) &&
+      !parentAvailable(run, effect.target)
+    )
+      return 'Người thân này không hiện diện trong cuộc đời.';
     if (effect.kind === 'career' && effect.career) {
       const reason = careerReason(run, effect.career);
       if (reason) return reason;
@@ -219,7 +278,7 @@ export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   return (
     eligible(run, event.condition) &&
     (last === undefined || (!event.once && run.month - last >= event.cooldown)) &&
-    event.choices.some((c) => !choiceReason(run, c))
+    event.choices.filter((c) => !choiceReason(run, c)).length >= 4
   );
 }
 function selectEvent(run: GameRun) {
@@ -392,8 +451,9 @@ function tick(run: GameRun) {
   run.month++;
   run.world = worldFor(run.player.birthYear + ageOf(run));
   for (const npc of run.npcs)
-    if (npc.alive && run.world.year - npc.birthYear >= 88) {
+    if (npc.alive && npc.presence !== 'unknown' && run.world.year - npc.birthYear >= 88) {
       npc.alive = false;
+      if (npc.presence) npc.presence = 'deceased';
       note(
         run,
         `Tiễn ${npc.name.toLowerCase()}`,
@@ -426,7 +486,25 @@ function tick(run: GameRun) {
     stats = run.player.stats;
   if (run.month % 12 === 0) {
     if (currentCareer(run)) stats.skill = clamp(stats.skill + 2);
-    if (age >= 6 && age < 18) stats.knowledge = clamp(stats.knowledge + 1.5);
+    if (age >= 6 && age < 18) {
+      stats.knowledge = clamp(stats.knowledge + 1.5);
+      for (const parent of residentParents(run)) {
+        for (const t of parent.personality ?? []) {
+          if (t === 'academic') stats.knowledge = clamp(stats.knowledge + 1);
+          if (t === 'gentle' || t === 'easygoing') stats.mood = clamp(stats.mood + 1);
+          if (t === 'strict' || t === 'ambitious') {
+            stats.stress = clamp(stats.stress + 1);
+            stats.skill = clamp(stats.skill + 0.5);
+          }
+          if (t === 'anxious') stats.stress = clamp(stats.stress + 1.5);
+          if (t === 'adventurous') stats.skill = clamp(stats.skill + 1);
+          if (t === 'distant') {
+            const rel = run.relationships.find((r) => r.npcId === parent.id);
+            if (rel) rel.strength = clamp(rel.strength - 1);
+          }
+        }
+      }
+    }
     const close = run.relationships.some(
       (r) => r.strength > 65 && run.npcs.find((n) => n.id === r.npcId)?.alive,
     );
@@ -454,6 +532,8 @@ function tick(run: GameRun) {
   else if (age >= 82) conclude(run, 'memoir');
 }
 export function advance(input: GameRun): GameRun {
+  if (input.engineVersion !== ENGINE_VERSION)
+    throw new Error('Bản lưu v1 chỉ mở để đọc và xuất lại; hãy bắt đầu kiếp v0.2 mới.');
   if (input.status === 'ended' || input.activeEvent)
     throw new Error('Hãy giải quyết lựa chọn hiện tại trước khi đi tiếp.');
   const run = structuredClone(input);
@@ -466,6 +546,7 @@ export function advance(input: GameRun): GameRun {
   return run;
 }
 export function choose(input: GameRun, eventId: string, choiceId: string): GameRun {
+  if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   const definition = activeDefinition(input);
   if (
     input.status !== 'playing' ||
@@ -502,6 +583,7 @@ export function manage(
   action: ManageAction,
   career?: Parameters<typeof careerReason>[1],
 ): GameRun {
+  if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   if (input.status === 'ended' || ageOf(input) < 18)
     throw new Error('Chưa thể thực hiện hành động này.');
   if (input.actions.filter((a) => a.type === 'manage').length >= 400)

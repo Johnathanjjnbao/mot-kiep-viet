@@ -2,6 +2,9 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { COHORTS, REGIONS, ageOf } from '../src/content/world';
 import { netWorth } from '../src/engine/finance';
 import { simulateLife } from '../src/diagnostics/simulation';
+import { activeDefinition, choiceReason } from '../src/engine/engine';
+import { FAMILIES, PARENT_TRAITS } from '../src/domain/creator';
+import type { RunSetup, ParentTrait } from '../src/domain/model';
 const total = Number(process.argv[2] ?? 1000);
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
@@ -17,14 +20,43 @@ const report = {
   business: { profit: 0, loss: 0, exited: 0 },
   observedEventIds: [] as string[],
   failures: [] as { seed: string; message: string }[],
+  enabledChoices: { min: 6, max: 0, eventsChecked: 0 },
+  families: {} as Record<string, number>,
 };
 const observed = new Set<string>();
 for (let i = 0; i < total; i++) {
-  const cohort = COHORTS[i % 3],
+  const cohort = i % 4 === 0 ? COHORTS[i % 3] : 1975 + (i % 52),
     region = REGIONS[Math.floor(i / 3) % 3].id,
     seed = `stress-${i}`;
   try {
-    const run = simulateLife(seed, { cohort, region }, i % 5);
+    const family = (Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[])[
+      Math.floor(i / 5) % 5
+    ];
+    const run = simulateLife(
+      seed,
+      {
+        cohort,
+        region,
+        name: `Nguyễn An ${i}`,
+        birthplace: `Quê nhà ${i}`,
+        environment: i % 2 ? 'urban' : 'rural',
+        wealth: (i % 5) as RunSetup['wealth'],
+        family,
+        motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
+        fatherTraits: [],
+      },
+      i % 5,
+      (r) => {
+        const e = activeDefinition(r);
+        if (e) {
+          const n = e.choices.filter((c) => !choiceReason(r, c)).length;
+          report.enabledChoices.min = Math.min(report.enabledChoices.min, n);
+          report.enabledChoices.max = Math.max(report.enabledChoices.max, n);
+          report.enabledChoices.eventsChecked++;
+        }
+      },
+    );
+    report.families[family] = (report.families[family] ?? 0) + 1;
     report.runs++;
     report.cohorts[cohort] = (report.cohorts[cohort] ?? 0) + 1;
     report.regions[region] = (report.regions[region] ?? 0) + 1;

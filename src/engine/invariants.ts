@@ -1,6 +1,6 @@
 import type { GameRun } from '../domain/model';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
-import { activeDefinition, eligible, partnerOf } from './engine';
+import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
@@ -90,6 +90,17 @@ export function assertRun(run: GameRun) {
   )
     fail('scheduled lifecycle');
   const active = activeDefinition(run);
+  if (active && active.choices.filter((c) => !choiceReason(run, c)).length < 4)
+    fail('fewer than four enabled choices');
+  if (run.engineVersion === '2.0.0') {
+    if (run.setup.cohort < 1975 || run.setup.cohort > 2026) fail('birth year');
+    for (const n of run.npcs.filter((n) => n.id === 'mother' || n.id === 'father')) {
+      if (!n.presence) fail('parent presence');
+      if (n.presence === 'unknown' && run.relationships.some((r) => r.npcId === n.id))
+        fail('unknown parent relationship');
+      if (n.presence === 'deceased' && n.alive) fail('parent death');
+    }
+  }
   if (
     run.activeEvent &&
     (!active || !eligible(run, active.condition) || run.activeEvent.month !== run.month)

@@ -1,4 +1,5 @@
 import type { Choice, Effect, EventDefinition, Stat } from '../domain/model';
+import { additions } from './choice-expansion';
 export const choice = (
   id: string,
   text: string,
@@ -18,12 +19,12 @@ export function event(
 ): EventDefinition {
   return {
     id,
-    version: 1,
+    version: 2,
     category,
     title,
     text,
-    condition,
-    choices,
+    condition: id === 'first-rain' ? { ...condition, npc: 'mother' } : condition,
+    choices: [...choices, ...additions(id)],
     weight: 10,
     cooldown: 60,
     once: true,

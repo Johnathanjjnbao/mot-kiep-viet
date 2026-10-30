@@ -3,13 +3,51 @@
   "seedPattern": "stress-0 … stress-N (N = runs - 1)",
   "invariantViolations": 0,
   "endings": {
-    "death": 441,
-    "memoir": 559
+    "death": 282,
+    "memoir": 718
   },
   "cohorts": {
-    "1975": 334,
-    "1995": 333,
-    "2005": 333
+    "1975": 84,
+    "1976": 20,
+    "1977": 20,
+    "1978": 20,
+    "1980": 20,
+    "1981": 20,
+    "1982": 20,
+    "1984": 20,
+    "1985": 20,
+    "1986": 20,
+    "1988": 19,
+    "1989": 19,
+    "1990": 19,
+    "1992": 19,
+    "1993": 19,
+    "1994": 19,
+    "1995": 83,
+    "1996": 19,
+    "1997": 19,
+    "1998": 19,
+    "2000": 19,
+    "2001": 19,
+    "2002": 19,
+    "2004": 19,
+    "2005": 102,
+    "2006": 19,
+    "2008": 19,
+    "2009": 19,
+    "2010": 19,
+    "2012": 19,
+    "2013": 19,
+    "2014": 19,
+    "2016": 19,
+    "2017": 19,
+    "2018": 19,
+    "2020": 19,
+    "2021": 19,
+    "2022": 19,
+    "2024": 19,
+    "2025": 19,
+    "2026": 19
   },
   "regions": {
     "southern-city": 334,
@@ -17,24 +55,24 @@
     "central-coast": 333
   },
   "ages": {
-    "min": 66,
+    "min": 64,
     "max": 82,
-    "mean": 78.78
+    "mean": 79.45
   },
   "finances": {
-    "meanNetWorth": 8383,
-    "minNetWorth": -61813,
-    "maxNetWorth": 41788
+    "meanNetWorth": 11112,
+    "minNetWorth": -52047,
+    "maxNetWorth": 40025
   },
   "arcs": {
-    "business": 545,
-    "family": 1000,
-    "recovery": 204
+    "business": 500,
+    "family": 800,
+    "recovery": 219
   },
   "business": {
-    "profit": 206,
-    "loss": 171,
-    "exited": 168
+    "profit": 137,
+    "loss": 125,
+    "exited": 61
   },
   "observedEventIds": [
     "alley-lights",
@@ -110,5 +148,17 @@
     "workshop-promotion",
     "wrong-group"
   ],
-  "failures": []
+  "failures": [],
+  "enabledChoices": {
+    "min": 4,
+    "max": 6,
+    "eventsChecked": 35045
+  },
+  "families": {
+    "both": 200,
+    "father-only": 200,
+    "mother-only": 200,
+    "with-father": 200,
+    "with-mother": 200
+  }
 }

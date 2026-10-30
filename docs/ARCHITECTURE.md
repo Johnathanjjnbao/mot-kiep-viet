@@ -1,6 +1,6 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
-MVP cục bộ, React + TypeScript strict + Vite, không tài khoản/backend. Nguồn được tạo mới trong thư mục trống; không có HEAD ban đầu. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows. Graft có sẵn, đã đọc help; dự án mới dùng tìm kiếm thông thường, không init/graph. Các phiên bản phụ thuộc được xác nhận bằng npm registry và khóa trong package-lock.json.
+Beta v0.2, React + TypeScript strict + Vite, GitHub Pages công khai, dữ liệu trên máy và không tài khoản/backend. Phát triển tiếp từ bản v0.1 đã phát hành; không thay ứng dụng. Node 24.20.0, npm 11.19.0, Git 2.55.0 trên Windows; dependencies khóa trong package-lock.json.
 
 ## Trách nhiệm và quyền sở hữu
 
@@ -26,7 +26,13 @@ NPC có ID cố định và birthYear, alive. Quan hệ tham chiếu NPC, tối 
 
 ## Lưu và tương thích
 
-Engine 1.0.0/content 1.0.0; schema 2. Save gồm metadata + snapshot và action log. Giới hạn 5 MiB, schema strict, số hữu hạn, tham chiếu, đối soát và replay trước chấp nhận. Schema 1 nội bộ (snapshot→run, bổ sung versions) được di trú; engine/content khác bị từ chối rõ ràng, không âm thầm diễn giải lại. Export JSON không chứa mã thực thi. Bản chính thức tiếp theo cần giữ engine cũ hoặc thêm migration có test.
+Beta 0.2.0 dùng engine/content 2.0.0, schema 3; giới hạn save 5 MiB. `creator.ts` kiểm tra tên/năm 1975–2026/vùng/địa danh/môi trường/kinh tế/gia đình/tính cách. Địa danh tự nhập chỉ là nhãn, không tạo thống kê địa phương. Setup được chuẩn hóa theo thứ tự cố định; lượt RNG mặc định vẫn tiêu thụ khi có override để replay giống khởi tạo.
+
+`src/legacy/v1` đóng băng engine/content 1.0.0 và parser cũ. Schema 1/2 được kiểm chứng bằng luật cũ, mở ở màn chỉ đọc: nhật ký, tài chính, export; không chọn/tiến thời gian bằng v2. Không di trú một cuộc đời cũ thành kết quả mới. Ba ô lưu gốc giữ nguyên. Golden v1/v2 độc lập.
+
+`mot-kiep-viet-history` v1/store `lives` tách khỏi `mot-kiep-viet`/`saves`. UUID theo phiên đời nằm trong envelope save, ngoài mô phỏng. Tự lưu khi ended, transaction add-only: cùng ID/nội dung bỏ qua, khác nội dung từ chối. Tối đa 50 bản/import 20 MiB. Xem [SAVES_AND_SECURITY.md](SAVES_AND_SECURITY.md).
+
+NPC v2 có presence resident/nonresident/unknown/deceased; unknown dùng alive=null, không quan hệ hay thông báo mất. Cha/mẹ không cùng nhà còn sống không bị coi là đã mất. Tính cách tác động hằng năm cho cha/mẹ cùng chăm sóc còn sống. Sự kiện phải còn ít nhất 4 lựa chọn hợp lệ, nếu không sẽ không được chọn. Lựa chọn bổ sung viết riêng trong `choice-expansion.ts`; fallback có 4 cách xử sự cố định.
 
 ## Giới hạn chủ ý
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { GameRun } from '../domain/model';
 import { CATEGORIES } from './common';
+import { PARENT_TRAITS } from '../domain/creator';
 export function Journal({ run, compact = false }: { run: GameRun; compact?: boolean }) {
   const [filter, setFilter] = useState('all');
   const entries = compact
@@ -37,6 +38,20 @@ export function Journal({ run, compact = false }: { run: GameRun; compact?: bool
               <h3>{j.title}</h3>
               {j.choice && !compact && <p className="journal-choice">Bạn đã chọn: {j.choice}</p>}
               <p>{j.text}</p>
+              {j.month === 0 && !compact && run.engineVersion === '2.0.0' && (
+                <p>
+                  {run.setup.environment === 'urban' ? 'Môi trường đô thị' : 'Môi trường nông thôn'}
+                  .{' '}
+                  {run.npcs
+                    .filter((n) => n.id === 'mother' || n.id === 'father')
+                    .map(
+                      (n) =>
+                        `${n.name}: ${n.presence === 'unknown' ? 'chưa rõ thông tin' : (n.personality ?? []).map((t) => PARENT_TRAITS[t]).join(', ') || 'không chọn tính cách'}`,
+                    )
+                    .join('; ')}
+                  .
+                </p>
+              )}
             </div>
           </li>
         ))}

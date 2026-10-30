@@ -39,11 +39,59 @@ try {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
+    await expect(page.locator('.footer-version')).toContainText('0.2');
+    for (const family of ['both', 'father-only', 'mother-only', 'with-father', 'with-mother']) {
+      await page.getByTitle('Về trang đầu').click();
+      await page.getByRole('button', { name: 'Bắt đầu một kiếp mới' }).click();
+      await page.getByRole('button', { name: 'Tự chọn bối cảnh' }).click();
+      await page.getByLabel('Tên nhân vật', { exact: true }).fill('Nguyễn Ánh Mai');
+      await page.getByLabel('Năm sinh (1975–2026)').fill('2026');
+      await page.getByLabel('Địa danh cụ thể').fill('Xóm Biển, quê mình');
+      await page.getByLabel('Cấu trúc gia đình').selectOption(family);
+      await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
+      await page.getByRole('button', { name: 'Sửa trước khi bắt đầu' }).click();
+      await expect(page.getByLabel('Tên nhân vật', { exact: true })).toHaveValue('Nguyễn Ánh Mai');
+      await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
+      await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
+      await expect(page.locator('.birth-location')).toContainText('Xóm Biển, quê mình');
+      await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
+      expect(await page.getByTestId('event-choice').count()).toBeGreaterThanOrEqual(4);
+    }
+    for (let i = 0; i < 90; i++) {
+      if (await page.getByRole('heading', { name: /Một đời đã sống/ }).isVisible()) break;
+      const choices = page.getByTestId('event-choice');
+      if (await choices.count()) {
+        expect(await choices.count()).toBeGreaterThanOrEqual(4);
+        await choices.first().click();
+      } else await page.getByTestId('advance-life').click();
+    }
+    await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
+    await page.getByRole('button', { name: 'Lịch sử cuộc đời', exact: true }).click();
+    await expect(page.locator('.history-grid article')).toHaveCount(1);
+    const download = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Xuất toàn bộ lịch sử' }).click();
+    const path = await (await download).path();
+    await page.getByLabel('Chọn tệp lịch sử').setInputFiles(path);
+    await expect(page.getByRole('status')).toHaveText('Đã giữ lại lịch sử.');
+    await expect(page.locator('.history-grid article')).toHaveCount(1);
+    await page.getByRole('button', { name: 'Đọc cuộc đời này' }).click();
+    await expect(page.locator('.history-reading')).toContainText('Nguyễn Ánh Mai');
+    await page.getByRole('button', { name: 'Sống một kiếp khác' }).click();
+    await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();
+    await page.getByRole('button', { name: 'Lịch sử cuộc đời', exact: true }).click();
+    await expect(page.locator('.history-grid article')).toHaveCount(1);
+    await page.reload();
+    await page.getByRole('button', { name: 'Lịch sử cuộc đời', exact: true }).click();
+    await expect(page.locator('.history-grid article')).toHaveCount(1);
     expect(errors).toEqual([]);
     report.viewports.push({
       viewport,
       status: 'VERIFIED PASS',
       checks: [
+        'release UI version 0.2',
+        'five custom household forms and preview/edit',
+        'four or more choices throughout a complete life',
+        'immutable history, export/import dedup and retention after new run/reload',
         'HTML and assets',
         'new life',
         'choice and time advance',

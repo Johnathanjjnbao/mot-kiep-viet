@@ -1,8 +1,11 @@
+import { lifeSummary as legacySummary } from '../legacy/v1/application/summary';
+import { birthplaceOf, familyText } from '../domain/creator';
 import type { GameRun } from '../domain/model';
-import { CAREERS, REGIONS, ageOf } from '../content/world';
+import { CAREERS, ageOf } from '../content/world';
 import { netWorth } from '../engine/finance';
 export function lifeSummary(run: GameRun) {
-  const region = REGIONS.find((r) => r.id === run.player.region)!;
+  if (run.engineVersion === '1.0.0')
+    return legacySummary(run as Parameters<typeof legacySummary>[0]);
   const jobs = [
     ...new Set(run.player.careers.map((c) => CAREERS.find((j) => j.id === c.id)!.name)),
   ];
@@ -17,7 +20,7 @@ export function lifeSummary(run: GameRun) {
       'welcome-child',
     ].includes(c.eventId),
   );
-  const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${region.short.toLowerCase()}, trong một ${run.household.background.toLowerCase()}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
+  const biography = `${run.player.name} sinh năm ${run.player.birthYear}, tại ${birthplaceOf(run)}, gia cảnh ${run.household.background.toLowerCase()}. ${familyText(run)}. ${jobs.length ? `Đã đi qua ${jobs.length} hướng nghề: ${jobs.join(', ')}.` : 'Chưa có công việc chính thức được ghi nhận trong mô phỏng.'} ${children ? `Đã đón ${children} người con.` : 'Không có người con được ghi nhận.'} ${run.ending === 'death' ? `Cuộc đời khép lại ở tuổi ${ageOf(run)}.` : `Trang hồi ký dừng ở tuổi ${ageOf(run)}.`}`;
   return {
     biography,
     jobs,

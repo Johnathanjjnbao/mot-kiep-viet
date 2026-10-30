@@ -1,5 +1,13 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Hiện hành — beta v0.2, 30/10/2026
+
+Tiếp tục từ baseline main 3508765374d94b8150e852ff0aa74b9678cd8940 tại C:\Users\triba\OneDrive\Desktop\game. Đã triển khai Creator nâng cao, lựa chọn trên đủ 72 mẫu và Life History IndexedDB riêng. Engine/content 2.0.0, schema 3; v1 đóng băng cho save cũ chỉ đọc, không xóa ba slot. Chi tiết phạm vi/bằng chứng: [V02_REPORT.md](V02_REPORT.md).
+
+Luật mới có 1.000 seed, 0 vi phạm/0 failures, 72/72 sự kiện quan sát; 4–6 lựa chọn enabled trong 35.045 lượt. Mẫu mô phỏng phủ 41 năm; unit riêng chơi/replay 52 năm. Verify/E2E/production/scan và CI/live cuối đang xác minh; **G5 v0.2 INCOMPLETE**, chưa gọi deployed. Một test batch 52 đời vượt timeout 30 giây, đã nâng timeout riêng và đang chạy lại. Tài khoản cloud cho vợ và kỳ bí/trường thọ chỉ là kế hoạch, NOT RUN.
+
+**Các phần dưới là lịch sử v0.1 và kiểm toán ban đầu**, không dùng số PASS hoặc backlog cũ thay cho v0.2. Trạng thái mới nhất ở mục này và kết quả phát hành v0.2 cuối file.
+
 **Cập nhật:** 30/10/2026 (Asia/Saigon)  
 **Phạm vi kiểm toán:** bản `game.rar` người dùng gửi; đối chiếu với checkout `C:\Users\triba\OneDrive\Desktop\game` cùng HEAD `872bf5fa80815cace7699457a1eac2a4f110e02f`.  
 **Trạng thái hiện tại:** beta đã phát hành công khai, CI và live browser QA VERIFIED PASS. URL: https://johnathanjjnbao.github.io/mot-kiep-viet/. Phần kiểm toán HEAD 872bf5f bên dưới được giữ làm lịch sử.

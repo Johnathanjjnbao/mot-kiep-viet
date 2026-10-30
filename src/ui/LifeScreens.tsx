@@ -16,6 +16,7 @@ import type { GameRun } from '../domain/model';
 import { CAREERS, REGIONS, ageOf, currentCareer } from '../content/world';
 import { activeDefinition, choiceReason } from '../engine/engine';
 import { CATEGORIES, STAT_NAMES, downloadFile, money } from './common';
+import { birthplaceOf, familyText } from '../domain/creator';
 import { Scenery } from './Scenery';
 export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void }) {
   const region = REGIONS.find((r) => r.id === run.player.region)!;
@@ -38,12 +39,18 @@ export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void
         </h1>
         <div className="birth-location">
           <MapPin size={17} aria-hidden="true" />
-          {region.name}
+          {birthplaceOf(run)}
         </div>
-        <p className="lead">{region.story}</p>
+        <p className="lead">
+          {region.id === 'southern-city'
+            ? 'Một con hẻm, giàn hoa giấy và những tiếng gọi nhau buổi sáng.'
+            : region.id === 'northern-village'
+              ? 'Sau mái nhà là khoảng vườn, xa hơn là cánh đồng.'
+              : 'Gió biển đi qua khe cửa, ngoài sân là một khoảng trời rộng.'}
+        </p>
         <p>
-          {run.household.background}. Cha Thành và mẹ Thu đón bạn vào một buổi sáng bình thường, mà
-          với cả nhà lại chẳng bình thường chút nào.
+          {run.household.background}. {familyText(run)}. Người chăm sóc đón bạn vào một buổi sáng
+          bình thường, mà với họ lại chẳng bình thường chút nào.
         </p>
         <div className="birth-traits">
           <span className="badge">{run.player.traits[0]}</span>
@@ -76,7 +83,7 @@ export function Character({ run }: { run: GameRun }) {
       </div>
       <p className="character-region">
         <MapPin size={13} aria-hidden="true" />
-        {REGIONS.find((r) => r.id === run.player.region)!.short}
+        {birthplaceOf(run)}
       </p>
       <span className="trait-tag">{run.player.traits[0]}</span>
       <details className="stats-details">
@@ -183,28 +190,30 @@ export function Story({
       {event ? (
         <div className="choices">
           <p className="choice-prompt">Bạn sẽ chọn thế nào?</p>
-          {event.choices.map((choice, i) => {
-            const reason = choiceReason(run, choice);
-            return (
-              <button
-                className="choice"
-                data-testid="event-choice"
-                disabled={Boolean(reason)}
-                key={choice.id}
-                onClick={() => onChoice(event.id, choice.id)}
-              >
-                <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
-                <span className="choice-copy">
-                  <strong>{choice.text}</strong>
-                  <small>
-                    {choice.hint}
-                    {reason ? ` · ${reason}` : ''}
-                  </small>
-                </span>
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            );
-          })}
+          {event.choices
+            .filter((c) => !choiceReason(run, c))
+            .map((choice, i) => {
+              const reason = choiceReason(run, choice);
+              return (
+                <button
+                  className="choice"
+                  data-testid="event-choice"
+                  disabled={Boolean(reason)}
+                  key={choice.id}
+                  onClick={() => onChoice(event.id, choice.id)}
+                >
+                  <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
+                  <span className="choice-copy">
+                    <strong>{choice.text}</strong>
+                    <small>
+                      {choice.hint}
+                      {reason ? ` · ${reason}` : ''}
+                    </small>
+                  </span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </button>
+              );
+            })}
         </div>
       ) : (
         <div className="consequence">

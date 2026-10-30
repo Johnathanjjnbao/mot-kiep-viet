@@ -8,7 +8,9 @@ Dữ liệu gắn với trình duyệt và origin (giao thức, máy, cổng). `
 
 ## Định dạng
 
-Schema 2 gồm engine/content 1.0.0, savedAt ngoài mô phỏng và run đầy đủ. Run chứa seed, bối cảnh gốc, hai trạng thái RNG, action log, sự kiện đang chờ, lịch hệ quả, các thực thể và sổ tiền. Schema 1 nội bộ dùng `snapshot` thay `run`; có migration được test. Không có cam kết tương thích với định dạng chưa được hỗ trợ hay các bản thử trước khi gói nội dung hiện tại được chốt.
+Beta 0.2.0: schema 3, engine/content 2.0.0, savedAt và identity UUID ở envelope ngoài mô phỏng. Run chứa seed, cấu hình đã chuẩn hóa (tên, năm/vùng/nhãn nơi sinh, môi trường, kinh tế, gia đình, tính cách), hai RNG, action log, sự kiện đang chờ, lịch hệ quả, thực thể và sổ tiền. UUID không tham gia replay, không suy từ seed: hai lần chơi cùng seed vẫn là hai cuộc đời. Tải slot/import giữ UUID đã có.
+
+Schema 1/2, engine/content 1.0.0 được gửi tới parser và luật đóng băng ở `src/legacy/v1`; schema 1 đổi envelope snapshot thành run theo migration cũ. Bản hợp lệ mở **chỉ đọc** cùng nhật ký/tài chính/export, không tiếp tục bằng luật v2. Bản đã kết thúc có thể lưu vào lịch sử mới với hồi ký v1. Không tự xóa hay đổi nội dung ba slot. Phiên bản khác bị từ chối rõ ràng; không cam kết bản thử chưa phát hành.
 
 Nhập tệp theo thứ tự:
 
@@ -31,6 +33,16 @@ Giới hạn thao tác quản lý 400/life để luôn nằm trong ngưỡng rep
 Đây là rà soát cục bộ ở mức MVP, không phải chứng nhận an toàn. Chưa có kiểm thử xâm nhập độc lập, quota của mọi trình duyệt, phục hồi khi máy mất điện giữa giao dịch, Safari/Firefox hay đồng thời nhiều tab.
 
 ## Nâng phiên bản và quay lại
+
+Golden v1 golden-1995 giữ fingerprint 2525264403. Golden v2 golden-v02 là 4148875142 (luật/gói 2.0.0), không thay golden cũ. Khác biệt có chủ đích: setup mở rộng, RNG tiêu thụ mặc định nhất quán khi override, gia đình/tính cách, trợ cấp, chi phí đô thị và nhánh lựa chọn. Trong phát triển trước phát hành đã sửa thứ tự khóa setup khi tính ID; replay của setup nhập một phần và setup chuẩn hóa nay khớp nhau.
+
+## Lịch sử hoàn tất
+
+Database riêng `mot-kiep-viet-history` version 1, store lives, key UUID. Record gồm thời điểm lưu, snapshot có version và hồi ký nguyên bản. Khi ended, hàng đợi autosave ghi trước, rồi thêm lịch sử bằng transaction. Cùng UUID/nội dung bỏ qua, giữ timestamp gốc; cùng UUID/nội dung khác từ chối. Không update bản cũ. Bắt đầu kiếp khác không chạm store này. Reload/resume giữ identity từ envelope nên không nhân đôi kiếp v0.2.
+
+Định dạng export mot-kiep-viet-history, version 1. Xuất một/tất cả, import tối đa 20 MiB và 50 record; kiểm tra schema, UUID, thời điểm, save replay, ended và memoir khớp trước giao dịch. Trùng ID trong tệp bị từ chối. Xung đột/quá 50 bản hủy toàn bộ transaction, giữ bản cũ. Trùng bản đã có thì bỏ qua. UUID là định danh, không phải thông tin xác thực.
+
+Lỗi quota/bộ nhớ được báo, cho xuất save/thử lại; không tự xóa lịch sử. Giới hạn 50 chưa có tăng dung lượng/phân trang. Lịch sử theo origin/trình duyệt, không tự đồng bộ hay chống người có DevTools sửa tại máy. Đọc danh sách có replay nên chậm hơn khi nhiều đời. [Tài khoản cloud](CLOUD_ACCOUNTS_PLAN.md) chưa triển khai.
 
 Trước thay engine/content: xuất các save mẫu, giữ bản engine tương ứng, bổ sung migration có test hoặc báo không tương thích rõ ràng. Đừng đổi luật nhưng giữ nguyên version sau phát hành.
 

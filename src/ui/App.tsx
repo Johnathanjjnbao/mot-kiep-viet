@@ -19,9 +19,11 @@ import { HomeScreen } from './HomeScreen';
 import { NewLife } from './NewLife';
 import { BirthIntro, Character, Story, Summary } from './LifeScreens';
 import { SaveManager } from './SaveManager';
+import { LifeHistory } from './LifeHistory';
+import { LegacyLife } from './LegacyLife';
 import { Journal } from './Journal';
 import { CareerPanel, FinancePanel, PeoplePanel } from './Panels';
-type Screen = 'home' | 'new' | 'play' | 'journal';
+type Screen = 'home' | 'new' | 'play' | 'journal' | 'history';
 type GameTab = 'story' | 'career' | 'finance' | 'people';
 type Dialog = 'help' | 'settings' | 'saves' | null;
 function readSetting(key: string) {
@@ -94,6 +96,12 @@ export function App() {
             <BookOpen size={16} aria-hidden="true" />
             <span>Nhật ký</span>
           </button>
+          <button
+            aria-current={screen === 'history' ? 'page' : undefined}
+            onClick={() => setScreen('history')}
+          >
+            Lịch sử cuộc đời
+          </button>
         </nav>
         <div className="header-actions">
           <button
@@ -134,9 +142,14 @@ export function App() {
             }}
           />
         )}
+        {screen === 'history' && (
+          <LifeHistory run={run} identity={session.identity} onNew={() => setScreen('new')} />
+        )}
         {screen === 'play' &&
           run &&
-          (run.status === 'intro' ? (
+          (run.engineVersion === '1.0.0' ? (
+            <LegacyLife run={run} onNew={() => setScreen('new')} />
+          ) : run.status === 'intro' ? (
             <BirthIntro run={run} onBegin={() => act({ type: 'advance' })} />
           ) : run.status === 'ended' ? (
             <Summary
@@ -273,7 +286,7 @@ export function App() {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BẢN CHƠI CỤC BỘ · 0.1</span>
+        <span className="footer-version">BETA · 0.2</span>
       </footer>
       {dialog && (
         <Modal
@@ -289,6 +302,7 @@ export function App() {
         >
           {dialog === 'saves' ? (
             <SaveManager
+              identity={session.identity}
               run={run}
               onLoad={(loaded) => {
                 session.restore(loaded);

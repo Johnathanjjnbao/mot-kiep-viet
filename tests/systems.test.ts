@@ -22,7 +22,7 @@ import { assertRun } from '../src/engine/invariants';
 import { mandatoryCost, netWorth, settleMonth, transact } from '../src/engine/finance';
 import type { GameRun } from '../src/domain/model';
 export function adult(seed = 'adult'): GameRun {
-  let run = createRun(seed, { cohort: 1995, region: 'southern-city' });
+  let run = createRun(seed, { cohort: 1995, region: 'southern-city', wealth: 2, family: 'both' });
   while (ageOf(run) < 18 || run.activeEvent) {
     if (run.activeEvent) {
       const e = activeDefinition(run)!;

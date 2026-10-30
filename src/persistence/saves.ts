@@ -1,3 +1,5 @@
+import { parseSave as parseLegacy } from '../legacy/v1/persistence/saves';
+import { setupSchema } from '../domain/creator';
 import { openDB } from 'idb';
 import { z } from 'zod';
 import {
@@ -52,12 +54,7 @@ const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
 const runHeader = z
   .object({
     seed: z.string().min(1).max(100),
-    setup: z
-      .object({
-        cohort: z.union([z.literal(1975), z.literal(1995), z.literal(2005)]),
-        region: z.enum(['southern-city', 'northern-village', 'central-coast']),
-      })
-      .strict(),
+    setup: setupSchema,
     actions: z.array(action).max(512),
     engineVersion: z.literal(ENGINE_VERSION),
     contentVersion: z.literal(CONTENT_VERSION),
@@ -65,6 +62,7 @@ const runHeader = z
   .passthrough();
 const envelope = z
   .object({
+    identity: z.uuid().optional(),
     schemaVersion: z.literal(SAVE_VERSION),
     engineVersion: z.literal(ENGINE_VERSION),
     contentVersion: z.literal(CONTENT_VERSION),
@@ -72,7 +70,7 @@ const envelope = z
     run: runHeader,
   })
   .strict();
-function canonical(value: unknown, depth = 0): string {
+export function canonical(value: unknown, depth = 0): string {
   if (depth > 24) throw new Error('Cấu trúc tệp lưu quá sâu.');
   if (Array.isArray(value)) return `[${value.map((v) => canonical(v, depth + 1)).join(',')}]`;
   if (value !== null && typeof value === 'object')
@@ -82,11 +80,12 @@ function canonical(value: unknown, depth = 0): string {
       .join(',')}}`;
   return JSON.stringify(value);
 }
-export function snapshot(run: GameRun): SaveSnapshot {
+export function snapshot(run: GameRun, identity?: string): SaveSnapshot {
   return {
-    schemaVersion: SAVE_VERSION,
-    engineVersion: ENGINE_VERSION,
-    contentVersion: CONTENT_VERSION,
+    schemaVersion: run.engineVersion === '1.0.0' ? 2 : SAVE_VERSION,
+    engineVersion: run.engineVersion,
+    contentVersion: run.contentVersion,
+    ...(identity ? { identity } : {}),
     savedAt: new Date().toISOString(),
     run: structuredClone(run),
   };
@@ -100,18 +99,18 @@ export function parseSave(text: string): SaveSnapshot {
   } catch {
     throw new Error('Tệp không phải JSON hợp lệ.');
   }
-  if (raw && typeof raw === 'object' && 'schemaVersion' in raw && raw.schemaVersion === 1) {
-    const legacy = z
-      .object({ schemaVersion: z.literal(1), savedAt: z.iso.datetime(), snapshot: runHeader })
-      .strict()
-      .safeParse(raw);
-    if (!legacy.success) throw new Error('Tệp lưu phiên bản 1 không hợp lệ.');
-    raw = {
-      schemaVersion: SAVE_VERSION,
-      engineVersion: ENGINE_VERSION,
-      contentVersion: CONTENT_VERSION,
-      savedAt: legacy.data.savedAt,
-      run: legacy.data.snapshot,
+  if (
+    raw &&
+    typeof raw === 'object' &&
+    'schemaVersion' in raw &&
+    [1, 2].includes(Number(raw.schemaVersion))
+  ) {
+    const { identity, ...legacy } = raw as Record<string, unknown>;
+    if (identity !== undefined && !z.uuid().safeParse(identity).success)
+      throw new Error('Mã bản lưu không hợp lệ.');
+    return {
+      ...parseLegacy(JSON.stringify(legacy)),
+      ...(identity ? { identity: String(identity) } : {}),
     };
   }
   const parsed = envelope.safeParse(raw);
@@ -139,8 +138,8 @@ const database = () =>
     },
   });
 let pending: Promise<unknown> = Promise.resolve();
-export function writeSave(key: SaveKey, run: GameRun): Promise<void> {
-  const data = snapshot(run);
+export function writeSave(key: SaveKey, run: GameRun, identity?: string): Promise<void> {
+  const data = snapshot(run, identity);
   const write = pending
     .catch(() => undefined)
     .then(async () => {
