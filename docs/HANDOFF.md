@@ -164,3 +164,8 @@ Mục này thay yêu cầu SMTP/invitation của checkpoint v0.3 phía trên; gi
 Thêm bounded storyAction dùng choose/advance cũ, action token + ref chặn stale/duplicate, focus/scroll vùng story và feedback/journal; không đổi engine/content2/schema3. Regression one-tap/replay/scheduled/ending/save/history. Thêm local CAS cho hai tab cùng cache, giữ nhánh stale vào recovery. Hai migration approved giữ nguyên hash và remote state. Không áp SQL mới/xóa production. QA identities mới chỉ disabled, dữ liệu giữ nguyên theo chỉ thị mới.
 
 Gates local mới: 77 unit/integration, 16 E2E desktop/mobile, 1.000 seed/0 vi phạm. E2E ban đầu phát hiện accessible name và focus sau double-click mobile, đã sửa; preview QA từng thiếu base env, đã khởi động lại đúng subpath. Supabase/live/CI đang chốt; kết quả cuối tại V03_HANDOFF, V03_REPORT và evidence. MASTER_PLAN/ROADMAP chỉ thiết kế v0.4–v0.6, không triển khai kinh tế VNĐ/trường thọ/quốc tế.
+
+
+### Kết quả phát hành resume v0.3
+
+Code `4cafcbced975ba9b6b7b16b04331a2186aa65aa7`, main/origin. [CI41044765048](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41044765048) build/deploy completed/success, CI77/16/scan0/production PASS. Live guest1440/375 và 23 nhóm Auth/cloud thực VERIFIED PASS, bao gồm ba slot, mất mạng/reload/reconnect, conflict/chọn nhánh, local-tab CAS/recovery và history ở browser kia; zero uncaught app errors/broken public assets. JS/CSS/SW khớp SHA256 build. G5 release kỹ thuật VERIFIED PASS; owner self-login NOT RUN và nghiệm thu riêng INCOMPLETE. Không dùng password chủ dự án, không SMTP, không SQL migration mới/xóa production. QA identities của các lượt mới disabled, dữ liệu giữ nguyên. V03_HANDOFF/V03_REPORT/evidence ghi chi tiết; final docs commit và workflow được kiểm sau push.

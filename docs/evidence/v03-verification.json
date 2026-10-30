@@ -39,10 +39,28 @@
     "secretFindings": 0,
     "loginAxeViolations": 0
   },
-  "remoteRelease": "PENDING",
+  "remoteRelease": {
+    "status": "VERIFIED PASS",
+    "codeCommit": "4cafcbced975ba9b6b7b16b04331a2186aa65aa7",
+    "ciRun": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41044765048",
+    "ci": "completed/success build and deploy",
+    "ciUnitPassed": 77,
+    "ciE2ePassed": 16,
+    "ciSecretFindings": 0,
+    "liveGuestViewports": 2,
+    "liveAuthCloudChecks": 23,
+    "liveAssetsSha256": "match",
+    "evidence": [
+      "ci-v03.json",
+      "v03-live-guest.json",
+      "v03-live-authenticated.json",
+      "v03-live-assets.json"
+    ]
+  },
   "ownerManualLogin": "NOT RUN",
   "smtpInvitationEmailRecovery": "OUT OF SCOPE",
   "physicalDeviceTest": "NOT RUN",
   "productionMigrationDuringResume": false,
-  "productionDataDeletedDuringResume": false
+  "productionDataDeletedDuringResume": false,
+  "ownerAcceptance": "INCOMPLETE: owner manual password login NOT RUN"
 }

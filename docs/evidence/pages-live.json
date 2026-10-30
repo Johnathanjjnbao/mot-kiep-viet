@@ -9,7 +9,7 @@
       },
       "status": "VERIFIED PASS",
       "checks": [
-        "release UI version 0.2",
+        "release UI version 0.3",
         "five custom household forms and preview/edit",
         "four or more choices throughout a complete life",
         "immutable history, export/import dedup and retention after new run/reload",
@@ -30,7 +30,7 @@
       },
       "status": "VERIFIED PASS",
       "checks": [
-        "release UI version 0.2",
+        "release UI version 0.3",
         "five custom household forms and preview/edit",
         "four or more choices throughout a complete life",
         "immutable history, export/import dedup and retention after new run/reload",

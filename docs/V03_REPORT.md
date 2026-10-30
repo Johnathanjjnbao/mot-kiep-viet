@@ -1,6 +1,6 @@
 # Một Kiếp Việt v0.3 — báo cáo phát hành
 
-Ngày 30/10/2026 (Asia/Saigon). Tiếp tục đúng game/repository hiện có. Bản này thay yêu cầu SMTP/invitation trước đó bằng tài khoản Email/Password đã tạo thủ công. Kết quả CI/live sẽ được điền sau triển khai, không dùng số cũ thay chứng cứ mới.
+Ngày 30/10/2026 (Asia/Saigon). Tiếp tục đúng game/repository hiện có. Bản này thay yêu cầu SMTP/invitation trước đó bằng tài khoản Email/Password đã tạo thủ công. Code 4cafcbced975ba9b6b7b16b04331a2186aa65aa7 đã push main, CI completed/success và live guest/Auth/cloud VERIFIED PASS. Owner tự đăng nhập tài khoản cá nhân vẫn NOT RUN.
 
 ## 1. Checkpoint khôi phục
 
@@ -37,7 +37,7 @@ Autosave/ba slot/cache project-user, replay/version/size validation, CAS server/
 
 ## 8. Đồng bộ giữa browser
 
-Hai context độc lập desktop/mobile, Auth thật: A lưu/B tải, offline/reload/reconnect, revision conflict/chọn nhánh, logout/switch. Bổ sung ba slot UI và hai tab chung IndexedDB. Kết quả hiện hành trong evidence/v03-real-browser.json và v03-live-authenticated.json sau deploy. **NOT RUN:** hai thiết bị vật lý/Safari/Firefox.
+Hai context độc lập desktop/mobile, Auth thật: A lưu/B tải, offline/reload/reconnect, revision conflict/chọn nhánh, logout/switch. Bổ sung ba slot UI và hai tab chung IndexedDB. VERIFIED PASS 23 nhóm cả localhost và live; kết quả trong evidence/v03-real-browser.json và v03-live-authenticated.json. **NOT RUN:** hai thiết bị vật lý/Safari/Firefox.
 
 ## 9. Life History
 
@@ -55,15 +55,15 @@ Story container ổn định, heading focus preventScroll và scroll đến card
 
 | Gate                                | Trạng thái                                                                     |
 | ----------------------------------- | ------------------------------------------------------------------------------ |
-| Verify type/lint/unit/content/build | VERIFIED PASS cuối: 77/77, 9 files                                  |
+| Verify type/lint/unit/content/build | VERIFIED PASS cuối: 77/77, 9 files                                             |
 | SQL fixtures                        | VERIFIED PASS 8/8 (nằm trong 77)                                               |
 | Guest E2E production                | VERIFIED PASS 16/16 desktop/mobile                                             |
 | Simulation                          | VERIFIED PASS 1.000 đời, 0 vi phạm/0 failures, 4–6 lựa chọn trong 35.045 event |
 | Login visual/axe                    | VERIFIED PASS 1440/375, 0 overflow/violations                                  |
 | Dependency audit                    | VERIFIED PASS 0 advisory                                                       |
-| Final production smoke/secret scan | VERIFIED PASS; 0 findings cả dist/history |
-| Real backend + browser mới | VERIFIED PASS 23/23, gồm ba slot, hai tab và history |
-| CI/Pages/live guest/Auth            | PENDING sau commit                                                             |
+| Final production smoke/secret scan  | VERIFIED PASS; 0 findings cả dist/history                                      |
+| Real backend + browser mới          | VERIFIED PASS 23/23, gồm ba slot, hai tab và history                           |
+| CI/Pages/live guest/Auth            | VERIFIED PASS; CI77/16/scan0; guest2 viewports; real Auth/cloud23              |
 | Owner manual login                  | NOT RUN                                                                        |
 
 Các file evidence và logs được đối chiếu kết quả thật trước release. Preview QA từng thiếu VITE_BASE_PATH, harness login từng trùng selector sau đổi accessible label; sửa cấu hình/scoping, không nới assertion bảo mật.
@@ -74,15 +74,15 @@ Kiểm kê thực tế 22 global directories và 5 system skills; dùng Context 
 
 ## 14. Commit/branch
 
-Branch main. SHA code phát hành/final HEAD và các commits ở V03_HANDOFF/git log sau commit. Chỉ stage file dự án, `.env.local/.local/.temp` ignored. Không có privileged key/user credential trong repo/log/frontend.
+Branch main. Code phát hành `4cafcbced975ba9b6b7b16b04331a2186aa65aa7`; sau đó có commit tài liệu/bằng chứng. Final HEAD được xác minh qua git log/chat, tránh self-reference trong commit. Chỉ stage file dự án, `.env.local/.local/.temp` ignored. Không có privileged key/user credential trong repo/log/frontend.
 
 ## 15. GitHub Actions
 
-PENDING đúng SHA phát hành. CI npm ci → verify → secret scan → browser E2E → production smoke → dist artifact; deploy depends build. Không SQL/admin QA trong CI. Public URL/publishable key có chủ đích, không secret/service-role.
+[Workflow 41044765048](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41044765048) đúng code SHA `4cafcbc`: build và deploy completed/success; CI77 unit, 16 E2E, scan0 và production smoke PASS. CI npm ci → verify → secret scan → browser E2E → production smoke → dist artifact; deploy depends build. Không SQL/admin QA trong CI. Public URL/publishable key có chủ đích, không secret/service-role.
 
 ## 16. Website thật
 
-[GitHub Pages](https://johnathanjjnbao.github.io/mot-kiep-viet/). Sau CI success chạy guest desktop/mobile, one-tap/save/history/login UI và authenticated QA; đối chiếu JS/CSS/SW hashes. HTTP200 hoặc CI success đơn lẻ không chứng minh cloud sync.
+[GitHub Pages](https://johnathanjjnbao.github.io/mot-kiep-viet/). Đã kiểm guest desktop1440/mobile375 (creator5 gia đình, one-tap, save/load, complete life/history, font/assets, zero page/network errors) và Auth/cloud23 nhóm ngay trên URL thật. JS/CSS/SW SHA-256 khớp build. Evidence: v03-live-guest.json, v03-live-authenticated.json, v03-live-assets.json, ci-v03.json. HTTP200 hoặc CI success đơn lẻ không chứng minh cloud sync.
 
 ## 17. Giới hạn
 
