@@ -1,5 +1,7 @@
 # Master Plan — Một Kiếp Việt
 
+Life Expansion: M1 v0.3.2 và M2 v0.3.3 VERIFIED PASS/deployed; M3 v0.3.4 (22scene nháp) INCOMPLETE, M4 v0.3.5 NOT RUN. Không thay ba mốc tương lai kỳ bí/quốc tế/VNĐ. Trạng thái và bước tiếp tục ở LIFE_EXPANSION.
+
 ## Life Expansion v0.3.2–v0.3.5 — phạm vi được giao
 
 M1: hệ thị giác và avatar sống sáu tuổi (local gates đã qua, đang phát hành). M2: cửa hàng/tủ đồ ≥24 món, ledger đSM và social context. M3: ≥3 NPC độc lập, hẹn hò/thỏa thuận/hôn nhân/ngoại tình với agency. M4: nhiều con, hành vi nuôi dạy tích lũy và đường trưởng thành tự quyết. Từng mốc qua test/commit/push/CI/live rồi tiếp tục; trạng thái thực và save plan ở [LIFE_EXPANSION](LIFE_EXPANSION.md). Không mở rộng sang ba mốc tương lai bên dưới.

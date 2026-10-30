@@ -1,0 +1,252 @@
+{
+  "syntax": "VERIFIED PASS",
+  "draftScenes": 22,
+  "draftChoices": 88,
+  "activeNewRomanceTemplates": 0,
+  "engineIntegration": "NOT RUN",
+  "semanticTypecheck": "NOT RUN",
+  "scenes": [
+    {
+      "id": "soc-meet",
+      "title": "Chỗ ngồi còn trống",
+      "choices": 4,
+      "labels": [
+        "Tự giới thiệu và hỏi điều người kia đang quan tâm",
+        "Nghe trước, rồi kể một chuyện nhỏ về mình",
+        "Nói về một điều mình đang học",
+        "Chào lịch sự rồi trở lại việc riêng"
+      ]
+    },
+    {
+      "id": "soc-listen",
+      "title": "Điều chưa kể hết",
+      "choices": 4,
+      "labels": [
+        "Hỏi người ấy muốn được nghe hay cần lời khuyên",
+        "Kể một lần mình cũng không biết phải làm gì",
+        "Cho người ấy thời gian và hẹn nói lại",
+        "Đưa lời khuyên ngay dù chưa hiểu hết"
+      ]
+    },
+    {
+      "id": "soc-book",
+      "title": "Hai cách đọc một trang sách",
+      "choices": 4,
+      "labels": [
+        "Giải thích và hỏi lại điều mình chưa hiểu",
+        "Chuyển sang một câu chuyện thực tế của cả hai",
+        "Cùng thử vẽ hoặc viết lại đoạn ấy",
+        "Dừng tranh luận khi cả hai đã mệt"
+      ]
+    },
+    {
+      "id": "soc-date",
+      "title": "Một lời hẹn rõ ràng",
+      "choices": 4,
+      "labels": [
+        "Ngỏ lời hẹn hò và chờ câu trả lời",
+        "Rủ gặp như bạn bè và giữ đúng giới hạn ấy",
+        "Nói rằng mình có cảm tình, chưa đòi câu trả lời",
+        "Chọn chưa theo đuổi chuyện tình cảm"
+      ]
+    },
+    {
+      "id": "soc-flirt",
+      "title": "Câu nói có thể được hiểu khác",
+      "choices": 4,
+      "labels": [
+        "Thừa nhận mình đang có cảm tình",
+        "Hỏi người ấy có thấy thoải mái không",
+        "Nói rõ đây chỉ là lời đùa và giữ tình bạn",
+        "Chuyển sang kể chuyện chung của nhóm"
+      ]
+    },
+    {
+      "id": "soc-exclusive",
+      "title": "Chúng ta đang hứa điều gì?",
+      "choices": 4,
+      "labels": [
+        "Đề nghị một mối quan hệ độc quyền",
+        "Nói thật rằng mình chưa muốn độc quyền",
+        "Hỏi thêm người ấy cần điều gì để thấy an tâm",
+        "Dừng hẹn hò vì mong muốn quá khác nhau"
+      ]
+    },
+    {
+      "id": "soc-cohabit",
+      "title": "Hai chiếc chìa khóa",
+      "choices": 4,
+      "labels": [
+        "Thử sống chung trong phòng thuê, cùng chia việc và chi phí",
+        "Tiếp tục ở riêng, giữ những buổi gặp có chất lượng",
+        "Lập kế hoạch rồi hẹn một năm nữa nói lại",
+        "Hỏi người ấy sợ điều gì nhất khi sống chung"
+      ]
+    },
+    {
+      "id": "soc-proposal",
+      "title": "Một lời hỏi về những năm sau",
+      "choices": 4,
+      "labels": [
+        "Ngỏ lời kết hôn và tôn trọng câu trả lời",
+        "Nói về gia đình, công việc và trách nhiệm trước",
+        "Tiếp tục cam kết mà chưa chọn hôn nhân",
+        "Thừa nhận mình chưa chắc về mối quan hệ"
+      ]
+    },
+    {
+      "id": "soc-budget",
+      "title": "Bữa cơm và cuốn sổ chi tiêu",
+      "choices": 4,
+      "labels": [
+        "Cùng đọc sổ và chia lại trách nhiệm",
+        "Hỏi điều đang khiến người ấy áp lực nhất",
+        "Giữ quyền tự quyết một khoản chi riêng cho mỗi người",
+        "Đổ lỗi rằng người kia tiêu chưa khéo"
+      ]
+    },
+    {
+      "id": "soc-study",
+      "title": "Ước muốn quay lại lớp học",
+      "choices": 4,
+      "labels": [
+        "Ủng hộ và cùng chuẩn bị giai đoạn thu nhập giảm",
+        "Cùng tìm một lộ trình từng bước",
+        "Hỏi rõ người ấy cần mình hỗ trợ điều gì",
+        "Phản đối mà không nghe thêm lý do"
+      ]
+    },
+    {
+      "id": "soc-old-friend",
+      "title": "Một người cũ trong buổi gặp",
+      "choices": 4,
+      "labels": [
+        "Hỏi thăm hiện tại, giữ ranh giới rõ ràng",
+        "Nghe người ấy muốn nói gì về chuyện cũ",
+        "Nói rằng mình muốn tìm hiểu lại, nếu cả hai đều tự do",
+        "Chào rồi rời buổi gặp khi thấy chưa sẵn sàng"
+      ]
+    },
+    {
+      "id": "soc-temptation",
+      "title": "Sự gần gũi ở ngoài lời hứa",
+      "choices": 4,
+      "labels": [
+        "Giữ tình bạn và nói rõ giới hạn",
+        "Đề nghị một mối quan hệ kín dù đang có cam kết",
+        "Lùi lại để nói chuyện với người đang đồng hành",
+        "Dừng liên hệ riêng với người này"
+      ]
+    },
+    {
+      "id": "soc-secret",
+      "title": "Một cuộc hẹn phải giấu tên",
+      "choices": 4,
+      "labels": [
+        "Chấm dứt quan hệ kín và chuẩn bị nói thật",
+        "Nói thật với người đang có cam kết",
+        "Tiếp tục giấu và giữ các cuộc hẹn",
+        "Đề nghị tạm dừng để tự nhìn lại"
+      ]
+    },
+    {
+      "id": "soc-discovery",
+      "title": "Điều không còn giấu được",
+      "choices": 4,
+      "labels": [
+        "Nhận trách nhiệm và nói rõ điều đã xảy ra",
+        "Lắng nghe, chấp nhận việc người ấy cần khoảng cách",
+        "Đề nghị ly thân để hai người tự cân nhắc",
+        "Đổ lỗi cho người ấy vì mối quan hệ đã rạn nứt"
+      ]
+    },
+    {
+      "id": "soc-confession",
+      "title": "Một câu thật khó bắt đầu",
+      "choices": 4,
+      "labels": [
+        "Kể rõ và để người ấy lựa chọn phản ứng",
+        "Xin một buổi nói chuyện nghiêm túc, chưa ép câu trả lời",
+        "Đề nghị ly thân trong lúc giải quyết",
+        "Tiếp tục giấu vì sợ hậu quả"
+      ]
+    },
+    {
+      "id": "soc-repair",
+      "title": "Niềm tin cần nhiều hơn một buổi nói chuyện",
+      "choices": 4,
+      "labels": [
+        "Đề nghị bắt đầu lại bằng những cam kết cụ thể",
+        "Nghe và thực hiện một việc nhỏ đã hứa",
+        "Tôn trọng việc người ấy chưa muốn quay lại",
+        "Đòi người ấy quên chuyện cũ ngay"
+      ]
+    },
+    {
+      "id": "soc-separate",
+      "title": "Một căn nhà, hai khoảng lặng",
+      "choices": 4,
+      "labels": [
+        "Thỏa thuận ly thân và chia lại trách nhiệm",
+        "Xin cùng nhìn lại điều đã khiến hai người xa nhau",
+        "Đề nghị từng bước sửa chữa nếu người ấy đồng ý",
+        "Phủ nhận vấn đề và tiếp tục trách móc"
+      ]
+    },
+    {
+      "id": "soc-divorce",
+      "title": "Sắp xếp những điều còn chung",
+      "choices": 4,
+      "labels": [
+        "Kết thúc hôn nhân, dành khoản đSM để thu xếp",
+        "Đề nghị hòa giải và chấp nhận câu trả lời riêng của người ấy",
+        "Tập trung trao đổi bình tĩnh về trách nhiệm còn chung",
+        "Lắng nghe điều người ấy cần để bước tiếp"
+      ]
+    },
+    {
+      "id": "soc-new-start",
+      "title": "Một lời hẹn sau những mùa cũ",
+      "choices": 4,
+      "labels": [
+        "Đề nghị tìm hiểu nhau với mong muốn rõ ràng",
+        "Giữ tình bạn và cho mình thêm thời gian",
+        "Kể vừa đủ về điều mình mong ở hiện tại",
+        "Hỏi người ấy muốn gì ở chặng đời này"
+      ]
+    },
+    {
+      "id": "soc-loss",
+      "title": "Chiếc ghế quen không còn người ngồi",
+      "choices": 4,
+      "labels": [
+        "Gọi một người thân, nói rằng mình cần được ở cùng",
+        "Ghi lại một kỷ niệm bình thường của hai người",
+        "Sắp xếp lại sinh hoạt từng việc một",
+        "Cho mình một khoảng yên và hẹn người quen ghé lại"
+      ]
+    },
+    {
+      "id": "soc-boundary",
+      "title": "Một lời không cần được nghe rõ",
+      "choices": 4,
+      "labels": [
+        "Hỏi rõ và tôn trọng giới hạn được nói ra",
+        "Xin lỗi về điều mình đã làm và lắng nghe",
+        "Kể nhu cầu của mình để cùng tìm cách phù hợp",
+        "Cho rằng người ấy quá nhạy cảm"
+      ]
+    },
+    {
+      "id": "soc-child-plan",
+      "title": "Câu hỏi về một người con",
+      "choices": 4,
+      "labels": [
+        "Hỏi liệu cả hai có thực sự muốn và sẵn sàng",
+        "Chọn dành thêm thời gian cho cuộc sống hiện tại",
+        "Bàn về việc chăm sóc và nguồn lực trước",
+        "Nghe điều người ấy lo mà chưa đưa kết luận"
+      ]
+    }
+  ]
+}

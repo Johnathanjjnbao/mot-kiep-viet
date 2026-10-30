@@ -1,0 +1,139 @@
+import type { SocialOperation } from '../domain/social';
+import type { Stat } from '../domain/model';
+import { event, choice, stat } from './authoring';
+type Option = [string, string, SocialOperation, Stat, number];
+const scene = (id:string,title:string,text:string,options:Option[],arc?:string) => event(id,'relationship',title,text,{minAge:18,maxAge:81},options.map(([label,outcome,operation,key,amount],i)=>choice(`c${i}`,label,`${key==='knowledge'?'Tri thức':key==='stress'?'Áp lực':key==='mood'?'Tinh thần':'Giao tiếp'} ${amount>0?'+':''}${amount} · người kia có lựa chọn riêng`,outcome,[stat(key,amount),{kind:'social',operation}])),{version:4,weight:6,...(arc?{arc}:{})});
+export const romanceEvents = [
+  scene('soc-meet','Chỗ ngồi còn trống','Ở buổi gặp người quen, {name} kéo chiếc ghế còn trống về phía bạn. Câu chuyện chưa có gì đặc biệt; có lẽ chính vì vậy mà dễ bắt đầu.',[
+    ['Tự giới thiệu và hỏi điều người kia đang quan tâm','Bạn bắt đầu từ một câu hỏi vừa đủ riêng tư.','meet','social',3],
+    ['Nghe trước, rồi kể một chuyện nhỏ về mình','Cuộc trò chuyện có chỗ cho cả hai người.','listen','mood',2],
+    ['Nói về một điều mình đang học','Một ý tưởng khiến buổi gặp kéo dài thêm.','learn','knowledge',3],
+    ['Chào lịch sự rồi trở lại việc riêng','Bạn giữ khoảng cách mình thấy thoải mái.','respect','stress',-2],
+  ],'companionship'),
+  scene('soc-listen','Điều chưa kể hết','{name} đang kể thì ngừng lại, như cân nhắc xem có nên nói tiếp. Bạn nhận ra lúc này một lời khuyên có thể đến quá sớm.',[
+    ['Hỏi người ấy muốn được nghe hay cần lời khuyên','Người kia được chọn cách tiếp tục câu chuyện.','listen','social',2],
+    ['Kể một lần mình cũng không biết phải làm gì','Bạn chia sẻ trải nghiệm, không lấy nó thay câu chuyện của người ấy.','share','mood',3],
+    ['Cho người ấy thời gian và hẹn nói lại','Cuộc nói chuyện được để ngỏ, không bị thúc ép.','respect','stress',-3],
+    ['Đưa lời khuyên ngay dù chưa hiểu hết','Lời nói đi nhanh hơn việc lắng nghe.','blame','knowledge',1],
+  ]),
+  scene('soc-book','Hai cách đọc một trang sách','Một câu trong cuốn sách khiến bạn và {name} hiểu khác nhau. Người ấy không có vẻ muốn thắng, chỉ muốn biết vì sao bạn nghĩ vậy.',[
+    ['Giải thích và hỏi lại điều mình chưa hiểu','Bạn giữ được ý kiến của mình và học thêm một cách nhìn.','learn','knowledge',4],
+    ['Chuyển sang một câu chuyện thực tế của cả hai','Câu chữ tìm được chỗ đứng trong đời thường.','share','social',3],
+    ['Cùng thử vẽ hoặc viết lại đoạn ấy','Một buổi trao đổi trở thành việc hai người cùng làm.','listen','mood',3],
+    ['Dừng tranh luận khi cả hai đã mệt','Không phải khác biệt nào cũng cần giải quyết trong một buổi.','respect','stress',-3],
+  ]),
+  scene('soc-date','Một lời hẹn rõ ràng','Bạn muốn gặp {name} trong một buổi hẹn, thay vì tiếp tục đoán ý nhau qua những câu bâng quơ. Người ấy cũng có quyền hiểu và trả lời lời mời ấy.',[
+    ['Ngỏ lời hẹn hò và chờ câu trả lời','Bạn nói rõ mong muốn; lời mời không buộc người kia phải nhận.','date','social',2],
+    ['Rủ gặp như bạn bè và giữ đúng giới hạn ấy','Một cuộc gặp bạn bè không mang theo lời hứa ngầm.','share','mood',3],
+    ['Nói rằng mình có cảm tình, chưa đòi câu trả lời','Bạn để người ấy có khoảng thở.','flirt','stress',-1],
+    ['Chọn chưa theo đuổi chuyện tình cảm','Bạn dành thời gian cho những điều khác trong đời.','respect','mood',2],
+  ],'companionship'),
+  scene('soc-flirt','Câu nói có thể được hiểu khác','Một lời đùa giữa bạn và {name} nghe gần gũi hơn thường ngày. Cả hai chợt im một nhịp, đủ để bạn có thể nói rõ hoặc bước lùi lại.',[
+    ['Thừa nhận mình đang có cảm tình','Bạn nói thật một điều còn mới với chính mình.','flirt','social',2],
+    ['Hỏi người ấy có thấy thoải mái không','Bạn chú ý đến cảm giác của người đối diện.','listen','mood',2],
+    ['Nói rõ đây chỉ là lời đùa và giữ tình bạn','Khoảng cách được đặt lại bằng một lời rõ ràng.','respect','stress',-2],
+    ['Chuyển sang kể chuyện chung của nhóm','Cả hai có thể tiếp tục buổi gặp mà không phải quyết định ngay.','share','social',3],
+  ]),
+  scene('soc-exclusive','Chúng ta đang hứa điều gì?','Bạn và {name} đã có những buổi hẹn. Người ấy hỏi liệu hai người có đang mong chờ cùng một điều, hay mỗi người hiểu mối quan hệ theo một cách.',[
+    ['Đề nghị một mối quan hệ độc quyền','Bạn đưa ra một thỏa thuận để cả hai tự nguyện cân nhắc.','exclusive','social',2],
+    ['Nói thật rằng mình chưa muốn độc quyền','Chuyện hẹn hò vẫn cần sự đồng thuận và thông tin rõ ràng.','respect','stress',-2],
+    ['Hỏi thêm người ấy cần điều gì để thấy an tâm','Bạn dành thời gian cho một câu hỏi khó hơn việc gật đầu.','listen','mood',3],
+    ['Dừng hẹn hò vì mong muốn quá khác nhau','Bạn không hứa điều mình không định giữ.','leave','stress',-3],
+  ],'companionship'),
+  scene('soc-cohabit','Hai chiếc chìa khóa','Câu chuyện sống chung với {name} bắt đầu từ tiền thuê nhà, giờ giấc và việc rửa bát. Những điều nhỏ ấy hóa ra cần nói kỹ hơn một lời hứa lớn.',[
+    ['Thử sống chung trong phòng thuê, cùng chia việc và chi phí','Hai người bước vào đời sống chung với những khoản chi hằng tháng.','cohabit','mood',3],
+    ['Tiếp tục ở riêng, giữ những buổi gặp có chất lượng','Sự gần gũi không nhất thiết phải cùng một địa chỉ.','respect','stress',-2],
+    ['Lập kế hoạch rồi hẹn một năm nữa nói lại','Bạn chưa chuyển nhà chỉ vì một buổi trò chuyện thuận lợi.','learn','knowledge',3],
+    ['Hỏi người ấy sợ điều gì nhất khi sống chung','Có những nỗi lo không nằm trên bảng chi tiêu.','listen','social',3],
+  ],'companionship'),
+  scene('soc-proposal','Một lời hỏi về những năm sau','Bạn nghĩ đến việc kết hôn với {name}. Người ấy có những dự định riêng; một lời cầu hôn cần chứa cả chỗ để trả lời chưa sẵn sàng.',[
+    ['Ngỏ lời kết hôn và tôn trọng câu trả lời','Bạn hỏi về một tương lai chung, không coi nó là phần thưởng đã được nhận.','propose','mood',3],
+    ['Nói về gia đình, công việc và trách nhiệm trước','Cuộc trò chuyện có thể chưa kết thúc bằng một chiếc nhẫn.','listen','social',3],
+    ['Tiếp tục cam kết mà chưa chọn hôn nhân','Hai người có thể cần một hình thức gắn bó khác.','respect','stress',-2],
+    ['Thừa nhận mình chưa chắc về mối quan hệ','Một câu trả lời khó vẫn tốt hơn một lời hứa bỏ trống.','wait','knowledge',2],
+  ],'companionship'),
+  scene('soc-budget','Bữa cơm và cuốn sổ chi tiêu','Sống chung với {name} khiến tiền bạc hiện ra trong những việc rất cụ thể. Tháng này có khoản cần ưu tiên; cả hai muốn biết mình đang gánh phần nào.',[
+    ['Cùng đọc sổ và chia lại trách nhiệm','Hai người nói về nguồn lực thật, kể cả thời gian và công chăm sóc.','support','knowledge',3],
+    ['Hỏi điều đang khiến người ấy áp lực nhất','Cuốn sổ được đặt xuống một lúc để nghe câu chuyện phía sau.','listen','social',3],
+    ['Giữ quyền tự quyết một khoản chi riêng cho mỗi người','Sống chung vẫn cần khoảng riêng đã thỏa thuận.','respect','mood',3],
+    ['Đổ lỗi rằng người kia tiêu chưa khéo','Cuộc nói chuyện chuyển từ con số sang phòng thủ.','blame','stress',3],
+  ],'companionship'),
+  scene('soc-study','Ước muốn quay lại lớp học','{name} muốn dành một thời gian học thêm. Thu nhập chung có thể giảm, nhưng người ấy không muốn cả đời chỉ nhắc đến dự định này bằng câu giá như.',[
+    ['Ủng hộ và cùng chuẩn bị giai đoạn thu nhập giảm','Người ấy bắt đầu thời gian học; gia đình phải tự cân đối phần còn lại.','support','mood',3],
+    ['Cùng tìm một lộ trình từng bước','Bạn không nhận quyền quyết định thay ước muốn của người ấy.','learn','knowledge',3],
+    ['Hỏi rõ người ấy cần mình hỗ trợ điều gì','Một kế hoạch được xây quanh nhu cầu cụ thể.','listen','social',3],
+    ['Phản đối mà không nghe thêm lý do','Người ấy có thể vẫn tự chọn đi học; niềm tin giữa hai người chịu sức ép.','blame','stress',4],
+  ]),
+  scene('soc-old-friend','Một người cũ trong buổi gặp','Bạn gặp lại {name}. Có chuyện cả hai đã đi qua, có chuyện chưa từng nói rõ. Sự quen thuộc không tự xóa những lý do từng khiến hai người xa nhau.',[
+    ['Hỏi thăm hiện tại, giữ ranh giới rõ ràng','Bạn để cuộc gặp thuộc về hiện tại.','respect','social',2],
+    ['Nghe người ấy muốn nói gì về chuyện cũ','Lắng nghe không đồng nghĩa với quay lại.','listen','mood',2],
+    ['Nói rằng mình muốn tìm hiểu lại, nếu cả hai đều tự do','Một đề nghị mới vẫn có thể bị từ chối.','date','social',3],
+    ['Chào rồi rời buổi gặp khi thấy chưa sẵn sàng','Bạn không buộc mình ở lại chỉ vì từng gần gũi.','wait','stress',-3],
+  ]),
+  scene('soc-temptation','Sự gần gũi ở ngoài lời hứa','Bạn đã có một cam kết khác. Sự gần gũi với {name} khiến bạn phải tự hỏi mình đang làm gì, trước khi biến một cảm xúc thành bí mật của nhiều người.',[
+    ['Giữ tình bạn và nói rõ giới hạn','Cảm tình được thừa nhận như một cảm xúc, không trở thành thỏa thuận bị phá vỡ.','respect','stress',-2],
+    ['Đề nghị một mối quan hệ kín dù đang có cam kết','Bạn đang đề nghị vi phạm thỏa thuận đã có; người kia vẫn có quyền từ chối.','secret','mood',2],
+    ['Lùi lại để nói chuyện với người đang đồng hành','Bạn chưa mở một quan hệ khác khi lời hứa cũ chưa được giải quyết.','wait','knowledge',3],
+    ['Dừng liên hệ riêng với người này','Bạn chọn một khoảng cách có thể khó chịu nhưng rõ ràng.','leave','stress',2],
+  ],'broken-promises'),
+  scene('soc-secret','Một cuộc hẹn phải giấu tên','Quan hệ với {name} đang diễn ra kín đáo. Việc giấu một cuộc hẹn đã kéo theo những lời giải thích khác. Hai người vẫn đang chịu trách nhiệm về lựa chọn này.',[
+    ['Chấm dứt quan hệ kín và chuẩn bị nói thật','Bạn ngừng cuộc hẹn, nhưng việc đã xảy ra chưa tự biến mất.','leave','stress',3],
+    ['Nói thật với người đang có cam kết','Lời thú nhận đặt quyết định tiếp theo vào tay cả người bị tổn thương.','confess','mood',-3],
+    ['Tiếp tục giấu và giữ các cuộc hẹn','Khoảng gần gũi trước mắt đi cùng nguy cơ bị phát hiện về sau.','share','stress',4],
+    ['Đề nghị tạm dừng để tự nhìn lại','Một khoảng dừng không hủy trách nhiệm với lời hứa đã vi phạm.','wait','knowledge',2],
+  ],'broken-promises'),
+  scene('soc-discovery','Điều không còn giấu được','Một chi tiết khiến {name} biết về mối quan hệ đã vi phạm thỏa thuận giữa hai người. Người ấy muốn nghe sự thật và tự quyết định phần đời tiếp theo.',[
+    ['Nhận trách nhiệm và nói rõ điều đã xảy ra','Bạn không thể quyết định thay người ấy có tha thứ hay không.','confess','stress',5],
+    ['Lắng nghe, chấp nhận việc người ấy cần khoảng cách','Cuộc nói chuyện có thể dừng lại ở đây trong hôm nay.','listen','mood',-3],
+    ['Đề nghị ly thân để hai người tự cân nhắc','Khoảng cách được đặt thành một thay đổi thực trong đời sống.','separate','stress',3],
+    ['Đổ lỗi cho người ấy vì mối quan hệ đã rạn nứt','Lời đổ lỗi khiến việc xây lại niềm tin khó hơn.','blame','stress',6],
+  ],'broken-promises'),
+  scene('soc-confession','Một câu thật khó bắt đầu','Bạn muốn nói với {name} điều mình đã giấu. Chuyện nói thật có thể đến muộn, và không có lời xin lỗi nào bảo đảm mọi thứ trở lại như cũ.',[
+    ['Kể rõ và để người ấy lựa chọn phản ứng','Bạn trả lại thông tin mà người ấy có quyền biết.','confess','stress',4],
+    ['Xin một buổi nói chuyện nghiêm túc, chưa ép câu trả lời','Bạn chấp nhận cuộc nói chuyện có thể cần nhiều lần.','listen','social',2],
+    ['Đề nghị ly thân trong lúc giải quyết','Sinh hoạt và trách nhiệm chung cần được sắp xếp lại.','separate','mood',-3],
+    ['Tiếp tục giấu vì sợ hậu quả','Sự im lặng giữ nguyên nguy cơ và điều đã xảy ra.','wait','stress',5],
+  ],'broken-promises'),
+  scene('soc-repair','Niềm tin cần nhiều hơn một buổi nói chuyện','Bạn và {name} đang thử hiểu liệu còn có thể đi cùng nhau. Người ấy nhắc đến những việc cụ thể cần thay đổi, thay vì một lời hứa rằng sẽ khác.',[
+    ['Đề nghị bắt đầu lại bằng những cam kết cụ thể','Đề nghị được cân nhắc theo niềm tin và những lần hai người đã đối xử với nhau.','repair','social',3],
+    ['Nghe và thực hiện một việc nhỏ đã hứa','Bạn chọn hành động có thể kiểm chứng qua thời gian.','listen','stress',-2],
+    ['Tôn trọng việc người ấy chưa muốn quay lại','Một lời từ chối được giữ nguyên giá trị của nó.','respect','mood',-1],
+    ['Đòi người ấy quên chuyện cũ ngay','Áp lực phải tha thứ có thể khiến khoảng cách sâu thêm.','blame','stress',5],
+  ],'broken-promises'),
+  scene('soc-separate','Một căn nhà, hai khoảng lặng','Bạn và {name} nói về việc tạm sống riêng. Bên cạnh cảm xúc còn có nhà ở, công việc và những người thân sẽ chịu ảnh hưởng.',[
+    ['Thỏa thuận ly thân và chia lại trách nhiệm','Thay đổi được ghi rõ; người cũ và những liên hệ gia đình không bị xóa.','separate','stress',2],
+    ['Xin cùng nhìn lại điều đã khiến hai người xa nhau','Bạn mở một cuộc trao đổi mà không bảo đảm có thể níu lại.','listen','social',3],
+    ['Đề nghị từng bước sửa chữa nếu người ấy đồng ý','Kế hoạch chỉ có ý nghĩa khi cả hai cùng muốn thử.','repair','mood',1],
+    ['Phủ nhận vấn đề và tiếp tục trách móc','Một người có thể chọn rời đi dù người còn lại chưa muốn.','blame','stress',5],
+  ],'broken-promises'),
+  scene('soc-divorce','Sắp xếp những điều còn chung','Sau thời gian sống riêng, bạn và {name} phải quyết định kết thúc hôn nhân hay tiếp tục thử. Những ký ức chung không bị xóa khi một thỏa thuận thay đổi.',[
+    ['Kết thúc hôn nhân, dành khoản đSM để thu xếp','Có chi phí mô phỏng cho việc sắp xếp lại đời sống; trách nhiệm gia đình còn được giữ.','divorce','stress',3],
+    ['Đề nghị hòa giải và chấp nhận câu trả lời riêng của người ấy','Mong muốn trở lại không thay thế sự đồng thuận.','repair','social',2],
+    ['Tập trung trao đổi bình tĩnh về trách nhiệm còn chung','Hai người vẫn có thể đối xử rõ ràng khi không còn là bạn đời.','respect','mood',1],
+    ['Lắng nghe điều người ấy cần để bước tiếp','Một cuộc nói chuyện có thể giúp kết thúc bớt tổn thương.','listen','stress',-2],
+  ],'broken-promises'),
+  scene('soc-new-start','Một lời hẹn sau những mùa cũ','Bạn biết mình đã khác sau những điều từng trải. Khi nghĩ đến một buổi hẹn với {name}, bạn muốn mang theo điều đã học thay vì một cuộc so sánh với người cũ.',[
+    ['Đề nghị tìm hiểu nhau với mong muốn rõ ràng','Một mối quan hệ mới vẫn bắt đầu từ hai người có quyền tự chọn.','date','social',2],
+    ['Giữ tình bạn và cho mình thêm thời gian','Bạn không dùng một người để lấp ngay khoảng trống của người khác.','respect','stress',-2],
+    ['Kể vừa đủ về điều mình mong ở hiện tại','Những trải nghiệm cũ trở thành thông tin, không phải bản án cho tương lai.','share','mood',3],
+    ['Hỏi người ấy muốn gì ở chặng đời này','Bạn để câu trả lời của người kia có trọng lượng riêng.','listen','social',3],
+  ]),
+  scene('soc-loss','Chiếc ghế quen không còn người ngồi','{name} đã qua đời. Những việc rất nhỏ trong nhà bỗng trở nên khác lạ. Bạn còn những người đang sống và những ký ức cần được giữ lại.',[
+    ['Gọi một người thân, nói rằng mình cần được ở cùng','Bạn không phải tự đi qua mọi ngày khó một mình.','grieve','mood',3],
+    ['Ghi lại một kỷ niệm bình thường của hai người','Ký ức được giữ mà không cần biến cả cuộc đời thành một lời ca ngợi.','share','knowledge',2],
+    ['Sắp xếp lại sinh hoạt từng việc một','Bạn tìm một nhịp sống còn có thể tiếp tục.','respect','stress',-3],
+    ['Cho mình một khoảng yên và hẹn người quen ghé lại','Nỗi buồn có chỗ, nhưng cánh cửa vẫn được để mở.','listen','mood',2],
+  ]),
+  scene('soc-boundary','Một lời không cần được nghe rõ','{name} nói có một điều trong cách hai người gặp gỡ khiến người ấy không thoải mái. Bạn có thể nghe câu ấy như một thông tin, thay vì một lời thách thức.',[
+    ['Hỏi rõ và tôn trọng giới hạn được nói ra','Một mối quan hệ có chỗ cho lời không.','respect','social',3],
+    ['Xin lỗi về điều mình đã làm và lắng nghe','Lời xin lỗi không đi kèm yêu cầu được tha thứ ngay.','listen','stress',-2],
+    ['Kể nhu cầu của mình để cùng tìm cách phù hợp','Hai bên đều có thể nói điều cần được giữ.','share','mood',2],
+    ['Cho rằng người ấy quá nhạy cảm','Cách bạn đáp lại có thể làm người kia chọn lùi xa.','blame','stress',4],
+  ]),
+  scene('soc-child-plan','Câu hỏi về một người con','Bạn và {name} nói đến chuyện có con. Người ấy có mong muốn, sức lực và dự định riêng; đây không phải điều một người có thể quyết định thay cả hai.',[
+    ['Hỏi liệu cả hai có thực sự muốn và sẵn sàng','Một kế hoạch có con chỉ được ghi nhận khi cả hai cùng đồng ý.','plan-child','mood',2],
+    ['Chọn dành thêm thời gian cho cuộc sống hiện tại','Chưa có con cũng là một lựa chọn cần được tôn trọng.','respect','stress',-2],
+    ['Bàn về việc chăm sóc và nguồn lực trước','Câu hỏi chuyển từ có hay không sang ai sẽ làm những việc gì.','learn','knowledge',3],
+    ['Nghe điều người ấy lo mà chưa đưa kết luận','Bạn không vội biến lo lắng thành một câu trả lời cuối.','listen','social',3],
+  ]),
+];

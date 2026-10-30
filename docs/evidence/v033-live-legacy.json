@@ -1,0 +1,23 @@
+{
+  "status": "VERIFIED PASS",
+  "reports": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": "VERIFIED PASS",
+      "engineVersion": "2.0.0",
+      "unchangedLegacyState": true
+    },
+    {
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "status": "VERIFIED PASS",
+      "engineVersion": "2.0.0",
+      "unchangedLegacyState": true
+    }
+  ]
+}

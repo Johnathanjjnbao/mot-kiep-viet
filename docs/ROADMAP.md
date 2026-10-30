@@ -1,5 +1,7 @@
 # Backlog sau beta v0.3
 
+Life Expansion: M1 v0.3.2 và M2 v0.3.3 VERIFIED PASS/deployed; M3 v0.3.4 (22scene nháp) INCOMPLETE, M4 v0.3.5 NOT RUN. Không thay ba mốc tương lai kỳ bí/quốc tế/VNĐ. Trạng thái và bước tiếp tục ở LIFE_EXPANSION.
+
 ## Life Expansion đang triển khai
 
 v0.3.2 avatar6tuổi/visual: local gates PASS, phát hành đang kiểm tra. v0.3.3 wardrobe ≥24món; v0.3.4 romance/agreement/agency; v0.3.5 parenting/generations: chưa hoàn tất. Xem [LIFE_EXPANSION](LIFE_EXPANSION.md); không coi backlog là tính năng đã có. Mục kỳ bí/quốc tế/kinh tế VNĐ bên dưới tiếp tục là roadmap.

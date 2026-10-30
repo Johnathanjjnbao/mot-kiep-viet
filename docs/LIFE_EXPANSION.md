@@ -57,3 +57,15 @@ Local89 tests,24 nhóm real Auth/cloud (mua+mặc desktop→reload mobile, chỉ
 Security Review: UI chỉ dispatch, preview không ghi state; không innerHTML/eval/secrets mới. Replay/canonical chống forge/import sai; SQL authorize/giới hạn envelope, không chống người dùng cố ý tự sửa JSON riêng qua REST. RLS/JWT mới là biên riêng tư;8 SQL auth tests và24 backend/browser groups qua. Không thay policy/grant/SECURITY DEFINER; migration003 đã được duyệt/applied, không SQL production khác.
 
 M2 final local gates: verify89/89, E2E26/26 (có shop axe0, double-click, outfit/reload,6viewport×20choice), production subpath smoke PASS. Ảnh shop desktop/mobile đã xem và chỉnh button/thumbnail/HUD để không che nội dung quản lý. Secret scan0 findings; simulation1000/replay1000/0 violations chỉ chạy một lần sau luật ổn định. Chưa gọi M2 G5 trước CI/live.
+
+## G5 M2 — VERIFIED PASS
+
+Code `a2388aee7a44d7189a6ef08fa1beaaf21466111b` / main đã deploy bằng [workflow41100506471](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41100506471), completed/success. Live guest desktop/mobile,6viewport×20choices,24 nhóm real Auth/cloud (gồm shop→mobile, offline/retry/conflict/3slots/history) và CSS/JS/SW khớp build: VERIFIED PASS. Thêm regression import schema3 trên desktop/mobile cả local và live: tiếp tục đúng frozen2, giữ toàn bộ run sau reload, không tự thêm wardrobe. Không dùng credential owner. Owner tự đăng nhập NOT RUN. Evidence `v033-live-*`; physical device/Safari/Firefox NOT RUN.
+
+## Checkpoint M3/M4 — INCOMPLETE
+
+M3 có bản nháp22 cảnh/88 lựa chọn ở `docs/drafts/romance-events.ts.txt`, model đề xuất ở `docs/drafts/social-model.ts.txt`. Đây là input thiết kế chưa nối engine/UI, không phải22 template đang chơi được. Tổng đang hoạt động vẫn77event (5mới),3arc,28wearable,6avatar stages. Chưa có ví dụ3admirers hay marriage/infidelity mới chạy thật; M3 gameplay NOT RUN. M4 parenting chưa triển khai, NOT RUN. Toàn bộ Life Expansion INCOMPLETE, không dùng PASS M1/M2 thay cho M3/M4.
+
+Bước tiếp theo:1) bật ruleset social chỉ cho đời mới, giữ golden wardrobe1173022751/v2/v1;2) tạo3NPC ổn định, preferences/trust/affection/interest riêng, EQ theo hành vi, adult/consent/agreement guards;3) nối22 cảnh và People UI, timeline/context resume giữ mọi event đang chờ;4) tests các nhánh rejection/exclusive/marriage/secret/discovery/reconciliation/divorce/death và replay/cloud,1000seed, release v0.3.4;5) ruleset family,15–20scene/2arc parenting, stableparents/caregivers/custody,8patterns/childagency và birth→career tests;6) release v0.3.5. Không tự bật social/family cho wardrobe runs đã lưu. SQL003 đã mở engine3/schema4, không cần SQL mới nếu giữ envelope; mọi SQL mới vẫn phải duyệt.
+
+Skills thực dùng thêm: Security Review cho save/ledger/auth boundaries và Humanizer cho biên tập lời kể. Không có sub-agent, không cài skill/library mới. Hai draft được bảo tồn trong Git để không phụ thuộc thư mục .local khi tiếp tục.
