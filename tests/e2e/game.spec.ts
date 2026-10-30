@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { assertDecisionViewport } from '../../scripts/decision-viewport.mjs';
 import {
   createRun as legacyRun,
   advance as legacyAdvance,
@@ -279,10 +280,7 @@ test('one-tap decisions reject double clicks, keep focus and viewport, and resto
     await expect(page.locator('#event-heading')).toBeFocused();
     await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
     expect((await storedRun(page)).choices.length).toBe(previous.choices.length + 1);
-    const position = await page.locator('.story-card').boundingBox();
-    expect(position!.y).toBeGreaterThanOrEqual(0);
-    expect(position!.y).toBeLessThan(40);
-    await expect(page.getByTestId('event-choice').first()).toBeInViewport();
+    await assertDecisionViewport(page);
   }
   const saved = await storedRun(page);
   const title = await page.locator('#event-heading').textContent();

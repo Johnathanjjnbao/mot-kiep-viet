@@ -22,3 +22,8 @@ Cập nhật 30/10/2026. Đã phát hành và xác minh kỹ thuật v0.3. G5 VE
 Giới hạn: hai browser context không phải hai thiết bị thật; Safari/Firefox/phone thật NOT RUN. Không triển khai v0.4–v0.6; MASTER_PLAN/ROADMAP là thiết kế. Không đổi Windows shutdown schedule.
 
 Code và bằng chứng được bảo toàn trong GitHub. Thứ tự tiếp tục: owner tự đăng nhập live → kiểm autosave/ba slot/history trong browser khác → ghi nghiệm thu riêng. Không chạy lại toàn bộ v0.3 hoặc yêu cầu SMTP. Source engine/content không đổi; không cần chạy lặp simulation nếu chỉ cập nhật tài liệu.
+
+
+## Addendum v0.3.1
+
+Bản vá tiếp tục từ final HEAD v0.3 `53802c8`; giữ nguyên nội dung bàn giao phía trên. Chỉ sửa HUD persistent và decision viewport/responsive, không làm lại cloud hoặc thay SQL/quyền tài khoản. Báo cáo/bằng chứng/gates/live của patch nằm tại [V031_REPORT](V031_REPORT.md); không dùng kết quả v0.3 trước đó thay acceptance mới.

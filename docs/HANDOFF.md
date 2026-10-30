@@ -169,3 +169,10 @@ Gates local mới: 77 unit/integration, 16 E2E desktop/mobile, 1.000 seed/0 vi p
 ### Kết quả phát hành resume v0.3
 
 Code `4cafcbced975ba9b6b7b16b04331a2186aa65aa7`, main/origin. [CI41044765048](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41044765048) build/deploy completed/success, CI77/16/scan0/production PASS. Live guest1440/375 và 23 nhóm Auth/cloud thực VERIFIED PASS, bao gồm ba slot, mất mạng/reload/reconnect, conflict/chọn nhánh, local-tab CAS/recovery và history ở browser kia; zero uncaught app errors/broken public assets. JS/CSS/SW khớp SHA256 build. G5 release kỹ thuật VERIFIED PASS; owner self-login NOT RUN và nghiệm thu riêng INCOMPLETE. Không dùng password chủ dự án, không SMTP, không SQL migration mới/xóa production. QA identities của các lượt mới disabled, dữ liệu giữ nguyên. V03_HANDOFF/V03_REPORT/evidence ghi chi tiết; final docs commit và workflow được kiểm sau push.
+
+
+## v0.3.1 — Persistent HUD và decision viewport (đang kiểm chứng)
+
+HEAD đầu 53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8, main sạch. Giữ toàn bộ v0.3 Auth/cloud/history/save/SQL. Đã tái hiện live: mobile profile ngoài viewport; landscape first choice vượt mép màn hình dù card top16. Thay disclosure bằng HUD sáu chỉ số trực tiếp từ Run; desktop sticky trái, mobile compact, narrative/choices cạnh nhau ở landscape thấp. Card bỏ khoảng trang trí lớn, dùng phần cao còn lại cho một vùng choices cuộn tự nhiên. Không chặn wheel/touch/Tab hay contain overscroll, không ẩn narrative. Sửa tab và năm tràn khi chữ lớn làm innerWidth/Height báo sai so với device.
+
+QA mới đo trước click/scroll, raw mouse/touch coordinates và hit test; không dùng Playwright auto-scroll làm bằng chứng. Sáu case1440x900,1366x768,390x844,375x667,667x375 và375x667 chữ lớn, mỗi case20 lần chọn đầu/giữa/cuối, đủ4/5/6 phương án. Kiểm số HUD từ persistedRun, action choice ID, exact replay, reload, axe. Regression16 cũ và Auth/cloud thực chạy thêm. Không engine/content/schema/SQL/account permission changes; không lặp simulation không cần thiết. Kết quả cuối tại V031_REPORT/evidence, commit/push/CI/live sau gates.

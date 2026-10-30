@@ -1,5 +1,11 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Hiện hành — v0.3.1 đang kiểm chứng, 30/10/2026
+
+Tiếp tục main `53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8`, working tree sạch trước sửa. Sửa đúng hai lỗi chủ dự án báo: stats ẩn/scroll khỏi màn hình và căn card nhưng lựa chọn vẫn thấp. HUD lấy trực tiếp GameRun, desktop sticky bên trái, mobile strip đủ sáu chỉ số; landscape chia narrative/choices hai cột. Nội dung truyện giữ nguyên, chỉ danh sách lựa chọn cuộn theo ngân sách chiều cao thực. Focus/resize/fonts cập nhật viewport, không reset inner-scroll do observer; giữ v0.3 guards/actions/cloud/save.
+
+Bằng chứng trước sửa v031-before.json/screenshots; acceptance mới đo trước mọi click, hit test HUD/narrative/full first option, kiểm viewport CSS khớp device để bắt auto-zoom, chọn đầu/giữa/cuối 20 lần mỗi case và xác minh đúng choice ID/HUD/save/replay. Lỗi năm trang trí tràn ở chữ lớn đã sửa. Engine/content2/schema3, SQL/RLS/account permissions không đổi; không chạy lại mô phỏng1.000 seed cho UI-only. Gates/deploy/live đang chốt, xem [V031_REPORT](V031_REPORT.md). Các phần dưới giữ lịch sử v0.3/v0.2.
+
 ## Hiện hành — v0.3 resume, 30/10/2026
 
 Khôi phục đúng main `9bbffbc853a42582517bdd7f67ea7826c19fec79`, giữ toàn bộ uncommitted cloud implementation từ phiên ngắt. Đã nối Auth/account/guest repositories, autosave/ba slot/history, offline shell/outbox, conflict/recovery và explicit guest migration. Bổ sung continuous one-click bằng action choose/advance cũ, guard duplicate/stale, focus/scroll và outcome không chặn. Local CAS chặn hai tab dùng chung cache ghi đè nhánh cũ. Engine/content 2.0.0, schema3 và legacy v1 giữ nguyên.

@@ -1,4 +1,5 @@
 import { chromium, expect } from '@playwright/test';
+import { assertDecisionViewport } from './decision-viewport.mjs';
 export async function browserCloudQA(users, check) {
   const browser = await chromium.launch({ channel: process.env.CI ? 'chromium' : 'msedge' });
   const contexts = [];
@@ -56,6 +57,8 @@ export async function browserCloudQA(users, check) {
       await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
       await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
       await expect(page.getByText('Đã tự lưu trên máy')).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      await assertDecisionViewport(page);
     };
     const row = async () => {
       const r = await a.client.from('cloud_saves').select('*').eq('slot', 'autosave');
@@ -134,6 +137,7 @@ export async function browserCloudQA(users, check) {
       await q.getByRole('button', { name: /Tiếp tục cuộc đời của Đời Đám Mây Kiểm Thử/ }).click();
       await expect(q.locator('.character-head')).toContainText('Đời Đám Mây Kiểm Thử');
       await expect(q.getByText('Đã tự lưu trên máy')).toBeVisible();
+      await assertDecisionViewport(q);
     });
     await check('all three manual slots save and load through authenticated UI', async () => {
       const title = await p.locator('.story-card h2').textContent();
@@ -196,9 +200,9 @@ export async function browserCloudQA(users, check) {
         await open(p);
         await p.getByText('Bản sao khôi phục', { exact: true }).click();
         await p.getByRole('button', { name: 'Đọc các nhánh đã giữ' }).click();
-        expect(
-          await p.getByRole('button', { name: 'Xuất nhánh này' }).count(),
-        ).toBeGreaterThanOrEqual(1);
+        await expect
+          .poll(() => p.getByRole('button', { name: 'Xuất nhánh này' }).count())
+          .toBeGreaterThanOrEqual(1);
         await close(p);
       },
     );

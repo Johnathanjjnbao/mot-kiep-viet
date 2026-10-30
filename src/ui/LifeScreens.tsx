@@ -3,13 +3,9 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Check,
-  ChevronRight,
   Download,
   Feather,
-  Heart,
   MapPin,
-  Sprout,
-  Wallet,
 } from 'lucide-react';
 import { lifeSummary, summaryCardSvg } from '../application/summary';
 import type { GameRun } from '../domain/model';
@@ -70,86 +66,53 @@ export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void
 }
 export function Character({ run }: { run: GameRun }) {
   const job = currentCareer(run);
+  const occupation = job
+    ? CAREERS.find((c) => c.id === job.id)!.name
+    : ageOf(run) < 18
+      ? 'Đang lớn lên'
+      : ageOf(run) >= 65
+        ? 'Đã nghỉ hưu'
+        : run.player.education.some((e) => e.endMonth > run.month)
+          ? 'Đang theo học'
+          : 'Chưa có việc';
   return (
-    <>
+    <div className="character-hud" data-testid="character-hud">
       <div className="character-head">
-        <div className="avatar">
-          <Sprout size={32} strokeWidth={1.1} aria-hidden="true" />
-        </div>
         <div>
           <h2>{run.player.name}</h2>
           <p>
-            {ageOf(run)} tuổi <span>·</span> Sinh năm {run.player.birthYear}
+            <span data-testid="hud-age">{ageOf(run)} tuổi</span> ·{' '}
+            <span data-testid="hud-year">{run.world.year}</span>
+            <span className="hud-birth"> · Sinh năm {run.player.birthYear}</span>
           </p>
         </div>
+        <div className="hud-cash">
+          <span>Trong túi</span>
+          <strong data-testid="hud-cash">{money(run.finance.cash)}</strong>
+        </div>
       </div>
-      <p className="character-region">
+      <dl className="hud-stats" aria-label="Chỉ số nhân vật">
+        {Object.entries(STAT_NAMES).map(([key, label]) => (
+          <div key={key} data-stat={key}>
+            <dt>{label}</dt>
+            <dd data-testid={`hud-${key}`}>
+              {Math.round(run.player.stats[key as keyof typeof STAT_NAMES])}
+              <span className="sr-only">
+                {' '}
+                trên 100{key === 'stress' ? ', thấp hơn là nhẹ nhõm hơn' : ''}
+              </span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <p className="hud-occupation">
+        <BriefcaseBusiness size={14} aria-hidden="true" /> {occupation}
+      </p>
+      <p className="hud-place">
         <MapPin size={13} aria-hidden="true" />
         {birthplaceOf(run)}
       </p>
-      <span className="trait-tag">{run.player.traits[0]}</span>
-      <details className="stats-details">
-        <summary>
-          Những điều làm nên bạn <ChevronRight size={14} aria-hidden="true" />
-        </summary>
-        <div className="stats-list">
-          {Object.entries(STAT_NAMES).map(([key, label]) => (
-            <div className={`stat stat-${key}`} key={key}>
-              <div>
-                <label htmlFor={`stat-${key}`}>{label}</label>
-                <span>{Math.round(run.player.stats[key as keyof typeof STAT_NAMES])}</span>
-              </div>
-              <meter
-                id={`stat-${key}`}
-                min={0}
-                max={100}
-                value={run.player.stats[key as keyof typeof STAT_NAMES]}
-              >
-                {Math.round(run.player.stats[key as keyof typeof STAT_NAMES])}/100
-              </meter>
-            </div>
-          ))}
-        </div>
-      </details>
-      <div className="profile-facts">
-        <div>
-          <BriefcaseBusiness size={16} aria-hidden="true" />
-          <span>
-            Nghề hiện tại
-            <strong>
-              {job
-                ? CAREERS.find((c) => c.id === job.id)!.name
-                : ageOf(run) < 18
-                  ? 'Đang lớn lên'
-                  : ageOf(run) >= 65
-                    ? 'Đã nghỉ hưu'
-                    : run.player.education.some((e) => e.endMonth > run.month)
-                      ? 'Đang theo học'
-                      : 'Chưa có việc'}
-            </strong>
-          </span>
-        </div>
-        <div>
-          <Wallet size={16} aria-hidden="true" />
-          <span>
-            Trong túi<strong>{money(run.finance.cash)}</strong>
-          </span>
-        </div>
-        <div>
-          <Heart size={16} aria-hidden="true" />
-          <span>
-            Mái nhà
-            <strong>
-              {run.household.housing === 'family'
-                ? 'Cùng gia đình'
-                : run.household.housing === 'rent'
-                  ? 'Đang ở trọ'
-                  : 'Nhà của mình'}
-            </strong>
-          </span>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 export function Story({
@@ -165,15 +128,38 @@ export function Story({
   const token = decisionKey(run);
   const heading = useRef<HTMLHeadingElement>(null);
   const card = useRef<HTMLElement>(null);
+  const decisions = useRef<HTMLDivElement>(null);
   const touchInput = useRef(false),
     lastTouchDecision = useRef(-Infinity);
   const results = recentResults(run);
   useLayoutEffect(() => {
+    const place = () => {
+      const section = card.current;
+      if (!section) return;
+      const grid = section.closest('.game-grid');
+      if (grid)
+        window.scrollBy({ top: grid.getBoundingClientRect().top - 12, behavior: 'instant' });
+      const list = decisions.current;
+      if (list) {
+        const available = Math.max(64, window.innerHeight - list.getBoundingClientRect().top - 12);
+        list.style.maxHeight = `${available}px`;
+      }
+    };
     heading.current?.focus({ preventScroll: true });
-    const top = card.current?.getBoundingClientRect().top;
-    const header = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
-    const offset = Math.max(16, header > 0 && header < 160 ? header + 16 : 16);
-    if (top !== undefined) window.scrollBy({ top: top - offset, behavior: 'instant' });
+    if (decisions.current) decisions.current.scrollTop = 0;
+    place();
+    const observer = new ResizeObserver(place);
+    const narrative = card.current?.querySelector('.story-narrative');
+    const hud = card.current?.closest('.game-grid')?.querySelector('.profile');
+    if (narrative) observer.observe(narrative);
+    if (hud) observer.observe(hud);
+    window.addEventListener('resize', place);
+    // Font loading/orientation/large-text changes must not leave a stale viewport budget.
+    void document.fonts.ready.then(place);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', place);
+    };
   }, [token]);
   return (
     <section
@@ -182,81 +168,88 @@ export function Story({
       aria-labelledby="event-heading"
       onDoubleClick={() => heading.current?.focus({ preventScroll: true })}
     >
-      <div className="story-top">
-        <span className="eyebrow">
-          {event ? CATEGORIES[event.category] : 'MỘT LỰA CHỌN ĐÃ THÀNH KÝ ỨC'}
-        </span>
-        <span className="story-age">{ageOf(run)} tuổi</span>
-      </div>
-      <div className="story-ornament">
-        <span />
-        <Feather size={22} strokeWidth={1.1} aria-hidden="true" />
-        <span />
-      </div>
-      <h2 id="event-heading" ref={heading} tabIndex={-1}>
-        {event?.title ?? 'Rồi đời sẽ kể tiếp.'}
-      </h2>
-      <p className="story-text">
-        {event?.text ?? run.lastOutcome ?? 'Bạn đã sẵn sàng cho trang tiếp theo.'}
-      </p>
-      {event?.arc && (
-        <div className="story-thread">
-          Một câu chuyện dài <span>·</span>{' '}
-          {event.arc === 'business'
-            ? 'Tiệm nhỏ của hai người'
-            : event.arc === 'family'
-              ? 'Mái nhà qua mùa mưa'
-              : 'Sau ca làm cuối'}
+      <div className="story-narrative">
+        <div className="story-top">
+          <span className="eyebrow">
+            {event ? CATEGORIES[event.category] : 'MỘT LỰA CHỌN ĐÃ THÀNH KÝ ỨC'}
+          </span>
+          <span className="story-age">{ageOf(run)} tuổi</span>
         </div>
-      )}
+        <h2 id="event-heading" ref={heading} tabIndex={-1}>
+          {event?.title ?? 'Rồi đời sẽ kể tiếp.'}
+        </h2>
+        <p className="story-text">
+          {event?.text ?? run.lastOutcome ?? 'Bạn đã sẵn sàng cho trang tiếp theo.'}
+        </p>
+        {event?.arc && (
+          <div className="story-thread">
+            Một câu chuyện dài <span>·</span>{' '}
+            {event.arc === 'business'
+              ? 'Tiệm nhỏ của hai người'
+              : event.arc === 'family'
+                ? 'Mái nhà qua mùa mưa'
+                : 'Sau ca làm cuối'}
+          </div>
+        )}
+      </div>
       {event ? (
         <div className="choices">
           <p className="choice-prompt">Bạn sẽ chọn thế nào?</p>
-          {event.choices
-            .filter((c) => !choiceReason(run, c))
-            .map((choice, i) => {
-              const reason = choiceReason(run, choice);
-              return (
-                <button
-                  className="choice"
-                  data-testid="event-choice"
-                  disabled={Boolean(reason)}
-                  key={i}
-                  onPointerDown={(e) => {
-                    touchInput.current = e.pointerType === 'touch';
-                  }}
-                  onClick={(e) => {
-                    // Touch click.detail may stay 1 across two taps. Guard only
-                    // the brief gesture boundary, with no loading delay or timer.
-                    if (
-                      e.detail > 1 ||
-                      (e.detail !== 0 &&
-                        touchInput.current &&
-                        e.timeStamp - lastTouchDecision.current < 300)
-                    ) {
-                      heading.current?.focus({ preventScroll: true });
-                      return;
-                    }
-                    if (e.detail !== 0 && touchInput.current)
-                      lastTouchDecision.current = e.timeStamp;
-                    onChoice(event.id, choice.id, token);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.repeat && (e.key === 'Enter' || e.key === ' ')) e.preventDefault();
-                  }}
-                >
-                  <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
-                  <span className="choice-copy">
-                    <strong>{choice.text}</strong>
-                    <small>
-                      {choice.hint}
-                      {reason ? ` · ${reason}` : ''}
-                    </small>
-                  </span>
-                  <ArrowRight size={18} aria-hidden="true" />
-                </button>
-              );
-            })}
+          <div
+            className="decision-list"
+            ref={decisions}
+            role="group"
+            aria-label="Lựa chọn của bạn"
+            tabIndex={0}
+          >
+            {event.choices
+              .filter((c) => !choiceReason(run, c))
+              .map((choice, i) => {
+                const reason = choiceReason(run, choice);
+                return (
+                  <button
+                    className="choice"
+                    data-testid="event-choice"
+                    data-choice-id={choice.id}
+                    data-event-id={event.id}
+                    disabled={Boolean(reason)}
+                    key={i}
+                    onPointerDown={(e) => {
+                      touchInput.current = e.pointerType === 'touch';
+                    }}
+                    onClick={(e) => {
+                      // Touch click.detail may stay 1 across two taps. Guard only
+                      // the brief gesture boundary, with no loading delay or timer.
+                      if (
+                        e.detail > 1 ||
+                        (e.detail !== 0 &&
+                          touchInput.current &&
+                          e.timeStamp - lastTouchDecision.current < 300)
+                      ) {
+                        heading.current?.focus({ preventScroll: true });
+                        return;
+                      }
+                      if (e.detail !== 0 && touchInput.current)
+                        lastTouchDecision.current = e.timeStamp;
+                      onChoice(event.id, choice.id, token);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.repeat && (e.key === 'Enter' || e.key === ' ')) e.preventDefault();
+                    }}
+                  >
+                    <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
+                    <span className="choice-copy">
+                      <strong>{choice.text}</strong>
+                      <small>
+                        {choice.hint}
+                        {reason ? ` · ${reason}` : ''}
+                      </small>
+                    </span>
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </button>
+                );
+              })}
+          </div>
         </div>
       ) : (
         <div className="consequence">

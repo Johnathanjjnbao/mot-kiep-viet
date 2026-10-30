@@ -15,10 +15,12 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop-edge',
+      testIgnore: /viewport.spec.ts/,
       use: { ...devices['Desktop Edge'], viewport: { width: 1440, height: 1000 } },
     },
     {
       name: 'mobile-edge',
+      testIgnore: /viewport.spec.ts/,
       use: {
         viewport: { width: 375, height: 812 },
         isMobile: true,
@@ -26,6 +28,7 @@ export default defineConfig({
         deviceScaleFactor: 1,
       },
     },
+    { name: 'decision-viewports', testMatch: /viewport.spec.ts/ },
   ],
   webServer: {
     command:

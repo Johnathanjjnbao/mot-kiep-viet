@@ -248,11 +248,12 @@ try {
     : 'FAIL: could not disable all synthetic identities';
   if (!disabled) process.exitCode = 1;
   writeFileSync(
-    process.env.MKV_UI_QA === '1'
-      ? process.env.MKV_QA_URL?.includes('github.io')
-        ? 'docs/evidence/v03-live-authenticated.json'
-        : 'docs/evidence/v03-real-browser.json'
-      : 'docs/evidence/v03-real-backend.json',
+    process.env.MKV_QA_REPORT ??
+      (process.env.MKV_UI_QA === '1'
+        ? process.env.MKV_QA_URL?.includes('github.io')
+          ? 'docs/evidence/v03-live-authenticated.json'
+          : 'docs/evidence/v03-real-browser.json'
+        : 'docs/evidence/v03-real-backend.json'),
     JSON.stringify(report, null, 2) + '\n',
   );
   console.log(JSON.stringify(report, null, 2));

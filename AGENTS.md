@@ -13,13 +13,15 @@ Vai trò: duy trì game và phát hành có bằng chứng. Luôn đọc PROJECT
 
 v0.3 tích hợp GameRepository guest/account và useAccount. Migrations không tự chạy production/CI; cần review SQL, xác nhận project và phê duyệt trước áp dụng. Project kqnapcyceddwvrvkquvg có hai migrations 202610300001/202610300002 đã được duyệt và áp dụng. PGlite không thay Auth/JWT thật; đổi cloud cần deny tests A/B/anon. Token source phải gắn từng account để worker cũ không dùng JWT kế tiếp. Service worker chỉ cache shell công khai, không API/Auth. Auth dùng tài khoản Email/Password admin tạo/confirmed/allowlist; SMTP/invitation ngoài phạm vi. Bước chủ dự án tự đăng nhập live ghi riêng NOT RUN tới khi xác minh. Không dùng credential người chơi. Đọc V03_PROGRESS và V03_REPORT. Admin QA runner không chạy trong CI/browser và không ghi privileged key ra log. Chính sách unattended: không xóa production, kể cả fixture; chỉ vô hiệu hóa synthetic identities do lượt QA tạo. One-click orchestration giữ engine 2.0.0/schema3, ghi choose/advance cũ, dừng mọi active event; local CAS bảo vệ hai tab.
 
-Bản hiện hành beta 0.3.0: engine/content 2.0.0, save schema 3. `src/legacy/v1` là luật/nội dung 1.0.0 đóng băng để kiểm chứng và đọc save schema 1/2; không sửa cùng luật mới, không phát lại save cũ dưới v2. Golden v1 giữ nguyên; golden v2 khóa riêng. Mỗi sự kiện hiển thị phải có ít nhất 4 lựa chọn khả dụng, kể cả fallback. Lịch sử `mot-kiep-viet-history` độc lập autosave/3 slot; UUID cuộc đời ngoài RNG, không dùng seed làm khóa. Không ghi đè/xóa hồi ký để lưu kiếp mới.
+Bản hiện hành beta 0.3.1: engine/content 2.0.0, save schema 3. `src/legacy/v1` là luật/nội dung 1.0.0 đóng băng để kiểm chứng và đọc save schema 1/2; không sửa cùng luật mới, không phát lại save cũ dưới v2. Golden v1 giữ nguyên; golden v2 khóa riêng. Mỗi sự kiện hiển thị phải có ít nhất 4 lựa chọn khả dụng, kể cả fallback. Lịch sử `mot-kiep-viet-history` độc lập autosave/3 slot; UUID cuộc đời ngoài RNG, không dùng seed làm khóa. Không ghi đè/xóa hồi ký để lưu kiếp mới.
 
 Không sửa state từ UI; không Math.random trong luật; mọi thay đổi tiền đi qua giao dịch. Không đổi engine/content/save nếu không có kế hoạch version và regression. Công việc deploy không thay gameplay. Không xóa save của người chơi. Save trên localhost không tự chuyển sang github.io: dùng export/import. Các game cùng origin có thể dùng chung IndexedDB, vì vậy giữ ID database hiện tại và không host bản game khác dùng cùng ID trên tài khoản này.
 
 ## Skills
 
 Kiểm tra thực tế %USERPROFILE%/.agents/skills và .codex/skills, đọc SKILL.md phù hợp trước dùng; không cài thêm hoặc tải hàng loạt skill. Security Review cho audit, Secret Scanning cho kiểm tra trước push, Webapp Testing cho browser QA. Không dùng Antigravity. Không chạy lặp mô phỏng nếu engine/content không đổi.
+
+v0.3.1 HUD đọc trực tiếp GameRun; narrative không clamp/ẩn, chỉ choice list overflow. ResizeObserver không reset cuộn lựa chọn sau thao tác người chơi. Acceptance phải đo HUD/narrative/toàn bộ lựa chọn đầu trước click/auto-scroll và kiểm innerWidth/Height bằng device viewport (tránh mobile auto-zoom do tràn). Chạy 20 lựa chọn đầu/giữa/cuối ở sáu viewport/settings trong suite E2E.
 
 ## Gates và Git
 

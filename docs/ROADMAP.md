@@ -11,6 +11,10 @@ Ngày cập nhật: 30/10/2026. v0.2 triển khai Character Creator, lựa chọ
 
 Chi tiết: [V03_REPORT](V03_REPORT.md), [CLOUD_ACCOUNTS_PLAN](CLOUD_ACCOUNTS_PLAN.md), [MASTER_PLAN](MASTER_PLAN.md).
 
+## v0.3.1 — Persistent Stats + Zero-Scroll Continuous Decisions
+
+Sửa stats ẩn và vùng chọn thấp: HUD luôn hiện, bố cục riêng desktop/phone/landscape, đo actual viewport trước click qua20 quyết định mỗi case. Giữ v0.3 Auth/cloud/save/engine và chỉ triển khai sau gates + live QA. Trạng thái thực ở V031_REPORT/PROJECT_STATUS. Chưa mở gameplay mới.
+
 ## v0.4 — Supernatural Longevity
 
 - Ít nhất 24 sự kiện kỳ bí và 5 tuyến truyện dài, ghi rõ là hư cấu.

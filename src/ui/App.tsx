@@ -232,14 +232,6 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
               <div className="game-grid">
                 <aside className="profile" aria-label="Nhân vật của bạn">
                   <Character run={run} />
-                  <div className="sidebar-note">
-                    <Feather size={22} aria-hidden="true" />
-                    <p>
-                      Không có một cách duy nhất
-                      <br />
-                      để sống một cuộc đời.
-                    </p>
-                  </div>
                 </aside>
                 <div className="game-center">
                   <nav className="game-tabs" aria-label="Các mặt của cuộc đời">
@@ -331,7 +323,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.3</span>
+        <span className="footer-version">BETA · 0.3.1</span>
       </footer>
       {dialog && (
         <Modal

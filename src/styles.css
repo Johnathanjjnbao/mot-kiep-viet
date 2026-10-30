@@ -3092,3 +3092,383 @@ meter::-moz-meter-bar {
     display: none;
   }
 }
+/* v0.3.1: a viewport budget for the actual choices, with a persistent status HUD. */
+.game-shell .game-grid {
+  grid-template-columns: 215px minmax(0, 1fr) 190px;
+  gap: 22px;
+  align-items: start;
+}
+.game-shell .profile {
+  position: sticky;
+  top: 12px;
+  align-self: start;
+  display: block;
+  padding: 0;
+  border: 0;
+  z-index: 3;
+}
+.character-hud {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+}
+.character-hud .character-head {
+  display: block;
+}
+.character-hud .character-head h2 {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.character-hud .character-head p {
+  font-size: 0.75rem;
+  white-space: normal;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.hud-birth {
+  display: none;
+}
+.hud-cash {
+  margin-top: 12px;
+}
+.hud-cash > span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.hud-cash strong {
+  display: block;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+.hud-stats {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  font-variant-numeric: tabular-nums;
+}
+.hud-stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 5px;
+}
+.hud-stats dt {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.hud-stats dd {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+.hud-occupation,
+.hud-place {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.hud-place {
+  color: var(--muted);
+}
+.hud-occupation svg,
+.hud-place svg {
+  flex-shrink: 0;
+}
+.game-shell .game-center {
+  min-width: 0;
+}
+.game-shell .game-tabs {
+  margin-bottom: 10px;
+}
+.game-shell .story-card {
+  padding: 16px 20px;
+  min-height: 0;
+  animation: none;
+}
+.game-shell .story-card h2 {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  text-align: left;
+  margin: 5px 0 8px;
+}
+.game-shell .story-top {
+  margin-bottom: 4px;
+}
+.game-shell .story-top .eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+.game-shell .story-age {
+  font-size: 0.85rem;
+}
+.game-shell .story-text {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-align: left;
+  text-wrap: auto;
+  max-width: 70ch;
+}
+.game-shell .story-thread {
+  font-size: 0.7rem;
+  text-align: left;
+  margin-top: 6px;
+}
+.game-shell .choices {
+  margin-top: 12px;
+}
+.game-shell .choice-prompt {
+  font-size: 0.8rem;
+  margin: 0 0 6px;
+}
+.decision-list {
+  display: grid;
+  gap: 8px;
+  overflow-y: auto;
+  padding: 2px 3px;
+  scrollbar-gutter: stable;
+  scroll-padding: 4px;
+}
+.decision-list:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 2px;
+}
+.game-shell .choice {
+  margin: 0;
+  padding: 10px 12px;
+  min-height: 64px;
+  gap: 10px;
+  touch-action: manipulation;
+}
+.game-shell .choice-copy strong {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.game-shell .choice-copy small {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  display: block;
+  margin-top: 3px;
+}
+.game-shell .choice-letter {
+  width: 24px;
+  height: 24px;
+  font-size: 0.85rem;
+}
+.game-shell .recent-outcome {
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+.game-shell .story-footnote {
+  font-size: 0.65rem;
+  padding-top: 10px;
+  margin-top: 12px;
+}
+@media (max-width: 1100px) {
+  .game-shell .game-grid {
+    grid-template-columns: 195px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .game-shell .world-sidebar {
+    grid-column: 2;
+  }
+}
+@media (max-width: 900px), (max-height: 520px) {
+  .game-shell {
+    padding-inline: 3%;
+  }
+  .game-shell .game-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .game-shell .profile {
+    top: 0;
+    width: 100%;
+    background: var(--paper);
+    padding: 4px 0;
+    z-index: 4;
+  }
+  .character-hud {
+    padding: 8px 12px;
+  }
+  .character-hud .character-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10px;
+  }
+  .character-hud .character-head h2 {
+    font-size: 1.05rem;
+  }
+  .character-hud .character-head p {
+    margin-top: 2px;
+    font-size: 0.73rem;
+  }
+  .hud-cash {
+    margin: 0;
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 45%;
+  }
+  .hud-cash > span {
+    font-size: 0.67rem;
+  }
+  .hud-cash strong {
+    font-size: 0.85rem;
+  }
+  .hud-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px 12px;
+    margin: 6px 0 0;
+  }
+  .hud-stats dt {
+    font-size: 0.72rem;
+  }
+  .hud-stats dd {
+    font-size: 0.8rem;
+  }
+  .hud-occupation,
+  .hud-place {
+    display: none;
+  }
+  .game-shell .game-center {
+    width: 100%;
+  }
+  .game-shell .game-tabs {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .game-shell .game-tabs button {
+    min-height: 36px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+  .game-shell .story-card {
+    padding: 12px;
+  }
+  .game-shell .story-card h2 {
+    font-size: 1.65rem;
+  }
+  .game-shell .story-text {
+    font-size: 1.1rem;
+  }
+  .game-shell .world-sidebar {
+    width: 100%;
+    display: block;
+  }
+}
+@media (max-height: 520px) and (min-width: 580px) {
+  .hud-stats {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .character-hud .character-head h2 {
+    font-size: 1rem;
+  }
+  .character-hud .character-head p {
+    display: inline;
+    margin-left: 8px;
+  }
+  .character-hud .character-head > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .game-shell .story-card h2 {
+    font-size: 1.45rem;
+  }
+  .game-shell .story-text {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .game-shell .game-tabs {
+    margin-bottom: 5px;
+  }
+}
+.game-shell .choice-copy strong {
+  font-size: 1rem;
+}
+@media (max-width: 900px), (max-height: 520px) {
+  .hud-stats dt {
+    font-size: 0.8rem;
+  }
+  .hud-stats dd {
+    font-size: 0.9rem;
+  }
+}
+@media (max-height: 520px) and (min-width: 580px) {
+  .hud-cash {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .hud-cash > span,
+  .hud-cash strong {
+    display: inline;
+  }
+  .game-shell .story-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 12px;
+  }
+  .story-narrative {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .game-shell .choices {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+  }
+  .game-shell .recent-outcome,
+  .game-shell .recent-details,
+  .game-shell .story-footnote {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 640px) {
+  .game-shell .game-tabs button {
+    min-width: 0;
+    flex: 1;
+    white-space: normal;
+    line-height: 1.3;
+    justify-content: center;
+  }
+  .game-shell .game-tabs button > svg {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .game-shell .chapter-bar > div:first-child {
+    min-width: 0;
+  }
+  .game-shell .year-stamp strong {
+    font-size: 2rem;
+  }
+}
+.hud-stats > div,
+.hud-stats dt {
+  min-width: 0;
+}
+.hud-stats dt {
+  overflow-wrap: anywhere;
+}
+.hud-stats dd {
+  flex-shrink: 0;
+}
+@media (max-width: 900px), (max-height: 520px) {
+  :root[data-large='true'] .hud-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-height: 520px) and (min-width: 580px) {
+  :root[data-large='true'] .hud-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

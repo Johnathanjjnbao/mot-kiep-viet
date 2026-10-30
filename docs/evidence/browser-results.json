@@ -31,7 +31,9 @@
         "id": "desktop-edge",
         "name": "desktop-edge",
         "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
-        "testIgnore": [],
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
@@ -47,9 +49,27 @@
         "id": "mobile-edge",
         "name": "mobile-edge",
         "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
-        "testIgnore": [],
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "decision-viewports",
+        "name": "decision-viewports",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/viewport.spec.ts/"
         ],
         "timeout": 90000
       }
@@ -67,7 +87,7 @@
         "name": "desktop-edge",
         "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
         "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
-        "testIgnore": [],
+        "testIgnore": {},
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
         "use": {
@@ -107,7 +127,7 @@
         "name": "mobile-edge",
         "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
         "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
-        "testIgnore": [],
+        "testIgnore": {},
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
         "use": {
@@ -128,6 +148,33 @@
         "dependencies": [],
         "ignoreSnapshots": false,
         "__projectId": "mobile-edge"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "decision-viewports",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "decision-viewports"
       }
     ],
     "quiet": false,
@@ -183,12 +230,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4613,
+                  "duration": 4243,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:07.379Z",
+                  "startTime": "2026-10-30T16:21:18.382Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -198,7 +245,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-82e211794d09e00dcf7e",
           "file": "game.spec.ts",
-          "line": 28,
+          "line": 29,
           "column": 1
         },
         {
@@ -217,12 +264,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2113,
+                  "duration": 2295,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:12.200Z",
+                  "startTime": "2026-10-30T16:21:22.890Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -232,7 +279,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-17f08172d296b358deba",
           "file": "game.spec.ts",
-          "line": 91,
+          "line": 92,
           "column": 1
         },
         {
@@ -251,12 +298,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2382,
+                  "duration": 2203,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:14.319Z",
+                  "startTime": "2026-10-30T16:21:25.199Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -266,7 +313,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-3afde50e1dd027f57cd2",
           "file": "game.spec.ts",
-          "line": 129,
+          "line": 130,
           "column": 1
         },
         {
@@ -285,12 +332,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3384,
+                  "duration": 3755,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:16.707Z",
+                  "startTime": "2026-10-30T16:21:27.418Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -300,7 +347,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-acd6187f41b6264150f8",
           "file": "game.spec.ts",
-          "line": 161,
+          "line": 162,
           "column": 1
         },
         {
@@ -319,12 +366,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 648,
+                  "duration": 741,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:20.096Z",
+                  "startTime": "2026-10-30T16:21:31.185Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -334,7 +381,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-1e2594a118302f626a9b",
           "file": "game.spec.ts",
-          "line": 190,
+          "line": 191,
           "column": 1
         },
         {
@@ -353,12 +400,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1218,
+                  "duration": 973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:20.750Z",
+                  "startTime": "2026-10-30T16:21:31.940Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -368,7 +415,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-f67a6830f86bbd1a5819",
           "file": "game.spec.ts",
-          "line": 215,
+          "line": 216,
           "column": 1
         },
         {
@@ -387,12 +434,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1770,
+                  "duration": 1580,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:21.974Z",
+                  "startTime": "2026-10-30T16:21:32.923Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -402,7 +449,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-068db6af3a7cabe52e35",
           "file": "game.spec.ts",
-          "line": 260,
+          "line": 261,
           "column": 1
         },
         {
@@ -421,12 +468,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1533,
+                  "duration": 1701,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:23.754Z",
+                  "startTime": "2026-10-30T16:21:34.510Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -436,7 +483,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-12530f617994b77406f7",
           "file": "game.spec.ts",
-          "line": 305,
+          "line": 303,
           "column": 1
         },
         {
@@ -455,12 +502,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4551,
+                  "duration": 4092,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:26.039Z",
+                  "startTime": "2026-10-30T16:21:37.025Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -470,7 +517,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-d258fae6ea8755e6eb7f",
           "file": "game.spec.ts",
-          "line": 28,
+          "line": 29,
           "column": 1
         },
         {
@@ -489,12 +536,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2032,
+                  "duration": 2144,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:30.795Z",
+                  "startTime": "2026-10-30T16:21:41.320Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -504,7 +551,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-361794f4021c5921bc84",
           "file": "game.spec.ts",
-          "line": 91,
+          "line": 92,
           "column": 1
         },
         {
@@ -523,12 +570,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2312,
+                  "duration": 2150,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:32.835Z",
+                  "startTime": "2026-10-30T16:21:43.472Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -538,7 +585,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-29fdefc4ae6bb1f21ff7",
           "file": "game.spec.ts",
-          "line": 129,
+          "line": 130,
           "column": 1
         },
         {
@@ -557,12 +604,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3377,
+                  "duration": 3688,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:35.155Z",
+                  "startTime": "2026-10-30T16:21:45.630Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -572,7 +619,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-1b08cfd5ec4409de4eb3",
           "file": "game.spec.ts",
-          "line": 161,
+          "line": 162,
           "column": 1
         },
         {
@@ -591,12 +638,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 701,
+                  "duration": 725,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:38.539Z",
+                  "startTime": "2026-10-30T16:21:49.328Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -606,7 +653,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-2dc443997993adffcad0",
           "file": "game.spec.ts",
-          "line": 190,
+          "line": 191,
           "column": 1
         },
         {
@@ -625,12 +672,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1183,
+                  "duration": 987,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:39.253Z",
+                  "startTime": "2026-10-30T16:21:50.061Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -640,7 +687,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-8d02144aed85f93a860e",
           "file": "game.spec.ts",
-          "line": 215,
+          "line": 216,
           "column": 1
         },
         {
@@ -659,12 +706,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1892,
+                  "duration": 1727,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:40.444Z",
+                  "startTime": "2026-10-30T16:21:51.055Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -674,7 +721,7 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-6fe81ebd520de4ec9c3b",
           "file": "game.spec.ts",
-          "line": 260,
+          "line": 261,
           "column": 1
         },
         {
@@ -693,12 +740,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1538,
+                  "duration": 2155,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-30T10:57:42.343Z",
+                  "startTime": "2026-10-30T16:21:52.788Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -708,17 +755,229 @@
           ],
           "id": "8b1bb1493a64c9fc3ab6-ab9a1d00e19ec4f232e9",
           "file": "game.spec.ts",
-          "line": 305,
+          "line": 303,
           "column": 1
+        }
+      ]
+    },
+    {
+      "title": "viewport.spec.ts",
+      "file": "viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: desktop1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8463,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:21:55.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-2ad0970482fafe717eac",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
+        },
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: desktop1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:22:04.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-bbd521c6e56ff19656f5",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
+        },
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: mobile390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15153,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:22:12.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-fb905f08f63873581702",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
+        },
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: mobile375",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:22:27.454Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-bb756fa4f803bf3ec1a5",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
+        },
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:22:42.512Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-1700279a84ee880798e4",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
+        },
+        {
+          "title": "persistent HUD and 20 mixed decisions without document scrolling: large-text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T16:22:57.437Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-36fcc163c44c302b6b09",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 3
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-30T10:57:05.763Z",
-    "duration": 38585.292,
-    "expected": 16,
+    "startTime": "2026-10-30T16:21:16.721Z",
+    "duration": 116219.161,
+    "expected": 22,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

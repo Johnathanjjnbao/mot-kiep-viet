@@ -1,0 +1,56 @@
+{
+  "baseline": "53802c8a5bf3cf0fc7214dfa82c8197d1fc20bc8",
+  "version": "0.3.1",
+  "scope": "UI only; engine/content2.0.0/saveSchema3 unchanged",
+  "local": {
+    "verify": {
+      "status": "VERIFIED PASS",
+      "unitIntegrationPassed": 77,
+      "testFiles": 9,
+      "typecheck": "PASS",
+      "lint": "PASS",
+      "content": "PASS",
+      "pagesBuild": "PASS"
+    },
+    "e2e": {
+      "status": "VERIFIED PASS",
+      "passed": 22,
+      "failed": 0,
+      "viewportCases": 6,
+      "decisionsPerCase": 20,
+      "mixedDecisions": 120,
+      "preInputMeasurements": 126,
+      "cases": [
+        "1440x900",
+        "1366x768",
+        "390x844",
+        "375x667",
+        "667x375",
+        "375x667 large text"
+      ],
+      "fullHudNarrativeFirstChoice": "PASS",
+      "labelValueNoOverlap": "PASS",
+      "cssViewportEqualsDevice": "PASS",
+      "rawPointerNoPlaywrightAutoScroll": "PASS",
+      "hudMatchesGameRun": "PASS",
+      "exactReplayAndReload": "PASS",
+      "axeViolations": 0
+    },
+    "cloud": {
+      "status": "VERIFIED PASS",
+      "checks": 23,
+      "report": "v031-cloud-local.json"
+    },
+    "productionSmoke": "VERIFIED PASS",
+    "dependencyVulnerabilities": 0,
+    "secretScan": {
+      "status": "VERIFIED PASS",
+      "findings": 0
+    }
+  },
+  "simulation": "NOT RUN: unchanged engine/content, reuse v0.3 evidence",
+  "productionSqlOrPermissionsChanged": false,
+  "productionDataDeleted": false,
+  "ownerCredentialsUsed": false,
+  "release": "PENDING CI/deploy/live"
+}

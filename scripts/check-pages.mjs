@@ -1,9 +1,8 @@
 import { chromium, expect } from '@playwright/test';
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
-const version = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
-  .version.split('.')
-  .slice(0, 2)
-  .join('.');
+const version = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
+).version;
 const url = process.argv[2] ?? 'https://johnathanjjnbao.github.io/mot-kiep-viet/';
 const report = { url, status: 'FAIL', viewports: [], errors: [] };
 const browser = await chromium.launch({ channel: process.env.CI ? 'chromium' : 'msedge' });
@@ -117,6 +116,9 @@ try {
   await browser.close();
   mkdirSync('docs/evidence', { recursive: true });
   const file = url.includes('github.io') ? 'pages-live.json' : 'pages-local.json';
-  writeFileSync('docs/evidence/' + file, JSON.stringify(report, null, 2) + '\n');
+  writeFileSync(
+    process.env.MKV_PAGES_REPORT ?? 'docs/evidence/' + file,
+    JSON.stringify(report, null, 2) + '\n',
+  );
   process.stdout.write(JSON.stringify(report, null, 2) + '\n');
 }
