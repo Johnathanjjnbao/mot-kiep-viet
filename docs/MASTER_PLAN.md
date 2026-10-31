@@ -1,5 +1,9 @@
 # Master Plan — Một Kiếp Việt
 
+M4 v0.3.5 G5 VERIFIED PASS: release dc6bf1b094a343939d653c0f1ffb4f699ffc08b4/main, CI41136632974 completed/success; live guest desktop/mobile,6viewport×20,8family/social journeys,26realAuth/cloud and JS/CSS/SW hashes PASS. M5 foundation4f4e969 (7new tests) only; full M5 INCOMPLETE. Final verify124/36existing E2E/1000M4 replay0violations. Owner personal login NOT RUN.
+
+Older pending paragraphs below are historical checkpoints.
+
 ## Next phase after verified M3/M4 — M5 preparation
 
 M3 relationships is live v0.3.4; M4 family source is checkpointed locally and remains under final gates. M5 is INCOMPLETE, no university/military/digital-career expansion is exposed yet. Do not enable new rules on an existing wardrobe/social/family save.

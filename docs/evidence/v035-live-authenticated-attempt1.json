@@ -1,0 +1,112 @@
+{
+  "projectRef": "kqnapcyceddwvrvkquvg",
+  "browserUrl": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "emailDelivery": "OUT OF SCOPE: existing confirmed Email/Password accounts",
+  "physicalDevices": "NOT RUN: independent browser contexts",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "real Auth login and ordinary authenticated JWTs",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "uninvited account denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "invited sessions recognized by server",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "unauthenticated access denied on all tables and save RPC",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "save, idempotent retry and second-device replay",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "A/B isolation and ownership/CAS bypass/delete denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "competing revision rejected",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "invalid version denied",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "completed life dedup, original replay, immutable and private",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "public registration disabled",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "logout revokes local session",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "browser guest starts and retains local save",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "browser invalid credentials and real provisioned login",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "complex social marriage and per-NPC memories load through authenticated UI",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "child development, career and immutable parent references load on an independent mobile session",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "guest migration is explicit and preserves guest data",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "logout and account switching do not inherit private progress",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "device A saves and independent mobile browser B resumes",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "wardrobe purchase and equipment synchronize to an independent mobile browser",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "all three manual slots save and load through authenticated UI",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "offline progress survives a full application reload",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "offline queue synchronizes after reconnect",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "two-browser conflict preserves both branches and accepts explicit choice",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "name": "two tabs sharing IndexedDB preserve stale local branches",
+      "status": "VERIFIED PASS"
+    }
+  ],
+  "fixtureDisposition": "VERIFIED PASS: synthetic identities disabled; production data preserved",
+  "conflictDiagnostic": {
+    "status": 409,
+    "code": "PT409",
+    "message": "Revision conflict"
+  },
+  "failedStage": "a UI-completed life archives across browsers"
+}

@@ -1,0 +1,10 @@
+{
+  "projectRef": "kqnapcyceddwvrvkquvg",
+  "browserUrl": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "emailDelivery": "OUT OF SCOPE: existing confirmed Email/Password accounts",
+  "physicalDevices": "NOT RUN: independent browser contexts",
+  "status": "FAIL",
+  "checks": [],
+  "fixtureDisposition": "VERIFIED PASS: synthetic identities disabled; production data preserved",
+  "failedStage": "setup"
+}

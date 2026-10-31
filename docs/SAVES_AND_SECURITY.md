@@ -1,5 +1,7 @@
 # Lưu game, tương thích và giới hạn an toàn
 
+M4 live continuation:26real Auth/cloud groups VERIFIED PASS, including complex child/career/recorded-parent snapshot in an independent mobile context and completed-life history across browsers. Migrations001/002/003 unchanged, no production SQL/Auth changes. Existing owner personal login NOT RUN; see LIFE_EXPANSION for actual attempts, CI and limitations.
+
 Life Expansion M4: engine/content3/schema4 retains immutable wardrobe/social/family rulesets and frozen v1/v2 routes. FamilyAction and per-child state are canonical-replayed; recorded parents never follow a changed spouse. Migrations001/002/003 already approved/applied, no production SQL in this continuation. Real A/B/anon and complex-family cloud26groups PASS locally; live pending. This is private-save isolation/integrity, not server anti-cheat against editing one's own JSON. Owner personal login stays NOT RUN.
 
 Schema4/engine-content3: WardrobeAction có expected-sequence, inventory/equipment/outfits/memories được replay+canonical. Schema3 route frozen2 vẫn chơi tiếp, v1 chỉ đọc. Không đổi ID IndexedDB/UUID/CAS/archives. SQL003 mở tuple có phê duyệt; xem LIFE_EXPANSION.

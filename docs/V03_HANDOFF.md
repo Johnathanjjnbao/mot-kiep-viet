@@ -1,5 +1,7 @@
 # v0.3 — bàn giao phiên unattended
 
+M4 live continuation:26real Auth/cloud groups VERIFIED PASS, including complex child/career/recorded-parent snapshot in an independent mobile context and completed-life history across browsers. Migrations001/002/003 unchanged, no production SQL/Auth changes. Existing owner personal login NOT RUN; see LIFE_EXPANSION for actual attempts, CI and limitations.
+
 Cập nhật 30/10/2026. Đã phát hành và xác minh kỹ thuật v0.3. G5 VERIFIED PASS; chủ dự án tự đăng nhập tài khoản cá nhân NOT RUN.
 
 1. **HEAD đầu:** 9bbffbc853a42582517bdd7f67ea7826c19fec79 trên main.

@@ -1,5 +1,9 @@
 # Life Expansion — bốn mốc phát hành
 
+M4 v0.3.5 G5 VERIFIED PASS: release dc6bf1b094a343939d653c0f1ffb4f699ffc08b4/main, CI41136632974 completed/success; live guest desktop/mobile,6viewport×20,8family/social journeys,26realAuth/cloud and JS/CSS/SW hashes PASS. M5 foundation4f4e969 (7new tests) only; full M5 INCOMPLETE. Final verify124/36existing E2E/1000M4 replay0violations. Owner personal login NOT RUN.
+
+Older pending paragraphs below are historical checkpoints.
+
 M4 v0.3.5 local gates VERIFIED PASS:117unit/36E2E/1000seed+replay/0violations/26realAuth-cloud, production smoke, secrets0/audit0. Source77acc1a/main; CI/live pending. M3 G5 remains PASS; M5 preparation only. Owner personal login NOT RUN.
 
 M4 v0.3.5: source complete, local verify117/117 and production smoke VERIFIED PASS; final simulation/E2E/real cloud in progress. NOT deployed yet. M3 v0.3.4 remains verified production. Owner personal login NOT RUN; no production SQL/Auth changes.
@@ -124,3 +128,14 @@ Foundation gates: verify124/124 across15files (117 existing +7 new), type/lint/c
 Recovered HEAD for the full implementation:fd0409cbee09cbcb10a1da2d1dfbd7e92b658ed0/main. Owner Graft guidance preserved in9260746; M3 source d2e9c810 and evidence eefc670; M4 source77acc1a3e6f4602603e6d7cf7b138224e2a06c53, release dc6bf1b094a343939d653c0f1ffb4f699ffc08b4. Graft wiring checked synchronized; no deep/paid calls, cache ignored. Skills actually used:Security Review,Humanizer,Frontend Design,Webapp Testing,Secret Scanning,Documentation Writer. No subagents or new global skills.
 
 Known limits: owner personally entering the existing password on live is NOT RUN; real authenticated cloud proof uses isolated synthetic accounts with normal JWTs. Physical-device/Safari/Firefox tests NOT RUN. Main bundle remains about1.04MB/318KB gzip; no broad compatibility refactor was attempted. Synthetic QA identities are disabled after each run and rows preserved. No known release-blocking failure remains in the verified checks; no claim of full M5 completion.
+
+
+## Final live verification — 31/10/2026
+
+M3 and M4: VERIFIED PASS. M4 release workflow https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41136632974 completed/success at dc6bf1b094a343939d653c0f1ffb4f699ffc08b4. Live https://johnathanjjnbao.github.io/mot-kiep-viet/ verified guest creation/one-tap/save-load/history,6viewport×20pre-input measurements,8social/family journeys and26real JWT cloud/security groups. Assets match SHA256 byte-for-byte; no broken public assets/uncaught errors in the successful cloud suite.
+
+Preserved failed evidence: first family/mobile navigation hit ERR_CONNECTION_RESET; rerunning all8journeys passed. First cloud history poll timed out at30seconds with1record; the test now allows90seconds for two background30-second retry cycles after rapid full-life progression. Next attempt failed during synthetic setup without a diagnostic; a further full run passed all26, including UI-completed archive visible in a second browser. QA now records only safe error code/status and the synthetic setup substage; no credentials/messages are logged. Do not misreport these attempts as uninterrupted success. Data and synthetic rows were preserved, identities disabled.
+
+Final foundation verify124tests/15files, Pages production smoke and secret scan0across780text objects PASS. No new gameplay/SQL/Auth settings/dependencies were introduced after M4. M4 simulation1000/1000replays/0violations and36local E2E remain applicable; CI reruns browser gates for the final publication. M5 is preparation only, not v0.3.6 release. Physical devices/Safari/Firefox and owner-entered account login NOT RUN.
+
+Resume from main, not from the original draft: preserve frozen routes/goldens, immutable expansion and all guest/account databases. Next implement creator UI/manual player traits behind persisted optional setup/version guards per MASTER_PLAN, then education/career/military evidence and all M5 acceptance cases. Do not enable a partial university/military system or apply unapproved SQL. No external action is needed except the owner's personal live login when available. Final publication SHA/workflow is reported in the chat and Git history; foundation code4f4e969942d1389fb5e76fe451f16e29a0f7d856.

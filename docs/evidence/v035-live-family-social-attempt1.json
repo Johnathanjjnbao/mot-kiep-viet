@@ -1,0 +1,503 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\triba\\OneDrive\\Desktop\\game\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      ".local/playwright-live-family.config.ts"
+    ],
+    "configFile": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\.local\\playwright-live-family.config.ts",
+    "rootDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-edge",
+        "name": "desktop-edge",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
+        "testMatch": [
+          "/(family|social).spec.ts/"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-edge",
+        "name": "mobile-edge",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
+        "testMatch": [
+          "/(family|social).spec.ts/"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-edge",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": {},
+        "testMatch": {},
+        "timeout": 90000,
+        "use": {
+          "baseURL": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36 Edg/156.0.8078.4",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-edge"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-edge",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": {},
+        "testMatch": {},
+        "timeout": 90000,
+        "use": {
+          "baseURL": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          },
+          "viewport": {
+            "width": 375,
+            "height": 812
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-edge"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:/Users/triba/OneDrive/Desktop/game/docs/evidence/v035-live-family-social.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "family.spec.ts",
+      "file": "family.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "one tap records parenting once and the family panel preserves children and parents on reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T04:59:54.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1835a2128fe748137ec-603ab287a7df9d7f1366",
+          "file": "family.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "adult child career and accumulated parenting memories remain readable in the interface",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3098,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:02.970Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1835a2128fe748137ec-a0d22e1efc3ebf348ff8",
+          "file": "family.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "one tap records parenting once and the family panel preserves children and parents on reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:16.598Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1835a2128fe748137ec-39575639bc264ffee11a",
+          "file": "family.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "adult child career and accumulated parenting memories remain readable in the interface",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20266,
+                  "error": {
+                    "message": "Error: page.goto: net::ERR_CONNECTION_RESET at https://johnathanjjnbao.github.io/mot-kiep-viet/\nCall log:\n\u001b[2m  - navigating to \"https://johnathanjjnbao.github.io/mot-kiep-viet/\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_RESET at https://johnathanjjnbao.github.io/mot-kiep-viet/\nCall log:\n\u001b[2m  - navigating to \"https://johnathanjjnbao.github.io/mot-kiep-viet/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\family.spec.ts:45:14",
+                    "location": {
+                      "file": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\family.spec.ts",
+                      "column": 14,
+                      "line": 45
+                    },
+                    "snippet": "  43 | }) => {\n  44 |   const run = growFamily(familyBirth(), 44);\n> 45 |   await page.goto('./');\n     |              ^\n  46 |   await page.getByRole('button', { name: 'Lưu và tải game' }).click();\n  47 |   await page\n  48 |     .getByLabel('Chọn tệp game đã lưu')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\family.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_RESET at https://johnathanjjnbao.github.io/mot-kiep-viet/\nCall log:\n\u001b[2m  - navigating to \"https://johnathanjjnbao.github.io/mot-kiep-viet/\", waiting until \"load\"\u001b[22m\n\n\n  43 | }) => {\n  44 |   const run = growFamily(familyBirth(), 44);\n> 45 |   await page.goto('./');\n     |              ^\n  46 |   await page.getByRole('button', { name: 'Lưu và tải game' }).click();\n  47 |   await page\n  48 |     .getByLabel('Chọn tệp game đã lưu')\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\family.spec.ts:45:14"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:20.749Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\family-adult-child-career--b5a81-n-readable-in-the-interface-mobile-edge\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\family-adult-child-career--b5a81-n-readable-in-the-interface-mobile-edge\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\family-adult-child-career--b5a81-n-readable-in-the-interface-mobile-edge\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\family.spec.ts",
+                    "column": 14,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d1835a2128fe748137ec-b0c19c84879e261ef2c3",
+          "file": "family.spec.ts",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "social.spec.ts",
+      "file": "social.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "three people have independent interest; one tap resolves targeted dialogue and preserves the pending story",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:06.086Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3bd26b923e159664f17e-80d299dc0423a8a09076",
+          "file": "social.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "a marriage with household state and per-NPC memories survives UI import and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4372,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:11.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3bd26b923e159664f17e-20203bcc00b73b2e42cf",
+          "file": "social.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "three people have independent interest; one tap resolves targeted dialogue and preserves the pending story",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:41.753Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3bd26b923e159664f17e-fd9b5210c0b995af4b0f",
+          "file": "social.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "a marriage with household state and per-NPC memories survives UI import and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2569,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:00:47.409Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3bd26b923e159664f17e-437bb3a31eb96fb0de43",
+          "file": "social.spec.ts",
+          "line": 27,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T04:59:53.296Z",
+    "duration": 56928.471,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

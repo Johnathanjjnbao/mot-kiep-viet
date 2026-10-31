@@ -1,5 +1,9 @@
 # Backlog sau beta v0.3
 
+M4 v0.3.5 G5 VERIFIED PASS: release dc6bf1b094a343939d653c0f1ffb4f699ffc08b4/main, CI41136632974 completed/success; live guest desktop/mobile,6viewport×20,8family/social journeys,26realAuth/cloud and JS/CSS/SW hashes PASS. M5 foundation4f4e969 (7new tests) only; full M5 INCOMPLETE. Final verify124/36existing E2E/1000M4 replay0violations. Owner personal login NOT RUN.
+
+Older pending paragraphs below are historical checkpoints.
+
 Current continuation: M1/M2/M3 deployed VERIFIED PASS; M4 v0.3.5 local gates PASS, release verification pending. M5 is conditional INCOMPLETE; implementation plan in MASTER_PLAN. v0.4–v0.6 remain backlog. Older status paragraphs below are historical checkpoints.
 
 Life Expansion: M1 v0.3.2 và M2 v0.3.3 VERIFIED PASS/deployed; M3 v0.3.4 (22scene nháp) INCOMPLETE, M4 v0.3.5 NOT RUN. Không thay ba mốc tương lai kỳ bí/quốc tế/VNĐ. Trạng thái và bước tiếp tục ở LIFE_EXPANSION.

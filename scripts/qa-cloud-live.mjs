@@ -52,7 +52,12 @@ const report = {
 };
 let stage = 'setup';
 function ok(r) {
-  if (r.error) throw Error('QA request failed at ' + stage);
+  if (r.error) {
+    const failure = Error('QA request failed at ' + stage);
+    failure.code = /^[A-Za-z0-9_]+$/.test(r.error.code ?? '') ? r.error.code : 'unavailable';
+    failure.status = Number(r.error.status) || null;
+    throw failure;
+  }
   return r.data;
 }
 async function check(name, fn) {
@@ -64,6 +69,7 @@ async function check(name, fn) {
 try {
   let users = [];
   for (const label of ['a', 'b']) {
+    stage = 'setup: provision synthetic identity';
     const email = `mkv-qa-${label}-${randomUUID()}@example.invalid`,
       password = randomBytes(28).toString('base64url');
     const user = ok(
@@ -71,6 +77,7 @@ try {
     ).user;
     created.push(user.id);
     const client = createClient(url, publicKey, options);
+    stage = 'setup: authenticate synthetic identity';
     const session = ok(await client.auth.signInWithPassword({ email, password })).session;
     assert.equal(
       JSON.parse(Buffer.from(session.access_token.split('.')[1], 'base64url')).role,
@@ -265,6 +272,7 @@ try {
   report.status = 'VERIFIED PASS';
 } catch (e) {
   report.failedStage = stage;
+  report.failure = { code: e.code ?? null, status: e.status ?? null };
   if (stage.startsWith('offline')) report.diagnostic = String(e.message).slice(0, 750);
   process.exitCode = 1;
 } finally {

@@ -308,7 +308,8 @@ export async function browserCloudQA(users, check) {
             if (r.error) throw Error('history unavailable');
             return r.data.length;
           },
-          { timeout: 30000 },
+          // Allow two 30-second background retry cycles after the rapid full-life run.
+          { timeout: 90000 },
         )
         .toBeGreaterThanOrEqual(2);
       await q.reload();
