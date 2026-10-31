@@ -9,11 +9,13 @@ import type { RunSetup, ParentTrait } from '../src/domain/model';
 import { randomizeCreatorTraits } from '../src/application/creatorRandom';
 const total = Number(process.argv[2] ?? 1000);
 const testCreator = process.argv.includes('--creator');
+const testDiversity = process.argv.includes('--dynamic');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
   replayChecked: 0,
   creatorRuns: 0,
+  fallbackEvents: 0,
   maxActions: 0,
   familyChildren: 0,
   adultChildren: 0,
@@ -55,6 +57,7 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
+        ...(testDiversity ? { lifeRules: 'dynamic-v1' as const } : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -71,6 +74,7 @@ for (let i = 0; i < total; i++) {
       (r) => {
         const e = activeDefinition(r);
         if (e) {
+          if (e.id === 'ordinary-days') report.fallbackEvents++;
           const n = e.choices.filter((c) => !choiceReason(r, c)).length;
           report.enabledChoices.min = Math.min(report.enabledChoices.min, n);
           report.enabledChoices.max = Math.max(report.enabledChoices.max, n);

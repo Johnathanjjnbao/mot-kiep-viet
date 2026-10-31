@@ -56,6 +56,7 @@ import {
 } from '../domain/creator';
 import { hashSeed, nextRandom } from './random';
 import { mandatoryCost, settleMonth, transact } from './finance';
+import { dynamicPool, diversityWeight, originEligible } from './lifeDiversity';
 
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
 const names = [
@@ -184,6 +185,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     fatherTraits: setup.fatherTraits ?? [],
   };
   run.setup.expansion = setup.expansion ?? 'family';
+  if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
   if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
@@ -320,10 +322,11 @@ export const activeDefinition = (run: GameRun) =>
   allEvents().find((e) => e.id === run.activeEvent?.id);
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   if (event.version === 5) return false;
+  if (event.version === 6 && (!run.setup.lifeRules || !originEligible(run, event.id))) return false;
   const last = run.seen[event.id];
   return (
     eligible(run, event.condition) &&
-    (event.version < 4 || !!socialTarget(run, event.id)) &&
+    (event.version !== 4 || !!socialTarget(run, event.id)) &&
     (!run.social || !event.choices.some((c) => c.effects.some((e) => e.kind === 'family'))) &&
     (last === undefined || (!event.once && run.month - last >= event.cooldown)) &&
     event.choices.filter((c) => !choiceReason(run, c)).length >= 4
@@ -343,12 +346,16 @@ function selectEvent(run: GameRun) {
   }
   let options = EVENTS.filter((e) => eventEligible(run, e));
   if (!options.length) options = [FALLBACK];
+  const dynamic = !!run.setup.lifeRules && ageOf(run) < 18;
+  if (dynamic) options = dynamicPool(run, options);
   const priority = Math.max(...options.map((e) => e.priority));
   if (priority <= 0 && nextFamily(run)) return;
-  if (priority > 0) options = options.filter((e) => e.priority === priority);
+  if (!dynamic && priority > 0) options = options.filter((e) => e.priority === priority);
   const job = CAREERS.find((c) => c.id === currentCareer(run)?.id);
   const weight = (e: typeof FALLBACK) =>
-    e.weight * (e.id === 'career-collapse' && job ? 0.2 + (1 - job.stability) * 3 : 1);
+    e.weight *
+    (e.id === 'career-collapse' && job ? 0.2 + (1 - job.stability) * 3 : 1) *
+    (dynamic ? diversityWeight(run, e) : 1);
   let value = random(run, 'event') * options.reduce((n, e) => n + weight(e), 0);
   const selected = options.find((e) => (value -= weight(e)) < 0) ?? options[options.length - 1];
   if (selected.version === 4) {

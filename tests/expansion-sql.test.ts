@@ -38,6 +38,7 @@ it('adds only the new version tuple while retaining all old size/identity/header
                   cohort: 1995,
                   region: 'northern-village',
                   expansion: 'family',
+                  lifeRules: 'dynamic-v1',
                   playerTraits: ['Kiên trì', 'Ưa yên tĩnh'],
                 },
               }

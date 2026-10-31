@@ -252,6 +252,7 @@ export type RunAction =
   | { type: 'choose'; eventId: string; choiceId: string }
   | { type: 'manage'; action: ManageAction; career?: CareerId };
 export interface RunSetup {
+  lifeRules?: 'dynamic-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;

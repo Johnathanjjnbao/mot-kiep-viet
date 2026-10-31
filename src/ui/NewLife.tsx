@@ -137,7 +137,7 @@ export function NewLife({
         return;
       }
       setPreview(true);
-    } else onStart(seed.trim() || generatedSeed);
+    } else onStart(seed.trim() || generatedSeed, { ...portraitRun.setup, lifeRules: 'dynamic-v1' });
   }
   const availableSetup = {
     ...setup,
@@ -228,7 +228,12 @@ export function NewLife({
               </button>
               <button
                 className="button primary full-width"
-                onClick={() => onStart(seed.trim() || generatedSeed, availableSetup)}
+                onClick={() =>
+                  onStart(seed.trim() || generatedSeed, {
+                    ...availableSetup,
+                    lifeRules: 'dynamic-v1',
+                  })
+                }
               >
                 Bắt đầu với nhân vật này
                 <ArrowRight size={17} aria-hidden="true" />

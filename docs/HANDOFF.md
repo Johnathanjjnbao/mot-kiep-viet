@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Dynamic Life, local checkpoint 31/10/2026
+
+Đang phát hành `0.3.6-life-diversity.1`, tiếp tục2b24ebd/main. Local140unit/40E2E/1000seed+replay/0vi phạm và3browsers6journeys PASS.20cảnh tuổi thơ+3cảnh nối tiếp; mẫu200same-setup: cảnh đầu3→11, chuỗi5đầu193→200;200diverse:4→15 và193→200. Old400opening sequences vàgoldens giữ nguyên; lifeRules dynamic-v1 chỉ cho đời mới. Cloud QA BLOCKED thiếuCLIlogin, không SQL/Auth change. CI/live mới INCOMPLETE cho tới bằng chứng đúngSHA. B/C chưa triển khai; tiếp tục University sau khi chốtA. Xem M5_LONG_RUN_HANDOFF.
+
 ## Checkpoint A v0.3.6-creator.1 — 31/10/2026
 
 Creator đã phát hành: source `28c1dc51aebadd3bf826224e653ad0f5a10ff9a6`/main, [CI41202694295](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41202694295) completed/success. G5 guest VERIFIED PASS: live Creator Chromium/Firefox/WebKit desktop/mobile6/6,6viewport×20choices,guest save/load/history/font/assets và CSS/JS/SW khớp artifact. Local/CI133tests/38E2E;1000seed/1000replay/0vi phạm còn áp dụng (sau đó chỉ sửa CSS/test/docs). Engine/content3/schema4, frozen/goldens giữ nguyên. Auth/cloud mới BLOCKED vì thiếu Supabase CLI login; owner tự nhập account NOT RUN. Full Education & Career v0.3.6 INCOMPLETE:0ngành/0event/0arc mới. Chi tiết [M5_CREATOR_REPORT](M5_CREATOR_REPORT.md); các đoạn sau giữ bằng chứng lịch sử.
