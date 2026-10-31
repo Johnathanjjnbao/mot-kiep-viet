@@ -31,10 +31,10 @@ Không action hay tiền tệ mới, không trừ phí/giao dịch mới; ledger
 | Full production E2E | VERIFIED PASS:38/38, bao gồm6viewport×20 quyết định, đo trước input và đối chiếu device viewport |
 | Production subpath smoke | VERIFIED PASS: tạo đời, chọn/tiến thời gian, autosave/reload, asset/font license;0page errors |
 | Dependency audit | VERIFIED PASS: `npm audit --omit=dev`,0advisories |
-| Secret scan | VERIFIED PASS lượt đầu822text objects,0findings; sẽ chạy lại trước push cả publicdist/reachablehistory |
+| Secret scan | VERIFIED PASS lượt đầu822text objects,0findings; lượt cuối trước source push829objects/0findings; scope publicdist/reachablehistory |
 | Auth/cloud thật | BLOCKED: `test:cloud:live` exit1, CLI admin access unavailable; safe diagnostic xác nhận thiếu login, không phải thiếu binary/unknown flag;0QA identities được tạo |
 | Owner tự nhập account live | NOT RUN, riêng với đăng nhập GitHub |
-| CI / deploy / live G5 | INCOMPLETE, chờ commit/push và bằng chứng đúng SHA |
+| CI / deploy / live G5 | Core Creator4a2f6df VERIFIED PASS (guest); xem release evidence phía dưới. Mobile preview refinement đang chốt local gates |
 
 Failure history: Creator E2E đầu2timeouts do cố bấm disabled clear khi chỉ còn trait khóa; sửa test bằng kiểm tra enabled, chạy lại2/2 PASS. Full regression đầu phát hiện checkbox mẹ nằm trong details đóng; sửa test mở panel trước khi chọn. Không dùng các lần lỗi đó làm PASS. Chưa đổi engine/content sau simulation; không chạy lặp1000seed cho test/docs changes.
 
@@ -82,3 +82,15 @@ Full regression sau sửa selectors:38/38 VERIFIED PASS. Hai bài five-family đ
 Lệnh Trail build sau source changes đã thử và exit1 MODULE_NOT_FOUND; graph refresh BLOCKED, không init lại.
 
 Secret scan cuối: 829 text objects,0findings (working/publicdist/reachablehistory); source/diff review và git diff --check PASS.
+
+## Release core Creator — 4a2f6df, 31/10/2026
+
+Source `4a2f6df4abee441d3bf8bcafb08396804e96cdf5`/main đã push/deploy qua [workflow41201603918](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41201603918), completed/success cảbuild/deploy. CI logs xác nhận133tests,38E2E và scan815objects/0findings. [Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) guest1440/375 tạo/chọn/tiến thời gian/save-load/export/import/history/full-life/font/assets PASS. Creator live Chromium/Firefox/WebKit desktop/mobile6/6,120decisions và6viewport×20=120regression decisions/126pre-input measurements PASS. Không page/network lỗi trong guest suite. Không coi HTTP200/CI xanh là gameplay proof.
+
+Artifact13043216439/ZIP SHA256`6f829288360d8b19545551b68c9952ae92f25feb1483e2ed59b97c52c201f85a` của đúngSHA đã tải qua GitHub plugin, giải nén tĩnh có path filter; CSS/JS/SWlive khớp từng byte vớiartifact. Signed downloadURL và privileged credentials không ghi vào repo. Raw [CI](evidence/m5-a-ci.json), [guest](evidence/m5-a-live-guest.json), [Creator](evidence/m5-a-live-creator-browsers.json), [assets](evidence/m5-a-live-assets.json), [viewport](evidence/v036-creator1-live-viewport.json).
+
+G5 guest của coreCreator VERIFIED PASS; gate cloud mới vẫnBLOCKED, fullEducation/Career INCOMPLETE. Không claimcloudPASS bằng PGlite.
+
+Visual follow-up: khi xem ảnhWebKit mobile thật, avatarfloat làm ddcolumn rất hẹp dù không tràn; CSS mobile nay clearfloat trướcdl, để giá trị đọc được. Thêm assertion cộtpreview≥150px; localChromium mobile đã xem ảnh sau sửa. Đây là UI-only, không lặp1000seed. Verify133 và Pages smoke sauCSS PASS; full38E2E vàcrossbrowser6/6 sauCSS đều PASS. Refinement qua localgates và đang push để xác minh đúngSHA mới.
+
+Refinement pre-push:38/38E2E,133/133verify,Creator6/6,production smoke và scan851text objects/0findings PASS. Chỉ2source files đổi (CSS+QA assertion), không engine/content/save đổi.

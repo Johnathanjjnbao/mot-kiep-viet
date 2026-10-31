@@ -3024,7 +3024,8 @@ meter::-moz-meter-bar {
     font-size: 0.64rem;
   }
   .creator-preview dl {
-    grid-template-columns: 90px 1fr;
+    clear: both;
+    grid-template-columns: 90px minmax(0, 1fr);
   }
 }
 

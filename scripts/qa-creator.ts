@@ -80,6 +80,13 @@ export async function creatorJourney(page: Page, url: string, prefix: string) {
   await page.getByRole('button', { name: 'Xem trước cuộc đời', exact: true }).click();
   for (const trait of expected)
     await expect(page.getByTestId('preview-player-traits')).toContainText(trait);
+  if (page.viewportSize()!.width <= 640) {
+    const value = await page.locator('.creator-preview dd').first().boundingBox();
+    expect(
+      value!.width,
+      'preview values keep a readable column beside the labels',
+    ).toBeGreaterThanOrEqual(150);
+  }
   await page.screenshot({ path: `docs/evidence/${prefix}-preview.png`, fullPage: true });
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await expect.poll(async () => (await readGuestRun(page))?.setup.playerTraits).toEqual(expected);
