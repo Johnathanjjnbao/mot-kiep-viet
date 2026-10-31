@@ -1,5 +1,11 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Tiếp tục A/B — 31/10/2026
+
+Dynamic Life đã phát hành tại `d3212f4f39bf889a2f72b47993fcaf391bed50ae`, [CI 41208545352](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41208545352) completed/success; live guest và Chromium/Firefox/WebKit trên desktop/mobile VERIFIED PASS.
+
+Bản `0.3.6-university.1` có 12 ngành, tuyển sinh có xác suất và thời gian chờ, đánh giá từng năm, học phí/học bổng/hỗ trợ qua ledger, bảo lưu, chuyển ngành, nghỉ học và cấp bằng sau khi đủ tiến độ. Ruleset `education-v1` chỉ áp dụng cho đời mới; `dynamic-v1` và các đời cũ giữ nguyên. Local verify 163 tests, 52 E2E, 1.000 seed/replay, ba browser/sáu luồng và production smoke VERIFIED PASS. Secret scan 945 objects/0 findings, audit dependencies 0 (không đổi dependency). CI/live đang chốt, chưa gọi University G5 PASS. Employment mới INCOMPLETE, digital/business chưa triển khai, quân sự NOT READY. Cloud QA BLOCKED do CLI chưa đăng nhập; owner tự đăng nhập NOT RUN. Không thay SQL/Auth/RLS hoặc dữ liệu production. Bằng chứng chi tiết trong [M5_LONG_RUN_HANDOFF](M5_LONG_RUN_HANDOFF.md). Các mục bên dưới giữ lịch sử.
+
 ## Dynamic Life, local checkpoint 31/10/2026
 
 Đang phát hành `0.3.6-life-diversity.1`, tiếp tục2b24ebd/main. Local140unit/40E2E/1000seed+replay/0vi phạm và3browsers6journeys PASS.20cảnh tuổi thơ+3cảnh nối tiếp; mẫu200same-setup: cảnh đầu3→11, chuỗi5đầu193→200;200diverse:4→15 và193→200. Old400opening sequences vàgoldens giữ nguyên; lifeRules dynamic-v1 chỉ cho đời mới. Cloud QA BLOCKED thiếuCLIlogin, không SQL/Auth change. CI/live mới INCOMPLETE cho tới bằng chứng đúngSHA. B/C chưa triển khai; tiếp tục University sau khi chốtA. Xem M5_LONG_RUN_HANDOFF.

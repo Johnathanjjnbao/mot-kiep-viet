@@ -1,0 +1,22 @@
+{
+  "reports": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": "VERIFIED PASS",
+      "result": "accepted",
+      "age": 20
+    },
+    {
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "status": "VERIFIED PASS",
+      "result": "accepted",
+      "age": 20
+    }
+  ]
+}

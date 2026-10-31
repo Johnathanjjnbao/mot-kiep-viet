@@ -150,8 +150,15 @@ export async function readGuestRun(page) {
             item = db.transaction('saves').objectStore('saves').get('autosave');
           item.onerror = reject;
           item.onsuccess = () => {
-            resolve(JSON.parse(item.result).run);
-            db.close();
+            try {
+              if (typeof item.result !== 'string')
+                throw new Error('Guest autosave is not persisted yet');
+              resolve(JSON.parse(item.result).run);
+            } catch (error) {
+              reject(error);
+            } finally {
+              db.close();
+            }
           };
         };
       }),

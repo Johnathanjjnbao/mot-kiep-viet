@@ -137,7 +137,7 @@ test('adult career, savings, household costs, and invalid import feedback work t
     i++
   )
     await step(page);
-  await page.getByRole('button', { name: /Đi làm và tự học/ }).click();
+  await page.getByRole('button', { name: /Đi làm và để ngỏ việc học/ }).click();
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
   await page.getByRole('button', { name: 'Nhận công việc', exact: true }).first().click();
   await expect(page.locator('.current-job')).toContainText('Làm nông');

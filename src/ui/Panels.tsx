@@ -1,4 +1,5 @@
 import { FamilyPanel } from './FamilyPanel';
+import { AcademicPanel } from './AcademicPanel';
 import { SocialPanel } from './SocialPanel';
 import {
   BriefcaseBusiness,
@@ -45,6 +46,7 @@ export function CareerPanel({ run, act }: Props) {
               ? `Bạn đang học, dự kiến hoàn thành năm ${run.player.birthYear + Math.floor(studying.endMonth / 12)}. Hãy học xong trước khi nhận việc.`
               : 'Học vấn mở cửa; tay nghề, kinh nghiệm và hoàn cảnh quyết định bạn đi được bao xa.'}
       </p>
+      <AcademicPanel run={run} act={act} />
       {current && (
         <div className="current-job">
           <BriefcaseBusiness aria-hidden="true" size={24} />

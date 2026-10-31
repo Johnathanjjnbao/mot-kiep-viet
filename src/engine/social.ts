@@ -112,6 +112,7 @@ export function refreshSocial(r: GameRun) {
 }
 const partnered = (p: SocialPerson) => ['exclusive', 'cohabiting', 'married'].includes(p.status);
 export function socialEligible(r: GameRun, id: string, npcId: string, manual = false): boolean {
+  if (r.academics?.focus) return false;
   const s = r.social,
     p = s?.people.find((p) => p.npcId === npcId);
   if (!s || !p || !adult(r, p) || r.status === 'ended') return false;
@@ -209,14 +210,16 @@ export function requestSocial(input: GameRun, a: SocialAction) {
     input.engineVersion !== '3.0.0' ||
     !input.social ||
     !!input.family?.focus ||
+    !!input.academics?.focus ||
     a.expected !== input.actions.length ||
     input.status !== 'playing'
   )
     throw Error('Yêu cầu trò chuyện không còn hợp lệ.');
   if (
     input.actions.filter((a) => a.type === 'social').length >= (input.family ? 40 : 80) ||
-    input.actions.filter((a) => ['manage', 'wardrobe', 'social', 'family-talk'].includes(a.type))
-      .length >= (input.family ? 120 : 250)
+    input.actions.filter((a) =>
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+    ).length >= (input.family ? 120 : 250)
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
   const r = structuredClone(input);

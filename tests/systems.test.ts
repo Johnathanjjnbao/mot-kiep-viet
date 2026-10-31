@@ -40,12 +40,12 @@ export function adult(seed = 'adult'): GameRun {
 }
 describe('authored content and eligibility', () => {
   it('validates the released115 plus23 versioned templates and retains7 arcs', () => {
-    expect(validateContent(EVENTS.filter((e) => e.version !== 6))).toMatchObject({
+    expect(validateContent(EVENTS.filter((e) => e.version < 6))).toMatchObject({
       total: 115,
       arcs: 7,
       errors: [],
     });
-    expect(validateContent()).toMatchObject({ total: 138, arcs: 7, errors: [] });
+    expect(validateContent()).toMatchObject({ total: 151, arcs: 7, errors: [] });
   });
   it('detects duplicate IDs and broken references', () => {
     const events = structuredClone(EVENTS);

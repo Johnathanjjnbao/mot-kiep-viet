@@ -4,6 +4,7 @@ import { assertRun as assertFrozen2 } from '../legacy/v2/engine/invariants';
 import { assertWardrobe } from './wardrobe';
 import type { GameRun } from '../domain/model';
 import { playerPersonalitySchema } from '../domain/personality';
+import { assertAcademics } from './academics';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
 import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
@@ -12,6 +13,7 @@ export function assertRun(run: GameRun) {
   assertWardrobe(run);
   assertSocial(run);
   assertFamily(run);
+  assertAcademics(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

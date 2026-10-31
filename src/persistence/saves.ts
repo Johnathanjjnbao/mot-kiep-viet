@@ -1,6 +1,7 @@
 import { parseSave as parseV2 } from '../legacy/v2/persistence/saves';
 import { parseSave as parseLegacy } from '../legacy/v1/persistence/saves';
 import { setupSchema } from '../domain/creator';
+import { PROGRAM_IDS } from '../domain/academics';
 import { openDB } from 'idb';
 import { z } from 'zod';
 import {
@@ -27,6 +28,15 @@ const career = z.enum([
   'business',
 ]);
 const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
+  z
+    .object({
+      type: z.literal('academic'),
+      operation: z.enum(['apply', 'pause', 'resume', 'dropout', 'switch', 'term']),
+      program: z.enum(PROGRAM_IDS).optional(),
+      expected: z.number().int().min(0).max(511),
+    })
+    .strict()
+    .refine((a) => (a.operation === 'apply' || a.operation === 'switch') === !!a.program),
   z.object({ type: z.literal('advance') }).strict(),
   z
     .object({

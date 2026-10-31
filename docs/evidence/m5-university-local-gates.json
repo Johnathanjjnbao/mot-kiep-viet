@@ -1,0 +1,61 @@
+{
+  "version": "0.3.6-university.1",
+  "ruleset": "education-v1",
+  "localVerify": {
+    "status": "VERIFIED PASS",
+    "command": "npm.cmd run verify",
+    "tests": 163,
+    "testFiles": 18,
+    "templates": 151,
+    "arcs": 7,
+    "pagesBasePath": "/mot-kiep-viet/"
+  },
+  "simulation": {
+    "status": "VERIFIED PASS",
+    "command": "npm.cmd run simulate -- 1000 --creator --education",
+    "runs": 1000,
+    "replays": 1000,
+    "violations": 0,
+    "fallback": 0,
+    "source": "m5-university-simulation.json"
+  },
+  "browser": {
+    "status": "VERIFIED PASS",
+    "journeys": 6,
+    "source": "m5-university-local-browsers.json",
+    "browsers": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "viewports": [
+      "1440x900",
+      "375x667"
+    ],
+    "axeViolations": 0
+  },
+  "secrets": {
+    "scope": "working files, public dist assets and all reachable Git blobs",
+    "textObjectsScanned": 945,
+    "findings": []
+  },
+  "productionSmoke": {
+    "status": "VERIFIED PASS",
+    "command": "npm.cmd run test:production"
+  },
+  "realCloud": "BLOCKED: Supabase CLI not authenticated; no production writes",
+  "ownerPersonalLogin": "NOT RUN",
+  "ciAndLive": "INCOMPLETE until exact-SHA deployment and live evidence",
+  "e2e": {
+    "status": "VERIFIED PASS",
+    "command": "E2E_PRODUCTION=1 VITE_BASE_PATH=/mot-kiep-viet/ npm.cmd run test:e2e",
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0,
+    "source": "m5-university-browser-results.json",
+    "newLifeViewports": 6,
+    "academicViewports": 6,
+    "decisionsPerViewport": 20,
+    "oldSixChoiceSaveViews": 6
+  }
+}

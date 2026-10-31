@@ -10,12 +10,15 @@ import { randomizeCreatorTraits } from '../src/application/creatorRandom';
 const total = Number(process.argv[2] ?? 1000);
 const testCreator = process.argv.includes('--creator');
 const testDiversity = process.argv.includes('--dynamic');
+const testEducation = process.argv.includes('--education');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
   replayChecked: 0,
   creatorRuns: 0,
   fallbackEvents: 0,
+  admissions: { accepted: 0, rejected: 0 },
+  academics: { graduated: 0, failed: 0, dropped: 0, switched: 0, paused: 0, internships: 0 },
   maxActions: 0,
   familyChildren: 0,
   adultChildren: 0,
@@ -57,7 +60,11 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testDiversity ? { lifeRules: 'dynamic-v1' as const } : {}),
+        ...(testEducation
+          ? { lifeRules: 'education-v1' as const }
+          : testDiversity
+            ? { lifeRules: 'dynamic-v1' as const }
+            : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -85,6 +92,11 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    for (const a of run.academics?.applications ?? []) report.admissions[a.result]++;
+    for (const s of run.academics?.studies ?? []) {
+      if (s.status !== 'studying') report.academics[s.status]++;
+      if (s.internship) report.academics.internships++;
+    }
     if (run.setup.playerTraits) report.creatorRuns++;
     report.maxActions = Math.max(report.maxActions, run.actions.length);
     report.familyChildren += run.family?.children.length ?? 0;

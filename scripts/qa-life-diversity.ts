@@ -13,7 +13,9 @@ export async function diversityJourney(page: Page, url: string) {
       await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
     } else await page.getByRole('button', { name: 'Gieo một cuộc đời' }).click();
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
-    await expect.poll(async () => (await readGuestRun(page))?.setup.lifeRules).toBe('dynamic-v1');
+    await expect
+      .poll(async () => (await readGuestRun(page))?.setup.lifeRules)
+      .toMatch(/^(dynamic|education)-v1$/);
     if (seed) await expect.poll(async () => (await readGuestRun(page)).seed).toBe(seed);
     else await expect.poll(async () => (await readGuestRun(page)).seed).not.toBe(previousSeed);
   }

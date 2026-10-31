@@ -1,0 +1,22 @@
+{
+  "url": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "commit": "d3212f4f39bf889a2f72b47993fcaf391bed50ae",
+  "status": "VERIFIED PASS",
+  "checks": [
+    {
+      "path": "/mot-kiep-viet/assets/index-B_0UuWx9.css",
+      "sha256": "a131ae4a7c1e835fdf1366c5eb11a81e99296ded7d8b6554e60fb3f6dbd4bb34",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/index-CXTwHprW.js",
+      "sha256": "8f2abd5483ba69dc2d44f8343ecf12a4284ad584e9c1297845bc0f4b40b51fb2",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/sw.js",
+      "sha256": "c36f3ab70fe23bf3e2f6a6507dee5094c719c69afc2677c911dc2efac0e505eb",
+      "status": "VERIFIED PASS"
+    }
+  ]
+}

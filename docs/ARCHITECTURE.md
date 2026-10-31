@@ -1,5 +1,13 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## Dynamic Life và University, luật đời mới
+
+`RunSetup.lifeRules` bất biến: vắng mặt giữ selector và học tập cũ; `dynamic-v1` thêm nội dung tuổi thơ và trọng số chống lặp; `education-v1` kế thừa tuổi thơ và dùng hồ sơ đại học riêng. Strict setup/action parsing cùng canonical replay không cho gắn luật mới lên đời đang chơi. Engine/content 3.0.0, save schema 4, frozen v1/v2 và các golden độc lập không đổi. Không tự migration; ID database, UUID cuộc đời, autosave, ba ô lưu và history độc lập giữ nguyên.
+
+`content/programs.ts` chứa 12 chương trình và 12 tình huống đánh giá riêng; `domain/academics.ts` ghi hồ sơ, quá trình học, kết quả từng năm và văn bằng. `engine/academics.ts` sở hữu tuyển sinh, tiến độ và ledger. Tuyển sinh dùng RNG event đã lưu, từ chối không thu học phí, chờ 6 tháng cho cùng ngành. Mỗi năm có khóa giao dịch học phí/học bổng/hỗ trợ riêng; bảo lưu rồi trở lại không thu lại kỳ đã đóng. Chỉ số, độ khó, phương pháp và RNG quyết định đạt năm; dự án có thể ghi thực tập, làm thêm có thu nhập riêng, nghỉ phục hồi lùi tiến độ. Đủ năm đạt mới cấp bằng; hết ngân sách học lại khép chương trình không có bằng.
+
+Academic focus giữ/resume sự kiện, không lồng social/family; advance dừng ở kỳ đánh giá. UI chỉ dispatch hành động với expected sequence, không sửa GameRun. Shared120 quản lý của family bao gồm academic; 40 thao tác học tập, 24 hồ sơ và 12 quá trình giới hạn dung lượng. Invariants đối chiếu tiến độ, số lần đóng học phí, văn bằng, focus và không đồng thời học/làm toàn thời gian. SQL003 nhận envelope cùng tuple trong test PGlite; đây không phải bằng chứng Auth/JWT/RLS thật. Giá đSM, niên đại mở chương trình và điểm tuyển sinh là tham số mô phỏng, không cam kết của trường thật; bằng sức khỏe/luật không tự cấp giấy phép hành nghề.
+
 ## Creator opt-in v0.3.6-creator.1
 
 `RunSetup.playerTraits?: PlayerPersonality[]` là cấu hình bất biến, chỉ tồn tại khi người chơi chọn1–3 tính cách tương thích cho một đời mới. Bỏ chọn hết bỏ trường này; engine giữ lượt gieo mặc định và semantics cũ khi trường vắng mặt. Không tự thêm trường vào save cũ. Engine/content3.0.0/schema4 và expansion wardrobe/social/family giữ nguyên; frozen v1/v2 không sửa. Đây là opt-in khởi tạo Creator, không phải bật ruleset đại học/nghề mới.

@@ -21,7 +21,8 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
         a.type === 'manage' ||
         a.type === 'wardrobe' ||
         a.type === 'social' ||
-        a.type === 'family-talk',
+        a.type === 'family-talk' ||
+        a.type === 'academic',
     ).length >= (input.family ? 120 : input.social ? 250 : 350)
   )
     throw Error('Đã đạt giới hạn thao tác tủ đồ trong một đời.');

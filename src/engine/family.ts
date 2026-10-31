@@ -313,6 +313,7 @@ const ageRanges: Record<string, [number, number]> = {
   'family-legacy-memory': [30, 64],
 };
 export function familyEligible(r: GameRun, id: string, childId: string) {
+  if (r.academics?.focus) return false;
   const c = r.family?.children.find((c) => c.npcId === childId),
     range = ageRanges[id];
   if (!c || !range || !r.npcs.find((n) => n.id === childId)?.alive) return false;
@@ -325,7 +326,13 @@ export function familyEligible(r: GameRun, id: string, childId: string) {
 }
 export function focusFamily(r: GameRun, templateId: string, childId: string, manual = false) {
   const f = r.family;
-  if (!f || f.focus || r.social?.focus || !familyEligible(r, templateId, childId))
+  if (
+    !f ||
+    f.focus ||
+    r.social?.focus ||
+    r.academics?.focus ||
+    !familyEligible(r, templateId, childId)
+  )
     throw Error('Câu chuyện gia đình chưa phù hợp.');
   f.focus = {
     templateId,
@@ -338,7 +345,7 @@ export function focusFamily(r: GameRun, templateId: string, childId: string, man
 }
 export function nextFamily(r: GameRun) {
   const f = r.family;
-  if (!f || f.focus || r.social?.focus) return false;
+  if (!f || f.focus || r.social?.focus || r.academics?.focus) return false;
   const item = f.queue.shift();
   if (!item) return false;
   if (!familyEligible(r, item.templateId, item.childId))
@@ -366,8 +373,9 @@ export function requestFamily(input: GameRun, a: FamilyAction) {
   )
     throw Error('Cuộc trò chuyện gia đình không còn phù hợp.');
   if (
-    input.actions.filter((a) => ['social', 'family-talk', 'manage', 'wardrobe'].includes(a.type))
-      .length >= 120
+    input.actions.filter((a) =>
+      ['social', 'family-talk', 'manage', 'wardrobe', 'academic'].includes(a.type),
+    ).length >= 120
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
   if (f.queue.some((x) => x.templateId === a.templateId && x.childId === a.childId))

@@ -1,0 +1,4370 @@
+{
+  "schemaVersion": 4,
+  "engineVersion": "3.0.0",
+  "contentVersion": "3.0.0",
+  "identity": "55555555-5555-4555-8555-555555555555",
+  "savedAt": "2026-10-31T15:04:17.680Z",
+  "run": {
+    "engineVersion": "3.0.0",
+    "contentVersion": "3.0.0",
+    "id": "life:1c505972",
+    "seed": "viewport-0",
+    "setup": {
+      "cohort": 1995,
+      "region": "northern-village",
+      "name": "Nguyễn Minh An",
+      "birthplace": "Nông thôn phía Bắc",
+      "environment": "rural",
+      "wealth": 1,
+      "family": "mother-only",
+      "motherTraits": [],
+      "fatherTraits": [],
+      "expansion": "family",
+      "lifeRules": "dynamic-v1"
+    },
+    "rng": {
+      "world": 233369372,
+      "event": 1523327672
+    },
+    "month": 216,
+    "status": "playing",
+    "ending": null,
+    "player": {
+      "name": "Nguyễn Minh An",
+      "birthYear": 1995,
+      "region": "northern-village",
+      "stats": {
+        "health": 92.78399999999999,
+        "mood": 83,
+        "knowledge": 44,
+        "skill": 20,
+        "social": 38,
+        "stress": 0
+      },
+      "traits": [
+        "Khéo tay"
+      ],
+      "education": [
+        {
+          "level": "general",
+          "startMonth": 72,
+          "endMonth": 216
+        }
+      ],
+      "careers": [],
+      "alive": true
+    },
+    "world": {
+      "year": 2013,
+      "eraId": "connected",
+      "eraName": "Những ngày kết nối",
+      "fictional": false,
+      "wageFactor": 1.1,
+      "costFactor": 1.08,
+      "technologies": [
+        "internet",
+        "smartphone"
+      ]
+    },
+    "household": {
+      "background": "Thu nhập thấp",
+      "resources": 1,
+      "housing": "family",
+      "moved": false
+    },
+    "npcs": [
+      {
+        "id": "mother",
+        "name": "Mẹ · Thu",
+        "role": "mother",
+        "birthYear": 1970,
+        "alive": true,
+        "presence": "resident",
+        "personality": []
+      },
+      {
+        "id": "father",
+        "name": "Cha · Thành",
+        "role": "father",
+        "birthYear": 1967,
+        "alive": null,
+        "presence": "unknown",
+        "personality": []
+      },
+      {
+        "id": "friend",
+        "name": "Người bạn · Hòa",
+        "role": "friend",
+        "birthYear": 1995,
+        "alive": true
+      },
+      {
+        "id": "social:linh",
+        "name": "Linh",
+        "role": "friend",
+        "birthYear": 1992,
+        "alive": true
+      },
+      {
+        "id": "social:bao",
+        "name": "Bảo",
+        "role": "friend",
+        "birthYear": 1985,
+        "alive": true
+      }
+    ],
+    "relationships": [
+      {
+        "npcId": "mother",
+        "type": "family",
+        "strength": 75,
+        "history": []
+      },
+      {
+        "npcId": "friend",
+        "type": "friend",
+        "strength": 40,
+        "history": [
+          "2004: Thêm gắn bó"
+        ]
+      },
+      {
+        "npcId": "social:linh",
+        "type": "friend",
+        "strength": 35,
+        "history": []
+      },
+      {
+        "npcId": "social:bao",
+        "type": "friend",
+        "strength": 35,
+        "history": []
+      }
+    ],
+    "finance": {
+      "cash": 266,
+      "savings": 0,
+      "assets": [],
+      "liability": {
+        "id": "living-credit",
+        "principal": 0,
+        "monthlyRate": 0.004
+      },
+      "transactions": [
+        {
+          "id": "opening",
+          "month": 0,
+          "label": "Khoản gia đình để dành cho bạn",
+          "cash": 70,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:1:family",
+          "month": 1,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:1:living",
+          "month": 1,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:2:family",
+          "month": 2,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:2:living",
+          "month": 2,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:3:family",
+          "month": 3,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:3:living",
+          "month": 3,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:4:family",
+          "month": 4,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:4:living",
+          "month": 4,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:5:family",
+          "month": 5,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:5:living",
+          "month": 5,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:6:family",
+          "month": 6,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:6:living",
+          "month": 6,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:7:family",
+          "month": 7,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:7:living",
+          "month": 7,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:8:family",
+          "month": 8,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:8:living",
+          "month": 8,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:9:family",
+          "month": 9,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:9:living",
+          "month": 9,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:10:family",
+          "month": 10,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:10:living",
+          "month": 10,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:11:family",
+          "month": 11,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:11:living",
+          "month": 11,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:12:family",
+          "month": 12,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:12:living",
+          "month": 12,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:13:family",
+          "month": 13,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:13:living",
+          "month": 13,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:14:family",
+          "month": 14,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:14:living",
+          "month": 14,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:15:family",
+          "month": 15,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:15:living",
+          "month": 15,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:16:family",
+          "month": 16,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:16:living",
+          "month": 16,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:17:family",
+          "month": 17,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:17:living",
+          "month": 17,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:18:family",
+          "month": 18,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:18:living",
+          "month": 18,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:19:family",
+          "month": 19,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:19:living",
+          "month": 19,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:20:family",
+          "month": 20,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:20:living",
+          "month": 20,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:21:family",
+          "month": 21,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:21:living",
+          "month": 21,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:22:family",
+          "month": 22,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:22:living",
+          "month": 22,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:23:family",
+          "month": 23,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:23:living",
+          "month": 23,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:24:family",
+          "month": 24,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:24:living",
+          "month": 24,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:25:family",
+          "month": 25,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:25:living",
+          "month": 25,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:26:family",
+          "month": 26,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:26:living",
+          "month": 26,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:27:family",
+          "month": 27,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:27:living",
+          "month": 27,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:28:family",
+          "month": 28,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:28:living",
+          "month": 28,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:29:family",
+          "month": 29,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:29:living",
+          "month": 29,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:30:family",
+          "month": 30,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:30:living",
+          "month": 30,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:31:family",
+          "month": 31,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:31:living",
+          "month": 31,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:32:family",
+          "month": 32,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:32:living",
+          "month": 32,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:33:family",
+          "month": 33,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:33:living",
+          "month": 33,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:34:family",
+          "month": 34,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:34:living",
+          "month": 34,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:35:family",
+          "month": 35,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:35:living",
+          "month": 35,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:36:family",
+          "month": 36,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:36:living",
+          "month": 36,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:37:family",
+          "month": 37,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:37:living",
+          "month": 37,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:38:family",
+          "month": 38,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:38:living",
+          "month": 38,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:39:family",
+          "month": 39,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:39:living",
+          "month": 39,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:40:family",
+          "month": 40,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:40:living",
+          "month": 40,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:41:family",
+          "month": 41,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:41:living",
+          "month": 41,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:42:family",
+          "month": 42,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:42:living",
+          "month": 42,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:43:family",
+          "month": 43,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:43:living",
+          "month": 43,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:44:family",
+          "month": 44,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:44:living",
+          "month": 44,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:45:family",
+          "month": 45,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:45:living",
+          "month": 45,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:46:family",
+          "month": 46,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:46:living",
+          "month": 46,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:47:family",
+          "month": 47,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:47:living",
+          "month": 47,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:48:family",
+          "month": 48,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:48:living",
+          "month": 48,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:49:family",
+          "month": 49,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:49:living",
+          "month": 49,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:50:family",
+          "month": 50,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:50:living",
+          "month": 50,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:51:family",
+          "month": 51,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:51:living",
+          "month": 51,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:52:family",
+          "month": 52,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:52:living",
+          "month": 52,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:53:family",
+          "month": 53,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:53:living",
+          "month": 53,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:54:family",
+          "month": 54,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:54:living",
+          "month": 54,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:55:family",
+          "month": 55,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:55:living",
+          "month": 55,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:56:family",
+          "month": 56,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:56:living",
+          "month": 56,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:57:family",
+          "month": 57,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:57:living",
+          "month": 57,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:58:family",
+          "month": 58,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:58:living",
+          "month": 58,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:59:family",
+          "month": 59,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:59:living",
+          "month": 59,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:60:family",
+          "month": 60,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:60:living",
+          "month": 60,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:61:family",
+          "month": 61,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:61:living",
+          "month": 61,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:62:family",
+          "month": 62,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:62:living",
+          "month": 62,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:63:family",
+          "month": 63,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:63:living",
+          "month": 63,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:64:family",
+          "month": 64,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:64:living",
+          "month": 64,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:65:family",
+          "month": 65,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:65:living",
+          "month": 65,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:66:family",
+          "month": 66,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:66:living",
+          "month": 66,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:67:family",
+          "month": 67,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:67:living",
+          "month": 67,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:68:family",
+          "month": 68,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:68:living",
+          "month": 68,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:69:family",
+          "month": 69,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:69:living",
+          "month": 69,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:70:family",
+          "month": 70,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:70:living",
+          "month": 70,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:71:family",
+          "month": 71,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:71:living",
+          "month": 71,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:72:family",
+          "month": 72,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:72:living",
+          "month": 72,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:73:family",
+          "month": 73,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:73:living",
+          "month": 73,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:74:family",
+          "month": 74,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:74:living",
+          "month": 74,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:75:family",
+          "month": 75,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:75:living",
+          "month": 75,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:76:family",
+          "month": 76,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:76:living",
+          "month": 76,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:77:family",
+          "month": 77,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:77:living",
+          "month": 77,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:78:family",
+          "month": 78,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:78:living",
+          "month": 78,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:79:family",
+          "month": 79,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:79:living",
+          "month": 79,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:80:family",
+          "month": 80,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:80:living",
+          "month": 80,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:81:family",
+          "month": 81,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:81:living",
+          "month": 81,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:82:family",
+          "month": 82,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:82:living",
+          "month": 82,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:83:family",
+          "month": 83,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:83:living",
+          "month": 83,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:84:family",
+          "month": 84,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:84:living",
+          "month": 84,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:85:family",
+          "month": 85,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:85:living",
+          "month": 85,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:86:family",
+          "month": 86,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:86:living",
+          "month": 86,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:87:family",
+          "month": 87,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:87:living",
+          "month": 87,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:88:family",
+          "month": 88,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:88:living",
+          "month": 88,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:89:family",
+          "month": 89,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:89:living",
+          "month": 89,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:90:family",
+          "month": 90,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:90:living",
+          "month": 90,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:91:family",
+          "month": 91,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:91:living",
+          "month": 91,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:92:family",
+          "month": 92,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:92:living",
+          "month": 92,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:93:family",
+          "month": 93,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:93:living",
+          "month": 93,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:94:family",
+          "month": 94,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:94:living",
+          "month": 94,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:95:family",
+          "month": 95,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:95:living",
+          "month": 95,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:96:family",
+          "month": 96,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:96:living",
+          "month": 96,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:97:family",
+          "month": 97,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:97:living",
+          "month": 97,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:98:family",
+          "month": 98,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:98:living",
+          "month": 98,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:99:family",
+          "month": 99,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:99:living",
+          "month": 99,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:100:family",
+          "month": 100,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:100:living",
+          "month": 100,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:101:family",
+          "month": 101,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:101:living",
+          "month": 101,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:102:family",
+          "month": 102,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:102:living",
+          "month": 102,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:103:family",
+          "month": 103,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:103:living",
+          "month": 103,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:104:family",
+          "month": 104,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:104:living",
+          "month": 104,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:105:family",
+          "month": 105,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:105:living",
+          "month": 105,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:106:family",
+          "month": 106,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:106:living",
+          "month": 106,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:107:family",
+          "month": 107,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:107:living",
+          "month": 107,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:108:family",
+          "month": 108,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:108:living",
+          "month": 108,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:109:family",
+          "month": 109,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:109:living",
+          "month": 109,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:110:family",
+          "month": 110,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:110:living",
+          "month": 110,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:111:family",
+          "month": 111,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:111:living",
+          "month": 111,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:112:family",
+          "month": 112,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:112:living",
+          "month": 112,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:113:family",
+          "month": 113,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:113:living",
+          "month": 113,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:114:family",
+          "month": 114,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:114:living",
+          "month": 114,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:115:family",
+          "month": 115,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:115:living",
+          "month": 115,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:116:family",
+          "month": 116,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:116:living",
+          "month": 116,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:117:family",
+          "month": 117,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:117:living",
+          "month": 117,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:118:family",
+          "month": 118,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:118:living",
+          "month": 118,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:119:family",
+          "month": 119,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:119:living",
+          "month": 119,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:120:family",
+          "month": 120,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:120:living",
+          "month": 120,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:121:family",
+          "month": 121,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:121:living",
+          "month": 121,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:122:family",
+          "month": 122,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:122:living",
+          "month": 122,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:123:family",
+          "month": 123,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:123:living",
+          "month": 123,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:124:family",
+          "month": 124,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:124:living",
+          "month": 124,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:125:family",
+          "month": 125,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:125:living",
+          "month": 125,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:126:family",
+          "month": 126,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:126:living",
+          "month": 126,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:127:family",
+          "month": 127,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:127:living",
+          "month": 127,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:128:family",
+          "month": 128,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:128:living",
+          "month": 128,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:129:family",
+          "month": 129,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:129:living",
+          "month": 129,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:130:family",
+          "month": 130,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:130:living",
+          "month": 130,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:131:family",
+          "month": 131,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:131:living",
+          "month": 131,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:132:family",
+          "month": 132,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:132:living",
+          "month": 132,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:133:family",
+          "month": 133,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:133:living",
+          "month": 133,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:134:family",
+          "month": 134,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:134:living",
+          "month": 134,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:135:family",
+          "month": 135,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:135:living",
+          "month": 135,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:136:family",
+          "month": 136,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:136:living",
+          "month": 136,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:137:family",
+          "month": 137,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:137:living",
+          "month": 137,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:138:family",
+          "month": 138,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:138:living",
+          "month": 138,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:139:family",
+          "month": 139,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:139:living",
+          "month": 139,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:140:family",
+          "month": 140,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:140:living",
+          "month": 140,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:141:family",
+          "month": 141,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:141:living",
+          "month": 141,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:142:family",
+          "month": 142,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:142:living",
+          "month": 142,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:143:family",
+          "month": 143,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:143:living",
+          "month": 143,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:144:family",
+          "month": 144,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:144:living",
+          "month": 144,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:145:family",
+          "month": 145,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:145:living",
+          "month": 145,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:146:family",
+          "month": 146,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:146:living",
+          "month": 146,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:147:family",
+          "month": 147,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:147:living",
+          "month": 147,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:148:family",
+          "month": 148,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:148:living",
+          "month": 148,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:149:family",
+          "month": 149,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:149:living",
+          "month": 149,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:150:family",
+          "month": 150,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:150:living",
+          "month": 150,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:151:family",
+          "month": 151,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:151:living",
+          "month": 151,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:152:family",
+          "month": 152,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:152:living",
+          "month": 152,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:153:family",
+          "month": 153,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:153:living",
+          "month": 153,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:154:family",
+          "month": 154,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:154:living",
+          "month": 154,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:155:family",
+          "month": 155,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:155:living",
+          "month": 155,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:156:family",
+          "month": 156,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:156:living",
+          "month": 156,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:157:family",
+          "month": 157,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:157:living",
+          "month": 157,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:158:family",
+          "month": 158,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:158:living",
+          "month": 158,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:159:family",
+          "month": 159,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:159:living",
+          "month": 159,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:160:family",
+          "month": 160,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:160:living",
+          "month": 160,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:161:family",
+          "month": 161,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:161:living",
+          "month": 161,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:162:family",
+          "month": 162,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:162:living",
+          "month": 162,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:163:family",
+          "month": 163,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:163:living",
+          "month": 163,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:164:family",
+          "month": 164,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:164:living",
+          "month": 164,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:165:family",
+          "month": 165,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:165:living",
+          "month": 165,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:166:family",
+          "month": 166,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:166:living",
+          "month": 166,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:167:family",
+          "month": 167,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:167:living",
+          "month": 167,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:168:family",
+          "month": 168,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:168:living",
+          "month": 168,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:169:family",
+          "month": 169,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:169:living",
+          "month": 169,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:170:family",
+          "month": 170,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:170:living",
+          "month": 170,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:171:family",
+          "month": 171,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:171:living",
+          "month": 171,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:172:family",
+          "month": 172,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:172:living",
+          "month": 172,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:173:family",
+          "month": 173,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:173:living",
+          "month": 173,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:174:family",
+          "month": 174,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:174:living",
+          "month": 174,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:175:family",
+          "month": 175,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:175:living",
+          "month": 175,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:176:family",
+          "month": 176,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:176:living",
+          "month": 176,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:177:family",
+          "month": 177,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:177:living",
+          "month": 177,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:178:family",
+          "month": 178,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:178:living",
+          "month": 178,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:179:family",
+          "month": 179,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:179:living",
+          "month": 179,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:180:family",
+          "month": 180,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:180:living",
+          "month": 180,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "choice:4:dl-savings:0",
+          "month": 180,
+          "label": "Dụng cụ cho dự án tuổi nhỏ",
+          "cash": -8,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:181:family",
+          "month": 181,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:181:living",
+          "month": 181,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:182:family",
+          "month": 182,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:182:living",
+          "month": 182,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:183:family",
+          "month": 183,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:183:living",
+          "month": 183,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:184:family",
+          "month": 184,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:184:living",
+          "month": 184,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:185:family",
+          "month": 185,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:185:living",
+          "month": 185,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:186:family",
+          "month": 186,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:186:living",
+          "month": 186,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:187:family",
+          "month": 187,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:187:living",
+          "month": 187,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:188:family",
+          "month": 188,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:188:living",
+          "month": 188,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:189:family",
+          "month": 189,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:189:living",
+          "month": 189,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:190:family",
+          "month": 190,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:190:living",
+          "month": 190,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:191:family",
+          "month": 191,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:191:living",
+          "month": 191,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:192:family",
+          "month": 192,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:192:living",
+          "month": 192,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:193:family",
+          "month": 193,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:193:living",
+          "month": 193,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:194:family",
+          "month": 194,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:194:living",
+          "month": 194,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:195:family",
+          "month": 195,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:195:living",
+          "month": 195,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:196:family",
+          "month": 196,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:196:living",
+          "month": 196,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:197:family",
+          "month": 197,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:197:living",
+          "month": 197,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:198:family",
+          "month": 198,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:198:living",
+          "month": 198,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:199:family",
+          "month": 199,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:199:living",
+          "month": 199,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:200:family",
+          "month": 200,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:200:living",
+          "month": 200,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:201:family",
+          "month": 201,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:201:living",
+          "month": 201,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:202:family",
+          "month": 202,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:202:living",
+          "month": 202,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:203:family",
+          "month": 203,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:203:living",
+          "month": 203,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:204:family",
+          "month": 204,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:204:living",
+          "month": 204,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:205:family",
+          "month": 205,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:205:living",
+          "month": 205,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:206:family",
+          "month": 206,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:206:living",
+          "month": 206,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:207:family",
+          "month": 207,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:207:living",
+          "month": 207,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:208:family",
+          "month": 208,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:208:living",
+          "month": 208,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:209:family",
+          "month": 209,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:209:living",
+          "month": 209,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:210:family",
+          "month": 210,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:210:living",
+          "month": 210,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:211:family",
+          "month": 211,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:211:living",
+          "month": 211,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:212:family",
+          "month": 212,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:212:living",
+          "month": 212,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:213:family",
+          "month": 213,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:213:living",
+          "month": 213,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:214:family",
+          "month": 214,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:214:living",
+          "month": 214,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:215:family",
+          "month": 215,
+          "label": "Gia đình cho tiền sinh hoạt",
+          "cash": 2,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:215:living",
+          "month": 215,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -1,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        },
+        {
+          "id": "month:216:living",
+          "month": 216,
+          "label": "Sinh hoạt và chỗ ở",
+          "cash": -11,
+          "savings": 0,
+          "debt": 0,
+          "assets": 0
+        }
+      ],
+      "settledThrough": 216
+    },
+    "health": {
+      "lifestyle": 0
+    },
+    "flags": {
+      "childhood-friend": true,
+      "childhood-project": true
+    },
+    "seen": {
+      "dl-rural": 36,
+      "first-school": 72,
+      "dl-team": 108,
+      "old-book": 144,
+      "dl-savings": 180,
+      "exam-night": 204
+    },
+    "activeEvent": {
+      "id": "education-path",
+      "month": 216
+    },
+    "scheduled": [],
+    "journal": [
+      {
+        "id": "journal:0",
+        "month": 0,
+        "title": "Một cuộc đời bắt đầu",
+        "text": "Nguyễn Minh An chào đời tại Nông thôn phía Bắc, gia cảnh thu nhập thấp. Chỉ có mẹ.",
+        "category": "life"
+      },
+      {
+        "id": "journal:1",
+        "month": 36,
+        "title": "Lối đi qua bờ cỏ",
+        "text": "Hai đứa đến muộn một chút nhưng vẫn kịp chơi.",
+        "category": "childhood",
+        "choice": "Đi đường dài đã khô"
+      },
+      {
+        "id": "journal:2",
+        "month": 72,
+        "title": "Ngày đầu đến lớp",
+        "text": "Giọng còn run, nhưng bạn đã nói được.",
+        "category": "education",
+        "choice": "Nói tên mình thật rõ"
+      },
+      {
+        "id": "journal:3",
+        "month": 108,
+        "title": "Trận bóng chưa chia đội",
+        "text": "Bạn phải đối đầu với Hòa, rồi cả hai vẫn cùng về sau trận.",
+        "category": "relationship",
+        "choice": "Đề nghị mình và Hòa vào hai đội khác nhau"
+      },
+      {
+        "id": "journal:4",
+        "month": 144,
+        "title": "Cuốn sách chuyền tay",
+        "text": "Bạn bắt đầu thấy ngoài con đường quen còn nhiều ngả khác.",
+        "category": "education",
+        "choice": "Đọc rồi kể lại cho bạn"
+      },
+      {
+        "id": "journal:5",
+        "month": 180,
+        "title": "Hũ tiền dưới kệ",
+        "text": "Bạn mang dụng cụ về, ghi tên những người sẽ dùng chung.",
+        "category": "finance",
+        "choice": "Góp 8 đSM mua dụng cụ cho nhóm"
+      },
+      {
+        "id": "journal:6",
+        "month": 204,
+        "title": "Đêm trước kỳ thi",
+        "text": "Buổi sáng, bạn bước vào phòng thi với đầu óc tỉnh táo.",
+        "category": "education",
+        "choice": "Đóng vở, đi ngủ"
+      }
+    ],
+    "choices": [
+      {
+        "eventId": "dl-rural",
+        "choiceId": "long",
+        "month": 36,
+        "outcome": "Hai đứa đến muộn một chút nhưng vẫn kịp chơi."
+      },
+      {
+        "eventId": "first-school",
+        "choiceId": "speak",
+        "month": 72,
+        "outcome": "Giọng còn run, nhưng bạn đã nói được."
+      },
+      {
+        "eventId": "dl-team",
+        "choiceId": "pair",
+        "month": 108,
+        "outcome": "Bạn phải đối đầu với Hòa, rồi cả hai vẫn cùng về sau trận."
+      },
+      {
+        "eventId": "old-book",
+        "choiceId": "read",
+        "month": 144,
+        "outcome": "Bạn bắt đầu thấy ngoài con đường quen còn nhiều ngả khác."
+      },
+      {
+        "eventId": "dl-savings",
+        "choiceId": "buy",
+        "month": 180,
+        "outcome": "Bạn mang dụng cụ về, ghi tên những người sẽ dùng chung."
+      },
+      {
+        "eventId": "exam-night",
+        "choiceId": "sleep",
+        "month": 204,
+        "outcome": "Buổi sáng, bạn bước vào phòng thi với đầu óc tỉnh táo."
+      }
+    ],
+    "actions": [
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "dl-rural",
+        "choiceId": "long"
+      },
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "first-school",
+        "choiceId": "speak"
+      },
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "dl-team",
+        "choiceId": "pair"
+      },
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "old-book",
+        "choiceId": "read"
+      },
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "dl-savings",
+        "choiceId": "buy"
+      },
+      {
+        "type": "advance"
+      },
+      {
+        "type": "choose",
+        "eventId": "exam-night",
+        "choiceId": "sleep"
+      },
+      {
+        "type": "advance"
+      }
+    ],
+    "lastOutcome": null,
+    "wardrobe": {
+      "owned": [
+        "plain-top",
+        "plain-bottom",
+        "canvas-shoes"
+      ],
+      "equipped": {
+        "top": "plain-top",
+        "bottom": "plain-bottom",
+        "shoes": "canvas-shoes"
+      },
+      "outfits": [],
+      "memories": []
+    },
+    "social": {
+      "people": [
+        {
+          "npcId": "friend",
+          "known": false,
+          "status": "acquaintance",
+          "preference": "learning",
+          "personality": [
+            "Điềm đạm"
+          ],
+          "values": [
+            "Ham học"
+          ],
+          "interests": [
+            "Sách và ý tưởng"
+          ],
+          "romanticOpen": true,
+          "exclusivityOpen": true,
+          "marriageOpen": true,
+          "secretWilling": false,
+          "wantsChildren": true,
+          "reconciliationOpen": true,
+          "trust": 35,
+          "affection": 25,
+          "attraction": 42,
+          "compatibility": 53,
+          "interest": "none",
+          "emotionalState": "steady",
+          "memories": [],
+          "metMonth": null,
+          "datingMonth": null,
+          "marriedMonth": null,
+          "separatedMonth": null,
+          "separatedFrom": null,
+          "cohabiting": false,
+          "studyingUntil": 0,
+          "lastContact": 0
+        },
+        {
+          "npcId": "social:linh",
+          "known": false,
+          "status": "acquaintance",
+          "preference": "creativity",
+          "personality": [
+            "Tự chủ"
+          ],
+          "values": [
+            "Tự do sáng tạo"
+          ],
+          "interests": [
+            "Nghệ thuật và trải nghiệm"
+          ],
+          "romanticOpen": true,
+          "exclusivityOpen": true,
+          "marriageOpen": true,
+          "secretWilling": true,
+          "wantsChildren": true,
+          "reconciliationOpen": true,
+          "trust": 35,
+          "affection": 25,
+          "attraction": 38,
+          "compatibility": 42,
+          "interest": "none",
+          "emotionalState": "steady",
+          "memories": [],
+          "metMonth": null,
+          "datingMonth": null,
+          "marriedMonth": null,
+          "separatedMonth": null,
+          "separatedFrom": null,
+          "cohabiting": false,
+          "studyingUntil": 0,
+          "lastContact": 0
+        },
+        {
+          "npcId": "social:bao",
+          "known": false,
+          "status": "acquaintance",
+          "preference": "security",
+          "personality": [
+            "Thận trọng"
+          ],
+          "values": [
+            "Giữ lời"
+          ],
+          "interests": [
+            "Gia đình và sự bền vững"
+          ],
+          "romanticOpen": false,
+          "exclusivityOpen": true,
+          "marriageOpen": true,
+          "secretWilling": true,
+          "wantsChildren": false,
+          "reconciliationOpen": true,
+          "trust": 35,
+          "affection": 25,
+          "attraction": 46,
+          "compatibility": 56,
+          "interest": "none",
+          "emotionalState": "steady",
+          "memories": [],
+          "metMonth": null,
+          "datingMonth": null,
+          "marriedMonth": null,
+          "separatedMonth": null,
+          "separatedFrom": null,
+          "cohabiting": false,
+          "studyingUntil": 0,
+          "lastContact": 0
+        }
+      ],
+      "empathy": 40,
+      "regulation": 40,
+      "reputation": 50,
+      "primaryId": null,
+      "secretId": null,
+      "breach": null,
+      "discoveryMonth": null,
+      "discoveryPending": false,
+      "childrenPlanned": false,
+      "lossPending": null,
+      "focus": null,
+      "encounters": {},
+      "lastNaturalMonth": -24
+    },
+    "family": {
+      "children": [],
+      "nextBirth": null,
+      "queue": [],
+      "focus": null,
+      "encounters": {}
+    }
+  }
+}

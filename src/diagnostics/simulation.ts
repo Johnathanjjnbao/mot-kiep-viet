@@ -12,6 +12,8 @@ import {
 } from '../engine/engine';
 import { assertRun } from '../engine/invariants';
 import { hashSeed, nextRandom } from '../engine/random';
+import { PROGRAMS } from '../content/programs';
+import { admissionReason, currentStudy, studyCosts } from '../engine/academics';
 export function simulateLife(
   seed: string,
   setup: RunSetup,
@@ -30,9 +32,51 @@ export function simulateLife(
     assertRun(run);
     onStep?.(run);
     if (
+      run.academics &&
+      !run.activeEvent &&
+      !run.academics.focus &&
+      !run.social?.focus &&
+      !run.family?.focus &&
+      ageOf(run) >= 18 &&
+      ageOf(run) < 60
+    ) {
+      const study = currentStudy(run);
+      if (
+        study?.status === 'paused' &&
+        run.finance.cash >= studyCosts(run, study.programId).required + 20 &&
+        run.actions.filter((a) => a.type === 'academic').length < 35
+      ) {
+        if (currentCareer(run)) run = manage(run, 'quit-job');
+        run = dispatch(run, {
+          type: 'academic',
+          operation: 'resume',
+          expected: run.actions.length,
+        });
+        continue;
+      }
+      if (
+        !study &&
+        !currentCareer(run) &&
+        run.academics.applications.length < 3 &&
+        !run.academics.qualifications.length
+      ) {
+        const programs = PROGRAMS.filter((p) => !admissionReason(run, p.id));
+        if (programs.length) {
+          run = dispatch(run, {
+            type: 'academic',
+            operation: 'apply',
+            program: programs[Math.floor(random() * programs.length)].id,
+            expected: run.actions.length,
+          });
+          continue;
+        }
+      }
+    }
+    if (
       run.social &&
       !run.social.focus &&
       !run.family?.focus &&
+      !run.academics?.focus &&
       ageOf(run) >= 18 &&
       run.actions.filter((a) => a.type === 'social').length < (run.family ? 32 : 60)
     ) {
@@ -101,7 +145,10 @@ export function simulateLife(
               ].includes(c.id),
             )
           : undefined;
-      const option = preferred ?? choices[Math.floor(random() * choices.length)];
+      const academicChoice = run.academics?.focus
+        ? choices.find((c) => c.id === ['steady', 'project', 'work', 'rest', 'steady'][policy % 5])
+        : undefined;
+      const option = academicChoice ?? preferred ?? choices[Math.floor(random() * choices.length)];
       run = choose(run, e.id, option.id);
     } else {
       const clothing = policy % 2 ? 'linen-shirt' : 'sport-top';

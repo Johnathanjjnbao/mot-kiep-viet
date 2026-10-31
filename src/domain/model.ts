@@ -1,6 +1,7 @@
 import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
 import type { PlayerPersonality } from './personality';
+import type { AcademicState, AcademicAction, AcademicMethod } from './academics';
 export const ENGINE_VERSION = '3.0.0';
 export const CONTENT_VERSION = '3.0.0';
 export const SAVE_VERSION = 4;
@@ -145,6 +146,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'academic'; method: AcademicMethod }
   | { kind: 'parenting'; style: ParentingStyle }
   | { kind: 'social'; operation: SocialOperation }
   | { kind: 'presentation'; context: PresentationContext }
@@ -245,6 +247,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | AcademicAction
   | FamilyAction
   | SocialAction
   | WardrobeAction
@@ -252,7 +255,7 @@ export type RunAction =
   | { type: 'choose'; eventId: string; choiceId: string }
   | { type: 'manage'; action: ManageAction; career?: CareerId };
 export interface RunSetup {
-  lifeRules?: 'dynamic-v1';
+  lifeRules?: 'dynamic-v1' | 'education-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -267,6 +270,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  academics?: AcademicState;
   wardrobe?: Wardrobe;
   social?: SocialState;
   family?: FamilyState;

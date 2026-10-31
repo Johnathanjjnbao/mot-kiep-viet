@@ -17,9 +17,15 @@ export const viewportCases = [
   { name: 'large-text', width: 375, height: 667, mobile: true, large: true },
 ];
 
-export const viewportVersion = 'v' + JSON.parse(readFileSync('package.json', 'utf8')).version.replaceAll('.', '');
+export const viewportVersion =
+  'v' + JSON.parse(readFileSync('package.json', 'utf8')).version.replaceAll('.', '');
 
-export async function viewportJourney(browser, target, config, evidencePrefix = viewportVersion + '-local') {
+export async function viewportJourney(
+  browser,
+  target,
+  config,
+  evidencePrefix = viewportVersion + '-local',
+) {
   const context = await browser.newContext({
     viewport: { width: config.width, height: config.height },
     hasTouch: Boolean(config.mobile),
@@ -86,9 +92,7 @@ export async function viewportJourney(browser, target, config, evidencePrefix = 
       expect((await readGuestRun(page)).choices.at(-1)?.eventId).toBe(selectedEvent);
     }
     const counts = [...new Set(measurements.map((m) => m.choiceCount))].sort();
-    expect(counts).toEqual([4, 5, 6]);
-    expect(Math.max(...measurements.map((m) => m.narrativeLength))).toBeGreaterThanOrEqual(100);
-    expect(Math.max(...measurements.map((m) => m.longestChoice))).toBeGreaterThanOrEqual(70);
+    expect(counts.every((n) => n >= 4 && n <= 6)).toBe(true);
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     const before = await readGuestRun(page);
     await page.reload();
@@ -96,6 +100,34 @@ export async function viewportJourney(browser, target, config, evidencePrefix = 
     await expect.poll(async () => (await readGuestRun(page)).choices.length).toBe(20);
     await assertDecisionViewport(page);
     expect(await readGuestRun(page)).toEqual(before);
+    // New education lives replace the old six-choice school direction with four
+    // distinct paths. Retain explicit coverage of the published six-choice save.
+    const fixture = JSON.parse(readFileSync('tests/data/viewport-dynamic-v1.json', 'utf8'));
+    await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
+    await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+      name: 'viewport-dynamic-v1.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(JSON.stringify(fixture)),
+    });
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    await expect.poll(() => readGuestRun(page)).toEqual(fixture.run);
+    await page.reload();
+    await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
+    await page.evaluate(() => document.fonts.ready);
+    const compatibility = await assertDecisionViewport(page);
+    expect(compatibility.choiceCount).toBe(6);
+    expect([...new Set([...counts, compatibility.choiceCount])].sort()).toEqual([4, 5, 6]);
+    expect(
+      Math.max(...measurements.map((m) => m.narrativeLength), compatibility.narrativeLength),
+    ).toBeGreaterThanOrEqual(100);
+    expect(
+      Math.max(...measurements.map((m) => m.longestChoice), compatibility.longestChoice),
+    ).toBeGreaterThanOrEqual(70);
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    report.compatibility = compatibility;
+    await page.screenshot({
+      path: `docs/evidence/${evidencePrefix}-${config.name}-six-choices.png`,
+    });
     expect(errors).toEqual([]);
     report.status = 'VERIFIED PASS';
     report.decisions = 20;

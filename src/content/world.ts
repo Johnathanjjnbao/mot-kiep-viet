@@ -239,6 +239,7 @@ export const CAREERS: CareerDefinition[] = [
 export const currentCareer = (run: GameRun) => run.player.careers.find((c) => c.endMonth === null);
 export const ageOf = (run: GameRun) => Math.floor(run.month / 12);
 export function educationLevel(run: GameRun) {
+  if (run.academics?.qualifications.length) return 'university';
   return run.player.education.filter((e) => e.endMonth <= run.month).at(-1)?.level ?? 'none';
 }
 export function careerReason(run: GameRun, id: string): string | null {
@@ -248,6 +249,14 @@ export function careerReason(run: GameRun, id: string): string | null {
   if (ageOf(run) < job.minAge) return `Cần đủ ${job.minAge} tuổi.`;
   if (ageOf(run) >= 65) return 'Đã đến tuổi nghỉ hưu trong game.';
   if (run.world.year < job.from) return 'Chưa có cơ hội này trong thời kỳ hiện tại.';
+  if (run.academics?.studies.some((s) => s.status === 'studying'))
+    return 'Bạn đang học toàn thời gian; có thể bảo lưu trước khi nhận việc.';
+  if (
+    run.academics &&
+    id === 'teacher' &&
+    !run.academics.qualifications.some((q) => q.programId === 'education')
+  )
+    return 'Hướng dạy học này cần hoàn tất ngành Sư phạm và Giáo dục trong mô phỏng.';
   if (run.player.education.some((e) => e.endMonth > run.month))
     return 'Hãy hoàn thành khóa học trước.';
   if (job.education.length && !job.education.includes(educationLevel(run)))

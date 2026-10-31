@@ -5,6 +5,7 @@ import { birthplaceOf, familyText } from '../domain/creator';
 import type { GameRun } from '../domain/model';
 import { CAREERS, ageOf } from '../content/world';
 import { netWorth } from '../engine/finance';
+import { programById } from '../content/programs';
 export function lifeSummary(run: GameRun) {
   if (run.engineVersion === '2.0.0') return v2Summary(run as Parameters<typeof v2Summary>[0]);
   if (run.engineVersion === '1.0.0')
@@ -44,6 +45,16 @@ export function lifeSummary(run: GameRun) {
     biography:
       biography +
       socialText +
+      (run.academics?.studies.length
+        ? ' Việc học: ' +
+          run.academics.studies
+            .map(
+              (s) =>
+                `${programById(s.programId)!.name} (${s.status === 'graduated' ? 'đã tốt nghiệp' : s.status === 'failed' ? 'chưa hoàn thành' : s.status === 'switched' ? 'đã chuyển ngành' : s.status === 'dropped' ? 'đã nghỉ học' : s.status === 'paused' ? 'đang bảo lưu' : 'đang học'}, ${s.completedYears} năm đạt)`,
+            )
+            .join('; ') +
+          '.'
+        : '') +
       (run.family?.children.length
         ? ' Những chặng đường của con: ' +
           run.family.children

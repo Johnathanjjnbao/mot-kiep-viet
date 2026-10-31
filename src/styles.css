@@ -2819,6 +2819,21 @@ meter::-moz-meter-bar {
 .trait-options input {
   flex-shrink: 0;
 }
+.academic-panel { margin: 28px 0; padding: 22px 0; border-block: 1px solid var(--line); }
+.academic-panel h3 { font: 500 1.9rem var(--font-serif); margin-bottom: 12px; }
+.academic-panel h4 { font-size: 1.05rem; margin-bottom: 10px; }
+.academic-panel p { max-width: 65ch; }
+.current-study { margin-block: 18px; padding: 18px; border-left: 3px solid var(--leaf); background: var(--surface); }
+.academic-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.academic-actions button, .academic-panel summary { min-height: 44px; }
+.academic-panel summary { padding: 10px 0; cursor: pointer; font-weight: 500; }
+.academic-panel label { display: block; margin-top: 12px; }
+.academic-panel input { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid var(--line); background: var(--surface); margin: 8px 0 12px; }
+.academic-panel dl { display: grid; grid-template-columns: 85px minmax(0, 1fr); gap: 8px; font-size: .85rem; margin: 16px 0; }
+.academic-panel dt { color: var(--muted); }
+.academic-panel dd { margin: 0; overflow-wrap: anywhere; }
+.academic-panel .career-option { min-width: 0; }
+.academic-history { margin-block: 14px; }
 .personality-picker {
   border-top: 1px solid var(--line);
   padding-block: 16px;

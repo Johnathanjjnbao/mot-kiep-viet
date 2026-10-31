@@ -53,6 +53,14 @@ it('adds only the new version tuple while retaining all old size/identity/header
           )
         ).rows[0].ok;
       expect(await valid(value)).toBe(true);
+      if (schema === 4) {
+        const university = structuredClone(value);
+        university.run.setup!.lifeRules = 'education-v1';
+        Object.assign(university.run, {
+          academics: { applications: [], studies: [], qualifications: [], focus: null },
+        });
+        expect(await valid(university)).toBe(true);
+      }
       expect(await valid({ ...value, identity: 'bad' })).toBe(false);
       expect(await valid({ ...value, run: { ...value.run, engineVersion: 'invalid' } })).toBe(
         false,

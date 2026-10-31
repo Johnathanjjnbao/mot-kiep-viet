@@ -1,0 +1,197 @@
+{
+  "url": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "reports": [
+    {
+      "browser": "chromium",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "browser": "chromium",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    {
+      "browser": "firefox",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "browser": "firefox",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    {
+      "browser": "webkit",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "browser": "webkit",
+      "status": "VERIFIED PASS",
+      "sequences": [
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ],
+        [
+          "paper-kite",
+          "first-school",
+          "rice-season",
+          "dl-zip",
+          "dl-savings"
+        ],
+        [
+          "dl-corner",
+          "first-school",
+          "lost-slipper",
+          "dl-farewell",
+          "school-rival"
+        ]
+      ],
+      "freshSeedsDistinct": true,
+      "viewport": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  ]
+}

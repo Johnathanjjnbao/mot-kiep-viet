@@ -53,6 +53,12 @@ const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
     z
       .object({
+        kind: z.literal('academic'),
+        method: z.enum(['steady', 'project', 'work', 'rest']),
+      })
+      .strict(),
+    z
+      .object({
         kind: z.literal('parenting'),
         style: z.enum([
           'support',

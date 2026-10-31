@@ -1,5 +1,11 @@
 # Master Plan — Một Kiếp Việt
 
+## Tiếp tục A/B — 31/10/2026
+
+Dynamic Life đã phát hành tại `d3212f4f39bf889a2f72b47993fcaf391bed50ae`, [CI 41208545352](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41208545352) completed/success; live guest và Chromium/Firefox/WebKit trên desktop/mobile VERIFIED PASS.
+
+Bản `0.3.6-university.1` có 12 ngành, tuyển sinh có xác suất và thời gian chờ, đánh giá từng năm, học phí/học bổng/hỗ trợ qua ledger, bảo lưu, chuyển ngành, nghỉ học và cấp bằng sau khi đủ tiến độ. Ruleset `education-v1` chỉ áp dụng cho đời mới; `dynamic-v1` và các đời cũ giữ nguyên. Local verify 163 tests, 52 E2E, 1.000 seed/replay, ba browser/sáu luồng và production smoke VERIFIED PASS. Secret scan 945 objects/0 findings, audit dependencies 0 (không đổi dependency). CI/live đang chốt, chưa gọi University G5 PASS. Employment mới INCOMPLETE, digital/business chưa triển khai, quân sự NOT READY. Cloud QA BLOCKED do CLI chưa đăng nhập; owner tự đăng nhập NOT RUN. Không thay SQL/Auth/RLS hoặc dữ liệu production. Bằng chứng chi tiết trong [M5_LONG_RUN_HANDOFF](M5_LONG_RUN_HANDOFF.md). Các mục bên dưới giữ lịch sử.
+
 ## Checkpoint A v0.3.6-creator.1 — 31/10/2026
 
 Creator đã phát hành: source `28c1dc51aebadd3bf826224e653ad0f5a10ff9a6`/main, [CI41202694295](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41202694295) completed/success. G5 guest VERIFIED PASS: live Creator Chromium/Firefox/WebKit desktop/mobile6/6,6viewport×20choices,guest save/load/history/font/assets và CSS/JS/SW khớp artifact. Local/CI133tests/38E2E;1000seed/1000replay/0vi phạm còn áp dụng (sau đó chỉ sửa CSS/test/docs). Engine/content3/schema4, frozen/goldens giữ nguyên. Auth/cloud mới BLOCKED vì thiếu Supabase CLI login; owner tự nhập account NOT RUN. Full Education & Career v0.3.6 INCOMPLETE:0ngành/0event/0arc mới. Chi tiết [M5_CREATOR_REPORT](M5_CREATOR_REPORT.md); các đoạn sau giữ bằng chứng lịch sử.

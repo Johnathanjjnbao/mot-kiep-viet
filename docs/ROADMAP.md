@@ -1,5 +1,9 @@
 # Backlog sau beta v0.3
 
+## Tiếp tục v0.3.6 — 31/10/2026
+
+Dynamic Life đã xác minh production tại d3212f4. University có 12 ngành và đang chốt phát hành riêng. Ưu tiên kế tiếp là job applications/rejection/cooldown/unemployment/career changes dưới selector bất biến mới; không thay quy tắc của các đời cũ. Digital/business chưa triển khai, quân sự NOT READY; các mục longevity/international/VNĐ vẫn ở backlog. Xem M5_LONG_RUN_HANDOFF cho trạng thái và bằng chứng mới nhất.
+
 ## Checkpoint A v0.3.6-creator.1 — 31/10/2026
 
 Creator đã phát hành: source `28c1dc51aebadd3bf826224e653ad0f5a10ff9a6`/main, [CI41202694295](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41202694295) completed/success. G5 guest VERIFIED PASS: live Creator Chromium/Firefox/WebKit desktop/mobile6/6,6viewport×20choices,guest save/load/history/font/assets và CSS/JS/SW khớp artifact. Local/CI133tests/38E2E;1000seed/1000replay/0vi phạm còn áp dụng (sau đó chỉ sửa CSS/test/docs). Engine/content3/schema4, frozen/goldens giữ nguyên. Auth/cloud mới BLOCKED vì thiếu Supabase CLI login; owner tự nhập account NOT RUN. Full Education & Career v0.3.6 INCOMPLETE:0ngành/0event/0arc mới. Chi tiết [M5_CREATOR_REPORT](M5_CREATOR_REPORT.md); các đoạn sau giữ bằng chứng lịch sử.

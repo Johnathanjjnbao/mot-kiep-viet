@@ -57,6 +57,13 @@ import {
 import { hashSeed, nextRandom } from './random';
 import { mandatoryCost, settleMonth, transact } from './finance';
 import { dynamicPool, diversityWeight, originEligible } from './lifeDiversity';
+import {
+  academicDefinition,
+  academicDue,
+  focusAcademic,
+  requestAcademic,
+  resolveAcademic,
+} from './academics';
 
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
 const names = [
@@ -186,6 +193,8 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   };
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
+  if (setup.lifeRules === 'education-v1')
+    run.academics = { applications: [], studies: [], qualifications: [], focus: null };
   if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
@@ -301,6 +310,11 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   if (cost > run.finance.cash) return `Cần ${cost} đSM tiền mặt.`;
   for (const effect of choice.effects) {
     if (
+      effect.kind === 'education' &&
+      run.academics?.studies.some((s) => s.status === 'studying' || s.status === 'paused')
+    )
+      return 'Hãy hoàn tất hoặc rời chương trình hiện tại trước khi bắt đầu khóa học khác.';
+    if (
       effect.kind === 'relationship' &&
       ['mother', 'father'].includes(effect.target) &&
       !parentAvailable(run, effect.target)
@@ -317,11 +331,18 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   return null;
 }
 export const activeDefinition = (run: GameRun) =>
+  academicDefinition(run) ??
   familyDefinition(run) ??
   socialDefinition(run) ??
   allEvents().find((e) => e.id === run.activeEvent?.id);
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   if (event.version === 5) return false;
+  if (
+    event.version === 7 &&
+    (run.setup.lifeRules !== 'education-v1' || event.id !== 'edu-direction')
+  )
+    return false;
+  if (run.academics && event.id === 'education-path') return false;
   if (event.version === 6 && (!run.setup.lifeRules || !originEligible(run, event.id))) return false;
   const last = run.seen[event.id];
   return (
@@ -344,6 +365,7 @@ function selectEvent(run: GameRun) {
     focusSocial(run, 'soc-loss', run.social.lossPending, true);
     return;
   }
+  if (focusAcademic(run)) return;
   let options = EVENTS.filter((e) => eventEligible(run, e));
   if (!options.length) options = [FALLBACK];
   const dynamic = !!run.setup.lifeRules && ageOf(run) < 18;
@@ -387,6 +409,9 @@ function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'academic':
+      resolveAcademic(run, e.method, (r) => random(r, 'event'));
+      break;
     case 'parenting': {
       const text = applyParenting(run, e.style);
       run.lastOutcome = text;
@@ -422,6 +447,9 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
       run.flags[e.flag] = e.value;
       break;
     case 'education':
+      if (run.academics && e.level === 'university') break;
+      if (run.academics?.studies.some((s) => s.status === 'studying' || s.status === 'paused'))
+        break;
       run.player.education.push({
         level: e.level,
         startMonth: run.month,
@@ -645,7 +673,7 @@ export function advance(input: GameRun): GameRun {
   const next = MILESTONES.find((age) => age * 12 > run.month) ?? 82;
   while (run.month < next * 12 && !run.ending) {
     tick(run);
-    if (socialInterrupt(run) || run.family?.queue.length) break;
+    if (socialInterrupt(run) || run.family?.queue.length || academicDue(run)) break;
   }
   if (!run.ending) selectEvent(run);
   return run;
@@ -669,7 +697,8 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     source = `choice:${run.choices.length}:${eventId}`;
   selected.effects.forEach((e, i) => applyEffect(run, e, source, i));
   let outcome = selected.outcome;
-  if (run.social?.focus || run.family?.focus) outcome += ' ' + (run.lastOutcome ?? '');
+  if (run.social?.focus || run.family?.focus || run.academics?.focus)
+    outcome += ' ' + (run.lastOutcome ?? '');
   if (selected.chance) {
     const success = random(run, 'event') < selected.chance.probability;
     (success ? selected.chance.success : selected.chance.failure).forEach((e, i) =>
@@ -711,6 +740,10 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     run.family.focus = null;
     run.activeEvent = f.resume;
   }
+  if (input.academics?.focus && run.academics?.focus?.instanceId === eventId) {
+    run.activeEvent = run.academics.focus.resume;
+    run.academics.focus = null;
+  }
   if (run.family) {
     syncCare(run);
     if (!run.activeEvent) nextFamily(run);
@@ -731,8 +764,9 @@ export function manage(
     throw new Error('Chưa thể thực hiện hành động này.');
   if (
     input.family &&
-    input.actions.filter((a) => ['manage', 'wardrobe', 'social', 'family-talk'].includes(a.type))
-      .length >= 120
+    input.actions.filter((a) =>
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+    ).length >= 120
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
   if (input.actions.filter((a) => a.type === 'manage').length >= 400)
@@ -807,6 +841,17 @@ export function manage(
   return run;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  if (action.type === 'academic') {
+    const next = requestAcademic(run, action, (r) => random(r, 'event')),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy giải quyết câu chuyện đang chờ trước khi thay đổi việc học.');
+    return next;
+  }
   if (action.type === 'family-talk') return requestFamily(run, action);
   if (action.type === 'social') return requestSocial(run, action);
   if (action.type === 'wardrobe') {

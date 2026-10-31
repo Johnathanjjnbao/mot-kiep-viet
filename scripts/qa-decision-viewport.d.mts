@@ -22,6 +22,7 @@ export function viewportJourney(
     errors: string[];
     decisions?: number;
     choiceCounts?: number[];
+    compatibility?: DecisionMeasurement;
   };
   run: GameRun;
 }>;
