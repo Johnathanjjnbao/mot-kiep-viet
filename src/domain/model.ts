@@ -1,5 +1,6 @@
 import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
+import type { PlayerPersonality } from './personality';
 export const ENGINE_VERSION = '3.0.0';
 export const CONTENT_VERSION = '3.0.0';
 export const SAVE_VERSION = 4;
@@ -261,6 +262,8 @@ export interface RunSetup {
   family?: FamilyStructure;
   motherTraits?: ParentTrait[];
   fatherTraits?: ParentTrait[];
+  /** Immutable opt-in; absent saves retain the released seeded personality rules. */
+  playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
   wardrobe?: Wardrobe;

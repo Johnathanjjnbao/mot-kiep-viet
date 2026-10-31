@@ -1,5 +1,13 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## Creator opt-in v0.3.6-creator.1
+
+`RunSetup.playerTraits?: PlayerPersonality[]` là cấu hình bất biến, chỉ tồn tại khi người chơi chọn1–3 tính cách tương thích cho một đời mới. Bỏ chọn hết bỏ trường này; engine giữ lượt gieo mặc định và semantics cũ khi trường vắng mặt. Không tự thêm trường vào save cũ. Engine/content3.0.0/schema4 và expansion wardrobe/social/family giữ nguyên; frozen v1/v2 không sửa. Đây là opt-in khởi tạo Creator, không phải bật ruleset đại học/nghề mới.
+
+Creator dùng foundation `application/creatorRandom.ts`, namespace theo seed/subject/counter; tham số retained giữ từng tính cách đã khóa, RNG giao diện không tiêu thụ RNG engine. UI chỉ lưu draft RunSetup và gọi createRun/onStart. Counter/lock không authoritative, không cần lưu vào GameRun. Preview dựng đúng seed/setup như start. Cha/mẹ không có thông tin bị ẩn và xóa draft/lock; nonresident vẫn được hiển thị đúng, không trở thành caregiver.
+
+Engine vẫn tiêu thụ lượt personality lịch sử rồi mới áp override. Hay tò mò +5knowledge, Khéo tay +7skill, Dễ gần +8social như trước; riêng đời opt-in, Kiên trì −2stress, Ưa yên tĩnh +3mood, Thích giúp đỡ +3social. Tác động giới hạn ở chỉ số khởi đầu và những luật hiện có đọc chúng; không bảo đảm kết quả học tập/xin việc, không phạt tính cách yên tĩnh. Validator từ chối rỗng/trùng/tổ hợp mâu thuẫn; invariants và canonical replay kiểm tra traits đúng setup. Không action mới, không giao dịch mới, không thay lịch sử/ID database/slots/cloud/CAS/RLS. SQL003 hiện nhận cùng envelope; test PGlite đã kiểm payload setup mới. Auth/JWT live mới BLOCKED do CLI thiếu login, không dùng kết quả PGlite thay thế.
+
 v0.3.3: domain/engine/content3/schema4, setup.expansion=wardrobe. Legacy/v2 giữ nguyên engine/content/parser/summary/simulation để save3 vẫn chơi đúng luật cũ. Wardrobe qua dispatch/ownership/age/expected/ledger; UI thử đồ chỉ trình bày. Fashion5scene dùng context capped -4..5. Giữ golden trước thêm ruleset.
 
 ## Life Expansion: lớp trình bày v0.3.2

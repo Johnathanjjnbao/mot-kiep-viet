@@ -28,7 +28,21 @@ it('adds only the new version tuple while retaining all old size/identity/header
         schemaVersion: schema,
         engineVersion: version,
         contentVersion: version,
-        run: { engineVersion: version, contentVersion: version, actions: [] },
+        run: {
+          engineVersion: version,
+          contentVersion: version,
+          actions: [],
+          ...(schema === 4
+            ? {
+                setup: {
+                  cohort: 1995,
+                  region: 'northern-village',
+                  expansion: 'family',
+                  playerTraits: ['Kiên trì', 'Ưa yên tĩnh'],
+                },
+              }
+            : {}),
+        },
       };
       const valid = async (v: unknown) =>
         (

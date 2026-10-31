@@ -2819,6 +2819,58 @@ meter::-moz-meter-bar {
 .trait-options input {
   flex-shrink: 0;
 }
+.personality-picker {
+  border-top: 1px solid var(--line);
+  padding-block: 16px;
+}
+.personality-picker summary {
+  cursor: pointer;
+}
+.personality-picker summary strong {
+  font-size: 1rem;
+}
+.personality-picker summary > span {
+  display: block;
+  margin: 6px 0 0 18px;
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+.personality-picker fieldset {
+  margin: 14px 0 0;
+  padding: 0;
+}
+.personality-option {
+  display: flex;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--surface);
+}
+.personality-option label {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+}
+.trait-lock {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  min-height: 44px;
+  color: var(--muted);
+}
+.trait-lock[aria-pressed='true'] {
+  color: var(--rust);
+  background: var(--paper);
+}
+.personality-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 10px;
+}
+.personality-actions button {
+  min-height: 44px;
+}
 .creator-error {
   color: var(--rust);
   padding: 8px 0;

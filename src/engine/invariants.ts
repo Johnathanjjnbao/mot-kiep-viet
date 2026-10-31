@@ -3,6 +3,7 @@ import { assertSocial } from './social';
 import { assertRun as assertFrozen2 } from '../legacy/v2/engine/invariants';
 import { assertWardrobe } from './wardrobe';
 import type { GameRun } from '../domain/model';
+import { playerPersonalitySchema } from '../domain/personality';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
 import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
@@ -14,6 +15,12 @@ export function assertRun(run: GameRun) {
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };
+  if (
+    run.setup.playerTraits !== undefined &&
+    (!playerPersonalitySchema.safeParse(run.setup.playerTraits).success ||
+      JSON.stringify(run.player.traits) !== JSON.stringify(run.setup.playerTraits))
+  )
+    fail('immutable player personality');
   if (!Number.isInteger(run.month) || run.month < 0 || run.month > 984) fail('month');
   if (
     run.world.year !== run.player.birthYear + ageOf(run) ||

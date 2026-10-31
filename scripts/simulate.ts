@@ -6,11 +6,15 @@ import { simulateLife } from '../src/diagnostics/simulation';
 import { activeDefinition, choiceReason, replay } from '../src/engine/engine';
 import { FAMILIES, PARENT_TRAITS } from '../src/domain/creator';
 import type { RunSetup, ParentTrait } from '../src/domain/model';
+import { randomizeCreatorTraits } from '../src/application/creatorRandom';
 const total = Number(process.argv[2] ?? 1000);
+const testCreator = process.argv.includes('--creator');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
   replayChecked: 0,
+  creatorRuns: 0,
+  maxActions: 0,
   familyChildren: 0,
   adultChildren: 0,
   wardrobePurchases: 0,
@@ -51,6 +55,17 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
+        ...(testCreator && i % 2 === 0
+          ? {
+              playerTraits: randomizeCreatorTraits(
+                { player: [], mother: [], father: [] },
+                seed,
+                ['player'],
+                { player: i % 7, mother: 0, father: 0 },
+                { player: false, mother: false, father: false },
+              ).player,
+            }
+          : {}),
       },
       i % 5,
       (r) => {
@@ -66,6 +81,8 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    if (run.setup.playerTraits) report.creatorRuns++;
+    report.maxActions = Math.max(report.maxActions, run.actions.length);
     report.familyChildren += run.family?.children.length ?? 0;
     report.adultChildren += run.family?.children.filter((c) => c.occupation).length ?? 0;
     const bytes = new TextEncoder().encode(JSON.stringify(snapshot(run))).length;

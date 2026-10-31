@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Checkpoint A v0.3.6-creator.1 — 31/10/2026
+
+Tiếp tục `96e52aa859a498239779700253b9dcc36d856f5d`/main, working tree ban đầu sạch. Creator đã nối chọn tay/gieo độc lập/khóa từng tính cách/gieo tất cả/preview vào engine và save. Local verify 133 tests, production subpath smoke và 1.000 seed/1.000 replay/0 vi phạm VERIFIED PASS; full E2E 38/38 (gồm 6 viewport ×20 quyết định) VERIFIED PASS; CI/live đang chốt. Chromium/Firefox/WebKit Creator desktop/mobile6/6 PASS. Auth/cloud thật BLOCKED vì Supabase CLI chưa đăng nhập (GitHub là phiên đăng nhập riêng); không SQL/Auth mới. Full Education & Career v0.3.6 INCOMPLETE. Xem [M5_CREATOR_REPORT](M5_CREATOR_REPORT.md); các đoạn sau giữ bằng chứng lịch sử.
+
 M4 v0.3.5 G5 VERIFIED PASS: release dc6bf1b094a343939d653c0f1ffb4f699ffc08b4/main, CI41136632974 completed/success; live guest desktop/mobile,6viewport×20,8family/social journeys,26realAuth/cloud and JS/CSS/SW hashes PASS. M5 foundation4f4e969 (7new tests) only; full M5 INCOMPLETE. Final verify124/36existing E2E/1000M4 replay0violations. Owner personal login NOT RUN.
 
 Older pending paragraphs below are historical checkpoints.

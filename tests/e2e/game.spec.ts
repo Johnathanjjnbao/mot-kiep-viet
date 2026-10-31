@@ -168,8 +168,11 @@ test('all five family forms validate, preview, edit and persist on reload', asyn
     await page.getByLabel('Năm sinh (1975–2026)').fill('2026');
     await page.getByLabel('Địa danh cụ thể').fill('Xóm Gió, quê mình');
     await page.getByLabel('Cấu trúc gia đình').selectOption(family);
-    if (family !== 'father-only')
-      await page.getByRole('checkbox', { name: 'Quan tâm việc học', exact: true }).first().check();
+    if (family !== 'father-only') {
+      const mother = page.getByTestId('traits-mother');
+      await mother.locator('summary').click();
+      await mother.getByRole('checkbox', { name: 'Quan tâm việc học', exact: true }).check();
+    }
     await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
     await expect(page.getByRole('heading', { name: 'Xem lại khởi đầu' })).toBeVisible();
     await page.getByRole('button', { name: 'Sửa trước khi bắt đầu' }).click();

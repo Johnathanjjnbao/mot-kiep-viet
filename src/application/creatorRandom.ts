@@ -18,6 +18,7 @@ export function randomizeCreatorTraits(
   subjects: CreatorSubject[],
   counters: CreatorCounters,
   locks: CreatorLocks,
+  retained: Partial<CreatorTraitGroups> = {},
 ): CreatorTraitGroups {
   if (!seed.length || seed.length > 100) throw Error('Hạt giống cần từ 1 đến 100 ký tự.');
   const result = structuredClone(groups);
@@ -37,9 +38,21 @@ export function randomizeCreatorTraits(
       const j = Math.floor(roll() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
-    const count = 1 + Math.floor(roll() * 3),
-      selected: string[] = [];
+    const kept: string[] = retained[subject] ?? [];
+    if (kept.some((item) => !(groups[subject] as string[]).includes(item)))
+      throw Error('Chỉ khóa tính cách đã chọn.');
+    if (
+      kept.length &&
+      !(subject === 'player'
+        ? playerPersonalitySchema.safeParse(kept).success
+        : setupSchema.shape.motherTraits.safeParse(kept).success)
+    )
+      throw Error('Tính cách đã khóa không tương thích.');
+    const count = Math.max(kept.length, 1 + Math.floor(roll() * 3)),
+      selected: string[] = [...kept];
     for (const item of pool) {
+      if (selected.length === count) break;
+      if (selected.includes(item)) continue;
       const candidate = [...selected, item];
       const valid =
         subject === 'player'

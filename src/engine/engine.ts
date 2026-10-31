@@ -184,6 +184,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     fatherTraits: setup.fatherTraits ?? [],
   };
   run.setup.expansion = setup.expansion ?? 'family';
+  if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
   if (run.setup.expansion === 'family') initFamily(run);
@@ -215,9 +216,16 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   }
   run.household.background = WEALTH[run.household.resources];
   run.player.traits = [traits[Math.floor(random(run, 'world') * traits.length)]];
+  // Consume the historical draw even when a new life explicitly selects its traits.
+  if (setup.playerTraits !== undefined) run.player.traits = [...setup.playerTraits];
   if (run.player.traits.includes('Hay tò mò')) run.player.stats.knowledge += 5;
   if (run.player.traits.includes('Khéo tay')) run.player.stats.skill += 7;
   if (run.player.traits.includes('Dễ gần')) run.player.stats.social += 8;
+  if (setup.playerTraits !== undefined) {
+    if (run.player.traits.includes('Kiên trì')) run.player.stats.stress -= 2;
+    if (run.player.traits.includes('Ưa yên tĩnh')) run.player.stats.mood += 3;
+    if (run.player.traits.includes('Thích giúp đỡ')) run.player.stats.social += 3;
+  }
   transact(run, 'opening', 'Khoản gia đình để dành cho bạn', {
     cash:
       [25, 70, 150, 300, 600][run.household.resources] +

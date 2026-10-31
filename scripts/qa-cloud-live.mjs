@@ -269,6 +269,56 @@ try {
     const { browserCloudQA } = await import('./qa-cloud-browser.mjs');
     await browserCloudQA(users, check);
   }
+  await check(
+    'creator personality save and completed history replay across ordinary JWT sessions',
+    async () => {
+      const run = simulateLife(
+        'creator-cloud-qa',
+        {
+          cohort: 1995,
+          region: 'northern-village',
+          expansion: 'family',
+          playerTraits: ['Kiên trì', 'Ưa yên tĩnh', 'Thích giúp đỡ'],
+        },
+        2,
+      );
+      const id = randomUUID(),
+        selectedSave = snapshot(run, id);
+      const current = ok(
+        await a.client.from('cloud_saves').select('revision').eq('slot', 'slot-3'),
+      )[0];
+      ok(
+        await a.client.rpc('mkv_write_save', {
+          p_slot: 'slot-3',
+          p_life_id: id,
+          p_snapshot: selectedSave,
+          p_expected_revision: current?.revision ?? 0,
+          p_operation_id: randomUUID(),
+        }),
+      );
+      const second = createClient(url, publicKey, options);
+      ok(await second.auth.signInWithPassword({ email: a.email, password: a.password }));
+      const saved = ok(await second.from('cloud_saves').select('snapshot').eq('slot', 'slot-3'))[0];
+      assert.deepEqual(parseSave(JSON.stringify(saved.snapshot)).run, run);
+      const record = {
+        id,
+        createdAt: new Date().toISOString(),
+        save: selectedSave,
+        memoir: lifeSummary(run).biography,
+      };
+      ok(await a.client.rpc('mkv_archive_life', { p_record: record }));
+      const archived = ok(
+        await second.from('completed_lives').select('record').eq('life_id', id),
+      )[0];
+      assert.deepEqual(parseSave(JSON.stringify(archived.record.save)).run, run);
+      const other = createClient(url, publicKey, options);
+      ok(await other.auth.signInWithPassword({ email: b.email, password: b.password }));
+      assert.deepEqual(ok(await other.from('cloud_saves').select('*').eq('life_id', id)), []);
+      assert.deepEqual(ok(await other.from('completed_lives').select('*').eq('life_id', id)), []);
+      ok(await second.auth.signOut());
+      ok(await other.auth.signOut());
+    },
+  );
   report.status = 'VERIFIED PASS';
 } catch (e) {
   report.failedStage = stage;

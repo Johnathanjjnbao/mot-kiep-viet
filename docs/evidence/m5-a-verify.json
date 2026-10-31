@@ -1,0 +1,17 @@
+{
+  "status": "VERIFIED PASS",
+  "command": "npm.cmd run verify",
+  "basePath": "/mot-kiep-viet/",
+  "engineVersion": "3.0.0",
+  "contentVersion": "3.0.0",
+  "saveSchema": 4,
+  "tests": 133,
+  "files": 16,
+  "contentTemplates": 115,
+  "arcs": 7,
+  "typecheck": "VERIFIED PASS",
+  "lint": "VERIFIED PASS",
+  "contentValidation": "VERIFIED PASS",
+  "productionBuild": "VERIFIED PASS",
+  "buildWarning": "Entry JS remains larger than 500 kB, existing bundle size concern"
+}

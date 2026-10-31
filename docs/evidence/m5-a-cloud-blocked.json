@@ -1,0 +1,16 @@
+{
+  "status": "BLOCKED",
+  "command": "npm.cmd run test:cloud:live",
+  "reason": "Supabase CLI authentication unavailable after recovery",
+  "exitCode": 1,
+  "safeDiagnostic": {
+    "missingLogin": true,
+    "unknownArgument": false,
+    "missingTool": false
+  },
+  "qaIdentitiesCreated": 0,
+  "productionSQLApplied": false,
+  "productionAuthSettingsChanged": false,
+  "productionDataDeleted": false,
+  "ownerLogin": "NOT RUN"
+}

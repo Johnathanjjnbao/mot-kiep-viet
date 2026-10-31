@@ -5,6 +5,14 @@ import { COHORTS, REGIONS } from '../content/world';
 import { setupSchema, WEALTH, FAMILIES, PARENT_TRAITS } from '../domain/creator';
 import { Avatar } from './Avatar';
 import { createRun } from '../engine/engine';
+import { PersonalityPicker } from './PersonalityPicker';
+import { PLAYER_PERSONALITIES, playerPersonalitySchema } from '../domain/personality';
+import { randomizeCreatorTraits } from '../application/creatorRandom';
+import type {
+  CreatorSubject,
+  CreatorTraitGroups,
+  CreatorCounters,
+} from '../application/creatorRandom';
 export function NewLife({
   run,
   onStart,
@@ -34,6 +42,19 @@ export function NewLife({
     }),
     [preview, setPreview] = useState(false),
     [error, setError] = useState('');
+  const [counters, setCounters] = useState<CreatorCounters>({ player: 0, mother: 0, father: 0 });
+  const [locked, setLocked] = useState<CreatorTraitGroups>({ player: [], mother: [], father: [] });
+  const [rollNotice, setRollNotice] = useState('');
+  const groups: CreatorTraitGroups = {
+    player: setup.playerTraits ?? [],
+    mother: setup.motherTraits ?? [],
+    father: setup.fatherTraits ?? [],
+  };
+  const subjects: CreatorSubject[] = [
+    'player',
+    ...(setup.family === 'father-only' ? [] : ['mother' as const]),
+    ...(setup.family === 'mother-only' ? [] : ['father' as const]),
+  ];
   const portraitRun = createRun(
     seed.trim().slice(0, 100) || generatedSeed,
     custom && setupSchema.safeParse(setup).success ? setup : undefined,
@@ -41,6 +62,38 @@ export function NewLife({
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
     setError('');
+  }
+  function rollTraits(targets: CreatorSubject[]) {
+    try {
+      const next = randomizeCreatorTraits(
+        groups,
+        seed.trim() || generatedSeed,
+        targets,
+        counters,
+        { player: false, mother: false, father: false },
+        locked,
+      );
+      update({
+        ...(next.player.length ? { playerTraits: next.player } : { playerTraits: undefined }),
+        motherTraits: next.mother,
+        fatherTraits: next.father,
+      });
+      setCounters((previous) => ({
+        ...previous,
+        ...Object.fromEntries(targets.map((s) => [s, previous[s] + 1])),
+      }));
+      setRollNotice('Đã gieo tính cách. Những tính cách đã khóa được giữ lại.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Không thể gieo tính cách.');
+    }
+  }
+  function lockTrait(subject: CreatorSubject, trait: string) {
+    setLocked((previous) => ({
+      ...previous,
+      [subject]: (previous[subject] as string[]).includes(trait)
+        ? previous[subject].filter((t) => t !== trait)
+        : [...previous[subject], trait],
+    }));
   }
   function parent(which: 'mother' | 'father') {
     const hidden =
@@ -52,39 +105,24 @@ export function NewLife({
     const nonresident =
       (which === 'mother' && setup.family === 'with-father') ||
       (which === 'father' && setup.family === 'with-mother');
+    const labels = Object.values(PARENT_TRAITS),
+      ids = Object.keys(PARENT_TRAITS) as ParentTrait[];
     return (
-      <fieldset className="parent-traits">
-        <legend>
-          {which === 'mother' ? 'Tính cách mẹ' : 'Tính cách cha'}
-          {nonresident ? ' · không sống cùng' : ''}
-        </legend>
-        <p className="fine-print">
-          Tối đa 3 tính cách. Chỉ người cùng chăm sóc mới tác động hằng năm; quan hệ với người không
-          sống cùng vẫn được giữ.
-        </p>
-        <div className="trait-options">
-          {Object.entries(PARENT_TRAITS).map(([id, name]) => (
-            <label key={id}>
-              <input
-                type="checkbox"
-                checked={selected.includes(id as ParentTrait)}
-                disabled={
-                  !selected.includes(id as ParentTrait) &&
-                  !setupSchema.shape.motherTraits.safeParse([...selected, id]).success
-                }
-                onChange={(e) =>
-                  update({
-                    [key]: e.target.checked
-                      ? [...selected, id as ParentTrait]
-                      : selected.filter((t) => t !== id),
-                  })
-                }
-              />
-              {name}
-            </label>
-          ))}
-        </div>
-      </fieldset>
+      <PersonalityPicker
+        title={`${which === 'mother' ? 'Tính cách mẹ' : 'Tính cách cha'}${nonresident ? ' · không sống cùng' : ''}`}
+        subject={which}
+        options={labels}
+        selected={selected.map((t) => PARENT_TRAITS[t])}
+        locked={locked[which].map((t) => PARENT_TRAITS[t])}
+        hint="Chỉ người cùng chăm sóc mới tác động hằng năm."
+        valid={(items) =>
+          setupSchema.shape.motherTraits.safeParse(items.map((t) => ids[labels.indexOf(t)])).success
+        }
+        onSelect={(items) => update({ [key]: items.map((t) => ids[labels.indexOf(t)]) })}
+        onLock={(trait) => lockTrait(which, ids[labels.indexOf(trait)])}
+        onRoll={() => rollTraits([which])}
+        onClear={() => update({ [key]: [...locked[which]] })}
+      />
     );
   }
   function submit() {
@@ -174,14 +212,17 @@ export function NewLife({
                 <dt>Người chăm sóc</dt>
                 <dd>{FAMILIES[setup.family ?? 'both']}</dd>
               </dl>
-              {(['mother', 'father'] as const).map((w) => (
-                <p key={w}>
-                  {w === 'mother' ? 'Mẹ' : 'Cha'}:{' '}
-                  {(availableSetup[w === 'mother' ? 'motherTraits' : 'fatherTraits'] ?? [])
-                    .map((t) => PARENT_TRAITS[t])
-                    .join(', ') || 'Không chọn tính cách'}
-                </p>
-              ))}
+              <p data-testid="preview-player-traits">Bạn: {portraitRun.player.traits.join(', ')}</p>
+              {subjects
+                .filter((w) => w !== 'player')
+                .map((w) => (
+                  <p key={w}>
+                    {w === 'mother' ? 'Mẹ' : 'Cha'}:{' '}
+                    {(availableSetup[w === 'mother' ? 'motherTraits' : 'fatherTraits'] ?? [])
+                      .map((t) => PARENT_TRAITS[t])
+                      .join(', ') || 'Không chọn tính cách'}
+                  </p>
+                ))}
               <button className="button secondary" onClick={() => setPreview(false)}>
                 Sửa trước khi bắt đầu
               </button>
@@ -253,6 +294,23 @@ export function NewLife({
                       ))}
                     </div>
                   </fieldset>
+                  <PersonalityPicker
+                    title="Tính cách nhân vật chính"
+                    subject="player"
+                    options={PLAYER_PERSONALITIES}
+                    selected={groups.player}
+                    locked={locked.player}
+                    hint="Khuynh hướng ban đầu, không quyết định cả cuộc đời. Bỏ trống để số phận chọn một tính cách."
+                    valid={(items) => playerPersonalitySchema.safeParse(items).success}
+                    onSelect={(items) => update({ playerTraits: items.length ? items : undefined })}
+                    onLock={(trait) => lockTrait('player', trait)}
+                    onRoll={() => rollTraits(['player'])}
+                    onClear={() =>
+                      update({
+                        playerTraits: locked.player.length ? [...locked.player] : undefined,
+                      })
+                    }
+                  />
                   <fieldset>
                     <legend>Mái nhà đầu tiên</legend>
                     <div className="region-options">
@@ -313,7 +371,7 @@ export function NewLife({
                     <select
                       id="family"
                       value={setup.family}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         update({
                           family: e.target.value as RunSetup['family'],
                           ...(e.target.value === 'father-only'
@@ -321,8 +379,12 @@ export function NewLife({
                             : e.target.value === 'mother-only'
                               ? { fatherTraits: [] }
                               : {}),
-                        })
-                      }
+                        });
+                        if (e.target.value === 'father-only')
+                          setLocked((l) => ({ ...l, mother: [] }));
+                        if (e.target.value === 'mother-only')
+                          setLocked((l) => ({ ...l, father: [] }));
+                      }}
                     >
                       {Object.entries(FAMILIES).map(([id, label]) => (
                         <option key={id} value={id}>
@@ -343,6 +405,17 @@ export function NewLife({
                   </fieldset>
                   {parent('mother')}
                   {parent('father')}
+                  <button
+                    type="button"
+                    className="button secondary full-width"
+                    onClick={() => rollTraits(subjects)}
+                  >
+                    <Dices size={17} aria-hidden="true" />
+                    Ngẫu nhiên tất cả tính cách
+                  </button>
+                  <p className="fine-print" role="status">
+                    {rollNotice}
+                  </p>
                 </>
               ) : (
                 <div className="fate-note">

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { GameRun, ParentTrait } from './model';
+import { playerPersonalitySchema } from './personality';
 export const PARENT_TRAITS: Record<ParentTrait, string> = {
   gentle: 'Dịu dàng',
   strict: 'Nghiêm khắc',
@@ -71,6 +72,7 @@ export const setupSchema = z
     family: z.enum(['both', 'father-only', 'mother-only', 'with-father', 'with-mother']).optional(),
     motherTraits: traits.optional(),
     fatherTraits: traits.optional(),
+    playerTraits: playerPersonalitySchema.optional(),
   })
   .strict();
 export const birthplaceOf = (r: GameRun) =>
