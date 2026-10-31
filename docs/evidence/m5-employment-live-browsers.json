@@ -1,0 +1,221 @@
+{
+  "target": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "reports": [
+    {
+      "browser": "chromium",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "acceptance": true,
+        "rejection": true,
+        "cooldown": true,
+        "acceptedAndRejectedSwitches": true,
+        "oldExperiencePreserved": true
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "sixPaidMonths": true,
+        "contractEnd": true,
+        "retraining": true,
+        "graduationToOutOfFieldWork": true,
+        "slots": 3,
+        "exportReplayReload": true
+      },
+      "family": {
+        "status": "VERIFIED PASS",
+        "seededLayoff": true,
+        "transitionPayment": true,
+        "dependents": 1,
+        "reemployment": true,
+        "recordedParentsPreserved": true
+      },
+      "oldSave": {
+        "status": "VERIFIED PASS",
+        "ruleset": "education-v1",
+        "oldImmediateEmploymentAndReplayPreserved": true
+      },
+      "errors": []
+    }
+  ]
+}

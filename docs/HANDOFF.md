@@ -1,5 +1,13 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Employment đã phát hành — G5 guest VERIFIED PASS, 01/11/2026
+
+`0.3.6-employment.1`, source `b01d6a57761847f4529e3689fbdf48c5283b66ec`/main; [CI 41231316353](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353) completed/success build/deploy. Tiếp tục baseline5184554, giữ A/B và Creator. Đời mới dùng career-v1; mọi selector cũ, frozen v1/v2, engine/content3/schema4 và save/history IDs giữ nguyên. Tuyển dụng có thể từ chối/cooldown, đổi việc giữ lịch sử, thất nghiệp có thời gian và chi phí, việc tạm/học kỹ năng/làm trái ngành/mất việc và phục hồi đã chơi được.
+
+Local/CI191 tests,66 E2E, production Pages smoke PASS;1.000seed/1.000replay/0vi phạm/0fallback, max341actions/534921bytes. Live guest desktop/mobile và3browsers×2viewport =6/6 C journeys PASS;6viewport×20mixed choices vàsave cũ6choices PASS; JS/CSS/SW khớp SHA-256 build, font/history/save/load không lỗi. Auditproduction0; source secret scan1057/CI1080objects,0findings. Học tập, paid retraining, mất việc và gia đình có con được kiểm riêng bằng replay-valid fixtures; không gọi mọi nhánh đã được random sample bao phủ.
+
+Full M5 vẫn INCOMPLETE: digital/business mới NOT RUN; quân sự đã có [nghiên cứu nguồn gốc](MILITARY_RESEARCH.md) nhưng NOT READY. Real cloud/JWT/RLS mới BLOCKED vì CLI chưa đăng nhập; owner tự đăng nhập NOT RUN. Không production SQL/Auth/RLS changes hoặc dùng credential người chơi. Bằng chứng/giới hạn/điểm tiếp tục ở [M5_EMPLOYMENT_PROGRESS](M5_EMPLOYMENT_PROGRESS.md), manifest `evidence/m5-employment-release.json`. Những mục Candidate và A/B bên dưới giữ lịch sử; bước tiếp theo là digital/business dưới selector mới, không làm lại A/B/C.
+
 ## Employment — local gates VERIFIED PASS, 01/11/2026
 
 Candidate `0.3.6-employment.1` tiếp tục main5184554, không làm lại A/B. `career-v1` bất biến bổ sung tuyển dụng có chấp nhận/từ chối và cooldown6 tháng; từ chối giữ việc đang làm, chuyển việc được nhận giữ lịch sử; việc tạm6 tháng trả đúng6 kỳ; thất nghiệp có thời gian/chi phí/áp lực và phục hồi, học kỹ năng qua ledger, mất việc/hỗ trợ chuyển tiếp và làm trái ngành. Giữ engine/content3/schema4, toàn bộ luật/golden cũ và ID save/history. Local verify191 tests/19files,66 E2E,3browsers×2viewport, production Pages smoke, audit0 và secret scan1057objects/0findings PASS. Mô phỏng1.000seed/1.000replay/0vi phạm/0fallback,97.662event checks≥4choices, max341actions/534921bytes. C CI/live INCOMPLETE cho tới exact-SHA verification; production A/B vẫn VERIFIED PASS. Real cloud QA BLOCKED (CLI thiếu login), owner NOT RUN. Digital/business mới NOT RUN, quân sự NOT READY; full M5 INCOMPLETE. Xem [M5_EMPLOYMENT_PROGRESS](M5_EMPLOYMENT_PROGRESS.md). Các mục dưới giữ lịch sử.

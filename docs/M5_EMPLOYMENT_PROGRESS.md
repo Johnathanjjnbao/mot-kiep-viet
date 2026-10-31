@@ -1,5 +1,13 @@
 # Employment continuation — 01/11/2026
 
+## Released — G5 guest VERIFIED PASS
+
+Final source `b01d6a57761847f4529e3689fbdf48c5283b66ec`, version0.3.6-employment.1, branchmain. [CI41231316353](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353) completed/success:191 tests/19files,66 E2E, production smoke,1080-object secret scan0. [Repo](https://github.com/Johnathanjjnbao/mot-kiep-viet), [live](https://johnathanjjnbao.github.io/mot-kiep-viet/). Later documentation/evidence commit SHA and final workflow are in git log/final session response; gameplay source is this SHA.
+
+Live guest1440/375 full-life/manual-slot/autosave/history/export/import/font/network tests PASS. Chromium/Firefox/WebKit ×desktop/mobile =6/6 C journeys PASS: acceptance/rejection/cooldown, both switch outcomes retaining experience, exact6-month temporary pay/end, paid retraining, Korean graduation to out-of-field work, three slots/export/replay/reload, natural layoff/payment, real dependent-family recovery retaining parents, and old education-v1 immediate work. Live six-viewport20-choice journey and six legacy six-choice save views PASS. JS/CSS/SW hashes equal the build; WebKit375 recovery-scene image visually inspected. No HUD/narrative clamping or weaker geometry checks. Detailed reports are m5-employment-live-*.json and v036-employment1-live-viewport.json.
+
+Original user-task start2b24ebd; this continuation baseline5184554 after A/B. Current source/main pushed and synced. Core C is released; optional negotiated junior/alternate offers are not distinct new branches. Existing self-employment income abstractions are not a new business-profit system. Next D needs a fresh immutable selector and separate capital/cost/revenue/profit settlement with era availability and bounded outcomes. Military research now records primary1981/2015 sources and unresolved chains, remains NOT READY; see MILITARY_RESEARCH.md. Real cloud BLOCKED, owner login NOT RUN. No hidden work continues after this session closes.
+
 ## Final local release candidate
 
 Local gates VERIFIED PASS: npm.cmd run verify191 tests/19files/type/lint/content152templates/7arcs/Pages build;66 E2E/0failed/0skipped; production subpath smoke; Chromium/Firefox/WebKit ×1440/375 =6/6 C journeys with axe0/pageerrors0. Three six-viewport suites each make20 mixed decisions (new life, University, Employment), plus old six-choice save layouts. Employment recovery screenshot on mobile375 inspected. Production audit0. Secret scan1051 working/public/history text objects,0findings. Cloud readiness rechecked noninteractively:authenticated=false/authenticationUnavailable=true; no account QA or production write attempted.

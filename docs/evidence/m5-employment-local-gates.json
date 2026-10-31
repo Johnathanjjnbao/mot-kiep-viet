@@ -49,6 +49,6 @@
   },
   "realCloud": "BLOCKED",
   "ownerPersonalLogin": "NOT RUN",
-  "ciAndLive": "INCOMPLETE until exact-SHA verification",
+  "ciAndLive": "VERIFIED PASS: guest release; real cloud remains BLOCKED",
   "fullM5": "INCOMPLETE"
 }

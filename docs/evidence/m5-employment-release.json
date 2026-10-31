@@ -1,0 +1,49 @@
+{
+  "version": "0.3.6-employment.1",
+  "originalTaskStartSha": "2b24ebd178a4382d1240fe539de2d54d83a1ea3f",
+  "continuationBaselineSha": "5184554b3b5e4cbb12f6445a9fe250dd27a5c17a",
+  "releasedSourceSha": "b01d6a57761847f4529e3689fbdf48c5283b66ec",
+  "branch": "main",
+  "status": "VERIFIED PASS",
+  "scope": "C core guest release, A/B retained",
+  "ruleset": "career-v1",
+  "engine": "3.0.0",
+  "content": "3.0.0",
+  "saveSchema": 4,
+  "ci": {
+    "id": 41231316353,
+    "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353",
+    "status": "completed",
+    "conclusion": "success",
+    "unitTests": 191,
+    "e2eTests": 66,
+    "secretObjects": 1080,
+    "secretFindings": 0
+  },
+  "live": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "simulation": {
+    "runs": 1000,
+    "replays": 1000,
+    "invariantViolations": 0,
+    "fallback": 0,
+    "maxActions": 341,
+    "maxSaveBytes": 534921
+  },
+  "evidence": [
+    "m5-employment-ci.json",
+    "m5-employment-ci-jobs.json",
+    "m5-employment-local-gates.json",
+    "m5-employment-simulation.json",
+    "m5-employment-live-assets.json",
+    "m5-employment-live-guest.json",
+    "m5-employment-live-browsers.json",
+    "v036-employment1-live-viewport.json",
+    "m5-employment-cloud-readiness.json",
+    "m5-employment-audit.json"
+  ],
+  "fullM5": "INCOMPLETE",
+  "realCloud": "BLOCKED",
+  "ownerLogin": "NOT RUN",
+  "digitalBusinessNewModel": "NOT RUN",
+  "military": "NOT READY: partial primary-source research only"
+}
