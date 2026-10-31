@@ -60,7 +60,7 @@ const label = z
   );
 export const setupSchema = z
   .object({
-    lifeRules: z.enum(['dynamic-v1', 'education-v1']).optional(),
+    lifeRules: z.enum(['dynamic-v1', 'education-v1', 'career-v1']).optional(),
     expansion: z.enum(['wardrobe', 'social', 'family']).optional(),
     cohort: z.number().int().min(1975).max(2026),
     region: z.enum(['southern-city', 'northern-village', 'central-coast']),

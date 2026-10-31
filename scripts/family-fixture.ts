@@ -8,12 +8,13 @@ import {
 } from '../src/engine/engine';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 import { married, talk } from './social-fixture';
-import type { GameRun } from '../src/domain/model';
+import type { GameRun, RunSetup } from '../src/domain/model';
 import type { ParentingStyle } from '../src/domain/family';
-export function familyStart() {
+export function familyStart(lifeRules?: RunSetup['lifeRules']) {
   for (let i = 0; i < 1000; i++) {
     const r = createRun('family-life-' + i, {
         expansion: 'family',
+        ...(lifeRules ? { lifeRules } : {}),
         cohort: 1995,
         region: 'northern-village',
         wealth: 4,
@@ -38,7 +39,12 @@ export function familyStart() {
 export function growFamily(input: GameRun, age: number, style: ParentingStyle = 'support') {
   let r = input;
   for (let i = 0; i < 400 && r.status !== 'ended' && (r.month < age * 12 || r.family?.focus); i++) {
-    if (!currentCareer(r) && r.month >= 216 && r.month < 780) {
+    if (
+      !currentCareer(r) &&
+      r.month >= 216 &&
+      r.month < 780 &&
+      (!r.employment || !(r.academics?.focus || r.family?.focus || r.social?.focus))
+    ) {
       const job = CAREERS.find((j) => !careerReason(r, j.id));
       if (job) r = manage(r, 'apply-job', job.id);
     }

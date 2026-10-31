@@ -11,6 +11,7 @@ const total = Number(process.argv[2] ?? 1000);
 const testCreator = process.argv.includes('--creator');
 const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
+const testEmployment = process.argv.includes('--employment');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
@@ -18,6 +19,20 @@ const report = {
   creatorRuns: 0,
   fallbackEvents: 0,
   admissions: { accepted: 0, rejected: 0 },
+  employment: {
+    accepted: 0,
+    rejected: 0,
+    supportedPlacements: 0,
+    layoffs: 0,
+    contractsEnded: 0,
+    resignations: 0,
+    switches: 0,
+    outOfField: 0,
+    longestUnemployment: 0,
+    unemployedMonths: 0,
+    reemployedPeriods: 0,
+    trainings: 0,
+  },
   academics: { graduated: 0, failed: 0, dropped: 0, switched: 0, paused: 0, internships: 0 },
   maxActions: 0,
   familyChildren: 0,
@@ -60,11 +75,13 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testEducation
-          ? { lifeRules: 'education-v1' as const }
-          : testDiversity
-            ? { lifeRules: 'dynamic-v1' as const }
-            : {}),
+        ...(testEmployment
+          ? { lifeRules: 'career-v1' as const }
+          : testEducation
+            ? { lifeRules: 'education-v1' as const }
+            : testDiversity
+              ? { lifeRules: 'dynamic-v1' as const }
+              : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -92,6 +109,32 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    for (const a of run.employment?.applications ?? []) report.employment[a.result]++;
+    if (run.employment) {
+      report.employment.supportedPlacements += run.employment.placements.length;
+      report.employment.trainings += run.employment.trainingMonths.length;
+      for (const p of run.employment.periods) {
+        const months = (p.endMonth ?? run.month) - p.startMonth;
+        report.employment.unemployedMonths += months;
+        report.employment.longestUnemployment = Math.max(
+          report.employment.longestUnemployment,
+          months,
+        );
+        if (
+          months > 0 &&
+          p.endMonth !== null &&
+          run.player.careers.some((c) => c.startMonth === p.endMonth)
+        )
+          report.employment.reemployedPeriods++;
+      }
+      for (const c of run.player.careers) {
+        if (c.ending === 'layoff') report.employment.layoffs++;
+        if (c.ending === 'contract-ended') report.employment.contractsEnded++;
+        if (c.ending === 'resigned') report.employment.resignations++;
+        if (c.ending === 'switched') report.employment.switches++;
+        if (c.field === 'outside') report.employment.outOfField++;
+      }
+    }
     for (const a of run.academics?.applications ?? []) report.admissions[a.result]++;
     for (const s of run.academics?.studies ?? []) {
       if (s.status !== 'studying') report.academics[s.status]++;
@@ -130,6 +173,7 @@ for (let i = 0; i < total; i++) {
   } catch (error) {
     report.invariantViolations++;
     report.failures.push({ seed, message: error instanceof Error ? error.message : String(error) });
+    if (testEmployment) console.error(`${seed}: ${error instanceof Error ? error.message : String(error)}`);
   }
   if ((i + 1) % 100 === 0)
     console.log(`${i + 1}/${total} lives · ${report.invariantViolations} violations`);

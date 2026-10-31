@@ -58,6 +58,16 @@ import { hashSeed, nextRandom } from './random';
 import { mandatoryCost, settleMonth, transact } from './finance';
 import { dynamicPool, diversityWeight, originEligible } from './lifeDiversity';
 import {
+  applyEmployment,
+  endEmployment,
+  syncEmployment,
+  tickEmployment,
+  employmentSceneEligible,
+  employmentInterrupt,
+  resolveEmployment,
+  trainEmployment,
+} from './employment';
+import {
   academicDefinition,
   academicDue,
   focusAcademic,
@@ -193,8 +203,16 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   };
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
-  if (setup.lifeRules === 'education-v1')
+  if (setup.lifeRules === 'education-v1' || setup.lifeRules === 'career-v1')
     run.academics = { applications: [], studies: [], qualifications: [], focus: null };
+  if (setup.lifeRules === 'career-v1')
+    run.employment = {
+      applications: [],
+      periods: [],
+      trainingMonths: [],
+      placements: [],
+      notice: false,
+    };
   if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
@@ -339,10 +357,12 @@ export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   if (event.version === 5) return false;
   if (
     event.version === 7 &&
-    (run.setup.lifeRules !== 'education-v1' || event.id !== 'edu-direction')
+    (!['education-v1', 'career-v1'].includes(run.setup.lifeRules ?? '') ||
+      event.id !== 'edu-direction')
   )
     return false;
   if (run.academics && event.id === 'education-path') return false;
+  if (event.version === 8 && !employmentSceneEligible(run)) return false;
   if (event.version === 6 && (!run.setup.lifeRules || !originEligible(run, event.id))) return false;
   const last = run.seen[event.id];
   return (
@@ -366,6 +386,12 @@ function selectEvent(run: GameRun) {
     return;
   }
   if (focusAcademic(run)) return;
+  if (employmentInterrupt(run)) {
+    if (nextFamily(run)) return;
+    run.employment!.notice = false;
+    run.activeEvent = { id: 'employment-search', month: run.month };
+    return;
+  }
   let options = EVENTS.filter((e) => eventEligible(run, e));
   if (!options.length) options = [FALLBACK];
   const dynamic = !!run.setup.lifeRules && ageOf(run) < 18;
@@ -386,7 +412,27 @@ function selectEvent(run: GameRun) {
   }
   run.activeEvent = { id: selected.id, month: run.month };
 }
-function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null) {
+function startCareer(
+  run: GameRun,
+  id: Parameters<typeof careerReason>[1] | null,
+  source: 'panel' | 'story' = 'story',
+) {
+  if (run.employment) {
+    if (id) {
+      const job = CAREERS.find((j) => j.id === id);
+      if (!job) throw Error('Công việc không tồn tại.');
+      applyEmployment(run, job.id, (r) => random(r, 'event'), source);
+    } else
+      endEmployment(
+        run,
+        source === 'panel'
+          ? 'resigned'
+          : run.activeEvent?.id === 'career-collapse'
+            ? 'layoff'
+            : 'story',
+      );
+    return;
+  }
   if (id) {
     const reason = careerReason(run, id);
     if (reason) throw new Error(reason);
@@ -409,6 +455,9 @@ function startCareer(run: GameRun, id: Parameters<typeof careerReason>[1] | null
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'employment':
+      resolveEmployment(run, e.operation, (r) => random(r, 'event'));
+      break;
     case 'academic':
       resolveAcademic(run, e.method, (r) => random(r, 'event'));
       break;
@@ -560,6 +609,7 @@ function conclude(run: GameRun, ending: 'death' | 'memoir') {
   run.activeEvent = null;
   const job = currentCareer(run);
   if (job) job.endMonth = run.month;
+  syncEmployment(run);
   note(
     run,
     ending === 'death' ? 'Một kiếp khép lại' : 'Trang hồi ký cuối',
@@ -591,14 +641,17 @@ function tick(run: GameRun) {
   if (ageOf(run) >= 18 && !run.player.education.length)
     run.player.education.push({ level: 'general', startMonth: 72, endMonth: 216 });
   if (ageOf(run) >= 65 && currentCareer(run)) {
-    const job = currentCareer(run)!;
-    job.endMonth = run.month;
-    note(
-      run,
-      'Khép lại ngày đi làm',
-      'Bạn nghỉ hưu; trợ cấp tuổi già bắt đầu trong sổ chi tiêu.',
-      'career',
-    );
+    if (run.employment) endEmployment(run, 'retired');
+    else {
+      const job = currentCareer(run)!;
+      job.endMonth = run.month;
+      note(
+        run,
+        'Khép lại ngày đi làm',
+        'Bạn nghỉ hưu; trợ cấp tuổi già bắt đầu trong sổ chi tiêu.',
+        'career',
+      );
+    }
   }
   if (run.month % 12 === 0) {
     const record = currentCareer(run);
@@ -608,6 +661,7 @@ function tick(run: GameRun) {
     }
   }
   settleMonth(run);
+  tickEmployment(run, (r) => random(r, 'world'));
   const age = ageOf(run),
     stats = run.player.stats;
   if (run.month % 12 === 0) {
@@ -673,7 +727,13 @@ export function advance(input: GameRun): GameRun {
   const next = MILESTONES.find((age) => age * 12 > run.month) ?? 82;
   while (run.month < next * 12 && !run.ending) {
     tick(run);
-    if (socialInterrupt(run) || run.family?.queue.length || academicDue(run)) break;
+    if (
+      socialInterrupt(run) ||
+      run.family?.queue.length ||
+      academicDue(run) ||
+      employmentInterrupt(run)
+    )
+      break;
   }
   if (!run.ending) selectEvent(run);
   return run;
@@ -706,6 +766,12 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     );
     outcome += ' ' + (success ? selected.chance.successText : selected.chance.failureText);
   }
+  if (
+    run.employment &&
+    (run.employment.applications.length !== input.employment?.applications.length ||
+      selected.effects.some((e) => e.kind === 'employment' || e.kind === 'career'))
+  )
+    outcome = run.lastOutcome ?? outcome;
   run.seen[eventId] = run.month;
   run.activeEvent = null;
   run.lastOutcome = outcome;
@@ -749,6 +815,7 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     if (!run.activeEvent) nextFamily(run);
   }
   refreshSocial(run);
+  syncEmployment(run);
   if (run.player.stats.health <= 0) conclude(run, 'death');
   return run;
 }
@@ -757,8 +824,11 @@ export function manage(
   action: ManageAction,
   career?: Parameters<typeof careerReason>[1],
 ): GameRun {
-  if (input.engineVersion === '2.0.0')
+  if (input.engineVersion === '2.0.0') {
+    if (action === 'train-job' || action === 'temporary-job')
+      throw Error('Cuộc đời này giữ luật nghề nghiệp cũ.');
     return frozen2.manage(input as Parameters<typeof frozen2.manage>[0], action, career);
+  }
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
   if (input.status === 'ended' || ageOf(input) < 18)
     throw new Error('Chưa thể thực hiện hành động này.');
@@ -773,8 +843,22 @@ export function manage(
     throw new Error('Đã đạt 350 thao tác quản lý/tủ đồ cho một cuộc đời. Hãy tiếp tục câu chuyện.');
   const run = structuredClone(input),
     id = `manage:${run.actions.length}`;
+  if (
+    ['apply-job', 'quit-job', 'train-job', 'temporary-job'].includes(action) &&
+    input.employment &&
+    (input.academics?.focus || input.social?.focus || input.family?.focus)
+  )
+    throw Error('Hãy hoàn tất câu chuyện đang chờ trước khi đổi việc.');
   let message = '';
   switch (action) {
+    case 'train-job':
+      trainEmployment(run);
+      message = run.lastOutcome!;
+      break;
+    case 'temporary-job':
+      applyEmployment(run, 'labor', (r) => random(r, 'event'), 'support');
+      message = run.lastOutcome!;
+      break;
     case 'save-money':
       if (run.finance.cash < 50) throw new Error('Cần ít nhất 50 đSM.');
       transact(run, id, 'Gửi tiết kiệm', { cash: -50, savings: 50 });
@@ -816,12 +900,14 @@ export function manage(
     case 'apply-job':
       if (!career) throw new Error('Hãy chọn một nghề.');
       if (currentCareer(run)?.id === career) throw new Error('Bạn đang làm nghề này.');
-      startCareer(run, career);
-      message = 'Bạn bắt đầu công việc mới, thu nhập sẽ vào sổ hằng tháng.';
+      startCareer(run, career, 'panel');
+      message = run.employment
+        ? run.lastOutcome!
+        : 'Bạn bắt đầu công việc mới, thu nhập sẽ vào sổ hằng tháng.';
       break;
     case 'quit-job':
       if (!currentCareer(run)) throw new Error('Bạn chưa có công việc.');
-      startCareer(run, null);
+      startCareer(run, null, 'panel');
       message = 'Bạn rời công việc. Hãy cân đối chi phí trong lúc tìm hướng khác.';
       break;
   }
@@ -834,7 +920,11 @@ export function manage(
   run.lastOutcome = message;
   // A management action can change the prerequisites of a pending event. Resolve safely before presenting another.
   const active = activeDefinition(run);
-  if (active && !eligible(run, active.condition)) {
+  if (
+    active &&
+    (!eligible(run, active.condition) ||
+      (run.employment && active.choices.filter((c) => !choiceReason(run, c)).length < 4))
+  ) {
     note(run, active.title, 'Hoàn cảnh đã thay đổi trước khi bạn quyết định.');
     run.activeEvent = null;
   }
@@ -844,6 +934,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
   if (action.type === 'academic') {
     const next = requestAcademic(run, action, (r) => random(r, 'event')),
       active = activeDefinition(next);
+    syncEmployment(next);
     if (
       active &&
       (!eligible(next, active.condition) ||

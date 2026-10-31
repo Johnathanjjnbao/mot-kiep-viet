@@ -5,6 +5,7 @@ import { assertWardrobe } from './wardrobe';
 import type { GameRun } from '../domain/model';
 import { playerPersonalitySchema } from '../domain/personality';
 import { assertAcademics } from './academics';
+import { assertEmployment } from './employment';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
 import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
@@ -14,6 +15,7 @@ export function assertRun(run: GameRun) {
   assertSocial(run);
   assertFamily(run);
   assertAcademics(run);
+  assertEmployment(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

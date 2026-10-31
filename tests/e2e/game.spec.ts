@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { assertDecisionViewport } from '../../scripts/decision-viewport.mjs';
+import { assertDecisionViewport, readGuestRun } from '../../scripts/decision-viewport.mjs';
 import {
   createRun as legacyRun,
   advance as legacyAdvance,
@@ -139,8 +139,11 @@ test('adult career, savings, household costs, and invalid import feedback work t
     await step(page);
   await page.getByRole('button', { name: /Đi làm và để ngỏ việc học/ }).click();
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
-  await page.getByRole('button', { name: 'Nhận công việc', exact: true }).first().click();
-  await expect(page.locator('.current-job')).toContainText('Làm nông');
+  await page.getByRole('button', { name: 'Ứng tuyển', exact: true }).first().click();
+  await expect
+    .poll(async () => (await readGuestRun(page)).employment!.applications.length)
+    .toBeGreaterThan(0);
+  await expect(page.getByTestId('job-result')).toContainText('Hồ sơ gần nhất');
   await page.getByRole('button', { name: 'Tài chính', exact: true }).click();
   await page.getByRole('button', { name: 'Gửi 50 đSM', exact: true }).click();
   await expect(page.locator('.finance-overview')).toContainText('50 đSM');

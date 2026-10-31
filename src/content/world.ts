@@ -242,7 +242,7 @@ export function educationLevel(run: GameRun) {
   if (run.academics?.qualifications.length) return 'university';
   return run.player.education.filter((e) => e.endMonth <= run.month).at(-1)?.level ?? 'none';
 }
-export function careerReason(run: GameRun, id: string): string | null {
+export function careerReason(run: GameRun, id: string, ignoreApplications = false): string | null {
   const job = CAREERS.find((c) => c.id === id);
   if (!job) return 'Công việc không tồn tại.';
   if (run.status === 'ended') return 'Cuộc đời đã khép lại.';
@@ -263,6 +263,13 @@ export function careerReason(run: GameRun, id: string): string | null {
     return 'Chưa đáp ứng yêu cầu đào tạo.';
   if (run.player.stats.knowledge < job.knowledge) return `Cần ${job.knowledge} tri thức.`;
   if (run.player.stats.skill < job.skill) return `Cần ${job.skill} tay nghề.`;
+  if (run.employment && !ignoreApplications) {
+    if (currentCareer(run)?.id === id) return null;
+    if (run.employment.applications.length >= 80)
+      return 'Đã đạt giới hạn hồ sơ tự ứng tuyển; điểm hỗ trợ việc tạm vẫn có thể giúp.';
+    if (run.employment.applications.some((a) => a.career === id && run.month - a.month < 6))
+      return 'Cần đợi 6 tháng trước khi nộp lại cùng nghề.';
+  }
   return null;
 }
 export function monthlyIncome(run: GameRun) {

@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED",
+  "authenticated": false,
+  "targetProjectFound": false,
+  "exitCode": 1,
+  "authenticationUnavailable": true
+}

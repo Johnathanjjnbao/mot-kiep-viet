@@ -2,6 +2,7 @@ import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
 import type { PlayerPersonality } from './personality';
 import type { AcademicState, AcademicAction, AcademicMethod } from './academics';
+import type { EmploymentState, EmploymentEnding, EmploymentOperation } from './employment';
 export const ENGINE_VERSION = '3.0.0';
 export const CONTENT_VERSION = '3.0.0';
 export const SAVE_VERSION = 4;
@@ -58,6 +59,9 @@ export interface EducationRecord {
   endMonth: number;
 }
 export interface CareerRecord {
+  ending?: EmploymentEnding;
+  contractEndMonth?: number;
+  field?: 'related' | 'outside' | 'none';
   id: CareerId;
   startMonth: number;
   endMonth: number | null;
@@ -146,6 +150,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'employment'; operation: EmploymentOperation }
   | { kind: 'academic'; method: AcademicMethod }
   | { kind: 'parenting'; style: ParentingStyle }
   | { kind: 'social'; operation: SocialOperation }
@@ -224,6 +229,8 @@ export interface StoryArc {
   stages: string[];
 }
 export type ManageAction =
+  | 'train-job'
+  | 'temporary-job'
   | 'save-money'
   | 'withdraw-money'
   | 'borrow'
@@ -255,7 +262,7 @@ export type RunAction =
   | { type: 'choose'; eventId: string; choiceId: string }
   | { type: 'manage'; action: ManageAction; career?: CareerId };
 export interface RunSetup {
-  lifeRules?: 'dynamic-v1' | 'education-v1';
+  lifeRules?: 'dynamic-v1' | 'education-v1' | 'career-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -270,6 +277,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  employment?: EmploymentState;
   academics?: AcademicState;
   wardrobe?: Wardrobe;
   social?: SocialState;

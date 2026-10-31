@@ -60,6 +60,17 @@ it('adds only the new version tuple while retaining all old size/identity/header
           academics: { applications: [], studies: [], qualifications: [], focus: null },
         });
         expect(await valid(university)).toBe(true);
+        university.run.setup!.lifeRules = 'career-v1';
+        Object.assign(university.run, {
+          employment: {
+            applications: [],
+            periods: [],
+            trainingMonths: [],
+            placements: [],
+            notice: false,
+          },
+        });
+        expect(await valid(university)).toBe(true);
       }
       expect(await valid({ ...value, identity: 'bad' })).toBe(false);
       expect(await valid({ ...value, run: { ...value.run, engineVersion: 'invalid' } })).toBe(

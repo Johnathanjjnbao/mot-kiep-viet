@@ -1,5 +1,9 @@
 # M5 long-run handoff
 
+## Employment — local gates VERIFIED PASS, 01/11/2026
+
+Candidate `0.3.6-employment.1` tiếp tục main5184554, không làm lại A/B. `career-v1` bất biến bổ sung tuyển dụng có chấp nhận/từ chối và cooldown6 tháng; từ chối giữ việc đang làm, chuyển việc được nhận giữ lịch sử; việc tạm6 tháng trả đúng6 kỳ; thất nghiệp có thời gian/chi phí/áp lực và phục hồi, học kỹ năng qua ledger, mất việc/hỗ trợ chuyển tiếp và làm trái ngành. Giữ engine/content3/schema4, toàn bộ luật/golden cũ và ID save/history. Local verify191 tests/19files,66 E2E,3browsers×2viewport, production Pages smoke, audit0 và secret scan1057objects/0findings PASS. Mô phỏng1.000seed/1.000replay/0vi phạm/0fallback,97.662event checks≥4choices, max341actions/534921bytes. C CI/live INCOMPLETE cho tới exact-SHA verification; production A/B vẫn VERIFIED PASS. Real cloud QA BLOCKED (CLI thiếu login), owner NOT RUN. Digital/business mới NOT RUN, quân sự NOT READY; full M5 INCOMPLETE. Xem [M5_EMPLOYMENT_PROGRESS](M5_EMPLOYMENT_PROGRESS.md). Các mục dưới giữ lịch sử.
+
 ## Final released source and continuation
 
 Start `2b24ebd178a4382d1240fe539de2d54d83a1ea3f`; Dynamic Life `d3212f4f39bf889a2f72b47993fcaf391bed50ae`; final University source `84f1235b500da1dcaa3cbe66c7c3331764f6a647`. Public version `0.3.6-university.1`. Source/main synchronized with origin; subsequent documentation/evidence commit SHA is in git log and the final session reply. [Repo](https://github.com/Johnathanjjnbao/mot-kiep-viet), [live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [University CI](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41213819210). CI completed/success:163 unit/integration,52 E2E, production smoke,979-object secret scan0. A/B G5 guest VERIFIED PASS; full M5 INCOMPLETE.

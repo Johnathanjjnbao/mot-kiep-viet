@@ -45,6 +45,9 @@ export function lifeSummary(run: GameRun) {
     biography:
       biography +
       socialText +
+      (run.employment
+        ? ` Mưu sinh: ${run.employment.applications.filter((a) => a.result === 'rejected').length} hồ sơ chưa được nhận; tổng cộng ${run.employment.periods.reduce((n, p) => n + (p.endMonth ?? run.month) - p.startMonth, 0)} tháng chưa có việc. ${run.player.careers.filter((c) => c.field === 'outside').length} chặng việc ngoài hướng ngành đã học, ${run.player.careers.filter((c) => c.ending === 'layoff').length} lần mất việc do cắt giảm.`
+        : '') +
       (run.academics?.studies.length
         ? ' Việc học: ' +
           run.academics.studies

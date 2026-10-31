@@ -1,5 +1,7 @@
 import { FamilyPanel } from './FamilyPanel';
 import { AcademicPanel } from './AcademicPanel';
+import { EmploymentPanel } from './EmploymentPanel';
+import { jobProbability } from '../engine/employment';
 import { SocialPanel } from './SocialPanel';
 import {
   BriefcaseBusiness,
@@ -46,6 +48,7 @@ export function CareerPanel({ run, act }: Props) {
               ? `Bạn đang học, dự kiến hoàn thành năm ${run.player.birthYear + Math.floor(studying.endMonth / 12)}. Hãy học xong trước khi nhận việc.`
               : 'Học vấn mở cửa; tay nghề, kinh nghiệm và hoàn cảnh quyết định bạn đi được bao xa.'}
       </p>
+      <EmploymentPanel run={run} act={act} />
       <AcademicPanel run={run} act={act} />
       {current && (
         <div className="current-job">
@@ -55,6 +58,7 @@ export function CareerPanel({ run, act }: Props) {
             <p>
               {money(monthlyIncome(run))}/tháng · {Math.floor(current.experience / 12)} năm kinh
               nghiệm · bậc {current.level + 1}
+              {current.contractEndMonth ? ' · hợp đồng tạm sáu tháng' : ''}
             </p>
           </div>
           <button
@@ -70,7 +74,7 @@ export function CareerPanel({ run, act }: Props) {
           const reason = careerReason(run, job.id),
             same = current?.id === job.id;
           return (
-            <article className="career-option" key={job.id}>
+            <article className="career-option" key={job.id} data-career={job.id}>
               <div className="career-option-top">
                 <h3>{job.name}</h3>
                 {same ? (
@@ -85,12 +89,25 @@ export function CareerPanel({ run, act }: Props) {
               </div>
               <p>{job.description}</p>
               <p className="fine-print">{reason ?? job.progression}</p>
+              {run.employment && !same && !reason && (
+                <p className="fine-print">
+                  Khả năng được nhận trong mô phỏng: khoảng{' '}
+                  {Math.round(jobProbability(run, job.id) * 100)}%. Văn bằng, kinh nghiệm và kỹ năng
+                  có thể giúp; kết quả chưa được bảo đảm.
+                </p>
+              )}
               <button
                 className="text-button"
                 disabled={Boolean(reason) || same}
                 onClick={() => act({ type: 'manage', action: 'apply-job', career: job.id })}
               >
-                {same ? 'Công việc hiện tại' : reason ? 'Chưa thể ứng tuyển' : 'Nhận công việc'}
+                {same
+                  ? 'Công việc hiện tại'
+                  : reason
+                    ? 'Chưa thể ứng tuyển'
+                    : run.employment
+                      ? 'Ứng tuyển'
+                      : 'Nhận công việc'}
                 <ChevronRight size={16} aria-hidden="true" />
               </button>
             </article>

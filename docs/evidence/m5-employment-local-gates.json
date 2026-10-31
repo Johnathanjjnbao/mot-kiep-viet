@@ -1,0 +1,54 @@
+{
+  "version": "0.3.6-employment.1",
+  "ruleset": "career-v1",
+  "baselineSha": "5184554b3b5e4cbb12f6445a9fe250dd27a5c17a",
+  "localStatus": "VERIFIED PASS",
+  "verify": {
+    "command": "npm.cmd run verify",
+    "tests": 191,
+    "files": 19,
+    "contentTemplates": 152,
+    "arcs": 7,
+    "basePath": "/mot-kiep-viet/"
+  },
+  "e2e": {
+    "command": "E2E_PRODUCTION=1 VITE_BASE_PATH=/mot-kiep-viet/ npm.cmd run test:e2e",
+    "passed": 66,
+    "failed": 0,
+    "skipped": 0
+  },
+  "simulation": {
+    "command": "npm.cmd run simulate -- 1000 --creator --employment",
+    "runs": 1000,
+    "replays": 1000,
+    "violations": 0,
+    "fallback": 0,
+    "maxActions": 341,
+    "maxSaveBytes": 534921
+  },
+  "browsers": {
+    "status": "VERIFIED PASS",
+    "journeys": 6,
+    "types": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "viewports": [
+      "1440x900",
+      "375x667"
+    ],
+    "axeViolations": 0
+  },
+  "productionSmoke": "VERIFIED PASS",
+  "auditProductionAdvisories": 0,
+  "secretScan": {
+    "scope": "working files, public dist assets and all reachable Git blobs",
+    "textObjectsScanned": 1057,
+    "findings": []
+  },
+  "realCloud": "BLOCKED",
+  "ownerPersonalLogin": "NOT RUN",
+  "ciAndLive": "INCOMPLETE until exact-SHA verification",
+  "fullM5": "INCOMPLETE"
+}

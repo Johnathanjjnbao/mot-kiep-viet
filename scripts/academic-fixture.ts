@@ -11,9 +11,12 @@ import type { GameRun } from '../src/domain/model';
 import type { ProgramId, AcademicMethod } from '../src/domain/academics';
 import { admissionReason, currentStudy } from '../src/engine/academics';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
-export function academicApplicant(index = 0) {
+export function academicApplicant(
+  index = 0,
+  lifeRules: 'education-v1' | 'career-v1' = 'education-v1',
+) {
   let r = createRun('university-' + index, {
-    lifeRules: 'education-v1',
+    lifeRules,
     expansion: 'family',
     cohort: 1995,
     region: 'northern-village',

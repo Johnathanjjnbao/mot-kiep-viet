@@ -95,7 +95,7 @@ export function academicDefinition(r: GameRun) {
   return { ...template, id: focus.instanceId, title: `Năm ${s.completedYears + 1}: ${p.incident}` };
 }
 export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
-  if (!input.academics || input.setup.lifeRules !== 'education-v1')
+  if (!input.academics || !['education-v1', 'career-v1'].includes(input.setup.lifeRules ?? ''))
     throw Error('Cuộc đời này giữ luật học tập đã tạo trước đây.');
   if (a.expected !== input.actions.length || input.status !== 'playing')
     throw Error('Thao tác học tập đã cũ; hãy tải trạng thái mới.');
@@ -277,7 +277,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
 }
 export function assertAcademics(r: GameRun) {
   const state = r.academics;
-  if (r.setup.lifeRules !== 'education-v1') {
+  if (!['education-v1', 'career-v1'].includes(r.setup.lifeRules ?? '')) {
     if (state) throw Error('Invariant: unexpected academic rules');
     return;
   }

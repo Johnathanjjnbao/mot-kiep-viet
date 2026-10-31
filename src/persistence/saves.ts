@@ -73,6 +73,8 @@ const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
     .object({
       type: z.literal('manage'),
       action: z.enum([
+        'train-job',
+        'temporary-job',
         'save-money',
         'withdraw-money',
         'borrow',

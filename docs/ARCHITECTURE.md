@@ -1,5 +1,15 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## Employment: career-v1
+
+`career-v1` kế thừa University và tuổi thơ; education-v1/dynamic-v1/missing flag giữ nguyên. EmploymentState lưu hồ sơ tuyển dụng, khoảng thất nghiệp, thời điểm học kỹ năng và hỗ trợ việc tạm. CareerRecord chỉ ở đời mới có field/ending/contractEndMonth; dữ liệu cũ không tự thêm trường. Parser giữ schema4/tuple3 và enum action strict; canonical replay xác minh toàn bộ state, không migration.
+
+`engine/employment.ts` sở hữu xác suất theo skill/knowledge/social/stress, ngành liên quan, kinh nghiệm trước đây, ảnh hưởng tính cách nhỏ và RNG event. Từ chối không trừ phí, không trả lương, không đóng công việc cũ; cùng nghề chờ6 tháng, hồ sơ có giới hạn. Chỉ được nhận mới đóng một record cũ và mở record mới. Câu chuyện nhắc lại nghề hiện tại giữ record/kinh nghiệm/hợp đồng; không tuyển lại hoặc trả thêm. Lương vẫn qua settleMonth mỗi tháng. Hợp đồng lao động tạm đóng sau đúng6 kỳ lương. Annual seeded layoffs dùng world RNG chỉ ở ruleset mới; một khoản hỗ trợ chuyển tiếp có khóa giao dịch theo record (tham số trò chơi, không phải quyền lợi pháp luật). Không có thêm tiền khi tự nghỉ/hết hợp đồng.
+
+Khoảng thất nghiệp đóng khi có việc/học toàn thời gian/nghỉ hưu/kết thúc đời; định kỳ6 tháng có áp lực và cơ hội phục hồi, tính thêm resident minor dependents, không áp giới. Lớp20đSM qua ledger/cooldown chỉ tăng kỹ năng, không cấp bằng. Hỗ trợ việc tạm là đường phục hồi giả định có giới hạn40 lần/cách6 tháng; không phải bảo đảm tuyển dụng ở các nghề thông thường. Shared120 family management và save512 giữ nguyên. Advance dừng để trình bày cảnh tìm việc; bốn lựa chọn luôn có đường khả dụng. UI chỉ dispatch, chặn đổi việc khi academic/social/family focus đang chờ. Academic transition đồng bộ khoảng thất nghiệp; không tính sinh viên toàn thời gian là thất nghiệp, không đồng thời học/làm toàn thời gian. Golden C3510531914 độc lập. Diagnostic budget riêng C dùng512 để bao quát thêm cảnh hằng năm; không đổi ngân sách replay/save hoặc simulator cũ.
+
+Mức thu nhập của farm/freelance/shop vẫn là mô hình nghề có sẵn; chưa có business capital/revenue/profit mới. PGlite chỉ kiểm envelope, không thay Auth/JWT/RLS thật.
+
 ## Dynamic Life và University, luật đời mới
 
 `RunSetup.lifeRules` bất biến: vắng mặt giữ selector và học tập cũ; `dynamic-v1` thêm nội dung tuổi thơ và trọng số chống lặp; `education-v1` kế thừa tuổi thơ và dùng hồ sơ đại học riêng. Strict setup/action parsing cùng canonical replay không cho gắn luật mới lên đời đang chơi. Engine/content 3.0.0, save schema 4, frozen v1/v2 và các golden độc lập không đổi. Không tự migration; ID database, UUID cuộc đời, autosave, ba ô lưu và history độc lập giữ nguyên.

@@ -28,11 +28,21 @@ export function simulateLife(
     rng = next;
     return n;
   };
-  while (run.status !== 'ended' && steps++ < (run.family ? 480 : run.social ? 320 : 180)) {
+  while (
+    run.status !== 'ended' &&
+    steps++ < (run.employment ? 512 : run.family ? 480 : run.social ? 320 : 180)
+  ) {
     assertRun(run);
     onStep?.(run);
+    const managementAvailable =
+      !run.employment ||
+      !run.family ||
+      run.actions.filter((a) =>
+        ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+      ).length < 114;
     if (
       run.academics &&
+      managementAvailable &&
       !run.activeEvent &&
       !run.academics.focus &&
       !run.social?.focus &&
@@ -74,6 +84,7 @@ export function simulateLife(
     }
     if (
       run.social &&
+      managementAvailable &&
       !run.social.focus &&
       !run.family?.focus &&
       !run.academics?.focus &&
@@ -154,6 +165,7 @@ export function simulateLife(
       const clothing = policy % 2 ? 'linen-shirt' : 'sport-top';
       if (
         run.wardrobe &&
+        managementAvailable &&
         ageOf(run) >= 18 &&
         !run.wardrobe.owned.includes(clothing) &&
         run.finance.cash >= 24
@@ -171,22 +183,30 @@ export function simulateLife(
           expected: run.actions.length,
         });
       }
-      if (policy !== 3 && ageOf(run) >= 18 && ageOf(run) < 65 && !currentCareer(run)) {
+      if (
+        managementAvailable &&
+        policy !== 3 &&
+        ageOf(run) >= 18 &&
+        ageOf(run) < 65 &&
+        !currentCareer(run)
+      ) {
         const jobs = CAREERS.filter((j) => !careerReason(run, j.id));
         if (jobs.length)
           run = manage(run, 'apply-job', jobs[Math.floor(random() * jobs.length)].id);
       }
       if (
         ageOf(run) >= 30 &&
+        managementAvailable &&
         run.finance.cash > 950 &&
         !run.finance.assets.length &&
         policy % 2 === 0
       )
         run = manage(run, 'buy-home');
-      if (ageOf(run) >= 18 && run.finance.cash > 150 && policy === 1)
+      if (managementAvailable && ageOf(run) >= 18 && run.finance.cash > 150 && policy === 1)
         run = manage(run, 'save-money');
       if (
         ageOf(run) >= 18 &&
+        managementAvailable &&
         run.finance.liability.principal > 0 &&
         run.finance.cash > 80 &&
         policy === 2
