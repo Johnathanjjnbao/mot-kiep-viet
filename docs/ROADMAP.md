@@ -2,7 +2,7 @@
 
 ## Tiếp tục v0.3.6 — 31/10/2026
 
-Dynamic Life đã xác minh production tại d3212f4. University có 12 ngành và đang chốt phát hành riêng. Ưu tiên kế tiếp là job applications/rejection/cooldown/unemployment/career changes dưới selector bất biến mới; không thay quy tắc của các đời cũ. Digital/business chưa triển khai, quân sự NOT READY; các mục longevity/international/VNĐ vẫn ở backlog. Xem M5_LONG_RUN_HANDOFF cho trạng thái và bằng chứng mới nhất.
+Dynamic Life đã xác minh production tại d3212f4. University 12 ngành đã phát hành tại84f1235/CI41213819210, G5 guest VERIFIED PASS. Ưu tiên kế tiếp là job applications/rejection/cooldown/unemployment/career changes dưới selector bất biến mới; không thay quy tắc của các đời cũ. Digital/business chưa triển khai, quân sự NOT READY; các mục longevity/international/VNĐ vẫn ở backlog. Xem M5_LONG_RUN_HANDOFF cho trạng thái và bằng chứng mới nhất.
 
 ## Checkpoint A v0.3.6-creator.1 — 31/10/2026
 

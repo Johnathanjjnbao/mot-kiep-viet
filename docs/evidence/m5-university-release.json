@@ -1,0 +1,40 @@
+{
+  "version": "0.3.6-university.1",
+  "startSha": "2b24ebd178a4382d1240fe539de2d54d83a1ea3f",
+  "dynamicLifeSha": "d3212f4f39bf889a2f72b47993fcaf391bed50ae",
+  "releasedSourceSha": "84f1235b500da1dcaa3cbe66c7c3331764f6a647",
+  "branch": "main",
+  "ruleset": "education-v1",
+  "engine": "3.0.0",
+  "content": "3.0.0",
+  "saveSchema": 4,
+  "status": "VERIFIED PASS",
+  "scope": "A/B guest release",
+  "fullM5": "INCOMPLETE",
+  "ci": {
+    "id": 41213819210,
+    "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41213819210",
+    "status": "completed",
+    "conclusion": "success",
+    "tests": 163,
+    "e2e": 52,
+    "secretTextObjects": 979,
+    "secretFindings": 0
+  },
+  "live": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "evidence": [
+    "m5-university-local-gates.json",
+    "m5-university-simulation.json",
+    "m5-university-ci.json",
+    "m5-university-ci-jobs.json",
+    "m5-university-live-guest.json",
+    "m5-university-live-browsers.json",
+    "v036-university1-live-viewport.json",
+    "m5-university-live-assets.json"
+  ],
+  "realCloud": "BLOCKED",
+  "ownerLogin": "NOT RUN",
+  "employment": "INCOMPLETE",
+  "digitalBusinessNewModel": "NOT RUN",
+  "military": "NOT READY"
+}

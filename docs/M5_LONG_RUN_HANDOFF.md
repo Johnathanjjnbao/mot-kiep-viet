@@ -1,5 +1,13 @@
 # M5 long-run handoff
 
+## Final released source and continuation
+
+Start `2b24ebd178a4382d1240fe539de2d54d83a1ea3f`; Dynamic Life `d3212f4f39bf889a2f72b47993fcaf391bed50ae`; final University source `84f1235b500da1dcaa3cbe66c7c3331764f6a647`. Public version `0.3.6-university.1`. Source/main synchronized with origin; subsequent documentation/evidence commit SHA is in git log and the final session reply. [Repo](https://github.com/Johnathanjjnbao/mot-kiep-viet), [live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [University CI](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41213819210). CI completed/success:163 unit/integration,52 E2E, production smoke,979-object secret scan0. A/B G5 guest VERIFIED PASS; full M5 INCOMPLETE.
+
+Live evidence: `m5-university-live-guest.json` (both viewports, full life/history/save/load/font/network), `m5-university-live-browsers.json` (Chromium/Firefox/WebKit ×desktop/mobile; all12 applications, Korean graduation/export/three slots/reload, rejection/cooldown/pause/resume/switch/dropout, axe0), `v036-university1-live-viewport.json` (six viewports ×20 current mixed choices plus six old6-choice save layouts), `m5-university-live-assets.json` (JS/CSS/SW exact SHA-256). CI metadata/jobs/log excerpts are in `m5-university-ci*.json`. Live WebKit375 assessment screenshot visually inspected. No story clamping or geometry assertion relaxation.
+
+Next → C employment; do not redo Creator, Dynamic Life or University. Add a new immutable selector before changing apply-job/startCareer/monthly employment semantics; preserve education-v1, dynamic-v1 and missing selectors. Implement acceptance/rejection/cooldown, unemployment duration, temporary/out-of-field work, career history, layoffs and recovery through the ledger, then independent golden/1000replays/E2E/live release. B still uses existing immediate career acceptance when eligible; no new hiring simulation has shipped. Digital/business new model NOT RUN; military NOT READY. No hidden continued work or scheduler. Real cloud QA BLOCKED; owner personal login NOT RUN. No production SQL/Auth/RLS changes or player credentials used.
+
 31/10/2026, Asia/Saigon. Start2b24ebd178a4382d1240fe539de2d54d83a1ea3f/main sạch, khớp remote. Creator giữ nguyên.
 
 ## A. Dynamic Life
@@ -27,7 +35,7 @@ Securityreview scope: newsetup→selector→choices/schedules/ledger→replay, U
 
 Skills thực dùng: Graft workflow; Humanizer(newVietnamese scenes), WebappTesting(Playwright), WebDesignReviewer(ảnh+geometry), SecurityReview(replay/ledger boundaries), SecretScanning(prepush). FrontendDesign sẽ dùng ởUniversity UI. Không subagent/Antigravity/newskills.
 
-## B/C tiếp theo
+## B/C tiếp theo tại checkpoint A (lịch sử)
 
 University0/12, admissions/progression/qualifications chưa triển khai; Jobapplications/rejection/cooldown/unemployment mới chưa triển khai. Digital/business/military NOT RUN, military NOT READY. B cần ruleset education-v1 táchdynamic-v1, không sửa v2/v3/family/dynamic goldens.12programs, tuitionledger/aid, từngterm códistinctchoices, delayedfailure/dropout/graduation vàcareerqualification guards. SauB ổn định mớiC. Không longevity/international/VND.
 

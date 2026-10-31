@@ -1,0 +1,191 @@
+{
+  "target": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "reports": [
+    {
+      "browser": "chromium",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "applications": {
+        "status": "VERIFIED PASS",
+        "programs": 12,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "graduation": {
+        "status": "VERIFIED PASS",
+        "program": "korean",
+        "years": 4,
+        "viewport": {
+          "width": 375,
+          "height": 667
+        }
+      },
+      "recovery": {
+        "status": "VERIFIED PASS",
+        "rejection": true,
+        "cooldown": true,
+        "pauseResume": true,
+        "switching": true,
+        "dropout": true
+      },
+      "errors": []
+    }
+  ]
+}

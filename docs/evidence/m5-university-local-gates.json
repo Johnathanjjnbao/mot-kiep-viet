@@ -45,7 +45,7 @@
   },
   "realCloud": "BLOCKED: Supabase CLI not authenticated; no production writes",
   "ownerPersonalLogin": "NOT RUN",
-  "ciAndLive": "INCOMPLETE until exact-SHA deployment and live evidence",
+  "ciAndLive": "VERIFIED PASS: guest release; real cloud remains BLOCKED",
   "e2e": {
     "status": "VERIFIED PASS",
     "command": "E2E_PRODUCTION=1 VITE_BASE_PATH=/mot-kiep-viet/ npm.cmd run test:e2e",
