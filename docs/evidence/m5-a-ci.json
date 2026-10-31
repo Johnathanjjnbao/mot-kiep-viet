@@ -1,9 +1,9 @@
 {
-  "id": 41201603918,
-  "head_sha": "4a2f6df4abee441d3bf8bcafb08396804e96cdf5",
+  "id": 41202694295,
+  "head_sha": "28c1dc51aebadd3bf826224e653ad0f5a10ff9a6",
   "status": "completed",
   "conclusion": "success",
-  "html_url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41201603918",
-  "artifact_id": 13043216439,
-  "artifact_zip_sha256": "6f829288360d8b19545551b68c9952ae92f25feb1483e2ed59b97c52c201f85a"
+  "html_url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41202694295",
+  "artifact_id": 13043370553,
+  "artifact_zip_sha256": "ab65d5a85fcd071d7a2c00650da942de52bf44be84fd054ca2b0b98fa689ee82"
 }

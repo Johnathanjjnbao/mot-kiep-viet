@@ -34,7 +34,7 @@ Không action hay tiền tệ mới, không trừ phí/giao dịch mới; ledger
 | Secret scan | VERIFIED PASS lượt đầu822text objects,0findings; lượt cuối trước source push829objects/0findings; scope publicdist/reachablehistory |
 | Auth/cloud thật | BLOCKED: `test:cloud:live` exit1, CLI admin access unavailable; safe diagnostic xác nhận thiếu login, không phải thiếu binary/unknown flag;0QA identities được tạo |
 | Owner tự nhập account live | NOT RUN, riêng với đăng nhập GitHub |
-| CI / deploy / live G5 | Core Creator4a2f6df VERIFIED PASS (guest); xem release evidence phía dưới. Mobile preview refinement đang chốt local gates |
+| CI / deploy / live G5 | VERIFIED PASS cho guest ở source28c1dc5/workflow41202694295, kể cả preview refinement; cloud gate vẫn BLOCKED |
 
 Failure history: Creator E2E đầu2timeouts do cố bấm disabled clear khi chỉ còn trait khóa; sửa test bằng kiểm tra enabled, chạy lại2/2 PASS. Full regression đầu phát hiện checkbox mẹ nằm trong details đóng; sửa test mở panel trước khi chọn. Không dùng các lần lỗi đó làm PASS. Chưa đổi engine/content sau simulation; không chạy lặp1000seed cho test/docs changes.
 
@@ -94,3 +94,17 @@ G5 guest của coreCreator VERIFIED PASS; gate cloud mới vẫnBLOCKED, fullEdu
 Visual follow-up: khi xem ảnhWebKit mobile thật, avatarfloat làm ddcolumn rất hẹp dù không tràn; CSS mobile nay clearfloat trướcdl, để giá trị đọc được. Thêm assertion cộtpreview≥150px; localChromium mobile đã xem ảnh sau sửa. Đây là UI-only, không lặp1000seed. Verify133 và Pages smoke sauCSS PASS; full38E2E vàcrossbrowser6/6 sauCSS đều PASS. Refinement qua localgates và đang push để xác minh đúngSHA mới.
 
 Refinement pre-push:38/38E2E,133/133verify,Creator6/6,production smoke và scan851text objects/0findings PASS. Chỉ2source files đổi (CSS+QA assertion), không engine/content/save đổi.
+
+## Final Creator release — source28c1dc5
+
+Source `28c1dc51aebadd3bf826224e653ad0f5a10ff9a6`/main đã push/deploy qua [workflow41202694295](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41202694295), completed/success build/deploy. CI logs:133tests,38E2E,production smoke,scan835objects/0findings. Local refinement verify133/38E2E/Creator6/production smoke đều PASS; không đổi engine/content sau simulation1000.
+
+Live rerun sau refinement: Creator Chromium/Firefox/WebKit desktop/mobile6/6 (Space/Enter, khóa, gieo độc lập, random-all, previewcolumn≥150px,20choices,save3slots/export/import/reload/canonical); guest1440/375 đầy đủ save/load/history/fonts/assets;6viewport×20choices/126pre-input measurements, tất cả VERIFIED PASS. ẢnhWebKit mobile đã xem trực tiếp, thông tinpreview không còn bị avatar ép hẹp.0uncaught/page/network errors trong successful guest suite; Creatoraxe0/overflow0. Thiết bị vật lý và owner password vẫnNOT RUN.
+
+Artifact13043370553 của đúngSHA: ZIP SHA256`ab65d5a85fcd071d7a2c00650da942de52bf44be84fd054ca2b0b98fa689ee82`. CSS/JS/SWlive khớp byte-for-byte artifact này;JS content hash không đổi sau CSS-only refinement. Các fileevidence m5-a-live-* vàv036-creator1-live-* hiện trỏ tới lượt rerun cuối, bằng chứng core4a trước đó còn trong Git28c1dc5. Không ghi signedURL, token, SQL/Auth changes hay player credentials.
+
+G5 guest Creator VERIFIED PASS; gate realcloud mới BLOCKED (Supabase CLI thiếu login), fullM5 Education & Career INCOMPLETE. Chưa triển khai university programs/job rejection/new digital business/military hoặc reaction branches theo tính cách; tác động hiện tại là stat khởi đầu có giới hạn. Không gọi toàn bộCheckpointA cloud/fullv0.3.6 PASS. Không approval SQL mới đang chờ; cần Supabase CLI login để chạy lại realJWT QA.
+
+Initial SHA `96e52aa859a498239779700253b9dcc36d856f5d`; implementation4a2f6df, UI refinement28c1dc5. Publication tiếp theo chỉ bổ sung docs/evidence, phải kiểm workflow cuối; finalHEAD vàCI tương ứng báo trong chat/Git history. Repo vàliveURL ở trên. Handoff: bắt đầu B bằng immutable Education/Career ruleset trước khi đổi luật; tiếp tục đúng checkout này, giữ tất cả saves và frozen fixtures.
+
+Handoff scan cuối:866text objects/publicdist/reachableGit,0findings. Publication commit chỉ docs/evidence; không thay source sau28c1dc5.
