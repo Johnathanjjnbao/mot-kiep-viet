@@ -428,7 +428,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                 <h3>Một thế giới có chủ đích</h3>
                 <p>
                   Ba vùng quê là bối cảnh hư cấu, không đại diện cho mọi người tại đó.{' '}
-                  {currencyOf(run ?? undefined) === 'vnd-v1'
+                  {!run || currencyOf(run) === 'vnd-v1'
                     ? 'VND dùng sức mua thiết kế năm 2026, không phải giá hay thu nhập danh nghĩa lịch sử.'
                     : 'đSM là đồng sức mua thiết kế cho game, không phải giá hay thu nhập lịch sử bằng VNĐ.'}{' '}
                   Từ năm 2027, tất cả bối cảnh tương lai là giả định.

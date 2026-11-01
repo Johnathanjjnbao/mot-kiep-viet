@@ -15,6 +15,10 @@ import { storyAction, decisionKey } from '../src/application/story-flow';
 
 export async function vndJourney(page: Page, url: string, prefix: string) {
   await page.goto(url);
+  await page.getByRole('button', { name: 'Cách chơi & đôi lời', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText('VND dùng sức mua thiết kế năm 2026');
+  expect(await page.getByRole('dialog').innerText()).not.toContain('đSM');
+  await page.getByRole('button', { name: 'Đóng', exact: true }).click();
   const cases = [];
   for (const currency of ['vnd-v1', undefined] as const) {
     let expected = admittedStudent('korean', 0, 'annual-v1', currency).run;
@@ -111,6 +115,12 @@ export async function vndJourney(page: Page, url: string, prefix: string) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
+    await page.getByRole('button', { name: 'Cách chơi & đôi lời', exact: true }).click();
+    await expect(page.getByRole('dialog')).toContainText(
+      currency ? 'VND dùng sức mua thiết kế năm 2026' : 'đSM là đồng sức mua thiết kế',
+    );
+    await page.getByRole('button', { name: 'Đóng', exact: true }).click();
+    await page.goto(url);
     cases.push({
       currency: currency ?? 'absent → dsm-v1',
       canonical: true,

@@ -13,7 +13,9 @@
     "status": "VERIFIED PASS",
     "passed": 78,
     "failed": 0,
-    "skipped": 0
+    "skipped": 0,
+    "fullCoreSourceSha": "b065d568158f922e53f04811d594ec3dbfec1126",
+    "latestUiFollowUp": "2 targeted VND/DSM help/save E2E passed; full final CI required"
   },
   "vndSimulation": {
     "status": "VERIFIED PASS",
@@ -26,8 +28,8 @@
   "productionSmoke": "VERIFIED PASS /mot-kiep-viet/",
   "multiBrowserVndDsm": "VERIFIED PASS: Chromium/Firefox/WebKit x desktop/mobile",
   "assets": {
-    "index-BNQ3Tg9q.css": "d252c9bf92864a8f35f069a7db3563e088d9dabdc390515bc69d89888be854d5",
-    "index-C0d0wkgV.js": "1d3345750c16985bc01c02f89dbfda0bf606b2781e6cefbee60a91055a05b1df"
+    "index-BMfu8bLU.js": "4afd6728b8a28d3d1fded9e11ea9942488bb0bbc152fb8c605c09202b481c475",
+    "index-BNQ3Tg9q.css": "d252c9bf92864a8f35f069a7db3563e088d9dabdc390515bc69d89888be854d5"
   },
   "cloudOwnerLogin": "NOT RUN",
   "sqlAuthRlsChanges": false
