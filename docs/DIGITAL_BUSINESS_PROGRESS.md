@@ -1,5 +1,7 @@
 # v0.3.8 — Digital Careers & Business
 
+Local final: **274unit/integration +86E2E,0skip**, production subpath smoke,6business viewports×20decisions và1.000đời/replay PASS. Secret scan cuối1541text objects/0findings. Nguồn43a8e34; chuẩn bị push, exact-SHA CI/live PENDING. Creator code local đang phát triển riêng, không nằm trong commit cửa hàng này.
+
 ## Cửa hàng0.3.8-business.1 — kiểm chứng local, deployment PENDING (01/11/2026)
 
 Tiếp tục7dc19a2 →927e734 →58b5cbd, không làm lại VND/Year-by-Year. Đời mới enterprise-v1 dùng VND nguyên; save annual/career/education/dynamic và thiếu currency giữ nguyên luật/đSM. Ba ngành hàng: quần áo, gia dụng, thủ công. Policy giá/quảng bá/tồn kho, góp/rút vốn, tạm dừng/mở lại, sổ12tháng, thanh lý50%, hồi ký và12cảnh mới đã nối thật. Mỗi cảnh có4lựa chọn khả dụng; chỉ dispatch ghi trạng thái/ledger. Chặn lương business/freelance hai chiều; học tập, lương thường và gia đình đi cùng tiệm có áp lực công việc. Tối đa4ID cả đời, chung120quản lý,512actions/5MiB giữ nguyên. KhôngSQL/Auth/RLS hoặc frozen changes.
