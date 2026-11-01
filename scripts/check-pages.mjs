@@ -61,7 +61,7 @@ try {
       await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
       expect(await page.getByTestId('event-choice').count()).toBeGreaterThanOrEqual(4);
     }
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 512; i++) {
       if (await page.getByRole('heading', { name: /Một đời đã sống/ }).isVisible()) break;
       const choices = page.getByTestId('event-choice');
       if (await choices.count()) {

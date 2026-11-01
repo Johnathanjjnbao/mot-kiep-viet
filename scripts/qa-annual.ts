@@ -103,8 +103,30 @@ export async function annualPause(page: Page, url: string, prefix: string) {
   expect(
     parseSave(JSON.stringify((await import('../src/persistence/saves')).snapshot(paused))).run,
   ).toEqual(paused);
+  expect(paused.month - pausedMonth).toBeGreaterThanOrEqual(6);
+  await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
+  const pausedDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Xuất tệp lưu', exact: true }).click();
+  const pausedFile = await (await pausedDownload).path();
+  const importedPause = parseSave(await readFile(pausedFile!, 'utf8')).run;
+  expect(importedPause).toEqual(paused);
+  await page.getByRole('button', { name: 'Đóng', exact: true }).click();
+  await importStudent(page, importedPause);
+  await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  if (paused.month - pausedMonth >= 6) {
+    await page.getByRole('button', { name: 'Trở lại học', exact: true }).click();
+    await expect.poll(async () => currentStudy(await readGuestRun(page))?.status).toBe('studying');
+    const resumed = await readGuestRun(page);
+    expect(currentStudy(resumed)!.paidTerms).toBe(before.paidTerms);
+    expect(resumed.month).toBe(paused.month);
+    expect(resumed.activeEvent?.id).not.toBe('employment-search');
+    expect(
+      parseSave(JSON.stringify((await import('../src/persistence/saves')).snapshot(resumed))).run,
+    ).toEqual(resumed);
+  }
   return {
     status: 'VERIFIED PASS',
+    resumedThroughUI: true,
     paidTerms: before.paidTerms,
     pausedMonth,
     monthAfterChoice: paused.month,

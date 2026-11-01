@@ -58,11 +58,16 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await expect(page.locator('.story-card h2')).toHaveText(event!);
   // Continue entirely through the visible player interface; no hidden fast-forward.
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 512; i++) {
     if (await page.getByRole('heading', { name: /Một đời đã sống/ }).isVisible()) break;
     await step(page);
   }
   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
+  const ended = await readGuestRun(page);
+  expect(ended.setup.lifeRules).toBe('annual-v1');
+  expect(ended.actions.length).toBeLessThanOrEqual(512);
+  const ages = new Set(ended.choices.map((c) => Math.floor(c.month / 12)));
+  for (let age = 0; age < Math.floor(ended.month / 12); age++) expect(ages.has(age)).toBe(true);
   const cardPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Tải thẻ kỷ niệm' }).click();
   expect((await cardPromise).suggestedFilename()).toMatch(/\.svg$/);

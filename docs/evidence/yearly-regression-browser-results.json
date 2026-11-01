@@ -1,0 +1,579 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\triba\\OneDrive\\Desktop\\game\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/annual.spec.ts",
+      "tests/e2e/annual-viewport.spec.ts"
+    ],
+    "configFile": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\playwright.config.ts",
+    "rootDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-edge",
+        "name": "desktop-edge",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-edge",
+        "name": "mobile-edge",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [
+          "/viewport.spec.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/triba/OneDrive/Desktop/game/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "decision-viewports",
+        "name": "decision-viewports",
+        "testDir": "C:/Users/triba/OneDrive/Desktop/game/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/viewport.spec.ts/"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-edge",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36 Edg/156.0.8078.4",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-edge"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-edge",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          },
+          "viewport": {
+            "width": 375,
+            "height": 812
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-edge"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "decision-viewports",
+        "testDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173/mot-kiep-viet/",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "channel": "msedge"
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "decision-viewports"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 5173 --strictPort",
+      "url": "http://127.0.0.1:5173/mot-kiep-viet/",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "annual.spec.ts",
+      "file": "annual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "completes every displayed age0..82 and canonical guest saves without skipped birthdays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14911,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:11.360Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06d42498fd103955513f-0d2df6e87dfd49780277",
+          "file": "annual.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "health academic pause really suspends the program and tuition through reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-edge",
+              "projectName": "desktop-edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:26.472Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06d42498fd103955513f-31043145e8db6c50dd0d",
+          "file": "annual.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "completes every displayed age0..82 and canonical guest saves without skipped birthdays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14230,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:29.103Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06d42498fd103955513f-0129c7003790b9d5032e",
+          "file": "annual.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "health academic pause really suspends the program and tuition through reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-edge",
+              "projectName": "mobile-edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1712,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:43.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06d42498fd103955513f-c35d9aec5fcae5b8a8ff",
+          "file": "annual.spec.ts",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "annual-viewport.spec.ts",
+      "file": "annual-viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "annual20 first/middle/last choices: desktop1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:46.004Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-5c7938abbab1d865ae53",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "annual20 first/middle/last choices: desktop1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:49.091Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-61ccc5841ec45547eb8f",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "annual20 first/middle/last choices: mobile390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2587,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:51.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-f8b1c8bcb24f76049000",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "annual20 first/middle/last choices: mobile375",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:54.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-c0db0b2e1626b1a64c6f",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "annual20 first/middle/last choices: landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2367,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:56.863Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-891865f26151feb623d4",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "annual20 first/middle/last choices: large-text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "decision-viewports",
+              "projectName": "decision-viewports",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2437,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T06:33:59.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6673a6329b17496fbc4d-c5c26a0e246f4d269365",
+          "file": "annual-viewport.spec.ts",
+          "line": 13,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-01T06:33:10.489Z",
+    "duration": 51514.867,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

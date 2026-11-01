@@ -1,5 +1,8 @@
 # Backlog sau beta v0.3
 
+Year-by-Year0.3.7-yearly.1 đang chốt phát hành sau local gates. Phạm vi phiên này là từng tuổi, bảo lưu thật và chiều sâu12ngành; Digital/business và quân sự không được tự mở lại từ backlog. Tuổi thọ500/1000năm cần định dạng lưu/replay/cloud được version và duyệt riêng, không phải mở trần512actions toàn cục. Xem YEAR_BY_YEAR_PROGRESS.md.
+
+
 ## Employment đã phát hành — G5 guest VERIFIED PASS, 01/11/2026
 
 `0.3.6-employment.1`, source `b01d6a57761847f4529e3689fbdf48c5283b66ec`/main; [CI 41231316353](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353) completed/success build/deploy. Tiếp tục baseline5184554, giữ A/B và Creator. Đời mới dùng career-v1; mọi selector cũ, frozen v1/v2, engine/content3/schema4 và save/history IDs giữ nguyên. Tuyển dụng có thể từ chối/cooldown, đổi việc giữ lịch sử, thất nghiệp có thời gian và chi phí, việc tạm/học kỹ năng/làm trái ngành/mất việc và phục hồi đã chơi được.

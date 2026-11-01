@@ -1,0 +1,64 @@
+{
+  "status": "VERIFIED PASS",
+  "version": "0.3.7-yearly.1",
+  "baseline": "da55d281673396aa5d73cae628dd9b1731b4ddb6",
+  "ruleset": "annual-v1",
+  "engine": "3.0.0",
+  "content": "3.0.0",
+  "schema": 4,
+  "unitIntegration": 230,
+  "testFiles": 24,
+  "fullE2E": 76,
+  "e2eSkipped": 0,
+  "finalDisplayFocusedE2E": 10,
+  "productionSubpathSmoke": "VERIFIED PASS",
+  "simulation": {
+    "seeds": 1000,
+    "canonicalReplays": 1000,
+    "violations": 0,
+    "fallback": 0,
+    "missingAges": 0,
+    "maxSkippedAge": 0,
+    "maxActions": 420,
+    "maxSaveBytes": 629967,
+    "ageAtEnd": [
+      65,
+      107
+    ]
+  },
+  "largeFamilyBudget": {
+    "status": "VERIFIED PASS",
+    "seed": "family-life-0",
+    "age": 122,
+    "children": 3,
+    "discretionary": 120,
+    "actions": 405,
+    "bytes": 652537
+  },
+  "authoredNewOrdinary": 32,
+  "authoredNewAcademicStages": 50,
+  "staticCatalog": 184,
+  "totalStaticAndAcademicStages": 234,
+  "browsersDesktopMobile": "Chromium/Firefox/WebKit6/6 pass, including actual pause/export/import/reload/resume",
+  "goldens": {
+    "previous": 8,
+    "annual": 432954253
+  },
+  "assets": [
+    {
+      "path": "assets/index-CE286t9p.js",
+      "sha256": "c6c73751e195370e56f40922e93075cee9a0f9dd06bbf5dc65ec2c6f91ea8e9b"
+    },
+    {
+      "path": "assets/index-BlK5s_QB.css",
+      "sha256": "403707e24428f9c7abe7b3bded3e39193413936c4d458aff341691484eeef6fc"
+    },
+    {
+      "path": "sw.js",
+      "sha256": "c36f3ab70fe23bf3e2f6a6507dee5094c719c69afc2677c911dc2efac0e505eb"
+    }
+  ],
+  "cloud": "BLOCKED",
+  "ownerLogin": "NOT RUN",
+  "production": "NOT DEPLOYED"
+}

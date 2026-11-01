@@ -1,5 +1,14 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## annual-v1 (0.3.7-yearly.1)
+
+Setup bất biến annual-v1 kế thừa academics/employment; selector cũ giữ nguyên. annual.ts suy tuổi đã quyết định từ choices canonical, không dùng journal/seen làm mốc. advance chọn cảnh ở cùng tháng nếu tuổi còn nợ, nếu đã chọn thì tick tối đa tới sinh nhật sau hoặc interrupt đầu tiên. Không ghi đè active focus; academic/social/family giữ ưu tiên và resume. Nghỉ học làm mất điều kiện của employment-search thì chỉ thay cảnh đó ở cùng tháng. tick không ép hồi ký82 cho annual; health vẫn quyết định death.
+
+academic-stages.ts có50 tình huống riêng theo ngành/năm; results.templateId chỉ có ở annual và được canonical replay xác minh. pause không ghi results/attempt/fee mới, có pausedMonth và resume tối thiểu6tháng; rest vẫn là đánh giá không đạt/tiếp tục ghi danh. Paid term còn lại không thu lại. UI đọc GameRun và dispatch, không sửa state.
+
+Tuple3.0.0/schema4,512actions/5MiB và RPC envelope giữ nguyên; PGlite chấp nhận snapshot annual và paused thật nhưng không chứng minh live Auth/RLS. Bảo vệ UI dành chỗ story theo dự báo160tuổi chỉ là giới hạn quản lý, không phải trần tuổi engine. Mô hình500/1000năm cần schema/segment và trusted checkpoint validation mới, không được quảng cáo là đã hỗ trợ. Xem YEAR_BY_YEAR_PROGRESS.md cho gates và rủi ro.
+
+
 ## Employment: career-v1
 
 `career-v1` kế thừa University và tuổi thơ; education-v1/dynamic-v1/missing flag giữ nguyên. EmploymentState lưu hồ sơ tuyển dụng, khoảng thất nghiệp, thời điểm học kỹ năng và hỗ trợ việc tạm. CareerRecord chỉ ở đời mới có field/ending/contractEndMonth; dữ liệu cũ không tự thêm trường. Parser giữ schema4/tuple3 và enum action strict; canonical replay xác minh toàn bộ state, không migration.

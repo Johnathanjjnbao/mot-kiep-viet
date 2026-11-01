@@ -1,6 +1,9 @@
 import { PGlite } from '@electric-sql/pglite';
 import { readFileSync } from 'node:fs';
 import { it, expect } from 'vitest';
+import { annualAssessment } from '../scripts/annual-fixture';
+import { choose, activeDefinition } from '../src/engine/engine';
+import { snapshot } from '../src/persistence/saves';
 it('adds only the new version tuple while retaining all old size/identity/header guards', async () => {
   const db = new PGlite();
   try {
@@ -60,6 +63,10 @@ it('adds only the new version tuple while retaining all old size/identity/header
           academics: { applications: [], studies: [], qualifications: [], focus: null },
         });
         expect(await valid(university)).toBe(true);
+        const annual = annualAssessment('health');
+        const paused = choose(annual, activeDefinition(annual)!.id, 'pause');
+        expect(await valid(snapshot(annual, life))).toBe(true);
+        expect(await valid(snapshot(paused, life))).toBe(true);
         university.run.setup!.lifeRules = 'annual-v1';
         expect(await valid(university)).toBe(true);
         university.run.setup!.lifeRules = 'career-v1';

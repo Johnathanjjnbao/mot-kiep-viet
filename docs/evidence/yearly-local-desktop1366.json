@@ -11,10 +11,10 @@
         "width": 1366,
         "height": 768
       },
-      "documentScroll": 222,
+      "documentScroll": 218,
       "hud": {
-        "top": 19.5,
-        "bottom": 598.078125,
+        "top": 23.5,
+        "bottom": 602.078125,
         "left": 68.296875,
         "right": 283.296875,
         "height": 578.578125,
@@ -23,8 +23,8 @@
         "unobscured": true
       },
       "avatar": {
-        "top": 30.5,
-        "bottom": 206.5,
+        "top": 34.5,
+        "bottom": 210.5,
         "left": 80.296875,
         "right": 271.296875,
         "height": 176,
@@ -33,8 +33,8 @@
         "unobscured": true
       },
       "narrative": {
-        "top": 96.5,
-        "bottom": 242.984375,
+        "top": 100.5,
+        "bottom": 246.984375,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 146.484375,
@@ -63,8 +63,8 @@
       "stats": [
         {
           "key": "health",
-          "top": 342.453125,
-          "bottom": 365.390625,
+          "top": 346.453125,
+          "bottom": 369.390625,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -72,8 +72,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 344.453125,
-            "bottom": 364.84375,
+            "top": 348.453125,
+            "bottom": 368.84375,
             "left": 85.296875,
             "right": 138.796875,
             "height": 20.390625,
@@ -82,8 +82,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 342.453125,
-            "bottom": 365.390625,
+            "top": 346.453125,
+            "bottom": 369.390625,
             "left": 248.328125,
             "right": 266.296875,
             "height": 22.9375,
@@ -95,8 +95,8 @@
         },
         {
           "key": "mood",
-          "top": 373.390625,
-          "bottom": 396.328125,
+          "top": 377.390625,
+          "bottom": 400.328125,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -104,8 +104,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 375.390625,
-            "bottom": 395.78125,
+            "top": 379.390625,
+            "bottom": 399.78125,
             "left": 85.296875,
             "right": 139.75,
             "height": 20.390625,
@@ -114,8 +114,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 373.390625,
-            "bottom": 396.328125,
+            "top": 377.390625,
+            "bottom": 400.328125,
             "left": 247.828125,
             "right": 266.296875,
             "height": 22.9375,
@@ -127,8 +127,8 @@
         },
         {
           "key": "knowledge",
-          "top": 404.328125,
-          "bottom": 427.265625,
+          "top": 408.328125,
+          "bottom": 431.265625,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -136,8 +136,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 406.328125,
-            "bottom": 426.71875,
+            "top": 410.328125,
+            "bottom": 430.71875,
             "left": 85.296875,
             "right": 129.71875,
             "height": 20.390625,
@@ -146,8 +146,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 404.328125,
-            "bottom": 427.265625,
+            "top": 408.328125,
+            "bottom": 431.265625,
             "left": 251.78125,
             "right": 266.296875,
             "height": 22.9375,
@@ -159,8 +159,8 @@
         },
         {
           "key": "skill",
-          "top": 435.265625,
-          "bottom": 458.203125,
+          "top": 439.265625,
+          "bottom": 462.203125,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -168,8 +168,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 437.265625,
-            "bottom": 457.65625,
+            "top": 441.265625,
+            "bottom": 461.65625,
             "left": 85.296875,
             "right": 138.203125,
             "height": 20.390625,
@@ -178,8 +178,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 435.265625,
-            "bottom": 458.203125,
+            "top": 439.265625,
+            "bottom": 462.203125,
             "left": 257.4375,
             "right": 266.296875,
             "height": 22.9375,
@@ -191,8 +191,8 @@
         },
         {
           "key": "social",
-          "top": 466.203125,
-          "bottom": 489.140625,
+          "top": 470.203125,
+          "bottom": 493.140625,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -200,8 +200,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 468.203125,
-            "bottom": 488.59375,
+            "top": 472.203125,
+            "bottom": 492.59375,
             "left": 85.296875,
             "right": 139.46875,
             "height": 20.390625,
@@ -210,8 +210,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 466.203125,
-            "bottom": 489.140625,
+            "top": 470.203125,
+            "bottom": 493.140625,
             "left": 248.28125,
             "right": 266.296875,
             "height": 22.9375,
@@ -223,8 +223,8 @@
         },
         {
           "key": "stress",
-          "top": 497.140625,
-          "bottom": 520.078125,
+          "top": 501.140625,
+          "bottom": 524.078125,
           "left": 85.296875,
           "right": 266.296875,
           "height": 22.9375,
@@ -232,8 +232,8 @@
           "readable": true,
           "unobscured": true,
           "label": {
-            "top": 499.140625,
-            "bottom": 519.53125,
+            "top": 503.140625,
+            "bottom": 523.53125,
             "left": 85.296875,
             "right": 122.234375,
             "height": 20.390625,
@@ -242,8 +242,8 @@
             "unobscured": true
           },
           "value": {
-            "top": 497.140625,
-            "bottom": 520.078125,
+            "top": 501.140625,
+            "bottom": 524.078125,
             "left": 257.4375,
             "right": 266.296875,
             "height": 22.9375,
@@ -297,8 +297,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 275.375,
-        "bottom": 339.375,
+        "top": 271.375,
+        "bottom": 335.375,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -307,8 +307,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 273.375,
-        "bottom": 557.375,
+        "top": 269.375,
+        "bottom": 553.375,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -551,8 +551,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -561,8 +561,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -805,8 +805,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -815,8 +815,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 603.5,
+        "top": 243.5,
+        "bottom": 599.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -1059,8 +1059,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -1069,8 +1069,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -1313,8 +1313,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -1323,8 +1323,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -1567,8 +1567,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -1577,8 +1577,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -1821,8 +1821,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -1831,8 +1831,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -2075,8 +2075,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -2085,8 +2085,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -2329,8 +2329,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -2339,8 +2339,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 603.5,
+        "top": 243.5,
+        "bottom": 599.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -2583,8 +2583,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -2593,8 +2593,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -2837,8 +2837,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -2847,8 +2847,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 603.5,
+        "top": 243.5,
+        "bottom": 599.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -3091,8 +3091,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -3101,8 +3101,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -3345,8 +3345,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -3355,8 +3355,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -3599,8 +3599,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -3609,8 +3609,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -3853,8 +3853,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -3863,8 +3863,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 603.5,
+        "top": 243.5,
+        "bottom": 599.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -4107,8 +4107,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -4117,8 +4117,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -4361,8 +4361,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 223.625,
-        "bottom": 287.625,
+        "top": 219.625,
+        "bottom": 283.625,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -4371,8 +4371,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 221.625,
-        "bottom": 577.625,
+        "top": 217.625,
+        "bottom": 573.625,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 356,
@@ -4615,8 +4615,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -4625,8 +4625,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -4869,8 +4869,8 @@
         "unobscured": true
       },
       "firstChoice": {
-        "top": 249.5,
-        "bottom": 313.5,
+        "top": 245.5,
+        "bottom": 309.5,
         "left": 329.296875,
         "right": 1046.703125,
         "height": 64,
@@ -4879,8 +4879,8 @@
         "unobscured": true
       },
       "list": {
-        "top": 247.5,
-        "bottom": 531.5,
+        "top": 243.5,
+        "bottom": 527.5,
         "left": 326.296875,
         "right": 1064.703125,
         "height": 284,
@@ -5082,7 +5082,7 @@
       ],
       "overflow": false,
       "choiceCount": 4,
-      "narrativeLength": 124,
+      "narrativeLength": 130,
       "longestChoice": 71,
       "focused": "event-heading"
     }

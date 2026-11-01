@@ -71,6 +71,7 @@ console.log(
     reports.map(({ templateCounts, visibleAges, ...r }) => ({
       ...r,
       authoredTemplates: Object.keys(templateCounts).length,
+      displayedAgeCount: Object.keys(visibleAges).length,
     })),
     null,
     2,

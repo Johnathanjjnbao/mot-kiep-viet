@@ -1,0 +1,25 @@
+{
+  "status": "VERIFIED PASS",
+  "scope": "Changed TypeScript engine/content/UI/setup/save paths; frozen/Auth/RLS/workflow diff empty",
+  "productionVulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "sourceSecretScan": {
+    "scope": "working files, public dist assets and all reachable Git blobs",
+    "textObjectsScanned": 1240,
+    "findings": []
+  },
+  "review": {
+    "newUntrustedInputs": "setup parsed by strict setupSchema; save replay checks every derived field against immutable selector/actions",
+    "bounds": "512 actions,5MiB,shared120 for family,academic40 and per-record bounds unchanged",
+    "money": "monthly settlements and all tuition/training/support remain ledger entries",
+    "ui": "React text rendering, no HTML or shell sink added",
+    "cloud": "No SQL/Auth/RLS writes; PGlite checks canonical annual/paused envelopes, not live JWT/RLS"
+  },
+  "confirmedNewCriticalOrHigh": 0
+}

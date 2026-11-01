@@ -105,6 +105,14 @@ describe('annual university correction and authored stages', () => {
     expect(currentStudy(r)!.status).toBe('paused');
     expect(tuition()).toBe(fees);
     expect(currentStudy(r)!.results).toEqual(before.results);
+    if (r.activeEvent?.id === 'employment-search') {
+      const month = r.month;
+      const resumed = resume();
+      expect(resumed.month).toBe(month);
+      expect(resumed.activeEvent?.id).not.toBe('employment-search');
+      expect(currentStudy(resumed)!.status).toBe('studying');
+      expect(parseSave(JSON.stringify(snapshot(resumed))).run).toEqual(resumed);
+    }
     // Finish any ordinary event before returning; academic controls retain strict focus guards.
     for (let i = 0; i < 20 && r.activeEvent; i++) {
       const e = activeDefinition(r)!;

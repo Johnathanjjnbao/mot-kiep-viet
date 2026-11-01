@@ -287,6 +287,23 @@ export const annualEvents: EventDefinition[] = [
 ];
 
 export function contextualAnnual(r: GameRun, e: EventDefinition): EventDefinition {
+  if (e.id === 'employment-search') {
+    const period = r.employment?.periods.at(-1);
+    const months = period?.endMonth === null ? r.month - period.startMonth : 0;
+    const rejection = r.employment?.applications.at(-1)?.result === 'rejected';
+    const dependent = r.npcs.some((n) => {
+      const child = r.family?.children.find((c) => c.npcId === n.id);
+      return (
+        n.role === 'child' &&
+        n.alive &&
+        (child ? r.month - child.bornMonth < 216 : r.world.year - n.birthYear < 18)
+      );
+    });
+    return {
+      ...e,
+      text: `Bạn đã ${months} tháng chưa có việc toàn thời gian.${rejection ? ' Hồ sơ gần nhất chưa được nhận.' : ''}${dependent ? ' Trong nhà còn con chưa trưởng thành cần chăm sóc.' : ''} Bạn cân nhắc tìm việc, nhận việc tạm, củng cố kỹ năng hoặc hồi sức trước khi thử tiếp.`,
+    };
+  }
   if (e.version !== 9) return e;
   const parents = residentParents(r);
   const care = parents.length ? parents.map((p) => p.name).join(' và ') : 'Người đang chăm sóc bạn';

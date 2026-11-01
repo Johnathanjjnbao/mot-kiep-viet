@@ -1,5 +1,18 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Year-by-Year — local release candidate đã qua gates (01/11/2026)
+
+Candidate **0.3.7-yearly.1**, tiếp tục baseline da55d28, nhánh main. Đời mới dùng annual-v1; mỗi tuổi bắt đầu từ0 phải có quyết định trước khi qua sinh nhật tiếp. Tháng vẫn xử lý lương, học phí, nợ, hợp đồng, gia đình và lịch hẹn từng lần. Không còn kết thúc hồi ký bắt buộc tại82 trong nhánh mới. Đời cũ và8golden lịch sử giữ nguyên; golden annual432954253 riêng. Engine/content3.0.0/schema4,512actions/5MiB và ID save/history không đổi.
+
+**Local VERIFIED PASS:** verify230tests/24files,76E2E không skip,10E2E bổ sung trên nội dung hiển thị cuối, production Pages-subpath smoke; Chromium/Firefox/WebKit ×desktop/mobile6/6 cho0–82 và bảo lưu/xuất–nhập/reload/trở lại học. Bốn suite6viewport×20lựa chọn giữ đo HUD/narrative/first-choice trước input, cùng fixture6lựa chọn của save cũ. 1.000seed/1.000canonical replay:0vi phạm,0fallback,0tuổi thiếu/0tuổi bỏ,122.721quyết định, max420actions/629967bytes, tuổi kết thúc65–107. Fixture gia đình3con dùng đủ120quản lý vẫn kết thúc tự nhiên ở122,405actions/652537bytes.
+
+32cảnh thường mới và50tình huống năm học cho12ngành đã được quan sát đủ trong stress; catalog184template tĩnh +50academic stages =234authored templates/stages,219được quan sát tổng. Không đếm academic instance IDs hay remediation sinh theo kết quả thành authored stories. 200same +200varied: mỗi nhóm200/200chuỗi5 và10cảnh đầu khác nhau,6template mở đầu sơ sinh,0fallback. Nhóm career-v1 bắt đầu ở tuổi3 nên không so6/14như tỷ lệ cải thiện.
+
+Bảo lưu mới thật sự dừng học, giữ tiến độ/phí đã trả và không thu học phí mới; trở lại sau ít nhất6tháng, dùng tiếp kỳ trả trước rồi thu kỳ sau đúng1lần. Rest vẫn ghi danh, khác rõ bảo lưu. Mỗi ngành có tình huống riêng từng năm, healthcare6năm; chưa có giấy phép hành nghề chỉ vì tốt nghiệp. Reenroll thay cảnh tìm việc đã hết điều kiện ở cùng tháng, không mất quyết định của tuổi còn nợ.
+
+Production candidate **chưa deploy/CI/live mới chưa xác minh** tại checkpoint này. Cloud/JWT/RLS thật **BLOCKED** (CLI chưa đăng nhập), owner login **NOT RUN**; không SQL/Auth/RLS changes hay productionwrites. Audit production0; secret scan1240text objects working/public/history,0findings. Bằng chứng và phần rủi ro/các mẫu lỗi được giữ tại [YEAR_BY_YEAR_PROGRESS](YEAR_BY_YEAR_PROGRESS.md). Digital/business, quân sự, xuất ngoại và tuổi thọ500/1000năm vẫn ngoài phạm vi.
+
+
 ## Year-by-Year checkpoint local — 01/11/2026
 
 Tiếp tục da55d28/main. annual-v1 opt-in, chưa đổi mặc định production: tiến từng tuổi từ0, bảo lưu thật và50academic stages của12ngành.226unit/integration PASS;1.000seed/1.000replay/0vi phạm/0fallback/0tuổi thiếu/0tuổi bỏ, max420actions/629967bytes, tuổi kết thúc65–107. Fixture gia đình3con/120quản lý sống đến122 với405actions/652537bytes vàcanonical import. Browser0–82/pause desktop/mobile và6viewport20 đang chốt; lỗi2px ở chữ lớn đã sửa và kiểm lại. Chưa gọi full E2E/CI/live PASS. Production vẫn0.3.6-employment.1. Xem YEAR_BY_YEAR_PROGRESS; old goldens/save IDs/version tuple giữ nguyên. Cloud mới BLOCKED, owner login NOT RUN.

@@ -37,6 +37,12 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
             {study.status === 'paused' ? 'Đang bảo lưu' : 'Đang học'} · Đã đạt{' '}
             {study.completedYears}/{program.years} năm{study.internship ? ' · Có thực tập' : ''}
           </p>
+          {run.setup.lifeRules === 'annual-v1' && (
+            <p>
+              Đã đóng {study.paidTerms} kỳ học phí · Đã dự {study.termAttempts} lần đánh giá. Học
+              bổng và hỗ trợ từng kỳ được ghi trong sổ tiền.
+            </p>
+          )}
           <p>
             {study.status === 'paused'
               ? 'Bạn có thể đi làm để chuẩn bị học phí, rồi trở lại phần còn lại.'

@@ -961,6 +961,19 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
     const next = requestAcademic(run, action, (r) => random(r, 'event')),
       active = activeDefinition(next);
     syncEmployment(next);
+    if (isAnnual(next) && active?.id === 'employment-search' && !employmentSceneEligible(next)) {
+      // Reenrollment ends unemployment. Replace only the now-inapplicable job
+      // search at the SAME month; annual coverage remains owed until a choice.
+      note(
+        next,
+        'Trở lại chương trình',
+        'Việc tìm việc tạm nhường chỗ cho chương trình đang học.',
+        'education',
+      );
+      next.activeEvent = null;
+      selectEvent(next);
+      return next;
+    }
     if (
       active &&
       (!eligible(next, active.condition) ||

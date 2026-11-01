@@ -209,7 +209,8 @@ for (let i = 0; i < total; i++) {
     if (run.flags['business-profited']) report.business.profit++;
     if (run.flags['business-lost']) report.business.loss++;
     if (run.flags['business-exited']) report.business.exited++;
-    run.choices.forEach((c) => observed.add(c.eventId.split('@')[0]));
+    if (testAnnual) Object.keys(report.annual!.templateCounts).forEach((id) => observed.add(id));
+    else run.choices.forEach((c) => observed.add(c.eventId.split('@')[0]));
   } catch (error) {
     report.invariantViolations++;
     report.failures.push({ seed, message: error instanceof Error ? error.message : String(error) });

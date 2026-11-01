@@ -15,14 +15,14 @@ test('one identity grows from birth to old age and remains in the memoir on relo
   const identity = await image.getAttribute('data-avatar');
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
   const stages = new Set<string>();
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 512; i++) {
     const current = page.locator('.living-avatar:visible').first();
     expect(await current.getAttribute('data-avatar')).toBe(identity);
     stages.add((await current.getAttribute('data-stage'))!);
     if (await page.getByRole('heading', { name: /Một đời đã sống/ }).isVisible()) break;
     await page.getByTestId('event-choice').first().click();
   }
-  expect([...stages].sort()).toEqual(['1', '2', '3', '4', '5']);
+  expect([...stages].sort()).toEqual(['0', '1', '2', '3', '4', '5']);
   await expect.poll(async () => (await readGuestRun(page)).status).toBe('ended');
   await page.reload();
   await page.getByRole('button', { name: /Tiếp tục cuộc đời của/ }).click();
