@@ -1,5 +1,20 @@
 # Master Plan — Một Kiếp Việt
 
+## Đã phát hành 0.3.7-yearly.1 — G5 guest VERIFIED PASS (01/11/2026)
+
+Source **1fb059cd73d5dc676724f705f58094f50dd30c70**, main; [CI41281828843](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843) completed/success cho build và deploy. [Chơi bản live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repository](https://github.com/Johnathanjjnbao/mot-kiep-viet). Tiếp tục baseline da55d28; không làm lại Creator/A/B/C. Đời mới dùng annual-v1, trải nghiệm từng tuổi từ0, không ép kết thúc ở82. Đời/save cũ giữ luật,8golden cũ và frozen v1/v2; golden annual432954253 riêng. Engine/content3.0.0/schema4 và mọi ID lưu/history giữ nguyên.
+
+Local/CI230tests,76E2E không skip, production Pages smoke PASS; local10E2E cuối kiểm nội dung hiển thị sau biên tập. 1.000seed/1.000canonical replay,0vi phạm/0fallback/0tuổi thiếu/0tuổi bỏ, max420actions/629967bytes; tuổi kết thúc65–107. Fixture gia đình3con dùng đủ120quản lý đến122,405actions/652537bytes, replay/import PASS.32cảnh thường mới +50tình huống học theo năm/ngành; quan sát đủ82mới trong stress. Catalog184tĩnh +50stages =234;219authored templates/stages được quan sát, không đếm instance IDs hay remediation như truyện mới.
+
+**Live G5 guest:** Chromium/Firefox/WebKit ×desktop/mobile6/6 đều chơi và chọn ở mọi tuổi0–82, save3slots/export/import/reload, bảo lưu thật và trở lại học qua UI ở cùng tháng.12hành trình tốt nghiệp live (healthcare6năm vàKorean4năm trên6cấu hình) có cảnh riêng từng năm, học phí đúng, qualifications đúng.6viewport×20mixed choices vàsave cũ6choices PASS; HUD/narrative/toàn bộ first-choice được đo trước input/autoscroll. Guest full-life/5dạng gia đình/history/font/network không lỗi. CSS/JS/SW live khớp SHA-256 build; ảnh mobile WebKit học tập đã được xem trực tiếp.
+
+Bảo lưu annual-v1 không thu học phí mới, không tăng attempt/credit khi dừng; tối thiểu6tháng rồi tiếp tục kỳ trả trước, kỳ sau thu1lần. Rest vẫn ghi danh, có học phí và chậm tiến độ.12ngành có50tình huống riêng (health6năm, các ngành khác4năm), học lại phản ánh kết quả trước; không tự cấp giấy phép hành nghề. Các nhãn rest/bảo lưu trong save education-v1/career-v1 vẫn là lịch sử, không bị âm thầm viết lại.
+
+Audit production0; local secret scan1240/CI1258text objects,0findings. PGlite kiểm được snapshot annual/paused thật dưới envelope đã duyệt, không thay Auth/JWT/RLS thật. Cloud mới **BLOCKED** vì Supabase CLI chưa đăng nhập; owner personal login **NOT RUN**. Không SQL/Auth/RLS change hay productionwrites. Muốn mở lại cloud QA: chủ dự án tự chạy Supabase CLI login, xác nhận project kqnapcyceddwvrvkquvg; không gửi token qua chat.
+
+Giới hạn512actions/5MiB vẫn giữ. Dự trữ UI tới mốc dự báo160 chỉ giới hạn quản lý tùy chọn, không phải trần tuổi engine;500/1000năm cần schema/segment/trusted validation mới, chưa triển khai. Digital/business, quân sự và xuất ngoại vẫn ngoài phiên này; full backlog M5 không được coi hoàn thành. Bằng chứng: [yearly-release.json](evidence/yearly-release.json), [YEAR_BY_YEAR_PROGRESS](YEAR_BY_YEAR_PROGRESS.md). Các checkpoint pending bên dưới giữ lịch sử và được mục phát hành này thay thế. Commit tài liệu/QA runner bổ sung được kiểm workflow cuối riêng; xem git log và báo cáo phiên, không tự tham chiếu SHA vào chính commit.
+
+
 ## Year-by-Year — local release candidate đã qua gates (01/11/2026)
 
 Candidate **0.3.7-yearly.1**, tiếp tục baseline da55d28, nhánh main. Đời mới dùng annual-v1; mỗi tuổi bắt đầu từ0 phải có quyết định trước khi qua sinh nhật tiếp. Tháng vẫn xử lý lương, học phí, nợ, hợp đồng, gia đình và lịch hẹn từng lần. Không còn kết thúc hồi ký bắt buộc tại82 trong nhánh mới. Đời cũ và8golden lịch sử giữ nguyên; golden annual432954253 riêng. Engine/content3.0.0/schema4,512actions/5MiB và ID save/history không đổi.

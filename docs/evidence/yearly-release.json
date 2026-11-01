@@ -1,0 +1,90 @@
+{
+  "version": "0.3.7-yearly.1",
+  "baseline": "da55d281673396aa5d73cae628dd9b1731b4ddb6",
+  "source": "1fb059cd73d5dc676724f705f58094f50dd30c70",
+  "branch": "main",
+  "sourceCI": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843",
+  "status": "VERIFIED PASS",
+  "G5Guest": "VERIFIED PASS",
+  "url": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "repo": "https://github.com/Johnathanjjnbao/mot-kiep-viet",
+  "ruleset": "annual-v1",
+  "compatibility": "Engine/content3.0.0/schema4, previous8 goldens/frozen v1/v2 unchanged;9th annual golden432954253",
+  "localUnit": 230,
+  "localE2E": 76,
+  "ciUnit": 230,
+  "ciE2E": 76,
+  "localLastDisplayFocused": 10,
+  "seeds": 1000,
+  "replays": 1000,
+  "missingAges": 0,
+  "maxSkippedAge": 0,
+  "invariantViolations": 0,
+  "fallback": 0,
+  "maxActions": 420,
+  "maxSaveBytes": 629967,
+  "seededAgesAtDeath": [
+    65,
+    107
+  ],
+  "largeFamily": {
+    "children": 3,
+    "discretionary": 120,
+    "age": 122,
+    "actions": 405,
+    "bytes": 652537
+  },
+  "authored": {
+    "newOrdinary": 32,
+    "newAcademicStages": 50,
+    "staticCatalog": 184,
+    "staticPlusStages": 234,
+    "observed": 219,
+    "allNewOrdinaryObserved": 32,
+    "allNewStagesObserved": 50
+  },
+  "live": {
+    "browsersDesktopMobile": 6,
+    "eachDisplayedAges": "0..82",
+    "pauseExportImportReloadResume": 6,
+    "fullDegrees": 12,
+    "healthYears": 6,
+    "koreanYears": 4,
+    "sixViewport20Choices": true,
+    "oldSixChoiceSaves": true,
+    "guestSaveLoadHistoryFontsNetwork": "VERIFIED PASS",
+    "assets": [
+      {
+        "path": "/mot-kiep-viet/assets/index-BlK5s_QB.css",
+        "sha256": "403707e24428f9c7abe7b3bded3e39193413936c4d458aff341691484eeef6fc",
+        "status": "VERIFIED PASS"
+      },
+      {
+        "path": "/mot-kiep-viet/assets/index-CE286t9p.js",
+        "sha256": "c6c73751e195370e56f40922e93075cee9a0f9dd06bbf5dc65ec2c6f91ea8e9b",
+        "status": "VERIFIED PASS"
+      },
+      {
+        "path": "/mot-kiep-viet/sw.js",
+        "sha256": "c36f3ab70fe23bf3e2f6a6507dee5094c719c69afc2677c911dc2efac0e505eb",
+        "status": "VERIFIED PASS"
+      }
+    ]
+  },
+  "security": {
+    "localSecretObjects": 1240,
+    "ciSecretObjects": 1258,
+    "secretFindings": 0,
+    "productionAudit": 0,
+    "productionSQLAuthRLSChanges": false,
+    "handoffSecretObjects": 1301
+  },
+  "cloud": "BLOCKED: Supabase CLI authentication unavailable",
+  "ownerPersonalLogin": "NOT RUN",
+  "knownLimits": [
+    "Old education-v1/career-v1 rest labels preserve historical semantics; actual pause fix is annual-v1 only.",
+    "512actions/5MiB unchanged;500/1000year segment storage is NOT IMPLEMENTED.",
+    "Stress policy is not a model of real mortality/hiring; paid training, dropout/switch and children use targeted fixtures as well."
+  ],
+  "finalDocumentationCI": "Subsequent documentation/QA-runner commit is verified separately in final session report, avoiding a self-referential evidence loop."
+}

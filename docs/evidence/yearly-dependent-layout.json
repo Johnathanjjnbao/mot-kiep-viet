@@ -1,0 +1,16 @@
+{
+  "status": "VERIFIED PASS",
+  "ruleset": "annual-v1",
+  "seed": "family-life-0",
+  "scenario": "Real annual family with child, resignation and employment-search",
+  "viewport": {
+    "width": 375,
+    "height": 667,
+    "largeText": true
+  },
+  "ageMonths": 277,
+  "children": 1,
+  "narrativeLength": 180,
+  "firstChoiceBottom": 598.875,
+  "measurement": "assertDecisionViewport before any input/autoscroll"
+}

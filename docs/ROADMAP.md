@@ -1,5 +1,8 @@
 # Backlog sau beta v0.3
 
+Year-by-Year0.3.7-yearly.1 đã phát hành/G5 guest VERIFIED PASS, source1fb059c. Các mục Digital/business/military/long-lived500–1000years bên dưới tiếp tục là backlog, không thuộc phiên này. Chi tiết YEAR_BY_YEAR_PROGRESS.md.
+
+
 Year-by-Year0.3.7-yearly.1 đang chốt phát hành sau local gates. Phạm vi phiên này là từng tuổi, bảo lưu thật và chiều sâu12ngành; Digital/business và quân sự không được tự mở lại từ backlog. Tuổi thọ500/1000năm cần định dạng lưu/replay/cloud được version và duyệt riêng, không phải mở trần512actions toàn cục. Xem YEAR_BY_YEAR_PROGRESS.md.
 
 

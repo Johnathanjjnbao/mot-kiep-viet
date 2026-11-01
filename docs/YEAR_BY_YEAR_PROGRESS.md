@@ -1,5 +1,20 @@
 # Tiến từng tuổi và chiều sâu đại học
 
+## Đã phát hành 0.3.7-yearly.1 — G5 guest VERIFIED PASS (01/11/2026)
+
+Source **1fb059cd73d5dc676724f705f58094f50dd30c70**, main; [CI41281828843](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843) completed/success cho build và deploy. [Chơi bản live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repository](https://github.com/Johnathanjjnbao/mot-kiep-viet). Tiếp tục baseline da55d28; không làm lại Creator/A/B/C. Đời mới dùng annual-v1, trải nghiệm từng tuổi từ0, không ép kết thúc ở82. Đời/save cũ giữ luật,8golden cũ và frozen v1/v2; golden annual432954253 riêng. Engine/content3.0.0/schema4 và mọi ID lưu/history giữ nguyên.
+
+Local/CI230tests,76E2E không skip, production Pages smoke PASS; local10E2E cuối kiểm nội dung hiển thị sau biên tập. 1.000seed/1.000canonical replay,0vi phạm/0fallback/0tuổi thiếu/0tuổi bỏ, max420actions/629967bytes; tuổi kết thúc65–107. Fixture gia đình3con dùng đủ120quản lý đến122,405actions/652537bytes, replay/import PASS.32cảnh thường mới +50tình huống học theo năm/ngành; quan sát đủ82mới trong stress. Catalog184tĩnh +50stages =234;219authored templates/stages được quan sát, không đếm instance IDs hay remediation như truyện mới.
+
+**Live G5 guest:** Chromium/Firefox/WebKit ×desktop/mobile6/6 đều chơi và chọn ở mọi tuổi0–82, save3slots/export/import/reload, bảo lưu thật và trở lại học qua UI ở cùng tháng.12hành trình tốt nghiệp live (healthcare6năm vàKorean4năm trên6cấu hình) có cảnh riêng từng năm, học phí đúng, qualifications đúng.6viewport×20mixed choices vàsave cũ6choices PASS; HUD/narrative/toàn bộ first-choice được đo trước input/autoscroll. Guest full-life/5dạng gia đình/history/font/network không lỗi. CSS/JS/SW live khớp SHA-256 build; ảnh mobile WebKit học tập đã được xem trực tiếp.
+
+Bảo lưu annual-v1 không thu học phí mới, không tăng attempt/credit khi dừng; tối thiểu6tháng rồi tiếp tục kỳ trả trước, kỳ sau thu1lần. Rest vẫn ghi danh, có học phí và chậm tiến độ.12ngành có50tình huống riêng (health6năm, các ngành khác4năm), học lại phản ánh kết quả trước; không tự cấp giấy phép hành nghề. Các nhãn rest/bảo lưu trong save education-v1/career-v1 vẫn là lịch sử, không bị âm thầm viết lại.
+
+Audit production0; local secret scan1240/CI1258text objects,0findings. PGlite kiểm được snapshot annual/paused thật dưới envelope đã duyệt, không thay Auth/JWT/RLS thật. Cloud mới **BLOCKED** vì Supabase CLI chưa đăng nhập; owner personal login **NOT RUN**. Không SQL/Auth/RLS change hay productionwrites. Muốn mở lại cloud QA: chủ dự án tự chạy Supabase CLI login, xác nhận project kqnapcyceddwvrvkquvg; không gửi token qua chat.
+
+Giới hạn512actions/5MiB vẫn giữ. Dự trữ UI tới mốc dự báo160 chỉ giới hạn quản lý tùy chọn, không phải trần tuổi engine;500/1000năm cần schema/segment/trusted validation mới, chưa triển khai. Digital/business, quân sự và xuất ngoại vẫn ngoài phiên này; full backlog M5 không được coi hoàn thành. Bằng chứng: [yearly-release.json](evidence/yearly-release.json), [YEAR_BY_YEAR_PROGRESS](YEAR_BY_YEAR_PROGRESS.md). Các checkpoint pending bên dưới giữ lịch sử và được mục phát hành này thay thế. Commit tài liệu/QA runner bổ sung được kiểm workflow cuối riêng; xem git log và báo cáo phiên, không tự tham chiếu SHA vào chính commit.
+
+
 ## Year-by-Year — local release candidate đã qua gates (01/11/2026)
 
 Candidate **0.3.7-yearly.1**, tiếp tục baseline da55d28, nhánh main. Đời mới dùng annual-v1; mỗi tuổi bắt đầu từ0 phải có quyết định trước khi qua sinh nhật tiếp. Tháng vẫn xử lý lương, học phí, nợ, hợp đồng, gia đình và lịch hẹn từng lần. Không còn kết thúc hồi ký bắt buộc tại82 trong nhánh mới. Đời cũ và8golden lịch sử giữ nguyên; golden annual432954253 riêng. Engine/content3.0.0/schema4,512actions/5MiB và ID save/history không đổi.
@@ -73,3 +88,24 @@ Mỗi ngành đã qua admission → các năm riêng → graduation/internship �
 Diversity200same +200varied: annual có6authored opening templates tuổi0; first5=200/200 vàfirst10=200/200 ở mỗi nhóm,0fallback. Career baseline mở đầu tuổi3 nên không dùng tỷ lệ6/14 để tuyên bố cải thiện. Đo actual template IDs ở yearly-diversity-200.json; instance IDs academic không được tính thành authored stories.
 
 verify local224tests trước thêm budget/golden; các tests mới sẽ chạy lại full gate. Browser đang QA: desktop/mobile0–82 và pause đã PASS; large-text20 còn lỗi first-choice bị clip2px, đang sửa khoảng cách mà không clamp narrative/HUD. Chưa gọi UI/production PASS. Real cloud CLI mới kiểm: **BLOCKED**, không authenticated/project proof, không productionwrites. Owner login **NOT RUN**. Audit production0/secret scan1179objects0findings tại thời điểm chạy; cần scan lại trước push.
+
+## Lệnh tái kiểm và điểm bàn giao cuối
+
+- `npm.cmd run verify` (VITE_BASE_PATH=/mot-kiep-viet/):230tests/type/lint/content/build.
+- `npm.cmd run test:e2e` (E2E_PRODUCTION=1):76/76; `npm.cmd run test:production` trên build Pages.
+- `npm.cmd run simulate -- 1000 --creator --annual` với MKV_SIMULATION_REPORT riêng; report hiện tại được tạo sau fix reenroll. Chỉ sửa narrative hiển thị sau đó, không thay RNG/ledger/title/actions hay9goldens.
+- `npx.cmd tsx scripts/diagnose-annual.ts`:200same+200varied mỗi ruleset.
+- `npx.cmd tsx scripts/qa-annual-browsers.ts https://johnathanjjnbao.github.io/mot-kiep-viet/`:0–82 +pause/export/import/reload/resume trên6cấu hình.
+- `npx.cmd tsx scripts/qa-annual-degrees.ts https://johnathanjjnbao.github.io/mot-kiep-viet/`:12degree journeys,6unique health stages và4unique Korean stages.
+- `node scripts/qa-decision-viewport.mjs <live URL>`:6viewport/settings×20mixed +legacy6choices.
+- `node scripts/check-pages.mjs`:guest create/choose/advance/manual save/load/autosave/history/font/network trên desktop/mobile.
+- `node scripts/check-release-assets.mjs`:live CSS/JS/SW byte hashes so với dist; MKV_ASSET_REPORT có thể đặt file riêng.
+- `node scripts/scan-secrets.mjs`:working/public/all-reachable-history; `npm.cmd audit --omit=dev`:0advisories.
+
+Điểm nguồn: src/engine/annual.ts ageExperienced/assertAnnual; src/engine/engine.ts advance/selectEvent/tick/dispatch; src/engine/academics.ts academicDefinition/resolveAcademic/requestAcademic; src/content/academic-stages.ts stageTemplate; src/content/annual-events.ts contextualAnnual; src/application/useGameSession.ts giữ chỗ story; src/persistence/saves.ts strict header +canonical replay. Test audit/annual/annual-academics/annual-integration/annual-budget vàE2E annual/annual-viewport; oldgoldens không sửa.
+
+Báo cáo metrics: templateCounts là số lần cảnh được trình bày, bao gồm root được mở lại sau focus/quản lý. Trong stress, edu-direction12350/employment-search10069 là exposure counters, không có nghĩa sinh hàng nghìn authored stories; actual authored IDs=219, completed decisions122721. Remediation variants2067 chia sẻ50base academic stories. Job-search narrative đọc thời gian thất nghiệp, hồ sơ từ chối và con còn phụ thuộc thật; đây là variant bối cảnh của1template, không được đếm thành truyện mới.
+
+Những mẫu FAIL được giữ: yearly-pilot-30/30b; batch trần social81 với57fail; intermediate E2E68pass/8fail vì các test còn giả định phiên bản cũ. Sau sửa nguyên nhân,230unit/76E2E/1000replay/live gates cuối PASS. Không dùng các mẫu lỗi làm PASS hay xóa chúng để làm đẹp báo cáo. Old generic evidence đã chép sang yearly-regression-* rồi phục hồi byte gốc, giữ lịch sử các đợt phát hành trước.
+
+Cloud personal login vẫn NOT RUN, real cloud QA BLOCKED. Không mở scope Digital/business/military/longevity khi tiếp tục chỉ để lấp thời gian chờCI. Nếu phiên sau có yêu cầu mới, bắt đầu bằng PROJECT_STATUS, git status/HEAD/remote vàgraph; không làm lại nền annual đã xác minh. Không có scheduler hay công việc ẩn tiếp tục sau khi phiên kết thúc.
