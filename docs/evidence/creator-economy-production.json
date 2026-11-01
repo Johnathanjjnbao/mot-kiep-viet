@@ -1,0 +1,11 @@
+{
+  "status": "VERIFIED PASS",
+  "version": "0.3.8-creator.1",
+  "base": "/mot-kiep-viet/",
+  "checks": [
+    "built HTML/font license",
+    "new life and decision",
+    "automatic monthly advance/autosave",
+    "reload exact event"
+  ]
+}

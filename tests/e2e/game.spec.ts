@@ -65,7 +65,7 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   }
   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
   const ended = await readGuestRun(page);
-  expect(ended.setup.lifeRules).toBe('enterprise-v1');
+  expect(ended.setup.lifeRules).toBe('creator-v1');
   expect(ended.setup.currency).toBe('vnd-v1');
   expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

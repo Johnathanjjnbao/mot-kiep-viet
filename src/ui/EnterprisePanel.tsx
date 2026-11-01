@@ -251,7 +251,7 @@ function ShopCard({ run, e, act }: Props & { e: Enterprise }) {
               <p>
                 Khép tiệm sẽ trả lại quỹ và thanh lý hàng ở 50% giá vốn: khoảng{' '}
                 <b>{money(refund, run)}</b>. Sổ tiệm được giữ trong cuộc đời; lần thử mới dùng một
-                ID khác.
+                sổ riêng.
               </p>
               <div className="button-row">
                 <button

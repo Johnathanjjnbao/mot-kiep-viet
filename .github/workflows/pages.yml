@@ -11,7 +11,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     env:
       VITE_BASE_PATH: /mot-kiep-viet/
       E2E_PRODUCTION: '1'

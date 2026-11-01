@@ -24,6 +24,7 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
         a.type === 'social' ||
         a.type === 'family-talk' ||
         a.type === 'enterprise' ||
+        a.type === 'creator' ||
         a.type === 'academic',
     ).length >= (input.family ? 120 : input.social ? 250 : 350)
   )

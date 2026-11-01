@@ -14,12 +14,30 @@ const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
 const testVnd = process.argv.includes('--vnd');
-const testEnterprise = process.argv.includes('--enterprise');
+const testCreatorEconomy = process.argv.includes('--creator-economy');
+const testEnterprise = process.argv.includes('--enterprise') || testCreatorEconomy;
 const testAnnual = process.argv.includes('--annual') || testEnterprise;
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   currency: testVnd ? 'vnd-v1' : 'dsm-v1',
   runs: 0,
+  creatorEconomy: {
+    enabled: testCreatorEconomy,
+    runs: 0,
+    channels: 0,
+    maxActions: 0,
+    maxAudience: 0,
+    monetizedChannels: 0,
+    profitableMonths: 0,
+    lossMonths: 0,
+    zeroPlatformIncomeMonths: 0,
+    viralMonths: 0,
+    liveMonths: 0,
+    pausedObservations: 0,
+    platformIncome: 0,
+    sponsorIncome: 0,
+    cost: 0,
+  },
   enterprise: {
     runs: 0,
     ventures: 0,
@@ -94,6 +112,7 @@ for (let i = 0; i < total; i++) {
   try {
     const presented = new Set<string>();
     const settledBusinessMonths = new Set<string>();
+    const settledCreatorMonths = new Set<string>();
     const family = (Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[])[
       Math.floor(i / 5) % 5
     ];
@@ -111,17 +130,19 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testEnterprise
-          ? { lifeRules: 'enterprise-v1' as const }
-          : testAnnual
-            ? { lifeRules: 'annual-v1' as const }
-            : testEmployment
-              ? { lifeRules: 'career-v1' as const }
-              : testEducation
-                ? { lifeRules: 'education-v1' as const }
-                : testDiversity
-                  ? { lifeRules: 'dynamic-v1' as const }
-                  : {}),
+        ...(testCreatorEconomy
+          ? { lifeRules: 'creator-v1' as const }
+          : testEnterprise
+            ? { lifeRules: 'enterprise-v1' as const }
+            : testAnnual
+              ? { lifeRules: 'annual-v1' as const }
+              : testEmployment
+                ? { lifeRules: 'career-v1' as const }
+                : testEducation
+                  ? { lifeRules: 'education-v1' as const }
+                  : testDiversity
+                    ? { lifeRules: 'dynamic-v1' as const }
+                    : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -137,6 +158,24 @@ for (let i = 0; i < total; i++) {
       i % 5,
       (r) => {
         const e = activeDefinition(r);
+        if (testCreatorEconomy)
+          for (const c of r.creator?.channels ?? []) {
+            report.creatorEconomy.maxAudience = Math.max(
+              report.creatorEconomy.maxAudience,
+              c.audience,
+            );
+            if (c.status === 'paused') report.creatorEconomy.pausedObservations++;
+            for (const m of c.recent) {
+              const key = `${c.id}:${m.month}`;
+              if (settledCreatorMonths.has(key)) continue;
+              settledCreatorMonths.add(key);
+              if (m.profit > 0) report.creatorEconomy.profitableMonths++;
+              if (m.profit < 0) report.creatorEconomy.lossMonths++;
+              if (m.platformIncome === 0) report.creatorEconomy.zeroPlatformIncomeMonths++;
+              if (m.viral) report.creatorEconomy.viralMonths++;
+              if (c.policy.format === 'live' && m.published > 0) report.creatorEconomy.liveMonths++;
+            }
+          }
         if (testEnterprise) {
           report.enterprise.maxTransactions = Math.max(
             report.enterprise.maxTransactions,
@@ -182,6 +221,20 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    if (run.creator?.channels.length) {
+      report.creatorEconomy.runs++;
+      report.creatorEconomy.channels += run.creator.channels.length;
+      report.creatorEconomy.maxActions = Math.max(
+        report.creatorEconomy.maxActions,
+        run.actions.filter((a) => a.type === 'creator').length,
+      );
+      for (const c of run.creator.channels) {
+        if (c.totals.platformIncome > 0) report.creatorEconomy.monetizedChannels++;
+        report.creatorEconomy.platformIncome += c.totals.platformIncome;
+        report.creatorEconomy.sponsorIncome += c.totals.sponsorIncome;
+        report.creatorEconomy.cost += c.totals.cost;
+      }
+    }
     if (run.enterprise?.ventures.length) {
       report.enterprise.runs++;
       report.enterprise.ventures += run.enterprise.ventures.length;

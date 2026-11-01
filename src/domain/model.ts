@@ -1,4 +1,5 @@
 import type { Enterprise } from './enterprise';
+import type { CreatorEconomy, CreatorAction, CreatorOperation } from './creator-economy';
 import type { EnterpriseAction } from './enterprise-actions';
 import type { BusinessOperation } from './enterprise-actions';
 import type { FamilyState, FamilyAction, ParentingStyle } from './family';
@@ -153,6 +154,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'creator'; operation: CreatorOperation }
   | { kind: 'enterprise'; operation: BusinessOperation }
   | { kind: 'employment'; operation: EmploymentOperation }
   | { kind: 'academic'; method: AcademicMethod }
@@ -258,6 +260,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | CreatorAction
   | EnterpriseAction
   | AcademicAction
   | FamilyAction
@@ -269,7 +272,8 @@ export type RunAction =
 export interface RunSetup {
   /** Immutable denomination; absent historical saves retain design money. */
   currency?: 'dsm-v1' | 'vnd-v1';
-  lifeRules?: 'dynamic-v1' | 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1';
+  lifeRules?:
+    'dynamic-v1' | 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1' | 'creator-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -284,6 +288,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  creator?: CreatorEconomy;
   enterprise?: { ventures: Enterprise[]; lastSceneMonth: number };
   employment?: EmploymentState;
   academics?: AcademicState;

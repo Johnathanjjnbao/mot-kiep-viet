@@ -53,7 +53,7 @@ export async function viewportJourney(
     await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
     await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
-  expect((await readGuestRun(page)).setup.lifeRules).toBe('enterprise-v1');
+  expect((await readGuestRun(page)).setup.lifeRules).toBe('creator-v1');
     await expect(page.getByTestId('hud-age')).toHaveText('0 tuổi');
     await page.evaluate(() => document.fonts.ready);
     let lastTouch = -Infinity;

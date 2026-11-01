@@ -1,0 +1,22 @@
+{
+  "status": "VERIFIED PASS (all94cases revalidated)",
+  "version": "0.3.8-creator.1",
+  "fullSuite": {
+    "passed": 93,
+    "artifactWriteError": 1,
+    "skipped": 0,
+    "durationMinutes": 10.1
+  },
+  "artifactError": "OneDrive UNKNOWN open of m5-university-local-desktop1440.json; assertions completed, repeat passed.",
+  "recheck": {
+    "test": "university viewport desktop1440",
+    "passed": 1,
+    "skipped": 0
+  },
+  "finalShopCopyCheck": {
+    "passed": 2,
+    "reporter": "list (avoids OneDrive browser-results.json writer lock)"
+  },
+  "ci": "PENDING",
+  "note": "Do not describe local full command as94/94 in a single run; exact-SHA CI must pass all94 before deployment."
+}

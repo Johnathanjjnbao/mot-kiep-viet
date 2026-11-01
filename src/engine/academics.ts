@@ -108,7 +108,7 @@ export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
   if (input.academics.focus || input.social?.focus || input.family?.focus)
     throw Error('Hãy giải quyết sự kiện đang chờ trước.');
   const management = input.actions.filter((x) =>
-    ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise'].includes(x.type),
+    ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(x.type),
   ).length;
   if (
     (input.family && management >= 120) ||

@@ -62,7 +62,7 @@ export const setupSchema = z
   .object({
     currency: z.enum(['dsm-v1', 'vnd-v1']).optional(),
     lifeRules: z
-      .enum(['dynamic-v1', 'education-v1', 'career-v1', 'annual-v1', 'enterprise-v1'])
+      .enum(['dynamic-v1', 'education-v1', 'career-v1', 'annual-v1', 'enterprise-v1', 'creator-v1'])
       .optional(),
     expansion: z.enum(['wardrobe', 'social', 'family']).optional(),
     cohort: z.number().int().min(1975).max(2026),

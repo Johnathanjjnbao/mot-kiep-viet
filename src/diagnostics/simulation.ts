@@ -1,4 +1,5 @@
 import { hasAnnualRules, hasEnterpriseRules, discretionaryCount } from '../domain/rules';
+import { creatorReason, monetizationReady, creatorPolicyReason } from '../engine/creator-economy';
 import { businessReason } from '../engine/business';
 import { designMoney } from '../domain/currency';
 import { socialEligible, requestSocial } from '../engine/social';
@@ -44,12 +45,89 @@ export function simulateLife(
         run.actions.filter((a) =>
           ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
         ).length < 114;
+    if (run.creator && managementAvailable && !creatorReason(run)) {
+      const channels = run.creator.channels,
+        total = channels.length + (run.enterprise?.ventures.length ?? 0);
+      const count = run.actions.filter((a) => a.type === 'creator').length;
+      const platform = policy % 2 ? 'tiktok' : 'youtube';
+      if (
+        !channels.length &&
+        total < 4 &&
+        !['business', 'freelance'].includes(currentCareer(run)?.id ?? '') &&
+        run.world.year >= (platform === 'youtube' ? 2014 : 2018) &&
+        run.finance.cash >= designMoney(run, 40)
+      ) {
+        run = dispatch(run, {
+          type: 'creator',
+          operation: 'start',
+          platform,
+          policy: {
+            format: 'video',
+            rhythm: policy === 3 ? 'intense' : 'light',
+            focus: policy % 2 ? 'community' : 'craft',
+            niche: policy === 4 ? 'gaming' : 'education',
+          },
+          expected: run.actions.length,
+        });
+        continue;
+      }
+      const c = channels.find((c) => c.status !== 'closed');
+      const last = run.actions.filter((a) => a.type === 'creator').length;
+      if (c && count < 16) {
+        const id = c.id as 'creator:0';
+        if (
+          c.status === 'paused' &&
+          c.burnout <= 60 &&
+          !creatorPolicyReason(run, c, c.policy) &&
+          run.finance.cash >= designMoney(run, 30) &&
+          last < 12
+        ) {
+          run = dispatch(run, {
+            type: 'creator',
+            operation: 'resume',
+            id,
+            expected: run.actions.length,
+          });
+          continue;
+        }
+        if (
+          monetizationReady(run, c) &&
+          !['pending', 'approved'].includes(c.monetization) &&
+          (c.appliedMonth === null || run.month - c.appliedMonth >= 12)
+        ) {
+          run = dispatch(run, {
+            type: 'creator',
+            operation: 'apply',
+            id,
+            expected: run.actions.length,
+          });
+          continue;
+        }
+        if (
+          c.platform === 'tiktok' &&
+          c.audience >= 1000 &&
+          run.world.year >= 2023 &&
+          c.policy.format === 'video' &&
+          c.policy.niche !== 'gaming'
+        ) {
+          run = dispatch(run, {
+            type: 'creator',
+            operation: 'policy',
+            id,
+            policy: { ...c.policy, format: 'live', rhythm: 'light' },
+            expected: run.actions.length,
+          });
+          continue;
+        }
+      }
+    }
     if (run.enterprise && managementAvailable && !businessReason(run)) {
       const books = run.enterprise.ventures;
       const count = run.actions.filter((a) => a.type === 'enterprise').length;
       const incompatible = ['business', 'freelance'].includes(currentCareer(run)?.id ?? '');
       if (
         !incompatible &&
+        books.length + (run.creator?.channels.length ?? 0) < 4 &&
         books.length < (policy === 4 ? 4 : 1) &&
         run.finance.cash >= designMoney(run, 40 + policy * 10)
       ) {

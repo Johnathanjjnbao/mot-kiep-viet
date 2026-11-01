@@ -46,6 +46,16 @@ export function lifeSummary(run: GameRun) {
     biography:
       biography +
       socialText +
+      (run.creator?.channels.length
+        ? ' Làm nội dung: ' +
+          run.creator.channels
+            .map(
+              (c) =>
+                `${c.platform === 'youtube' ? 'YouTube' : 'TikTok'} (${c.status === 'closed' ? 'đã khép kênh' : c.status === 'paused' ? 'đang nghỉ' : 'đang sản xuất'}, ${c.audience} người theo dõi, thu ${formatMoney(c.totals.platformIncome + c.totals.sponsorIncome, run)}, chi ${formatMoney(c.totals.cost, run)})`,
+            )
+            .join('; ') +
+          '.'
+        : '') +
       (run.enterprise?.ventures.length
         ? ' Tự mở tiệm: ' +
           run.enterprise.ventures

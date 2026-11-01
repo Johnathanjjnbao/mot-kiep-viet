@@ -1,6 +1,8 @@
 import type { GameRun } from './model';
 type Context = Pick<GameRun, 'setup'>;
-export const hasEnterpriseRules = (r: Context) => r.setup.lifeRules === 'enterprise-v1';
+export const hasCreatorRules = (r: Context) => r.setup.lifeRules === 'creator-v1';
+export const hasEnterpriseRules = (r: Context) =>
+  r.setup.lifeRules === 'enterprise-v1' || hasCreatorRules(r);
 export const hasAnnualRules = (r: Context) =>
   r.setup.lifeRules === 'annual-v1' || hasEnterpriseRules(r);
 export const hasEmploymentRules = (r: Context) =>

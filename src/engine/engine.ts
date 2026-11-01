@@ -1,7 +1,15 @@
 import {
+  requestCreator,
+  settleCreators,
+  closeCreatorsAtEnd,
+  creatorSceneEligible,
+  applyCreatorStory,
+} from './creator-economy';
+import {
   hasAcademicRules,
   hasEmploymentRules,
   hasEnterpriseRules,
+  hasCreatorRules,
   discretionaryCount,
 } from '../domain/rules';
 import {
@@ -231,6 +239,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
       notice: false,
     };
   if (hasEnterpriseRules(run)) run.enterprise = { ventures: [], lastSceneMonth: -12 };
+  if (hasCreatorRules(run)) run.creator = { channels: [], lastSceneMonth: -12 };
   if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
@@ -414,6 +423,7 @@ export const activeDefinition = (run: GameRun) => {
   };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 11 && !creatorSceneEligible(run, event.id)) return false;
   if (event.version === 10 && !businessSceneEligible(run, event.id)) return false;
   if (event.version === 9 && !isAnnual(run)) return false;
   if (event.version === 5) return false;
@@ -515,6 +525,9 @@ function startCareer(
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'creator':
+      applyCreatorStory(run, e.operation);
+      break;
     case 'enterprise':
       applyBusinessStory(run, e.operation);
       break;
@@ -669,6 +682,7 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
 }
 function conclude(run: GameRun, ending: 'death' | 'memoir') {
   closeBusinessesAtEnd(run);
+  closeCreatorsAtEnd(run);
   if (run.social) run.social.focus = null;
   if (run.family) run.family.focus = null;
   run.ending = ending;
@@ -731,6 +745,7 @@ function tick(run: GameRun) {
   }
   settleMonth(run);
   settleBusinesses(run);
+  settleCreators(run);
   tickEmployment(run, (r) => random(r, 'world'));
   const age = ageOf(run),
     stats = run.player.stats;
@@ -909,7 +924,9 @@ export function manage(
   if (
     input.family &&
     input.actions.filter((a) =>
-      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise'].includes(a.type),
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(
+        a.type,
+      ),
     ).length >= 120
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
@@ -1019,6 +1036,17 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
     discretionaryCount(run) >= 120
   )
     throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
+  if (action.type === 'creator') {
+    const next = requestCreator(run, action),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy hoàn tất câu chuyện đang chờ trước khi chuyển hướng kênh.');
+    return next;
+  }
   if (action.type === 'enterprise') {
     const next = requestEnterprise(run, action),
       active = activeDefinition(next);

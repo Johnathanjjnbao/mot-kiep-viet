@@ -248,7 +248,8 @@ export function careerReason(run: GameRun, id: string, ignoreApplications = fals
   if (!job) return 'Công việc không tồn tại.';
   if (
     ['business', 'freelance'].includes(id) &&
-    run.enterprise?.ventures.some((e) => e.status !== 'closed')
+    (run.enterprise?.ventures.some((e) => e.status !== 'closed') ||
+      run.creator?.channels.some((c) => c.status !== 'closed'))
   )
     return 'Cửa hàng đã có sổ riêng; hãy khép tiệm trước khi nhận nghề kinh doanh/tự do theo lương khoán.';
   if (run.status === 'ended') return 'Cuộc đời đã khép lại.';

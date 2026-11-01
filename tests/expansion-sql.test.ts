@@ -5,6 +5,7 @@ import { annualAssessment } from '../scripts/annual-fixture';
 import { choose, activeDefinition, createRun } from '../src/engine/engine';
 import { snapshot } from '../src/persistence/saves';
 import { businessAdult, found, businessStep } from '../scripts/business-fixture';
+import { creatorAdult, startChannel, channelYears } from '../scripts/creator-economy-fixture';
 it('adds only the new version tuple while retaining all old size/identity/header guards', async () => {
   const db = new PGlite();
   try {
@@ -69,6 +70,9 @@ it('adds only the new version tuple while retaining all old size/identity/header
         for (let i = 0; i < 20 && shop.month < 228; i++) shop = businessStep(shop);
         expect(shop.enterprise!.ventures[0].recent.length).toBeGreaterThan(0);
         expect(await valid(snapshot(shop, life))).toBe(true);
+        const creator = channelYears(startChannel(creatorAdult('sql-creator-envelope')), 2);
+        expect(creator.creator!.channels[0].recent.length).toBe(12);
+        expect(await valid(snapshot(creator, life))).toBe(true);
         const university = structuredClone(value);
         university.run.setup!.lifeRules = 'education-v1';
         Object.assign(university.run, {

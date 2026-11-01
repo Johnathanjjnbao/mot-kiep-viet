@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { EnterprisePanel } from './EnterprisePanel';
+import { CreatorEconomyPanel } from './CreatorEconomyPanel';
 import { designMoney, currencyOf } from '../domain/currency';
 import { FamilyPanel } from './FamilyPanel';
 import { AcademicPanel } from './AcademicPanel';
@@ -32,6 +33,9 @@ import { PARENT_TRAITS } from '../domain/creator';
 type Props = { run: GameRun; act: (a: RunAction) => void };
 export function CareerPanel({ run, act }: Props) {
   const [business, setBusiness] = useState(false);
+  const [creator, setCreator] = useState(false);
+  if (creator && run.creator)
+    return <CreatorEconomyPanel run={run} act={act} onBack={() => setCreator(false)} />;
   if (business && run.enterprise)
     return <EnterprisePanel run={run} act={act} onBack={() => setBusiness(false)} />;
   return (
@@ -39,10 +43,16 @@ export function CareerPanel({ run, act }: Props) {
       run={run}
       act={act}
       onBusiness={run.enterprise ? () => setBusiness(true) : undefined}
+      onCreator={run.creator ? () => setCreator(true) : undefined}
     />
   );
 }
-function WorkPanel({ run, act, onBusiness }: Props & { onBusiness?: () => void }) {
+function WorkPanel({
+  run,
+  act,
+  onBusiness,
+  onCreator,
+}: Props & { onBusiness?: () => void; onCreator?: () => void }) {
   const current = currentCareer(run),
     age = ageOf(run),
     studying = run.player.education.find((e) => e.endMonth > run.month);
@@ -66,6 +76,11 @@ function WorkPanel({ run, act, onBusiness }: Props & { onBusiness?: () => void }
       {onBusiness && (
         <button className="button secondary enterprise-entry" onClick={onBusiness}>
           Cửa hàng của bạn
+        </button>
+      )}
+      {onCreator && (
+        <button className="button secondary enterprise-entry" onClick={onCreator}>
+          Kênh sáng tạo của bạn
         </button>
       )}
       <EmploymentPanel run={run} act={act} />

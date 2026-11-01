@@ -33,7 +33,7 @@ export function businessReason(r: GameRun): string | null {
   if (r.status !== 'playing' || ageOf(r) < 18) return 'Từ 18 tuổi, bạn có thể tự mở cửa hàng.';
   if (r.world.year < 2005 || !r.world.technologies.includes('internet'))
     return 'Cửa hàng trực tuyến mở từ năm 2005 trong bối cảnh có Internet của mô phỏng.';
-  if (r.activeEvent?.id.startsWith('biz-'))
+  if (r.activeEvent && /^(biz-|cr-)/.test(r.activeEvent.id))
     return 'Hãy hoàn tất cuộc đối thoại đang chờ trước khi quản lý cửa hàng.';
   if (discretionaryCount(r) >= 120)
     return 'Đã dùng hết lượt quản lý; các tháng của tiệm vẫn tiếp tục cùng câu chuyện.';
@@ -51,7 +51,8 @@ export function requestEnterprise(input: GameRun, raw: EnterpriseAction): GameRu
   let pair: ReturnType<typeof foundRetail>;
   let message: string;
   if (a.operation === 'found') {
-    if (books.length >= 4) throw Error('Một cuộc đời giữ tối đa bốn cửa hàng, kể cả tiệm đã đóng.');
+    if (books.length + (input.creator?.channels.length ?? 0) >= 4)
+      throw Error('Một cuộc đời giữ tối đa bốn sổ tiệm và kênh, kể cả đã đóng.');
     if (['business', 'freelance'].includes(currentCareer(input)?.id ?? ''))
       throw Error(
         'Hãy rời công việc kinh doanh/tự do theo lương khoán trước khi mở tiệm có sổ riêng.',
