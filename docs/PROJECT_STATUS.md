@@ -1,5 +1,14 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Đã phát hành0.3.8-business.1 — G5 guest VERIFIED PASS (01/11/2026)
+
+Triển khai đúng SHA **c61bc65a061d53cb6be87b33d9f157f795e80981**, [CI41325586629](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41325586629) completed/success cho build và deploy. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). Exact JS/CSS/SW SHA-256 khớp build lưu riêng. Guest desktop/mobile chơi trọn đời,5dạng gia đình/history/font/save/load/export-import PASS. Chromium/Firefox/WebKit ×desktop/mobile6/6 chơi thật cửa hàng từ0→18, lỗ/góp vốn/phục hồi/đổi policy/rút/ba slot/reload/đóng/mởIDmới PASS, axe0. Bằng chứng business-live-assets.json, business-live-pages.json, business-live-browsers.json.
+
+274tests/28files +86E2E không skip,1.000đời/1.000canonical replay và sáu business viewports×20quyết định VERIFIED PASS. Max438actions/728196bytes/4390transactions;0vi phạm/0tuổi thiếu/0tuổi bỏ/0fallback. Engine/content3.0.0/schema4, ruleset enterprise-v1 và currency vnd-v1 độc lập, old saves giữ luật. Ba nhóm hàng/12cảnh4lựa chọn, ledger vốn-hàng-COGS-hoàn-chi-phí-thanh-lý và estate hoạt động thật. Chín golden lịch sử +VND +business opening/full-life giữ riêng. Secret scan cuối1541text objects/0findings, audit production0; khôngSQL/Auth/RLS mới. Owner cloud login **NOT RUN**; G5 này là guest, không thay bằng chứng JWT/A-B-anon thật.
+
+C/D creator chưa nằm trong release này. Creator-v1 local đang qua gates riêng:1.000đời/replay0vi phạm,286tests và8E2E mới đã kiểm; chưa push/deploy creator. Các mục PENDING dưới đây là lịch sử được phần phát hành này thay thế.
+
+
 Local final: **274unit/integration +86E2E,0skip**, production subpath smoke,6business viewports×20decisions và1.000đời/replay PASS. Secret scan cuối1541text objects/0findings. Nguồn43a8e34; chuẩn bị push, exact-SHA CI/live PENDING. Creator code local đang phát triển riêng, không nằm trong commit cửa hàng này.
 
 ## Cửa hàng0.3.8-business.1 — kiểm chứng local, deployment PENDING (01/11/2026)

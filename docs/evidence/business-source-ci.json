@@ -1,0 +1,12 @@
+{
+  "status": "VERIFIED PASS",
+  "headSha": "c61bc65a061d53cb6be87b33d9f157f795e80981",
+  "workflowRun": 41325586629,
+  "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41325586629",
+  "build": "success",
+  "deploy": "success",
+  "unitIntegration": 274,
+  "e2e": 86,
+  "skipped": 0,
+  "ownerCloudLogin": "NOT RUN"
+}
