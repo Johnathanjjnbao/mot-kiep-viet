@@ -246,6 +246,11 @@ export function educationLevel(run: GameRun) {
 export function careerReason(run: GameRun, id: string, ignoreApplications = false): string | null {
   const job = CAREERS.find((c) => c.id === id);
   if (!job) return 'Công việc không tồn tại.';
+  if (
+    ['business', 'freelance'].includes(id) &&
+    run.enterprise?.ventures.some((e) => e.status !== 'closed')
+  )
+    return 'Cửa hàng đã có sổ riêng; hãy khép tiệm trước khi nhận nghề kinh doanh/tự do theo lương khoán.';
   if (run.status === 'ended') return 'Cuộc đời đã khép lại.';
   if (ageOf(run) < job.minAge) return `Cần đủ ${job.minAge} tuổi.`;
   if (ageOf(run) >= 65) return 'Đã đến tuổi nghỉ hưu trong game.';

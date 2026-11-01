@@ -1,3 +1,4 @@
+import { hasAnnualRules } from '../domain/rules';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { GameRun, RunAction, RunSetup, SaveSnapshot } from '../domain/model';
 import { guestRepository, type GameRepository } from '../persistence/repository';
@@ -67,7 +68,7 @@ export function useGameSession(repository: GameRepository = guestRepository) {
         !['choose', 'advance'].includes(action.type) &&
         currentRun.current.actions.length +
           2 *
-            (currentRun.current.setup.lifeRules === 'annual-v1'
+            (hasAnnualRules(currentRun.current)
               ? Math.max(0, 160 - Math.floor(currentRun.current.month / 12))
               : 84 - Math.floor(currentRun.current.month / 12)) +
           20 >=

@@ -1,5 +1,12 @@
 # v0.3.8 — Digital Careers & Business
 
+## Business checkpoint A — local, chưa phát hành (01/11/2026)
+
+Tiếp tục7dc19a2, không xây lại VND/Creator/Year-by-Year. Đã nối enterprise-v1 vào capability routing, GameRun, Zod actions, authoritative dispatch, clock tháng, invariants, save/replay. Cửa hàng tối đa4ID, vốn/hàng/COGS/hoàn tiền/rút vốn/thanh lý qua ledger; nghề business/freelance abstraction bị chặn hai chiều khi còn tiệm mở. Kết thúc đời thanh lý tài sản, giữ sổ đóng; nghỉ hưu không tự xóa tiệm. Chung120quản lý,512actions/5MiB giữ nguyên.33tests liên quan PASS, golden khởi tạo enterprise2481017761 riêng; full regression264tests/28files PASS, gồm toàn bộ golden cũ.
+
+Checkpoint B UI/truyện/budget stress/1.000đời+replay/browser/deploy còn INCOMPLETE. NewLife vẫn annual-v1, shop chưa hiện cho người chơi. Chưa push checkpoint A để tránh đưa shop chưa hoàn chỉnh ra live. Xem BUSINESS_RELEASE_REPORT.md.
+
+
 ## Đã phát hành0.3.8-vnd.1 — G5 guest VERIFIED PASS (01/11/2026)
 
 Tiếp tục checkpoint `54e1e0b438dc25f3b772067fd0a7796b6c101d23`, giữ nguyên foundation retail isolated. Final implementation SHA **f2f454b3b5a390e07744837b0bae4874f1cd3b7e**, main; [CI41300461817](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41300461817) completed/success cho build và deploy. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). Đời mới lưu nguyên VND với selector bất biến vnd-v1; save thiếu selector vẫn đSM, replay/golden cũ giữ nguyên. 1 đơn vị thiết kế=200.000 VND theo sức mua thiết kế2026, không phải tỷ giá hay giá danh nghĩa lịch sử. Engine/content3.0.0/schema4, action512/5MiB, ID database/history và SQL/Auth/RLS giữ nguyên.

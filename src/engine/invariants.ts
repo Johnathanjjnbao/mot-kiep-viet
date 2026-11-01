@@ -1,3 +1,4 @@
+import { assertBusinesses } from './business';
 import { assertFamily } from './family';
 import { assertSocial } from './social';
 import { assertRun as assertFrozen2 } from '../legacy/v2/engine/invariants';
@@ -18,6 +19,7 @@ export function assertRun(run: GameRun) {
   assertAcademics(run);
   assertEmployment(run);
   assertAnnual(run);
+  assertBusinesses(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

@@ -1,3 +1,5 @@
+import type { Enterprise } from './enterprise';
+import type { EnterpriseAction } from './enterprise-actions';
 import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
 import type { PlayerPersonality } from './personality';
@@ -254,6 +256,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | EnterpriseAction
   | AcademicAction
   | FamilyAction
   | SocialAction
@@ -264,7 +267,7 @@ export type RunAction =
 export interface RunSetup {
   /** Immutable denomination; absent historical saves retain design money. */
   currency?: 'dsm-v1' | 'vnd-v1';
-  lifeRules?: 'dynamic-v1' | 'education-v1' | 'career-v1' | 'annual-v1';
+  lifeRules?: 'dynamic-v1' | 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -279,6 +282,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  enterprise?: { ventures: Enterprise[]; lastSceneMonth: number };
   employment?: EmploymentState;
   academics?: AcademicState;
   wardrobe?: Wardrobe;

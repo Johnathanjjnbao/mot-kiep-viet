@@ -374,7 +374,7 @@ export function requestFamily(input: GameRun, a: FamilyAction) {
     throw Error('Cuộc trò chuyện gia đình không còn phù hợp.');
   if (
     input.actions.filter((a) =>
-      ['social', 'family-talk', 'manage', 'wardrobe', 'academic'].includes(a.type),
+      ['social', 'family-talk', 'manage', 'wardrobe', 'academic', 'enterprise'].includes(a.type),
     ).length >= 120
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');

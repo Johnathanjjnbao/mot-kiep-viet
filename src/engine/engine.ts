@@ -1,3 +1,10 @@
+import {
+  hasAcademicRules,
+  hasEmploymentRules,
+  hasEnterpriseRules,
+  discretionaryCount,
+} from '../domain/rules';
+import { requestEnterprise, settleBusinesses, closeBusinessesAtEnd } from './business';
 import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import {
   initFamily,
@@ -207,13 +214,9 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   if (setup.currency) run.setup.currency = setup.currency;
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
-  if (
-    setup.lifeRules === 'education-v1' ||
-    setup.lifeRules === 'career-v1' ||
-    setup.lifeRules === 'annual-v1'
-  )
+  if (hasAcademicRules(run))
     run.academics = { applications: [], studies: [], qualifications: [], focus: null };
-  if (setup.lifeRules === 'career-v1' || setup.lifeRules === 'annual-v1')
+  if (hasEmploymentRules(run))
     run.employment = {
       applications: [],
       periods: [],
@@ -221,6 +224,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
       placements: [],
       notice: false,
     };
+  if (hasEnterpriseRules(run)) run.enterprise = { ventures: [], lastSceneMonth: -12 };
   if (setup.playerTraits !== undefined) run.setup.playerTraits = [...setup.playerTraits];
   run.wardrobe = defaultWardrobe();
   if (run.setup.expansion === 'social' || run.setup.expansion === 'family') initSocial(run);
@@ -406,12 +410,7 @@ export const activeDefinition = (run: GameRun) => {
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   if (event.version === 9 && !isAnnual(run)) return false;
   if (event.version === 5) return false;
-  if (
-    event.version === 7 &&
-    (!['education-v1', 'career-v1', 'annual-v1'].includes(run.setup.lifeRules ?? '') ||
-      event.id !== 'edu-direction')
-  )
-    return false;
+  if (event.version === 7 && (!hasAcademicRules(run) || event.id !== 'edu-direction')) return false;
   if (run.academics && event.id === 'education-path') return false;
   if (event.version === 8 && !employmentSceneEligible(run)) return false;
   if (event.version === 6 && (!run.setup.lifeRules || !originEligible(run, event.id))) return false;
@@ -659,6 +658,7 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   }
 }
 function conclude(run: GameRun, ending: 'death' | 'memoir') {
+  closeBusinessesAtEnd(run);
   if (run.social) run.social.focus = null;
   if (run.family) run.family.focus = null;
   run.ending = ending;
@@ -720,6 +720,7 @@ function tick(run: GameRun) {
     }
   }
   settleMonth(run);
+  settleBusinesses(run);
   tickEmployment(run, (r) => random(r, 'world'));
   const age = ageOf(run),
     stats = run.player.stats;
@@ -898,7 +899,7 @@ export function manage(
   if (
     input.family &&
     input.actions.filter((a) =>
-      ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise'].includes(a.type),
     ).length >= 120
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
@@ -1002,6 +1003,25 @@ export function manage(
   return run;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  if (
+    hasEnterpriseRules(run) &&
+    !['choose', 'advance'].includes(action.type) &&
+    discretionaryCount(run) >= 120
+  )
+    throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
+  if (action.type === 'enterprise') {
+    const next = requestEnterprise(run, action),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error(
+        'Hãy hoàn tất câu chuyện đang chờ trước khi chuyển vốn; tiền và cửa hàng chưa thay đổi.',
+      );
+    return next;
+  }
   if (action.type === 'academic') {
     const next = requestAcademic(run, action, (r) => random(r, 'event')),
       active = activeDefinition(next);

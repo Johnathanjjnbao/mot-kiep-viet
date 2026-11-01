@@ -219,7 +219,7 @@ export function requestSocial(input: GameRun, a: SocialAction) {
   if (
     input.actions.filter((a) => a.type === 'social').length >= (input.family ? 40 : 80) ||
     input.actions.filter((a) =>
-      ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise'].includes(a.type),
     ).length >= (input.family ? 120 : 250)
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');

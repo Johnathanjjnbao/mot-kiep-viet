@@ -176,8 +176,29 @@ export function fundRetail(input: GameRun, book: Enterprise, amount: number) {
   assertEnterprise(run, e);
   return { run, enterprise: e };
 }
+export function withdrawRetail(input: GameRun, book: Enterprise, amount: number) {
+  const { run, enterprise: e } = draft(input, book);
+  if (e.status === 'closed' || !integer(amount, 1, e.cash)) throw Error('Invalid withdrawal');
+  post(
+    run,
+    e,
+    `withdraw:${run.finance.transactions.length}`,
+    'Rút tiền từ cửa hàng về cá nhân',
+    -amount,
+    0,
+    amount,
+  );
+  e.totals.withdrawn += amount;
+  assertEnterprise(run, e);
+  return { run, enterprise: e };
+}
 export function settleRetail(input: GameRun, book: Enterprise) {
   const { run, enterprise: e } = draft(input, book);
+  settleRetailOwned(run, e);
+  return { run, enterprise: e };
+}
+export function settleRetailOwned(run: GameRun, e: Enterprise) {
+  assertEnterprise(run, e);
   if (run.status !== 'playing' || e.status === 'closed' || run.month !== e.settledThrough + 1)
     throw Error('Business month already settled, skipped or inactive');
   const fixed = designMoney(run, 6 + (e.policy.marketing ? 4 : 0)),
@@ -248,10 +269,14 @@ export function settleRetail(input: GameRun, book: Enterprise) {
   e.recent = e.recent.slice(-12);
   e.settledThrough = run.month;
   assertEnterprise(run, e);
-  return { run, enterprise: e };
 }
 export function closeRetail(input: GameRun, book: Enterprise) {
   const { run, enterprise: e } = draft(input, book);
+  closeRetailOwned(run, e);
+  return { run, enterprise: e };
+}
+export function closeRetailOwned(run: GameRun, e: Enterprise) {
+  assertEnterprise(run, e);
   if (e.status === 'closed') throw Error('Shop already closed');
   const liquidation = Math.floor((e.stock * e.unitCost) / 2),
     returned = e.cash + liquidation;
@@ -261,5 +286,4 @@ export function closeRetail(input: GameRun, book: Enterprise) {
   e.status = 'closed';
   e.closedMonth = run.month;
   assertEnterprise(run, e);
-  return { run, enterprise: e };
 }

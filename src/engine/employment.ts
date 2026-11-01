@@ -1,3 +1,4 @@
+import { hasEmploymentRules } from '../domain/rules';
 import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import type { CareerId, GameRun } from '../domain/model';
 import type { EmploymentEnding, EmploymentOperation } from '../domain/employment';
@@ -275,7 +276,7 @@ export function tickEmployment(r: GameRun, roll: Roll) {
 }
 export function assertEmployment(r: GameRun) {
   const state = r.employment;
-  if (!['career-v1', 'annual-v1'].includes(r.setup.lifeRules ?? '')) {
+  if (!hasEmploymentRules(r)) {
     if (state) throw Error('Invariant: unexpected employment rules');
     return;
   }

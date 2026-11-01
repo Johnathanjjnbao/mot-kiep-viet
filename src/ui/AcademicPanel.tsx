@@ -1,3 +1,4 @@
+import { hasAnnualRules } from '../domain/rules';
 import { designMoney, currencyOf } from '../domain/currency';
 import { useState } from 'react';
 import type { GameRun, RunAction } from '../domain/model';
@@ -38,7 +39,7 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
             {study.status === 'paused' ? 'Đang bảo lưu' : 'Đang học'} · Đã đạt{' '}
             {study.completedYears}/{program.years} năm{study.internship ? ' · Có thực tập' : ''}
           </p>
-          {run.setup.lifeRules === 'annual-v1' && (
+          {hasAnnualRules(run) && (
             <p>
               Đã đóng {study.paidTerms} kỳ học phí · Đã dự {study.termAttempts} lần đánh giá. Học
               bổng và hỗ trợ từng kỳ được ghi trong sổ tiền.
@@ -49,7 +50,7 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
               ? 'Bạn có thể đi làm để chuẩn bị học phí, rồi trở lại phần còn lại.'
               : `Kỳ đánh giá tiếp theo: năm ${run.player.birthYear + Math.floor(study.nextTermMonth / 12)}. Tiếp tục câu chuyện để đi tới mốc học tập.`}
           </p>
-          {run.setup.lifeRules === 'annual-v1' && study.status === 'paused' && (
+          {hasAnnualRules(run) && study.status === 'paused' && (
             <p>
               Giữ nguyên tiến độ và học phí đã đóng. Không thu học phí mới khi bảo lưu; có thể trở
               lại sau ít nhất 6 tháng.
@@ -61,7 +62,7 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
               className="text-button"
               disabled={
                 locked ||
-                (run.setup.lifeRules === 'annual-v1' &&
+                (hasAnnualRules(run) &&
                   study.status === 'paused' &&
                   run.month - study.pausedMonth! < 6)
               }

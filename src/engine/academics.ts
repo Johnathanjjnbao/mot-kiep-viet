@@ -1,3 +1,4 @@
+import { hasAcademicRules } from '../domain/rules';
 import { designMoney, formatMoney } from '../domain/currency';
 import type { GameRun } from '../domain/model';
 import type { AcademicAction, AcademicMethod, StudyRecord, ProgramId } from '../domain/academics';
@@ -100,17 +101,14 @@ export function academicDefinition(r: GameRun) {
   return { ...template, id: focus.instanceId, title: `Năm ${s.completedYears + 1}: ${p.incident}` };
 }
 export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
-  if (
-    !input.academics ||
-    !['education-v1', 'career-v1', 'annual-v1'].includes(input.setup.lifeRules ?? '')
-  )
+  if (!input.academics || !hasAcademicRules(input))
     throw Error('Cuộc đời này giữ luật học tập đã tạo trước đây.');
   if (a.expected !== input.actions.length || input.status !== 'playing')
     throw Error('Thao tác học tập đã cũ; hãy tải trạng thái mới.');
   if (input.academics.focus || input.social?.focus || input.family?.focus)
     throw Error('Hãy giải quyết sự kiện đang chờ trước.');
   const management = input.actions.filter((x) =>
-    ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(x.type),
+    ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise'].includes(x.type),
   ).length;
   if (
     (input.family && management >= 120) ||
@@ -297,7 +295,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
 }
 export function assertAcademics(r: GameRun) {
   const state = r.academics;
-  if (!['education-v1', 'career-v1', 'annual-v1'].includes(r.setup.lifeRules ?? '')) {
+  if (!hasAcademicRules(r)) {
     if (state) throw Error('Invariant: unexpected academic rules');
     return;
   }

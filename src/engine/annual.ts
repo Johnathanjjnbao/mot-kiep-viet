@@ -1,7 +1,8 @@
+import { hasAnnualRules } from '../domain/rules';
 import type { GameRun } from '../domain/model';
 import { ageOf } from '../content/world';
 
-export const isAnnual = (r: GameRun) => r.setup.lifeRules === 'annual-v1';
+export const isAnnual = (r: GameRun) => hasAnnualRules(r);
 // choices is the authoritative, replayed record. Journal text and seen IDs are not milestones.
 export const ageExperienced = (r: GameRun) =>
   r.choices.some((c) => Math.floor(c.month / 12) === ageOf(r));
