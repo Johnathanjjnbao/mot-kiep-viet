@@ -53,6 +53,7 @@ export function simulateLife(
       const study = currentStudy(run);
       if (
         study?.status === 'paused' &&
+        (run.setup.lifeRules !== 'annual-v1' || run.month - study.pausedMonth! >= 6) &&
         run.finance.cash >= studyCosts(run, study.programId).required + 20 &&
         run.actions.filter((a) => a.type === 'academic').length < 35
       ) {

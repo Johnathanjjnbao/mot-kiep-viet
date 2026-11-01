@@ -42,8 +42,13 @@ export function Modal({
     }
     d.showModal();
     return () => {
+      const focused = document.activeElement;
+      const restoreOpener = focused === document.body || (focused !== null && d.contains(focused));
       d.close();
-      if (opener.current?.isConnected) opener.current.focus({ preventScroll: true });
+      // Loading a save can intentionally focus the new story during this commit.
+      // Preserve that destination; ordinary closes still return to the opener.
+      if (restoreOpener && opener.current?.isConnected)
+        opener.current.focus({ preventScroll: true });
     };
   }, []);
   return (

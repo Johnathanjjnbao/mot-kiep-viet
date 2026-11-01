@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Year-by-Year checkpoint local — 01/11/2026
+
+Tiếp tục da55d28/main. annual-v1 opt-in, chưa đổi mặc định production: tiến từng tuổi từ0, bảo lưu thật và50academic stages của12ngành.226unit/integration PASS;1.000seed/1.000replay/0vi phạm/0fallback/0tuổi thiếu/0tuổi bỏ, max420actions/629967bytes, tuổi kết thúc65–107. Fixture gia đình3con/120quản lý sống đến122 với405actions/652537bytes vàcanonical import. Browser0–82/pause desktop/mobile và6viewport20 đang chốt; lỗi2px ở chữ lớn đã sửa và kiểm lại. Chưa gọi full E2E/CI/live PASS. Production vẫn0.3.6-employment.1. Xem YEAR_BY_YEAR_PROGRESS; old goldens/save IDs/version tuple giữ nguyên. Cloud mới BLOCKED, owner login NOT RUN.
+
 ## Employment đã phát hành — G5 guest VERIFIED PASS, 01/11/2026
 
 `0.3.6-employment.1`, source `b01d6a57761847f4529e3689fbdf48c5283b66ec`/main; [CI 41231316353](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353) completed/success build/deploy. Tiếp tục baseline5184554, giữ A/B và Creator. Đời mới dùng career-v1; mọi selector cũ, frozen v1/v2, engine/content3/schema4 và save/history IDs giữ nguyên. Tuyển dụng có thể từ chối/cooldown, đổi việc giữ lịch sử, thất nghiệp có thời gian và chi phí, việc tạm/học kỹ năng/làm trái ngành/mất việc và phục hồi đã chơi được.

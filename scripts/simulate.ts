@@ -7,11 +7,13 @@ import { activeDefinition, choiceReason, replay } from '../src/engine/engine';
 import { FAMILIES, PARENT_TRAITS } from '../src/domain/creator';
 import type { RunSetup, ParentTrait } from '../src/domain/model';
 import { randomizeCreatorTraits } from '../src/application/creatorRandom';
+import { stageTemplate } from '../src/content/academic-stages';
 const total = Number(process.argv[2] ?? 1000);
 const testCreator = process.argv.includes('--creator');
 const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
+const testAnnual = process.argv.includes('--annual');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   runs: 0,
@@ -51,6 +53,17 @@ const report = {
   observedEventIds: [] as string[],
   failures: [] as { seed: string; message: string }[],
   enabledChoices: { min: 6, max: 0, eventsChecked: 0 },
+  ...(testAnnual
+    ? {
+        annual: {
+          missingAges: 0,
+          maxSkippedAge: 0,
+          completedDecisions: 0,
+          templateCounts: {} as Record<string, number>,
+          remediationVariants: 0,
+        },
+      }
+    : {}),
   families: {} as Record<string, number>,
 };
 const observed = new Set<string>();
@@ -59,6 +72,7 @@ for (let i = 0; i < total; i++) {
     region = REGIONS[Math.floor(i / 3) % 3].id,
     seed = `stress-${i}`;
   try {
+    const presented = new Set<string>();
     const family = (Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[])[
       Math.floor(i / 5) % 5
     ];
@@ -75,13 +89,15 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testEmployment
-          ? { lifeRules: 'career-v1' as const }
-          : testEducation
-            ? { lifeRules: 'education-v1' as const }
-            : testDiversity
-              ? { lifeRules: 'dynamic-v1' as const }
-              : {}),
+        ...(testAnnual
+          ? { lifeRules: 'annual-v1' as const }
+          : testEmployment
+            ? { lifeRules: 'career-v1' as const }
+            : testEducation
+              ? { lifeRules: 'education-v1' as const }
+              : testDiversity
+                ? { lifeRules: 'dynamic-v1' as const }
+                : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -98,6 +114,19 @@ for (let i = 0; i < total; i++) {
       (r) => {
         const e = activeDefinition(r);
         if (e) {
+          if (testAnnual) {
+            const key = `${r.month}:${e.id}:${r.choices.length}`;
+            if (presented.has(key)) return;
+            presented.add(key);
+            const study = r.academics?.studies.find((s) => s.id === r.academics?.focus?.studyId);
+            const rawTemplate = study
+              ? stageTemplate(r, study).id
+              : (r.social?.focus?.templateId ?? r.family?.focus?.templateId ?? e.id);
+            if (rawTemplate.endsWith('-remediation')) report.annual!.remediationVariants++;
+            const template = rawTemplate.replace(/-remediation$/, '');
+            report.annual!.templateCounts[template] =
+              (report.annual!.templateCounts[template] ?? 0) + 1;
+          }
           if (e.id === 'ordinary-days') report.fallbackEvents++;
           const n = e.choices.filter((c) => !choiceReason(r, c)).length;
           report.enabledChoices.min = Math.min(report.enabledChoices.min, n);
@@ -109,6 +138,17 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    if (testAnnual) {
+      const ages = [...new Set(run.choices.map((c) => Math.floor(c.month / 12)))];
+      for (let age = 0; age < ageOf(run); age++)
+        if (!ages.includes(age)) report.annual!.missingAges++;
+      for (let j = 1; j < ages.length; j++)
+        report.annual!.maxSkippedAge = Math.max(
+          report.annual!.maxSkippedAge,
+          ages[j] - ages[j - 1] - 1,
+        );
+      report.annual!.completedDecisions += run.choices.length;
+    }
     for (const a of run.employment?.applications ?? []) report.employment[a.result]++;
     if (run.employment) {
       report.employment.supportedPlacements += run.employment.placements.length;
@@ -173,7 +213,8 @@ for (let i = 0; i < total; i++) {
   } catch (error) {
     report.invariantViolations++;
     report.failures.push({ seed, message: error instanceof Error ? error.message : String(error) });
-    if (testEmployment) console.error(`${seed}: ${error instanceof Error ? error.message : String(error)}`);
+    if (testEmployment)
+      console.error(`${seed}: ${error instanceof Error ? error.message : String(error)}`);
   }
   if ((i + 1) % 100 === 0)
     console.log(`${i + 1}/${total} lives · ${report.invariantViolations} violations`);

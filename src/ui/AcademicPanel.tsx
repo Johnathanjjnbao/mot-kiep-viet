@@ -42,11 +42,22 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
               ? 'Bạn có thể đi làm để chuẩn bị học phí, rồi trở lại phần còn lại.'
               : `Kỳ đánh giá tiếp theo: năm ${run.player.birthYear + Math.floor(study.nextTermMonth / 12)}. Tiếp tục câu chuyện để đi tới mốc học tập.`}
           </p>
+          {run.setup.lifeRules === 'annual-v1' && study.status === 'paused' && (
+            <p>
+              Giữ nguyên tiến độ và học phí đã đóng. Không thu học phí mới khi bảo lưu; có thể trở
+              lại sau ít nhất 6 tháng.
+            </p>
+          )}
           <div className="academic-actions">
             <button
               type="button"
               className="text-button"
-              disabled={locked}
+              disabled={
+                locked ||
+                (run.setup.lifeRules === 'annual-v1' &&
+                  study.status === 'paused' &&
+                  run.month - study.pausedMonth! < 6)
+              }
               onClick={() => operate(study.status === 'paused' ? 'resume' : 'pause')}
             >
               {study.status === 'paused' ? 'Trở lại học' : 'Bảo lưu'}

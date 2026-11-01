@@ -1,4 +1,6 @@
 import { parentingEvents } from './parenting-events';
+import { annualEvents } from './annual-events';
+import { annualAdultEvents } from './annual-adult-events';
 import { diverseChildhood } from './childhood-diversity';
 import { academicTemplates, educationDirection } from './programs';
 import { employmentEvents } from './employment-events';
@@ -12,6 +14,8 @@ import { relationshipEvents, financeEvents } from './everyday';
 import { historyEvents, humorEvents } from './world-events';
 // The original eight-event vertical slice is retained, with the verified content expansion below.
 export const EVENTS: EventDefinition[] = [
+  ...annualEvents,
+  ...annualAdultEvents,
   ...employmentEvents,
   ...academicTemplates,
   educationDirection,

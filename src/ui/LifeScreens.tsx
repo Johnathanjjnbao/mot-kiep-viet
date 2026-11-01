@@ -152,7 +152,7 @@ export function Story({
         window.scrollBy({ top: grid.getBoundingClientRect().top - 12, behavior: 'instant' });
       const list = decisions.current;
       if (list) {
-        const available = Math.max(64, window.innerHeight - list.getBoundingClientRect().top - 12);
+        const available = Math.max(64, window.innerHeight - list.getBoundingClientRect().top - 6);
         list.style.maxHeight = `${available}px`;
       }
     };

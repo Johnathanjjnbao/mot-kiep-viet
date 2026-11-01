@@ -60,7 +60,7 @@ const effect: z.ZodType<Effect> = z.lazy(() =>
     z
       .object({
         kind: z.literal('academic'),
-        method: z.enum(['steady', 'project', 'work', 'rest']),
+        method: z.enum(['steady', 'project', 'work', 'rest', 'pause']),
       })
       .strict(),
     z

@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Tiếp tục Year-by-Year — 01/11/2026
+
+Baseline da55d28; checkpoint local annual-v1 giữ mặc định career-v1 tới full integration gates.226tests/1.000seed+replay PASS,0tuổi thiếu/0bước bỏ tuổi, max420actions/629967bytes; household stress120quản lý đến122,405actions.32cảnh mới +50academic stages, bảo lưu thật tối thiểu6tháng, old8goldens giữ nguyên; golden annual432954253 riêng. Browser chốt full0–82, pause và6viewport20; chưa CI/live mới. Điểm tiếp tục và các mẫu lỗi được giữ trong YEAR_BY_YEAR_PROGRESS.md. Không làm lại Creator/A/B/C, không mở digital/military/longgevity ngoài phạm vi. Cloud BLOCKED/owner NOT RUN, không SQL mới.
+
 ## Employment đã phát hành — G5 guest VERIFIED PASS, 01/11/2026
 
 `0.3.6-employment.1`, source `b01d6a57761847f4529e3689fbdf48c5283b66ec`/main; [CI 41231316353](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41231316353) completed/success build/deploy. Tiếp tục baseline5184554, giữ A/B và Creator. Đời mới dùng career-v1; mọi selector cũ, frozen v1/v2, engine/content3/schema4 và save/history IDs giữ nguyên. Tuyển dụng có thể từ chối/cooldown, đổi việc giữ lịch sử, thất nghiệp có thời gian và chi phí, việc tạm/học kỹ năng/làm trái ngành/mất việc và phục hồi đã chơi được.

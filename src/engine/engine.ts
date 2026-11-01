@@ -57,6 +57,8 @@ import {
 import { hashSeed, nextRandom } from './random';
 import { mandatoryCost, settleMonth, transact } from './finance';
 import { dynamicPool, diversityWeight, originEligible } from './lifeDiversity';
+import { isAnnual, ageExperienced } from './annual';
+import { contextualAnnual } from '../content/annual-events';
 import {
   applyEmployment,
   endEmployment,
@@ -203,9 +205,13 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   };
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
-  if (setup.lifeRules === 'education-v1' || setup.lifeRules === 'career-v1')
+  if (
+    setup.lifeRules === 'education-v1' ||
+    setup.lifeRules === 'career-v1' ||
+    setup.lifeRules === 'annual-v1'
+  )
     run.academics = { applications: [], studies: [], qualifications: [], focus: null };
-  if (setup.lifeRules === 'career-v1')
+  if (setup.lifeRules === 'career-v1' || setup.lifeRules === 'annual-v1')
     run.employment = {
       applications: [],
       periods: [],
@@ -327,6 +333,8 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
     .reduce((s, e) => s + (e.kind === 'cash' ? e.amount : 0), 0);
   if (cost > run.finance.cash) return `Cần ${cost} đSM tiền mặt.`;
   for (const effect of choice.effects) {
+    if (isAnnual(run) && effect.kind === 'employment' && !employmentSceneEligible(run))
+      return 'Hoàn cảnh tìm việc đã thay đổi; hãy hoàn tất câu chuyện trước khi đổi việc học.';
     if (
       effect.kind === 'education' &&
       run.academics?.studies.some((s) => s.status === 'studying' || s.status === 'paused')
@@ -348,16 +356,27 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   }
   return null;
 }
-export const activeDefinition = (run: GameRun) =>
-  academicDefinition(run) ??
-  familyDefinition(run) ??
-  socialDefinition(run) ??
-  allEvents().find((e) => e.id === run.activeEvent?.id);
+export const activeDefinition = (run: GameRun) => {
+  const definition =
+    academicDefinition(run) ??
+    familyDefinition(run) ??
+    socialDefinition(run) ??
+    allEvents().find((e) => e.id === run.activeEvent?.id);
+  if (!definition || !isAnnual(run)) return definition;
+  const annualDefinition = contextualAnnual(run, definition);
+  // These focused continuations used the historical memoir age as a ceiling.
+  // Loss and parenting remain valid beyond82; never drop their pending focus.
+  return (run.social?.focus || run.family?.focus) &&
+    (annualDefinition.condition.maxAge === 81 || annualDefinition.condition.maxAge === 82)
+    ? { ...annualDefinition, condition: { ...annualDefinition.condition, maxAge: undefined } }
+    : annualDefinition;
+};
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 9 && !isAnnual(run)) return false;
   if (event.version === 5) return false;
   if (
     event.version === 7 &&
-    (!['education-v1', 'career-v1'].includes(run.setup.lifeRules ?? '') ||
+    (!['education-v1', 'career-v1', 'annual-v1'].includes(run.setup.lifeRules ?? '') ||
       event.id !== 'edu-direction')
   )
     return false;
@@ -392,9 +411,11 @@ function selectEvent(run: GameRun) {
     run.activeEvent = { id: 'employment-search', month: run.month };
     return;
   }
-  let options = EVENTS.filter((e) => eventEligible(run, e));
+  let options = EVENTS.filter(
+    (e) => eventEligible(run, e) && (!isAnnual(run) || ageOf(run) >= 3 || e.version === 9),
+  );
   if (!options.length) options = [FALLBACK];
-  const dynamic = !!run.setup.lifeRules && ageOf(run) < 18;
+  const dynamic = !!run.setup.lifeRules && ageOf(run) < 18 && (!isAnnual(run) || ageOf(run) >= 3);
   if (dynamic) options = dynamicPool(run, options);
   const priority = Math.max(...options.map((e) => e.priority));
   if (priority <= 0 && nextFamily(run)) return;
@@ -403,7 +424,8 @@ function selectEvent(run: GameRun) {
   const weight = (e: typeof FALLBACK) =>
     e.weight *
     (e.id === 'career-collapse' && job ? 0.2 + (1 - job.stability) * 3 : 1) *
-    (dynamic ? diversityWeight(run, e) : 1);
+    (dynamic ? diversityWeight(run, e) : 1) *
+    (isAnnual(run) && run.seen[e.id] !== undefined ? 0.3 : 1);
   let value = random(run, 'event') * options.reduce((n, e) => n + weight(e), 0);
   const selected = options.find((e) => (value -= weight(e)) < 0) ?? options[options.length - 1];
   if (selected.version === 4) {
@@ -711,7 +733,7 @@ function tick(run: GameRun) {
   tickSocial(run);
   tickFamily(run);
   if (stats.health <= 0) conclude(run, 'death');
-  else if (age >= 82) conclude(run, 'memoir');
+  else if (age >= 82 && !isAnnual(run)) conclude(run, 'memoir');
 }
 export function advance(input: GameRun): GameRun {
   if (input.engineVersion === '2.0.0')
@@ -724,7 +746,11 @@ export function advance(input: GameRun): GameRun {
   run.actions.push({ type: 'advance' });
   run.status = 'playing';
   run.lastOutcome = null;
-  const next = MILESTONES.find((age) => age * 12 > run.month) ?? 82;
+  // An unresolved age is presented at the current month, including newborn age0.
+  // Monthly effects still settle exactly once; no advance can cross two birthdays.
+  const next = isAnnual(run)
+    ? ageOf(run) + (ageExperienced(run) ? 1 : 0)
+    : (MILESTONES.find((age) => age * 12 > run.month) ?? 82);
   while (run.month < next * 12 && !run.ending) {
     tick(run);
     if (

@@ -6,6 +6,7 @@ import type { GameRun } from '../domain/model';
 import { playerPersonalitySchema } from '../domain/personality';
 import { assertAcademics } from './academics';
 import { assertEmployment } from './employment';
+import { isAnnual, assertAnnual } from './annual';
 import { CAREERS, ageOf, currentCareer, worldFor } from '../content/world';
 import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
@@ -16,6 +17,7 @@ export function assertRun(run: GameRun) {
   assertFamily(run);
   assertAcademics(run);
   assertEmployment(run);
+  assertAnnual(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };
@@ -25,7 +27,8 @@ export function assertRun(run: GameRun) {
       JSON.stringify(run.player.traits) !== JSON.stringify(run.setup.playerTraits))
   )
     fail('immutable player personality');
-  if (!Number.isInteger(run.month) || run.month < 0 || run.month > 984) fail('month');
+  if (!Number.isSafeInteger(run.month) || run.month < 0 || (!isAnnual(run) && run.month > 984))
+    fail('month');
   if (
     run.world.year !== run.player.birthYear + ageOf(run) ||
     JSON.stringify(run.world) !== JSON.stringify(worldFor(run.world.year))
@@ -125,7 +128,7 @@ export function assertRun(run: GameRun) {
     run.activeEvent &&
     (!active || !eligible(run, active.condition) || run.activeEvent.month !== run.month)
   )
-    fail('event eligibility');
+    fail(`event eligibility: ${run.activeEvent.id} at month ${run.month}`);
   const choiceIds = new Set<string>();
   for (const c of run.choices) {
     const key = `${c.month}:${c.eventId}`;

@@ -273,7 +273,7 @@ export function tickEmployment(r: GameRun, roll: Roll) {
 }
 export function assertEmployment(r: GameRun) {
   const state = r.employment;
-  if (r.setup.lifeRules !== 'career-v1') {
+  if (!['career-v1', 'annual-v1'].includes(r.setup.lifeRules ?? '')) {
     if (state) throw Error('Invariant: unexpected employment rules');
     return;
   }

@@ -13,7 +13,7 @@ import { admissionReason, currentStudy } from '../src/engine/academics';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 export function academicApplicant(
   index = 0,
-  lifeRules: 'education-v1' | 'career-v1' = 'education-v1',
+  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
 ) {
   let r = createRun('university-' + index, {
     lifeRules,
@@ -52,9 +52,13 @@ export function academicApplicant(
   if (r.activeEvent?.id === 'edu-direction') r = choose(r, 'edu-direction', 'university');
   return r;
 }
-export function admittedStudent(program: ProgramId, start = 0) {
+export function admittedStudent(
+  program: ProgramId,
+  start = 0,
+  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
+) {
   for (let i = start; i < start + 100; i++) {
-    const before = academicApplicant(i),
+    const before = academicApplicant(i, lifeRules),
       reason = admissionReason(before, program);
     if (reason) continue;
     const run = dispatch(before, {

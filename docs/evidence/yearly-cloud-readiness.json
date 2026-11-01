@@ -1,0 +1,8 @@
+{
+  "status": "BLOCKED",
+  "authenticated": false,
+  "targetProjectFound": false,
+  "authenticationUnavailable": true,
+  "ownerPersonalLogin": "NOT RUN",
+  "productionWrites": 0
+}

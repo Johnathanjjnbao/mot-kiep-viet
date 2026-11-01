@@ -66,7 +66,10 @@ export function useGameSession(repository: GameRepository = guestRepository) {
       if (
         !['choose', 'advance'].includes(action.type) &&
         currentRun.current.actions.length +
-          2 * (84 - Math.floor(currentRun.current.month / 12)) +
+          2 *
+            (currentRun.current.setup.lifeRules === 'annual-v1'
+              ? Math.max(0, 160 - Math.floor(currentRun.current.month / 12))
+              : 84 - Math.floor(currentRun.current.month / 12)) +
           20 >=
           512
       )

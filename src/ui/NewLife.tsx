@@ -137,7 +137,7 @@ export function NewLife({
         return;
       }
       setPreview(true);
-    } else onStart(seed.trim() || generatedSeed, { ...portraitRun.setup, lifeRules: 'career-v1' });
+    } else onStart(seed.trim() || generatedSeed, { ...portraitRun.setup, lifeRules: 'annual-v1' });
   }
   const availableSetup = {
     ...setup,
@@ -231,7 +231,7 @@ export function NewLife({
                 onClick={() =>
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
-                    lifeRules: 'career-v1',
+                    lifeRules: 'annual-v1',
                   })
                 }
               >

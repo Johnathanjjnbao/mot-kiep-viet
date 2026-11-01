@@ -1,0 +1,5090 @@
+{
+  "status": "VERIFIED PASS",
+  "config": {
+    "name": "desktop1366",
+    "width": 1366,
+    "height": 768
+  },
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 222,
+      "hud": {
+        "top": 19.5,
+        "bottom": 598.078125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 30.5,
+        "bottom": 206.5,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 96.5,
+        "bottom": 242.984375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 146.484375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 283.375,
+        "bottom": 347.375,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 281.375,
+        "bottom": 565.375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 342.453125,
+          "bottom": 365.390625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 344.453125,
+            "bottom": 364.84375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 342.453125,
+            "bottom": 365.390625,
+            "left": 248.328125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.96875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe85 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 373.390625,
+          "bottom": 396.328125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 375.390625,
+            "bottom": 395.78125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 373.390625,
+            "bottom": 396.328125,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần65 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 404.328125,
+          "bottom": 427.265625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 406.328125,
+            "bottom": 426.71875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 404.328125,
+            "bottom": 427.265625,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức12 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 435.265625,
+          "bottom": 458.203125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 437.265625,
+            "bottom": 457.65625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 435.265625,
+            "bottom": 458.203125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 466.203125,
+          "bottom": 489.140625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 468.203125,
+            "bottom": 488.59375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 466.203125,
+            "bottom": 489.140625,
+            "left": 248.28125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.015625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp25 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 497.140625,
+          "bottom": 520.078125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 499.140625,
+            "bottom": 519.53125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 497.140625,
+            "bottom": 520.078125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực8 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 186,
+      "longestChoice": 59,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 234.984375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 146.484375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 275.375,
+        "bottom": 339.375,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 273.375,
+        "bottom": 557.375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 247.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần66 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức12 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248.28125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.015625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp25 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.9375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.359375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực6 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 185,
+      "longestChoice": 56,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 249.3125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.984375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần70 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức12 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 249.359375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp27 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.671875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực4 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 174,
+      "longestChoice": 59,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 603.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 252.484375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 13.8125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần71 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức12 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 249.359375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp27 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 99,
+      "longestChoice": 64,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 249.5,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.796875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần72 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức12 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 251.59375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.703125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp31 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 85,
+      "longestChoice": 52,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 249.390625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần73 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.328125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.96875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức16 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 257.4375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.859375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề8 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.53125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.765625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp34 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 143,
+      "longestChoice": 60,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 249.140625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.15625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần75 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 248.46875,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.828125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức22 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề12 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.53125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.765625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp34 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 86,
+      "longestChoice": 50,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 249.90625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.390625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần77 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 248.515625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.78125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức28 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 251.78125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.515625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề12 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.875,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp42 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 81,
+      "longestChoice": 61,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 248.71875,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.578125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần79 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 251.59375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.703125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức31 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 251.59375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.703125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề15 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.265625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 19.03125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp49 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 81,
+      "longestChoice": 74,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 603.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 251.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần81 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 248.09375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.203125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức33 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 251.59375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.703125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề15 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp56 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 108,
+      "longestChoice": 64,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 248.078125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.21875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần89 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức36 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 251.59375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.703125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề15 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp59 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 90,
+      "longestChoice": 59,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 603.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 251.328125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 14.96875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần91 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.265625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 19.03125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức46 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 252.640625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 13.65625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề17 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp59 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 105,
+      "longestChoice": 66,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần93 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.265625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 19.03125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức49 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 248.46875,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.828125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề22 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp59 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 132,
+      "longestChoice": 59,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần95 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức56 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 249.359375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề27 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp59 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 138,
+      "longestChoice": 49,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức63 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 249.359375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề27 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 248,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp59 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 126,
+      "longestChoice": 67,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 603.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.578125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 17.71875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe88 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức65 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 249.359375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề27 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp65 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 95,
+      "longestChoice": 59,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.03125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.265625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe92 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 248.078125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.21875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức68 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 248.015625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.28125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề30 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp65 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 125,
+      "longestChoice": 51,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 183.234375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 94.734375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 223.625,
+        "bottom": 287.625,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 221.625,
+        "bottom": 577.625,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 356,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.03125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.265625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe92 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 249.3125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.984375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức70 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 248.09375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.203125,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề35 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp65 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 5,
+      "narrativeLength": 67,
+      "longestChoice": 61,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.03125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.265625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe92 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 249.609375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.6875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức74 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 247.28125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 19.015625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề40 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp65 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 256.953125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 9.34375,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực0 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 118,
+      "longestChoice": 68,
+      "focused": "event-heading"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "documentScroll": 230,
+      "hud": {
+        "top": 12,
+        "bottom": 590.578125,
+        "left": 68.296875,
+        "right": 283.296875,
+        "height": 578.578125,
+        "width": 215,
+        "readable": true,
+        "unobscured": true
+      },
+      "avatar": {
+        "top": 23,
+        "bottom": 199,
+        "left": 80.296875,
+        "right": 271.296875,
+        "height": 176,
+        "width": 191,
+        "readable": true,
+        "unobscured": true
+      },
+      "narrative": {
+        "top": 88.5,
+        "bottom": 209.109375,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 120.609375,
+        "width": 738.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "firstChoice": {
+        "top": 249.5,
+        "bottom": 313.5,
+        "left": 329.296875,
+        "right": 1046.703125,
+        "height": 64,
+        "width": 717.40625,
+        "readable": true,
+        "unobscured": true
+      },
+      "list": {
+        "top": 247.5,
+        "bottom": 531.5,
+        "left": 326.296875,
+        "right": 1064.703125,
+        "height": 284,
+        "width": 738.40625
+      },
+      "stats": [
+        {
+          "key": "health",
+          "top": 334.953125,
+          "bottom": 357.890625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 336.953125,
+            "bottom": 357.34375,
+            "left": 85.296875,
+            "right": 138.796875,
+            "height": 20.390625,
+            "width": 53.5,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 334.953125,
+            "bottom": 357.890625,
+            "left": 248.03125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.265625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Sức khỏe92 trên 100"
+        },
+        {
+          "key": "mood",
+          "top": 365.890625,
+          "bottom": 388.828125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 367.890625,
+            "bottom": 388.28125,
+            "left": 85.296875,
+            "right": 139.75,
+            "height": 20.390625,
+            "width": 54.453125,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 365.890625,
+            "bottom": 388.828125,
+            "left": 242,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 24.296875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tinh thần100 trên 100"
+        },
+        {
+          "key": "knowledge",
+          "top": 396.828125,
+          "bottom": 419.765625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 398.828125,
+            "bottom": 419.21875,
+            "left": 85.296875,
+            "right": 129.71875,
+            "height": 20.390625,
+            "width": 44.421875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 396.828125,
+            "bottom": 419.765625,
+            "left": 249.90625,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 16.390625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tri thức77 trên 100"
+        },
+        {
+          "key": "skill",
+          "top": 427.765625,
+          "bottom": 450.703125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 429.765625,
+            "bottom": 450.15625,
+            "left": 85.296875,
+            "right": 138.203125,
+            "height": 20.390625,
+            "width": 52.90625,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 427.765625,
+            "bottom": 450.703125,
+            "left": 247.28125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 19.015625,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Tay nghề40 trên 100"
+        },
+        {
+          "key": "social",
+          "top": 458.703125,
+          "bottom": 481.640625,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 460.703125,
+            "bottom": 481.09375,
+            "left": 85.296875,
+            "right": 139.46875,
+            "height": 20.390625,
+            "width": 54.171875,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 458.703125,
+            "bottom": 481.640625,
+            "left": 247.828125,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 18.46875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Giao tiếp65 trên 100"
+        },
+        {
+          "key": "stress",
+          "top": 489.640625,
+          "bottom": 512.578125,
+          "left": 85.296875,
+          "right": 266.296875,
+          "height": 22.9375,
+          "width": 181,
+          "readable": true,
+          "unobscured": true,
+          "label": {
+            "top": 491.640625,
+            "bottom": 512.03125,
+            "left": 85.296875,
+            "right": 122.234375,
+            "height": 20.390625,
+            "width": 36.9375,
+            "readable": true,
+            "unobscured": true
+          },
+          "value": {
+            "top": 489.640625,
+            "bottom": 512.578125,
+            "left": 257.375,
+            "right": 266.296875,
+            "height": 22.9375,
+            "width": 8.921875,
+            "readable": true,
+            "unobscured": true
+          },
+          "text": "Áp lực2 trên 100, thấp hơn là nhẹ nhõm hơn"
+        }
+      ],
+      "overflow": false,
+      "choiceCount": 4,
+      "narrativeLength": 124,
+      "longestChoice": 71,
+      "focused": "event-heading"
+    }
+  ]
+}

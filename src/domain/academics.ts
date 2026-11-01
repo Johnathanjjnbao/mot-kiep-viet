@@ -14,7 +14,7 @@ export const PROGRAM_IDS = [
   'communications',
 ] as const;
 export type ProgramId = (typeof PROGRAM_IDS)[number];
-export type AcademicMethod = 'steady' | 'project' | 'work' | 'rest';
+export type AcademicMethod = 'steady' | 'project' | 'work' | 'rest' | 'pause';
 export interface StudyRecord {
   id: string;
   programId: ProgramId;
@@ -27,7 +27,13 @@ export interface StudyRecord {
   nextTermMonth: number;
   pausedMonth: number | null;
   internship: boolean;
-  results: { month: number; method: AcademicMethod; score: number; passed: boolean }[];
+  results: {
+    month: number;
+    method: AcademicMethod;
+    score: number;
+    passed: boolean;
+    templateId?: string;
+  }[];
 }
 export interface AcademicState {
   applications: {

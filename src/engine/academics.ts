@@ -2,6 +2,8 @@ import type { GameRun } from '../domain/model';
 import type { AcademicAction, AcademicMethod, StudyRecord, ProgramId } from '../domain/academics';
 import { academicTemplates, programById } from '../content/programs';
 import { transact } from './finance';
+import { isAnnual } from './annual';
+import { stageTemplate } from '../content/academic-stages';
 
 type Roll = (run: GameRun) => number;
 const cap = (v: number) => Math.max(0, Math.min(100, v));
@@ -91,11 +93,15 @@ export function academicDefinition(r: GameRun) {
   if (!focus || focus.instanceId !== r.activeEvent?.id) return undefined;
   const s = r.academics!.studies.find((s) => s.id === focus.studyId)!;
   const p = programById(s.programId)!;
+  if (isAnnual(r)) return { ...stageTemplate(r, s), id: focus.instanceId };
   const template = academicTemplates.find((e) => e.id === 'edu-' + p.id)!;
   return { ...template, id: focus.instanceId, title: `Năm ${s.completedYears + 1}: ${p.incident}` };
 }
 export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
-  if (!input.academics || !['education-v1', 'career-v1'].includes(input.setup.lifeRules ?? ''))
+  if (
+    !input.academics ||
+    !['education-v1', 'career-v1', 'annual-v1'].includes(input.setup.lifeRules ?? '')
+  )
     throw Error('Cuộc đời này giữ luật học tập đã tạo trước đây.');
   if (a.expected !== input.actions.length || input.status !== 'playing')
     throw Error('Thao tác học tập đã cũ; hãy tải trạng thái mới.');
@@ -123,6 +129,8 @@ export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
     message = 'Bạn bảo lưu. Tiến độ và học phí đã đóng được giữ.';
   } else if (a.operation === 'resume') {
     if (!study || study.status !== 'paused') throw Error('Chưa có chương trình đang bảo lưu.');
+    if (isAnnual(r) && r.month - study.pausedMonth! < 6)
+      throw Error('Cần bảo lưu ít nhất6 tháng trước khi trở lại học.');
     if (r.player.careers.some((c) => c.endMonth === null))
       throw Error('Hãy rời công việc toàn thời gian trước khi trở lại học.');
     payTerm(r, study);
@@ -205,6 +213,16 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
   if (!s || s.status !== 'studying' || r.month < s.nextTermMonth)
     throw Error('Kỳ học không còn hợp lệ.');
   const p = programById(s.programId)!;
+  if (method === 'pause') {
+    if (!isAnnual(r)) throw Error('Luật học tập cũ không có lựa chọn này.');
+    s.status = 'paused';
+    s.pausedMonth = r.month;
+    r.lastOutcome =
+      'Bạn bảo lưu thật sự. Tiến độ và học phí đã đóng được giữ; không thu học phí năm mới khi đang bảo lưu. Có thể trở lại sau6 tháng, hoặc nghỉ chương trình.';
+    note(r, p.name, r.lastOutcome);
+    return;
+  }
+  const templateId = isAnnual(r) ? stageTemplate(r, s).id : undefined;
   const score =
     method === 'rest'
       ? 0
@@ -220,7 +238,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
           ),
         );
   const passed = method !== 'rest' && score >= 45;
-  s.results.push({ month: r.month, method, score, passed });
+  s.results.push({ month: r.month, method, score, passed, ...(templateId ? { templateId } : {}) });
   s.termAttempts++;
   if (method === 'rest') {
     r.player.stats.stress = cap(r.player.stats.stress - 10);
@@ -277,7 +295,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
 }
 export function assertAcademics(r: GameRun) {
   const state = r.academics;
-  if (!['education-v1', 'career-v1'].includes(r.setup.lifeRules ?? '')) {
+  if (!['education-v1', 'career-v1', 'annual-v1'].includes(r.setup.lifeRules ?? '')) {
     if (state) throw Error('Invariant: unexpected academic rules');
     return;
   }
