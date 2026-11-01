@@ -7,16 +7,18 @@ import {
   dispatch,
   manage,
 } from '../src/engine/engine';
-import type { GameRun } from '../src/domain/model';
+import type { GameRun, RunSetup } from '../src/domain/model';
 import type { ProgramId, AcademicMethod } from '../src/domain/academics';
 import { admissionReason, currentStudy } from '../src/engine/academics';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 export function academicApplicant(
   index = 0,
   lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
+  currency?: RunSetup['currency'],
 ) {
   let r = createRun('university-' + index, {
     lifeRules,
+    ...(currency ? { currency } : {}),
     expansion: 'family',
     cohort: 1995,
     region: 'northern-village',
@@ -56,9 +58,10 @@ export function admittedStudent(
   program: ProgramId,
   start = 0,
   lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
+  currency?: RunSetup['currency'],
 ) {
   for (let i = start; i < start + 100; i++) {
-    const before = academicApplicant(i, lifeRules),
+    const before = academicApplicant(i, lifeRules, currency),
       reason = admissionReason(before, program);
     if (reason) continue;
     const run = dispatch(before, {

@@ -1,3 +1,4 @@
+import { formatMoney } from '../domain/currency';
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, Dices } from 'lucide-react';
 import type { GameRun, RunSetup, ParentTrait } from '../domain/model';
@@ -30,6 +31,7 @@ export function NewLife({
   const [custom, setCustom] = useState(false),
     [seed, setSeed] = useState(''),
     [setup, setSetup] = useState<RunSetup>({
+      currency: 'vnd-v1',
       cohort: 1995,
       region: 'northern-village',
       name: 'Nguyễn Minh An',
@@ -55,10 +57,14 @@ export function NewLife({
     ...(setup.family === 'father-only' ? [] : ['mother' as const]),
     ...(setup.family === 'mother-only' ? [] : ['father' as const]),
   ];
-  const portraitRun = createRun(
+  const rawPortraitRun = createRun(
     seed.trim().slice(0, 100) || generatedSeed,
     custom && setupSchema.safeParse(setup).success ? setup : undefined,
   );
+  const portraitRun = createRun(rawPortraitRun.seed, {
+    ...rawPortraitRun.setup,
+    currency: 'vnd-v1',
+  });
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
     setError('');
@@ -137,7 +143,12 @@ export function NewLife({
         return;
       }
       setPreview(true);
-    } else onStart(seed.trim() || generatedSeed, { ...portraitRun.setup, lifeRules: 'annual-v1' });
+    } else
+      onStart(seed.trim() || generatedSeed, {
+        ...portraitRun.setup,
+        lifeRules: 'annual-v1',
+        currency: 'vnd-v1',
+      });
   }
   const availableSetup = {
     ...setup,
@@ -207,6 +218,8 @@ export function NewLife({
                 </dd>
                 <dt>Môi trường</dt>
                 <dd>{setup.environment === 'urban' ? 'Đô thị' : 'Nông thôn'}</dd>
+                <dt>Khoản để dành</dt>
+                <dd>{formatMoney(portraitRun.finance.cash, portraitRun)}</dd>
                 <dt>Gia cảnh</dt>
                 <dd>{WEALTH[setup.wealth ?? 2]}</dd>
                 <dt>Người chăm sóc</dt>
@@ -232,6 +245,7 @@ export function NewLife({
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
                     lifeRules: 'annual-v1',
+                    currency: 'vnd-v1',
                   })
                 }
               >

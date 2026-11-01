@@ -1,3 +1,4 @@
+import { designMoney, formatMoney } from '../domain/currency';
 import type { GameRun, RunAction } from '../domain/model';
 import { CAREERS, currentCareer } from '../content/world';
 import { temporaryReason, trainingReason } from '../engine/employment';
@@ -46,7 +47,7 @@ export function EmploymentPanel({ run, act }: { run: GameRun; act: (a: RunAction
           disabled={locked || !!training}
           onClick={() => act({ type: 'manage', action: 'train-job' })}
         >
-          Học kỹ năng · 20 đSM
+          Học kỹ năng · {formatMoney(designMoney(run, 20), run)}
         </button>
       </div>
       <p className="fine-print">

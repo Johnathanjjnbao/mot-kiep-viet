@@ -1,0 +1,34 @@
+{
+  "version": "0.3.8-vnd.1",
+  "sourceBaseline": "54e1e0b438dc25f3b772067fd0a7796b6c101d23",
+  "releaseSourceSha": "recorded in VND_MIGRATION_REPORT after commit",
+  "verify": {
+    "status": "VERIFIED PASS",
+    "tests": 256,
+    "files": 27,
+    "historicalGoldens": 9,
+    "vndGolden": 3126831863
+  },
+  "e2e": {
+    "status": "VERIFIED PASS",
+    "passed": 78,
+    "failed": 0,
+    "skipped": 0
+  },
+  "vndSimulation": {
+    "status": "VERIFIED PASS",
+    "runs": 1000,
+    "canonicalReplays": 1000,
+    "maxActions": 428,
+    "maxSaveBytes": 700545,
+    "invariantViolations": 0
+  },
+  "productionSmoke": "VERIFIED PASS /mot-kiep-viet/",
+  "multiBrowserVndDsm": "VERIFIED PASS: Chromium/Firefox/WebKit x desktop/mobile",
+  "assets": {
+    "index-BNQ3Tg9q.css": "d252c9bf92864a8f35f069a7db3563e088d9dabdc390515bc69d89888be854d5",
+    "index-C0d0wkgV.js": "1d3345750c16985bc01c02f89dbfda0bf606b2781e6cefbee60a91055a05b1df"
+  },
+  "cloudOwnerLogin": "NOT RUN",
+  "sqlAuthRlsChanges": false
+}

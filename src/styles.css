@@ -1395,6 +1395,15 @@ meter::-moz-meter-bar {
   color: var(--rust);
   overflow-wrap: anywhere;
 }
+.finance-overview[data-currency='vnd-v1'] strong {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .finance-overview[data-currency='vnd-v1'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .income-line {
   display: flex;
   flex-wrap: wrap;

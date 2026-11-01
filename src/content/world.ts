@@ -1,3 +1,4 @@
+import { designMoney } from '../domain/currency';
 import type { CareerDefinition, GameRun, Region, WorldState } from '../domain/model';
 export const REGIONS: Region[] = [
   {
@@ -281,14 +282,17 @@ export function monthlyIncome(run: GameRun) {
     run.player.stats.skill / 180 +
     (job.id === 'retail' ? run.player.stats.social / 200 : 0) -
     run.player.stats.stress / 250;
-  return Math.max(
-    1,
-    Math.round(
-      job.baseIncome *
-        run.world.wageFactor *
-        (1 + record.level * 0.14) *
-        performance *
-        record.incomeFactor,
+  return designMoney(
+    run,
+    Math.max(
+      1,
+      Math.round(
+        job.baseIncome *
+          run.world.wageFactor *
+          (1 + record.level * 0.14) *
+          performance *
+          record.incomeFactor,
+      ),
     ),
   );
 }
@@ -301,13 +305,16 @@ export function monthlyExpense(run: GameRun) {
         ? run.month - run.family.children.find((c) => c.npcId === n.id)!.bornMonth < 216
         : run.world.year - n.birthYear < 18),
   ).length;
-  return Math.round(
-    (ageOf(run) < 18
-      ? 1
-      : 10 +
-        (run.setup.environment === 'urban' ? 2 : 0) +
-        (run.household.housing === 'rent' ? 6 : 0) +
-        (run.social?.people.some((p) => p.cohabiting) ? 3 : 0) +
-        children * 3) * run.world.costFactor,
+  return designMoney(
+    run,
+    Math.round(
+      (ageOf(run) < 18
+        ? 1
+        : 10 +
+          (run.setup.environment === 'urban' ? 2 : 0) +
+          (run.household.housing === 'rent' ? 6 : 0) +
+          (run.social?.people.some((p) => p.cohabiting) ? 3 : 0) +
+          children * 3) * run.world.costFactor,
+    ),
   );
 }

@@ -1,3 +1,4 @@
+import { designMoney, formatMoney } from '../domain/currency';
 import type { GameRun } from '../domain/model';
 import type { AcademicAction, AcademicMethod, StudyRecord, ProgramId } from '../domain/academics';
 import { academicTemplates, programById } from '../content/programs';
@@ -11,17 +12,18 @@ export const currentStudy = (r: GameRun) =>
   r.academics?.studies.find((s) => s.status === 'studying' || s.status === 'paused');
 export function studyCosts(r: GameRun, id: ProgramId) {
   const p = programById(id)!;
+  const tuition = designMoney(r, p.tuition);
   const scholarship =
     r.player.stats.knowledge >= p.knowledge + 25 && r.player.stats.stress <= 70
-      ? Math.round(p.tuition * 0.5)
+      ? Math.round(tuition * 0.5)
       : 0;
   const support =
     r.household.resources >= 2 &&
     r.month < 300 &&
     r.npcs.some((n) => ['mother', 'father'].includes(n.id) && n.presence === 'resident' && n.alive)
-      ? Math.round(p.tuition * 0.2)
+      ? Math.round(tuition * 0.2)
       : 0;
-  return { tuition: p.tuition, scholarship, support, required: p.tuition - scholarship - support };
+  return { tuition, scholarship, support, required: tuition - scholarship - support };
 }
 function note(r: GameRun, title: string, text: string) {
   r.journal.push({
@@ -38,7 +40,7 @@ function payTerm(r: GameRun, s: StudyRecord) {
     key = `academic:${s.id}:${s.termAttempts}`;
   if (r.finance.cash < cost.required)
     throw Error(
-      `Cần ${cost.required} đSM học phí còn lại; có thể đi làm hoặc tích lũy rồi học tiếp.`,
+      `Cần ${formatMoney(cost.required, r)} học phí còn lại; có thể đi làm hoặc tích lũy rồi học tiếp.`,
     );
   if (cost.scholarship)
     transact(r, key + ':scholarship', 'Học bổng kỳ học', { cash: cost.scholarship });
@@ -73,7 +75,7 @@ export function admissionReason(r: GameRun, id: ProgramId, switching = false): s
     return 'Cần đợi 6 tháng trước khi nộp lại cùng ngành.';
   const cost = studyCosts(r, id);
   if (r.finance.cash < cost.required)
-    return `Cần chuẩn bị ${cost.required} đSM sau hỗ trợ cho năm đầu.`;
+    return `Cần chuẩn bị ${formatMoney(cost.required, r)} sau hỗ trợ cho năm đầu.`;
   return null;
 }
 export function academicDue(r: GameRun) {
@@ -254,7 +256,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
         r,
         `academic:part-time:${s.id}:${s.termAttempts}`,
         'Thu nhập làm thêm trong năm học',
-        { cash: 36 },
+        { cash: designMoney(r, 36) },
       );
     if (passed) {
       s.completedYears++;

@@ -1,3 +1,4 @@
+import { formatMoney } from '../domain/currency';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 import type { Category, Stat } from '../domain/model';
@@ -18,8 +19,7 @@ export const CATEGORIES: Record<Category, string> = {
   history: 'Dòng thời cuộc',
   humor: 'Chuyện để cười',
 };
-export const money = (n: number) =>
-  `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(n)} đSM`;
+export const money = formatMoney;
 export function Modal({
   title,
   children,

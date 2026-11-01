@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readGuestRun } from '../../scripts/decision-viewport.mjs';
+import { designMoney } from '../../src/domain/currency';
 test('shops, previews without paying, buys once, equips, saves an outfit and reloads it', async ({
   page,
 }) => {
@@ -34,7 +35,7 @@ test('shops, previews without paying, buys once, equips, saves an outfit and rel
   await card.getByRole('button', { name: /Mua/ }).dblclick();
   await expect
     .poll(async () => (await readGuestRun(page)).finance.cash)
-    .toBe(before.finance.cash - 12);
+    .toBe(before.finance.cash - designMoney(before, 12));
   expect(
     (await readGuestRun(page)).finance.transactions.filter(
       (t) => t.id === 'wardrobe:buy:indigo-tee',

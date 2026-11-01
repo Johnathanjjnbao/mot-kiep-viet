@@ -1,3 +1,4 @@
+import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import type { CareerId, GameRun } from '../domain/model';
 import type { EmploymentEnding, EmploymentOperation } from '../domain/employment';
 import { CAREERS, careerReason, currentCareer, monthlyIncome } from '../content/world';
@@ -61,7 +62,7 @@ export function endEmployment(r: GameRun, ending: EmploymentEnding) {
   if (!job) return;
   const index = r.player.careers.indexOf(job),
     name = CAREERS.find((j) => j.id === job.id)!.name;
-  const support = ending === 'layoff' ? Math.min(80, monthlyIncome(r) * 2) : 0;
+  const support = ending === 'layoff' ? Math.min(designMoney(r, 80), monthlyIncome(r) * 2) : 0;
   job.endMonth = r.month;
   job.ending = ending;
   if (support)
@@ -79,7 +80,7 @@ export function endEmployment(r: GameRun, ending: EmploymentEnding) {
   note(
     r,
     `Khép lại: ${name}`,
-    `${labels[ending]}. Kinh nghiệm đã làm được giữ trong lịch sử.${support ? ` Khoản hỗ trợ ${support} đSM đã vào sổ; đây là tham số trò chơi.` : ''}`,
+    `${labels[ending]}. Kinh nghiệm đã làm được giữ trong lịch sử.${support ? ` Khoản hỗ trợ ${formatMoney(support, r)} đã vào sổ; đây là tham số trò chơi.` : ''}`,
   );
   if (r.employment && ending !== 'switched' && ending !== 'retired') r.employment.notice = true;
   syncEmployment(r);
@@ -166,7 +167,8 @@ export function trainingReason(r: GameRun) {
   if (r.employment.trainingMonths.length >= 40) return 'Đã đạt giới hạn lớp kỹ năng trong một đời.';
   if (r.employment.trainingMonths.length && r.month - r.employment.trainingMonths.at(-1)! < 6)
     return 'Hãy dành 6 tháng thực hành trước lớp tiếp theo.';
-  if (r.finance.cash < 20) return 'Cần 20 đSM; buổi hướng dẫn hồ sơ trong câu chuyện vẫn miễn phí.';
+  if (r.finance.cash < designMoney(r, 20))
+    return currencyText(r, 'Cần 20 đSM; buổi hướng dẫn hồ sơ trong câu chuyện vẫn miễn phí.');
   return null;
 }
 export function trainEmployment(r: GameRun) {
@@ -176,7 +178,7 @@ export function trainEmployment(r: GameRun) {
     r,
     `employment:training:${r.employment!.trainingMonths.length}`,
     'Lớp chuyển kỹ năng ngắn hạn',
-    { cash: -20 },
+    { cash: -designMoney(r, 20) },
   );
   r.employment!.trainingMonths.push(r.month);
   r.player.stats.skill = cap(r.player.stats.skill + 5);

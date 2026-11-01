@@ -1,5 +1,12 @@
 # Life Expansion — bốn mốc phát hành
 
+## v0.3.8-vnd.1 — local gates PASS, deployment pending (01/11/2026)
+
+Tiếp tục checkpoint `54e1e0b`, giữ foundation retail ở trạng thái isolated. Đời tạo mới dùng `setup.currency = vnd-v1`, lưu số tiền nguyên VND; thiếu selector vẫn dsm-v1. Quy đổi tham số thiết kế một lần: 1 đơn vị cũ =200.000 VND theo sức mua thiết kế2026, không phải tỷ giá hay giá danh nghĩa lịch sử. Ledger giữ raw amounts; lãi tính trực tiếp trên số dư. Engine/content3.0.0, schema4, 512actions/5MiB, frozen v1/v2 và lưu/history giữ nguyên; không SQL/Auth/RLS changes.
+
+Full verify256tests/27files PASS, gồm9golden lịch sử và golden VND3126831863 độc lập. 1.000 đời VND +1.000 canonical replay PASS,0vi phạm; max428actions/700545bytes;4–5 lựa chọn khả dụng;0tuổi thiếu/bỏ qua; kết thúc65–107. Production Pages subpath smoke PASS. E2E78/78 PASS, browser VND/DSM sáu contexts PASS, production smoke và secret scan PASS. Exact-SHA CI/deployment/live còn PENDING; không coi local PASS là deployed. Báo cáo và phạm vi tại `VND_MIGRATION_REPORT.md`. G5 guest chưa chốt cho VND; owner cloud login vẫn NOT RUN. Phần v0.3.8 digital/business bên dưới là lịch sử checkpoint, chưa trở thành shop chơi được.
+
+
 ## Đã phát hành 0.3.7-yearly.1 — G5 guest VERIFIED PASS (01/11/2026)
 
 Source **1fb059cd73d5dc676724f705f58094f50dd30c70**, main; [CI41281828843](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843) completed/success cho build và deploy. [Chơi bản live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repository](https://github.com/Johnathanjjnbao/mot-kiep-viet). Tiếp tục baseline da55d28; không làm lại Creator/A/B/C. Đời mới dùng annual-v1, trải nghiệm từng tuổi từ0, không ép kết thúc ở82. Đời/save cũ giữ luật,8golden cũ và frozen v1/v2; golden annual432954253 riêng. Engine/content3.0.0/schema4 và mọi ID lưu/history giữ nguyên.

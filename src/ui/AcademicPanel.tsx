@@ -1,3 +1,4 @@
+import { designMoney, currencyOf } from '../domain/currency';
 import { useState } from 'react';
 import type { GameRun, RunAction } from '../domain/model';
 import { PROGRAMS, programById } from '../content/programs';
@@ -136,8 +137,11 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
           placeholder="Ví dụ: Công nghệ thông tin"
         />
         <p className="fine-print">
-          Học phí dùng đSM trong game. Học bổng và hỗ trợ được xét lại từng năm, không phải cam kết
-          tuyển sinh hay mức giá ngoài đời.
+          {currencyOf(run) === 'vnd-v1'
+            ? 'Học phí VND theo sức mua thiết kế năm 2026.'
+            : 'Học phí dùng đSM trong game.'}{' '}
+          Học bổng và hỗ trợ được xét lại từng năm, không phải cam kết tuyển sinh hay mức giá ngoài
+          đời.
         </p>
         <div className="career-grid">
           {PROGRAMS.filter((p) =>
@@ -154,7 +158,7 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
                   <dt>Thời gian</dt>
                   <dd>{p.years} năm đạt yêu cầu</dd>
                   <dt>Học phí</dt>
-                  <dd>{money(p.tuition)}/năm</dd>
+                  <dd>{money(designMoney(run, p.tuition), run)}/năm</dd>
                   <dt>Đầu vào</dt>
                   <dd>
                     {p.knowledge} tri thức, từ năm {p.from} trong mô phỏng
@@ -167,8 +171,9 @@ export function AcademicPanel({ run, act }: { run: GameRun; act: (a: RunAction) 
                   <dd>{p.skills.map((skill) => STAT_NAMES[skill]).join(', ')}</dd>
                 </dl>
                 <p className="fine-print">
-                  Chuẩn bị năm đầu: {money(cost.required)} sau học bổng {money(cost.scholarship)} và
-                  hỗ trợ {money(cost.support)} đang đủ điều kiện.
+                  Chuẩn bị năm đầu: {money(cost.required, run)} sau học bổng{' '}
+                  {money(cost.scholarship, run)} và hỗ trợ {money(cost.support, run)} đang đủ điều
+                  kiện.
                 </p>
                 <p className="fine-print">
                   {same

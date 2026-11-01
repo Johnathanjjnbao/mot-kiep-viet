@@ -1,3 +1,4 @@
+import { designMoney } from '../domain/currency';
 import type { GameRun, EventDefinition } from '../domain/model';
 import type { SocialAction, SocialOperation, SocialPerson, SocialStatus } from '../domain/social';
 import { hashSeed } from './random';
@@ -383,7 +384,12 @@ export function applySocial(r: GameRun, op: SocialOperation): string {
     case 'divorce':
       if (p.status !== 'separated' || p.marriedMonth === null)
         throw Error('Chưa có hôn nhân đang ly thân.');
-      mandatoryCost(r, `social:divorce:${r.actions.length}`, 'Thu xếp đời sống sau ly hôn', 20);
+      mandatoryCost(
+        r,
+        `social:divorce:${r.actions.length}`,
+        'Thu xếp đời sống sau ly hôn',
+        designMoney(r, 20),
+      );
       p.status = 'divorced';
       s.primaryId = null;
       p.cohabiting = false;
@@ -479,7 +485,7 @@ export function tickSocial(r: GameRun) {
     }
     if (p.cohabiting && r.npcs.find((n) => n.id === p.npcId)?.alive && r.month >= p.studyingUntil)
       transact(r, `social:household:${r.month}`, 'Phần đóng góp sinh hoạt của người đồng hành', {
-        cash: 2,
+        cash: designMoney(r, 2),
       });
   }
   if (s.breach && !r.npcs.find((n) => n.id === s.breach!.primaryId)?.alive) {

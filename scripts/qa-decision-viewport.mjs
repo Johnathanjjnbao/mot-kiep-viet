@@ -70,7 +70,7 @@ export async function viewportJourney(
       await expect(page.getByTestId('hud-age')).toHaveText(`${Math.floor(run.month / 12)} tuổi`);
       await expect(page.getByTestId('hud-year')).toHaveText(String(run.world.year));
       await expect(page.getByTestId('hud-cash')).toHaveText(
-        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(run.finance.cash)} đSM`,
+        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(run.finance.cash)} ${run.setup.currency === 'vnd-v1' ? '₫' : 'đSM'}`,
       );
       m.step = i;
       measurements.push(m);

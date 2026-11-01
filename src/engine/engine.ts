@@ -1,3 +1,4 @@
+import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import {
   initFamily,
   planBirth,
@@ -203,6 +204,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     motherTraits: setup.motherTraits ?? [],
     fatherTraits: setup.fatherTraits ?? [],
   };
+  if (setup.currency) run.setup.currency = setup.currency;
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
   if (
@@ -262,9 +264,11 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     if (run.player.traits.includes('Thích giúp đỡ')) run.player.stats.social += 3;
   }
   transact(run, 'opening', 'Khoản gia đình để dành cho bạn', {
-    cash:
+    cash: designMoney(
+      run,
       [25, 70, 150, 300, 600][run.household.resources] +
-      residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
+        residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
+    ),
   });
   note(
     run,
@@ -316,8 +320,9 @@ export function eligible(run: GameRun, c: Condition): boolean {
     )
   )
     return false;
-  if (c.minCash !== undefined && run.finance.cash < c.minCash) return false;
-  if (c.minDebt !== undefined && run.finance.liability.principal < c.minDebt) return false;
+  if (c.minCash !== undefined && run.finance.cash < designMoney(run, c.minCash)) return false;
+  if (c.minDebt !== undefined && run.finance.liability.principal < designMoney(run, c.minDebt))
+    return false;
   if (c.technology && !run.world.technologies.includes(c.technology)) return false;
   for (const [key, value] of Object.entries(c.minStats ?? {}))
     if (stats[key as Stat] < value) return false;
@@ -328,10 +333,13 @@ export function eligible(run: GameRun, c: Condition): boolean {
 export function choiceReason(run: GameRun, choice: Choice): string | null {
   if (choice.requires && !eligible(run, choice.requires))
     return 'Chưa đủ điều kiện: xem gợi ý của lựa chọn.';
-  const cost = -choice.effects
-    .filter((e) => e.kind === 'cash' && e.amount < 0)
-    .reduce((s, e) => s + (e.kind === 'cash' ? e.amount : 0), 0);
-  if (cost > run.finance.cash) return `Cần ${cost} đSM tiền mặt.`;
+  const cost = designMoney(
+    run,
+    -choice.effects
+      .filter((e) => e.kind === 'cash' && e.amount < 0)
+      .reduce((s, e) => s + (e.kind === 'cash' ? e.amount : 0), 0),
+  );
+  if (cost > run.finance.cash) return `Cần ${formatMoney(cost, run)} tiền mặt.`;
   for (const effect of choice.effects) {
     if (isAnnual(run) && effect.kind === 'employment' && !employmentSceneEligible(run))
       return 'Hoàn cảnh tìm việc đã thay đổi; hãy hoàn tất câu chuyện trước khi đổi việc học.';
@@ -356,7 +364,7 @@ export function choiceReason(run: GameRun, choice: Choice): string | null {
   }
   return null;
 }
-export const activeDefinition = (run: GameRun) => {
+const rawActiveDefinition = (run: GameRun) => {
   const definition =
     academicDefinition(run) ??
     familyDefinition(run) ??
@@ -370,6 +378,30 @@ export const activeDefinition = (run: GameRun) => {
     (annualDefinition.condition.maxAge === 81 || annualDefinition.condition.maxAge === 82)
     ? { ...annualDefinition, condition: { ...annualDefinition.condition, maxAge: undefined } }
     : annualDefinition;
+};
+export const activeDefinition = (run: GameRun) => {
+  const event = rawActiveDefinition(run);
+  if (!event || run.setup.currency !== 'vnd-v1') return event;
+  return {
+    ...event,
+    title: currencyText(run, event.title),
+    text: currencyText(run, event.text),
+    choices: event.choices.map((c) => ({
+      ...c,
+      text: currencyText(run, c.text),
+      hint: c.hint ? currencyText(run, c.hint) : c.hint,
+      outcome: currencyText(run, c.outcome),
+      ...(c.chance
+        ? {
+            chance: {
+              ...c.chance,
+              successText: currencyText(run, c.chance.successText),
+              failureText: currencyText(run, c.chance.failureText),
+            },
+          }
+        : {}),
+    })),
+  };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
   if (event.version === 9 && !isAnnual(run)) return false;
@@ -511,8 +543,9 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
       run.player.stats[e.stat] = clamp(run.player.stats[e.stat] + e.amount);
       break;
     case 'cash':
-      if (e.amount < 0) mandatoryCost(run, id, e.label, -e.amount);
-      else transact(run, id, e.label, { cash: e.amount });
+      if (e.amount < 0)
+        mandatoryCost(run, id, currencyText(run, e.label), designMoney(run, -e.amount));
+      else transact(run, id, currencyText(run, e.label), { cash: designMoney(run, e.amount) });
       break;
     case 'flag':
       run.flags[e.flag] = e.value;
@@ -599,9 +632,13 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
     }
     case 'housing':
       if (e.housing === 'owned' && !run.finance.assets.some((a) => a.id === 'home')) {
-        if (run.finance.cash < 600) throw new Error('Chưa đủ 600 đSM mua nhà.');
-        transact(run, id, 'Mua một căn nhà nhỏ', { cash: -600, assets: 600 });
-        run.finance.assets.push({ id: 'home', name: 'Căn nhà nhỏ', value: 600 });
+        if (run.finance.cash < designMoney(run, 600))
+          throw new Error(currencyText(run, 'Chưa đủ 600 đSM mua nhà.'));
+        transact(run, id, 'Mua một căn nhà nhỏ', {
+          cash: -designMoney(run, 600),
+          assets: designMoney(run, 600),
+        });
+        run.finance.assets.push({ id: 'home', name: 'Căn nhà nhỏ', value: designMoney(run, 600) });
       }
       run.household.housing = e.housing;
       run.household.moved = e.housing !== 'family';
@@ -712,7 +749,7 @@ function tick(run: GameRun) {
     );
     stats.stress = clamp(
       stats.stress +
-        (run.finance.liability.principal > 300 ? 5 : 0) +
+        (run.finance.liability.principal > designMoney(run, 300) ? 5 : 0) +
         (stats.mood < 25 ? 2 : 0) -
         (close ? 2 : 0),
     );
@@ -886,34 +923,42 @@ export function manage(
       message = run.lastOutcome!;
       break;
     case 'save-money':
-      if (run.finance.cash < 50) throw new Error('Cần ít nhất 50 đSM.');
-      transact(run, id, 'Gửi tiết kiệm', { cash: -50, savings: 50 });
-      message = 'Bạn gửi 50 đSM vào khoản dành dụm.';
+      if (run.finance.cash < designMoney(run, 50))
+        throw new Error(currencyText(run, 'Cần ít nhất 50 đSM.'));
+      transact(run, id, 'Gửi tiết kiệm', {
+        cash: -designMoney(run, 50),
+        savings: designMoney(run, 50),
+      });
+      message = currencyText(run, 'Bạn gửi 50 đSM vào khoản dành dụm.');
       break;
     case 'withdraw-money': {
-      const amount = Math.min(50, run.finance.savings);
+      const amount = Math.min(designMoney(run, 50), run.finance.savings);
       if (!amount) throw new Error('Chưa có tiền tiết kiệm.');
       transact(run, id, 'Rút tiết kiệm', { cash: amount, savings: -amount });
-      message = `Bạn rút ${amount} đSM từ tiết kiệm.`;
+      message = `Bạn rút ${formatMoney(amount, run)} từ tiết kiệm.`;
       break;
     }
     case 'borrow':
-      if (run.finance.liability.principal > 250)
-        throw new Error('Đã đạt hạn mức vay chủ động 300 đSM.');
-      transact(run, id, 'Vay chủ động', { cash: 50, debt: 50 });
-      message = 'Bạn vay 50 đSM, lãi 0,4% mỗi tháng.';
+      if (run.finance.liability.principal > designMoney(run, 250))
+        throw new Error(currencyText(run, 'Đã đạt hạn mức vay chủ động 300 đSM.'));
+      transact(run, id, 'Vay chủ động', { cash: designMoney(run, 50), debt: designMoney(run, 50) });
+      message = currencyText(run, 'Bạn vay 50 đSM, lãi 0,4% mỗi tháng.');
       break;
     case 'repay': {
-      const amount = Math.min(50, run.finance.cash, run.finance.liability.principal);
+      const amount = Math.min(
+        designMoney(run, 50),
+        run.finance.cash,
+        run.finance.liability.principal,
+      );
       if (!amount) throw new Error('Không có khoản nợ hoặc tiền để trả.');
       transact(run, id, 'Trả nợ', { cash: -amount, debt: -amount });
-      message = `Bạn trả ${amount} đSM tiền nợ.`;
+      message = `Bạn trả ${formatMoney(amount, run)} tiền nợ.`;
       break;
     }
     case 'buy-home':
       if (run.finance.assets.some((a) => a.id === 'home')) throw new Error('Bạn đã có nhà.');
       applyEffect(run, { kind: 'housing', housing: 'owned' }, id, 0);
-      message = 'Bạn mua căn nhà nhỏ với 600 đSM.';
+      message = currencyText(run, 'Bạn mua căn nhà nhỏ với 600 đSM.');
       break;
     case 'move-home':
       if (run.household.housing === 'owned') throw new Error('Bạn đang ở nhà riêng.');

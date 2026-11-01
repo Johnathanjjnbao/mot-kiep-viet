@@ -2,7 +2,7 @@ import { PGlite } from '@electric-sql/pglite';
 import { readFileSync } from 'node:fs';
 import { it, expect } from 'vitest';
 import { annualAssessment } from '../scripts/annual-fixture';
-import { choose, activeDefinition } from '../src/engine/engine';
+import { choose, activeDefinition, createRun } from '../src/engine/engine';
 import { snapshot } from '../src/persistence/saves';
 it('adds only the new version tuple while retaining all old size/identity/header guards', async () => {
   const db = new PGlite();
@@ -57,6 +57,13 @@ it('adds only the new version tuple while retaining all old size/identity/header
         ).rows[0].ok;
       expect(await valid(value)).toBe(true);
       if (schema === 4) {
+        const vnd = createRun('sql-vnd-envelope', {
+          cohort: 1995,
+          region: 'northern-village',
+          lifeRules: 'annual-v1',
+          currency: 'vnd-v1',
+        });
+        expect(await valid(snapshot(vnd, life))).toBe(true);
         const university = structuredClone(value);
         university.run.setup!.lifeRules = 'education-v1';
         Object.assign(university.run, {

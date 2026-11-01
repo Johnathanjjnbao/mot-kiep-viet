@@ -13,9 +13,11 @@ const testCreator = process.argv.includes('--creator');
 const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
+const testVnd = process.argv.includes('--vnd');
 const testAnnual = process.argv.includes('--annual');
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
+  currency: testVnd ? 'vnd-v1' : 'dsm-v1',
   runs: 0,
   replayChecked: 0,
   creatorRuns: 0,
@@ -79,6 +81,7 @@ for (let i = 0; i < total; i++) {
     const run = simulateLife(
       seed,
       {
+        ...(testVnd ? { currency: 'vnd-v1' as const } : {}),
         expansion: i % 4 === 0 ? 'wardrobe' : i % 4 === 1 ? 'social' : 'family',
         cohort,
         region,

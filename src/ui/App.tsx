@@ -1,3 +1,4 @@
+import { currencyOf } from '../domain/currency';
 import { Wardrobe } from './Wardrobe';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -272,7 +273,13 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                   ) : tab === 'wardrobe' ? (
                     <Wardrobe run={run} act={act} />
                   ) : (
-                    <PeoplePanel run={run} act={a=>{act(a);setTab('story');}} />
+                    <PeoplePanel
+                      run={run}
+                      act={(a) => {
+                        act(a);
+                        setTab('story');
+                      }}
+                    />
                   )}
                 </div>
                 <aside className="world-sidebar" aria-label="Thời cuộc và ký ức">
@@ -420,9 +427,11 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
               <div className="help-note">
                 <h3>Một thế giới có chủ đích</h3>
                 <p>
-                  Ba vùng quê là bối cảnh hư cấu, không đại diện cho mọi người tại đó. đSM là đồng
-                  sức mua thiết kế cho game, không phải giá hay thu nhập lịch sử bằng VNĐ. Từ năm
-                  2027, tất cả bối cảnh tương lai là giả định.
+                  Ba vùng quê là bối cảnh hư cấu, không đại diện cho mọi người tại đó.{' '}
+                  {currencyOf(run ?? undefined) === 'vnd-v1'
+                    ? 'VND dùng sức mua thiết kế năm 2026, không phải giá hay thu nhập danh nghĩa lịch sử.'
+                    : 'đSM là đồng sức mua thiết kế cho game, không phải giá hay thu nhập lịch sử bằng VNĐ.'}{' '}
+                  Từ năm 2027, tất cả bối cảnh tương lai là giả định.
                 </p>
                 <p>
                   Mốc Đổi Mới 1986 tham khảo{' '}

@@ -1,3 +1,4 @@
+import { designMoney } from '../domain/currency';
 import { socialEligible, requestSocial } from '../engine/social';
 import type { GameRun, RunSetup } from '../domain/model';
 import { CAREERS, ageOf, careerReason, currentCareer } from '../content/world';
@@ -54,7 +55,7 @@ export function simulateLife(
       if (
         study?.status === 'paused' &&
         (run.setup.lifeRules !== 'annual-v1' || run.month - study.pausedMonth! >= 6) &&
-        run.finance.cash >= studyCosts(run, study.programId).required + 20 &&
+        run.finance.cash >= studyCosts(run, study.programId).required + designMoney(run, 20) &&
         run.actions.filter((a) => a.type === 'academic').length < 35
       ) {
         if (currentCareer(run)) run = manage(run, 'quit-job');
@@ -169,7 +170,7 @@ export function simulateLife(
         managementAvailable &&
         ageOf(run) >= 18 &&
         !run.wardrobe.owned.includes(clothing) &&
-        run.finance.cash >= 24
+        run.finance.cash >= designMoney(run, 24)
       ) {
         run = dispatch(run, {
           type: 'wardrobe',
@@ -198,18 +199,23 @@ export function simulateLife(
       if (
         ageOf(run) >= 30 &&
         managementAvailable &&
-        run.finance.cash > 950 &&
+        run.finance.cash > designMoney(run, 950) &&
         !run.finance.assets.length &&
         policy % 2 === 0
       )
         run = manage(run, 'buy-home');
-      if (managementAvailable && ageOf(run) >= 18 && run.finance.cash > 150 && policy === 1)
+      if (
+        managementAvailable &&
+        ageOf(run) >= 18 &&
+        run.finance.cash > designMoney(run, 150) &&
+        policy === 1
+      )
         run = manage(run, 'save-money');
       if (
         ageOf(run) >= 18 &&
         managementAvailable &&
         run.finance.liability.principal > 0 &&
-        run.finance.cash > 80 &&
+        run.finance.cash > designMoney(run, 80) &&
         policy === 2
       )
         run = manage(run, 'repay');

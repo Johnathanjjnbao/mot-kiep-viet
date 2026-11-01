@@ -1,3 +1,4 @@
+import { designMoney, currencyOf } from '../domain/currency';
 import { useRef, useState } from 'react';
 import type { GameRun, RunAction, WardrobeAction, WearSlot } from '../domain/model';
 import { CLOTHING, clothingById, wearable } from '../content/clothing';
@@ -13,7 +14,8 @@ const slots: Record<WearSlot, string> = {
   accessory: 'Phụ kiện',
 };
 export function Wardrobe({ run, act }: { run: GameRun; act: (action: RunAction) => void }) {
-  const lastTouch = useRef(-Infinity), suppressTouchClick = useRef(false);
+  const lastTouch = useRef(-Infinity),
+    suppressTouchClick = useRef(false);
   const [slot, setSlot] = useState<WearSlot>('top'),
     [view, setView] = useState<'shop' | 'owned'>('shop'),
     [preview, setPreview] = useState(''),
@@ -37,15 +39,21 @@ export function Wardrobe({ run, act }: { run: GameRun; act: (action: RunAction) 
   const send = (operation: WardrobeAction['operation'], item: string) =>
     act({ type: 'wardrobe', operation, item, expected: run.actions.length });
   return (
-    <section className="panel-page wardrobe-page"
-      onPointerDownCapture={e => {
-        suppressTouchClick.current = e.pointerType === 'touch' && performance.now() - lastTouch.current < 350;
+    <section
+      className="panel-page wardrobe-page"
+      onPointerDownCapture={(e) => {
+        suppressTouchClick.current =
+          e.pointerType === 'touch' && performance.now() - lastTouch.current < 350;
         if (e.pointerType === 'touch') lastTouch.current = performance.now();
       }}
-      onClickCapture={e => {
-        if (e.detail > 1 || (e.detail !== 0 && suppressTouchClick.current)) { e.preventDefault(); e.stopPropagation(); }
+      onClickCapture={(e) => {
+        if (e.detail > 1 || (e.detail !== 0 && suppressTouchClick.current)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         suppressTouchClick.current = false;
-      }}>
+      }}
+    >
       <span className="eyebrow">MẶC THEO CÁCH CỦA MÌNH</span>
       <h2>Tủ đồ qua những mùa.</h2>
       <p className="muted">
@@ -56,14 +64,17 @@ export function Wardrobe({ run, act }: { run: GameRun; act: (action: RunAction) 
         <aside className="wardrobe-preview">
           <Avatar run={previewRun} />
           <strong>{p ? `Đang thử: ${p.name}` : 'Bộ đồ đang mặc'}</strong>
-          <p role="status">Trong túi: {money(run.finance.cash)}</p>
+          <p role="status">Trong túi: {money(run.finance.cash, run)}</p>
           {p && (
             <button className="text-button" onClick={() => setPreview('')}>
               Bỏ xem thử
             </button>
           )}
           <p className="fine-print">
-            Xem thử không mua hay thay bản lưu. Giá là đSM mô phỏng, không phải VNĐ.
+            Xem thử không mua hay thay bản lưu.{' '}
+            {currencyOf(run) === 'vnd-v1'
+              ? 'Giá VND là tham số sức mua năm 2026 trong game.'
+              : 'Giá là đSM mô phỏng, không phải VNĐ.'}
           </p>
           <ul className="equipped-list">
             {Object.entries(w.equipped).map(([s, id]) => (
@@ -150,17 +161,18 @@ export function Wardrobe({ run, act }: { run: GameRun; act: (action: RunAction) 
                   key={c.id}
                   data-clothing={c.id}
                 >
-                  <div
-                    className="cloth-swatch"
-                    aria-hidden="true"
-                  >
+                  <div className="cloth-swatch" aria-hidden="true">
                     <Garment item={c} />
                   </div>
                   <div>
                     <h3>{c.name}</h3>
                     <p>{c.description}</p>
                     <strong>
-                      {owned ? (equipped ? 'Đang mặc' : 'Đã sở hữu') : money(c.price)}
+                      {owned
+                        ? equipped
+                          ? 'Đang mặc'
+                          : 'Đã sở hữu'
+                        : money(designMoney(run, c.price), run)}
                     </strong>
                     {!allowed && (
                       <p className="fine-print">
@@ -190,10 +202,10 @@ export function Wardrobe({ run, act }: { run: GameRun; act: (action: RunAction) 
                     ) : (
                       <button
                         className="button primary small"
-                        disabled={!allowed || run.finance.cash < c.price}
+                        disabled={!allowed || run.finance.cash < designMoney(run, c.price)}
                         onClick={() => send('buy', c.id)}
                       >
-                        Mua · {money(c.price)}
+                        Mua · {money(designMoney(run, c.price), run)}
                       </button>
                     )}
                   </div>

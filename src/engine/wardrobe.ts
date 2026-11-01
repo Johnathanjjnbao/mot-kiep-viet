@@ -1,3 +1,4 @@
+import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import type { GameRun, WardrobeAction, WearSlot } from '../domain/model';
 import { clothingById, DEFAULT_CLOTHES, wearable } from '../content/clothing';
 import { transact } from './finance';
@@ -73,11 +74,13 @@ export function applyWardrobe(input: GameRun, action: WardrobeAction): GameRun {
     if (!item || !wearable(run, item)) throw Error('Món đồ chưa phù hợp tuổi hoặc thời kỳ.');
     if (action.operation === 'buy') {
       if (w.owned.includes(item.id)) throw Error('Bạn đã có món này; không trừ tiền lần nữa.');
-      if (item.price <= 0 || run.finance.cash < item.price)
-        throw Error('Chưa đủ đSM; bạn có thể dùng bộ đồ mặc định.');
-      transact(run, `wardrobe:buy:${item.id}`, `Mua ${item.name}`, { cash: -item.price });
+      if (item.price <= 0 || run.finance.cash < designMoney(run, item.price))
+        throw Error(currencyText(run, 'Chưa đủ đSM; bạn có thể dùng bộ đồ mặc định.'));
+      transact(run, `wardrobe:buy:${item.id}`, `Mua ${item.name}`, {
+        cash: -designMoney(run, item.price),
+      });
       w.owned.push(item.id);
-      message = `Bạn mua ${item.name.toLowerCase()} với ${item.price} đSM.`;
+      message = `Bạn mua ${item.name.toLowerCase()} với ${formatMoney(designMoney(run, item.price), run)}.`;
       w.memories.push(`${run.world.year}: ${message}`);
     } else {
       if (!w.owned.includes(item.id)) throw Error('Bạn chưa sở hữu món này.');
@@ -105,7 +108,9 @@ export function assertWardrobe(run: GameRun) {
     if (
       !c ||
       (!DEFAULT_CLOTHES.includes(id) &&
-        !run.finance.transactions.some((t) => t.id === `wardrobe:buy:${id}` && t.cash === -c.price))
+        !run.finance.transactions.some(
+          (t) => t.id === `wardrobe:buy:${id}` && t.cash === -designMoney(run, c.price),
+        ))
     )
       throw Error('Invariant: wardrobe purchase');
   }

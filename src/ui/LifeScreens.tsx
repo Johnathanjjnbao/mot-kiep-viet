@@ -1,4 +1,4 @@
-import {STORY_ARCS} from '../content/arcs';
+import { STORY_ARCS } from '../content/arcs';
 import {
   ArrowRight,
   BookOpen,
@@ -57,7 +57,7 @@ export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void
         </p>
         <div className="birth-traits">
           <span className="badge">{run.player.traits[0]}</span>
-          <span className="badge">Khoản để dành: {money(run.finance.cash)}</span>
+          <span className="badge">Khoản để dành: {money(run.finance.cash, run)}</span>
         </div>
         <div className="birth-future">{run.world.eraName} · Câu chuyện gia đình hư cấu</div>
         <button className="button primary" onClick={onBegin}>
@@ -99,7 +99,7 @@ export function Character({ run }: { run: GameRun }) {
         </div>
         <div className="hud-cash">
           <span>Trong túi</span>
-          <strong data-testid="hud-cash">{money(run.finance.cash)}</strong>
+          <strong data-testid="hud-cash">{money(run.finance.cash, run)}</strong>
         </div>
       </div>
       <dl className="hud-stats" aria-label="Chỉ số nhân vật">
@@ -195,7 +195,7 @@ export function Story({
         {event?.arc && (
           <div className="story-thread">
             Một câu chuyện dài <span>·</span>{' '}
-            {STORY_ARCS.find(a=>a.id===event.arc)?.title ?? 'Những năm tháng đi cùng nhau'}
+            {STORY_ARCS.find((a) => a.id === event.arc)?.title ?? 'Những năm tháng đi cùng nhau'}
           </div>
         )}
       </div>
@@ -348,14 +348,19 @@ export function Summary({
             <span>năm mưu sinh</span>
           </div>
           <div>
-            <strong>{money(summary.netWorth)}</strong>
+            <strong>{money(summary.netWorth, run)}</strong>
             <span>tài sản ròng</span>
           </div>
         </div>
         <blockquote>“Mỗi điều bình thường, một lần thành ký ức.”</blockquote>
         <p className="fine-print">
-          Tài sản: {money(run.finance.assets.reduce((n, a) => n + a.value, 0))} · Để dành:{' '}
-          {money(run.finance.savings)} · Còn nợ: {money(run.finance.liability.principal)}
+          Tài sản:{' '}
+          {money(
+            run.finance.assets.reduce((n, a) => n + a.value, 0),
+            run,
+          )}{' '}
+          · Để dành: {money(run.finance.savings, run)} · Còn nợ:{' '}
+          {money(run.finance.liability.principal, run)}
         </p>
       </article>
       <div className="summary-actions">

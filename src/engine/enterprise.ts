@@ -1,3 +1,4 @@
+import { designMoney } from '../domain/currency';
 import type { GameRun } from '../domain/model';
 import type { Enterprise, ProductCategory, RetailPolicy } from '../domain/enterprise';
 import { transact } from './finance';
@@ -26,12 +27,12 @@ export function assertEnterprise(r: GameRun, e: Enterprise) {
     throw Error('Invalid enterprise identity');
   if (
     !['clothing', 'household', 'handmade'].includes(e.category) ||
-    e.unitCost !== { clothing: 3, household: 5, handmade: 2 }[e.category]
+    e.unitCost !== designMoney(r, { clothing: 3, household: 5, handmade: 2 }[e.category])
   )
     throw Error('Invalid product');
   if (
     !policyValid(e.policy) ||
-    !integer(e.cash, 0, 1000000) ||
+    !integer(e.cash, 0, designMoney(r, 1000000)) ||
     !integer(e.stock, 0, 200) ||
     !integer(e.reputation, 0, 100)
   )
@@ -47,7 +48,7 @@ export function assertEnterprise(r: GameRun, e: Enterprise) {
     (e.closedMonth !== null && !integer(e.closedMonth, e.foundedMonth, r.month))
   )
     throw Error('Invalid closure');
-  if (Object.values(e.totals).some((n) => !integer(n, 0, 1000000000)))
+  if (Object.values(e.totals).some((n) => !integer(n, 0, designMoney(r, 1000000000))))
     throw Error('Invalid enterprise totals');
   const asset = r.finance.assets.find((a) => a.id === e.id);
   if (
@@ -64,7 +65,12 @@ export function assertEnterprise(r: GameRun, e: Enterprise) {
       (m, i) =>
         !integer(m.month, e.foundedMonth + 1, e.settledThrough) ||
         ['bought', 'orders', 'returned', 'revenue', 'cogs', 'operating'].some(
-          (k) => !integer(m[k as 'bought'], 0, 1000000),
+          (k) =>
+            !integer(
+              m[k as 'bought'],
+              0,
+              ['bought', 'orders', 'returned'].includes(k) ? 1000000 : designMoney(r, 1000000),
+            ),
         ) ||
         m.returned > m.orders ||
         (i > 0 && m.month !== e.recent[i - 1].month + 1) ||
@@ -91,7 +97,7 @@ function post(
   const newCash = e.cash + cash,
     newStock = e.stock + stock,
     asset = r.finance.assets.find((a) => a.id === e.id)!;
-  if (!integer(newCash, 0, 1000000) || !integer(newStock, 0, 200))
+  if (!integer(newCash, 0, designMoney(r, 1000000)) || !integer(newStock, 0, 200))
     throw Error('Insufficient business funds/stock');
   const delta = cash + stock * e.unitCost;
   transact(r, `${e.id}:${id}`, label, { cash: playerCash, assets: delta });
@@ -107,7 +113,7 @@ export function foundRetail(
 ) {
   if (
     !integer(index, 0, 3) ||
-    !integer(capital, 20, 10000) ||
+    !integer(capital, designMoney(input, 20), designMoney(input, 10000)) ||
     !['clothing', 'household', 'handmade'].includes(category)
   )
     throw Error('Invalid launch');
@@ -135,7 +141,7 @@ export function foundRetail(
     status: 'operating',
     cash: 0,
     stock: 0,
-    unitCost: { clothing: 3, household: 5, handmade: 2 }[category],
+    unitCost: designMoney(run, { clothing: 3, household: 5, handmade: 2 }[category]),
     reputation: 40,
     policy: { price: 'balanced', marketing: false, reorderTarget: 20 },
     totals: { contributed: capital, withdrawn: 0, revenue: 0, cogs: 0, operating: 0, writeOff: 0 },
@@ -154,7 +160,8 @@ export function retailPolicy(input: GameRun, book: Enterprise, policy: RetailPol
 }
 export function fundRetail(input: GameRun, book: Enterprise, amount: number) {
   const { run, enterprise: e } = draft(input, book);
-  if (e.status === 'closed' || !integer(amount, 1, 10000)) throw Error('Invalid funding');
+  if (e.status === 'closed' || !integer(amount, 1, designMoney(run, 10000)))
+    throw Error('Invalid funding');
   post(
     run,
     e,
@@ -173,7 +180,7 @@ export function settleRetail(input: GameRun, book: Enterprise) {
   const { run, enterprise: e } = draft(input, book);
   if (run.status !== 'playing' || e.status === 'closed' || run.month !== e.settledThrough + 1)
     throw Error('Business month already settled, skipped or inactive');
-  const fixed = 6 + (e.policy.marketing ? 4 : 0),
+  const fixed = designMoney(run, 6 + (e.policy.marketing ? 4 : 0)),
     before = e.cash;
   const report = {
     month: run.month,
@@ -196,7 +203,7 @@ export function settleRetail(input: GameRun, book: Enterprise) {
     const [returns] = nextRandom(state);
     const price =
       e.policy.price === 'budget'
-        ? e.unitCost + 2
+        ? e.unitCost + designMoney(run, 2)
         : e.unitCost * (e.policy.price === 'premium' ? 3 : 2);
     const base = e.policy.price === 'budget' ? 12 : e.policy.price === 'premium' ? 4 : 8;
     const available = e.stock + report.bought,
@@ -206,7 +213,11 @@ export function settleRetail(input: GameRun, book: Enterprise) {
         (e.policy.marketing ? 3 : 0) +
         run.player.stats.skill / 40,
     );
-    report.orders = Math.min(available, demand, Math.floor(cashAvailable - fixed));
+    report.orders = Math.min(
+      available,
+      demand,
+      Math.floor((cashAvailable - fixed) / designMoney(run, 1)),
+    );
     report.returned = Math.min(
       report.orders,
       Math.floor(report.orders * (returns < 0.15 ? 0.5 : returns < 0.45 ? 0.15 : 0)),
@@ -214,7 +225,7 @@ export function settleRetail(input: GameRun, book: Enterprise) {
     const sold = report.orders - report.returned;
     report.revenue = sold * price;
     report.cogs = sold * e.unitCost;
-    report.operating = fixed + report.orders;
+    report.operating = fixed + report.orders * designMoney(run, 1);
     post(
       run,
       e,

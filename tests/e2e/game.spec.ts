@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { readFile } from 'node:fs/promises';
 import { assertDecisionViewport, readGuestRun } from '../../scripts/decision-viewport.mjs';
 import {
   createRun as legacyRun,
@@ -65,12 +66,20 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
   const ended = await readGuestRun(page);
   expect(ended.setup.lifeRules).toBe('annual-v1');
+  expect(ended.setup.currency).toBe('vnd-v1');
+  expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `docs/evidence/vnd-summary-${test.info().project.name}.png` });
   expect(ended.actions.length).toBeLessThanOrEqual(512);
   const ages = new Set(ended.choices.map((c) => Math.floor(c.month / 12)));
   for (let age = 0; age < Math.floor(ended.month / 12); age++) expect(ages.has(age)).toBe(true);
   const cardPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Tải thẻ kỷ niệm' }).click();
-  expect((await cardPromise).suggestedFilename()).toMatch(/\.svg$/);
+  const cardDownload = await cardPromise;
+  expect(cardDownload.suggestedFilename()).toMatch(/\.svg$/);
+  const svg = await readFile((await cardDownload.path())!, 'utf8');
+  expect(svg).toContain('₫');
+  expect(svg).not.toContain('đSM');
   await page.getByRole('button', { name: 'Đọc lại nhật ký' }).click();
   await expect(page.getByRole('heading', { name: 'Nhật ký một đời' })).toBeVisible();
   expect(await page.locator('.journal li').count()).toBeGreaterThan(25);
@@ -124,7 +133,7 @@ test('responsive pages, keyboard dialogs, settings, and accessibility', async ({
   });
   await page.getByRole('button', { name: 'Tài chính', exact: true }).click();
   await expect(page.getByRole('heading', { name: /Đủ sống hôm nay/ })).toBeVisible();
-  expect(await page.getByRole('button', { name: 'Gửi 50 đSM' }).isDisabled()).toBe(true);
+  expect(await page.getByRole('button', { name: 'Gửi 10.000.000 ₫' }).isDisabled()).toBe(true);
   await page.getByRole('button', { name: 'Người thân', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Mẹ · Thu' })).toBeVisible();
   await page.setViewportSize({ width: 812, height: 375 });
@@ -150,11 +159,11 @@ test('adult career, savings, household costs, and invalid import feedback work t
     .toBeGreaterThan(0);
   await expect(page.getByTestId('job-result')).toContainText('Hồ sơ gần nhất');
   await page.getByRole('button', { name: 'Tài chính', exact: true }).click();
-  await page.getByRole('button', { name: 'Gửi 50 đSM', exact: true }).click();
-  await expect(page.locator('.finance-overview')).toContainText('50 đSM');
-  await page.getByRole('button', { name: 'Rút tối đa 50 đSM' }).click();
-  await page.getByRole('button', { name: 'Vay 50 đSM', exact: true }).click();
-  await page.getByRole('button', { name: 'Trả tối đa 50 đSM' }).click();
+  await page.getByRole('button', { name: 'Gửi 10.000.000 ₫', exact: true }).click();
+  await expect(page.locator('.finance-overview')).toContainText('10.000.000 ₫');
+  await page.getByRole('button', { name: 'Rút tối đa 10.000.000 ₫' }).click();
+  await page.getByRole('button', { name: 'Vay 10.000.000 ₫', exact: true }).click();
+  await page.getByRole('button', { name: 'Trả tối đa 10.000.000 ₫' }).click();
   await page.getByRole('button', { name: 'Ra ở trọ', exact: true }).click();
   await expect(page.locator('.housing-card')).toContainText('Một căn phòng trọ');
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);

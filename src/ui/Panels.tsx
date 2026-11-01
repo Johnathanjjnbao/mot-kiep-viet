@@ -1,3 +1,4 @@
+import { designMoney, currencyOf } from '../domain/currency';
 import { FamilyPanel } from './FamilyPanel';
 import { AcademicPanel } from './AcademicPanel';
 import { EmploymentPanel } from './EmploymentPanel';
@@ -56,8 +57,8 @@ export function CareerPanel({ run, act }: Props) {
           <div>
             <h3>{CAREERS.find((c) => c.id === current.id)!.name}</h3>
             <p>
-              {money(monthlyIncome(run))}/tháng · {Math.floor(current.experience / 12)} năm kinh
-              nghiệm · bậc {current.level + 1}
+              {money(monthlyIncome(run), run)}/tháng · {Math.floor(current.experience / 12)} năm
+              kinh nghiệm · bậc {current.level + 1}
               {current.contractEndMonth ? ' · hợp đồng tạm sáu tháng' : ''}
             </p>
           </div>
@@ -83,7 +84,12 @@ export function CareerPanel({ run, act }: Props) {
                   </span>
                 ) : (
                   <span className="career-income">
-                    ~{money(Math.round(job.baseIncome * run.world.wageFactor))}/tháng
+                    ~
+                    {money(
+                      designMoney(run, Math.round(job.baseIncome * run.world.wageFactor)),
+                      run,
+                    )}
+                    /tháng
                   </span>
                 )}
               </div>
@@ -125,22 +131,27 @@ export function FinancePanel({ run, act }: Props) {
   const enabled = ageOf(run) >= 18 && run.status !== 'ended',
     f = run.finance;
   const actions = [
-    { id: 'save-money' as const, name: 'Gửi 50 đSM', icon: PiggyBank, disabled: f.cash < 50 },
+    {
+      id: 'save-money' as const,
+      name: `Gửi ${money(designMoney(run, 50), run)}`,
+      icon: PiggyBank,
+      disabled: f.cash < designMoney(run, 50),
+    },
     {
       id: 'withdraw-money' as const,
-      name: 'Rút tối đa 50 đSM',
+      name: `Rút tối đa ${money(designMoney(run, 50), run)}`,
       icon: Wallet,
       disabled: f.savings === 0,
     },
     {
       id: 'borrow' as const,
-      name: 'Vay 50 đSM',
+      name: `Vay ${money(designMoney(run, 50), run)}`,
       icon: Landmark,
-      disabled: f.liability.principal > 250,
+      disabled: f.liability.principal > designMoney(run, 250),
     },
     {
       id: 'repay' as const,
-      name: 'Trả tối đa 50 đSM',
+      name: `Trả tối đa ${money(designMoney(run, 50), run)}`,
       icon: CircleDollarSign,
       disabled: f.cash === 0 || f.liability.principal === 0,
     },
@@ -153,12 +164,12 @@ export function FinancePanel({ run, act }: Props) {
         <br />
         <em>Dành cho ngày mai.</em>
       </h2>
-      <div className="finance-overview">
+      <div className="finance-overview" data-currency={currencyOf(run)}>
         {[
-          ['Tiền mặt', money(f.cash)],
-          ['Để dành', money(f.savings)],
-          ['Còn nợ', money(f.liability.principal)],
-          ['Tài sản ròng', money(netWorth(run))],
+          ['Tiền mặt', money(f.cash, run)],
+          ['Để dành', money(f.savings, run)],
+          ['Còn nợ', money(f.liability.principal, run)],
+          ['Tài sản ròng', money(netWorth(run), run)],
         ].map(([label, value]) => (
           <div key={label}>
             <span>{label}</span>
@@ -168,16 +179,18 @@ export function FinancePanel({ run, act }: Props) {
       </div>
       <div className="income-line">
         <span>
-          Thu nhập nghề <b>{money(monthlyIncome(run))}/tháng</b>
+          Thu nhập nghề <b>{money(monthlyIncome(run), run)}/tháng</b>
         </span>
         <span>
-          Sinh hoạt dự kiến <b>{money(monthlyExpense(run))}/tháng</b>
+          Sinh hoạt dự kiến <b>{money(monthlyExpense(run), run)}/tháng</b>
         </span>
       </div>
       <p className="fine-print">
-        đSM là đơn vị sức mua của game, không phải VNĐ. Lãi vay 0,4%/tháng nhập gốc; tiết kiệm
-        0,15%/tháng, làm tròn xuống. Thiếu tiền cho sinh hoạt bắt buộc sẽ rút tiết kiệm, rồi ghi
-        khoản vay bù.
+        {currencyOf(run) === 'vnd-v1'
+          ? 'VND theo sức mua thiết kế năm 2026, không phải giá danh nghĩa lịch sử.'
+          : 'đSM là đơn vị sức mua của game, không phải VNĐ.'}{' '}
+        Lãi vay 0,4%/tháng nhập gốc; tiết kiệm 0,15%/tháng, làm tròn xuống. Thiếu tiền cho sinh hoạt
+        bắt buộc sẽ rút tiết kiệm, rồi ghi khoản vay bù.
       </p>
       <div className="finance-actions">
         {actions.map((a) => (
@@ -218,10 +231,12 @@ export function FinancePanel({ run, act }: Props) {
           </button>
           <button
             className="text-button"
-            disabled={!enabled || f.cash < 600 || f.assets.some((a) => a.id === 'home')}
+            disabled={
+              !enabled || f.cash < designMoney(run, 600) || f.assets.some((a) => a.id === 'home')
+            }
             onClick={() => act({ type: 'manage', action: 'buy-home' })}
           >
-            Mua nhà · 600 đSM
+            Mua nhà · {money(designMoney(run, 600), run)}
           </button>
         </div>
       </div>
@@ -244,10 +259,10 @@ export function FinancePanel({ run, act }: Props) {
               <span role="cell">{t.label}</span>
               <span role="cell">
                 {t.cash !== 0
-                  ? `${t.cash > 0 ? '+' : ''}${money(t.cash)}`
+                  ? `${t.cash > 0 ? '+' : ''}${money(t.cash, run)}`
                   : t.debt
-                    ? `Nợ +${money(t.debt)}`
-                    : `Để dành +${money(t.savings)}`}
+                    ? `Nợ +${money(t.debt, run)}`
+                    : `Để dành +${money(t.savings, run)}`}
               </span>
             </div>
           ))}

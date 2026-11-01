@@ -1,0 +1,173 @@
+{
+  "url": "http://127.0.0.1:5173/mot-kiep-viet/",
+  "reports": [
+    {
+      "browser": "chromium",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "cases": [
+        {
+          "currency": "vnd-v1",
+          "canonical": true,
+          "cash": 267200000,
+          "savings": 10000000,
+          "exportImport": true,
+          "reload": true
+        },
+        {
+          "currency": "absent → dsm-v1",
+          "canonical": true,
+          "cash": 1337,
+          "savings": 50,
+          "exportImport": true,
+          "reload": true
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

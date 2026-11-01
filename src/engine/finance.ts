@@ -1,3 +1,4 @@
+import { designMoney } from '../domain/currency';
 import type { GameRun, Transaction } from '../domain/model';
 import { residentParents } from '../domain/creator';
 import { ageOf, currentCareer, monthlyExpense, monthlyIncome } from '../content/world';
@@ -35,6 +36,12 @@ export function transact(
   };
   if (f.cash + tx.cash < 0 || f.savings + tx.savings < 0 || f.liability.principal + tx.debt < 0)
     throw new Error('Insufficient balance');
+  if (
+    ![f.cash + tx.cash, f.savings + tx.savings, f.liability.principal + tx.debt].every(
+      Number.isSafeInteger,
+    )
+  )
+    throw new Error('Balance overflow');
   f.cash += tx.cash;
   f.savings += tx.savings;
   f.liability.principal += tx.debt;
@@ -65,14 +72,16 @@ export function settleMonth(run: GameRun) {
   if (income) transact(run, `${key}:income`, 'Thu nhập công việc', { cash: income });
   if (age < 18)
     transact(run, `${key}:family`, 'Gia đình cho tiền sinh hoạt', {
-      cash:
+      cash: designMoney(
+        run,
         [1, 2, 3, 4, 6][run.household.resources] +
-        residentParents(run).filter((p) => p.personality?.includes('generous')).length,
+          residentParents(run).filter((p) => p.personality?.includes('generous')).length,
+      ),
     });
   // A deliberately designed safety floor; career history increases this modest pension.
   if (age >= 65)
     transact(run, `${key}:pension`, 'Trợ cấp tuổi già (thiết kế)', {
-      cash: run.player.careers.length ? 12 : 8,
+      cash: designMoney(run, run.player.careers.length ? 12 : 8),
     });
   mandatoryCost(run, `${key}:living`, 'Sinh hoạt và chỗ ở', monthlyExpense(run));
   const interest = Math.ceil(run.finance.liability.principal * run.finance.liability.monthlyRate);
