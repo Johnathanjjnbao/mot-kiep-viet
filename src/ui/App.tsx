@@ -335,7 +335,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.3.8-vnd.1</span>
+        <span className="footer-version">BETA · 0.3.8-business.1</span>
       </footer>
       {dialog && (
         <Modal

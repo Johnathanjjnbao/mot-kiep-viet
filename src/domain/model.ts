@@ -1,5 +1,6 @@
 import type { Enterprise } from './enterprise';
 import type { EnterpriseAction } from './enterprise-actions';
+import type { BusinessOperation } from './enterprise-actions';
 import type { FamilyState, FamilyAction, ParentingStyle } from './family';
 import type { SocialState, SocialAction, SocialOperation } from './social';
 import type { PlayerPersonality } from './personality';
@@ -152,6 +153,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'enterprise'; operation: BusinessOperation }
   | { kind: 'employment'; operation: EmploymentOperation }
   | { kind: 'academic'; method: AcademicMethod }
   | { kind: 'parenting'; style: ParentingStyle }

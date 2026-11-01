@@ -146,7 +146,7 @@ export function NewLife({
     } else
       onStart(seed.trim() || generatedSeed, {
         ...portraitRun.setup,
-        lifeRules: 'annual-v1',
+        lifeRules: 'enterprise-v1',
         currency: 'vnd-v1',
       });
   }
@@ -244,7 +244,7 @@ export function NewLife({
                 onClick={() =>
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
-                    lifeRules: 'annual-v1',
+                    lifeRules: 'enterprise-v1',
                     currency: 'vnd-v1',
                   })
                 }

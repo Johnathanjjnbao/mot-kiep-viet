@@ -1,4 +1,16 @@
 import { z } from 'zod';
+export const BUSINESS_OPERATIONS = [
+  'listen',
+  'review',
+  'balanced',
+  'promote',
+  'quality',
+  'simplify',
+  'grow',
+  'pause',
+  'close',
+] as const;
+export type BusinessOperation = (typeof BUSINESS_OPERATIONS)[number];
 export const retailPolicySchema = z
   .object({
     price: z.enum(['budget', 'balanced', 'premium']),

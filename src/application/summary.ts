@@ -46,6 +46,16 @@ export function lifeSummary(run: GameRun) {
     biography:
       biography +
       socialText +
+      (run.enterprise?.ventures.length
+        ? ' Tự mở tiệm: ' +
+          run.enterprise.ventures
+            .map(
+              (e) =>
+                `${{ clothing: 'quần áo', household: 'đồ gia dụng', handmade: 'đồ thủ công' }[e.category]} (${e.status === 'closed' ? 'đã đóng' : e.status === 'suspended' ? 'đang tạm dừng' : 'đang bán'}, vốn đã góp ${formatMoney(e.totals.contributed, run)}, đã rút ${formatMoney(e.totals.withdrawn, run)}, lãi/lỗ cộng dồn ${formatMoney(e.totals.revenue - e.totals.cogs - e.totals.operating - e.totals.writeOff, run)})`,
+            )
+            .join('; ') +
+          '.'
+        : '') +
       (run.employment
         ? ` Mưu sinh: ${run.employment.applications.filter((a) => a.result === 'rejected').length} hồ sơ chưa được nhận; tổng cộng ${run.employment.periods.reduce((n, p) => n + (p.endMonth ?? run.month) - p.startMonth, 0)} tháng chưa có việc. ${run.player.careers.filter((c) => c.field === 'outside').length} chặng việc ngoài hướng ngành đã học, ${run.player.careers.filter((c) => c.ending === 'layoff').length} lần mất việc do cắt giảm.`
         : '') +

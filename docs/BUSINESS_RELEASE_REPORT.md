@@ -1,5 +1,14 @@
 # Cửa hàng và kinh tế người sáng tạo — triển khai tiếp
 
+## Cửa hàng0.3.8-business.1 — local release candidate (01/11/2026)
+
+Tiếp tục checkpoint927e734, giữ toàn bộ VND và save cũ. Đời tạo mới dùng enterprise-v1; ba nhóm hàng, policy giá/quảng bá/tồn kho, sổ tháng, góp/rút vốn, tạm dừng/mở lại, thanh lý50% và12cảnh bốn lựa chọn đã nối UI/dispatch/ledger/save/replay. Hồi ký giữ lịch sử tiệm; salary abstraction bị chặn hai chiều, việc làm thông thường/học tập/gia đình vẫn đi cùng tiệm. Frozen v1/v2,9golden lịch sử vàVND3126831863 giữ nguyên; enterprise opening2481017761 vàfull-life548030889 riêng.
+
+Local verify274tests/28files PASS;18testGameRun cửa hàng gồm30năm/bốnID/120quản lý/100+tuổi. Chromium/Firefox/WebKit ×desktop/mobile6/6 chơi từ0, mở/lỗ/góp vốn/phục hồi/rút/ba slot/reload/export-import/đóng/mởIDmới PASS, axe0. Production Pages-subpath smoke PASS; audit production0; secret scan1484text objects/0findings. PGlite nhận snapshot business thật trong envelope đã duyệt, không phải Auth/JWT/RLS thật. Lượt E2E đầu phát hiện kỳ vọng selector cũ và một request trùng lúc rebuild; đã sửa kỳ vọng QA, đang chạy lại86E2E gồm6business viewports×20quyết định. 1.000đời+canonical mới đang RUNNING; không coi pilot20đời là gate ấy.
+
+Chưa push/deploy bản này. C/D creator vẫn INCOMPLETE; nguồn nền tảng đã đối chiếu tại CREATOR_PLATFORM_RESEARCH.md, chưa bật audience/monetization/TikTokLIVE/YouTube. G5 guest deployment PENDING; owner cloud login NOT RUN. Giữ512actions/5MiB và tối đa4sổ, chung120quản lý, khôngSQL/Auth/RLS mới.
+
+
 Baseline `7dc19a29fce1d5da56dfe9e47f3f68f47cee6e76`, main sạch/đồng bộ. Trạng thái mới: **INCOMPLETE**, chưa thay mặc định người chơi hoặc phát hành shop.
 
 ## Context map và hợp đồng

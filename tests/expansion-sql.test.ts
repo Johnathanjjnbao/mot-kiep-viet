@@ -4,6 +4,7 @@ import { it, expect } from 'vitest';
 import { annualAssessment } from '../scripts/annual-fixture';
 import { choose, activeDefinition, createRun } from '../src/engine/engine';
 import { snapshot } from '../src/persistence/saves';
+import { businessAdult, found, businessStep } from '../scripts/business-fixture';
 it('adds only the new version tuple while retaining all old size/identity/header guards', async () => {
   const db = new PGlite();
   try {
@@ -64,6 +65,10 @@ it('adds only the new version tuple while retaining all old size/identity/header
           currency: 'vnd-v1',
         });
         expect(await valid(snapshot(vnd, life))).toBe(true);
+        let shop = found(businessAdult('sql-business-envelope'));
+        for (let i = 0; i < 20 && shop.month < 228; i++) shop = businessStep(shop);
+        expect(shop.enterprise!.ventures[0].recent.length).toBeGreaterThan(0);
+        expect(await valid(snapshot(shop, life))).toBe(true);
         const university = structuredClone(value);
         university.run.setup!.lifeRules = 'education-v1';
         Object.assign(university.run, {

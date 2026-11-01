@@ -1,3 +1,4 @@
+import { BUSINESS_OPERATIONS } from '../domain/enterprise-actions';
 import { z } from 'zod';
 import type { Effect, EventDefinition } from '../domain/model';
 import { CAREERS } from './world';
@@ -51,6 +52,7 @@ export const conditionSchema = z
   .strict();
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
+    z.object({ kind: z.literal('enterprise'), operation: z.enum(BUSINESS_OPERATIONS) }).strict(),
     z
       .object({
         kind: z.literal('employment'),

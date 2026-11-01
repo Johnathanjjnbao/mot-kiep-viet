@@ -1,5 +1,9 @@
 import type { GameRun } from '../domain/model';
-import { enterpriseActionSchema, type EnterpriseAction } from '../domain/enterprise-actions';
+import {
+  enterpriseActionSchema,
+  type EnterpriseAction,
+  type BusinessOperation,
+} from '../domain/enterprise-actions';
 import { hasEnterpriseRules, discretionaryCount } from '../domain/rules';
 import { designMoney, formatMoney } from '../domain/currency';
 import { ageOf, currentCareer } from '../content/world';
@@ -29,12 +33,7 @@ export function businessReason(r: GameRun): string | null {
   if (r.status !== 'playing' || ageOf(r) < 18) return 'Từ 18 tuổi, bạn có thể tự mở cửa hàng.';
   if (r.world.year < 2005 || !r.world.technologies.includes('internet'))
     return 'Cửa hàng trực tuyến mở từ năm 2005 trong bối cảnh có Internet của mô phỏng.';
-  if (
-    r.academics?.focus ||
-    r.social?.focus ||
-    r.family?.focus ||
-    r.activeEvent?.id.startsWith('biz-')
-  )
+  if (r.activeEvent?.id.startsWith('biz-'))
     return 'Hãy hoàn tất cuộc đối thoại đang chờ trước khi quản lý cửa hàng.';
   if (discretionaryCount(r) >= 120)
     return 'Đã dùng hết lượt quản lý; các tháng của tiệm vẫn tiếp tục cùng câu chuyện.';
@@ -76,6 +75,12 @@ export function requestEnterprise(input: GameRun, raw: EnterpriseAction): GameRu
     if (!book || book.status === 'closed')
       throw Error('Cửa hàng không còn hoạt động hoặc không thuộc cuộc đời này.');
     if (a.operation === 'policy') {
+      if (
+        book.policy.price === a.policy!.price &&
+        book.policy.marketing === a.policy!.marketing &&
+        book.policy.reorderTarget === a.policy!.reorderTarget
+      )
+        throw Error('Tiệm đang dùng đúng chính sách này.');
       pair = retailPolicy(input, book, a.policy!);
       message =
         'Bạn đổi cách định giá, quảng bá và mức hàng dự trữ. Kết quả được tính từ tháng sau.';
@@ -179,6 +184,7 @@ export function assertBusinesses(r: GameRun) {
       e.id !== `enterprise:${i}` ||
       e.settledThrough !== (e.status === 'closed' ? e.closedMonth : r.month) ||
       e.recent.length !== Math.min(12, e.settledThrough - e.foundedMonth) ||
+      (e.recent.length > 0 && e.recent.at(-1)!.month !== e.settledThrough) ||
       (r.status === 'ended' && e.status !== 'closed')
     )
       throw Error('Invariant: enterprise clock/identity');
@@ -192,4 +198,103 @@ export function assertBusinesses(r: GameRun) {
     r.finance.assets.filter((a) => a.id.startsWith('enterprise:')).length !== state.ventures.length
   )
     throw Error('Invariant: orphan enterprise asset');
+}
+export const storyShop = (r: GameRun) => r.enterprise?.ventures.find((e) => e.status !== 'closed');
+export function businessSceneEligible(r: GameRun, id: string) {
+  const e = storyShop(r);
+  if (!hasEnterpriseRules(r) || !e || r.month - r.enterprise!.lastSceneMonth < 12) return false;
+  const last = e.recent.at(-1);
+  switch (id) {
+    case 'biz-first-sale':
+      return e.totals.revenue > 0;
+    case 'biz-quiet-opening':
+      return r.month - e.foundedMonth >= 2 && (!last || last.orders < 4);
+    case 'biz-supplier':
+      return !!last && last.bought === 0;
+    case 'biz-complaint':
+      return e.recent.some((m) => m.returned > 0);
+    case 'biz-popular':
+      return e.recent.some((m) => m.orders >= 10);
+    case 'biz-returning':
+      return e.reputation >= 55 && r.month - e.foundedMonth >= 12;
+    case 'biz-marketing':
+      return e.policy.marketing && e.recent.some((m) => m.profit < 0);
+    case 'biz-stockout':
+      return e.stock === 0 && e.recent.some((m) => m.orders > 0);
+    case 'biz-loss':
+      return e.recent.some((m) => m.profit < 0);
+    case 'biz-family':
+      return r.player.stats.stress >= 60;
+    case 'biz-growth':
+      return r.month - e.foundedMonth >= 18 && e.recent.some((m) => m.profit > 0);
+    case 'biz-close':
+      return (
+        r.month - e.foundedMonth >= 36 &&
+        (e.status === 'suspended' || e.recent.some((m) => m.profit < 0))
+      );
+    default:
+      return false;
+  }
+}
+export function applyBusinessStory(r: GameRun, operation: BusinessOperation) {
+  const e = storyShop(r);
+  if (!e || !hasEnterpriseRules(r)) throw Error('Câu chuyện cửa hàng không còn phù hợp.');
+  const cap = (v: number) => Math.max(0, Math.min(100, v));
+  const s = r.player.stats;
+  switch (operation) {
+    case 'listen':
+      e.reputation = cap(e.reputation + 4);
+      s.social = cap(s.social + 2);
+      s.stress = cap(s.stress + 1);
+      break;
+    case 'review':
+      e.policy.marketing = false;
+      e.policy.reorderTarget = Math.min(e.policy.reorderTarget, 10);
+      s.knowledge = cap(s.knowledge + 3);
+      s.stress = cap(s.stress - 2);
+      break;
+    case 'balanced':
+      e.policy.price = 'balanced';
+      e.policy.marketing = false;
+      s.stress = cap(s.stress - 2);
+      break;
+    case 'promote':
+      e.policy.marketing = true;
+      s.social = cap(s.social + 3);
+      s.stress = cap(s.stress + 3);
+      break;
+    case 'quality':
+      e.policy.price = 'premium';
+      e.reputation = cap(e.reputation + 2);
+      s.skill = cap(s.skill + 2);
+      s.stress = cap(s.stress + 2);
+      break;
+    case 'simplify':
+      e.policy.price = 'budget';
+      e.policy.reorderTarget = Math.min(e.policy.reorderTarget, 10);
+      s.stress = cap(s.stress - 4);
+      s.mood = cap(s.mood + 2);
+      break;
+    case 'grow':
+      e.policy.reorderTarget = Math.min(200, e.policy.reorderTarget + 20);
+      s.skill = cap(s.skill + 3);
+      s.stress = cap(s.stress + 4);
+      break;
+    case 'pause':
+      e.status = 'suspended';
+      s.stress = cap(s.stress - 6);
+      for (const rel of r.relationships.filter(
+        (x) =>
+          ['partner', 'family'].includes(x.type) && r.npcs.find((n) => n.id === x.npcId)?.alive,
+      ))
+        rel.strength = cap(rel.strength + 2);
+      break;
+    case 'close':
+      closeRetailOwned(r, e);
+      s.stress = cap(s.stress - 8);
+      s.mood = cap(s.mood - 1);
+      break;
+  }
+  r.enterprise!.lastSceneMonth = r.month;
+  assertEnterprise(r, e);
 }

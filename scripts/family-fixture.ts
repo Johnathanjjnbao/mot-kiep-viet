@@ -10,11 +10,12 @@ import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 import { married, talk } from './social-fixture';
 import type { GameRun, RunSetup } from '../src/domain/model';
 import type { ParentingStyle } from '../src/domain/family';
-export function familyStart(lifeRules?: RunSetup['lifeRules']) {
+export function familyStart(lifeRules?: RunSetup['lifeRules'], currency?: RunSetup['currency']) {
   for (let i = 0; i < 1000; i++) {
     const r = createRun('family-life-' + i, {
         expansion: 'family',
         ...(lifeRules ? { lifeRules } : {}),
+        ...(currency ? { currency } : {}),
         cohort: 1995,
         region: 'northern-village',
         wealth: 4,
@@ -59,7 +60,14 @@ export function growFamily(input: GameRun, age: number, style: ParentingStyle = 
           ? (choices.find((c) =>
               c.effects.some((e) => e.kind === 'social' && e.operation === 'listen'),
             ) ?? choices[0])
-          : choices[0];
+          : r.enterprise && e.version === 10
+            ? (choices.find(
+                (c) =>
+                  !c.effects.some(
+                    (x) => x.kind === 'enterprise' && ['pause', 'close'].includes(x.operation),
+                  ),
+              ) ?? choices[0])
+            : choices[0];
       r = choose(r, e.id, c.id);
     } else r = advance(r);
   }

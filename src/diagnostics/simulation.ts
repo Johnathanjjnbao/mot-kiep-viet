@@ -1,4 +1,5 @@
-import { hasAnnualRules } from '../domain/rules';
+import { hasAnnualRules, hasEnterpriseRules, discretionaryCount } from '../domain/rules';
+import { businessReason } from '../engine/business';
 import { designMoney } from '../domain/currency';
 import { socialEligible, requestSocial } from '../engine/social';
 import type { GameRun, RunSetup } from '../domain/model';
@@ -36,12 +37,65 @@ export function simulateLife(
   ) {
     assertRun(run);
     onStep?.(run);
-    const managementAvailable =
-      !run.employment ||
-      !run.family ||
-      run.actions.filter((a) =>
-        ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
-      ).length < 114;
+    const managementAvailable = hasEnterpriseRules(run)
+      ? discretionaryCount(run) < 108
+      : !run.employment ||
+        !run.family ||
+        run.actions.filter((a) =>
+          ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+        ).length < 114;
+    if (run.enterprise && managementAvailable && !businessReason(run)) {
+      const books = run.enterprise.ventures;
+      const count = run.actions.filter((a) => a.type === 'enterprise').length;
+      const incompatible = ['business', 'freelance'].includes(currentCareer(run)?.id ?? '');
+      if (
+        !incompatible &&
+        books.length < (policy === 4 ? 4 : 1) &&
+        run.finance.cash >= designMoney(run, 40 + policy * 10)
+      ) {
+        run = dispatch(run, {
+          type: 'enterprise',
+          operation: 'found',
+          category: (['clothing', 'household', 'handmade'] as const)[policy % 3],
+          capital: designMoney(run, 40 + policy * 10),
+          policy: {
+            price: (['budget', 'balanced', 'premium'] as const)[policy % 3],
+            marketing: policy % 2 === 0,
+            reorderTarget: policy === 3 ? 0 : 20,
+          },
+          expected: run.actions.length,
+        });
+        continue;
+      }
+      const book = books.find((e) => e.status !== 'closed');
+      const previous = [...run.actions].reverse().find((a) => a.type === 'enterprise');
+      const lastMonth = previous
+        ? (run.journal.filter((j) => j.title === 'Một quyết định với cửa hàng').at(-1)?.month ??
+          book?.foundedMonth ??
+          0)
+        : 0;
+      if (book && count < 14 && run.month - lastMonth >= 36) {
+        if (book.status === 'suspended' && run.finance.cash >= designMoney(run, 40)) {
+          run = dispatch(run, {
+            type: 'enterprise',
+            operation: 'fund',
+            id: book.id as 'enterprise:0',
+            amount: designMoney(run, 40),
+            expected: run.actions.length,
+          });
+          continue;
+        }
+        const price = book.policy.price === 'balanced' ? 'premium' : 'balanced';
+        run = dispatch(run, {
+          type: 'enterprise',
+          operation: 'policy',
+          id: book.id as 'enterprise:0',
+          policy: { ...book.policy, price },
+          expected: run.actions.length,
+        });
+        continue;
+      }
+    }
     if (
       run.academics &&
       managementAvailable &&

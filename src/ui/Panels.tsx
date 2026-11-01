@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { EnterprisePanel } from './EnterprisePanel';
 import { designMoney, currencyOf } from '../domain/currency';
 import { FamilyPanel } from './FamilyPanel';
 import { AcademicPanel } from './AcademicPanel';
@@ -29,6 +31,18 @@ import { money } from './common';
 import { PARENT_TRAITS } from '../domain/creator';
 type Props = { run: GameRun; act: (a: RunAction) => void };
 export function CareerPanel({ run, act }: Props) {
+  const [business, setBusiness] = useState(false);
+  if (business && run.enterprise)
+    return <EnterprisePanel run={run} act={act} onBack={() => setBusiness(false)} />;
+  return (
+    <WorkPanel
+      run={run}
+      act={act}
+      onBusiness={run.enterprise ? () => setBusiness(true) : undefined}
+    />
+  );
+}
+function WorkPanel({ run, act, onBusiness }: Props & { onBusiness?: () => void }) {
   const current = currentCareer(run),
     age = ageOf(run),
     studying = run.player.education.find((e) => e.endMonth > run.month);
@@ -49,6 +63,11 @@ export function CareerPanel({ run, act }: Props) {
               ? `Bạn đang học, dự kiến hoàn thành năm ${run.player.birthYear + Math.floor(studying.endMonth / 12)}. Hãy học xong trước khi nhận việc.`
               : 'Học vấn mở cửa; tay nghề, kinh nghiệm và hoàn cảnh quyết định bạn đi được bao xa.'}
       </p>
+      {onBusiness && (
+        <button className="button secondary enterprise-entry" onClick={onBusiness}>
+          Cửa hàng của bạn
+        </button>
+      )}
       <EmploymentPanel run={run} act={act} />
       <AcademicPanel run={run} act={act} />
       {current && (

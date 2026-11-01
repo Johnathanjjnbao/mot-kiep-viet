@@ -15,7 +15,7 @@ export interface RetailMonth {
   cashFlow: number;
   profit: number;
 }
-/** Draft accounting state. Not yet admitted into GameRun/save schema or a published ruleset. */
+/** Bounded ledger owned by the immutable enterprise-v1 ruleset. */
 export interface Enterprise {
   rules: 'enterprise-v1';
   id: string;

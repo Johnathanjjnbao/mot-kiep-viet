@@ -1,63 +1,63 @@
 import { describe, it, expect } from 'vitest';
-import type { GameRun, RunSetup } from '../src/domain/model';
+import type { GameRun } from '../src/domain/model';
 import {
   createRun,
   advance,
-  choose,
   activeDefinition,
   choiceReason,
   dispatch,
   replay,
 } from '../src/engine/engine';
-import { healthyChoice } from '../scripts/annual-fixture';
 import { canonical, parseSave, snapshot } from '../src/persistence/saves';
 import { assertRun } from '../src/engine/invariants';
 import { hasAnnualRules, hasAcademicRules, hasEmploymentRules } from '../src/domain/rules';
 import { careerReason, currentCareer, ageOf } from '../src/content/world';
 import { enterpriseEquity, enterpriseProfit } from '../src/engine/business';
 import { hashSeed } from '../src/engine/random';
+import { businessEvents } from '../src/content/business-events';
+import { applyBusinessStory, businessSceneEligible } from '../src/engine/business';
+import { admittedStudent } from '../scripts/academic-fixture';
+import { currentStudy } from '../src/engine/academics';
+import { discretionaryCount } from '../src/domain/rules';
+import { lifeSummary } from '../src/application/summary';
+import { familyStart, growFamily } from '../scripts/family-fixture';
 
-export const businessSetup: RunSetup = {
-  cohort: 1995,
-  region: 'northern-village',
-  wealth: 4,
-  family: 'both',
-  expansion: 'family',
-  lifeRules: 'enterprise-v1',
-  currency: 'vnd-v1',
-  motherTraits: ['gentle'],
-  fatherTraits: ['academic'],
-};
-export const defaultPolicy = { price: 'balanced' as const, marketing: false, reorderTarget: 20 };
-export function businessAdult(seed = 'business-canonical') {
-  let r = createRun(seed, businessSetup);
-  for (let steps = 0; steps < 100 && r.month < 216; steps++)
-    r = r.activeEvent ? choose(r, activeDefinition(r)!.id, healthyChoice(r).id) : advance(r);
-  if (r.month !== 216) throw Error('Missing adult business fixture');
-  return r;
-}
-export const found = (r: GameRun, capital = 20_000_000) =>
-  dispatch(r, {
-    type: 'enterprise',
-    operation: 'found',
-    category: 'clothing',
-    capital,
-    policy: defaultPolicy,
-    expected: r.actions.length,
-  });
-export function businessStep(r: GameRun) {
-  if (!r.activeEvent) return advance(r);
-  const e = activeDefinition(r)!;
-  const choices = e.choices.filter((c) => !choiceReason(r, c));
-  expect(choices.length).toBeGreaterThanOrEqual(4);
-  return choose(r, e.id, healthyChoice(r).id);
-}
+import {
+  businessSetup,
+  defaultPolicy,
+  businessAdult,
+  found,
+  businessStep,
+} from '../scripts/business-fixture';
 function checked(r: GameRun) {
   assertRun(r);
   expect(canonical(replay(r.seed, r.setup, r.actions))).toBe(canonical(r));
   expect(parseSave(JSON.stringify(snapshot(r))).run).toEqual(r);
 }
 describe('authoritative enterprise-v1 GameRun', () => {
+  it.each(['clothing', 'household', 'handmade'] as const)(
+    'plays %s with real integer VND orders, costs and canonical reports',
+    (category) => {
+      const adult = businessAdult('category-' + category);
+      let r = dispatch(adult, {
+        type: 'enterprise',
+        operation: 'found',
+        category,
+        capital: 20_000_000,
+        policy: defaultPolicy,
+        expected: adult.actions.length,
+      });
+      for (let i = 0; i < 40 && r.month < adult.month + 24; i++) r = businessStep(r);
+      const e = r.enterprise!.ventures[0];
+      expect(e.totals.revenue).toBeGreaterThan(0);
+      expect(e.totals.operating).toBeGreaterThan(0);
+      expect(e.recent.every((m) => Number.isSafeInteger(m.profit) && m.returned <= m.orders)).toBe(
+        true,
+      );
+      expect(e.recent.some((m) => m.cogs > 0)).toBe(true);
+      checked(r);
+    },
+  );
   it('inherits all annual, university and employment routes without stamping older lives', () => {
     const r = createRun('enterprise-init', businessSetup);
     expect([hasAnnualRules(r), hasAcademicRules(r), hasEmploymentRules(r)]).toEqual([
@@ -92,7 +92,7 @@ describe('authoritative enterprise-v1 GameRun', () => {
       dispatch(r, {
         type: 'enterprise',
         operation: 'fund',
-        id: e.id,
+        id: 'enterprise:0',
         amount: 1,
         expected: before.actions.length,
       }),
@@ -144,10 +144,13 @@ describe('authoritative enterprise-v1 GameRun', () => {
     expect(e.settledThrough).toBe(r.month);
     expect(r.month).toBeGreaterThanOrEqual(start + 120);
     expect(e.recent).toHaveLength(12);
-    expect(e.recent.some((x) => x.returned > 0)).toBe(true);
-    expect(r.finance.transactions.filter((t) => t.id.startsWith(e.id + ':month:'))).toHaveLength(
-      r.month - start,
-    );
+    expect(e.recent.every((x) => x.returned <= x.orders)).toBe(true);
+    const posts = r.finance.transactions.filter((t) => t.id.startsWith(e.id + ':month:'));
+    expect(posts.length).toBeGreaterThan(0);
+    expect(posts.length).toBeLessThanOrEqual(r.month - start);
+    expect(new Set(posts.map((t) => t.month)).size).toBe(posts.length);
+    for (const month of e.recent.filter((m) => m.operating > 0))
+      expect(posts.find((t) => t.month === month.month)?.assets).toBe(month.profit);
     expect(e.totals.revenue).toBeGreaterThan(0);
     expect(enterpriseEquity(e)).toBe(
       e.totals.contributed - e.totals.withdrawn + enterpriseProfit(e),
@@ -171,7 +174,7 @@ describe('authoritative enterprise-v1 GameRun', () => {
       true,
     );
     // Management during a dedicated dialogue is protected; finish it first.
-    while (r.academics?.focus || r.social?.focus || r.family?.focus) r = businessStep(r);
+    while (r.activeEvent?.id.startsWith('biz-')) r = businessStep(r);
     r = dispatch(r, {
       type: 'enterprise',
       operation: 'resume',
@@ -223,5 +226,122 @@ describe('authoritative enterprise-v1 GameRun', () => {
   it('locks an independent new golden without rewriting any released golden', () => {
     const r = found(businessAdult('golden-enterprise-v1'));
     expect(hashSeed(JSON.stringify(r))).toBe(2481017761);
+  });
+  it('locks a full-life enterprise golden independently of its opening checkpoint', () => {
+    let r = found(businessAdult('golden-enterprise-full-v1'));
+    for (let i = 0; i < 500 && r.status !== 'ended'; i++) r = businessStep(r);
+    expect(r.status).toBe('ended');
+    expect(hashSeed(JSON.stringify(r))).toBe(548030889);
+    checked(r);
+  });
+  it('keeps an ordinary salary, marriage and recorded children alongside a real shop', () => {
+    let r = familyStart('enterprise-v1', 'vnd-v1');
+    r = found(r, 4_000_000);
+    r = growFamily(r, 32);
+    expect(r.family!.children.length).toBeGreaterThan(0);
+    expect(r.player.careers.some((c) => !['business', 'freelance'].includes(c.id))).toBe(true);
+    expect(r.finance.transactions.some((t) => t.id.startsWith('enterprise:0:month:'))).toBe(true);
+    expect(r.enterprise!.ventures[0].settledThrough).toBe(r.month);
+    expect(r.actions.length).toBeLessThanOrEqual(512);
+    checked(r);
+  });
+  it('keeps the pending university assessment valid while a student starts a side shop', () => {
+    let r = admittedStudent('korean', 0, 'enterprise-v1', 'vnd-v1').run;
+    for (let i = 0; i < 40 && !r.academics?.focus; i++) r = businessStep(r);
+    expect(r.academics?.focus).toBeDefined();
+    const before = r,
+      event = activeDefinition(r)!;
+    r = found(r);
+    expect(r.academics?.focus).toEqual(before.academics?.focus);
+    expect(activeDefinition(r)!.id).toBe(event.id);
+    expect(event.choices.filter((c) => !choiceReason(r, c)).length).toBeGreaterThanOrEqual(4);
+    const target = r.month + 48;
+    for (let i = 0; i < 90 && r.month < target; i++) r = businessStep(r);
+    expect(r.academics!.studies[0].completedYears).toBeGreaterThan(0);
+    expect(currentStudy(r)?.status ?? r.academics!.studies[0].status).toBeTruthy();
+    expect(r.enterprise!.ventures[0].settledThrough).toBe(r.month);
+    checked(r);
+  });
+  it('rejects starting a shop while the same abstract business already pays a salary', () => {
+    let r = businessAdult();
+    // Finish the education direction, then use an ordinary authoritative job action.
+    r = businessStep(r);
+    for (let i = 0; i < 80 && careerReason(r, 'business'); i++) r = businessStep(r);
+    expect(careerReason(r, 'business')).toBeNull();
+    r = dispatch(r, { type: 'manage', action: 'apply-job', career: 'business' });
+    expect(currentCareer(r)?.id).toBe('business');
+    expect(() => found(r)).toThrow();
+    checked(r);
+  });
+  it('has twelve contextual scenes with four distinct real outcomes, and no scenes for old runs', () => {
+    const r = found(businessAdult());
+    expect(businessEvents).toHaveLength(12);
+    for (const scene of businessEvents) {
+      expect(scene.choices).toHaveLength(4);
+      const results = scene.choices.map((c) => {
+        expect(choiceReason(r, c)).toBeNull();
+        const next = structuredClone(r);
+        const effect = c.effects.find((x) => x.kind === 'enterprise')!;
+        if (effect.kind !== 'enterprise') throw Error('Missing outcome');
+        applyBusinessStory(next, effect.operation);
+        assertRun(next);
+        return canonical(next);
+      });
+      expect(new Set(results).size).toBe(4);
+      expect(
+        businessSceneEligible(
+          createRun('old', { ...businessSetup, lifeRules: 'annual-v1' }),
+          scene.id,
+        ),
+      ).toBe(false);
+    }
+  });
+  it('exhausts the shared 120 optional actions without blocking story progression or raising 512', () => {
+    let r = found(businessAdult());
+    while (discretionaryCount(r) < 120) {
+      const p = r.enterprise!.ventures[0].policy;
+      r = dispatch(r, {
+        type: 'enterprise',
+        operation: 'policy',
+        id: 'enterprise:0',
+        policy: { ...p, price: p.price === 'premium' ? 'balanced' : 'premium' },
+        expected: r.actions.length,
+      });
+    }
+    expect(() =>
+      dispatch(r, {
+        type: 'enterprise',
+        operation: 'close',
+        id: 'enterprise:0',
+        expected: r.actions.length,
+      }),
+    ).toThrow('lượt');
+    const before = r.month;
+    for (let i = 0; i < 500 && r.status !== 'ended'; i++) r = businessStep(r);
+    expect(r.status).toBe('ended');
+    expect(r.month).toBeGreaterThan(before + 360);
+    expect(r.actions.length).toBeLessThanOrEqual(512);
+    expect(discretionaryCount(r)).toBe(120);
+    expect(Buffer.byteLength(JSON.stringify(snapshot(r)))).toBeLessThan(5 * 1024 * 1024);
+    checked(r);
+  });
+  it('runs four distinct ledgers for 30 years and through age 100+ with natural estate settlement', () => {
+    let r = businessAdult('business-long-lived');
+    for (let i = 0; i < 4; i++) r = found(r, 4_000_000);
+    expect(() => found(r, 4_000_000)).toThrow('bốn');
+    const start = r.month;
+    let thirty: GameRun | undefined;
+    for (let i = 0; i < 500 && r.status !== 'ended'; i++) {
+      r = businessStep(r);
+      if (!thirty && r.month >= start + 360) thirty = r;
+    }
+    expect(thirty).toBeDefined();
+    expect(ageOf(r)).toBeGreaterThanOrEqual(100);
+    expect(new Set(r.enterprise!.ventures.map((e) => e.id)).size).toBe(4);
+    expect(r.enterprise!.ventures.every((e) => e.status === 'closed')).toBe(true);
+    expect(r.actions.length).toBeLessThan(512);
+    expect(lifeSummary(r).biography).toContain('Tự mở tiệm:');
+    checked(thirty!);
+    checked(r);
   });
 });

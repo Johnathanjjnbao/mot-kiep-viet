@@ -15,7 +15,7 @@ export async function diversityJourney(page: Page, url: string) {
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
     await expect
       .poll(async () => (await readGuestRun(page))?.setup.lifeRules)
-      .toBe('annual-v1');
+    .toBe('enterprise-v1');
     if (seed) await expect.poll(async () => (await readGuestRun(page)).seed).toBe(seed);
     else await expect.poll(async () => (await readGuestRun(page)).seed).not.toBe(previousSeed);
   }

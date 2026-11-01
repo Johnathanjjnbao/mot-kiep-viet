@@ -4,7 +4,13 @@ import {
   hasEnterpriseRules,
   discretionaryCount,
 } from '../domain/rules';
-import { requestEnterprise, settleBusinesses, closeBusinessesAtEnd } from './business';
+import {
+  requestEnterprise,
+  settleBusinesses,
+  closeBusinessesAtEnd,
+  businessSceneEligible,
+  applyBusinessStory,
+} from './business';
 import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import {
   initFamily,
@@ -408,6 +414,7 @@ export const activeDefinition = (run: GameRun) => {
   };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 10 && !businessSceneEligible(run, event.id)) return false;
   if (event.version === 9 && !isAnnual(run)) return false;
   if (event.version === 5) return false;
   if (event.version === 7 && (!hasAcademicRules(run) || event.id !== 'edu-direction')) return false;
@@ -508,6 +515,9 @@ function startCareer(
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'enterprise':
+      applyBusinessStory(run, e.operation);
+      break;
     case 'employment':
       resolveEmployment(run, e.operation, (r) => random(r, 'event'));
       break;
@@ -1067,7 +1077,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
   return manage(run, action.action, action.career);
 }
 export function replay(seed: string, setup: RunSetup, actions: RunAction[]): GameRun {
-  if (!setup.expansion)
+  if (!setup.expansion && !hasEnterpriseRules({ setup }))
     return frozen2.replay(seed, setup, actions as Parameters<typeof frozen2.replay>[2]);
   return actions.reduce(dispatch, createRun(seed, setup));
 }

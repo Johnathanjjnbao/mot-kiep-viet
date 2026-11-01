@@ -14,11 +14,29 @@ const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
 const testVnd = process.argv.includes('--vnd');
-const testAnnual = process.argv.includes('--annual');
+const testEnterprise = process.argv.includes('--enterprise');
+const testAnnual = process.argv.includes('--annual') || testEnterprise;
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   currency: testVnd ? 'vnd-v1' : 'dsm-v1',
   runs: 0,
+  enterprise: {
+    runs: 0,
+    ventures: 0,
+    profit: 0,
+    loss: 0,
+    contributed: 0,
+    withdrawn: 0,
+    returnedOrders: 0,
+    suspended: 0,
+    maxTransactions: 0,
+    maxEnterpriseActions: 0,
+    profitableMonths: 0,
+    lossMonths: 0,
+    returnedMonths: 0,
+    settledMonthsObserved: 0,
+    unsupportedStates: 0,
+  },
   replayChecked: 0,
   creatorRuns: 0,
   fallbackEvents: 0,
@@ -75,6 +93,7 @@ for (let i = 0; i < total; i++) {
     seed = `stress-${i}`;
   try {
     const presented = new Set<string>();
+    const settledBusinessMonths = new Set<string>();
     const family = (Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[])[
       Math.floor(i / 5) % 5
     ];
@@ -92,15 +111,17 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testAnnual
-          ? { lifeRules: 'annual-v1' as const }
-          : testEmployment
-            ? { lifeRules: 'career-v1' as const }
-            : testEducation
-              ? { lifeRules: 'education-v1' as const }
-              : testDiversity
-                ? { lifeRules: 'dynamic-v1' as const }
-                : {}),
+        ...(testEnterprise
+          ? { lifeRules: 'enterprise-v1' as const }
+          : testAnnual
+            ? { lifeRules: 'annual-v1' as const }
+            : testEmployment
+              ? { lifeRules: 'career-v1' as const }
+              : testEducation
+                ? { lifeRules: 'education-v1' as const }
+                : testDiversity
+                  ? { lifeRules: 'dynamic-v1' as const }
+                  : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -116,6 +137,26 @@ for (let i = 0; i < total; i++) {
       i % 5,
       (r) => {
         const e = activeDefinition(r);
+        if (testEnterprise) {
+          report.enterprise.maxTransactions = Math.max(
+            report.enterprise.maxTransactions,
+            r.finance.transactions.length,
+          );
+          if (r.enterprise?.ventures.some((v) => v.status === 'suspended'))
+            report.enterprise.suspended++;
+          for (const book of r.enterprise?.ventures ?? [])
+            for (const m of book.recent) {
+              if (m.returned > m.orders || book.stock < 0) throw Error('Enterprise stock/returns');
+              const key = `${book.id}:${m.month}`;
+              if (!settledBusinessMonths.has(key)) {
+                settledBusinessMonths.add(key);
+                report.enterprise.settledMonthsObserved++;
+                if (m.profit > 0) report.enterprise.profitableMonths++;
+                if (m.profit < 0) report.enterprise.lossMonths++;
+                if (m.returned > 0) report.enterprise.returnedMonths++;
+              }
+            }
+        }
         if (e) {
           if (testAnnual) {
             const key = `${r.month}:${e.id}:${r.choices.length}`;
@@ -141,6 +182,21 @@ for (let i = 0; i < total; i++) {
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    if (run.enterprise?.ventures.length) {
+      report.enterprise.runs++;
+      report.enterprise.ventures += run.enterprise.ventures.length;
+      report.enterprise.maxEnterpriseActions = Math.max(
+        report.enterprise.maxEnterpriseActions,
+        run.actions.filter((a) => a.type === 'enterprise').length,
+      );
+      for (const b of run.enterprise.ventures) {
+        const profit = b.totals.revenue - b.totals.cogs - b.totals.operating - b.totals.writeOff;
+        report.enterprise[profit >= 0 ? 'profit' : 'loss']++;
+        report.enterprise.contributed += b.totals.contributed;
+        report.enterprise.withdrawn += b.totals.withdrawn;
+        report.enterprise.returnedOrders += b.recent.reduce((n, m) => n + m.returned, 0);
+      }
+    }
     if (testAnnual) {
       const ages = [...new Set(run.choices.map((c) => Math.floor(c.month / 12)))];
       for (let age = 0; age < ageOf(run); age++)

@@ -13,7 +13,7 @@ import { admissionReason, currentStudy } from '../src/engine/academics';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 export function academicApplicant(
   index = 0,
-  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
+  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   let r = createRun('university-' + index, {
@@ -57,7 +57,7 @@ export function academicApplicant(
 export function admittedStudent(
   program: ProgramId,
   start = 0,
-  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' = 'education-v1',
+  lifeRules: 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   for (let i = start; i < start + 100; i++) {
