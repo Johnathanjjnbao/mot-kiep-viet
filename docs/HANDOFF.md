@@ -1,5 +1,10 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## v0.3.8 financial foundation — local INCOMPLETE (01/11/2026)
+
+Tiếp tục585a9a5, không làm lại Year-by-Year. Thêm draft retail accounting model, chưa nối GameRun/selector/dispatch/parser/monthly tick hoặc UI. verify243tests/26files PASS;1.000seed ledger10năm +1.000reducer reconstruction PASS, không phải full-life/canonical save evidence. Vốn/stock/COGS/refund/expenses/profit/liquidation qua player ledger, không sửa luật/golden cũ. Chưa push/deploy checkpoint này vì tích hợp/save/UI/browser gates còn thiếu; live vẫn0.3.7-yearly.1. CheckpointA INCOMPLETE; B–E NOT RUN. Xem DIGITAL_BUSINESS_PROGRESS.md để tiếp tục đúng chỗ, không tự bật selector chưa hoàn chỉnh. Cloud probe mới BLOCKED, không productionwrites.
+
+
 ## Đã phát hành 0.3.7-yearly.1 — G5 guest VERIFIED PASS (01/11/2026)
 
 Source **1fb059cd73d5dc676724f705f58094f50dd30c70**, main; [CI41281828843](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843) completed/success cho build và deploy. [Chơi bản live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repository](https://github.com/Johnathanjjnbao/mot-kiep-viet). Tiếp tục baseline da55d28; không làm lại Creator/A/B/C. Đời mới dùng annual-v1, trải nghiệm từng tuổi từ0, không ép kết thúc ở82. Đời/save cũ giữ luật,8golden cũ và frozen v1/v2; golden annual432954253 riêng. Engine/content3.0.0/schema4 và mọi ID lưu/history giữ nguyên.

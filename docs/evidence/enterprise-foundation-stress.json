@@ -1,0 +1,12 @@
+{
+  "scope": "Isolated accounting reducer, NOT full lives or canonical save replay",
+  "seeds": 1000,
+  "reducerReplays": 1000,
+  "months": 120,
+  "violations": 0,
+  "maxSerializedBytes": 26468,
+  "positive": 248,
+  "negative": 752,
+  "suspended": 755,
+  "returnedUnits": 2665
+}
