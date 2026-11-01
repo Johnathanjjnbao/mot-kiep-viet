@@ -1,5 +1,14 @@
 # Life Expansion — bốn mốc phát hành
 
+## Đã phát hành0.3.8-vnd.1 — G5 guest VERIFIED PASS (01/11/2026)
+
+Tiếp tục checkpoint `54e1e0b438dc25f3b772067fd0a7796b6c101d23`, giữ nguyên foundation retail isolated. Final implementation SHA **f2f454b3b5a390e07744837b0bae4874f1cd3b7e**, main; [CI41300461817](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41300461817) completed/success cho build và deploy. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). Đời mới lưu nguyên VND với selector bất biến vnd-v1; save thiếu selector vẫn đSM, replay/golden cũ giữ nguyên. 1 đơn vị thiết kế=200.000 VND theo sức mua thiết kế2026, không phải tỷ giá hay giá danh nghĩa lịch sử. Engine/content3.0.0/schema4, action512/5MiB, ID database/history và SQL/Auth/RLS giữ nguyên.
+
+Verify256tests/27files,9golden lịch sử +golden VND3126831863, CI78E2E không skip, production subpath smoke và secret scan PASS. 1.000 đời VND/1.000 canonical replay:0vi phạm, max428actions/700545bytes,4–5 lựa chọn,0tuổi thiếu/bỏ qua. Live exact CSS/JS/SW hashes PASS; Edge desktop/mobile chơi trọn đời,5family forms, save/load/reload/history/export/import/font PASS; Chromium/Firefox/WebKit ×desktop/mobile VND/đSM roundtrips PASS;6viewport/settings ×20 quyết định trước click/scroll PASS. Footer hiện đúng0.3.8-vnd.1 và có E2E guard so với package.json. Không lặp mô phỏng cho các chỉnh UI này.
+
+G5 **guest VERIFIED PASS**; chủ dự án tự đăng nhập cloud **NOT RUN** (không dùng credential người chơi, không productionwrites). Digital careers/shop/creator integration vẫn INCOMPLETE; VND không tự mở các tính năng ấy. Báo cáo đầy đủ tại `VND_MIGRATION_REPORT.md`; bằng chứng `evidence/vnd-source-ci.json`, `vnd-live-assets.json`, `vnd-live-pages.json`, `vnd-live-browsers.json`, `v038-vnd1-live-viewport.json`. Phần bên dưới là lịch sử các checkpoint trước khi chốt release.
+
+
 ## v0.3.8-vnd.1 — local gates PASS, deployment pending (01/11/2026)
 
 Tiếp tục checkpoint `54e1e0b`, giữ foundation retail ở trạng thái isolated. Đời tạo mới dùng `setup.currency = vnd-v1`, lưu số tiền nguyên VND; thiếu selector vẫn dsm-v1. Quy đổi tham số thiết kế một lần: 1 đơn vị cũ =200.000 VND theo sức mua thiết kế2026, không phải tỷ giá hay giá danh nghĩa lịch sử. Ledger giữ raw amounts; lãi tính trực tiếp trên số dư. Engine/content3.0.0, schema4, 512actions/5MiB, frozen v1/v2 và lưu/history giữ nguyên; không SQL/Auth/RLS changes.

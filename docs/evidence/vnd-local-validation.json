@@ -1,7 +1,7 @@
 {
   "version": "0.3.8-vnd.1",
   "sourceBaseline": "54e1e0b438dc25f3b772067fd0a7796b6c101d23",
-  "releaseSourceSha": "recorded in VND_MIGRATION_REPORT after commit",
+  "releaseSourceSha": "f2f454b3b5a390e07744837b0bae4874f1cd3b7e",
   "verify": {
     "status": "VERIFIED PASS",
     "tests": 256,
@@ -15,7 +15,7 @@
     "failed": 0,
     "skipped": 0,
     "fullCoreSourceSha": "b065d568158f922e53f04811d594ec3dbfec1126",
-    "latestUiFollowUp": "2 footer-version/VND/DSM help/save E2E passed; full final CI required"
+    "latestUiFollowUp": "Full final source CI41300461817:78 passed, zero skips/failures"
   },
   "vndSimulation": {
     "status": "VERIFIED PASS",
@@ -32,5 +32,15 @@
     "index-BR3q7BaI.js": "38a628119572d5d4fde480d140937f4ed687b02d1c933c280608bd98b20e7ff1"
   },
   "cloudOwnerLogin": "NOT RUN",
-  "sqlAuthRlsChanges": false
+  "sqlAuthRlsChanges": false,
+  "ci": {
+    "runId": 41300461817,
+    "sourceSha": "f2f454b3b5a390e07744837b0bae4874f1cd3b7e",
+    "conclusion": "success"
+  },
+  "live": {
+    "status": "VERIFIED PASS",
+    "g5": "guest",
+    "cloudOwnerLogin": "NOT RUN"
+  }
 }
