@@ -17,6 +17,12 @@
     "passed": 2,
     "reporter": "list (avoids OneDrive browser-results.json writer lock)"
   },
-  "ci": "PENDING",
+  "ci": {
+    "status": "VERIFIED PASS",
+    "passed": 94,
+    "skipped": 0,
+    "run": 41329517842,
+    "headSha": "1b356715e079541c214ee50b16cf93a7f0cab189"
+  },
   "note": "Do not describe local full command as94/94 in a single run; exact-SHA CI must pass all94 before deployment."
 }

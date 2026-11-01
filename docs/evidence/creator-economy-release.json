@@ -1,0 +1,46 @@
+{
+  "status": "VERIFIED PASS",
+  "version": "0.3.8-creator.1",
+  "date": "2026-11-02",
+  "baseline": "7dc19a29fce1d5da56dfe9e47f3f68f47cee6e76",
+  "source": "1b356715e079541c214ee50b16cf93a7f0cab189",
+  "workflow": 41329517842,
+  "unitIntegration": 286,
+  "e2e": 94,
+  "goldens": 14,
+  "liveCreatorContexts": 6,
+  "liveShopContexts": 6,
+  "guestG5": "VERIFIED PASS",
+  "ownerCloudLogin": "NOT RUN",
+  "lifeRules": "creator-v1",
+  "currency": "vnd-v1 (absent historical selector stays DSM)",
+  "categories": 3,
+  "platforms": 2,
+  "formats": 3,
+  "niches": 6,
+  "newAuthoredEvents": 21,
+  "simulation": {
+    "businessLives": 1000,
+    "businessReplays": 1000,
+    "creatorLives": 1000,
+    "creatorReplays": 1000,
+    "violations": 0,
+    "missingAges": 0,
+    "maxActions": 455,
+    "maxSaveBytes": 800770,
+    "maxTransactions": 5062
+  },
+  "limits": {
+    "actions": 512,
+    "bytes": 5242880,
+    "discretionary": 120,
+    "lifetimeVentures": 4
+  },
+  "remaining": [
+    "independent gaming career",
+    "freelancer contracts",
+    "idol and auditions",
+    "creator collaboration",
+    "owner authenticated cloud QA"
+  ]
+}
