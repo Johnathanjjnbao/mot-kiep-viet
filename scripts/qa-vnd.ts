@@ -1,5 +1,6 @@
 import { expect, type Page } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { admittedStudent } from './academic-fixture';
 import { importStudent } from './qa-university';
 import {
@@ -15,6 +16,9 @@ import { storyAction, decisionKey } from '../src/application/story-flow';
 
 export async function vndJourney(page: Page, url: string, prefix: string) {
   await page.goto(url);
+  await expect(page.locator('.footer-version')).toContainText(
+    JSON.parse(readFileSync('package.json', 'utf8')).version,
+  );
   await page.getByRole('button', { name: 'Cách chơi & đôi lời', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('VND dùng sức mua thiết kế năm 2026');
   expect(await page.getByRole('dialog').innerText()).not.toContain('đSM');

@@ -9,6 +9,9 @@ Full verify256tests/27files PASS, gồm9golden lịch sử và golden VND3126831
 
 Baseline `585a9a5346313e628722a8b5337ffc4f3dc19e26`, main, sạch và đồng bộ remote ngày01/11/2026. Production vẫn0.3.7-yearly.1. Toàn bộ v0.3.8: **INCOMPLETE**.
 
+
+Pre-release live check: `6f2f545` passed CI256/78, VND/DSM browser roundtrips, six live viewports and exact asset hashes. G5 remained pending because the visible footer still said0.3.7-yearly.1. The footer now says0.3.8-vnd.1 and QA compares it against package.json before each VND journey; full verify256 and two targeted desktop/mobile E2E passed again. This changes only release text and its guard; financial simulations remain valid. Final follow-up SHA/CI/live checks are pending.
+
 ## Context Map — đã rà trước sửa
 
 | File | Vai trò |

@@ -51,3 +51,7 @@ Housing still costs120,000,000 VND under the old600-unit authored design. A50-un
 ## Review
 
 Self-review traced all current engine transact/mandatoryCost callers and raw monetary thresholds, UI money callers and authored monetary prose. No player balance writes added outside transact. No extra action type or budget expansion. Save parser recomputes the run and rejects selector-only edits; old saves are not automatically stamped with currency. No production data, player save, credential or database identifier was changed. Retail remains an internal reducer, not a claim that digital career/business expansion is complete.
+
+## Footer release guard
+
+Live asset comparison and VND/DSM play passed at6f2f545, but the Pages smoke correctly rejected a stale hardcoded footer label0.3.7-yearly.1. It is now0.3.8-vnd.1, with an E2E check against package.json to catch future release mismatches locally. Full verify256 and two targeted desktop/mobile VND/DSM/guide/footer tests passed. No financial rule or simulation changed. Evidence: `evidence/vnd-footer-browser-results.json`. Exact follow-up source CI and final G5 remain pending.
