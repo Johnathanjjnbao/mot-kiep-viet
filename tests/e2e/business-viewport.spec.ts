@@ -29,6 +29,7 @@ for (const config of viewportCases)
       for (let i = 0; i < 40 && activeDefinition(r)?.version !== 10; i++) r = businessStep(r);
       expect(activeDefinition(r)?.version).toBe(10);
       await importStudent(page, r);
+      let lastTouch = 0;
       for (let i = 0; i < 20; i++) {
         await assertDecisionViewport(page);
         const e = activeDefinition(r)!;
@@ -45,6 +46,9 @@ for (const config of viewportCases)
           { type: 'choose', eventId: e.id, choiceId: c.id },
           decisionKey(r),
         );
+        if (config.mobile)
+          await expect.poll(() => Date.now() - lastTouch, { intervals: [50] }).toBeGreaterThan(620);
+        lastTouch = Date.now();
         await clickChoiceWithoutDocumentScroll(page, index, !!config.mobile);
         await expect.poll(async () => canonical(await readGuestRun(page))).toBe(canonical(next));
         r = next;
