@@ -1,0 +1,143 @@
+{
+  "url": "http://127.0.0.1:5174/mot-kiep-viet/",
+  "reports": [
+    {
+      "browser": "chromium",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "desktop",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "label": "mobile",
+      "status": "VERIFIED PASS",
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "startFromBirth": true,
+      "loss": true,
+      "recovery": true,
+      "closure": true,
+      "slots": 3,
+      "exportImport": true,
+      "reload": true,
+      "canonical": true,
+      "axeViolations": 0,
+      "actions": 51,
+      "month": 252,
+      "cash": "387.000.000 ₫",
+      "ventures": 2,
+      "errors": []
+    }
+  ]
+}

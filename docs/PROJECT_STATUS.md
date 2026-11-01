@@ -1,5 +1,18 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Cửa hàng0.3.8-business.1 — kiểm chứng local, deployment PENDING (01/11/2026)
+
+Tiếp tục7dc19a2 →927e734 →58b5cbd, không làm lại VND/Year-by-Year. Đời mới enterprise-v1 dùng VND nguyên; save annual/career/education/dynamic và thiếu currency giữ nguyên luật/đSM. Ba ngành hàng: quần áo, gia dụng, thủ công. Policy giá/quảng bá/tồn kho, góp/rút vốn, tạm dừng/mở lại, sổ12tháng, thanh lý50%, hồi ký và12cảnh mới đã nối thật. Mỗi cảnh có4lựa chọn khả dụng; chỉ dispatch ghi trạng thái/ledger. Chặn lương business/freelance hai chiều; học tập, lương thường và gia đình đi cùng tiệm có áp lực công việc. Tối đa4ID cả đời, chung120quản lý,512actions/5MiB giữ nguyên. KhôngSQL/Auth/RLS hoặc frozen changes.
+
+**VERIFIED PASS:** verify274tests/28files;18testGameRun cửa hàng, ba nhóm hàng, đại học/việc làm/gia đình,30năm/bốnID/120quản lý/100+tuổi vàestate.9golden lịch sử +VND3126831863 giữ nguyên; business opening2481017761/full-life548030889 riêng. PGlite nhận envelope business thật theo migration003 đã duyệt, không thay Auth thật. Production Pages-subpath smoke và audit production0 PASS. Scan1484text objects gồm source/dist/reachable history,0findings; sẽ quét lại trước push sau khi chốt bằng chứng.
+
+**1.000đời+1.000canonical replay VERIFIED PASS:**0vi phạm/0tuổi thiếu/0tuổi bỏ/0fallback; mọi cảnh4–5lựa chọn.1.600tiệm,800sổ lời/800sổ lỗ sau đóng,386.147tháng lời/32.324tháng lỗ/166.339tháng có hoàn hàng được quan sát duy nhất. Max438actions,728196bytes,4390transactions,14enterprise actions; tuổi kết thúc61–105 theo policy stress, không ép chết/nghỉ hưu. Đây là kết quả policy game, không phải tỷ lệ kinh doanh ngoài đời. Fixture khỏe còn sống100+ đã kiểm riêng. Báo cáo business-1000-lives.json ghi phạm vi, trạng thái và cách đếm; returnedOrders cuối đời chỉ tổng12kỳ gần nhất, suspended là số lần quan sát chứ không phải tỷ lệ thực.
+
+**Browser:** Chromium/Firefox/WebKit ×desktop/mobile6/6 từ tạo nhân vật0→18, mở tiệm/lỗ/góp vốn/đổi policy/có tháng lời/rút/ba slot/reload/export-import/đóng/mởIDmới PASS, axe0. Ví dụ UI: vốn4triệu và không dự trữ dẫn tới lỗ/dừng; góp30triệu, cân bằng/khôngquảngbá/20món có kỳ lời2,8triệu và kỳ lỗ/hoàn hàng. Vốn chủ46,8triệu=34triệu góp−1triệu rút+13,8triệu lợi nhuận. Bốn suite sáu viewport×20quyết định cũ vẫn giữ; thêm sáu business cases. QA sửa kỳ vọng default selector, tôn trọng300ms touch duplicate guard, và phát hiện first choice chữ lớn hụt11px: chỉ thu khoảng cách, không cắt narrative/choice. Suite cuối đang chốt lại; không dùng lượt82/86 trước sửa làm PASS toàn bộ.
+
+**C/D INCOMPLETE:** có nghiên cứu nguồn nền tảng tại CREATOR_PLATFORM_RESEARCH.md. Triển khai creator-v1 đang được giữ ở checkpoint chưa phát hành riêng; không nằm trong release cửa hàng. Chưa tuyên bố TikTokLIVE/YouTube/gaming/freelancer/idol hay monetization đã deployed. G5 guest live vàexact-SHA CI còn PENDING. Owner cloud login NOT RUN; không credential người chơi hoặc productionwrites.
+
+
 ## Cửa hàng0.3.8-business.1 — local release candidate (01/11/2026)
 
 Tiếp tục checkpoint927e734, giữ toàn bộ VND và save cũ. Đời tạo mới dùng enterprise-v1; ba nhóm hàng, policy giá/quảng bá/tồn kho, sổ tháng, góp/rút vốn, tạm dừng/mở lại, thanh lý50% và12cảnh bốn lựa chọn đã nối UI/dispatch/ledger/save/replay. Hồi ký giữ lịch sử tiệm; salary abstraction bị chặn hai chiều, việc làm thông thường/học tập/gia đình vẫn đi cùng tiệm. Frozen v1/v2,9golden lịch sử vàVND3126831863 giữ nguyên; enterprise opening2481017761 vàfull-life548030889 riêng.

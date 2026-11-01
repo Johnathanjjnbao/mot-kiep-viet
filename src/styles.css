@@ -3735,6 +3735,15 @@ meter::-moz-meter-bar {
 .enterprise-month h4 { font-weight: 500; margin: 0; }
 .enterprise-result, .enterprise-loss { font: 1.7rem var(--font-serif); margin: 12px 0; }
 .enterprise-result { color: var(--leaf); }
+.game-shell .story-card { min-width: 0; }
+@media (max-width: 900px) {
+  .game-shell .game-tabs { margin-bottom: 6px; }
+  .game-shell .story-card { padding: 10px; }
+  .game-shell .story-card h2 { margin: 4px 0 5px; }
+  .game-shell .choices { margin-top: 6px; }
+  .game-shell .choice-prompt { margin-bottom: 4px; }
+  .game-shell .choice { padding-block: 9px; }
+}
 .enterprise-loss { color: var(--rust); }
 .enterprise-policy, .enterprise-launch fieldset { border: 1px solid var(--line); padding: 16px; margin: 20px 0; min-width: 0; }
 .enterprise-panel input:not([type=checkbox]), .enterprise-panel select { display: block; width: 100%; min-width: 0; min-height: 44px; margin: 8px 0 16px; border: 1px solid var(--line); border-radius: 3px; padding: 10px; background: var(--paper); color: var(--ink); font: inherit; }
