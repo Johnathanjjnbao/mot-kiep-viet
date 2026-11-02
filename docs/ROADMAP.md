@@ -1,5 +1,9 @@
 # Backlog sau beta v0.3
 
+## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
+
+Đã chốt phạm vi ổn định:4hệ nghề mới,56cảnh, guest CAS, fix địa danh và chia bảng phụ có kiểm tra. Chỉ còn release/preservation gates. Sau kỳ nghỉ ưu tiên dependency dev advisory và chi phí replay lớn; các hệ nhà/xe/PC/du học/di cư/VND danh nghĩa/quân sự/siêu nhiên/đời cực dài vẫn ở backlog, không tự triển khai. Trạng thái phát hành ở PRE_HIATUS_RELEASE_REPORT.md.
+
 Year-by-Year0.3.7-yearly.1 đã phát hành/G5 guest VERIFIED PASS, source1fb059c. Các mục Digital/business/military/long-lived500–1000years bên dưới tiếp tục là backlog, không thuộc phiên này. Chi tiết YEAR_BY_YEAR_PROGRESS.md.
 
 

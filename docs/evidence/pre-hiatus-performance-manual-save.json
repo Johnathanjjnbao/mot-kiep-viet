@@ -1,0 +1,7 @@
+{
+  "status": "MEASURED",
+  "version": "0.3.10-stable.1",
+  "scope": "One final-build spot measurement, Edge1440x1000 CPU4x,356-action run,manual slot1 save including UI confirmation. Not a paired median.",
+  "actions": 356,
+  "manualSaveMs": 4773.037100000001
+}

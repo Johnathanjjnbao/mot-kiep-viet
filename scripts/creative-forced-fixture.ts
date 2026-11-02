@@ -27,10 +27,13 @@ export function nativeLongStep(r: GameRun) {
       ? creativeStep(r)
       : artisticStep(r);
 }
-export function creativeGraduateParent(startIndex = 0) {
+export function creativeGraduateParent(
+  startIndex = 0,
+  lifeRules: 'creative-v1' | 'stable-v1' = 'creative-v1',
+) {
   const seen = new Set<string>();
   for (let i = startIndex; i < startIndex + 80; i++) {
-    let n = admittedStudent('it', i, 'creative-v1', 'vnd-v1').run;
+    let n = admittedStudent('it', i, lifeRules, 'vnd-v1').run;
     if (seen.has(n.seed)) continue;
     seen.add(n.seed);
     const p = n.social!.people[0];
@@ -63,8 +66,11 @@ export function creativeGraduateParent(startIndex = 0) {
   }
   throw Error('No genuine graduate parent');
 }
-export function creativeFullPortfolio(startIndex = 0) {
-  let r = creativeGraduateParent(startIndex);
+export function creativeFullPortfolio(
+  startIndex = 0,
+  lifeRules: 'creative-v1' | 'stable-v1' = 'creative-v1',
+) {
+  let r = creativeGraduateParent(startIndex, lifeRules);
   for (let i = 0; i < 24 && businessReason(r); i++) r = nativeLongStep(r);
   r = found(r, 4000000);
   r = startChannel(r, 'youtube', {

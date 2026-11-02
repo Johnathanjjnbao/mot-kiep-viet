@@ -1,4 +1,5 @@
 import { chromium, expect } from '@playwright/test';
+import { hasRealismRules } from '../src/domain/rules.ts';
 import AxeBuilder from '@axe-core/playwright';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
@@ -53,7 +54,7 @@ export async function viewportJourney(
     await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
     await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
-    expect((await readGuestRun(page)).setup.lifeRules).toBe('realism-v1');
+    expect((await readGuestRun(page)).setup.lifeRules).toBe('stable-v1');
     await expect(page.getByTestId('hud-age')).toHaveText('0 tuổi');
     await page.evaluate(() => document.fonts.ready);
     let lastTouch = -Infinity;
@@ -70,7 +71,7 @@ export async function viewportJourney(
       await expect(page.getByTestId('hud-age')).toHaveText(`${Math.floor(run.month / 12)} tuổi`);
       await expect(page.getByTestId('hud-year')).toHaveText(String(run.world.year));
       await expect(page.getByTestId('hud-cash')).toHaveText(
-        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(run.setup.lifeRules === 'realism-v1' && run.month < 72 ? run.finance.savings : run.finance.cash)} ${run.setup.currency === 'vnd-v1' ? '₫' : 'đSM'}`,
+        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(hasRealismRules(run) && run.month < 72 ? run.finance.savings : run.finance.cash)} ${run.setup.currency === 'vnd-v1' ? '₫' : 'đSM'}`,
       );
       m.step = i;
       measurements.push(m);
@@ -110,13 +111,11 @@ export async function viewportJourney(
         readFileSync(`tests/data/viewport-realism-${label}.json`, 'utf8'),
       );
       await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
-      await page
-        .getByLabel('Chọn tệp game đã lưu')
-        .setInputFiles({
-          name: `callback-${label}.json`,
-          mimeType: 'application/json',
-          buffer: Buffer.from(JSON.stringify(callback)),
-        });
+      await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+        name: `callback-${label}.json`,
+        mimeType: 'application/json',
+        buffer: Buffer.from(JSON.stringify(callback)),
+      });
       await expect(page.getByRole('dialog')).not.toBeVisible();
       await expect.poll(() => readGuestRun(page)).toEqual(callback.run);
       const measured = await assertDecisionViewport(page);

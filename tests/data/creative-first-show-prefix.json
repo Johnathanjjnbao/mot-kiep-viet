@@ -1,0 +1,265 @@
+{
+  "id": "ar-first-show",
+  "seed": "creative-stress-68",
+  "setup": {
+    "cohort": 2005,
+    "region": "northern-village",
+    "name": "Nguyễn An 68",
+    "birthplace": "Quê nhà 68",
+    "environment": "rural",
+    "wealth": 3,
+    "family": "with-father",
+    "motherTraits": ["distant"],
+    "fatherTraits": [],
+    "currency": "vnd-v1",
+    "expansion": "wardrobe",
+    "lifeRules": "creative-v1",
+    "presentation": "boy",
+    "playerTraits": ["Khéo tay", "Ưa yên tĩnh", "Thích giúp đỡ"]
+  },
+  "actions": [
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-tummy-play",
+      "choiceId": "a"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-meal-mess",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-new-bowl",
+      "choiceId": "b"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-red-crayon",
+      "choiceId": "a"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-snail-path",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-queue-game",
+      "choiceId": "c"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "minor-finance",
+      "operation": "save",
+      "amount": 1,
+      "expected": 13
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-first-pocket",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-after-class-ball",
+      "choiceId": "b"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-fair-price",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-birthday-fund",
+      "choiceId": "c"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-club-time",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-shared-snack",
+      "choiceId": "a"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-new-school-route",
+      "choiceId": "c"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "minor-finance",
+      "operation": "spend",
+      "amount": 1,
+      "expected": 28
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-first-small-task",
+      "choiceId": "b"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-hobby-cost",
+      "choiceId": "c"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-helping-neighbour",
+      "choiceId": "b"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-weekend-order",
+      "choiceId": "d"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "choose",
+      "eventId": "realism-owned-savings",
+      "choiceId": "b"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "freelance",
+      "operation": "inquire",
+      "expected": 39,
+      "service": "support"
+    },
+    {
+      "type": "freelance",
+      "operation": "negotiate",
+      "expected": 40,
+      "id": "freelance:0",
+      "terms": "premium"
+    },
+    {
+      "type": "artistic",
+      "operation": "start",
+      "expected": 41,
+      "discipline": "dance"
+    },
+    {
+      "type": "creator",
+      "operation": "start",
+      "expected": 42,
+      "platform": "tiktok",
+      "policy": {
+        "format": "video",
+        "rhythm": "intense",
+        "focus": "community",
+        "niche": "education"
+      }
+    },
+    {
+      "type": "enterprise",
+      "operation": "found",
+      "expected": 43,
+      "category": "clothing",
+      "capital": 14000000,
+      "policy": {
+        "price": "budget",
+        "marketing": false,
+        "reorderTarget": 0
+      }
+    },
+    {
+      "type": "choose",
+      "eventId": "edu-direction",
+      "choiceId": "work"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "artistic",
+      "operation": "policy",
+      "expected": 46,
+      "policy": "technique"
+    },
+    {
+      "type": "choose",
+      "eventId": "employment-search",
+      "choiceId": "train"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "artistic",
+      "operation": "policy",
+      "expected": 49,
+      "policy": "technique"
+    },
+    {
+      "type": "choose",
+      "eventId": "employment-search",
+      "choiceId": "search"
+    },
+    {
+      "type": "advance"
+    },
+    {
+      "type": "artistic",
+      "operation": "independent",
+      "expected": 52
+    }
+  ]
+}

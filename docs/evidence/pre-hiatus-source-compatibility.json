@@ -1,0 +1,745 @@
+{
+  "status": "VERIFIED ENGINE/CONTENT/SAVE COMPATIBILITY",
+  "simulationManifest": "21399a3a8207718bac4aefeef8ad84ee0cc0ebf398525b19e3f28c5054138bfd",
+  "afterSimulationChanges": [
+    {
+      "path": "src/ui/App.tsx",
+      "before": "b780c3853edda1337eb04ce0e690cf87d726d7a9263205366125c28b63bd974a",
+      "after": "df2970d90d2880a9edcd82d81b109f370120c5964019d1fc076b27e9ae8d86b6"
+    },
+    {
+      "path": "src/ui/NewLife.tsx",
+      "before": "6a9f848baba180d9f320241457e0448e80ed222502fc36481a4a1ff55568db78",
+      "after": "1e501b8320546303f8e1a65fd3252e44c66991d8943f08f4b5408e643ba5ca01"
+    }
+  ],
+  "explanation": "Only region defaults/custom-field preservation in Character Creator and package-driven version label changed after the1000 canonical batch. Engine/content/domain/persistence/frozen files are byte-identical. Final UI/build/CI gates cover these UI fixes.",
+  "normalizationNote": "Original freeze hashes are raw Windows checkout bytes. Git may normalize CRLF to LF; the following staged Git blob IDs and LF hashes identify the145 unchanged gameplay/source files portably. The two UI changes remain explicitly listed.",
+  "portableUnchangedFiles": [
+    {
+      "path": "src/application/creatorRandom.ts",
+      "gitBlob": "3156d98ee3a4c6793da18a68ff70676e1e8b93b3",
+      "sha256LF": "966bae872208df8bf5be5f8cfcfe927b0a2e0a05379a2461dd4f59d8c2b1acff"
+    },
+    {
+      "path": "src/application/story-flow.ts",
+      "gitBlob": "110a71b46b6995b53239b8f168c92a877e2a2ca4",
+      "sha256LF": "4f69bc8bd8a58fed67bca49611a521d066d70ab1aef50073843a4b403cc7c296"
+    },
+    {
+      "path": "src/application/summary.ts",
+      "gitBlob": "b9cc68398d786e7442a85399b29e5f6d9754f086",
+      "sha256LF": "a444c570c468d3e43eea8181841648010e533b85399aba692a2783324563228f"
+    },
+    {
+      "path": "src/application/useAccount.ts",
+      "gitBlob": "4489796ab4c2ef0df55329b722d6c223e3bbe7a1",
+      "sha256LF": "b75aa84d6f83e283ca9ef5c49684cd60f335eb0b2ae7f0e0f871cbc5c19bca35"
+    },
+    {
+      "path": "src/application/useGameSession.ts",
+      "gitBlob": "9f54dfaaf8064a84af2fbbe2fcd085e96533baef",
+      "sha256LF": "c57c408ca5955ec1857d87b608397d84cbd3172afa1be0d74191e64ad6d9598b"
+    },
+    {
+      "path": "src/cloud/account.ts",
+      "gitBlob": "b022c75e239201ee15ff256d2cea40fb19fcd689",
+      "sha256LF": "c791aec09d9fb5fa6b0018534719bb67a1f0244804c409a3f73cd636579be82a"
+    },
+    {
+      "path": "src/cloud/auth.ts",
+      "gitBlob": "8e2cd14f329956332f69305d8ee9a5601d80b2ea",
+      "sha256LF": "656ea48c01299beb9fe18f2b57d27ca6eeee9d98040729bc9811a5d688a57404"
+    },
+    {
+      "path": "src/cloud/contracts.ts",
+      "gitBlob": "4a814bb1f68f5264c64734d0b18db5ed9c200e93",
+      "sha256LF": "cc0fd7d64853ecf665387d3a60ee98852a4f2d70456e80bfb77281f57cdeeb7c"
+    },
+    {
+      "path": "src/cloud/repositories.ts",
+      "gitBlob": "19fc22ca2dca500201034731f6d5be066e912c9d",
+      "sha256LF": "595c98ab977327fb1721959c56e094e703df68f51a1bd008ab6018334bfd2038"
+    },
+    {
+      "path": "src/cloud/sync.ts",
+      "gitBlob": "a5c8be6e0cc7ffab51ec362e79c66882542a4bdb",
+      "sha256LF": "a78037dc711089a257211ab9d4f6833105065e94b1d9b8fdee7c58c563dfb1e7"
+    },
+    {
+      "path": "src/content/academic-stages.ts",
+      "gitBlob": "8fff843d7d4a68c989f67d3ac92ae9dae011747d",
+      "sha256LF": "19862d76d20a5db67b598db9b190ac53e375a82798cd1945d66db20d39fa0c6c"
+    },
+    {
+      "path": "src/content/annual-adult-events.ts",
+      "gitBlob": "5a56adfbea6f15b79ecffd7b6b81035247e9d5ac",
+      "sha256LF": "6ce7869dc5d27f1f4e9f73fc0c20a925542c624cb9aaeb4734f64ec79f993dab"
+    },
+    {
+      "path": "src/content/annual-events.ts",
+      "gitBlob": "4e8370d98e0ce2b0e38ec9b490778f69cc2291e6",
+      "sha256LF": "3e1f133b4ccdf282149007d519956e7096b45d104f737c82b2df5152d429f749"
+    },
+    {
+      "path": "src/content/arcs.ts",
+      "gitBlob": "5938deb87a5720e1ef95cc562b875cd00902eff7",
+      "sha256LF": "56af1a856a776859590394418727119008e1c4d97418812d46e907c3922cb1b4"
+    },
+    {
+      "path": "src/content/artistic-events.ts",
+      "gitBlob": "6885bea19e5ceccd7208c9aff4db0ee80fc4cfab",
+      "sha256LF": "79ac78e790b0ad2b4b088cac07a263b4ab35d80e6c4fb2bb0701c50ab94e5e2e"
+    },
+    {
+      "path": "src/content/authoring.ts",
+      "gitBlob": "80bd300d00f31290104c8c9267e2dc068693ef69",
+      "sha256LF": "ba524411af6e8ae683b2aa1e667790f1627f1fbb98e9a2c6fd264e2b7f5f0fcf"
+    },
+    {
+      "path": "src/content/business-events.ts",
+      "gitBlob": "ebf85d59a3ff03e1a13d475af1ebe97200537084",
+      "sha256LF": "d21b90280816bdbd6f02608793ffd52eb2d23cb63bdc2c5bcd585238e8f8e014"
+    },
+    {
+      "path": "src/content/childhood-diversity.ts",
+      "gitBlob": "737fd747c002cff2a2b6995fdead077fbb0de1df",
+      "sha256LF": "ed2ae71bc9853a56b0857e22a0523cd65f23f27b56fff92b75dde721650a1406"
+    },
+    {
+      "path": "src/content/choice-expansion.ts",
+      "gitBlob": "3bc0f5b60fcd6f987e9b943191b104f352bf1ba8",
+      "sha256LF": "450dfd028478f74027509ff81a20d649729644953020c0bd1b6f17a379282322"
+    },
+    {
+      "path": "src/content/clothing.ts",
+      "gitBlob": "c2a1e75e0511eab4bedf42a574148c4c702e4347",
+      "sha256LF": "71bfeb85a9e46c74c596f93f67ae89d78ac6744d8563dda69ce68f2982f93c8a"
+    },
+    {
+      "path": "src/content/creative-events.ts",
+      "gitBlob": "29d4d9d854997249261af9a56073a68362c22433",
+      "sha256LF": "24d219251b2de368f581311dfa9ed517b900d1583a652adfeb4fef077eda841f"
+    },
+    {
+      "path": "src/content/creative-peers.ts",
+      "gitBlob": "230b2d4e2e11f840ad1897bc883bae0703ff8649",
+      "sha256LF": "e2d98877b22a98885a5fa6ad4e6265c99bc1d120772181c17c8f6ba07c75764e"
+    },
+    {
+      "path": "src/content/creator-events.ts",
+      "gitBlob": "67cf1e9c012aac459ebc51108af19ab5f7b1f863",
+      "sha256LF": "eec66396164e57c0a3f69f3635d0c97d3810c2ae87a099bbe8b6a6106f572be7"
+    },
+    {
+      "path": "src/content/employment-events.ts",
+      "gitBlob": "ec70eab1c1192483d07faeafefbc8bc8ec4a0ed6",
+      "sha256LF": "9a2171bbe34a290cca6832cfaf21d02ec7bef575b9d6ffb9bc0b7be971ca94cd"
+    },
+    {
+      "path": "src/content/events.ts",
+      "gitBlob": "ba5bce413064e55016741131e4b6405779b45f31",
+      "sha256LF": "d58e2e3bfca353e98402c5b10cfad20ac09350943d267d431d980583b98f0fe2"
+    },
+    {
+      "path": "src/content/everyday.ts",
+      "gitBlob": "dfb1cc63647021423e9481762d7dd48ec536283f",
+      "sha256LF": "114a5f10e57f846010e70087f2070d2c14c7842913356148ec3b8dba67d3086d"
+    },
+    {
+      "path": "src/content/fashion-events.ts",
+      "gitBlob": "6f4d5182514c487436d42ec889424311c55afc2e",
+      "sha256LF": "e704625b6255dc72440150bf794c3e64e00670fc43b27e5cd313d3e3f706376a"
+    },
+    {
+      "path": "src/content/freelance-events.ts",
+      "gitBlob": "2694f151ae057126684e378fa8f8107f0f8b1cd2",
+      "sha256LF": "cc7a0761951b9ecca0a49c9a3539b2df5be4a199cc470bd5fc848033884a948a"
+    },
+    {
+      "path": "src/content/freelance-services.ts",
+      "gitBlob": "d0278b9988d645e257b2fe1ebf6feedf4a56534b",
+      "sha256LF": "d8a742b01a1ba120b51a748e9bf2a6b161b192ac498b0ad0c21dcac490281b2c"
+    },
+    {
+      "path": "src/content/growing-up.ts",
+      "gitBlob": "519cf138754a9ba6a6ee24dd7a1a77c7d57a9f3b",
+      "sha256LF": "51797dbde7a0063ed7daa239c1b1ecfc6c297437245391990a753039e5660a76"
+    },
+    {
+      "path": "src/content/parenting-events.ts",
+      "gitBlob": "159963c70c2e63ea5a5f772f387f68efa2d61fca",
+      "sha256LF": "dd564b45ee76fb6319be77579978820c99e74e4caf89e75cb37b71b54e540c8e"
+    },
+    {
+      "path": "src/content/programs.ts",
+      "gitBlob": "2e3eea15eb3e63f123f497525fa9fe35d64f9601",
+      "sha256LF": "f0ad4cffd5f06929d7f0bfbf576385089d012c3e8f2e14682c8b3ae853f92c3e"
+    },
+    {
+      "path": "src/content/realism-events.ts",
+      "gitBlob": "879c572b9e57a66c724d35284b249c9902558dd6",
+      "sha256LF": "2dd7a52d1fa1a2ca6546e58e0821452c8d7ba63840b4aa9bd1dbc4bbe328907a"
+    },
+    {
+      "path": "src/content/romance-events.ts",
+      "gitBlob": "e6cdaa706de6a3b329d4053657a85b1bd7d88b30",
+      "sha256LF": "dfcfb0c9477b4971fd8b433f5d40914f2a2b4f9299017e8939a30a2da7a61200"
+    },
+    {
+      "path": "src/content/stable-events.ts",
+      "gitBlob": "6b8d341c9a3faff7304cfede586b220b83d68fdf",
+      "sha256LF": "c18ebaa2bd0a72157fe851125a3f842c86aac934214929264b397431de5656eb"
+    },
+    {
+      "path": "src/content/validation.ts",
+      "gitBlob": "524c72981e7a7ea689ebd430c494a699acdf0f67",
+      "sha256LF": "9ab2c9177f3f2005a205392eebd167a5dd52bf6abe78f5193a938a12ef14ceb6"
+    },
+    {
+      "path": "src/content/work.ts",
+      "gitBlob": "7ffe57f57da8be9e1da85c970a811abf10d855d8",
+      "sha256LF": "685b9e423b525ed5ac71b158bf9d94abb0542578232bc668a7711d3c286327de"
+    },
+    {
+      "path": "src/content/world-events.ts",
+      "gitBlob": "bd7c10a53371d27f0d6cb48c57808c0ef1cb45e9",
+      "sha256LF": "09ec82417820c71975ad981b127b2d192005ee8ea87270a8ea1307d682c49848"
+    },
+    {
+      "path": "src/content/world.ts",
+      "gitBlob": "87877089746ad485395a23eaf95b57b742305960",
+      "sha256LF": "7269b55dbf95a908a2f7e483a82a7330bf83dfd721d9faf69d73167306c0d818"
+    },
+    {
+      "path": "src/diagnostics/creative-policy.ts",
+      "gitBlob": "509a6e3479b7b99b9525cca00c9cd9a3490e98a7",
+      "sha256LF": "ba9e5e8f7305f1266430d2a964b9ef7b91e5a4e6a4b7f24cd4d624db80059da4"
+    },
+    {
+      "path": "src/diagnostics/simulation.ts",
+      "gitBlob": "ff708237fae97042c4981a1082c9d635e8dd49b7",
+      "sha256LF": "530c2dff51aefc722a737d8508dbde2e142b2e5af4f24ad55771a49e535f9ed2"
+    },
+    {
+      "path": "src/domain/academics.ts",
+      "gitBlob": "b9de0c21af8264ee942da120d14d5c099483a643",
+      "sha256LF": "a1a08188f2302897607bf0430fae891176b7bc05826646f687054b0c46845d7d"
+    },
+    {
+      "path": "src/domain/artistic.ts",
+      "gitBlob": "e27b0f4fc634fc008483e450724af08906094998",
+      "sha256LF": "1e861516a8708d3536fb2d37a98f93ae7c6b027a3a360d74d0c8933e92b8280a"
+    },
+    {
+      "path": "src/domain/childhood.ts",
+      "gitBlob": "f5fc0f159962b2f0c1ae7d139b29b370118c9b34",
+      "sha256LF": "fbc534ee05debbf933870470f952714ba0d1c4d99cf3b8cdd7426f86d99d7dd2"
+    },
+    {
+      "path": "src/domain/creative-careers.ts",
+      "gitBlob": "060d4f9a90c6fcbb831e1a18131fde3783358556",
+      "sha256LF": "26fa0a35093cc737fb5d8ee199792544095c8c1f76d336681ffecd4da98a64d7"
+    },
+    {
+      "path": "src/domain/creator-economy.ts",
+      "gitBlob": "44e8424f89fdb24be8b6960ec736948fec816147",
+      "sha256LF": "53e95d4a0a4410056f15f72eb0f573a69d2f5d71b065d94846a090c939c5a249"
+    },
+    {
+      "path": "src/domain/creator.ts",
+      "gitBlob": "c267a08b93b4c1047732f9ad69249f52caaae583",
+      "sha256LF": "597cb7a7d79427c883e8e63426abdd5818308ffeb25590ea0a8f89e0ad6292d8"
+    },
+    {
+      "path": "src/domain/currency.ts",
+      "gitBlob": "7b7294a9f4a689f633f449d1ae2eacc40c9021f8",
+      "sha256LF": "87cd34a104db2965b4b55bc93573a72810d00fb0c7ef9386f11f9ef155eeba9e"
+    },
+    {
+      "path": "src/domain/employment.ts",
+      "gitBlob": "38af508797f049475dbde64340fd489380c9d3c6",
+      "sha256LF": "d9d078d9b414eeaa6e0f49cfa17b69a984563e58fe140acfc57dfe1c6c7ae63d"
+    },
+    {
+      "path": "src/domain/enterprise-actions.ts",
+      "gitBlob": "09deb369152cad4eeded5230bc62410a608a5de5",
+      "sha256LF": "1a39a9547bda1d7b0a915727e9ec9b2a000ba9a3293f8c3c43c17b658d4a51de"
+    },
+    {
+      "path": "src/domain/enterprise.ts",
+      "gitBlob": "c3bfb7b463ef2bd77bccca77441aee00782fd961",
+      "sha256LF": "fe9b33a933cbb89f9f9fe15411d399be308b5b85a8caab24f545c2cc9386b46d"
+    },
+    {
+      "path": "src/domain/family.ts",
+      "gitBlob": "87cdc6bdf57fc63da4b43f4eecbdb07052890531",
+      "sha256LF": "09a29ffd4ec1353d19418b936b46e393520c48f752bd25b87801722edfc46edc"
+    },
+    {
+      "path": "src/domain/freelance.ts",
+      "gitBlob": "30b9e6c597f359aead28f99ae98dfb3872c7419b",
+      "sha256LF": "da78896d4b780008d90ff4a85b33a0092d585e31c73f31fa16cb1d099faa7688"
+    },
+    {
+      "path": "src/domain/model.ts",
+      "gitBlob": "bcda2826cd187da5faf4734c140227a255960c28",
+      "sha256LF": "54b5bedf4a6bb9ddda745e7be75c7807ab71eadec0e8d6c8564786e4654ddabe"
+    },
+    {
+      "path": "src/domain/personality.ts",
+      "gitBlob": "83d51012e6f3912b4b5abff3f815eb74b5240c60",
+      "sha256LF": "396b3555cafd0e01d98c518f6031c89445db94f3e5a775ad2a39a9f15a1226eb"
+    },
+    {
+      "path": "src/domain/rules.ts",
+      "gitBlob": "639a9d871370601cd394197e13ad4b26f74333c2",
+      "sha256LF": "b55d6a148e805a0a4a2f98098bb4e6fc38fbe0fe629cc5b2b7b25fed41654258"
+    },
+    {
+      "path": "src/domain/social.ts",
+      "gitBlob": "c230d639c870e1dc288e0f2ac999ca8442f5fb3f",
+      "sha256LF": "3872e4b642156f15975bfe6b18e55e667c356a4dd6f295a364bbb354ba933f45"
+    },
+    {
+      "path": "src/engine/academics.ts",
+      "gitBlob": "e7d9e7d80e68c536276d5285766143c06e945bf4",
+      "sha256LF": "62d629cb0a6a0f80e2a1be49b9f020ace142c66c56b3c20dc8c9bc99b630049a"
+    },
+    {
+      "path": "src/engine/annual.ts",
+      "gitBlob": "676e9e1faf92c2812c2585082471fdcfce1b846b",
+      "sha256LF": "24e82065d68132728d406dd9ae2ef0730a0d5e60aa0c51d44fab0990aeca73a4"
+    },
+    {
+      "path": "src/engine/artistic.ts",
+      "gitBlob": "bb9b4bad3624cd84b37a9b7be4bbdc2419af49e6",
+      "sha256LF": "db7747d2bd9dc5f0acddd1ef4404159d536a463ed2c03abf10eb286079b4c2b9"
+    },
+    {
+      "path": "src/engine/business.ts",
+      "gitBlob": "c3b7f80c2ecf13d547cfc673c0cadfbdfa001e76",
+      "sha256LF": "a6079303ea9043cddb9f9349ba2d4ea9856285b16a0917f412807ffd46e93dba"
+    },
+    {
+      "path": "src/engine/childhood.ts",
+      "gitBlob": "ae3c0dea5c9cfa749655c165e3fd555210c635ee",
+      "sha256LF": "04fd6ca257794b1824eb3c822754d0ad0878bbb4c00b3b0046d406860bfc7a41"
+    },
+    {
+      "path": "src/engine/creative-careers.ts",
+      "gitBlob": "125a14ce18a89e287383ca327a94bb8a66fdaadd",
+      "sha256LF": "7bc027cbff70f98f9ce69a779d9d10f66cc6f74778269b4960f8305aee58b22a"
+    },
+    {
+      "path": "src/engine/creator-economy.ts",
+      "gitBlob": "88e082dea6176e9cfb59dd5a465d70e2d6faf17a",
+      "sha256LF": "6995b818ed17b41b8ac804261558176a942e375f8eb70b65841a818fce6342fb"
+    },
+    {
+      "path": "src/engine/employment.ts",
+      "gitBlob": "05ec2726c0118081d27de123330fea10e5d1cf72",
+      "sha256LF": "35b778539b5aa991c006f1ca9c0c68c04f950004b432aebf6d874d6030312638"
+    },
+    {
+      "path": "src/engine/engine.ts",
+      "gitBlob": "961078a9ed5a37b08391d02a64723f952522ef84",
+      "sha256LF": "d7d09afca75159dc09fb6c72f3ca50238ed23078397797a3af3878b1af611b6b"
+    },
+    {
+      "path": "src/engine/enterprise.ts",
+      "gitBlob": "fd630416b800d1c87d13c55e59625cab9ffd6713",
+      "sha256LF": "a3c6c6f4d7125e075b370863d0259f6451edd2206e018e284291097077668fda"
+    },
+    {
+      "path": "src/engine/family.ts",
+      "gitBlob": "b14d0a2cf323a3b657da99e0c025a371c35268bc",
+      "sha256LF": "0435a7b28889612dba08167e44dd6348da1a20cdaf544857f3477c93c68d8a9d"
+    },
+    {
+      "path": "src/engine/finance.ts",
+      "gitBlob": "2496e0e2146724a99959f4674d7d51efbad172c9",
+      "sha256LF": "1e60f03fadb32bafd655ded54d901426cf834b66d0e44dd58b0f44b7a3337907"
+    },
+    {
+      "path": "src/engine/freelance.ts",
+      "gitBlob": "b8394143812f5f1fcfcc07f3bfc7c70351e0dde9",
+      "sha256LF": "323f1585b3917de10c460138b846710f1f5eff1bdc6566f24a811e51c88d0a04"
+    },
+    {
+      "path": "src/engine/invariants.ts",
+      "gitBlob": "1454113c3ec371b29161ff219a0346f6d8f4e071",
+      "sha256LF": "d972e01a0cf5234f3f8d258a726eab6c40a2d80a1bf22f9192f0faba7cc787d5"
+    },
+    {
+      "path": "src/engine/lifeDiversity.ts",
+      "gitBlob": "047c6caea8da3312b496e741b15eb08bb8152c11",
+      "sha256LF": "60c6765c0cd21b6a81dc9c015165ae821ba05d36544b262590b231d0ce50a430"
+    },
+    {
+      "path": "src/engine/random.ts",
+      "gitBlob": "b87ff5847c6ab0e5cd52713a643b73613ec75c58",
+      "sha256LF": "234bc3e7933bb9f1168c4ad0dae6897a07dfab75b7c18bee30da59516b7777fb"
+    },
+    {
+      "path": "src/engine/social.ts",
+      "gitBlob": "b9a5f521265d9dfc8c8c8f6d750e579ce4a8a139",
+      "sha256LF": "3f010428f2e25bc30378c979076386568047380543445fcdb2534b8a265ded50"
+    },
+    {
+      "path": "src/engine/stable-stories.ts",
+      "gitBlob": "4d106b1abac5b38db09052182e206dd3e190ddeb",
+      "sha256LF": "6dedcc0b0f7d38d54be235da0217d0290edf83f4fa891f19c459de6126e6eb29"
+    },
+    {
+      "path": "src/engine/wardrobe.ts",
+      "gitBlob": "be724d03b935b1754190a3f5c123f8b1416c1490",
+      "sha256LF": "d843625dc1e449135d0fce8ae0930282e60b0b013ee9965468f97c30c03cbb59"
+    },
+    {
+      "path": "src/legacy/v1/application/summary.ts",
+      "gitBlob": "028b2fa43c103d88b1f8a252866cbafc799cadd2",
+      "sha256LF": "705661b1a3c1e180b03f53b60e449a157e9002475abf1e53ba1321770eb54ed0"
+    },
+    {
+      "path": "src/legacy/v1/content/arcs.ts",
+      "gitBlob": "7b3806bcf31814d95c2fbdcda1fce0b6f2584031",
+      "sha256LF": "5e89fcb173442f57eef3dd74596d0aecfa3c5a626f788554336e434c328bb20c"
+    },
+    {
+      "path": "src/legacy/v1/content/authoring.ts",
+      "gitBlob": "69b69101d2ade7488ec6a7f4e4ee9b195d7fa542",
+      "sha256LF": "23bc1e99bdda00da0e3e63f8aee42733710ba3da482b8e9f4d3947b5ad992d0a"
+    },
+    {
+      "path": "src/legacy/v1/content/events.ts",
+      "gitBlob": "9576f9c4f13f0fb97f64872dd464207e6cb32bf9",
+      "sha256LF": "c0ba0b8328ce48d26b55cab7084661c498db03801e2c23cc10fc3a66f9af3489"
+    },
+    {
+      "path": "src/legacy/v1/content/everyday.ts",
+      "gitBlob": "dfb1cc63647021423e9481762d7dd48ec536283f",
+      "sha256LF": "114a5f10e57f846010e70087f2070d2c14c7842913356148ec3b8dba67d3086d"
+    },
+    {
+      "path": "src/legacy/v1/content/growing-up.ts",
+      "gitBlob": "519cf138754a9ba6a6ee24dd7a1a77c7d57a9f3b",
+      "sha256LF": "51797dbde7a0063ed7daa239c1b1ecfc6c297437245391990a753039e5660a76"
+    },
+    {
+      "path": "src/legacy/v1/content/validation.ts",
+      "gitBlob": "b5af1213763800055b9f4cbaddf5fe14c43d0efd",
+      "sha256LF": "5a1f66d61da8751a7c075b299ca8e9d928684280436ad3d082f0abcfcfd3e9f9"
+    },
+    {
+      "path": "src/legacy/v1/content/work.ts",
+      "gitBlob": "7ffe57f57da8be9e1da85c970a811abf10d855d8",
+      "sha256LF": "685b9e423b525ed5ac71b158bf9d94abb0542578232bc668a7711d3c286327de"
+    },
+    {
+      "path": "src/legacy/v1/content/world-events.ts",
+      "gitBlob": "bd7c10a53371d27f0d6cb48c57808c0ef1cb45e9",
+      "sha256LF": "09ec82417820c71975ad981b127b2d192005ee8ea87270a8ea1307d682c49848"
+    },
+    {
+      "path": "src/legacy/v1/content/world.ts",
+      "gitBlob": "6450f577fda02c3ccdcc8adc955c789a6ba4cb6f",
+      "sha256LF": "124b256ab1e32f33094b5ad886d919a367288ba8896a0dd8eaa52b4d34b2bd52"
+    },
+    {
+      "path": "src/legacy/v1/domain/model.ts",
+      "gitBlob": "73e3981aa32dab957f7a102ae96031d221156e55",
+      "sha256LF": "6b025ecd00aabbf9c16d7a876b9241874059400965bb7b3944cff02b225cc5d7"
+    },
+    {
+      "path": "src/legacy/v1/engine/engine.ts",
+      "gitBlob": "104f061904b4dcff8401d5bce316b9648faa33b0",
+      "sha256LF": "1acc288600313551daf2bb877794fc2238fae17b27e2338be699cdeda6cd518b"
+    },
+    {
+      "path": "src/legacy/v1/engine/finance.ts",
+      "gitBlob": "a9b130c8a9f1394a28cbdf95879fe5e8cf2fb88b",
+      "sha256LF": "a8683e71ca83599e715e6aac8d765a53738581d61f1e7490d4da6363c7ccaf04"
+    },
+    {
+      "path": "src/legacy/v1/engine/invariants.ts",
+      "gitBlob": "eb4917b44fb54e1114c25fcff2d39c573cf851fb",
+      "sha256LF": "f1481ab43409cec51c241b59e34eb2eec4c3b85f9fd65bc606ccefb002d1d672"
+    },
+    {
+      "path": "src/legacy/v1/engine/random.ts",
+      "gitBlob": "b87ff5847c6ab0e5cd52713a643b73613ec75c58",
+      "sha256LF": "234bc3e7933bb9f1168c4ad0dae6897a07dfab75b7c18bee30da59516b7777fb"
+    },
+    {
+      "path": "src/legacy/v1/persistence/saves.ts",
+      "gitBlob": "03a4def14106b94156555870ce16d026c27b3b16",
+      "sha256LF": "fc607f3f5f74c19ff6315c823e73afc7d7168f8d13fb66e76c6d849a10dd3b98"
+    },
+    {
+      "path": "src/legacy/v2/application/summary.ts",
+      "gitBlob": "a6aafb3cee98d826fd58ce0e36b7191255327679",
+      "sha256LF": "8e89e5b421cd76871a857123c46a88eb85ac6addab53ace68d7133b873c46cfe"
+    },
+    {
+      "path": "src/legacy/v2/content/arcs.ts",
+      "gitBlob": "7b3806bcf31814d95c2fbdcda1fce0b6f2584031",
+      "sha256LF": "5e89fcb173442f57eef3dd74596d0aecfa3c5a626f788554336e434c328bb20c"
+    },
+    {
+      "path": "src/legacy/v2/content/authoring.ts",
+      "gitBlob": "5116f013cd834d5c22cd6125515e3eeae69ec0ad",
+      "sha256LF": "f7faebfba381df396066e89820b35177be26c142a82f1387289d3ce3be3481ea"
+    },
+    {
+      "path": "src/legacy/v2/content/choice-expansion.ts",
+      "gitBlob": "3bc0f5b60fcd6f987e9b943191b104f352bf1ba8",
+      "sha256LF": "450dfd028478f74027509ff81a20d649729644953020c0bd1b6f17a379282322"
+    },
+    {
+      "path": "src/legacy/v2/content/events.ts",
+      "gitBlob": "9576f9c4f13f0fb97f64872dd464207e6cb32bf9",
+      "sha256LF": "c0ba0b8328ce48d26b55cab7084661c498db03801e2c23cc10fc3a66f9af3489"
+    },
+    {
+      "path": "src/legacy/v2/content/everyday.ts",
+      "gitBlob": "dfb1cc63647021423e9481762d7dd48ec536283f",
+      "sha256LF": "114a5f10e57f846010e70087f2070d2c14c7842913356148ec3b8dba67d3086d"
+    },
+    {
+      "path": "src/legacy/v2/content/growing-up.ts",
+      "gitBlob": "519cf138754a9ba6a6ee24dd7a1a77c7d57a9f3b",
+      "sha256LF": "51797dbde7a0063ed7daa239c1b1ecfc6c297437245391990a753039e5660a76"
+    },
+    {
+      "path": "src/legacy/v2/content/validation.ts",
+      "gitBlob": "d33eb499ab34423895e989a6bc346188548e3755",
+      "sha256LF": "ca80f9bff622e9f753c605337279db5dfc85a9627070bae008ecf6cc62cc7907"
+    },
+    {
+      "path": "src/legacy/v2/content/work.ts",
+      "gitBlob": "7ffe57f57da8be9e1da85c970a811abf10d855d8",
+      "sha256LF": "685b9e423b525ed5ac71b158bf9d94abb0542578232bc668a7711d3c286327de"
+    },
+    {
+      "path": "src/legacy/v2/content/world-events.ts",
+      "gitBlob": "bd7c10a53371d27f0d6cb48c57808c0ef1cb45e9",
+      "sha256LF": "09ec82417820c71975ad981b127b2d192005ee8ea87270a8ea1307d682c49848"
+    },
+    {
+      "path": "src/legacy/v2/content/world.ts",
+      "gitBlob": "929d39359fcd6859de8751b33ed355a41ab568f7",
+      "sha256LF": "c8277e00f1b85dd04563cac2bbadcf35c98d480df3e6e4bf44b9faeefebb3f86"
+    },
+    {
+      "path": "src/legacy/v2/diagnostics/simulation.ts",
+      "gitBlob": "5e65830a0087cccb6432b2eed3b91e57e006b51d",
+      "sha256LF": "40b4151e5fef90752a4cb3b80ce6520bb52c7533e8eeb0307fbb60785d40d9aa"
+    },
+    {
+      "path": "src/legacy/v2/domain/creator.ts",
+      "gitBlob": "c33d9469e17219031aa0913a7dc19f3059339687",
+      "sha256LF": "f832724b85bf09c0161c2cc27c8685d13f378824295942a2a4571daaef89d4a4"
+    },
+    {
+      "path": "src/legacy/v2/domain/model.ts",
+      "gitBlob": "c0f9e2d8703f0d89bd4a01a5423e4f6e234cc080",
+      "sha256LF": "72e9220a380d535a17731a7d9f0ee3741011a6f0ea10583ea3ebca834a22e570"
+    },
+    {
+      "path": "src/legacy/v2/engine/engine.ts",
+      "gitBlob": "9dd6820be69a2598f1fa68d1180a435f6ed6156e",
+      "sha256LF": "ea0c35e9cbe94cba3e8b68da6b65207a288d82c853e28c5bd0f3b3399f6eb14a"
+    },
+    {
+      "path": "src/legacy/v2/engine/finance.ts",
+      "gitBlob": "eeb6b5b5c5359f3854a779fe1a0274ec46dc1242",
+      "sha256LF": "adf3761a18e74558677121f34f1cdfaa99caa80bb54d0b36b4330c95cb973cbb"
+    },
+    {
+      "path": "src/legacy/v2/engine/invariants.ts",
+      "gitBlob": "79bd0ff836a0b5561da42551aa41760113c64212",
+      "sha256LF": "51fbfa2ef9cd8bf44a0893464968de89f800abf640a1c412dcf2b51432f95ca8"
+    },
+    {
+      "path": "src/legacy/v2/engine/random.ts",
+      "gitBlob": "b87ff5847c6ab0e5cd52713a643b73613ec75c58",
+      "sha256LF": "234bc3e7933bb9f1168c4ad0dae6897a07dfab75b7c18bee30da59516b7777fb"
+    },
+    {
+      "path": "src/legacy/v2/persistence/saves.ts",
+      "gitBlob": "985db7485c8fca2e91fd60d4b025efed7c86a2b1",
+      "sha256LF": "0ae72170eb304330721b339015ff4ce49df72818c8156648aa37c79301884ef7"
+    },
+    {
+      "path": "src/legacy/v2/README.md",
+      "gitBlob": "245b73e77a0a5e2fa4c915c5487a4a9f5b39588f",
+      "sha256LF": "847c223dc1801cd854bc9754cad8382f46530af97ad0f17cc637b782be648961"
+    },
+    {
+      "path": "src/main.tsx",
+      "gitBlob": "5fc7f0d68791d74085a7beee123ce7148e1a0a77",
+      "sha256LF": "6500fe593726e2dba3a3502e32bdfaf794877a631a7b9e915a4e33ad7ac16426"
+    },
+    {
+      "path": "src/persistence/account-cache.ts",
+      "gitBlob": "259e3db5da192a0b38aebab74ad05ca547b3441a",
+      "sha256LF": "a955de3eb0e1857af25a92a361c9cfba5271f2583bba7757765942c016781faa"
+    },
+    {
+      "path": "src/persistence/guest-repository.ts",
+      "gitBlob": "6ade90d5302a115c11a4de453228e33ecd9634b3",
+      "sha256LF": "cc048aedf0d2ee5259a6ce43b5ce0f8fa1f291b07e5454785353b707f6a86754"
+    },
+    {
+      "path": "src/persistence/history.ts",
+      "gitBlob": "c12bb874edce67fafefcc1ddce09dee30cb6258d",
+      "sha256LF": "51f4fac50b9c5402d55a111cade33bc327a82fb5ce6e2536de939fb98283e0c0"
+    },
+    {
+      "path": "src/persistence/repository.ts",
+      "gitBlob": "d54ee09f751c62d4e2ecd9f83a52a3a7d5b7482f",
+      "sha256LF": "91d3e7af34a4c749f508dddbbcda610082222fcbaafaaef33dc3a72f107abb08"
+    },
+    {
+      "path": "src/persistence/saves.ts",
+      "gitBlob": "1adaaa2d637151985493291da071074e13871668",
+      "sha256LF": "ea45ed233ace3b3d0cde2ab701f9ecedfbd0e16edb7af33c323b2c02f5ecbe5a"
+    },
+    {
+      "path": "src/styles.css",
+      "gitBlob": "6d155c30d0c8ed0518b2f0de33c45d1e1854db50",
+      "sha256LF": "a981206330ad2e601a799311380ab0b91bf740804cddcf0b695d3352dc7fb382"
+    },
+    {
+      "path": "src/ui/AcademicPanel.tsx",
+      "gitBlob": "5455bd548ce4285836ed5459f7b99b00c5176720",
+      "sha256LF": "1860a9dcf9937e962d3785cee2cb001ac20c8d91c319d0e66d4489f191ae0e5a"
+    },
+    {
+      "path": "src/ui/AccountPanel.tsx",
+      "gitBlob": "823be37e1b36a4a53ffc45455ced2c2aa6564f71",
+      "sha256LF": "c53a36c907833d11a6bfa8bab60cdb55285b4a22f3e2e06bfb1c054672b42e7b"
+    },
+    {
+      "path": "src/ui/appearance.ts",
+      "gitBlob": "bfb893e81ee098099a1d98a3e272ac2f6001fcc5",
+      "sha256LF": "08e189097889403f0b8f1c454192f185d87860f42f18d8d03bdec4f5b74a8e4a"
+    },
+    {
+      "path": "src/ui/ArtisticPanel.tsx",
+      "gitBlob": "730cd1015d9a182dfe5efc0166a76c32294965fd",
+      "sha256LF": "815269b7d98e5eca06aab6715713a305b5e2d161c599795aa95339994b856ff8"
+    },
+    {
+      "path": "src/ui/Avatar.tsx",
+      "gitBlob": "2136f70b78b3d9b3ee578c418c593d76155c890d",
+      "sha256LF": "d1735baee452227b2597394a4e39f9644bd845c71f0eaf2599791acffe34dd91"
+    },
+    {
+      "path": "src/ui/ChannelCareers.tsx",
+      "gitBlob": "48df1f520de4263b4cc0ef48a06c83f409580c6c",
+      "sha256LF": "0637d938c7ca37f57b10de21d577ec142662ac9cc30afa9055c88f5ab8106d71"
+    },
+    {
+      "path": "src/ui/ChildhoodFinance.tsx",
+      "gitBlob": "84b629555233c05d5bfc6c2b9d172f9aba218107",
+      "sha256LF": "73fb4ead5d19fdf058a250b908b3ef713f4b340840d84c20062a57dda319cadd"
+    },
+    {
+      "path": "src/ui/common.tsx",
+      "gitBlob": "50b42c60879038248a133888fe341144835f2c3a",
+      "sha256LF": "7878812fb61f123943758795d5b30c8dccc1e5af8938c59fe66cb3a629b3b28d"
+    },
+    {
+      "path": "src/ui/CreatorEconomyPanel.tsx",
+      "gitBlob": "d9a545e4752da57eb57149f2151e46fa12fa9432",
+      "sha256LF": "e7c50bae7c063179766f001aebfafec8f76246c017180a18a3ebbe4ef66f1672"
+    },
+    {
+      "path": "src/ui/Deferred.tsx",
+      "gitBlob": "7e8caabd3751ab057502640b95b017f830818b5b",
+      "sha256LF": "4eac23b0a269c6ea87ca1418437273350e4df7f800eefccc6d09e997b25b96fd"
+    },
+    {
+      "path": "src/ui/EmploymentPanel.tsx",
+      "gitBlob": "393c2ffdeb0cc7ac2119d6e8c4a8a7f6a458bcc8",
+      "sha256LF": "d6243afaebf1039ba68ee52356b628ae803505113b22c1c02a0c74eceb7468e8"
+    },
+    {
+      "path": "src/ui/EnterprisePanel.tsx",
+      "gitBlob": "9fb12bf13be1ac1e329c3c800e39d0e69069b8ba",
+      "sha256LF": "282ca9f338e40fa65710405b579a383cfdf0367cdfb59374fa49192f2b9b495f"
+    },
+    {
+      "path": "src/ui/FamilyPanel.tsx",
+      "gitBlob": "1e403d662bf08a5cf5b01dc243cdf453b802be7a",
+      "sha256LF": "9999024f7dbcb0f970b6521feef7c114ff868a5eb88734b50c10cb982b1a8d0b"
+    },
+    {
+      "path": "src/ui/FreelancePanel.tsx",
+      "gitBlob": "1218c5c92fabafca04dc15f317152b2d642adb59",
+      "sha256LF": "abff049ac1bef95a0bf3f552240f91b027c9964fe86bf58948f7c1c97d7f1604"
+    },
+    {
+      "path": "src/ui/Garment.tsx",
+      "gitBlob": "990e801e906c7b1178bb2b70fd5db3c558707379",
+      "sha256LF": "030bc7f42ce3708df749f63cabae6a82f091f290ccdfcc4b7980c969ebe2cf02"
+    },
+    {
+      "path": "src/ui/HomeScreen.tsx",
+      "gitBlob": "82953f4187972050dc41000efd9951ccf59e4ecf",
+      "sha256LF": "5335942a15c82850fd77718d9db68d365e741db0154c88b46ae57fb5b6f29a31"
+    },
+    {
+      "path": "src/ui/Journal.tsx",
+      "gitBlob": "7a7e2483337a5c48f144c73f71e764a51d361788",
+      "sha256LF": "68058d051bb4a5a94f06f209fa3fcab532572da36ca158ec98f6a328dca6fc81"
+    },
+    {
+      "path": "src/ui/LegacyLife.tsx",
+      "gitBlob": "08e718cd7188738e7728b98dcd4ded0e08cc5d14",
+      "sha256LF": "6187975209a4b637f3dd74b0058de791796be6869c926285b7e44068091bdcf5"
+    },
+    {
+      "path": "src/ui/LifeHistory.tsx",
+      "gitBlob": "24df58035f8b656e6ac0533d133320820d9205a3",
+      "sha256LF": "9cfc80a1f3ac9014f7e0d0912ab7fd27d4922ed178fd8f4bab73c10aeee8fa36"
+    },
+    {
+      "path": "src/ui/LifeScreens.tsx",
+      "gitBlob": "3e0dc9be1b529b6f42222ca2ccafd63ed9468f76",
+      "sha256LF": "2cf6dfd6315085bcabccd72fc904829fe03b71e564cf103136924be7f67bd703"
+    },
+    {
+      "path": "src/ui/Panels.tsx",
+      "gitBlob": "c9ee062cb766e27998bef7600684fb95f88bccf3",
+      "sha256LF": "23434f410c95553cf88b04a45070a06d41c6d3ffafb99aae3fff144bcae79e74"
+    },
+    {
+      "path": "src/ui/PersonalityPicker.tsx",
+      "gitBlob": "c75a88088cd3612bcbea05cee63e7f66a1be9dc7",
+      "sha256LF": "f6c3fa929d5479118ae348e310e799fab1a8b1768c920d40a2ebe7e9864d6b32"
+    },
+    {
+      "path": "src/ui/SaveManager.tsx",
+      "gitBlob": "ca2c3fa1bea12b524316209f9a97abd45dc1b910",
+      "sha256LF": "c2548674f8bc082e4246abf18ff0289cadcfc7097e6e1381bf74cd836daa9751"
+    },
+    {
+      "path": "src/ui/Scenery.tsx",
+      "gitBlob": "af86afac25aaadaecfbcbbee5449bd0763184618",
+      "sha256LF": "8cf0bb560f6ef4417822a6f41606d7b05d56a297afdc5b74ce647d564c34bfd2"
+    },
+    {
+      "path": "src/ui/SocialPanel.tsx",
+      "gitBlob": "a11c55025868b217f5786d09fa8e1257b663e331",
+      "sha256LF": "c25737d2ed59ffb38496f2a92ff187cb991d7868bd4ad95f4d49316962a340a1"
+    },
+    {
+      "path": "src/ui/Wardrobe.tsx",
+      "gitBlob": "ee973b7d7ef668032f715e5d92c19cac40737726",
+      "sha256LF": "b921d4a73c14e6b48b83968f3a549cbe3179574fd0f8491ce46505a8bc6bab1d"
+    }
+  ]
+}

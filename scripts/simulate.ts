@@ -5,7 +5,7 @@ import { netWorth } from '../src/engine/finance';
 import { simulateLife } from '../src/diagnostics/simulation';
 import { activeDefinition, choiceReason, replay } from '../src/engine/engine';
 import { FAMILIES, PARENT_TRAITS } from '../src/domain/creator';
-import type { RunSetup, ParentTrait } from '../src/domain/model';
+import type { RunSetup, ParentTrait, RunAction } from '../src/domain/model';
 import { randomizeCreatorTraits } from '../src/application/creatorRandom';
 import { stageTemplate } from '../src/content/academic-stages';
 const total = Number(process.argv[2] ?? 1000);
@@ -14,7 +14,13 @@ const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
 const testVnd = process.argv.includes('--vnd');
-const testCreative = process.argv.includes('--creative');
+const testStable = process.argv.includes('--stable');
+const testCreative = process.argv.includes('--creative') || testStable;
+const captured = new Map<
+  string,
+  { id: string; seed: string; setup: RunSetup; actions: RunAction[] }
+>();
+const stableOccurrences: Record<string, number> = {};
 const testRealism = process.argv.includes('--realism') || testCreative;
 const testCreatorEconomy = process.argv.includes('--creator-economy') || testRealism;
 const testEnterprise = process.argv.includes('--enterprise') || testCreatorEconomy;
@@ -22,7 +28,13 @@ const testAnnual = process.argv.includes('--annual') || testEnterprise;
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   currency: testVnd ? 'vnd-v1' : 'dsm-v1',
-  ruleset: testCreative ? 'creative-v1' : testRealism ? 'realism-v1' : null,
+  ruleset: testStable
+    ? 'stable-v1'
+    : testCreative
+      ? 'creative-v1'
+      : testRealism
+        ? 'realism-v1'
+        : null,
   creative: {
     enabled: testCreative,
     projectRuns: 0,
@@ -116,11 +128,13 @@ const report = {
   adultChildren: 0,
   wardrobePurchases: 0,
   maxSaveBytes: 0,
-  seedPattern: testRealism
-    ? testCreative
-      ? 'creative-stress-0 … creative-stress-N (N = runs - 1)'
-      : 'realism-stress-0 … realism-stress-N (N = runs - 1)'
-    : 'stress-0 … stress-N (N = runs - 1)',
+  seedPattern: testStable
+    ? 'stable-stress-0 … stable-stress-N (N = runs - 1)'
+    : testRealism
+      ? testCreative
+        ? 'creative-stress-0 … creative-stress-N (N = runs - 1)'
+        : 'realism-stress-0 … realism-stress-N (N = runs - 1)'
+      : 'stress-0 … stress-N (N = runs - 1)',
   invariantViolations: 0,
   endings: { death: 0, memoir: 0 },
   cohorts: {} as Record<string, number>,
@@ -149,9 +163,10 @@ const observed = new Set<string>();
 for (let i = 0; i < total; i++) {
   const cohort = i % 4 === 0 ? COHORTS[i % 3] : 1975 + (i % 52),
     region = REGIONS[Math.floor(i / 3) % 3].id,
-    seed = `${testCreative ? 'creative-' : testRealism ? 'realism-' : ''}stress-${i}`;
+    seed = `${testStable ? 'stable-' : testCreative ? 'creative-' : testRealism ? 'realism-' : ''}stress-${i}`;
   try {
     const presented = new Set<string>();
+    const stablePresented = new Set<string>();
     const settledBusinessMonths = new Set<string>();
     const settledCreatorMonths = new Set<string>();
     const family = (Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[])[
@@ -173,7 +188,11 @@ for (let i = 0; i < total; i++) {
         fatherTraits: [],
         ...(testRealism
           ? {
-              lifeRules: testCreative ? ('creative-v1' as const) : ('realism-v1' as const),
+              lifeRules: testStable
+                ? ('stable-v1' as const)
+                : testCreative
+                  ? ('creative-v1' as const)
+                  : ('realism-v1' as const),
               presentation: i % 2 ? ('girl' as const) : ('boy' as const),
             }
           : testCreatorEconomy
@@ -204,6 +223,18 @@ for (let i = 0; i < total; i++) {
       i % 5,
       (r) => {
         const e = activeDefinition(r);
+        if (testStable && e?.version === 16) {
+          const key = e.id + ':' + r.month;
+          if (!stablePresented.has(key)) {
+            stableOccurrences[e.id] = (stableOccurrences[e.id] ?? 0) + 1;
+            stablePresented.add(key);
+          }
+          if (!captured.has(e.id))
+            captured.set(
+              e.id,
+              structuredClone({ id: e.id, seed: r.seed, setup: r.setup, actions: r.actions }),
+            );
+        }
         if (testCreative && r.creative?.artist)
           report.creative.maxFans = Math.max(report.creative.maxFans, r.creative.artist.fans);
         if (testRealism) {
@@ -451,6 +482,14 @@ for (let i = 0; i < total; i++) {
 report.ages.mean = Number((report.ages.mean / report.runs).toFixed(2));
 report.finances.meanNetWorth = Math.round(report.finances.meanNetWorth / report.runs);
 report.observedEventIds = [...observed].sort();
+if (testStable) {
+  Object.assign(report, { stableOccurrences });
+  if (process.argv.includes('--capture-stable'))
+    writeFileSync(
+      'tests/data/stable-viewport-replays.json',
+      JSON.stringify([...captured.values()]) + '\n',
+    );
+}
 mkdirSync('docs/evidence', { recursive: true });
 writeFileSync(
   process.env.MKV_SIMULATION_REPORT ?? 'docs/evidence/simulation.json',

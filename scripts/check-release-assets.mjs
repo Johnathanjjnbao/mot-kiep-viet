@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -16,6 +16,12 @@ const expected = assets(local);
 if (expected.length !== 2 || JSON.stringify(expected) !== JSON.stringify(assets(remote)))
   throw new Error('Live entry assets do not match release build');
 expected.push('/mot-kiep-viet/sw.js');
+if (process.env.MKV_ASSET_ALL === '1')
+  for (const file of readdirSync(join(directory, 'assets')))
+    if (/\.(?:js|css|woff2?)$/.test(file)) {
+      const path = '/mot-kiep-viet/assets/' + file;
+      if (!expected.includes(path)) expected.push(path);
+    }
 const checks = [];
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 for (const path of expected) {
@@ -30,6 +36,10 @@ const report = {
   url: target.href,
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   status: 'VERIFIED PASS',
+  scope:
+    process.env.MKV_ASSET_ALL === '1'
+      ? 'all JS/CSS/fonts plus service worker'
+      : 'entry JS/CSS plus service worker',
   checks,
 };
 writeFileSync(

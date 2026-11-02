@@ -9,22 +9,25 @@ import AxeBuilder from '@axe-core/playwright';
 import { academicApplicant } from './academic-fixture';
 import { dispatch } from '../src/engine/engine';
 
-export async function importStudent(page: Page, run: GameRun) {
+export async function importStudent(page: Page, run: GameRun, timeout = 5000) {
   await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
   await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
     name: 'university-fixture.json',
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(snapshot(run, randomUUID()))),
   });
-  await expect(page.getByRole('dialog')).not.toBeVisible();
+  await expect(page.getByRole('dialog')).not.toBeVisible({ timeout });
   await expect
-    .poll(async () => {
-      try {
-        return canonical(await readGuestRun(page));
-      } catch {
-        return 'autosave pending';
-      }
-    })
+    .poll(
+      async () => {
+        try {
+          return canonical(await readGuestRun(page));
+        } catch {
+          return 'autosave pending';
+        }
+      },
+      { timeout },
+    )
     .toBe(canonical(run));
 }
 export async function universityApplications(page: Page, url: string, prefix: string) {

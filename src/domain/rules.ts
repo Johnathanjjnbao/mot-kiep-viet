@@ -1,6 +1,8 @@
 import type { GameRun } from './model';
 type Context = Pick<GameRun, 'setup'>;
-export const hasCreativeRules = (r: Context) => r.setup.lifeRules === 'creative-v1';
+export const hasStableRules = (r: Context) => r.setup.lifeRules === 'stable-v1';
+export const hasCreativeRules = (r: Context) =>
+  r.setup.lifeRules === 'creative-v1' || hasStableRules(r);
 export const hasRealismRules = (r: Context) =>
   r.setup.lifeRules === 'realism-v1' || hasCreativeRules(r);
 export const detailedBooks = (r: GameRun) =>

@@ -18,13 +18,14 @@ export async function creativeViewportJourney(
   url: string,
   config: Config,
   prefix = 'creative-local',
+  fixtures: 'creative' | 'stable' = 'creative',
 ) {
   const rows = JSON.parse(
-    readFileSync('tests/data/creative-viewport-replays.json', 'utf8'),
+    readFileSync(`tests/data/${fixtures}-viewport-replays.json`, 'utf8'),
   ) as Case[];
   const context = await browser.newContext({
     viewport: { width: config.width, height: config.height },
-    isMobile: !!config.mobile,
+    ...(browser.browserType().name() === 'firefox' ? {} : {isMobile: !!config.mobile}),
     hasTouch: !!config.mobile,
     reducedMotion: 'reduce',
   });
@@ -53,11 +54,10 @@ export async function creativeViewportJourney(
         worst = row;
       }
     }
-    let r = replay(
-      rows.find((x) => x.id === 'fl-service-writing')!.seed,
-      rows.find((x) => x.id === 'fl-service-writing')!.setup,
-      rows.find((x) => x.id === 'fl-service-writing')!.actions,
-    );
+    const starter = rows.find(
+      (x) => x.id === (fixtures === 'creative' ? 'fl-service-writing' : 'stable-first-boundary'),
+    )!;
+    let r = replay(starter.seed, starter.setup, starter.actions);
     await importStudent(page, r);
     let lastTouch = 0;
     for (let i = 0; i < 20; i++) {

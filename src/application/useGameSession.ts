@@ -5,6 +5,7 @@ import { guestRepository, type GameRepository } from '../persistence/repository'
 import { createRun } from '../engine/engine';
 import { storyAction } from './story-flow';
 import { LocalBranchConflict } from '../persistence/account-cache';
+import { GuestBranchConflict } from '../persistence/saves';
 export function useGameSession(repository: GameRepository = guestRepository) {
   const [identity, setIdentity] = useState('');
   const currentRun = useRef<GameRun | null>(null);
@@ -50,7 +51,7 @@ export function useGameSession(repository: GameRepository = guestRepository) {
         if (!cancelled) {
           setSaveStatus('Chưa lưu được');
           setError(
-            e instanceof LocalBranchConflict
+            e instanceof LocalBranchConflict || e instanceof GuestBranchConflict
               ? e.message
               : 'Chưa giữ được đầy đủ bản lưu/lịch sử. Hãy xuất tệp trong mục Lưu game; mở Lịch sử cuộc đời để thử lưu lại.',
           );

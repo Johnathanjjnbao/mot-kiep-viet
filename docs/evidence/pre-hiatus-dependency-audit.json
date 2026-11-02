@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-02",
+  "production": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "all": {
+    "info": 0,
+    "low": 0,
+    "moderate": 12,
+    "high": 0,
+    "critical": 0,
+    "total": 12
+  },
+  "uniqueAdvisory": "GHSA-g3hv-75wg-m249",
+  "scope": "development-only glob matcher; see security review",
+  "blindFixApplied": false
+}

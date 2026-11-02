@@ -245,6 +245,18 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
       .map((e) => (e.kind === 'flag' ? e.flag : '')),
   );
   for (const e of events) {
+    if (e.version === 16) {
+      if ((e.condition.minAge ?? 0) < 18 || !e.once || e.choices.length !== 4)
+        errors.push(`Stable scene contract ${e.id}`);
+      for (const c of e.choices)
+        for (const f of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ]))
+          if (!['stat', 'flag'].includes(f.kind))
+            errors.push(`Stable direct phase/money effect ${e.id}`);
+    }
     if (e.version === 15) {
       if ((e.condition.minAge ?? 0) < 18) errors.push(`Artistic age ${e.id}`);
       for (const c of e.choices)

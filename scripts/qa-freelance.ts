@@ -29,6 +29,7 @@ export async function freelanceDecision(page: Page) {
 }
 async function panel(page: Page) {
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  await expect(page.locator('.panel-page').first()).toBeVisible();
   const entry = page.getByRole('button', { name: 'Dự án khách hàng', exact: true });
   if (await entry.isVisible()) await entry.click();
   await expect(page.locator('.freelance-panel')).toBeVisible();

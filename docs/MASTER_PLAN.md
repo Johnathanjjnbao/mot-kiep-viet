@@ -1,5 +1,9 @@
 # Master Plan — Một Kiếp Việt
 
+## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
+
+F1freelance/F2gaming/F4collab/F3artistic đã tích hợp; stable-v1 thêm56cảnh/8arc, giữ engine/content3.0.0/schema4 và luật cũ.401tests/29golden/120E2E/6browser combinations/1.000+1.000replay PASS local. Release/preservation còn pending; trạng thái chuẩn ở PRE_HIATUS_RELEASE_REPORT.md. Không coi candidate là đã deployed.
+
 ## Đã phát hành0.3.9-realism.1 — G5 guest VERIFIED PASS (02/11/2026)
 
 Nguồn **a2fc1b284a300fdfdbd0846b3cf5a68f283029b9**. [CI41393793903](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41393793903) completed/success cho build và deploy:300 tests/31 files,96 E2E không skip, secret scan1686 text objects/0 findings và production smoke PASS. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). JS/CSS/SW live khớp SHA-256 build lưu riêng. Chromium/Firefox/WebKit ×desktop/mobile6/6 chơi preview→sinh→tiêu vặt6→để dành→reload→18, canonical và axe0 PASS. G5 guest desktop/mobile: trọn đời,5 dạng gia đình, history độc lập/autosave/slot/export/import/font/network PASS; ảnh live đã xem trực tiếp. Không dùng HTTP200 thay cho gameplay.

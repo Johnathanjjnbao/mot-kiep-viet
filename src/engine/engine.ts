@@ -1,3 +1,4 @@
+import { stableSceneEligible } from './stable-stories';
 import {
   requestArtistic,
   settleArtistic,
@@ -473,6 +474,7 @@ export const activeDefinition = (run: GameRun) => {
   };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 16 && !stableSceneEligible(run, event.id)) return false;
   if (event.version === 15 && !artisticSceneEligible(run, event.id)) return false;
   if (event.version === 14 && !creativeSceneEligible(run, event.id)) return false;
   if (event.version === 13 && !freelanceSceneEligible(run, event.id)) return false;

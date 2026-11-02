@@ -205,7 +205,68 @@ export function writeSave(key: SaveKey, run: GameRun, identity?: string): Promis
   pending = write;
   return write;
 }
-export async function readSave(key: SaveKey): Promise<SaveSnapshot | null> {
+export class GuestBranchConflict extends Error {
+  constructor() {
+    super(
+      'Một tab khác vừa lưu tiến độ. Nhánh đang chơi vẫn ở trên màn hình này; hãy xuất tệp trong Lưu game trước khi tải lại để giữ cả hai nhánh.',
+    );
+  }
+}
+/** Atomic compare-and-write; no replay in the write transaction or silent last-writer overwrite. */
+export function compareAndWriteSave(
+  key: SaveKey,
+  run: GameRun,
+  identity: string,
+  observed: () => string | undefined,
+): Promise<string> {
+  const text = JSON.stringify(snapshot(run, identity));
+  const write = pending
+    .catch(() => undefined)
+    .then(async () => {
+      const db = await database();
+      try {
+        const tx = db.transaction('saves', 'readwrite');
+        void tx.done.catch(() => undefined);
+        const current: unknown = await tx.store.get(key);
+        // A second tab opening the same run must not invalidate the first tab by changing savedAt.
+        if (
+          typeof current === 'string' &&
+          current.replace(/"savedAt":"[^"]*"/, '"savedAt":""') ===
+            text.replace(/"savedAt":"[^"]*"/, '"savedAt":""')
+        ) {
+          await tx.done;
+          return current;
+        }
+        if (current !== observed()) {
+          // Both tabs may autosave the same unchanged run after opening. This is a harmless no-op.
+          let identical = false;
+          if (typeof current === 'string')
+            try {
+              const saved = JSON.parse(current) as SaveSnapshot;
+              identical = saved?.identity === identity && canonical(saved.run) === canonical(run);
+            } catch {
+              /* Invalid cells are preserved rather than overwritten. */
+            }
+          if (identical) {
+            await tx.done;
+            return current as string;
+          }
+          tx.abort();
+          throw new GuestBranchConflict();
+        }
+        await tx.store.put(text, key);
+        await tx.done;
+        return text;
+      } finally {
+        db.close();
+      }
+    });
+  pending = write;
+  return write;
+}
+export async function readSaveEntry(
+  key: SaveKey,
+): Promise<{ raw: string | undefined; save: SaveSnapshot | null }> {
   await pending.catch(() => undefined);
   const db = await database();
   let raw: unknown;
@@ -214,9 +275,12 @@ export async function readSave(key: SaveKey): Promise<SaveSnapshot | null> {
   } finally {
     db.close();
   }
-  if (raw === undefined) return null;
+  if (raw === undefined) return { raw: undefined, save: null };
   if (typeof raw !== 'string') throw new Error('Ô lưu có dữ liệu hỏng.');
-  return parseSave(raw);
+  return { raw, save: parseSave(raw) };
+}
+export async function readSave(key: SaveKey): Promise<SaveSnapshot | null> {
+  return (await readSaveEntry(key)).save;
 }
 export async function listSlots() {
   const keys: SaveKey[] = ['slot-1', 'slot-2', 'slot-3'];

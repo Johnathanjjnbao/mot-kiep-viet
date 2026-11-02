@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import type { GameRun } from '../src/domain/model';
 import { activeDefinition, dispatch, replay } from '../src/engine/engine';
 import { canonical, snapshot, parseSave } from '../src/persistence/saves';
@@ -8,14 +8,13 @@ import { freelanceEvents } from '../src/content/freelance-events';
 import { creativeEvents } from '../src/content/creative-events';
 import { artisticEvents } from '../src/content/artistic-events';
 import { creativeGraduateParent } from './creative-forced-fixture';
-import { freelanceCase, freelanceStep, projectAction, freelanceAdult } from './freelance-fixture';
+import { freelanceCase, freelanceStep, projectAction } from './freelance-fixture';
 import { creativeChannel, creativeAction, creativeStep, gamingFixture } from './creative-fixture';
 import { artisticReady, artisticStep, artisticAction, artisticOffer } from './artistic-fixture';
 import { creativeOptional } from '../src/diagnostics/creative-policy';
 import { discretionaryCount } from '../src/domain/rules';
 import { serviceReason, currentProject } from '../src/engine/freelance';
 import { creativeReason, collaborationReason } from '../src/engine/creative-careers';
-import { artisticReason, artisticReadiness } from '../src/engine/artistic';
 const targets = [...freelanceEvents, ...creativeEvents, ...artisticEvents].map((e) => e.id),
   found = new Map<string, GameRun>();
 function capture(r: GameRun) {
@@ -27,6 +26,9 @@ function capture(r: GameRun) {
   }
   return r;
 }
+// Genuine seed68 prefix: the previous fixture rested/delayed through the early show window.
+const firstShow = JSON.parse(readFileSync('tests/data/creative-first-show-prefix.json', 'utf8'));
+capture(replay(firstShow.seed, firstShow.setup, firstShow.actions));
 for (const service of CLIENT_SERVICES) {
   for (let seed = 0; seed < 12 && !found.has('fl-service-' + service.id); seed++) {
     let r = creativeGraduateParent();
@@ -45,11 +47,11 @@ for (const service of CLIENT_SERVICES) {
     r = capture(projectAction(r, 'accept'));
     for (let i = 0; i < 20 && currentProject(r)?.status === 'working'; i++)
       r = capture(freelanceStep(r));
-    if (currentProject(r)?.status === 'ready') r = capture(projectAction(r, 'deliver'));
+    if (currentProject(r)?.status === 'ready') capture(projectAction(r, 'deliver'));
   }
 }
-let repair = capture(freelanceCase('rework'));
-repair = capture(projectAction(repair, 'settle'));
+const repair = capture(freelanceCase('rework'));
+capture(projectAction(repair, 'settle'));
 for (
   let seed = 0;
   seed < 12 &&
@@ -118,28 +120,6 @@ for (const discipline of ['music', 'dance', 'acting'] as const) {
 let retired = capture(artisticAction(artisticReady(), 'retire'));
 for (let i = 0; i < 150 && !found.has('ar-comeback') && retired.status !== 'ended'; i++)
   retired = capture(artisticStep(retired));
-for (let seed = 0; seed < 40 && !found.has('ar-first-show'); seed++) {
-  let r = artisticAction(freelanceAdult('native-stage-' + seed), 'start', { discipline: 'music' });
-  r = artisticAction(r, 'policy', { policy: 'rest' });
-  for (let i = 0; i < 100 && r.month < 480; i++) {
-    const e = activeDefinition(r);
-    if (e?.version === 15) {
-      const c =
-        e.choices.find((c) =>
-          c.effects.some((f) => f.kind === 'artistic' && f.operation === 'rest'),
-        ) ?? e.choices[0];
-      r = capture(dispatch(r, { type: 'choose', eventId: e.id, choiceId: c.id }));
-    } else r = capture(creativeStep(r));
-  }
-  if (artisticReason(r)) continue;
-  r = capture(artisticAction(r, 'policy', { policy: 'technique' }));
-  for (let i = 0; i < 40 && !found.has('ar-first-show') && r.creative!.artist!.showCount < 6; i++) {
-    if (!artisticReason(r) && !artisticReadiness(r) && !r.creative!.artist!.management)
-      r = capture(artisticAction(r, 'independent'));
-    else r = capture(artisticStep(r));
-  }
-}
-
 const missing = targets.filter((id) => !found.has(id));
 if (missing.length) throw Error('Missing canonical creative scenes: ' + missing.join(', '));
 const rows = [...found]

@@ -1,5 +1,13 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
+
+Tiếp tục khâu release/preservation; source và nội dung đã chốt, không mở hệ thống roadmap. Local401tests/29golden/120E2E/6browser combinations/1.000+1.000replay PASS. Nhánh codex/pre-hiatus-wip-20261102-1534 giữ WIP gốc và thay đổi hiện tại; main công khai còn5a30670. Bước tiếp: backup restore thật, commit/push main, đúng-SHA CI và liveG5, rồi final handoff. Đọc hai tài liệu PRE_HIATUS trước; các mục PAUSED cũ chỉ là lịch sử.
+
+## Đang ổn định trước kỳ tạm nghỉ — 02/11/2026
+
+Prompt mới đã tiếp tục công việc. WIP được bảo toàn bằng ZIP đã extract/hash1606 files và checkpoint local66a961d; secret scan1827 objects/0findings. Bản công khai và main5a30670 chưa đổi. Đang sửa fixture ar-first-show, rồi kiểm đủ34cảnh/golden/nội dung/hiệu năng và final gates. Xem PRE_HIATUS_RELEASE_REPORT.md. Các mục PAUSED bên dưới giữ làm lịch sử.
+
 ## PAUSED — phần F cục bộ, chờ prompt mới (02/11/2026)
 
 Chủ dự án yêu cầu ghi tiến trình và tạm dừng. HEAD `5a30670d0d12c4b78c62678c1a770c0fd202e6ab`, branch main; bản công khai0.3.9-realism.1 giữ nguyên. F1 freelancer/F2 gaming/F4 collaboration/F3 biểu diễn đã có code+UI+save/replay ở working tree, **chưa commit/push/deploy**, default vẫn realism-v1. Báo cáo bàn giao đầy đủ: [CREATIVE_CAREERS_PROGRESS.md](CREATIVE_CAREERS_PROGRESS.md).

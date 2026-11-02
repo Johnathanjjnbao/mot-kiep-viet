@@ -1,0 +1,63 @@
+{
+  "clientDate": "2026-11-03",
+  "scope": "Fresh Edge process per trial;1440x1000; CPU4x; local HTTP/cache disabled; paired synthetic creative-v1 run;20 choices+autosave and356-action import. Lab data, not field INP.",
+  "before": {
+    "entry": {
+      "file": "index-D8dK--mV.js",
+      "bytes": 1419602,
+      "gzipBytes": 423129
+    },
+    "median": {
+      "homeMs": 1195.2,
+      "creatorMs": 173.7,
+      "importMs": 950.6,
+      "reloadMs": 2344.6,
+      "importLargeMs": 12393.5,
+      "choiceWithAutosaveMs": 390.5
+    },
+    "memoryImports20": [
+      [
+        11077712,
+        16023828
+      ],
+      [
+        11051228,
+        15949768
+      ],
+      [
+        11074132,
+        16035380
+      ]
+    ]
+  },
+  "after": {
+    "entry": {
+      "file": "index-QTnHY1g0.js",
+      "bytes": 1376037,
+      "gzipBytes": 412843
+    },
+    "median": {
+      "homeMs": 924.1,
+      "creatorMs": 180.1,
+      "importMs": 835.6,
+      "reloadMs": 1192.3,
+      "importLargeMs": 5761.3,
+      "choiceWithAutosaveMs": 241.0
+    },
+    "memoryImports20": [
+      [
+        11597580,
+        16528572
+      ],
+      [
+        11642008,
+        16523964
+      ],
+      [
+        11611176,
+        16517100
+      ]
+    ]
+  },
+  "remaining": "Bundle>500kB warning retained; long canonical import/reload remains expensive. Repeated-import heap growth is observed and not a proof of zero leak. No parser/account/ledger simplification was used."
+}

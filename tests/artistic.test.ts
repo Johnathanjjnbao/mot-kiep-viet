@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
 import {
   artisticAction,
   artisticReady,
@@ -6,7 +7,7 @@ import {
   artisticOffer,
 } from '../scripts/artistic-fixture';
 import { freelanceAdult, projectAction } from '../scripts/freelance-fixture';
-import { dispatch, replay, createRun } from '../src/engine/engine';
+import { dispatch, replay, createRun, activeDefinition } from '../src/engine/engine';
 import { artisticReadiness, artisticReason, artisticNet } from '../src/engine/artistic';
 import { assertRun } from '../src/engine/invariants';
 import { careerReason, currentCareer } from '../src/content/world';
@@ -17,6 +18,15 @@ function checked(r: ReturnType<typeof artisticReady>) {
   expect(parseSave(JSON.stringify(snapshot(r))).run).toEqual(r);
 }
 describe('independent artistic career', () => {
+  it('reaches the first-show scene through a genuine early-career canonical prefix', () => {
+    const f = JSON.parse(readFileSync('tests/data/creative-first-show-prefix.json', 'utf8'));
+    const r = replay(f.seed, f.setup, f.actions);
+    expect(activeDefinition(r)?.id).toBe('ar-first-show');
+    expect(r.creative!.artist!.status).toBe('active');
+    expect(r.creative!.artist!.showCount).toBe(0);
+    expect(activeDefinition(r)!.choices.length).toBeGreaterThanOrEqual(4);
+    checked(r);
+  });
   it('keeps old lives and children outside the new career and rejects forged/stale requests atomically', () => {
     const old = createRun('old-stage', {
       cohort: 2005,

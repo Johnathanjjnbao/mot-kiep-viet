@@ -38,6 +38,7 @@ export async function businessDecision(page: Page) {
 }
 async function shop(page: Page) {
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  await expect(page.locator('.panel-page').first()).toBeVisible();
   const open = page.getByRole('button', { name: 'Cửa hàng của bạn', exact: true });
   if (await open.isVisible()) await open.click();
   await expect(page.locator('.enterprise-panel')).toBeVisible();
@@ -69,7 +70,7 @@ export async function businessJourney(page: Page, url: string, prefix: string) {
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   let r = await readGuestRun(page);
-  expect(['enterprise-v1', 'creator-v1', 'realism-v1']).toContain(r.setup.lifeRules);
+  expect(r.setup.lifeRules).toBe('stable-v1');
   expect(r.setup.currency).toBe('vnd-v1');
   for (let i = 0; i < 60 && r.month < 216; i++) r = await businessDecision(page);
   expect(r.month).toBe(216);

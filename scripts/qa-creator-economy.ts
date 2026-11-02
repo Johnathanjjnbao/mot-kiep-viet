@@ -29,6 +29,7 @@ export async function creatorDecision(page: Page) {
 }
 async function panel(page: Page) {
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  await expect(page.locator('.panel-page').first()).toBeVisible();
   const entry = page.getByRole('button', { name: 'Kênh sáng tạo của bạn', exact: true });
   if (await entry.isVisible()) await entry.click();
   await expect(page.locator('.creator-economy-panel')).toBeVisible();
@@ -58,7 +59,7 @@ export async function creatorEconomyJourney(page: Page, url: string, prefix: str
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   let expected = await readGuestRun(page);
-  expect(expected.setup.lifeRules).toBe('realism-v1');
+  expect(expected.setup.lifeRules).toBe('stable-v1');
   expect(expected.setup.currency).toBe('vnd-v1');
   for (let i = 0; i < 70 && expected.month < 228; i++) expected = await creatorDecision(page);
   expect(expected.month).toBe(228);

@@ -109,7 +109,7 @@ function WorkPanel({
       )}
       {onArtistic && (
         <button className="button secondary enterprise-entry" onClick={onArtistic}>
-          Biểu diễn và idol
+          {run.world.year < 2010 ? 'Biểu diễn nghệ thuật' : 'Biểu diễn và idol'}
         </button>
       )}
       <EmploymentPanel run={run} act={act} />

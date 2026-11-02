@@ -29,7 +29,8 @@ export async function artisticDecision(page: Page) {
 }
 async function panel(page: Page) {
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
-  const entry = page.getByRole('button', { name: 'Biểu diễn và idol', exact: true });
+  await expect(page.locator('.panel-page').first()).toBeVisible();
+  const entry = page.getByRole('button', { name: /^(Biểu diễn và idol|Biểu diễn nghệ thuật)$/ });
   if (await entry.isVisible()) await entry.click();
   await expect(page.locator('.artistic-panel')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

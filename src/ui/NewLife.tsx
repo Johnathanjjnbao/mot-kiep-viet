@@ -32,7 +32,7 @@ export function NewLife({
     [seed, setSeed] = useState(''),
     [setup, setSetup] = useState<RunSetup>({
       currency: 'vnd-v1',
-      lifeRules: 'realism-v1',
+      lifeRules: 'stable-v1',
       cohort: 1995,
       region: 'northern-village',
       name: 'Nguyễn Minh An',
@@ -48,6 +48,7 @@ export function NewLife({
   const [counters, setCounters] = useState<CreatorCounters>({ player: 0, mother: 0, father: 0 });
   const [locked, setLocked] = useState<CreatorTraitGroups>({ player: [], mother: [], father: [] });
   const [rollNotice, setRollNotice] = useState('');
+  const [contextEdited, setContextEdited] = useState({ birthplace: false, environment: false });
   const groups: CreatorTraitGroups = {
     player: setup.playerTraits ?? [],
     mother: setup.motherTraits ?? [],
@@ -65,7 +66,7 @@ export function NewLife({
   const portraitRun = createRun(rawPortraitRun.seed, {
     ...rawPortraitRun.setup,
     currency: 'vnd-v1',
-    lifeRules: 'realism-v1',
+    lifeRules: 'stable-v1',
   });
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
@@ -148,7 +149,7 @@ export function NewLife({
     } else
       onStart(seed.trim() || generatedSeed, {
         ...portraitRun.setup,
-        lifeRules: 'realism-v1',
+        lifeRules: 'stable-v1',
         currency: 'vnd-v1',
       });
   }
@@ -255,7 +256,7 @@ export function NewLife({
                 onClick={() =>
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
-                    lifeRules: 'realism-v1',
+                    lifeRules: 'stable-v1',
                     currency: 'vnd-v1',
                   })
                 }
@@ -387,7 +388,15 @@ export function NewLife({
                             type="radio"
                             name="region"
                             checked={setup.region === r.id}
-                            onChange={() => update({ region: r.id })}
+                            onChange={() =>
+                              update({
+                                region: r.id,
+                                ...(!contextEdited.birthplace ? { birthplace: r.name } : {}),
+                                ...(!contextEdited.environment
+                                  ? { environment: r.environment === 'urban' ? 'urban' : 'rural' }
+                                  : {}),
+                              })
+                            }
                           />
                           <span>
                             <b>{r.name}</b>
@@ -402,13 +411,19 @@ export function NewLife({
                       required
                       maxLength={80}
                       value={setup.birthplace ?? ''}
-                      onChange={(e) => update({ birthplace: e.target.value })}
+                      onChange={(e) => {
+                        setContextEdited((s) => ({ ...s, birthplace: true }));
+                        update({ birthplace: e.target.value });
+                      }}
                     />
                     <label htmlFor="environment">Môi trường sống</label>
                     <select
                       id="environment"
                       value={setup.environment}
-                      onChange={(e) => update({ environment: e.target.value as 'urban' | 'rural' })}
+                      onChange={(e) => {
+                        setContextEdited((s) => ({ ...s, environment: true }));
+                        update({ environment: e.target.value as 'urban' | 'rural' });
+                      }}
                     >
                       <option value="urban">Đô thị</option>
                       <option value="rural">Nông thôn</option>

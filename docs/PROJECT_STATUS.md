@@ -1,5 +1,13 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
+
+401tests/40files,29golden,120E2E một lệnh,6browser combinations, production smoke và1.000đời+1.000replay đã PASS.34/34cảnh creative (kể cả ar-first-show) và56/56cảnh stable×6viewports; peak461/512actions/888138bytes. Guest CAS và địa danh mặc định đã kiểm bằng UI. Chưa push/deploy ứng viên; đang hoàn tất backup/restore và CI/liveG5. Xem PRE_HIATUS_RELEASE_REPORT.md/PRE_HIATUS_HANDOFF.md. Các mốc bên dưới là lịch sử.
+
+## Đang ổn định trước kỳ tạm nghỉ — 02/11/2026
+
+Prompt mới đã tiếp tục công việc. WIP được bảo toàn bằng ZIP đã extract/hash1606 files và checkpoint local66a961d; secret scan1827 objects/0findings. Bản công khai và main5a30670 chưa đổi. Đang sửa fixture ar-first-show, rồi kiểm đủ34cảnh/golden/nội dung/hiệu năng và final gates. Xem PRE_HIATUS_RELEASE_REPORT.md. Các mục PAUSED bên dưới giữ làm lịch sử.
+
 ## PAUSED — phần F cục bộ, chờ prompt mới (02/11/2026)
 
 Chủ dự án yêu cầu ghi tiến trình và tạm dừng. HEAD `5a30670d0d12c4b78c62678c1a770c0fd202e6ab`, branch main; bản công khai0.3.9-realism.1 giữ nguyên. F1 freelancer/F2 gaming/F4 collaboration/F3 biểu diễn đã có code+UI+save/replay ở working tree, **chưa commit/push/deploy**, default vẫn realism-v1. Báo cáo bàn giao đầy đủ: [CREATIVE_CAREERS_PROGRESS.md](CREATIVE_CAREERS_PROGRESS.md).

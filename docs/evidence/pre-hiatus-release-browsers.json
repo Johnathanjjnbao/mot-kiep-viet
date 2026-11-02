@@ -1,0 +1,2403 @@
+{
+  "status": "VERIFIED PASS",
+  "url": "http://127.0.0.1:5178/mot-kiep-viet/",
+  "source": "runtime freeze candidate",
+  "reports": [
+    {
+      "browser": "chromium",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "firefoxMobileViewport": false,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    },
+    {
+      "browser": "chromium",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "firefoxMobileViewport": false,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    },
+    {
+      "browser": "firefox",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "firefoxMobileViewport": false,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    },
+    {
+      "browser": "firefox",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "firefoxMobileViewport": true,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    },
+    {
+      "browser": "webkit",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "firefoxMobileViewport": false,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/sw.js",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    },
+    {
+      "browser": "webkit",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "firefoxMobileViewport": false,
+      "creator": {
+        "status": "VERIFIED PASS",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "presentation": "girl",
+        "hairstyle": "short",
+        "previewMatches": true,
+        "caregiver": true,
+        "minorSaving": true,
+        "adultUnlock": true,
+        "canonical": true,
+        "axeViolations": 0,
+        "actions": 38
+      },
+      "freelance": {
+        "paid": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 231,
+          "paidMonth": 231,
+          "status": "closed",
+          "ending": "paid",
+          "terms": "modest",
+          "policy": "careful",
+          "fee": 18000000,
+          "amountDue": 18000000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 12,
+          "stalledMonths": 0,
+          "quality": 57,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 246,
+          "reviewDue": 229,
+          "paymentDue": 231,
+          "totals": {
+            "cost": 7600000,
+            "received": 18000000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 228,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "payment",
+              "text": "Khách nghiệm thu bản giao. Số tiền dự kiến vẫn tách khỏi tiền đã nhận, chờ kỳ thanh toán."
+            },
+            {
+              "month": 231,
+              "status": "closed",
+              "text": "Bạn thực nhận 18.000.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        },
+        "rejected": {
+          "id": "freelance:0",
+          "owner": "life:7affc178",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": null,
+          "closedMonth": 216,
+          "paidMonth": null,
+          "status": "closed",
+          "ending": "rejected",
+          "terms": "modest",
+          "policy": "steady",
+          "fee": 18000000,
+          "amountDue": 0,
+          "progress": 0,
+          "requiredMonths": 12,
+          "workMonths": 0,
+          "stalledMonths": 0,
+          "quality": 0,
+          "reviewAttempts": 0,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 240,
+          "reviewDue": null,
+          "paymentDue": null,
+          "totals": {
+            "cost": 400000,
+            "received": 0
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "closed",
+              "text": "Tiệm sách Góc Nhỏ không chọn đề nghị này. Phí chuẩn bị đã chi; chưa có thu nhập hợp đồng."
+            }
+          ]
+        },
+        "partial": {
+          "id": "freelance:0",
+          "owner": "life:f20d96c4",
+          "client": "Tiệm sách Góc Nhỏ",
+          "service": "writing",
+          "createdMonth": 216,
+          "acceptedMonth": 216,
+          "closedMonth": 242,
+          "paidMonth": 242,
+          "status": "closed",
+          "ending": "partial",
+          "terms": "modest",
+          "policy": "rush",
+          "fee": 18000000,
+          "amountDue": 10800000,
+          "progress": 12,
+          "requiredMonths": 12,
+          "workMonths": 6,
+          "stalledMonths": 0,
+          "quality": 38,
+          "reviewAttempts": 1,
+          "reworkUsed": false,
+          "lateUsed": false,
+          "deadlineMonth": 247,
+          "reviewDue": 229,
+          "paymentDue": 242,
+          "totals": {
+            "cost": 1600000,
+            "received": 10800000
+          },
+          "milestones": [
+            {
+              "month": 216,
+              "status": "inquiry",
+              "text": "Tiệm sách Góc Nhỏ hỏi vềviết nội dung. Loạt bài giới thiệu có nguồn và lịch duyệt; không cam kết lượt đọc. Phí chuẩn bị đã chi, chưa chắc có hợp đồng."
+            },
+            {
+              "month": 216,
+              "status": "offered",
+              "text": "Tiệm sách Góc Nhỏ đồng ý phạm vi đã trao đổi với phí 18.000.000 ₫ sau nghiệm thu. Đây là đề nghị, chưa phải tiền đã nhận."
+            },
+            {
+              "month": 216,
+              "status": "working",
+              "text": "Bạn nhận đợt dự án 12 tháng của mô phỏng. Phí thực hiện ghi từng tháng; chỉ nghiệm thu và trả tiền mới tạo thu nhập."
+            },
+            {
+              "month": 222,
+              "status": "ready",
+              "text": "Phần việc đã sẵn sàng. Bạn có thể giao trong 18 tháng thiết kế; chưa có khoản thu trước nghiệm thu."
+            },
+            {
+              "month": 228,
+              "status": "review",
+              "text": "Bạn gửi bản giao và chờ khách soát. Chưa ghi tiền công vào ví."
+            },
+            {
+              "month": 229,
+              "status": "rework",
+              "text": "Khách yêu cầu sửa. Bạn có thể làm lại một lượt, thỏa thuận nhận phần phí hoặc dừng lỗ."
+            },
+            {
+              "month": 240,
+              "status": "payment",
+              "text": "Bạn thống nhất khép phạm vi với 60% phí đề nghị cho phần có thể dùng. Vẫn chờ khoản thanh toán thực nhận."
+            },
+            {
+              "month": 242,
+              "status": "closed",
+              "text": "Bạn thực nhận 10.800.000 ₫. Hồ sơ khép, tiền công không được trả lại lần nữa khi tải hoặc tiến thời gian."
+            }
+          ]
+        }
+      },
+      "creative": {
+        "round": {
+          "id": "gaming:round:0",
+          "enteredMonth": 276,
+          "dueMonth": 282,
+          "resolvedMonth": 282,
+          "entryFee": 2400000,
+          "prize": 0,
+          "result": "lost"
+        },
+        "collaboration": {
+          "id": "collab:0",
+          "channelId": "creator:0",
+          "peer": "club-host",
+          "createdMonth": 288,
+          "status": "settled",
+          "terms": "balanced",
+          "dueMonth": 294,
+          "closedMonth": 294,
+          "overlap": 76,
+          "compatibility": 85,
+          "quality": 100,
+          "audienceDelta": 198,
+          "cost": 2600000,
+          "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+        },
+        "gaming": {
+          "channelId": "creator:0",
+          "startedMonth": 264,
+          "endedMonth": null,
+          "status": "active",
+          "policy": "community",
+          "skill": 66,
+          "community": 83,
+          "retention": 56,
+          "fatigue": 69,
+          "totals": {
+            "training": 14400000,
+            "entries": 2400000,
+            "prizes": 0
+          },
+          "rounds": [
+            {
+              "id": "gaming:round:0",
+              "enteredMonth": 276,
+              "dueMonth": 282,
+              "resolvedMonth": 282,
+              "entryFee": 2400000,
+              "prize": 0,
+              "result": "lost"
+            }
+          ],
+          "recent": [
+            {
+              "month": 289,
+              "skill": 55,
+              "community": 61,
+              "retention": 45,
+              "fatigue": 47,
+              "cost": 400000
+            },
+            {
+              "month": 290,
+              "skill": 56,
+              "community": 63,
+              "retention": 46,
+              "fatigue": 49,
+              "cost": 400000
+            },
+            {
+              "month": 291,
+              "skill": 57,
+              "community": 65,
+              "retention": 47,
+              "fatigue": 51,
+              "cost": 400000
+            },
+            {
+              "month": 292,
+              "skill": 58,
+              "community": 67,
+              "retention": 48,
+              "fatigue": 53,
+              "cost": 400000
+            },
+            {
+              "month": 293,
+              "skill": 59,
+              "community": 69,
+              "retention": 49,
+              "fatigue": 55,
+              "cost": 400000
+            },
+            {
+              "month": 294,
+              "skill": 60,
+              "community": 71,
+              "retention": 50,
+              "fatigue": 57,
+              "cost": 400000
+            },
+            {
+              "month": 295,
+              "skill": 61,
+              "community": 73,
+              "retention": 51,
+              "fatigue": 59,
+              "cost": 400000
+            },
+            {
+              "month": 296,
+              "skill": 62,
+              "community": 75,
+              "retention": 52,
+              "fatigue": 61,
+              "cost": 400000
+            },
+            {
+              "month": 297,
+              "skill": 63,
+              "community": 77,
+              "retention": 53,
+              "fatigue": 63,
+              "cost": 400000
+            },
+            {
+              "month": 298,
+              "skill": 64,
+              "community": 79,
+              "retention": 54,
+              "fatigue": 65,
+              "cost": 400000
+            },
+            {
+              "month": 299,
+              "skill": 65,
+              "community": 81,
+              "retention": 55,
+              "fatigue": 67,
+              "cost": 400000
+            },
+            {
+              "month": 300,
+              "skill": 66,
+              "community": 83,
+              "retention": 56,
+              "fatigue": 69,
+              "cost": 400000
+            }
+          ]
+        },
+        "actions": 68
+      },
+      "artistic": {
+        "auditionOutcome": "offered",
+        "received": 8580000,
+        "share": 7020000,
+        "shows": 2,
+        "rejected": "rejected"
+      },
+      "stable": {
+        "authoredScenes": 56
+      },
+      "assets": [
+        "/mot-kiep-viet/assets/index-QTnHY1g0.js",
+        "/mot-kiep-viet/assets/index-CJm0KIi7.css",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+        "/mot-kiep-viet/sw.js",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+        "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+        "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+        "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+        "/mot-kiep-viet/assets/Panels-DEI2aNcZ.js"
+      ],
+      "errors": [],
+      "status": "VERIFIED PASS"
+    }
+  ]
+}

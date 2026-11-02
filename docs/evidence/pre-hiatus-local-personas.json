@@ -1,0 +1,865 @@
+{
+  "url": "http://127.0.0.1:5179/mot-kiep-viet/",
+  "status": "VERIFIED PASS",
+  "method": "Whole lives from visible creator through memoir, guided by health/learning preferences; screenshots and narrative excerpts for editorial review. No imported or hidden fast-forwarded run.",
+  "reports": [
+    {
+      "persona": {
+        "id": "poor-rural",
+        "wealth": "0",
+        "family": "both",
+        "region": "Một làng quê Bắc Bộ",
+        "mobile": true
+      },
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "seed": "pre-hiatus-poor-rural",
+      "age": 98,
+      "actions": 203,
+      "ending": "death",
+      "milestones": [
+        {
+          "age": 0,
+          "event": "realism-night-feed",
+          "title": "Đêm thức giấc",
+          "text": "Bạn khóc giữa đêm. Người chăm sóc xem tã, dấu hiệu đói và chỗ nằm trước khi quyết định cách dỗ.",
+          "choices": [
+            {
+              "text": "Bế và cho ăn theo dấu hiệu đói",
+              "hint": "Ấm áp; người lớn mất ngủ"
+            },
+            {
+              "text": "Thay tã, chỉnh chỗ nằm rồi dỗ",
+              "hint": "Dễ chịu hơn; cần thêm thời gian"
+            },
+            {
+              "text": "Chia lượt trông với người lớn tin cậy",
+              "hint": "Giữ sức người chăm sóc; cần phối hợp"
+            },
+            {
+              "text": "Giữ đèn dịu và tiếng ru nhỏ",
+              "hint": "Ít kích thích; dỗ chậm hơn"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 2,
+          "event": "realism-safe-courtyard",
+          "title": "Khoảng sân để chạy",
+          "text": "Bạn muốn chạy theo quả bóng ra sân. Người chăm sóc kiểm tra cổng, mặt sân và khoảng quan sát trước khi cho chơi.",
+          "choices": [
+            {
+              "text": "Dọn một khoảng an toàn rồi theo sát",
+              "hint": "Mất công dọn; con vận động"
+            },
+            {
+              "text": "Lăn bóng qua lại ở bậc thềm có người đỡ",
+              "hint": "Ít chạy; học chờ lượt"
+            },
+            {
+              "text": "Rủ một trẻ quen chơi, người lớn cùng trông",
+              "hint": "Có bạn; cần giữ lượt chơi"
+            },
+            {
+              "text": "Chuyển sang trò vận động trong nhà",
+              "hint": "Hạn chế không gian; tránh sân chưa an toàn"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 6,
+          "event": "realism-reading-line",
+          "title": "Dòng chữ đọc chưa trôi",
+          "text": "Đến lượt đọc, bạn vấp ở một từ. Vài tiếng xì xào khiến bạn muốn bỏ qua cả dòng.",
+          "choices": [
+            {
+              "text": "Đọc chậm lại từng tiếng",
+              "hint": "Cần kiên nhẫn; luyện chắc hơn"
+            },
+            {
+              "text": "Xin cô đọc mẫu từ đang vướng",
+              "hint": "Cần hỏi; được nghe cách đọc"
+            },
+            {
+              "text": "Hẹn tập với bạn sau giờ học",
+              "hint": "Mất giờ chơi; có người cùng tập"
+            },
+            {
+              "text": "Nghỉ một nhịp rồi thử câu ngắn hơn",
+              "hint": "Tiến chậm; bớt hoảng"
+            }
+          ],
+          "cash": 50000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 12,
+          "event": "realism-new-school-route",
+          "title": "Đường đến trường mới",
+          "text": "Bạn sắp đổi trường và có thể tự đi một đoạn đường. Gia đình muốn bạn thử trước cùng một người lớn.",
+          "choices": [
+            {
+              "text": "Đi thử và nhớ các mốc an toàn",
+              "hint": "Mất một buổi; biết đường rõ hơn"
+            },
+            {
+              "text": "Hẹn đi cùng một bạn quen",
+              "hint": "Phải giữ giờ; có người đồng hành"
+            },
+            {
+              "text": "Ghi cách liên lạc khi đổi lịch",
+              "hint": "Cần chuẩn bị; bớt bị động"
+            },
+            {
+              "text": "Xin thêm vài lần đi cùng trước khi tự đi",
+              "hint": "Chậm tự lập; có thêm luyện tập"
+            }
+          ],
+          "cash": 3650000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 18,
+          "event": "edu-direction",
+          "title": "Đường học tiếp",
+          "text": "Đại học, học nghề hay đi làm trước? Bạn cân nhắc điều muốn học và khoản cần chuẩn bị. Hướng đi sau này vẫn có thể đổi.",
+          "choices": [
+            {
+              "text": "Tìm ngành đại học",
+              "hint": "Xem mục Nghề nghiệp"
+            },
+            {
+              "text": "Chọn học nghề trước",
+              "hint": "Khóa học hai năm, chưa cấp bằng ngay"
+            },
+            {
+              "text": "Đi làm và để ngỏ việc học",
+              "hint": "Có thể quay lại nộp hồ sơ khi đủ điều kiện"
+            },
+            {
+              "text": "Tự học trong khi tìm hướng",
+              "hint": "Tập trung kiến thức, chưa có bằng đại học"
+            }
+          ],
+          "cash": 7600000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 30,
+          "event": "forgotten-pickle",
+          "title": "Hũ dưa có kế hoạch riêng",
+          "text": "Bạn để quên hũ dưa phía sau bếp. Mùi thơm cho biết nó đã phát triển sự nghiệp mà không chờ bạn.",
+          "choices": [
+            {
+              "text": "Dọn bếp, học lại công thức",
+              "hint": "Tay nghề +5 · tâm trạng +3"
+            },
+            {
+              "text": "Kể chuyện, rồi nhờ chỉ cách làm",
+              "hint": "Xã hội +5 · tri thức +3"
+            },
+            {
+              "text": "Hỏi người biết làm vì sao hũ bị hỏng",
+              "hint": "Tri thức +8 · Tay nghề +3"
+            },
+            {
+              "text": "Chia lịch dọn bếp với người ở cùng",
+              "hint": "Giao tiếp +7 · Áp lực -4"
+            },
+            {
+              "text": "Làm bảng ngày cho những món đang ủ",
+              "hint": "Tay nghề +5 · Có hệ quả sau 2 năm"
+            }
+          ],
+          "cash": 704000000,
+          "savings": 0,
+          "employment": "office"
+        },
+        {
+          "age": 45,
+          "event": "care-cost",
+          "title": "Một lần đi kiểm tra sức khỏe",
+          "text": "Bạn thấy cơ thể mệt lâu hơn bình thường. Một lần khám và điều chỉnh nếp sống có thể giúp bạn yên tâm hơn.",
+          "choices": [
+            {
+              "text": "Chi 6.000.000 ₫ chăm sóc sức khỏe",
+              "hint": "Sức khỏe +12 · áp lực −5"
+            },
+            {
+              "text": "Bắt đầu bằng ngủ và vận động đều",
+              "hint": "Sức khỏe +4 · thói quen tốt"
+            },
+            {
+              "text": "Ghi lại nhịp mệt và thói quen",
+              "hint": "Tri thức +7 · Áp lực -3"
+            },
+            {
+              "text": "Nhờ người thân giúp giảm một phần việc",
+              "hint": "Giao tiếp +7 · Sức khỏe +4"
+            },
+            {
+              "text": "Giữ một lịch nghỉ có người nhắc",
+              "hint": "Sức khỏe +3 · Có hệ quả sau 2 năm"
+            }
+          ],
+          "cash": 2012600000,
+          "savings": 0,
+          "employment": "retail"
+        },
+        {
+          "age": 61,
+          "event": "annual-next-chapter",
+          "title": "Một vai trò bớt dần",
+          "text": "Một trách nhiệm từng chiếm nhiều thời gian nay nhẹ đi. Khoảng trống ấy vừa dễ chịu vừa làm bạn chưa quen. Một làng quê Bắc Bộ; nghèo khó.",
+          "choices": [
+            {
+              "text": "Học một điều không gắn với vai trò cũ",
+              "hint": "Tri thức +3"
+            },
+            {
+              "text": "Hẹn một buổi gặp nhỏ",
+              "hint": "Giao tiếp +3"
+            },
+            {
+              "text": "Cho mình thời gian thích nghi",
+              "hint": "Áp lực −4"
+            },
+            {
+              "text": "Bắt tay làm một món đồ nhỏ",
+              "hint": "Tay nghề +3"
+            }
+          ],
+          "cash": 3401800000,
+          "savings": 0,
+          "employment": "retail"
+        },
+        {
+          "age": 82,
+          "event": "stable-help-with-consent",
+          "title": "Một lời đề nghị giúp đỡ",
+          "text": "Có người đề nghị giúp việc nhỏ. Bạn muốn nói rõ phần cần giúp và phần mình vẫn muốn tự làm.",
+          "choices": [
+            {
+              "text": "Chỉ nhờ phần đang khó",
+              "hint": "Thêm giao tiếp; cần nói rõ"
+            },
+            {
+              "text": "Tự thử một lần có giới hạn",
+              "hint": "Thêm tay nghề; tốn công"
+            },
+            {
+              "text": "Nói cách giúp mình thấy dễ chịu",
+              "hint": "Giảm áp lực; cần mở lời"
+            },
+            {
+              "text": "Hẹn việc ấy sang lúc khác",
+              "hint": "Giữ sức; chưa xong việc"
+            }
+          ],
+          "cash": 3819800000,
+          "savings": 0,
+          "employment": "retail"
+        },
+        {
+          "age": 90,
+          "event": "stable-beyond-eighty-two",
+          "title": "Hôm nay vẫn có điều để chọn",
+          "text": "Qua tuổi tám mươi hai, ngày của bạn vẫn có việc muốn giữ, việc muốn đổi và quyền nói chưa muốn làm.",
+          "choices": [
+            {
+              "text": "Giữ một việc mình tự làm được",
+              "hint": "Thêm tay nghề; cần tập trung"
+            },
+            {
+              "text": "Dành lúc nghỉ cho sở thích",
+              "hint": "Thêm tinh thần; ít giao lưu"
+            },
+            {
+              "text": "Hỏi thăm theo cách mình thích",
+              "hint": "Thêm giao tiếp; cần mở lời"
+            },
+            {
+              "text": "Chọn một ngày ít việc",
+              "hint": "Giảm áp lực; chưa mở trải nghiệm"
+            }
+          ],
+          "cash": 3819800000,
+          "savings": 0,
+          "employment": "retail"
+        }
+      ],
+      "status": "VERIFIED PASS",
+      "errors": []
+    },
+    {
+      "persona": {
+        "id": "wealthy-urban",
+        "wealth": "4",
+        "family": "both",
+        "region": "Một con hẻm phương Nam",
+        "mobile": false
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "seed": "pre-hiatus-wealthy-urban",
+      "age": 84,
+      "actions": 169,
+      "ending": "death",
+      "milestones": [
+        {
+          "age": 0,
+          "event": "realism-tummy-play",
+          "title": "Tấm chiếu buổi sáng",
+          "text": "Khi bạn thức và có người lớn quan sát sát bên, một khoảng chơi ngắn được chuẩn bị trên tấm chiếu sạch.",
+          "choices": [
+            {
+              "text": "Cho con nằm sấp chơi một lúc khi thức",
+              "hint": "Luyện vận động; dừng khi con mệt"
+            },
+            {
+              "text": "Nói chuyện và đưa đồ chơi mềm trước mặt",
+              "hint": "Giao tiếp; ít vận động hơn"
+            },
+            {
+              "text": "Đặt con nằm ngửa, cho chân tay cử động",
+              "hint": "Tự khám phá; cần nền an toàn"
+            },
+            {
+              "text": "Kết thúc sớm để con nghỉ",
+              "hint": "Giữ nhịp nghỉ; bớt thời gian chơi"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 2,
+          "event": "realism-new-bowl",
+          "title": "Chiếc bát nhỏ bị vỡ",
+          "text": "Một chiếc bát trượt khỏi bàn. Bạn giật mình đứng im; người chăm sóc dọn mảnh vỡ trước khi nói chuyện với bạn.",
+          "choices": [
+            {
+              "text": "Đưa con ra xa rồi giải thích ngắn",
+              "hint": "An toàn; việc dọn lâu hơn"
+            },
+            {
+              "text": "Dùng bát bền hơn từ quỹ hộ",
+              "hint": "Hộ chi; bớt nguy cơ lần sau"
+            },
+            {
+              "text": "Cho con lau nước ở chỗ đã kiểm tra",
+              "hint": "Cùng sửa việc nhỏ; cần giám sát"
+            },
+            {
+              "text": "Trấn an rồi cùng tập đặt bát thấp hơn",
+              "hint": "Luyện lại; cần kiên nhẫn"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 6,
+          "event": "realism-first-pocket",
+          "title": "Khoản tiêu vặt đầu tiên",
+          "text": "Gia đình giao cho bạn một khoản nhỏ. Đó là tiền cá nhân có giới hạn; cơm, chỗ ở và đồ thiết yếu vẫn do người lớn lo.",
+          "choices": [
+            {
+              "text": "Để dành một phần vào khoản đứng tên mình",
+              "hint": "Bớt tiền cầm tay; có khoản sau này"
+            },
+            {
+              "text": "Mua một món nhỏ trong phần đang có",
+              "hint": "Được món thích; tiền mặt giảm"
+            },
+            {
+              "text": "Hỏi giá rồi chưa mua hôm nay",
+              "hint": "Chưa có món đồ; biết so sánh"
+            },
+            {
+              "text": "Nhờ người lớn cùng ghi một kế hoạch nhỏ",
+              "hint": "Cần cùng làm; rõ giới hạn"
+            }
+          ],
+          "cash": 150000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 12,
+          "event": "realism-new-school-route",
+          "title": "Đường đến trường mới",
+          "text": "Bạn sắp đổi trường và có thể tự đi một đoạn đường. Gia đình muốn bạn thử trước cùng một người lớn.",
+          "choices": [
+            {
+              "text": "Đi thử và nhớ các mốc an toàn",
+              "hint": "Mất một buổi; biết đường rõ hơn"
+            },
+            {
+              "text": "Hẹn đi cùng một bạn quen",
+              "hint": "Phải giữ giờ; có người đồng hành"
+            },
+            {
+              "text": "Ghi cách liên lạc khi đổi lịch",
+              "hint": "Cần chuẩn bị; bớt bị động"
+            },
+            {
+              "text": "Xin thêm vài lần đi cùng trước khi tự đi",
+              "hint": "Chậm tự lập; có thêm luyện tập"
+            }
+          ],
+          "cash": 10950000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 18,
+          "event": "edu-direction",
+          "title": "Đường học tiếp",
+          "text": "Đại học, học nghề hay đi làm trước? Bạn cân nhắc điều muốn học và khoản cần chuẩn bị. Hướng đi sau này vẫn có thể đổi.",
+          "choices": [
+            {
+              "text": "Tìm ngành đại học",
+              "hint": "Xem mục Nghề nghiệp"
+            },
+            {
+              "text": "Chọn học nghề trước",
+              "hint": "Khóa học hai năm, chưa cấp bằng ngay"
+            },
+            {
+              "text": "Đi làm và để ngỏ việc học",
+              "hint": "Có thể quay lại nộp hồ sơ khi đủ điều kiện"
+            },
+            {
+              "text": "Tự học trong khi tìm hướng",
+              "hint": "Tập trung kiến thức, chưa có bằng đại học"
+            }
+          ],
+          "cash": 27800000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 30,
+          "event": "wrong-group",
+          "title": "Tin nhắn đi nhầm nhóm",
+          "text": "Bạn định nhắn “họp gì dài thế”, nhưng nhận ra mình vừa gửi vào đúng nhóm đang họp. Dấu đã xem xuất hiện rất nhanh.",
+          "choices": [
+            {
+              "text": "Nhận nhầm, xin lỗi ngắn gọn",
+              "hint": "Áp lực +4 · xã hội +3"
+            },
+            {
+              "text": "Đề xuất cách họp gọn hơn",
+              "hint": "Tri thức +5 · xã hội +4"
+            },
+            {
+              "text": "Để cảm xúc lắng rồi giải thích",
+              "hint": "Áp lực -6 · Tri thức +3"
+            },
+            {
+              "text": "Nhận lỗi riêng với người bị nhắc tới",
+              "hint": "Giao tiếp +8 · Tinh thần +2"
+            },
+            {
+              "text": "Tập kiểm người nhận trước khi gửi",
+              "hint": "Tay nghề +3 · Có hệ quả sau 2 năm"
+            }
+          ],
+          "cash": 428200000,
+          "savings": 0,
+          "employment": "retail"
+        },
+        {
+          "age": 45,
+          "event": "stable-craft-2",
+          "title": "Khi cách sửa gặp việc thật",
+          "text": "Bạn xem lại bước đã thử sửa. Một cách làm gọn hơn vẫn cần được kiểm trong hoàn cảnh thực tế.",
+          "choices": [
+            {
+              "text": "Thử trên một phần nhỏ",
+              "hint": "Thêm tay nghề; thêm công kiểm"
+            },
+            {
+              "text": "Giữ bản cũ để so sánh",
+              "hint": "Thêm tri thức; không đổi vội"
+            },
+            {
+              "text": "Chia sẻ phần đã kiểm được",
+              "hint": "Thêm giao tiếp; chịu trách nhiệm lời nói"
+            },
+            {
+              "text": "Dừng cách thử chưa phù hợp",
+              "hint": "Tạm dừng; chấp nhận công đã bỏ"
+            }
+          ],
+          "cash": 1365600000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 61,
+          "event": "annual-letters",
+          "title": "Một lá thư chưa gửi",
+          "text": "Có điều bạn đã muốn nói với người còn có thể liên lạc. Bạn cân nhắc nói lúc này hay viết để hiểu mình trước. Một con hẻm phương Nam; giàu có.",
+          "choices": [
+            {
+              "text": "Viết điều muốn nói cho rõ",
+              "hint": "Tri thức +2, tâm trạng +2"
+            },
+            {
+              "text": "Chủ động hỏi thăm ngắn",
+              "hint": "Giao tiếp +3"
+            },
+            {
+              "text": "Để thư nghỉ rồi đọc lại",
+              "hint": "Áp lực −4"
+            },
+            {
+              "text": "Giữ một giờ viết và nghỉ đều",
+              "hint": "Sức khỏe +3"
+            }
+          ],
+          "cash": 3072600000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 82,
+          "event": "stable-neighbor-4",
+          "title": "Góc chung có thêm người ngồi",
+          "text": "Góc sinh hoạt từng cùng thu xếp vẫn có thể đổi. Bạn muốn giữ một chỗ trong đời sống cộng đồng ra sao?",
+          "choices": [
+            {
+              "text": "Tham gia một phần nhỏ",
+              "hint": "Thêm tinh thần; có lịch phải giữ"
+            },
+            {
+              "text": "Kể lại cả những lần chia việc sai",
+              "hint": "Thêm tri thức cho mình"
+            },
+            {
+              "text": "Đến nghe và làm quen người mới",
+              "hint": "Thêm giao tiếp; cần mở lòng"
+            },
+            {
+              "text": "Giữ một khoảng riêng yên tĩnh",
+              "hint": "Tạm dừng; giảm áp lực"
+            }
+          ],
+          "cash": 3523600000,
+          "savings": 0,
+          "employment": "trade"
+        }
+      ],
+      "status": "VERIFIED PASS",
+      "errors": []
+    },
+    {
+      "persona": {
+        "id": "single-mother",
+        "wealth": "1",
+        "family": "mother-only",
+        "region": "Một xóm nhỏ ven biển",
+        "mobile": true
+      },
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "seed": "pre-hiatus-single-mother",
+      "age": 106,
+      "actions": 219,
+      "ending": "death",
+      "milestones": [
+        {
+          "age": 0,
+          "event": "realism-night-feed",
+          "title": "Đêm thức giấc",
+          "text": "Bạn khóc giữa đêm. Người chăm sóc xem tã, dấu hiệu đói và chỗ nằm trước khi quyết định cách dỗ.",
+          "choices": [
+            {
+              "text": "Bế và cho ăn theo dấu hiệu đói",
+              "hint": "Ấm áp; người lớn mất ngủ"
+            },
+            {
+              "text": "Thay tã, chỉnh chỗ nằm rồi dỗ",
+              "hint": "Dễ chịu hơn; cần thêm thời gian"
+            },
+            {
+              "text": "Chia lượt trông với người lớn tin cậy",
+              "hint": "Giữ sức người chăm sóc; cần phối hợp"
+            },
+            {
+              "text": "Giữ đèn dịu và tiếng ru nhỏ",
+              "hint": "Ít kích thích; dỗ chậm hơn"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 2,
+          "event": "realism-bedtime-song",
+          "title": "Bài hát trước lúc ngủ",
+          "text": "Bạn còn muốn chơi khi trời đã tối. Người chăm sóc cân nhắc giữ nếp ngủ và nhu cầu được ở cạnh của bạn.",
+          "choices": [
+            {
+              "text": "Giữ một bài hát quen rồi tắt đèn dịu",
+              "hint": "Nếp đều; con vẫn tiếc cuộc chơi"
+            },
+            {
+              "text": "Cho con chọn một trong hai truyện ngắn",
+              "hint": "Có quyền chọn nhỏ; cần thêm ít phút"
+            },
+            {
+              "text": "Ngồi cạnh cho tới khi con bớt lo",
+              "hint": "Tốn thời gian; tăng an tâm"
+            },
+            {
+              "text": "Dọn đồ chơi cùng con trước khi lên giường",
+              "hint": "Luyện tự làm; có thể chậm ngủ"
+            }
+          ],
+          "cash": 0,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 6,
+          "event": "realism-first-pocket",
+          "title": "Khoản tiêu vặt đầu tiên",
+          "text": "Gia đình giao cho bạn một khoản nhỏ. Đó là tiền cá nhân có giới hạn; cơm, chỗ ở và đồ thiết yếu vẫn do người lớn lo.",
+          "choices": [
+            {
+              "text": "Để dành một phần vào khoản đứng tên mình",
+              "hint": "Bớt tiền cầm tay; có khoản sau này"
+            },
+            {
+              "text": "Mua một món nhỏ trong phần đang có",
+              "hint": "Được món thích; tiền mặt giảm"
+            },
+            {
+              "text": "Hỏi giá rồi chưa mua hôm nay",
+              "hint": "Chưa có món đồ; biết so sánh"
+            },
+            {
+              "text": "Nhờ người lớn cùng ghi một kế hoạch nhỏ",
+              "hint": "Cần cùng làm; rõ giới hạn"
+            }
+          ],
+          "cash": 100000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 12,
+          "event": "realism-saving-goal",
+          "title": "Mục tiêu lớn hơn tiền tiêu vặt",
+          "text": "Bạn muốn mua một dụng cụ cho sở thích. Người chăm sóc nhắc rằng tiền để dành vẫn là của bạn, còn quỹ sinh hoạt không phải khoản được tự lấy.",
+          "choices": [
+            {
+              "text": "Chuyển một phần tiền mặt vào tiết kiệm",
+              "hint": "Bớt tiền dùng ngay; tiến gần mục tiêu"
+            },
+            {
+              "text": "Tìm đồ cũ và hỏi cách kiểm tra",
+              "hint": "Mất thời gian; có thể giảm giá"
+            },
+            {
+              "text": "Mượn dụng cụ để thử sở thích trước",
+              "hint": "Cần trả đúng hẹn; tránh mua vội"
+            },
+            {
+              "text": "Đổi mục tiêu nhỏ hơn trong khoản đang có",
+              "hint": "Nhận ít tính năng; được bắt đầu"
+            }
+          ],
+          "cash": 7200000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 18,
+          "event": "edu-direction",
+          "title": "Đường học tiếp",
+          "text": "Đại học, học nghề hay đi làm trước? Bạn cân nhắc điều muốn học và khoản cần chuẩn bị. Hướng đi sau này vẫn có thể đổi.",
+          "choices": [
+            {
+              "text": "Tìm ngành đại học",
+              "hint": "Xem mục Nghề nghiệp"
+            },
+            {
+              "text": "Chọn học nghề trước",
+              "hint": "Khóa học hai năm, chưa cấp bằng ngay"
+            },
+            {
+              "text": "Đi làm và để ngỏ việc học",
+              "hint": "Có thể quay lại nộp hồ sơ khi đủ điều kiện"
+            },
+            {
+              "text": "Tự học trong khi tìm hướng",
+              "hint": "Tập trung kiến thức, chưa có bằng đại học"
+            }
+          ],
+          "cash": 17900000,
+          "savings": 0,
+          "employment": null
+        },
+        {
+          "age": 30,
+          "event": "stable-distance-1",
+          "title": "Tin nhắn để đến tối",
+          "text": "Tin nhắn đang chen vào nhiều khoảng trong ngày. Bạn muốn giữ kết nối mà vẫn có lúc tập trung.",
+          "choices": [
+            {
+              "text": "Chọn một giờ trả lời",
+              "hint": "Thêm tập trung; có người phải chờ"
+            },
+            {
+              "text": "Trả lời ngắn điều cần nói rõ",
+              "hint": "Thêm giao tiếp; tốn công"
+            },
+            {
+              "text": "Tắt bớt thông báo khi làm việc",
+              "hint": "Thêm tay nghề; bớt phân tâm"
+            },
+            {
+              "text": "Không theo cách thu xếp này nữa",
+              "hint": "Tạm dừng; nhẹ đầu hơn"
+            }
+          ],
+          "cash": 532500000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 45,
+          "event": "annual-next-chapter",
+          "title": "Một vai trò bớt dần",
+          "text": "Một trách nhiệm từng chiếm nhiều thời gian nay nhẹ đi. Khoảng trống ấy vừa dễ chịu vừa làm bạn chưa quen. Một xóm nhỏ ven biển; thu nhập thấp.",
+          "choices": [
+            {
+              "text": "Học một điều không gắn với vai trò cũ",
+              "hint": "Tri thức +3"
+            },
+            {
+              "text": "Hẹn một buổi gặp nhỏ",
+              "hint": "Giao tiếp +3"
+            },
+            {
+              "text": "Cho mình thời gian thích nghi",
+              "hint": "Áp lực −4"
+            },
+            {
+              "text": "Bắt tay làm một món đồ nhỏ",
+              "hint": "Tay nghề +3"
+            }
+          ],
+          "cash": 1569100000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 61,
+          "event": "stable-volunteer-limit",
+          "title": "Một phần việc cho buổi chung",
+          "text": "Có lời rủ góp sức cho một buổi sinh hoạt. Bạn có thể nhận phần vừa sức mà không phải gánh toàn bộ.",
+          "choices": [
+            {
+              "text": "Nhận một phần có giờ kết thúc",
+              "hint": "Thêm giao tiếp; thêm trách nhiệm"
+            },
+            {
+              "text": "Giúp soát phần chuẩn bị",
+              "hint": "Thêm tri thức; tốn công"
+            },
+            {
+              "text": "Chỉ dự phần gặp gỡ",
+              "hint": "Giữ tinh thần; ít phụ việc"
+            },
+            {
+              "text": "Từ chối buổi này",
+              "hint": "Giữ sức; ít kết nối"
+            }
+          ],
+          "cash": 3426300000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 82,
+          "event": "annual-route",
+          "title": "Lối đi quen thay đổi",
+          "text": "Một đoạn đường quen không còn tiện như trước. Bạn muốn tiếp tục ra ngoài nhưng cần chọn nhịp và lộ trình phù hợp. Một xóm nhỏ ven biển; thu nhập thấp.",
+          "choices": [
+            {
+              "text": "Chọn lối ngắn, có chỗ nghỉ",
+              "hint": "Sức khỏe +4"
+            },
+            {
+              "text": "Rủ người quen đi cùng",
+              "hint": "Giao tiếp +3"
+            },
+            {
+              "text": "Tìm hiểu lối thay thế",
+              "hint": "Tri thức +3"
+            },
+            {
+              "text": "Đổi sang giờ vắng và mát",
+              "hint": "Áp lực −4"
+            }
+          ],
+          "cash": 3980300000,
+          "savings": 0,
+          "employment": "trade"
+        },
+        {
+          "age": 90,
+          "event": "stable-ordinary-future",
+          "title": "Một lời hẹn nhỏ cho ngày tới",
+          "text": "Bạn nghĩ về một việc muốn làm trong những ngày tới. Lời hẹn có thể nhỏ và vẫn đáng chờ.",
+          "choices": [
+            {
+              "text": "Giữ một khoảng cho điều muốn học",
+              "hint": "Thêm tri thức; cần chuẩn bị"
+            },
+            {
+              "text": "Hẹn một cuộc trò chuyện vừa sức",
+              "hint": "Thêm giao tiếp; cần sắp xếp"
+            },
+            {
+              "text": "Tiếp tục một sở thích đang có",
+              "hint": "Thêm tay nghề; có chút mệt"
+            },
+            {
+              "text": "Để ngày tới còn khoảng trống",
+              "hint": "Giảm áp lực; chưa có kế hoạch mới"
+            }
+          ],
+          "cash": 3980300000,
+          "savings": 0,
+          "employment": "trade"
+        }
+      ],
+      "status": "VERIFIED PASS",
+      "errors": []
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { currencyOf } from '../domain/currency';
-import { Wardrobe } from './Wardrobe';
-import { useEffect, useRef, useState } from 'react';
+import { version as appVersion } from '../../package.json';
+import { lazy, useEffect, useRef, useState } from 'react';
+import { Deferred } from './Deferred';
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,15 +21,20 @@ import { ERAS, ageOf } from '../content/world';
 import { Modal } from './common';
 import { HomeScreen } from './HomeScreen';
 import { NewLife } from './NewLife';
-import { BirthIntro, Character, Story, Summary } from './LifeScreens';
 import { SaveManager } from './SaveManager';
-import { LifeHistory } from './LifeHistory';
-import { LegacyLife } from './LegacyLife';
+import { BirthIntro, Character, Story, Summary } from './LifeScreens';
 import { Journal } from './Journal';
-import { CareerPanel, FinancePanel, PeoplePanel } from './Panels';
 import { useAccount } from '../application/useAccount';
-import { AccountPanel } from './AccountPanel';
 import { guestRepository } from '../persistence/repository';
+const LifeHistory = lazy(() => import('./LifeHistory').then((m) => ({ default: m.LifeHistory })));
+const LegacyLife = lazy(() => import('./LegacyLife').then((m) => ({ default: m.LegacyLife })));
+const AccountPanel = lazy(() =>
+  import('./AccountPanel').then((m) => ({ default: m.AccountPanel })),
+);
+const Wardrobe = lazy(() => import('./Wardrobe').then((m) => ({ default: m.Wardrobe })));
+const CareerPanel = lazy(() => import('./Panels').then((m) => ({ default: m.CareerPanel })));
+const FinancePanel = lazy(() => import('./Panels').then((m) => ({ default: m.FinancePanel })));
+const PeoplePanel = lazy(() => import('./Panels').then((m) => ({ default: m.PeoplePanel })));
 type Screen = 'home' | 'new' | 'play' | 'journal' | 'history';
 type GameTab = 'story' | 'career' | 'finance' | 'people' | 'wardrobe';
 type Dialog = 'help' | 'settings' | 'saves' | 'account' | null;
@@ -171,30 +177,36 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           </>
         )}
         {screen === 'new' && (
-          <NewLife
-            run={run}
-            onBack={() => setScreen('home')}
-            onSave={() => setDialog('saves')}
-            onStart={(seed, setup) => {
-              session.start(seed, setup);
-              setTab('story');
-              setScreen('play');
-            }}
-          />
+          <Deferred key="new" onBack={() => setScreen('home')}>
+            <NewLife
+              run={run}
+              onBack={() => setScreen('home')}
+              onSave={() => setDialog('saves')}
+              onStart={(seed, setup) => {
+                session.start(seed, setup);
+                setTab('story');
+                setScreen('play');
+              }}
+            />
+          </Deferred>
         )}
         {screen === 'history' && (
-          <LifeHistory
-            key={auth.account?.userId ?? 'guest'}
-            repository={repository}
-            run={run}
-            identity={session.identity}
-            onNew={() => setScreen('new')}
-          />
+          <Deferred key="history" onBack={() => setScreen('home')}>
+            <LifeHistory
+              key={auth.account?.userId ?? 'guest'}
+              repository={repository}
+              run={run}
+              identity={session.identity}
+              onNew={() => setScreen('new')}
+            />
+          </Deferred>
         )}
         {screen === 'play' &&
           run &&
           (run.engineVersion === '1.0.0' ? (
-            <LegacyLife run={run} onNew={() => setScreen('new')} />
+            <Deferred key="legacy" onBack={() => setScreen('home')}>
+              <LegacyLife run={run} onNew={() => setScreen('new')} />
+            </Deferred>
           ) : run.status === 'intro' ? (
             <BirthIntro run={run} onBegin={() => act({ type: 'advance' })} />
           ) : run.status === 'ended' ? (
@@ -258,29 +270,31 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                       </button>
                     ))}
                   </nav>
-                  {tab === 'story' ? (
-                    <Story
-                      run={run}
-                      onChoice={(eventId, choiceId, token) =>
-                        act({ type: 'choose', eventId, choiceId }, token)
-                      }
-                      onAdvance={() => act({ type: 'advance' })}
-                    />
-                  ) : tab === 'career' ? (
-                    <CareerPanel run={run} act={act} />
-                  ) : tab === 'finance' ? (
-                    <FinancePanel run={run} act={act} />
-                  ) : tab === 'wardrobe' ? (
-                    <Wardrobe run={run} act={act} />
-                  ) : (
-                    <PeoplePanel
-                      run={run}
-                      act={(a) => {
-                        act(a);
-                        setTab('story');
-                      }}
-                    />
-                  )}
+                  <Deferred key={tab} onBack={() => setTab('story')}>
+                    {tab === 'story' ? (
+                      <Story
+                        run={run}
+                        onChoice={(eventId, choiceId, token) =>
+                          act({ type: 'choose', eventId, choiceId }, token)
+                        }
+                        onAdvance={() => act({ type: 'advance' })}
+                      />
+                    ) : tab === 'career' ? (
+                      <CareerPanel run={run} act={act} />
+                    ) : tab === 'finance' ? (
+                      <FinancePanel run={run} act={act} />
+                    ) : tab === 'wardrobe' ? (
+                      <Wardrobe run={run} act={act} />
+                    ) : (
+                      <PeoplePanel
+                        run={run}
+                        act={(a) => {
+                          act(a);
+                          setTab('story');
+                        }}
+                      />
+                    )}
+                  </Deferred>
                 </div>
                 <aside className="world-sidebar" aria-label="Thời cuộc và ký ức">
                   <div className="world-context">
@@ -335,7 +349,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           Cách chơi & đôi lời
           <ArrowRight size={14} aria-hidden="true" />
         </button>
-        <span className="footer-version">BETA · 0.3.9-realism.1</span>
+        <span className="footer-version">{appVersion}</span>
       </footer>
       {dialog && (
         <Modal
@@ -351,110 +365,112 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
           wide={dialog === 'saves' || dialog === 'account'}
           onClose={() => setDialog(null)}
         >
-          {dialog === 'account' ? (
-            <AccountPanel
-              auth={auth}
-              onLoad={(s) => {
-                session.restore(s);
-                setDialog(null);
-                setScreen('play');
-              }}
-            />
-          ) : dialog === 'saves' ? (
-            <SaveManager
-              repository={repository}
-              identity={session.identity}
-              run={run}
-              onLoad={(loaded) => {
-                session.restore(loaded);
-                setDialog(null);
-                resume();
-              }}
-            />
-          ) : dialog === 'settings' ? (
-            <div className="settings">
-              <label>
-                <span>
-                  <b>Chữ lớn hơn</b>
-                  <small>Thêm khoảng thở cho những trang truyện.</small>
-                </span>
-                <input
-                  type="checkbox"
-                  checked={largeText}
-                  onChange={(e) => setLargeText(e.target.checked)}
-                />
-              </label>
-              <label>
-                <span>
-                  <b>Giảm chuyển động</b>
-                  <small>Hệ thống cũng tự theo tùy chọn của thiết bị.</small>
-                </span>
-                <input
-                  type="checkbox"
-                  checked={still}
-                  onChange={(e) => setStill(e.target.checked)}
-                />
-              </label>
-              <p className="fine-print">
-                Trò chơi không có âm thanh tự phát. Tiến độ được lưu trên trình duyệt; không cần tài
-                khoản.
-              </p>
-            </div>
-          ) : (
-            <div className="help-content">
-              <p className="lead">
-                Bạn không cần có một cuộc đời hoàn hảo.
-                <br />
-                Chỉ cần sống tiếp và xem điều gì ở lại.
-              </p>
-              <ol>
-                <li>
-                  <b>Bắt đầu một kiếp.</b> Để số phận chọn, hoặc tự chọn năm sinh và vùng quê.
-                </li>
-                <li>
-                  <b>Đọc và quyết định.</b> Gợi ý cho biết đánh đổi trước mắt. Có chuyện sẽ trở lại
-                  nhiều năm sau.
-                </li>
-                <li>
-                  <b>Chủ động khi trưởng thành.</b> Tìm việc, đổi nghề, gửi tiết kiệm, trả nợ hay ra
-                  ở riêng trong các mục tương ứng.
-                </li>
-                <li>
-                  <b>Nhìn lại.</b> Nhật ký giữ những gì đã xảy ra; cuối đời có hồi ký và thẻ kỷ niệm
-                  để tải xuống.
-                </li>
-              </ol>
-              <div className="help-note">
-                <h3>Một thế giới có chủ đích</h3>
-                <p>
-                  Ba vùng quê là bối cảnh hư cấu, không đại diện cho mọi người tại đó.{' '}
-                  {!run || currencyOf(run) === 'vnd-v1'
-                    ? 'VND dùng sức mua thiết kế năm 2026, không phải giá hay thu nhập danh nghĩa lịch sử.'
-                    : 'đSM là đồng sức mua thiết kế cho game, không phải giá hay thu nhập lịch sử bằng VNĐ.'}{' '}
-                  Từ năm 2027, tất cả bối cảnh tương lai là giả định.
-                </p>
-                <p>
-                  Mốc Đổi Mới 1986 tham khảo{' '}
-                  <a
-                    href="https://documents1.worldbank.org/curated/en/353311468314062406/pdf/450750ENGLISH01Aug0110200801PUBLIC1.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    World Bank
-                  </a>
-                  ; bối cảnh COVID-19 tham khảo{' '}
-                  <a
-                    href="https://vietnam.un.org/en/89079-game-changers-viet-nam%E2%80%99s-successful-covid-19-response"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Liên Hợp Quốc Việt Nam
-                  </a>
-                  . Tình huống cá nhân và mọi thông số là sáng tác.
+          <Deferred key={dialog} onBack={() => setDialog(null)}>
+            {dialog === 'account' ? (
+              <AccountPanel
+                auth={auth}
+                onLoad={(s) => {
+                  session.restore(s);
+                  setDialog(null);
+                  setScreen('play');
+                }}
+              />
+            ) : dialog === 'saves' ? (
+              <SaveManager
+                repository={repository}
+                identity={session.identity}
+                run={run}
+                onLoad={(loaded) => {
+                  session.restore(loaded);
+                  setDialog(null);
+                  resume();
+                }}
+              />
+            ) : dialog === 'settings' ? (
+              <div className="settings">
+                <label>
+                  <span>
+                    <b>Chữ lớn hơn</b>
+                    <small>Thêm khoảng thở cho những trang truyện.</small>
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={largeText}
+                    onChange={(e) => setLargeText(e.target.checked)}
+                  />
+                </label>
+                <label>
+                  <span>
+                    <b>Giảm chuyển động</b>
+                    <small>Hệ thống cũng tự theo tùy chọn của thiết bị.</small>
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={still}
+                    onChange={(e) => setStill(e.target.checked)}
+                  />
+                </label>
+                <p className="fine-print">
+                  Trò chơi không có âm thanh tự phát. Tiến độ được lưu trên trình duyệt; không cần
+                  tài khoản.
                 </p>
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="help-content">
+                <p className="lead">
+                  Bạn không cần có một cuộc đời hoàn hảo.
+                  <br />
+                  Chỉ cần sống tiếp và xem điều gì ở lại.
+                </p>
+                <ol>
+                  <li>
+                    <b>Bắt đầu một kiếp.</b> Để số phận chọn, hoặc tự chọn năm sinh và vùng quê.
+                  </li>
+                  <li>
+                    <b>Đọc và quyết định.</b> Gợi ý cho biết đánh đổi trước mắt. Có chuyện sẽ trở
+                    lại nhiều năm sau.
+                  </li>
+                  <li>
+                    <b>Chủ động khi trưởng thành.</b> Tìm việc, đổi nghề, gửi tiết kiệm, trả nợ hay
+                    ra ở riêng trong các mục tương ứng.
+                  </li>
+                  <li>
+                    <b>Nhìn lại.</b> Nhật ký giữ những gì đã xảy ra; cuối đời có hồi ký và thẻ kỷ
+                    niệm để tải xuống.
+                  </li>
+                </ol>
+                <div className="help-note">
+                  <h3>Một thế giới có chủ đích</h3>
+                  <p>
+                    Ba vùng quê là bối cảnh hư cấu, không đại diện cho mọi người tại đó.{' '}
+                    {!run || currencyOf(run) === 'vnd-v1'
+                      ? 'VND dùng sức mua thiết kế năm 2026, không phải giá hay thu nhập danh nghĩa lịch sử.'
+                      : 'đSM là đồng sức mua thiết kế cho game, không phải giá hay thu nhập lịch sử bằng VNĐ.'}{' '}
+                    Từ năm 2027, tất cả bối cảnh tương lai là giả định.
+                  </p>
+                  <p>
+                    Mốc Đổi Mới 1986 tham khảo{' '}
+                    <a
+                      href="https://documents1.worldbank.org/curated/en/353311468314062406/pdf/450750ENGLISH01Aug0110200801PUBLIC1.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      World Bank
+                    </a>
+                    ; bối cảnh COVID-19 tham khảo{' '}
+                    <a
+                      href="https://vietnam.un.org/en/89079-game-changers-viet-nam%E2%80%99s-successful-covid-19-response"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Liên Hợp Quốc Việt Nam
+                    </a>
+                    . Tình huống cá nhân và mọi thông số là sáng tác.
+                  </p>
+                </div>
+              </div>
+            )}
+          </Deferred>
         </Modal>
       )}
     </div>

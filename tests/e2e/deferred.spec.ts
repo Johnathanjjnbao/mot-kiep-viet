@@ -1,0 +1,21 @@
+import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import type { RunSetup, RunAction } from '../../src/domain/model';
+import { replay } from '../../src/engine/engine';
+import { canonical } from '../../src/persistence/saves';
+import { importStudent } from '../../scripts/qa-university';
+import { readGuestRun } from '../../scripts/decision-viewport.mjs';
+const fixture = JSON.parse(readFileSync('tests/data/creative-first-show-prefix.json', 'utf8'));
+test.use({ serviceWorkers: 'block' });
+test('failed deferred screen preserves run and navigation recovers', async ({ page, baseURL }) => {
+  await page.goto(baseURL!);
+  const run = replay(fixture.seed, fixture.setup as RunSetup, fixture.actions as RunAction[]);
+  await importStudent(page, run);
+  await page.route(/\/Panels(?:-|\.tsx)/, (route) => route.abort());
+  await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Chưa mở được phần này');
+  expect(canonical(await readGuestRun(page))).toBe(canonical(run));
+  await page.getByRole('button', { name: 'Quay lại', exact: true }).click();
+  await expect(page.getByTestId('event-choice').first()).toBeVisible();
+  expect(canonical(await readGuestRun(page))).toBe(canonical(run));
+});

@@ -301,7 +301,8 @@ export interface RunSetup {
     | 'enterprise-v1'
     | 'creator-v1'
     | 'realism-v1'
-    | 'creative-v1';
+    | 'creative-v1'
+    | 'stable-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;

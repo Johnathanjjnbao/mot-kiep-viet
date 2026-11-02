@@ -33,6 +33,7 @@ export async function creativeDecision(page: Page) {
 }
 async function panel(page: Page) {
   await page.getByRole('button', { name: 'Nghề nghiệp', exact: true }).click();
+  await expect(page.locator('.panel-page').first()).toBeVisible();
   const entry = page.getByRole('button', { name: 'Kênh sáng tạo của bạn', exact: true });
   if (await entry.isVisible()) await entry.click();
   await expect(page.locator('.creator-economy-panel')).toBeVisible();
