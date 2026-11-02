@@ -1,0 +1,15 @@
+{
+  "sourceCommit": "6d025936126277d9ae9620b357184a27ca6e0eef",
+  "run_id": 41509916933,
+  "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41509916933",
+  "conclusion": "cancelled",
+  "cause": "25-minute job budget exceeded during E2E; no deployment",
+  "unitTests": 401,
+  "e2eCompletedPassed": 106,
+  "e2eLastCompleted": "2026-11-02T19:51:40.9741473Z   ✓  106 [decision-viewports] › tests/e2e/stable-viewport.spec.ts:5:3 › stable56 scenes and20 first/middle/last: mobile375 (1.6m)",
+  "e2eTotal": 120,
+  "production": "SKIPPED",
+  "deploy": "SKIPPED",
+  "notAFullSuitePass": true,
+  "operationalFix": "40-minute budget; all gates and all 120 tests retained"
+}

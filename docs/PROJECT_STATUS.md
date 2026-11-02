@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Điều chỉnh thời gian CI — release còn INCOMPLETE (03/11/2026)
+
+Nguồn `6d025936` đã push main. CI41509916933 bị hết thời gian job25phút khi106/120E2E đã PASS; không có full-suite PASS, production/deploy bị skipped. Nâng ngân sách job lên40phút, giữ nguyên401tests, secret scan,120E2E và production smoke. Không sửa runtime/engine/content/save; các golden và1.000+1.000 giữ nguyên hiệu lực. Bộ nguồn6d025936 đã restore/cài sạch/verify và49tệp dist byte-identical; báo cáo CI timeout ở evidence/pre-hiatus-ci-timeout.json. Bước tiếp là đúng-SHA CI mới, liveG5, tag và bộ bàn giao cuối. Không khởi động lại tính năng đã hoàn tất.
+
 ## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
 
 401tests/40files,29golden,120E2E một lệnh,6browser combinations, production smoke và1.000đời+1.000replay đã PASS.34/34cảnh creative (kể cả ar-first-show) và56/56cảnh stable×6viewports; peak461/512actions/888138bytes. Guest CAS và địa danh mặc định đã kiểm bằng UI. Chưa push/deploy ứng viên; đang hoàn tất backup/restore và CI/liveG5. Xem PRE_HIATUS_RELEASE_REPORT.md/PRE_HIATUS_HANDOFF.md. Các mốc bên dưới là lịch sử.

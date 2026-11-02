@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Điều chỉnh thời gian CI — release còn INCOMPLETE (03/11/2026)
+
+Nguồn `6d025936` đã push main. CI41509916933 bị hết thời gian job25phút khi106/120E2E đã PASS; không có full-suite PASS, production/deploy bị skipped. Nâng ngân sách job lên40phút, giữ nguyên401tests, secret scan,120E2E và production smoke. Không sửa runtime/engine/content/save; các golden và1.000+1.000 giữ nguyên hiệu lực. Bộ nguồn6d025936 đã restore/cài sạch/verify và49tệp dist byte-identical; báo cáo CI timeout ở evidence/pre-hiatus-ci-timeout.json. Bước tiếp là đúng-SHA CI mới, liveG5, tag và bộ bàn giao cuối. Không khởi động lại tính năng đã hoàn tất.
+
 ## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
 
 Tiếp tục khâu release/preservation; source và nội dung đã chốt, không mở hệ thống roadmap. Local401tests/29golden/120E2E/6browser combinations/1.000+1.000replay PASS. Nhánh codex/pre-hiatus-wip-20261102-1534 giữ WIP gốc và thay đổi hiện tại; main công khai còn5a30670. Bước tiếp: backup restore thật, commit/push main, đúng-SHA CI và liveG5, rồi final handoff. Đọc hai tài liệu PRE_HIATUS trước; các mục PAUSED cũ chỉ là lịch sử.
