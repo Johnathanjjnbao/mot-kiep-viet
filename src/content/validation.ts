@@ -1,3 +1,6 @@
+import { ART_STORY_OPERATIONS } from '../domain/artistic';
+import { CREATIVE_STORY_OPERATIONS } from '../domain/creative-careers';
+import { FREELANCE_STORY_OPERATIONS } from '../domain/freelance';
 import { BUSINESS_OPERATIONS } from '../domain/enterprise-actions';
 import { CREATOR_OPERATIONS } from '../domain/creator-economy';
 import { z } from 'zod';
@@ -53,6 +56,13 @@ export const conditionSchema = z
   .strict();
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
+    z.object({ kind: z.literal('artistic'), operation: z.enum(ART_STORY_OPERATIONS) }).strict(),
+    z
+      .object({ kind: z.literal('creative'), operation: z.enum(CREATIVE_STORY_OPERATIONS) })
+      .strict(),
+    z
+      .object({ kind: z.literal('freelance'), operation: z.enum(FREELANCE_STORY_OPERATIONS) })
+      .strict(),
     z
       .object({
         kind: z.literal('child-money'),
@@ -235,6 +245,39 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
       .map((e) => (e.kind === 'flag' ? e.flag : '')),
   );
   for (const e of events) {
+    if (e.version === 15) {
+      if ((e.condition.minAge ?? 0) < 18) errors.push(`Artistic age ${e.id}`);
+      for (const c of e.choices)
+        for (const f of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ]))
+          if (!['artistic', 'stat', 'habit', 'flag'].includes(f.kind))
+            errors.push(`Artistic direct money/phase effect ${e.id}`);
+    }
+    if (e.version === 14) {
+      if ((e.condition.minAge ?? 0) < 18) errors.push(`Creative age ${e.id}`);
+      for (const c of e.choices)
+        for (const f of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ]))
+          if (!['creative', 'stat', 'habit', 'flag'].includes(f.kind))
+            errors.push(`Creative direct money/phase effect ${e.id}`);
+    }
+    if (e.version === 13) {
+      if ((e.condition.minAge ?? 0) < 18) errors.push(`Freelance age ${e.id}`);
+      for (const c of e.choices)
+        for (const f of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ]))
+          if (!['freelance', 'stat', 'habit', 'flag'].includes(f.kind))
+            errors.push(`Freelance direct money/phase effect ${e.id}`);
+    }
     if (e.version === 12) {
       const low = e.condition.minAge ?? 0,
         high = e.condition.maxAge ?? 82;

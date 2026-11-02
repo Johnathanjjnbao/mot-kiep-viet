@@ -1,3 +1,4 @@
+import { gamingEffects } from './creative-careers';
 import type { GameRun } from '../domain/model';
 import {
   creatorActionSchema,
@@ -8,7 +9,12 @@ import {
   type CreatorOperation,
   type CreatorMonth,
 } from '../domain/creator-economy';
-import { hasCreatorRules, discretionaryCount } from '../domain/rules';
+import {
+  hasCreatorRules,
+  hasCreativeRules,
+  discretionaryCount,
+  detailedBooks,
+} from '../domain/rules';
 import { designMoney } from '../domain/currency';
 import { ageOf, currentCareer } from '../content/world';
 import { transact } from './finance';
@@ -32,6 +38,14 @@ export const creatorCosts = (r: GameRun, p: CreatorPolicy) =>
 export function creatorReason(r: GameRun): string | null {
   if (!hasCreatorRules(r) || !r.creator) return 'Cuộc đời này giữ luật trước khi có kênh sáng tạo.';
   if (r.status !== 'playing' || ageOf(r) < 18) return 'Từ 18 tuổi, bạn có thể tự xây kênh.';
+  if (
+    hasCreativeRules(r) &&
+    (r.social?.focus ||
+      r.family?.focus ||
+      r.academics?.focus ||
+      (r.activeEvent && /^(fl-|gm-|co-|ar-)/.test(r.activeEvent.id)))
+  )
+    return 'Hãy giải quyết câu chuyện đang chờ trước khi quản lý kênh.';
   if (r.activeEvent && /^(biz-|cr-)/.test(r.activeEvent.id))
     return 'Hãy giải quyết câu chuyện đang chờ trước khi quản lý kênh.';
   if (discretionaryCount(r) >= 120) return 'Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.';
@@ -43,10 +57,11 @@ export function creatorPolicyReason(
   p: CreatorPolicy,
 ): string | null {
   if (p.format === 'live') {
-    if (c.platform !== 'tiktok')
+    if (c.platform !== 'tiktok' && !hasCreativeRules(r))
       return 'Nhánh YouTube này chỉ sản xuất video; LIVE dùng nhánh TikTok.';
-    if (r.world.year < 2023 || c.audience < 1000)
-      return 'LIVE mở từ năm 2023 và 1.000 người theo dõi trong luật mô phỏng.';
+    const from = c.platform === 'youtube' ? 2014 : 2023;
+    if (r.world.year < from || c.audience < 1000)
+      return `LIVE mở từ năm ${from} và 1.000 người theo dõi trong luật mô phỏng.`;
     if (p.niche === 'gaming' && c.equipment < 2)
       return 'LIVE trò chơi cần thiết bị bậc 2 để giữ chất lượng phát.';
   }
@@ -109,7 +124,7 @@ export function requestCreator(input: GameRun, raw: CreatorAction): GameRun {
     channels = r.creator!.channels;
   let message: string;
   if (a.operation === 'start') {
-    if (channels.length + (r.enterprise?.ventures.length ?? 0) >= 4)
+    if (detailedBooks(r) >= 4)
       throw Error('Cuộc đời giữ tối đa bốn sổ tiệm và kênh, kể cả đã đóng.');
     if (['business', 'freelance'].includes(currentCareer(r)?.id ?? ''))
       throw Error('Hãy kết thúc nghề kinh doanh/tự do trừu tượng trước khi mở kênh có sổ riêng.');
@@ -241,7 +256,12 @@ export function settleCreators(r: GameRun) {
         count = Math.max(1, count - 2);
       report.published = count;
       report.cost = cost;
+      const gaming = gamingEffects(r, c);
       c.skill = cap(c.skill + 1);
+      if (gaming) {
+        c.quality = cap(c.quality + gaming.quality);
+        c.engagement = cap(c.engagement + gaming.engagement);
+      }
       if (c.policy.focus === 'craft') c.quality = cap(c.quality + 2);
       if (c.policy.niche === 'gaming' && c.equipment >= 2) c.quality = cap(c.quality + 1);
       c.engagement = cap(
@@ -284,6 +304,10 @@ export function settleCreators(r: GameRun) {
         c.audience,
         Math.floor(c.audience * (0.005 + (c.burnout > 70 ? 0.045 : 0) + (roll > 0.9 ? 0.02 : 0))),
       );
+      if (gaming) {
+        report.gained = Math.floor(report.gained * gaming.gain);
+        report.lost = Math.min(c.audience, Math.floor(report.lost * gaming.loss));
+      }
       c.audience = Math.max(0, Math.min(10_000_000, c.audience + report.gained - report.lost));
       if (c.monetization === 'pending' && r.month - c.appliedMonth! >= 2) {
         c.monetization = monetizationReady(r, c) && review < 0.8 ? 'approved' : 'rejected';
@@ -317,6 +341,7 @@ export function settleCreators(r: GameRun) {
         c.burnout +
           { light: -2, steady: 1, intense: 5 }[c.policy.rhythm] +
           (c.policy.format === 'live' ? 1 : 0) +
+          (gaming?.burnout ?? 0) +
           (currentCareer(r) ? 1 : 0) +
           (r.academics?.studies.some((s) => s.status === 'studying') ? 1 : 0) +
           (r.enterprise?.ventures.some((e) => e.status === 'operating') ? 1 : 0),

@@ -14,14 +14,38 @@ const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
 const testVnd = process.argv.includes('--vnd');
-const testRealism = process.argv.includes('--realism');
+const testCreative = process.argv.includes('--creative');
+const testRealism = process.argv.includes('--realism') || testCreative;
 const testCreatorEconomy = process.argv.includes('--creator-economy') || testRealism;
 const testEnterprise = process.argv.includes('--enterprise') || testCreatorEconomy;
 const testAnnual = process.argv.includes('--annual') || testEnterprise;
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   currency: testVnd ? 'vnd-v1' : 'dsm-v1',
-  ruleset: testRealism ? 'realism-v1' : null,
+  ruleset: testCreative ? 'creative-v1' : testRealism ? 'realism-v1' : null,
+  creative: {
+    enabled: testCreative,
+    projectRuns: 0,
+    projects: 0,
+    projectEndings: {} as Record<string, number>,
+    services: {} as Record<string, number>,
+    gamingRuns: 0,
+    rounds: {} as Record<string, number>,
+    prizes: 0,
+    training: 0,
+    collabRuns: 0,
+    collaborations: { positive: 0, zero: 0, negative: 0, rejected: 0, cancelled: 0 },
+    artisticRuns: 0,
+    disciplines: {} as Record<string, number>,
+    auditions: {} as Record<string, number>,
+    shows: 0,
+    zeroFeeShows: 0,
+    gross: 0,
+    agencyCut: 0,
+    received: 0,
+    comebacks: 0,
+    maxFans: 0,
+  },
   realism: {
     observed: 0,
     householdTransactions: 0,
@@ -93,7 +117,9 @@ const report = {
   wardrobePurchases: 0,
   maxSaveBytes: 0,
   seedPattern: testRealism
-    ? 'realism-stress-0 … realism-stress-N (N = runs - 1)'
+    ? testCreative
+      ? 'creative-stress-0 … creative-stress-N (N = runs - 1)'
+      : 'realism-stress-0 … realism-stress-N (N = runs - 1)'
     : 'stress-0 … stress-N (N = runs - 1)',
   invariantViolations: 0,
   endings: { death: 0, memoir: 0 },
@@ -123,7 +149,7 @@ const observed = new Set<string>();
 for (let i = 0; i < total; i++) {
   const cohort = i % 4 === 0 ? COHORTS[i % 3] : 1975 + (i % 52),
     region = REGIONS[Math.floor(i / 3) % 3].id,
-    seed = `${testRealism ? 'realism-' : ''}stress-${i}`;
+    seed = `${testCreative ? 'creative-' : testRealism ? 'realism-' : ''}stress-${i}`;
   try {
     const presented = new Set<string>();
     const settledBusinessMonths = new Set<string>();
@@ -147,7 +173,7 @@ for (let i = 0; i < total; i++) {
         fatherTraits: [],
         ...(testRealism
           ? {
-              lifeRules: 'realism-v1' as const,
+              lifeRules: testCreative ? ('creative-v1' as const) : ('realism-v1' as const),
               presentation: i % 2 ? ('girl' as const) : ('boy' as const),
             }
           : testCreatorEconomy
@@ -178,6 +204,8 @@ for (let i = 0; i < total; i++) {
       i % 5,
       (r) => {
         const e = activeDefinition(r);
+        if (testCreative && r.creative?.artist)
+          report.creative.maxFans = Math.max(report.creative.maxFans, r.creative.artist.fans);
         if (testRealism) {
           report.realism.observed++;
           if (r.month < 72 && r.finance.cash !== 0) throw Error('Infant disposable cash');
@@ -270,6 +298,44 @@ for (let i = 0; i < total; i++) {
         count + run.finance.transactions.length,
       );
       report.realism.presentation[run.setup.presentation!]++;
+    }
+    if (testCreative) {
+      const n = report.creative,
+        f = run.creative!,
+        artist = f.artist;
+      if (run.freelance!.projects.length) n.projectRuns++;
+      for (const p of run.freelance!.projects) {
+        n.projects++;
+        n.projectEndings[p.ending ?? p.status] = (n.projectEndings[p.ending ?? p.status] ?? 0) + 1;
+        n.services[p.service] = (n.services[p.service] ?? 0) + 1;
+      }
+      if (f.gaming) {
+        n.gamingRuns++;
+        n.prizes += f.gaming.totals.prizes;
+        n.training += f.gaming.totals.training;
+        for (const x of f.gaming.rounds) n.rounds[x.result] = (n.rounds[x.result] ?? 0) + 1;
+      }
+      if (f.collaborations.length) n.collabRuns++;
+      for (const x of f.collaborations) {
+        if (x.status === 'rejected') n.collaborations.rejected++;
+        else if (x.status === 'cancelled') n.collaborations.cancelled++;
+        else
+          n.collaborations[
+            x.audienceDelta > 0 ? 'positive' : x.audienceDelta < 0 ? 'negative' : 'zero'
+          ]++;
+      }
+      if (artist) {
+        n.artisticRuns++;
+        n.disciplines[artist.discipline] = (n.disciplines[artist.discipline] ?? 0) + 1;
+        n.shows += artist.showCount;
+        n.zeroFeeShows += artist.invoices.filter((s) => s.gross === 0).length;
+        n.gross += artist.totals.gross;
+        n.agencyCut += artist.totals.agencyCut;
+        n.received += artist.totals.received;
+        n.comebacks += artist.comebackUsed ? 1 : 0;
+        n.maxFans = Math.max(n.maxFans, artist.fans);
+        for (const a of artist.auditions) n.auditions[a.result] = (n.auditions[a.result] ?? 0) + 1;
+      }
     }
     if (run.creator?.channels.length) {
       report.creatorEconomy.runs++;

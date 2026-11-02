@@ -1,5 +1,23 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## PAUSED — phần F cục bộ, chờ prompt mới (02/11/2026)
+
+Chủ dự án yêu cầu ghi tiến trình và tạm dừng. HEAD `5a30670d0d12c4b78c62678c1a770c0fd202e6ab`, branch main; bản công khai0.3.9-realism.1 giữ nguyên. F1 freelancer/F2 gaming/F4 collaboration/F3 biểu diễn đã có code+UI+save/replay ở working tree, **chưa commit/push/deploy**, default vẫn realism-v1. Báo cáo bàn giao đầy đủ: [CREATIVE_CAREERS_PROGRESS.md](CREATIVE_CAREERS_PROGRESS.md).
+
+Final1000 đời creative +1000 replay PASS:0 vi phạm/fallback/tuổi thiếu/bỏ, max437 actions/907668 bytes, tuổi63–104. Ba hành trình Edge×desktop/mobile đã qua ở mốc dev. Full tests gần nhất320 PASS trước một số sửa cuối; final verify/E2E/Pages production/security/CI/live của F còn PENDING. Forced degree+3con+job+4book+gaming/collab tới86 tuổi,356actions/120optional/964357bytes PASS; không gọi ca này100+.
+
+Điểm dở chính: generator viewport mới mới thu33/34 cảnh, thiếu canonical `ar-first-show` (cảnh có quan sát56 lần trong batch1000); chưa ghi tệp creative-viewport-replays.json nên chưa chạy sáu viewport×34 cảnh+20choices. Còn native golden, final gates và release. Không làm lại từ đầu, không reset/clean hoặc xóa công việc chưa commit. Server5174 đã dừng, chờ prompt mới; không tự tiếp tục.
+
+## Phần F đang triển khai cục bộ — chưa phát hành (02/11/2026)
+
+Tiếp tục HEAD `5a30670d0d12c4b78c62678c1a770c0fd202e6ab`; A–D đã phát hành giữ nguyên. `creative-v1` đang phát triển, NewLife vẫn sinh `realism-v1`. Không tự đổi luật của đời đã có.
+
+F1: sáu dịch vụ,12 cảnh v13, hỏi→thương lượng→nhận/từ chối→làm→giao→xét→sửa/thanh toán→khép; phí/cost/received/profit tách thật.11 tests focused PASS, gồm bằng thật→việc có lương→đủ điều kiện sáu dịch vụ, unpaid/partial và120 quản lý; desktop/mobile UI paid/rejected/rework→partial, ba slot/reload/export/import/canonical và axe0 PASS. Nhãn select đã sửa theo kiểm tra browser.
+
+F2/F4: mới nối luyện tập gaming/thi đấu vào một kênh hiện có, YouTubeLIVE chỉ ở selector mới; hợp tác có điều kiện, chi phí, khán giả trùng và kết quả âm/zero/dương có trần.12 cảnh v14,4 focused tests PASS; browser riêng cho F2/F4 còn PENDING. Một lần full tests310PASS/1FAIL do total content cũ262; đã sửa kỳ vọng274 và focused systems PASS. Không nhận lần ấy là full-suite PASS.16 golden lịch sử vẫn nguyên. F3 biểu diễn/idol chưa triển khai.
+
+Giữ512 actions/120 quản lý/5MiB và4 lifetime books chung. Không SQL/Auth/RLS hoặc database-ID thay đổi. Native1000/replay, forced family/university, golden mới, full verify/E2E/production/scan, commit/push/exact-SHA CI/live của F đều PENDING. Không gọi F deployed.
+
 ## Đã phát hành0.3.9-realism.1 — G5 guest VERIFIED PASS (02/11/2026)
 
 Nguồn **a2fc1b284a300fdfdbd0846b3cf5a68f283029b9**. [CI41393793903](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41393793903) completed/success cho build và deploy:300 tests/31 files,96 E2E không skip, secret scan1686 text objects/0 findings và production smoke PASS. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). JS/CSS/SW live khớp SHA-256 build lưu riêng. Chromium/Firefox/WebKit ×desktop/mobile6/6 chơi preview→sinh→tiêu vặt6→để dành→reload→18, canonical và axe0 PASS. G5 guest desktop/mobile: trọn đời,5 dạng gia đình, history độc lập/autosave/slot/export/import/font/network PASS; ảnh live đã xem trực tiếp. Không dùng HTTP200 thay cho gameplay.

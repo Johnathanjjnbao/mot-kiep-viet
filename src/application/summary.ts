@@ -7,12 +7,24 @@ import type { GameRun } from '../domain/model';
 import { CAREERS, ageOf } from '../content/world';
 import { netWorth } from '../engine/finance';
 import { programById } from '../content/programs';
+import { serviceById } from '../content/freelance-services';
+import { ART_NAMES, artisticNet } from '../engine/artistic';
+import { gamingNet } from '../engine/creative-careers';
 export function lifeSummary(run: GameRun) {
   if (run.engineVersion === '2.0.0') return v2Summary(run as Parameters<typeof v2Summary>[0]);
   if (run.engineVersion === '1.0.0')
     return legacySummary(run as Parameters<typeof legacySummary>[0]);
   const jobs = [
     ...new Set(run.player.careers.map((c) => CAREERS.find((j) => j.id === c.id)!.name)),
+    ...new Set(
+      (run.freelance?.projects ?? [])
+        .filter((p) => p.acceptedMonth !== null)
+        .map((p) => 'Dự án ' + serviceById(p.service).name.toLowerCase()),
+    ),
+    ...(run.creative?.gaming ? ['Gaming độc lập'] : []),
+    ...(run.creative?.artist
+      ? ['Biểu diễn ' + ART_NAMES[run.creative.artist.discipline].toLowerCase()]
+      : []),
   ];
   const children = run.npcs.filter((n) => n.role === 'child').length;
   const titles = run.choices.filter((c) =>
@@ -46,6 +58,25 @@ export function lifeSummary(run: GameRun) {
     biography:
       biography +
       socialText +
+      (run.freelance?.projects.length
+        ? ' Hợp đồng khách hàng: ' +
+          run.freelance.projects
+            .map(
+              (p) =>
+                `${serviceById(p.service).name} (${({ paid: 'đã trả đủ', partial: 'đã trả một phần', rejected: 'chưa được chọn', declined: 'đã dừng', failed: 'chưa hoàn tất', expired: 'đã quá hạn', unpaid: 'chưa thu được công', death: 'khép cùng cuộc đời' } as Record<string, string>)[p.ending ?? ''] ?? 'đang theo dự án'}, phí đề nghị ${formatMoney(p.fee, run)}, thực nhận ${formatMoney(p.totals.received, run)}, đã chi ${formatMoney(p.totals.cost, run)})`,
+            )
+            .join('; ') +
+          '.'
+        : '') +
+      (run.creative?.gaming
+        ? ` Gaming trên một kênh đã có: ${run.creative.gaming.rounds.length} kỳ thi, giải thực nhận ${formatMoney(run.creative.gaming.totals.prizes, run)}, riêng tập và giải lời/lỗ ${formatMoney(gamingNet(run), run)}. Không cộng lần nữa tiền nền tảng của kênh.`
+        : '') +
+      (run.creative?.collaborations.length
+        ? ` Đã theo ${run.creative.collaborations.length} cuộc hợp tác nội dung, gồm ${run.creative.collaborations.filter((c) => c.status === 'rejected').length} lời mời chưa được chọn; công và chi phí giữ trong sổ kênh.`
+        : '') +
+      (run.creative?.artist
+        ? ` Biểu diễn: ${run.creative.artist.showCount} tiết mục, ${run.creative.artist.auditions.filter((a) => a.result === 'rejected').length} lượt thử chưa được chọn, ${run.creative.artist.fans} người còn theo dõi; phí show ${formatMoney(run.creative.artist.totals.gross, run)}, phần chia ${formatMoney(run.creative.artist.totals.agencyCut, run)}, thực nhận ${formatMoney(run.creative.artist.totals.received, run)}, lời/lỗ sau chi ${formatMoney(artisticNet(run.creative.artist), run)}. ${run.creative.artist.comebackUsed ? 'Đã dùng một lần trở lại.' : 'Chưa dùng lần trở lại.'}`
+        : '') +
       (run.creator?.channels.length
         ? ' Làm nội dung: ' +
           run.creator.channels

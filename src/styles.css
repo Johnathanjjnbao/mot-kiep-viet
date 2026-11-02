@@ -3781,3 +3781,26 @@ meter::-moz-meter-bar {
 .child-ledger li { display:flex; justify-content:space-between; gap:18px; padding:10px 0; border-bottom:1px solid var(--line); }
 .child-ledger strong { white-space:nowrap; }
 @media (prefers-reduced-motion:reduce) { .game-shell .choice { transition:none; } }
+
+.client-project,.client-service { border:1px solid var(--line); padding:20px; background:#fffaf0; margin:18px 0; border-radius:6px; }
+.client-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.client-heading h3 { margin:6px 0; }
+.client-numbers { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0; }
+.client-numbers dt { font-size:.75rem; color:var(--muted); }
+.client-numbers dd { margin:5px 0 0; font-weight:600; overflow-wrap:anywhere; }
+.client-service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; }
+.client-service { margin:0; }
+.client-service h4 { font-size:1.05rem; margin:0 0 12px; }
+.client-service p { font-size:.85rem; }
+.client-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; margin:16px 0; }
+.client-controls label { display:grid; gap:7px; flex:1; min-width:min(100%,220px); font-size:.8rem; }
+.client-controls select { width:100%; min-width:0; }
+.freelance-panel button,.freelance-panel select { min-height:44px; }
+.client-close { border-left:3px solid var(--rust); padding-left:14px; }
+.client-project details { margin-top:16px; font-size:.8rem; }
+.client-project li { margin:10px 0; }
+
+/* Creative careers extend the existing channel card and keep native controls readable. */
+.channel-careers{border-top:1px solid var(--line);margin-top:1.5rem;padding-top:1.5rem}.channel-careers h4{font-family:var(--serif);font-size:1.3rem;margin:1.2rem 0 .75rem}.channel-careers p{margin:.7rem 0}.channel-careers .client-controls{display:flex;flex-wrap:wrap;align-items:end;gap:.75rem;margin:1rem 0}.channel-careers .client-controls label{display:block;flex-basis:100%}.channel-careers select{min-width:0;max-width:100%;flex:1 1 14rem;min-height:44px}.channel-careers button{min-height:44px}.freelance-panel>.eyebrow{display:block;margin-top:1.25rem}.gaming-career{padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
+
+.artistic-panel>.eyebrow{display:block;margin-top:1.25rem}.artistic-panel button,.artistic-panel select{min-height:44px}.artistic-panel .client-controls label{flex-basis:100%}.artistic-panel .client-controls select{flex:1 1 14rem;max-width:100%;min-width:0}.artistic-panel .client-controls p{flex-basis:100%}

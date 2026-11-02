@@ -1,4 +1,7 @@
+import type { ArtisticAction, ArtStoryOperation } from './artistic';
 import type { Enterprise } from './enterprise';
+import type { CreativeCareers, CreativeAction, CreativeStoryOperation } from './creative-careers';
+import type { FreelanceState, FreelanceAction, FreelanceStoryOperation } from './freelance';
 import type {
   ChildhoodFinance,
   MinorAction,
@@ -161,6 +164,9 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'freelance'; operation: FreelanceStoryOperation }
+  | { kind: 'creative'; operation: CreativeStoryOperation }
+  | { kind: 'artistic'; operation: ArtStoryOperation }
   | { kind: 'child-money'; operation: ChildMoneyOperation; amount: number }
   | { kind: 'creator'; operation: CreatorOperation }
   | { kind: 'enterprise'; operation: BusinessOperation }
@@ -269,6 +275,9 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | FreelanceAction
+  | CreativeAction
+  | ArtisticAction
   | MinorAction
   | CreatorAction
   | EnterpriseAction
@@ -291,7 +300,8 @@ export interface RunSetup {
     | 'annual-v1'
     | 'enterprise-v1'
     | 'creator-v1'
-    | 'realism-v1';
+    | 'realism-v1'
+    | 'creative-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -306,6 +316,8 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  freelance?: FreelanceState;
+  creative?: CreativeCareers;
   childhoodFinance?: ChildhoodFinance;
   creator?: CreatorEconomy;
   enterprise?: { ventures: Enterprise[]; lastSceneMonth: number };

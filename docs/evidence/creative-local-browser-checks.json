@@ -1,0 +1,356 @@
+{
+  "status": "LOCAL DEVELOPMENT CHECKPOINT; final release browser gates pending",
+  "freelance": [
+    {
+      "name": "desktop",
+      "status": "PASS",
+      "errors": [],
+      "paid": "paid",
+      "partial": "partial"
+    },
+    {
+      "name": "mobile",
+      "status": "PASS",
+      "errors": [],
+      "paid": "paid",
+      "partial": "partial"
+    }
+  ],
+  "gamingAndCollaboration": [
+    {
+      "name": "desktop",
+      "status": "PASS",
+      "errors": [],
+      "round": {
+        "id": "gaming:round:0",
+        "enteredMonth": 276,
+        "dueMonth": 282,
+        "resolvedMonth": 282,
+        "entryFee": 2400000,
+        "prize": 0,
+        "result": "lost"
+      },
+      "collaboration": {
+        "id": "collab:0",
+        "channelId": "creator:0",
+        "peer": "club-host",
+        "createdMonth": 288,
+        "status": "settled",
+        "terms": "balanced",
+        "dueMonth": 294,
+        "closedMonth": 294,
+        "overlap": 76,
+        "compatibility": 85,
+        "quality": 100,
+        "audienceDelta": 198,
+        "cost": 2600000,
+        "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+      },
+      "gaming": {
+        "channelId": "creator:0",
+        "startedMonth": 264,
+        "endedMonth": null,
+        "status": "active",
+        "policy": "community",
+        "skill": 66,
+        "community": 83,
+        "retention": 56,
+        "fatigue": 69,
+        "totals": {
+          "training": 14400000,
+          "entries": 2400000,
+          "prizes": 0
+        },
+        "rounds": [
+          {
+            "id": "gaming:round:0",
+            "enteredMonth": 276,
+            "dueMonth": 282,
+            "resolvedMonth": 282,
+            "entryFee": 2400000,
+            "prize": 0,
+            "result": "lost"
+          }
+        ],
+        "recent": [
+          {
+            "month": 289,
+            "skill": 55,
+            "community": 61,
+            "retention": 45,
+            "fatigue": 47,
+            "cost": 400000
+          },
+          {
+            "month": 290,
+            "skill": 56,
+            "community": 63,
+            "retention": 46,
+            "fatigue": 49,
+            "cost": 400000
+          },
+          {
+            "month": 291,
+            "skill": 57,
+            "community": 65,
+            "retention": 47,
+            "fatigue": 51,
+            "cost": 400000
+          },
+          {
+            "month": 292,
+            "skill": 58,
+            "community": 67,
+            "retention": 48,
+            "fatigue": 53,
+            "cost": 400000
+          },
+          {
+            "month": 293,
+            "skill": 59,
+            "community": 69,
+            "retention": 49,
+            "fatigue": 55,
+            "cost": 400000
+          },
+          {
+            "month": 294,
+            "skill": 60,
+            "community": 71,
+            "retention": 50,
+            "fatigue": 57,
+            "cost": 400000
+          },
+          {
+            "month": 295,
+            "skill": 61,
+            "community": 73,
+            "retention": 51,
+            "fatigue": 59,
+            "cost": 400000
+          },
+          {
+            "month": 296,
+            "skill": 62,
+            "community": 75,
+            "retention": 52,
+            "fatigue": 61,
+            "cost": 400000
+          },
+          {
+            "month": 297,
+            "skill": 63,
+            "community": 77,
+            "retention": 53,
+            "fatigue": 63,
+            "cost": 400000
+          },
+          {
+            "month": 298,
+            "skill": 64,
+            "community": 79,
+            "retention": 54,
+            "fatigue": 65,
+            "cost": 400000
+          },
+          {
+            "month": 299,
+            "skill": 65,
+            "community": 81,
+            "retention": 55,
+            "fatigue": 67,
+            "cost": 400000
+          },
+          {
+            "month": 300,
+            "skill": 66,
+            "community": 83,
+            "retention": 56,
+            "fatigue": 69,
+            "cost": 400000
+          }
+        ]
+      },
+      "actions": 68
+    },
+    {
+      "name": "mobile",
+      "status": "PASS",
+      "errors": [],
+      "round": {
+        "id": "gaming:round:0",
+        "enteredMonth": 276,
+        "dueMonth": 282,
+        "resolvedMonth": 282,
+        "entryFee": 2400000,
+        "prize": 0,
+        "result": "lost"
+      },
+      "collaboration": {
+        "id": "collab:0",
+        "channelId": "creator:0",
+        "peer": "club-host",
+        "createdMonth": 288,
+        "status": "settled",
+        "terms": "balanced",
+        "dueMonth": 294,
+        "closedMonth": 294,
+        "overlap": 76,
+        "compatibility": 85,
+        "quality": 100,
+        "audienceDelta": 198,
+        "cost": 2600000,
+        "outcome": "Nội dung chung đem thêm 198 người xem theo dõi kênh. Không có phí hợp tác tự sinh; nếu được xét, tiền nền tảng vẫn theo lịch kênh."
+      },
+      "gaming": {
+        "channelId": "creator:0",
+        "startedMonth": 264,
+        "endedMonth": null,
+        "status": "active",
+        "policy": "community",
+        "skill": 66,
+        "community": 83,
+        "retention": 56,
+        "fatigue": 69,
+        "totals": {
+          "training": 14400000,
+          "entries": 2400000,
+          "prizes": 0
+        },
+        "rounds": [
+          {
+            "id": "gaming:round:0",
+            "enteredMonth": 276,
+            "dueMonth": 282,
+            "resolvedMonth": 282,
+            "entryFee": 2400000,
+            "prize": 0,
+            "result": "lost"
+          }
+        ],
+        "recent": [
+          {
+            "month": 289,
+            "skill": 55,
+            "community": 61,
+            "retention": 45,
+            "fatigue": 47,
+            "cost": 400000
+          },
+          {
+            "month": 290,
+            "skill": 56,
+            "community": 63,
+            "retention": 46,
+            "fatigue": 49,
+            "cost": 400000
+          },
+          {
+            "month": 291,
+            "skill": 57,
+            "community": 65,
+            "retention": 47,
+            "fatigue": 51,
+            "cost": 400000
+          },
+          {
+            "month": 292,
+            "skill": 58,
+            "community": 67,
+            "retention": 48,
+            "fatigue": 53,
+            "cost": 400000
+          },
+          {
+            "month": 293,
+            "skill": 59,
+            "community": 69,
+            "retention": 49,
+            "fatigue": 55,
+            "cost": 400000
+          },
+          {
+            "month": 294,
+            "skill": 60,
+            "community": 71,
+            "retention": 50,
+            "fatigue": 57,
+            "cost": 400000
+          },
+          {
+            "month": 295,
+            "skill": 61,
+            "community": 73,
+            "retention": 51,
+            "fatigue": 59,
+            "cost": 400000
+          },
+          {
+            "month": 296,
+            "skill": 62,
+            "community": 75,
+            "retention": 52,
+            "fatigue": 61,
+            "cost": 400000
+          },
+          {
+            "month": 297,
+            "skill": 63,
+            "community": 77,
+            "retention": 53,
+            "fatigue": 63,
+            "cost": 400000
+          },
+          {
+            "month": 298,
+            "skill": 64,
+            "community": 79,
+            "retention": 54,
+            "fatigue": 65,
+            "cost": 400000
+          },
+          {
+            "month": 299,
+            "skill": 65,
+            "community": 81,
+            "retention": 55,
+            "fatigue": 67,
+            "cost": 400000
+          },
+          {
+            "month": 300,
+            "skill": 66,
+            "community": 83,
+            "retention": 56,
+            "fatigue": 69,
+            "cost": 400000
+          }
+        ]
+      },
+      "actions": 68
+    }
+  ],
+  "artistic": [
+    {
+      "name": "desktop",
+      "status": "PASS",
+      "errors": [],
+      "auditionOutcome": "offered",
+      "received": 8580000,
+      "share": 7020000,
+      "shows": 2,
+      "rejected": "rejected"
+    },
+    {
+      "name": "mobile",
+      "status": "PASS",
+      "errors": [],
+      "auditionOutcome": "offered",
+      "received": 8580000,
+      "share": 7020000,
+      "shows": 2,
+      "rejected": "rejected"
+    }
+  ],
+  "note": "Edge desktop/mobile for each journey, not Chromium/Firefox/WebKit six-context release QA. Screenshots precede some later copy/review changes."
+}

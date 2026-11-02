@@ -1,0 +1,16 @@
+{
+  "status": "LOCAL PASS",
+  "seed": "university-1",
+  "age": 86,
+  "actions": 356,
+  "optional": 120,
+  "bytes": 964357,
+  "postings": 5596,
+  "children": 3,
+  "degree": "it",
+  "books": 4,
+  "project": "paid",
+  "gaming": true,
+  "collaboration": "settled",
+  "shows": 48
+}

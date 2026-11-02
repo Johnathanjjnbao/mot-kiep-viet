@@ -1,4 +1,27 @@
 import {
+  requestArtistic,
+  settleArtistic,
+  closeArtisticAtEnd,
+  artisticSceneEligible,
+  applyArtisticStory,
+} from './artistic';
+import {
+  initCreativeCareers,
+  requestCreative,
+  settleCreativeCareers,
+  closeCreativeAtEnd,
+  creativeSceneEligible,
+  applyCreativeStory,
+} from './creative-careers';
+import {
+  initFreelance,
+  requestFreelance,
+  settleFreelance,
+  closeFreelanceAtEnd,
+  freelanceSceneEligible,
+  applyFreelanceStory,
+} from './freelance';
+import {
   initChildhoodFinance,
   settleChildhoodFinance,
   applyChildMoney,
@@ -18,6 +41,7 @@ import {
   hasEnterpriseRules,
   hasCreatorRules,
   hasRealismRules,
+  hasCreativeRules,
   discretionaryCount,
 } from '../domain/rules';
 import {
@@ -296,6 +320,8 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     if (run.player.traits.includes('Ưa yên tĩnh')) run.player.stats.mood += 3;
     if (run.player.traits.includes('Thích giúp đỡ')) run.player.stats.social += 3;
   }
+  if (hasCreativeRules(run)) initFreelance(run);
+  initCreativeCareers(run);
   if (hasRealismRules(run))
     initChildhoodFinance(
       run,
@@ -447,6 +473,9 @@ export const activeDefinition = (run: GameRun) => {
   };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 15 && !artisticSceneEligible(run, event.id)) return false;
+  if (event.version === 14 && !creativeSceneEligible(run, event.id)) return false;
+  if (event.version === 13 && !freelanceSceneEligible(run, event.id)) return false;
   if (event.version === 12 && !hasRealismRules(run)) return false;
   if (hasRealismRules(run) && ageOf(run) < 18 && event.version !== 12) return false;
   if (event.version === 11 && !creatorSceneEligible(run, event.id)) return false;
@@ -556,6 +585,15 @@ function startCareer(
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'artistic':
+      applyArtisticStory(run, e.operation);
+      break;
+    case 'creative':
+      applyCreativeStory(run, e.operation);
+      break;
+    case 'freelance':
+      applyFreelanceStory(run, e.operation);
+      break;
     case 'child-money':
       applyChildMoney(run, e.operation, e.amount, id);
       break;
@@ -717,6 +755,9 @@ function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
 function conclude(run: GameRun, ending: 'death' | 'memoir') {
   closeBusinessesAtEnd(run);
   closeCreatorsAtEnd(run);
+  closeFreelanceAtEnd(run);
+  closeCreativeAtEnd(run);
+  closeArtisticAtEnd(run);
   if (run.social) run.social.focus = null;
   if (run.family) run.family.focus = null;
   run.ending = ending;
@@ -780,7 +821,10 @@ function tick(run: GameRun) {
   if (hasRealismRules(run) && run.month === 216) settleChildhoodFinance(run);
   settleMonth(run);
   settleBusinesses(run);
+  settleCreativeCareers(run);
+  settleArtistic(run);
   settleCreators(run);
+  settleFreelance(run);
   tickEmployment(run, (r) => random(r, 'world'));
   const age = ageOf(run),
     stats = run.player.stats;
@@ -896,6 +940,13 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
       selected.effects.some((e) => e.kind === 'employment' || e.kind === 'career'))
   )
     outcome = run.lastOutcome ?? outcome;
+  if (
+    hasCreativeRules(run) &&
+    selected.effects.some(
+      (e) => e.kind === 'freelance' || e.kind === 'creative' || e.kind === 'artistic',
+    )
+  )
+    outcome = run.lastOutcome ?? outcome;
   run.seen[eventId] = run.month;
   run.activeEvent = null;
   run.lastOutcome = outcome;
@@ -954,6 +1005,8 @@ export function manage(
     return frozen2.manage(input as Parameters<typeof frozen2.manage>[0], action, career);
   }
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
+  if (hasCreativeRules(input) && discretionaryCount(input) >= 120)
+    throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
   if (input.status === 'ended' || ageOf(input) < 18)
     throw new Error('Chưa thể thực hiện hành động này.');
   if (
@@ -1071,6 +1124,61 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
     discretionaryCount(run) >= 120
   )
     throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
+  if (action.type === 'artistic') {
+    const next = requestArtistic(run, action);
+    if (
+      next.activeEvent?.id.startsWith('ar-') &&
+      !artisticSceneEligible(next, next.activeEvent.id)
+    ) {
+      next.activeEvent = null;
+      selectEvent(next);
+    }
+    const active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy hoàn tất câu chuyện trước khi đổi hồ sơ biểu diễn.');
+    return next;
+  }
+  if (action.type === 'creative') {
+    const next = requestCreative(run, action);
+    if (
+      next.activeEvent &&
+      /^(gm-|co-)/.test(next.activeEvent.id) &&
+      !creativeSceneEligible(next, next.activeEvent.id)
+    ) {
+      next.activeEvent = null;
+      selectEvent(next);
+    }
+    const active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy hoàn tất câu chuyện trước khi đổi nhánh sáng tạo.');
+    return next;
+  }
+  if (action.type === 'freelance') {
+    const next = requestFreelance(run, action);
+    if (
+      next.activeEvent?.id.startsWith('fl-') &&
+      !freelanceSceneEligible(next, next.activeEvent.id)
+    ) {
+      next.activeEvent = null;
+      selectEvent(next);
+    }
+    const active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy hoàn tất câu chuyện trước khi đổi hồ sơ khách hàng.');
+    return next;
+  }
   if (action.type === 'minor-finance') {
     const next = requestMinorFinance(run, action),
       active = activeDefinition(next);

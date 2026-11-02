@@ -1,3 +1,4 @@
+import { hasCreativeRules } from '../domain/rules';
 import { designMoney } from '../domain/currency';
 import type { CareerDefinition, GameRun, Region, WorldState } from '../domain/model';
 export const REGIONS: Region[] = [
@@ -244,12 +245,16 @@ export function educationLevel(run: GameRun) {
   return run.player.education.filter((e) => e.endMonth <= run.month).at(-1)?.level ?? 'none';
 }
 export function careerReason(run: GameRun, id: string, ignoreApplications = false): string | null {
+  if (hasCreativeRules(run) && id === 'freelance')
+    return 'Nghề tự do dùng hợp đồng khách hàng; mở mục Dự án để xem điều kiện.';
   const job = CAREERS.find((c) => c.id === id);
   if (!job) return 'Công việc không tồn tại.';
   if (
     ['business', 'freelance'].includes(id) &&
     (run.enterprise?.ventures.some((e) => e.status !== 'closed') ||
-      run.creator?.channels.some((c) => c.status !== 'closed'))
+      run.creator?.channels.some((c) => c.status !== 'closed') ||
+      run.freelance?.projects.some((p) => p.status !== 'closed') ||
+      (run.creative?.artist && run.creative.artist.status !== 'retired'))
   )
     return 'Cửa hàng đã có sổ riêng; hãy khép tiệm trước khi nhận nghề kinh doanh/tự do theo lương khoán.';
   if (run.status === 'ended') return 'Cuộc đời đã khép lại.';

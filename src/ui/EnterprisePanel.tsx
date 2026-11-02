@@ -1,3 +1,4 @@
+import { detailedBooks } from '../domain/rules';
 import { useState } from 'react';
 import { Store, ArrowLeft } from 'lucide-react';
 import type { GameRun, RunAction } from '../domain/model';
@@ -369,7 +370,7 @@ export function EnterprisePanel({ run, act, onBack }: Props & { onBack: () => vo
       {run.enterprise.ventures.map((e) => (
         <ShopCard key={e.id + JSON.stringify(e.policy)} e={e} run={run} act={act} />
       ))}
-      {run.enterprise.ventures.length < 4 && availableEra ? (
+      {detailedBooks(run) < 4 && availableEra ? (
         <form
           className="enterprise-launch"
           onSubmit={(ev) => {
@@ -440,7 +441,7 @@ export function EnterprisePanel({ run, act, onBack }: Props & { onBack: () => vo
           Bạn có thể thử cửa hàng trực tuyến từ 18 tuổi, trong bối cảnh có Internet từ năm 2005.
           Những năm đầu vẫn dành cho việc lớn lên và học hỏi.
         </p>
-      ) : run.enterprise.ventures.length >= 4 ? (
+      ) : detailedBooks(run) >= 4 ? (
         <p className="fine-print">
           Cuộc đời này đã giữ đủ bốn sổ tiệm, kể cả những lần đã khép lại.
         </p>

@@ -1,3 +1,6 @@
+import { assertArtistic } from './artistic';
+import { assertCreativeCareers } from './creative-careers';
+import { assertFreelance } from './freelance';
 import { assertChildhood } from './childhood';
 import { assertBusinesses } from './business';
 import { assertCreators } from './creator-economy';
@@ -24,6 +27,9 @@ export function assertRun(run: GameRun) {
   assertBusinesses(run);
   assertCreators(run);
   assertChildhood(run);
+  assertFreelance(run);
+  assertCreativeCareers(run);
+  assertArtistic(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

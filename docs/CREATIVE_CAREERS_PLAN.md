@@ -1,6 +1,6 @@
 # Phần F — thiết kế để tiếp tục sau release realism
 
-Trạng thái: kế hoạch, chưa triển khai hoặc nhận PASS. Thứ tự: freelancer → gaming streamer độc lập → collaboration → idol/biểu diễn. Không dùng niche gaming/performance hiện có để gọi phần F hoàn thành.
+Trạng thái: PAUSED theo yêu cầu chủ dự án; F1/F2/F4/F3 đã triển khai cục bộ, chưa phát hành. Tiến trình và điểm tiếp tục chính xác ở CREATIVE_CAREERS_PROGRESS.md; phần bên dưới giữ thiết kế gốc và lịch sử review. Thứ tự: freelancer → gaming streamer độc lập → collaboration → idol/biểu diễn. Không dùng niche gaming/performance hiện có để gọi phần F hoàn thành.
 
 ## Ranh giới tương thích
 
@@ -29,6 +29,19 @@ UI cần playable inquiry/đề nghị/nhận hoặc từ chối/giao/sửa/đó
 ## Các lát cắt sau
 
 Gaming career tham chiếu một kênh creator hiện có, thêm luyện kỹ năng/quality/community/retention/competition/growth và setback; không thêm bộ follower hoặc payout nền tảng trùng. Collaboration dựa compatibility/reputation/overlap/skills/điều kiện hợp đồng, có chi phí, kết quả âm/zero/dương và tăng audience có trần. Idol/biểu diễn có đào tạo/audition/từ chối/offer/show/fans/reputation/burnout/nghỉ và trở lại; fame không chắc chắn. Mỗi đường dùng ledger thật, lịch năm và ngân sách chung.
+
+### Context map F3, đã tự review trước triển khai
+
+| Tệp | Vai trò và thay đổi |
+| --- | --- |
+| `domain/artistic.ts`, `engine/artistic.ts` mới | Hồ sơ âm nhạc/vũ đạo/diễn xuất, strict actions/CAS, luyện tập, tối đa4 audition, hợp đồng agency36 tháng hoặc tự do, show tự quyết toán, nghỉ/comeback một lần, invariant |
+| `domain/creative-careers.ts`, `domain/model.ts`, `domain/rules.ts` | Một hồ sơ biểu diễn bất biến trong creative; tính một lifetime book dù đã nghỉ; action/effect riêng |
+| `content/artistic-events.ts`, `content/events.ts`, `content/validation.ts` | Cảnh v15 tuổi18+, không ghi tiền trực tiếp; dùng lịch năm thay cảnh thường |
+| `engine/engine.ts`, `engine/invariants.ts`, `persistence/saves.ts` | Init rỗng, một clock tháng, dispatch/rebase chính cảnh biểu diễn, life-end closure, canonical strict |
+| `ui/ArtisticPanel.tsx`, `ui/Panels.tsx`, `styles.css` | Chọn chuyên môn, luyện, audition/nhận hoặc từ chối, làm tự do, phí/gross/agency/net tách rõ, nghỉ/comeback, luôn đọc run/dispatch |
+| `scripts/artistic-fixture.ts`, `tests/artistic.test.ts`, `scripts/qa-artistic.ts` | Lịch sử thật qua reject/offer/show lỗ/thành công/burnout/comeback, save roundtrip và browser |
+
+Mẫu tham chiếu: freelance và creator hiện có. Phụ thuộc: `detailedBooks` có callers trong business/creator/freelance và ba panel; mọi đường phải dùng cùng trần4. Gaming/collab không chiếm thêm book vì là nội dung trong một kênh. Agency lấy phần chia từ phí show, chỉ khoản net thực nhận vào ví; chưa nhận offer không có fans/tiền show. Fans biểu diễn là một cộng đồng khác, không sao chép audience kênh hoặc tự trả thêm platform income. Show có invoice duy nhất và giữ12 báo cáo gần nhất; toàn bộ ledger/replay giữ nguyên. Nghỉ nghề không xóa hồ sơ, không bị ép ở65 tuổi; trở lại một lần bằng quỹ thật, trở lại luyện rồi phải nhận hướng làm hợp lệ. Native focus không lồng social/family/academic. Tự review rủi ro: cần gate book ở domain/engine/UI, không SQL/config mới, giới hạn512/120/5MiB không đổi,16 golden lịch sử không đổi. Chưa nhận test hoặc release PASS cho F3.
 
 ## Gates trước release F
 

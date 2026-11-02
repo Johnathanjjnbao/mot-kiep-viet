@@ -1,7 +1,10 @@
+import { creativeOptional } from './creative-policy';
 import {
   hasAnnualRules,
   hasEnterpriseRules,
   hasRealismRules,
+  hasCreativeRules,
+  detailedBooks,
   discretionaryCount,
 } from '../domain/rules';
 import { creatorReason, monetizationReady, creatorPolicyReason } from '../engine/creator-economy';
@@ -66,9 +69,18 @@ export function simulateLife(
       });
       continue;
     }
+    if (hasCreativeRules(run) && managementAvailable) {
+      const native = creativeOptional(run, policy);
+      if (native) {
+        run = native;
+        continue;
+      }
+    }
     if (run.creator && managementAvailable && !creatorReason(run)) {
       const channels = run.creator.channels,
-        total = channels.length + (run.enterprise?.ventures.length ?? 0);
+        total = hasCreativeRules(run)
+          ? detailedBooks(run)
+          : channels.length + (run.enterprise?.ventures.length ?? 0);
       const count = run.actions.filter((a) => a.type === 'creator').length;
       const platform = policy % 2 ? 'tiktok' : 'youtube';
       if (
@@ -148,8 +160,10 @@ export function simulateLife(
       const incompatible = ['business', 'freelance'].includes(currentCareer(run)?.id ?? '');
       if (
         !incompatible &&
-        books.length + (run.creator?.channels.length ?? 0) < 4 &&
-        books.length < (policy === 4 ? 4 : 1) &&
+        (hasCreativeRules(run)
+          ? detailedBooks(run)
+          : books.length + (run.creator?.channels.length ?? 0)) < 4 &&
+        books.length < (hasCreativeRules(run) ? 1 : policy === 4 ? 4 : 1) &&
         run.finance.cash >= designMoney(run, 40 + policy * 10)
       ) {
         run = dispatch(run, {

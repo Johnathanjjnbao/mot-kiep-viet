@@ -1,3 +1,4 @@
+import { currentProject } from '../engine/freelance';
 import { STORY_ARCS } from '../content/arcs';
 import {
   ArrowRight,
@@ -81,13 +82,19 @@ export function Character({ run }: { run: GameRun }) {
   const job = currentCareer(run);
   const occupation = job
     ? CAREERS.find((c) => c.id === job.id)!.name
-    : ageOf(run) < 18
-      ? 'Đang lớn lên'
-      : ageOf(run) >= 65
-        ? 'Đã nghỉ hưu'
-        : run.player.education.some((e) => e.endMonth > run.month)
-          ? 'Đang theo học'
-          : 'Chưa có việc';
+    : currentProject(run)?.acceptedMonth != null
+      ? 'Đang theo dự án khách hàng'
+      : run.creative?.artist?.status === 'active'
+        ? 'Đang nhận lịch biểu diễn'
+        : run.creative?.gaming?.status === 'active'
+          ? 'Đang theo nghề gaming'
+          : ageOf(run) < 18
+            ? 'Đang lớn lên'
+            : ageOf(run) >= 65
+              ? 'Đã nghỉ hưu'
+              : run.player.education.some((e) => e.endMonth > run.month)
+                ? 'Đang theo học'
+                : 'Chưa có việc';
   return (
     <div className="character-hud" data-testid="character-hud">
       <div className="hud-illustration">

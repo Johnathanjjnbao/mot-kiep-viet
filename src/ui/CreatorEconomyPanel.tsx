@@ -1,3 +1,5 @@
+import { ChannelCareers } from './ChannelCareers';
+import { detailedBooks, hasCreativeRules } from '../domain/rules';
 import { useState } from 'react';
 import { ArrowLeft, Video } from 'lucide-react';
 import type { GameRun, RunAction } from '../domain/model';
@@ -199,7 +201,11 @@ function Channel({ run, act, c }: Props & { c: CreatorChannel }) {
               set={setPolicy}
               prefix={c.id}
               disabled={!!reason}
-              allowLive={c.platform === 'tiktok' && run.world.year >= 2023 && c.audience >= 1000}
+              allowLive={
+                (c.platform === 'tiktok'
+                  ? run.world.year >= 2023
+                  : hasCreativeRules(run) && run.world.year >= 2014) && c.audience >= 1000
+              }
             />
             <p className="fine-print">
               Chi phí mỗi tháng đang chọn: {money(creatorCosts(run, policy), run)}. {invalid}
@@ -306,6 +312,7 @@ function Channel({ run, act, c }: Props & { c: CreatorChannel }) {
           </table>
         </div>
       </details>
+      {hasCreativeRules(run) && <ChannelCareers run={run} act={act} c={c} />}
     </article>
   );
 }
@@ -319,7 +326,7 @@ export function CreatorEconomyPanel({ run, act, onBack }: Props & { onBack: () =
     });
   if (!run.creator) return null;
   const reason = creatorReason(run),
-    countBooks = run.creator.channels.length + (run.enterprise?.ventures.length ?? 0),
+    countBooks = detailedBooks(run),
     era =
       run.world.year >= (platform === 'youtube' ? 2014 : 2018) &&
       run.world.technologies.includes('internet');

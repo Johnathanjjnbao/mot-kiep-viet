@@ -1,4 +1,6 @@
-import { hasRealismRules } from '../domain/rules';
+import { ArtisticPanel } from './ArtisticPanel';
+import { FreelancePanel } from './FreelancePanel';
+import { hasRealismRules, hasCreativeRules } from '../domain/rules';
 import { ChildhoodFinance } from './ChildhoodFinance';
 import { useState } from 'react';
 import { EnterprisePanel } from './EnterprisePanel';
@@ -36,6 +38,12 @@ type Props = { run: GameRun; act: (a: RunAction) => void };
 export function CareerPanel({ run, act }: Props) {
   const [business, setBusiness] = useState(false);
   const [creator, setCreator] = useState(false);
+  const [freelance, setFreelance] = useState(false);
+  const [artistic, setArtistic] = useState(false);
+  if (artistic && run.creative)
+    return <ArtisticPanel run={run} act={act} onBack={() => setArtistic(false)} />;
+  if (freelance && run.freelance)
+    return <FreelancePanel run={run} act={act} onBack={() => setFreelance(false)} />;
   if (creator && run.creator)
     return <CreatorEconomyPanel run={run} act={act} onBack={() => setCreator(false)} />;
   if (business && run.enterprise)
@@ -46,6 +54,8 @@ export function CareerPanel({ run, act }: Props) {
       act={act}
       onBusiness={run.enterprise ? () => setBusiness(true) : undefined}
       onCreator={run.creator ? () => setCreator(true) : undefined}
+      onArtistic={hasCreativeRules(run) && run.month >= 216 ? () => setArtistic(true) : undefined}
+      onFreelance={hasCreativeRules(run) && run.month >= 216 ? () => setFreelance(true) : undefined}
     />
   );
 }
@@ -54,7 +64,14 @@ function WorkPanel({
   act,
   onBusiness,
   onCreator,
-}: Props & { onBusiness?: () => void; onCreator?: () => void }) {
+  onFreelance,
+  onArtistic,
+}: Props & {
+  onBusiness?: () => void;
+  onCreator?: () => void;
+  onFreelance?: () => void;
+  onArtistic?: () => void;
+}) {
   const current = currentCareer(run),
     age = ageOf(run),
     studying = run.player.education.find((e) => e.endMonth > run.month);
@@ -83,6 +100,16 @@ function WorkPanel({
       {onCreator && (
         <button className="button secondary enterprise-entry" onClick={onCreator}>
           Kênh sáng tạo của bạn
+        </button>
+      )}
+      {onFreelance && (
+        <button className="button secondary enterprise-entry" onClick={onFreelance}>
+          Dự án khách hàng
+        </button>
+      )}
+      {onArtistic && (
+        <button className="button secondary enterprise-entry" onClick={onArtistic}>
+          Biểu diễn và idol
         </button>
       )}
       <EmploymentPanel run={run} act={act} />

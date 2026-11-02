@@ -4,7 +4,12 @@ import {
   type EnterpriseAction,
   type BusinessOperation,
 } from '../domain/enterprise-actions';
-import { hasEnterpriseRules, discretionaryCount } from '../domain/rules';
+import {
+  hasEnterpriseRules,
+  hasCreativeRules,
+  discretionaryCount,
+  detailedBooks,
+} from '../domain/rules';
 import { designMoney, formatMoney } from '../domain/currency';
 import { ageOf, currentCareer } from '../content/world';
 import {
@@ -33,6 +38,14 @@ export function businessReason(r: GameRun): string | null {
   if (r.status !== 'playing' || ageOf(r) < 18) return 'Từ 18 tuổi, bạn có thể tự mở cửa hàng.';
   if (r.world.year < 2005 || !r.world.technologies.includes('internet'))
     return 'Cửa hàng trực tuyến mở từ năm 2005 trong bối cảnh có Internet của mô phỏng.';
+  if (
+    hasCreativeRules(r) &&
+    (r.social?.focus ||
+      r.family?.focus ||
+      r.academics?.focus ||
+      (r.activeEvent && /^(fl-|gm-|co-|ar-)/.test(r.activeEvent.id)))
+  )
+    return 'Hãy hoàn tất câu chuyện đang chờ trước khi quản lý cửa hàng.';
   if (r.activeEvent && /^(biz-|cr-)/.test(r.activeEvent.id))
     return 'Hãy hoàn tất cuộc đối thoại đang chờ trước khi quản lý cửa hàng.';
   if (discretionaryCount(r) >= 120)
@@ -51,7 +64,7 @@ export function requestEnterprise(input: GameRun, raw: EnterpriseAction): GameRu
   let pair: ReturnType<typeof foundRetail>;
   let message: string;
   if (a.operation === 'found') {
-    if (books.length + (input.creator?.channels.length ?? 0) >= 4)
+    if (detailedBooks(input) >= 4)
       throw Error('Một cuộc đời giữ tối đa bốn sổ tiệm và kênh, kể cả đã đóng.');
     if (['business', 'freelance'].includes(currentCareer(input)?.id ?? ''))
       throw Error(

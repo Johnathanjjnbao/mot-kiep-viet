@@ -72,6 +72,7 @@ export const setupSchema = z
         'enterprise-v1',
         'creator-v1',
         'realism-v1',
+        'creative-v1',
       ])
       .optional(),
     expansion: z.enum(['wardrobe', 'social', 'family']).optional(),

@@ -1,6 +1,9 @@
 import { businessEvents } from './business-events';
 import { creatorEvents } from './creator-events';
 import { realismEvents } from './realism-events';
+import { artisticEvents } from './artistic-events';
+import { creativeEvents } from './creative-events';
+import { freelanceEvents } from './freelance-events';
 import { parentingEvents } from './parenting-events';
 import { annualEvents } from './annual-events';
 import { annualAdultEvents } from './annual-adult-events';
@@ -17,6 +20,9 @@ import { relationshipEvents, financeEvents } from './everyday';
 import { historyEvents, humorEvents } from './world-events';
 // The original eight-event vertical slice is retained, with the verified content expansion below.
 export const EVENTS: EventDefinition[] = [
+  ...freelanceEvents,
+  ...creativeEvents,
+  ...artisticEvents,
   ...realismEvents,
   ...businessEvents,
   ...creatorEvents,

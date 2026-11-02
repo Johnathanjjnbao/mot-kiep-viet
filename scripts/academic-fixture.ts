@@ -9,7 +9,8 @@ import {
 } from '../src/engine/engine';
 import type { GameRun, RunSetup } from '../src/domain/model';
 import type { ProgramId, AcademicMethod } from '../src/domain/academics';
-import { admissionReason, currentStudy } from '../src/engine/academics';
+import { admissionReason, currentStudy, studyCosts } from '../src/engine/academics';
+import { hasCreativeRules } from '../src/domain/rules';
 import { CAREERS, careerReason, currentCareer } from '../src/content/world';
 export function academicApplicant(
   index = 0,
@@ -19,7 +20,8 @@ export function academicApplicant(
     | 'annual-v1'
     | 'enterprise-v1'
     | 'creator-v1'
-    | 'realism-v1' = 'education-v1',
+    | 'realism-v1'
+    | 'creative-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   let r = createRun('university-' + index, {
@@ -69,7 +71,8 @@ export function admittedStudent(
     | 'annual-v1'
     | 'enterprise-v1'
     | 'creator-v1'
-    | 'realism-v1' = 'education-v1',
+    | 'realism-v1'
+    | 'creative-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   for (let i = start; i < start + 100; i++) {
@@ -103,8 +106,13 @@ export function advanceStudy(input: GameRun, method: AcademicMethod = 'steady', 
         if (!job) throw Error('No recovery job for paused study');
         r = manage(r, 'apply-job', job.id);
       }
-      if (r.finance.cash > 150) {
-        r = manage(r, 'quit-job');
+      if (
+        r.finance.cash > 150 &&
+        (!hasCreativeRules(r) ||
+          (r.month - study.pausedMonth! >= 6 &&
+            r.finance.cash >= studyCosts(r, study.programId).required))
+      ) {
+        if (!hasCreativeRules(r) || currentCareer(r)) r = manage(r, 'quit-job');
         r = dispatch(r, { type: 'academic', operation: 'resume', expected: r.actions.length });
       }
     }
