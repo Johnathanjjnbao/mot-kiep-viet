@@ -1,0 +1,44 @@
+{
+  "project": "Một Kiếp Việt",
+  "version": "0.3.10-stable.1",
+  "clientDate": "2026-11-03",
+  "sourceCommit": "a07e34faac8e024fd842603f1355e1cabc980a86",
+  "tag": "pre-hiatus-v0.3.10-stable.1",
+  "sourceAndHistoryRestore": "VERIFIED PASS",
+  "dependencyInstallBuildTests": "VERIFIED PASS: npm ci + npm run verify; 401 tests/40 files; 29 goldens; content 340; Pages build",
+  "restoredBuild": "VERIFIED PASS: 49 dist files byte-identical",
+  "filesVerified": 1854,
+  "lockfileSha256": "054a37714d3293a793590bb4b22d1643cdd0149a91102ed1176deea83f994f0b",
+  "privateHistoryBackup": true,
+  "artifacts": [
+    {
+      "file": "mot-kiep-viet-source-a07e34faac8e.zip",
+      "bytes": 204723203,
+      "sha256": "67b0af9de2e08dc19bb01130ea67443737f5376f78b321bf44e76124d96601a4"
+    },
+    {
+      "file": "mot-kiep-viet-history.bundle",
+      "bytes": 139079682,
+      "sha256": "f7a6e6a78e661ee4c16ec234955d43b40840f40f54c3a4a9f886630af3a4217b"
+    }
+  ],
+  "sourceSecretScan": {
+    "textObjectsScanned": 1974,
+    "findings": 0
+  },
+  "backupDirectory": "C:\\Users\\triba\\Downloads\\MKV_PRE_HIATUS\\release-20261103-a07e34faac8e",
+  "originalWipCheckpoint": "66a961d7c2cedd668f0381a48758a56d602f4e1d",
+  "originalWipZipCurrentAvailability": "NOT AVAILABLE on continuation; checkpoint preserved in verified Git history bundle",
+  "checks": [
+    "ZIP CRC and every archived file against exact Git blob",
+    "safe extraction and every file SHA-256",
+    "git bundle verify",
+    "offline git clone, exact HEAD and git fsck --full",
+    "fresh npm ci and full verify in restored source",
+    "49 dist files byte-identical to tested release build"
+  ],
+  "restoreLogsPrivate": [
+    "restore-install.log",
+    "restore-verify.log"
+  ]
+}

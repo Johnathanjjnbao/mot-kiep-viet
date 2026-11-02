@@ -1,4 +1,4 @@
-# Security review — pre-hiatus candidate
+# Security review — pre-hiatus 0.3.10-stable.1
 
 | Severity | Verified findings |
 |---|---:|
@@ -26,6 +26,6 @@ In this project, the matcher runs against repository-owned lint configuration du
 
 ## Evidence and limits
 
-Initial WIP secret scan:1827 text objects,0 findings, including source/public dist/reachable history. Final pre-push scan and regression evidence are recorded in the release report when complete. Public Supabase publishable configuration is intentionally public; no privileged credential was needed or copied.
+Initial WIP secret scan:1827 text objects,0 findings, including source/public dist/reachable history. Source pre-push scan:1,974 text objects/0findings; CI source scan completed successfully. Final documentation scan and workflow are recorded in the external final recovery manifest. Public Supabase publishable configuration is intentionally public; no privileged credential was needed or copied.
 
 Owner Email/Password live login: **NOT RUN** in this session. Live A/B/anonymous cloud deny run: **NOT RUN** in this session; no cloud code or policy changed. No production records, identities, permissions, migrations or backups were deleted or altered by this review.

@@ -1,0 +1,16 @@
+{
+  "version": "0.3.10-stable.1",
+  "sourceCommit": "a07e34faac8e024fd842603f1355e1cabc980a86",
+  "tag": "pre-hiatus-v0.3.10-stable.1",
+  "tagObject": "addcc9289eef0bdf53017587c527e0ba4837a305",
+  "sourceCi": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281",
+  "publicHeadBeforeRelease": "5a30670d0d12c4b78c62678c1a770c0fd202e6ab",
+  "branch": "main",
+  "engine": "3.0.0",
+  "content": "3.0.0",
+  "schema": 4,
+  "status": "SOURCE RELEASE VERIFIED PASS",
+  "finalDocumentationCommit": "Recorded in external final RECOVERY_MANIFEST.json after committing this file",
+  "ownerLogin": "NOT RUN",
+  "freshCloudDeny": "NOT RUN"
+}

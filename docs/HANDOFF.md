@@ -1,5 +1,15 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
+
+Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
+
+[Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) đã khớp hash 44 tệp JS/CSS/font/SW. G5 khách trên desktop/mobile đã chơi trọn đời, lưu/tải và giữ lịch sử. Các nghề mới và 56 cảnh stable đều PASS trên live ở Chromium desktop/mobile. Bản dựng cũng đã PASS sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile cục bộ.
+
+Kiểm chứng cục bộ: 401 tests/40 files, 29 golden, 120 E2E, 1.000 đời và 1.000 replay PASS. Bộ nguồn/lịch sử đã thử khôi phục, cài sạch và chạy toàn bộ verify; 49 tệp dist khớp từng byte.
+
+Owner cloud login và fresh live A/B/anon deny: **NOT RUN**. Không thay Auth/RLS/SQL. SHA tài liệu, CI cuối và checksum bộ bàn giao đầy đủ được ghi trong manifest ngoài repository sau commit. Các mốc dưới đây giữ làm lịch sử.
+
 ## Điều chỉnh thời gian CI — release còn INCOMPLETE (03/11/2026)
 
 Nguồn `6d025936` đã push main. CI41509916933 bị hết thời gian job25phút khi106/120E2E đã PASS; không có full-suite PASS, production/deploy bị skipped. Nâng ngân sách job lên40phút, giữ nguyên401tests, secret scan,120E2E và production smoke. Không sửa runtime/engine/content/save; các golden và1.000+1.000 giữ nguyên hiệu lực. Bộ nguồn6d025936 đã restore/cài sạch/verify và49tệp dist byte-identical; báo cáo CI timeout ở evidence/pre-hiatus-ci-timeout.json. Bước tiếp là đúng-SHA CI mới, liveG5, tag và bộ bàn giao cuối. Không khởi động lại tính năng đã hoàn tất.

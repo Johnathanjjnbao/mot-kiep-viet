@@ -1,5 +1,15 @@
 # Life Expansion — bốn mốc phát hành
 
+## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
+
+Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
+
+[Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) đã khớp hash 44 tệp JS/CSS/font/SW. G5 khách trên desktop/mobile đã chơi trọn đời, lưu/tải và giữ lịch sử. Các nghề mới và 56 cảnh stable đều PASS trên live ở Chromium desktop/mobile. Bản dựng cũng đã PASS sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile cục bộ.
+
+Kiểm chứng cục bộ: 401 tests/40 files, 29 golden, 120 E2E, 1.000 đời và 1.000 replay PASS. Bộ nguồn/lịch sử đã thử khôi phục, cài sạch và chạy toàn bộ verify; 49 tệp dist khớp từng byte.
+
+Owner cloud login và fresh live A/B/anon deny: **NOT RUN**. Không thay Auth/RLS/SQL. SHA tài liệu, CI cuối và checksum bộ bàn giao đầy đủ được ghi trong manifest ngoài repository sau commit. Các mốc dưới đây giữ làm lịch sử.
+
 ## Đã phát hành0.3.9-realism.1 — G5 guest VERIFIED PASS (02/11/2026)
 
 Nguồn **a2fc1b284a300fdfdbd0846b3cf5a68f283029b9**. [CI41393793903](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41393793903) completed/success cho build và deploy:300 tests/31 files,96 E2E không skip, secret scan1686 text objects/0 findings và production smoke PASS. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). JS/CSS/SW live khớp SHA-256 build lưu riêng. Chromium/Firefox/WebKit ×desktop/mobile6/6 chơi preview→sinh→tiêu vặt6→để dành→reload→18, canonical và axe0 PASS. G5 guest desktop/mobile: trọn đời,5 dạng gia đình, history độc lập/autosave/slot/export/import/font/network PASS; ảnh live đã xem trực tiếp. Không dùng HTTP200 thay cho gameplay.

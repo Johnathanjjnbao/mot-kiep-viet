@@ -1,5 +1,15 @@
 # Backlog sau beta v0.3
 
+## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
+
+Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
+
+[Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) đã khớp hash 44 tệp JS/CSS/font/SW. G5 khách trên desktop/mobile đã chơi trọn đời, lưu/tải và giữ lịch sử. Các nghề mới và 56 cảnh stable đều PASS trên live ở Chromium desktop/mobile. Bản dựng cũng đã PASS sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile cục bộ.
+
+Kiểm chứng cục bộ: 401 tests/40 files, 29 golden, 120 E2E, 1.000 đời và 1.000 replay PASS. Bộ nguồn/lịch sử đã thử khôi phục, cài sạch và chạy toàn bộ verify; 49 tệp dist khớp từng byte.
+
+Owner cloud login và fresh live A/B/anon deny: **NOT RUN**. Không thay Auth/RLS/SQL. SHA tài liệu, CI cuối và checksum bộ bàn giao đầy đủ được ghi trong manifest ngoài repository sau commit. Các mốc dưới đây giữ làm lịch sử.
+
 ## Ứng viên0.3.10-stable.1 — local gates PASS (03/11/2026)
 
 Đã chốt phạm vi ổn định:4hệ nghề mới,56cảnh, guest CAS, fix địa danh và chia bảng phụ có kiểm tra. Chỉ còn release/preservation gates. Sau kỳ nghỉ ưu tiên dependency dev advisory và chi phí replay lớn; các hệ nhà/xe/PC/du học/di cư/VND danh nghĩa/quân sự/siêu nhiên/đời cực dài vẫn ở backlog, không tự triển khai. Trạng thái phát hành ở PRE_HIATUS_RELEASE_REPORT.md.

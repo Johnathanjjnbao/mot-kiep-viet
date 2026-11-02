@@ -1,8 +1,14 @@
 # Một Kiếp Việt — bàn giao trước kỳ nghỉ
 
-Trạng thái03/11/2026: **LOCAL GATES — VERIFIED PASS; RELEASE — INCOMPLETE**. Source0.3.10-stable.1 đạt401tests/29golden/120E2E,6browser combinations và1.000+1.000replay. Website công khai vẫn là0.3.9-realism.1. Backup/restore, commit/push, CI/liveG5 còn phải hoàn tất; SHA/tag/CI/backup cuối ghi trong PRE_HIATUS_RELEASE_REPORT khi có bằng chứng. Tiếp tục từ checkout hiện tại, không dựng lại dự án.
+Trạng thái03/11/2026: **SOURCE RELEASE — VERIFIED PASS**. Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
 
-Repo: https://github.com/Johnathanjjnbao/mot-kiep-viet. Live: https://johnathanjjnbao.github.io/mot-kiep-viet/. Thư mục làm việc: `C:\Users\triba\OneDrive\Desktop\game`. WIP nghề đã được giữ trong checkpoint66a961d7c2cedd668f0381a48758a56d602f4e1d và ZIP riêng, xem release report. Không xóa hoặc thay thư mục gốc khi thử khôi phục.
+[Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) đã khớp hash 44 tệp JS/CSS/font/SW. G5 khách trên desktop/mobile đã chơi trọn đời, lưu/tải và giữ lịch sử. Các nghề mới và 56 cảnh stable đều PASS trên live ở Chromium desktop/mobile. Bản dựng cũng đã PASS sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile cục bộ.
+
+Kiểm chứng cục bộ: 401 tests/40 files, 29 golden, 120 E2E, 1.000 đời và 1.000 replay PASS. Bộ nguồn/lịch sử đã thử khôi phục, cài sạch và chạy toàn bộ verify; 49 tệp dist khớp từng byte.
+
+Owner cloud login và fresh live A/B/anon deny: **NOT RUN**. Không thay Auth/RLS/SQL. SHA tài liệu, CI cuối và checksum bộ bàn giao đầy đủ được ghi trong manifest ngoài repository sau commit. Các mốc dưới đây giữ làm lịch sử.
+
+Repo: https://github.com/Johnathanjjnbao/mot-kiep-viet. Live: https://johnathanjjnbao.github.io/mot-kiep-viet/. Thư mục làm việc: `C:\Users\triba\OneDrive\Desktop\game`. WIP nghề đã được giữ trong checkpoint66a961d7c2cedd668f0381a48758a56d602f4e1d và bộ nguồn/Git bundle hiện đã xác minh, xem release report. Không xóa hoặc thay thư mục gốc khi thử khôi phục.
 
 ## Đọc trước khi tiếp tục
 
@@ -67,13 +73,23 @@ Trước push kiểm git status/branch/HEAD/remote/workflow, chỉ stage tệp d
 
 ## Hệ thống hiện có và giới hạn
 
-Creator, avatar trai/gái/tóc/sáu tuổi đời;45cảnh tuổi nhỏ, quỹ hộ và tiền cá nhân; học12ngành, học phí/pause/resume; tuyển dụng và thất nghiệp; tình cảm/hôn nhân/nuôi con; shop/kênh video-LIVE; freelance6dịch vụ; gaming,collab,biểu diễn3chuyên môn; autosave/3slot/export/import/history đều thuộc source đang kiểm chứng.56cảnh stable ưu tiên trung niên/cao tuổi có quyền tiếp tục hoặc rút lui, không tự tạo tiền/job/NPC.
+Creator, avatar trai/gái/tóc/sáu tuổi đời;45cảnh tuổi nhỏ, quỹ hộ và tiền cá nhân; học12ngành, học phí/pause/resume; tuyển dụng và thất nghiệp; tình cảm/hôn nhân/nuôi con; shop/kênh video-LIVE; freelance6dịch vụ; gaming,collab,biểu diễn3chuyên môn; autosave/3slot/export/import/history đều đã phát hành trong nguồn nêu trên.56cảnh stable ưu tiên trung niên/cao tuổi có quyền tiếp tục hoặc rút lui, không tự tạo tiền/job/NPC.
 
 Giới hạn cần đọc cùng báo cáo cuối: bundle vẫn>500kB; tải/phát lại bản lưu dài nhiều sổ trên CPU chậm có độ trễ rõ. Phép đo bộ nhớ là mẫu thử, không chứng minh zero leak trên mọi thiết bị. npm audit có1advisory moderate ở công cụ dev/12dependency entries; production dependencies0. Xem PRE_HIATUS_SECURITY_REVIEW.md. Không dùng0finding security scanner để thay audit logic.
 
 Owner tự đăng nhập Email/Password live: **NOT RUN** trong phiên. Fresh live A/B/anon cloud deny: **NOT RUN**; không đổi Auth/RLS/SQL. Không dùng tài khoản người chơi. SMTP/invitation mới ngoài phạm vi. Các migrations đã applied giữ nguyên; production SQL mới cần review/project approval riêng. Không xóa production, kể cả fixture.
 
 Save localhost không tự chuyển sang github.io: xuất/nhập tệp. Các game cùng origin có thể dùng chung IndexedDB; giữ DB ID và không host game khác dùng ID này trên cùng origin. Khi bị conflict, xuất nhánh còn trên màn hình trước khi tải lại.
+
+## Khôi phục từ bộ lưu trữ
+
+Bộ nguồn đã xác minh nằm ở `C:\Users\triba\Downloads\MKV_PRE_HIATUS\release-20261103-a07e34faac8e`. Đọc `RECOVERY_MANIFEST.json` để đối chiếu SHA-256 của ZIP và Git bundle trước khi sử dụng. ZIP chứa đúng 1.854 tệp được Git theo dõi ở nguồn `a07e34faac8e024fd842603f1355e1cabc980a86`; không chứa credential, dependency đã cài, bản lưu người chơi hoặc cache riêng. Bundle giữ cả checkpoint WIP `66a961d` và lịch sử trước đó. ZIP WIP đầu phiên hiện không còn tại đường dẫn lịch sử; khả năng khôi phục hiện tại dựa trên bộ nguồn và bundle đã kiểm lại này.
+
+Giải nén ZIP vào một thư mục mới, hoặc dùng `git clone <đường-dẫn-bundle> <thư-mục-mới>`. Không ghi đè thư mục dự án đang dùng. Nếu khôi phục từ bundle, remote origin ban đầu trỏ vào bundle cục bộ; đối chiếu lịch sử và SHA trước khi đổi origin về repository GitHub. Giữ bản bundle riêng, không đưa toàn bộ lịch sử lên kho mới một cách tự động.
+
+Sau khôi phục, dùng Node >=24 và `npm.cmd ci`, rồi cấu hình public Pages giống `.github/workflows/pages.yml` và chạy `npm.cmd run verify`. Cài dependency cần truy cập registry; ZIP là bản nguồn lưu ngoại tuyến, không bao gồm registry offline. Việc tạo build có cloud public configuration không chứng minh tài khoản chủ dự án đã đăng nhập. Không sao chép privileged key hoặc tạo SQL production để khôi phục game.
+
+Đã thực hiện thật: CRC ZIP, Git blob của từng tệp, SHA-256 sau giải nén, `git bundle verify`, clone từ bundle, HEAD đúng nguồn, `git fsck --full`, cài sạch và toàn bộ verify. Có 401 tests/40 files, 29 golden, registry340 và Pages build PASS; 49 tệp dist khớp từng byte với bản đã QA. Các log cài đặt và verify nằm cạnh manifest. Bộ cuối chứa cả bàn giao sẽ có tên `final-20261103-<SHA-tài-liệu>`; xem manifest tại đó để biết SHA và checksum cuối, không suy ra checksum từ tên tệp.
 
 ## Sau kỳ nghỉ
 

@@ -1,6 +1,28 @@
-# Pre-hiatus — release report đang thực hiện
+# Pre-hiatus — release report 0.3.10-stable.1
 
-Trạng thái03/11/2026: **LOCAL GATES — VERIFIED PASS; RELEASE — INCOMPLETE**. Ứng viên0.3.10-stable.1 đạt401tests/40files,29golden,120E2E một lệnh/17,8phút,6/6browser combinations, production smoke và1.000+1.000replay. Chưa commit/push/deploy ứng viên; bản công khai vẫn0.3.9-realism.1 tại main5a30670. Backup/restore, CI đúng SHA và liveG5 là các bước tiếp theo. Các mốc triển khai bên dưới giữ làm lịch sử.
+Trạng thái03/11/2026: **PRE-HIATUS SOURCE RELEASE — VERIFIED PASS**. Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
+
+[Website](https://johnathanjjnbao.github.io/mot-kiep-viet/) đã khớp hash 44 tệp JS/CSS/font/SW. G5 khách trên desktop/mobile đã chơi trọn đời, lưu/tải và giữ lịch sử. Các nghề mới và 56 cảnh stable đều PASS trên live ở Chromium desktop/mobile. Bản dựng cũng đã PASS sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile cục bộ.
+
+Kiểm chứng cục bộ: 401 tests/40 files, 29 golden, 120 E2E, 1.000 đời và 1.000 replay PASS. Bộ nguồn/lịch sử đã thử khôi phục, cài sạch và chạy toàn bộ verify; 49 tệp dist khớp từng byte.
+
+Owner cloud login và fresh live A/B/anon deny: **NOT RUN**. Không thay Auth/RLS/SQL. SHA tài liệu, CI cuối và checksum bộ bàn giao đầy đủ được ghi trong manifest ngoài repository sau commit. Các mốc dưới đây giữ làm lịch sử.
+
+CI đầu 41509916933 bị hủy ở ngân sách 25 phút sau 106/120 E2E PASS; production và deploy bị skipped. Không tính lượt ấy là full PASS. Commit a07e34f chỉ tăng ngân sách CI lên 40 phút và ghi sự cố; runtime/tests/scripts/package byte-identical với bản 6d025936 đã QA. CI nguồn mới nêu trên chạy đủ các gates.
+
+Sau deploy, lượt kiểm hash live đầu gặp phản hồi non-OK chưa xác định tệp/status. Lượt kiểm availability tiếp theo có đủ44/44 tệp HTTP200; lần hash đầy đủ sau đó PASS44/44 (JS/CSS/font/SW). Log lần đầu giữ riêng, không nhận lần ấy là PASS. G5 và native live sau đó kiểm thêm network/page errors trong phiên trình duyệt mới.
+
+## Định danh phát hành và bằng chứng cuối
+
+- Repository: https://github.com/Johnathanjjnbao/mot-kiep-viet. HEAD công khai trước phiên `5a30670d0d12c4b78c62678c1a770c0fd202e6ab`; checkpoint WIP `66a961d7c2cedd668f0381a48758a56d602f4e1d`.
+- Nguồn phát hành `a07e34faac8e024fd842603f1355e1cabc980a86`; tag annotated `pre-hiatus-v0.3.10-stable.1`, object `addcc9289eef0bdf53017587c527e0ba4837a305`. Tag giữ đúng nguồn đã QA; commit tài liệu sau đó không đổi runtime.
+- CI nguồn: https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281. Bằng chứng máy: evidence/pre-hiatus-source-ci.json, pre-hiatus-live-assets.json, pre-hiatus-live-g5.json, pre-hiatus-live-browsers.json, pre-hiatus-release-identity.json.
+- Secret scan trước push nguồn:1.974 text objects,0findings, bao gồm source/public dist/toàn bộ Git blobs reachable. Audit production0; một advisory moderate dev,12dependency entries, vẫn OPEN P2.
+- Backup hiện có: `C:\Users\triba\Downloads\MKV_PRE_HIATUS\release-20261103-a07e34faac8e`. ZIP nguồn204723203bytes, SHA-256 `67b0af9de2e08dc19bb01130ea67443737f5376f78b321bf44e76124d96601a4`; bundle139079682bytes, SHA-256 `f7a6e6a78e661ee4c16ec234955d43b40840f40f54c3a4a9f886630af3a4217b`. CRC/từng Git blob/extract SHA-256/clone/fsck/cài sạch/full verify đều PASS;49tệp dist byte-identical. Xem evidence/pre-hiatus-source-backup-restore.json.
+- Bản sao riêng còn ở `.local/pre-hiatus-preservation/source-a07e34faac8e`, bị Git bỏ qua. ZIP WIP đầu phiên không còn tại đường dẫn cũ khi tiếp tục; checkpoint WIP vẫn nằm trong bundle hiện đã xác minh. Không dựa vào sự tồn tại của ZIP lịch sử để kết luận an toàn.
+- Sau commit tài liệu, tạo bộ cuối có cả bàn giao; thư mục `final-20261103-<SHA-tài-liệu>` và bản sao private `.local/pre-hiatus-preservation/` chứa manifest cuối. Manifest ghi SHA nguồn/tài liệu/tag, CI cuối, checksum và log restore; tránh yêu cầu một commit tự chứa hash của chính nó.
+
+Các phần candidate/PENDING dưới đây là nhật ký theo thời điểm, không thay thế trạng thái phát hành và các hạn chế nêu trên.
 
 ## Bảo toàn WIP — VERIFIED PASS
 

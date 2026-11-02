@@ -1,0 +1,135 @@
+{
+  "id": 41514755281,
+  "head_sha": "a07e34faac8e024fd842603f1355e1cabc980a86",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281",
+  "created_at": "2026-11-02T19:57:40Z",
+  "updated_at": "2026-11-02T20:29:02Z",
+  "jobs": [
+    {
+      "id": 125515329997,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41514755281,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run npm run verify",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run node scripts/scan-secrets.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run npm run test:e2e",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Run npm run test:production",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        }
+      ]
+    },
+    {
+      "id": 125531607114,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41514755281,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    }
+  ],
+  "logEvidence": [
+    "2026-11-02T20:02:11.2084900Z  Test Files  40 passed (40)",
+    "2026-11-02T20:02:11.2085923Z       Tests  401 passed (401)",
+    "2026-11-02T20:02:41.0007197Z   \"textObjectsScanned\": 1948,",
+    "2026-11-02T20:02:41.0007459Z   \"findings\": []",
+    "2026-11-02T20:28:23.9559180Z   120 passed (25.4m)",
+    "2026-11-02T20:28:26.4307004Z   \"status\": \"VERIFIED PASS\","
+  ]
+}
