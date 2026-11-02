@@ -1,3 +1,4 @@
+import { assertChildhood } from './childhood';
 import { assertBusinesses } from './business';
 import { assertCreators } from './creator-economy';
 import { assertFamily } from './family';
@@ -22,6 +23,7 @@ export function assertRun(run: GameRun) {
   assertAnnual(run);
   assertBusinesses(run);
   assertCreators(run);
+  assertChildhood(run);
   const fail = (text: string): never => {
     throw new Error(`Invariant: ${text}`);
   };

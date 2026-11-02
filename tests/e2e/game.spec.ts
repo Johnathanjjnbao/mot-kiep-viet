@@ -65,7 +65,7 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   }
   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
   const ended = await readGuestRun(page);
-  expect(ended.setup.lifeRules).toBe('creator-v1');
+  expect(ended.setup.lifeRules).toBe('realism-v1');
   expect(ended.setup.currency).toBe('vnd-v1');
   expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -132,8 +132,10 @@ test('responsive pages, keyboard dialogs, settings, and accessibility', async ({
     fullPage: true,
   });
   await page.getByRole('button', { name: 'Tài chính', exact: true }).click();
-  await expect(page.getByRole('heading', { name: /Đủ sống hôm nay/ })).toBeVisible();
-  expect(await page.getByRole('button', { name: 'Gửi 10.000.000 ₫' }).isDisabled()).toBe(true);
+  await expect(page.getByTestId('childhood-finance')).toContainText('Quỹ hộ chăm sóc');
+  await expect(page.getByRole('heading', { name: 'Khoản nhỏ dành cho con.' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^(Gửi|Vay) / })).toHaveCount(0);
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole('button', { name: 'Người thân', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Mẹ · Thu' })).toBeVisible();
   await page.setViewportSize({ width: 812, height: 375 });
@@ -159,8 +161,14 @@ test('adult career, savings, household costs, and invalid import feedback work t
     .toBeGreaterThan(0);
   await expect(page.getByTestId('job-result')).toContainText('Hồ sơ gần nhất');
   await page.getByRole('button', { name: 'Tài chính', exact: true }).click();
+  const beforeSaving = await readGuestRun(page);
   await page.getByRole('button', { name: 'Gửi 10.000.000 ₫', exact: true }).click();
-  await expect(page.locator('.finance-overview')).toContainText('10.000.000 ₫');
+  await expect
+    .poll(async () => (await readGuestRun(page)).finance.savings)
+    .toBe(beforeSaving.finance.savings + 10_000_000);
+  await expect(page.locator('.finance-overview')).toContainText(
+    new Intl.NumberFormat('vi-VN').format(beforeSaving.finance.savings + 10_000_000) + ' ₫',
+  );
   await page.getByRole('button', { name: 'Rút tối đa 10.000.000 ₫' }).click();
   await page.getByRole('button', { name: 'Vay 10.000.000 ₫', exact: true }).click();
   await page.getByRole('button', { name: 'Trả tối đa 10.000.000 ₫' }).click();

@@ -18,6 +18,8 @@ import { Scenery } from './Scenery';
 import { Avatar } from './Avatar';
 import { useLayoutEffect, useRef } from 'react';
 import { decisionKey, recentResults } from '../application/story-flow';
+import { hasRealismRules } from '../domain/rules';
+import { decisionActor } from '../engine/childhood';
 export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void }) {
   const region = REGIONS.find((r) => r.id === run.player.region)!;
   return (
@@ -57,7 +59,13 @@ export function BirthIntro({ run, onBegin }: { run: GameRun; onBegin: () => void
         </p>
         <div className="birth-traits">
           <span className="badge">{run.player.traits[0]}</span>
-          <span className="badge">Khoản để dành: {money(run.finance.cash, run)}</span>
+          <span className="badge">
+            {hasRealismRules(run) ? 'Tiền đứng tên con' : 'Khoản để dành'}:{' '}
+            {money(hasRealismRules(run) ? run.finance.savings : run.finance.cash, run)}
+          </span>
+          {hasRealismRules(run) && (
+            <span className="badge">Quỹ hộ chăm sóc: {money(run.childhoodFinance!.cash, run)}</span>
+          )}
         </div>
         <div className="birth-future">{run.world.eraName} · Câu chuyện gia đình hư cấu</div>
         <button className="button primary" onClick={onBegin}>
@@ -98,8 +106,28 @@ export function Character({ run }: { run: GameRun }) {
           </p>
         </div>
         <div className="hud-cash">
-          <span>Trong túi</span>
-          <strong data-testid="hud-cash">{money(run.finance.cash, run)}</strong>
+          <span>
+            {hasRealismRules(run)
+              ? run.month < 72
+                ? 'Dành cho con'
+                : run.month < 216
+                  ? 'Tiền cá nhân'
+                  : 'Tiền của bạn'
+              : 'Trong túi'}
+          </span>
+          <strong
+            data-testid="hud-cash"
+            title={
+              hasRealismRules(run) && run.month < 72
+                ? 'Tiền đứng tên con, người chăm sóc giữ hộ; chưa tự chi.'
+                : undefined
+            }
+          >
+            {money(
+              hasRealismRules(run) && run.month < 72 ? run.finance.savings : run.finance.cash,
+              run,
+            )}
+          </strong>
         </div>
       </div>
       <dl className="hud-stats" aria-label="Chỉ số nhân vật">
@@ -201,7 +229,13 @@ export function Story({
       </div>
       {event ? (
         <div className="choices">
-          <p className="choice-prompt">Bạn sẽ chọn thế nào?</p>
+          <p
+            className="choice-prompt"
+            data-actor={decisionActor(run, event).kind}
+            title={decisionActor(run, event).names}
+          >
+            {decisionActor(run, event).label}
+          </p>
           <div
             className="decision-list"
             ref={decisions}

@@ -15,13 +15,13 @@ test('shops, previews without paying, buys once, equips, saves an outfit and rel
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
   for (let i = 0; i < 20; i++) {
     const r = await readGuestRun(page);
-    if (r.month >= 72) break;
+    if (r.month >= 96) break;
     await page.getByTestId('event-choice').first().click();
     await expect
       .poll(async () => (await readGuestRun(page)).choices.length)
       .toBe(r.choices.length + 1);
   }
-  expect((await readGuestRun(page)).month).toBeGreaterThanOrEqual(72);
+  expect((await readGuestRun(page)).month).toBeGreaterThanOrEqual(96);
   await page.getByRole('button', { name: 'Tủ đồ', exact: true }).click();
   const before = await readGuestRun(page),
     card = page.locator('[data-clothing="indigo-tee"]');

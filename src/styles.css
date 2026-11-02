@@ -3764,3 +3764,20 @@ meter::-moz-meter-bar {
   .enterprise-panel .button-row .button { flex: 1 1 130px; }
   .enterprise-metrics dd { font-size: .8rem; }
 }
+
+/* Decision cards: measured cream/charcoal contrast, dimensions retain the viewport budget. */
+.game-shell .choice { background:#28332d; color:#fff9ed; border:1px solid #829480; box-shadow:0 2px 0 #172019; }
+.game-shell .choice-copy strong { color:#fff9ed; }
+.game-shell .choice-copy small { color:#e0d9c9; }
+.game-shell .choice-letter { background:#fff9ed; color:#28332d; border-color:#fff9ed; font-weight:700; border-radius:5px; }
+.game-shell .choice > svg { color:#fff9ed; flex-shrink:0; stroke-width:2.5; }
+.game-shell .choice:hover:not(:disabled) { background:#364d3f; border-color:#e9ba92; }
+.game-shell .choice:active:not(:disabled) { background:#1d2921; border-color:#fff9ed; box-shadow:inset 0 2px 3px #0004; }
+.game-shell .choice:focus-visible { outline:3px solid #873c29; outline-offset:-3px; border-color:#fff9ed; box-shadow:inset 0 0 0 5px #fff9ed; }
+.game-shell .choice:disabled { opacity:1; background:#ece4d3; color:#665849; border:1px dashed #8b7b66; box-shadow:none; cursor:not-allowed; }
+.game-shell .choice:disabled .choice-copy strong,.game-shell .choice:disabled .choice-copy small,.game-shell .choice:disabled > svg { color:#665849; }
+.game-shell .choice:disabled .choice-letter { color:#665849; border-color:#8b7b66; background:#f8f1e3; }
+.child-ledger { list-style:none; padding:0; font-size:.8rem; }
+.child-ledger li { display:flex; justify-content:space-between; gap:18px; padding:10px 0; border-bottom:1px solid var(--line); }
+.child-ledger strong { white-space:nowrap; }
+@media (prefers-reduced-motion:reduce) { .game-shell .choice { transition:none; } }

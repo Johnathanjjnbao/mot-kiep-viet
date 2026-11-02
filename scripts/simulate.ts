@@ -14,12 +14,25 @@ const testDiversity = process.argv.includes('--dynamic');
 const testEducation = process.argv.includes('--education');
 const testEmployment = process.argv.includes('--employment');
 const testVnd = process.argv.includes('--vnd');
-const testCreatorEconomy = process.argv.includes('--creator-economy');
+const testRealism = process.argv.includes('--realism');
+const testCreatorEconomy = process.argv.includes('--creator-economy') || testRealism;
 const testEnterprise = process.argv.includes('--enterprise') || testCreatorEconomy;
 const testAnnual = process.argv.includes('--annual') || testEnterprise;
 if (!Number.isInteger(total) || total < 1 || total > 10000) throw new Error('Choose 1–10000 runs');
 const report = {
   currency: testVnd ? 'vnd-v1' : 'dsm-v1',
+  ruleset: testRealism ? 'realism-v1' : null,
+  realism: {
+    observed: 0,
+    householdTransactions: 0,
+    maxHouseholdTransactions: 0,
+    maxTotalTransactions: 0,
+    maxReplayMs: 0,
+    maxHeapBytes: 0,
+    presentation: { boy: 0, girl: 0 },
+    caregiverScenes: 0,
+    childScenes: 0,
+  },
   runs: 0,
   creatorEconomy: {
     enabled: testCreatorEconomy,
@@ -79,7 +92,9 @@ const report = {
   adultChildren: 0,
   wardrobePurchases: 0,
   maxSaveBytes: 0,
-  seedPattern: 'stress-0 … stress-N (N = runs - 1)',
+  seedPattern: testRealism
+    ? 'realism-stress-0 … realism-stress-N (N = runs - 1)'
+    : 'stress-0 … stress-N (N = runs - 1)',
   invariantViolations: 0,
   endings: { death: 0, memoir: 0 },
   cohorts: {} as Record<string, number>,
@@ -108,7 +123,7 @@ const observed = new Set<string>();
 for (let i = 0; i < total; i++) {
   const cohort = i % 4 === 0 ? COHORTS[i % 3] : 1975 + (i % 52),
     region = REGIONS[Math.floor(i / 3) % 3].id,
-    seed = `stress-${i}`;
+    seed = `${testRealism ? 'realism-' : ''}stress-${i}`;
   try {
     const presented = new Set<string>();
     const settledBusinessMonths = new Set<string>();
@@ -130,19 +145,24 @@ for (let i = 0; i < total; i++) {
         family,
         motherTraits: [Object.keys(PARENT_TRAITS)[i % 10] as ParentTrait],
         fatherTraits: [],
-        ...(testCreatorEconomy
-          ? { lifeRules: 'creator-v1' as const }
-          : testEnterprise
-            ? { lifeRules: 'enterprise-v1' as const }
-            : testAnnual
-              ? { lifeRules: 'annual-v1' as const }
-              : testEmployment
-                ? { lifeRules: 'career-v1' as const }
-                : testEducation
-                  ? { lifeRules: 'education-v1' as const }
-                  : testDiversity
-                    ? { lifeRules: 'dynamic-v1' as const }
-                    : {}),
+        ...(testRealism
+          ? {
+              lifeRules: 'realism-v1' as const,
+              presentation: i % 2 ? ('girl' as const) : ('boy' as const),
+            }
+          : testCreatorEconomy
+            ? { lifeRules: 'creator-v1' as const }
+            : testEnterprise
+              ? { lifeRules: 'enterprise-v1' as const }
+              : testAnnual
+                ? { lifeRules: 'annual-v1' as const }
+                : testEmployment
+                  ? { lifeRules: 'career-v1' as const }
+                  : testEducation
+                    ? { lifeRules: 'education-v1' as const }
+                    : testDiversity
+                      ? { lifeRules: 'dynamic-v1' as const }
+                      : {}),
         ...(testCreator && i % 2 === 0
           ? {
               playerTraits: randomizeCreatorTraits(
@@ -158,6 +178,14 @@ for (let i = 0; i < total; i++) {
       i % 5,
       (r) => {
         const e = activeDefinition(r);
+        if (testRealism) {
+          report.realism.observed++;
+          if (r.month < 72 && r.finance.cash !== 0) throw Error('Infant disposable cash');
+          if (r.month < 216 && r.finance.liability.principal !== 0) throw Error('Minor debt');
+          if (e && r.month < 216 && e.version !== 12) throw Error('Minor adult pool');
+          if (e?.decisionActor === 'caregiver') report.realism.caregiverScenes++;
+          if (e?.decisionActor === 'child') report.realism.childScenes++;
+        }
         if (testCreatorEconomy)
           for (const c of r.creator?.channels ?? []) {
             report.creatorEconomy.maxAudience = Math.max(
@@ -218,9 +246,31 @@ for (let i = 0; i < total; i++) {
         }
       },
     );
+    const replayStarted = performance.now();
     if (canonical(replay(run.seed, run.setup, run.actions)) !== canonical(run))
       throw Error('Replay divergence');
     report.replayChecked++;
+    if (testRealism) {
+      report.realism.maxReplayMs = Math.max(
+        report.realism.maxReplayMs,
+        Math.round(performance.now() - replayStarted),
+      );
+      report.realism.maxHeapBytes = Math.max(
+        report.realism.maxHeapBytes,
+        process.memoryUsage().heapUsed,
+      );
+      const count = run.childhoodFinance!.transactions.length;
+      report.realism.householdTransactions += count;
+      report.realism.maxHouseholdTransactions = Math.max(
+        report.realism.maxHouseholdTransactions,
+        count,
+      );
+      report.realism.maxTotalTransactions = Math.max(
+        report.realism.maxTotalTransactions,
+        count + run.finance.transactions.length,
+      );
+      report.realism.presentation[run.setup.presentation!]++;
+    }
     if (run.creator?.channels.length) {
       report.creatorEconomy.runs++;
       report.creatorEconomy.channels += run.creator.channels.length;

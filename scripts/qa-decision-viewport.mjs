@@ -53,7 +53,7 @@ export async function viewportJourney(
     await page.getByRole('button', { name: 'Xem trước cuộc đời' }).click();
     await page.getByRole('button', { name: 'Bắt đầu với nhân vật này' }).click();
     await page.getByRole('button', { name: 'Bắt đầu câu chuyện' }).click();
-  expect((await readGuestRun(page)).setup.lifeRules).toBe('creator-v1');
+    expect((await readGuestRun(page)).setup.lifeRules).toBe('realism-v1');
     await expect(page.getByTestId('hud-age')).toHaveText('0 tuổi');
     await page.evaluate(() => document.fonts.ready);
     let lastTouch = -Infinity;
@@ -70,7 +70,7 @@ export async function viewportJourney(
       await expect(page.getByTestId('hud-age')).toHaveText(`${Math.floor(run.month / 12)} tuổi`);
       await expect(page.getByTestId('hud-year')).toHaveText(String(run.world.year));
       await expect(page.getByTestId('hud-cash')).toHaveText(
-        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(run.finance.cash)} ${run.setup.currency === 'vnd-v1' ? '₫' : 'đSM'}`,
+        `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(run.setup.lifeRules === 'realism-v1' && run.month < 72 ? run.finance.savings : run.finance.cash)} ${run.setup.currency === 'vnd-v1' ? '₫' : 'đSM'}`,
       );
       m.step = i;
       measurements.push(m);
@@ -104,6 +104,60 @@ export async function viewportJourney(
     expect(await readGuestRun(page)).toEqual(before);
     // New education lives replace the old six-choice school direction with four
     // distinct paths. Retain explicit coverage of the published six-choice save.
+    report.callbacks = [];
+    for (const label of ['reading', 'sharedcare', 'budget', 'work', 'project']) {
+      const callback = JSON.parse(
+        readFileSync(`tests/data/viewport-realism-${label}.json`, 'utf8'),
+      );
+      await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
+      await page
+        .getByLabel('Chọn tệp game đã lưu')
+        .setInputFiles({
+          name: `callback-${label}.json`,
+          mimeType: 'application/json',
+          buffer: Buffer.from(JSON.stringify(callback)),
+        });
+      await expect(page.getByRole('dialog')).not.toBeVisible();
+      await expect.poll(() => readGuestRun(page)).toEqual(callback.run);
+      const measured = await assertDecisionViewport(page);
+      report.callbacks.push({ label, ...measured });
+      await page.screenshot({
+        path: `docs/evidence/${evidencePrefix}-${config.name}-callback-${label}.png`,
+      });
+    }
+    const emptyWallet = JSON.parse(
+      readFileSync('tests/data/viewport-realism-no-cash.json', 'utf8'),
+    );
+    await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
+    await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+      name: 'child-no-cash.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(JSON.stringify(emptyWallet)),
+    });
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    await expect.poll(() => readGuestRun(page)).toEqual(emptyWallet.run);
+    const moneyFallback = await assertDecisionViewport(page);
+    expect(moneyFallback.choiceCount).toBe(4);
+    await expect(page.getByTestId('event-choice').first()).toContainText('Lập kế hoạch');
+    await expect(page.getByTestId('event-choice').nth(1)).toContainText(
+      'Chưa chi hoặc nhận món đồ',
+    );
+    report.moneyFallback = moneyFallback;
+    await page.screenshot({
+      path: `docs/evidence/${evidencePrefix}-${config.name}-money-fallback.png`,
+    });
+    const fiveFixture = JSON.parse(readFileSync('tests/data/viewport-five-choices.json', 'utf8'));
+    await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
+    await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
+      name: 'five-choices.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(JSON.stringify(fiveFixture)),
+    });
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    await expect.poll(() => readGuestRun(page)).toEqual(fiveFixture.run);
+    const fiveCompatibility = await assertDecisionViewport(page);
+    expect(fiveCompatibility.choiceCount).toBe(5);
+    report.fiveCompatibility = fiveCompatibility;
     const fixture = JSON.parse(readFileSync('tests/data/viewport-dynamic-v1.json', 'utf8'));
     await page.getByRole('button', { name: 'Lưu và tải game', exact: true }).click();
     await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
@@ -118,7 +172,9 @@ export async function viewportJourney(
     await page.evaluate(() => document.fonts.ready);
     const compatibility = await assertDecisionViewport(page);
     expect(compatibility.choiceCount).toBe(6);
-    expect([...new Set([...counts, compatibility.choiceCount])].sort()).toEqual([4, 5, 6]);
+    expect(
+      [...new Set([...counts, fiveCompatibility.choiceCount, compatibility.choiceCount])].sort(),
+    ).toEqual([4, 5, 6]);
     expect(
       Math.max(...measurements.map((m) => m.narrativeLength), compatibility.narrativeLength),
     ).toBeGreaterThanOrEqual(100);

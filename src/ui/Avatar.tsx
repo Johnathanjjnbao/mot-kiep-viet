@@ -7,11 +7,18 @@ export function Avatar({
   portrait = false,
   biologicalAge,
 }: {
-  run: Pick<GameRun, 'seed' | 'month' | 'player' | 'wardrobe'>;
+  run: Pick<GameRun, 'seed' | 'month' | 'player' | 'wardrobe'> & Partial<Pick<GameRun, 'setup'>>;
   portrait?: boolean;
   biologicalAge?: number;
 }) {
-  const { identity: a, stage, stageName, expression } = avatarState(run, biologicalAge);
+  const {
+    identity: a,
+    stage,
+    stageName,
+    expression,
+    presentation,
+    age,
+  } = avatarState(run, biologicalAge);
   const id = useId(),
     child = stage < 2,
     infant = stage === 0,
@@ -33,12 +40,96 @@ export function Avatar({
     hairItem = worn('hair'),
     accessory = worn('accessory');
   const longTop = top?.shape === 'dress' || top?.shape === 'aodai';
+  const look =
+    presentation === 'girl'
+      ? infant
+        ? 'Bé gái'
+        : 'Ngoại hình nữ'
+      : presentation === 'boy'
+        ? infant
+          ? 'Bé trai'
+          : 'Ngoại hình nam'
+        : '';
+  if (presentation && infant) {
+    const pose = age === 0 ? 'lying' : age === 1 ? 'sitting' : 'toddler';
+    return (
+      <svg
+        className={`living-avatar ${portrait ? 'avatar-portrait' : ''}`}
+        viewBox={portrait ? '5 61 150 141' : '0 0 160 240'}
+        role="img"
+        aria-label={`${look} · ${stageName} · ${expression}`}
+        data-avatar={a.key}
+        data-stage={stage}
+        data-presentation={presentation}
+        data-pose={pose}
+        data-expression={expression}
+      >
+        <title>{`${look} · ${pose === 'lying' ? 'Nằm trong nôi' : pose === 'sitting' ? 'Ngồi trên chiếu' : 'Chập chững'} · ${expression}`}</title>
+        <rect width="160" height="240" rx="60" fill="#f1e7d4" />
+        <path d="M16 211q66-21 129 0" fill="none" stroke="#c7bda5" strokeWidth="3" />
+        <ellipse cx="80" cy="206" rx="63" ry="14" fill="#d5c5a7" />
+        <g stroke="#493d34" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round">
+          {pose === 'lying' ? (
+            <g transform="rotate(-24 80 147)">
+              <rect x="16" y="112" width="127" height="76" rx="34" fill="#fff9ed" />
+              <path d="M63 125q64-10 67 30t-56 23L56 149Z" fill={a.fabric} />
+              <path d="m84 127 19 47m-7-49 19 41" fill="none" stroke="#e9dfc7" />
+              <ellipse cx="48" cy="143" rx={25 + a.face} ry="27" fill={a.skin} />
+              <path d="M25 132q10-24 35-11" fill="none" stroke={hair} strokeWidth="6" />
+              {(a.style === 1 || a.style === 2) && (
+                <path
+                  d="M26 130q-8 16 0 26m26-39q13 6 16 17"
+                  fill="none"
+                  stroke={hair}
+                  strokeWidth="5"
+                />
+              )}
+              <path d="M36 141q4-4 8 0m9 0q4-4 8 0m-18 13q5 5 10 0" fill="none" />
+              <path d="M80 139q-12 13-22 4" fill="none" stroke={a.skin} strokeWidth="9" />
+            </g>
+          ) : (
+            <g>
+              <path
+                d={
+                  pose === 'sitting'
+                    ? 'M62 160q-36 33-16 38l33-7 33 7q21-8-15-38'
+                    : 'M62 164l-4 40h18l5-25 5 25h18l-7-40'
+                }
+                fill={a.fabric}
+              />
+              <path
+                d="M56 124q-16 20-19 46m67-46q16 20 19 46"
+                fill="none"
+                stroke={a.skin}
+                strokeWidth="12"
+              />
+              <path d="M58 119q22-11 44 0l5 53q-28 13-54 0Z" fill={top?.color ?? a.fabric} />
+              <ellipse cx="80" cy="94" rx={28 + a.face} ry="30" fill={a.skin} />
+              <path d="M53 86q4-30 39-20 16 4 16 25l-7-13q-22 10-41 0Z" fill={hair} />
+              {a.style === 1 || a.style === 2 ? (
+                <path
+                  d="M54 86q-13 31 2 39m48-39q15 31-1 39"
+                  fill="none"
+                  stroke={hair}
+                  strokeWidth="7"
+                />
+              ) : null}
+              <circle cx="69" cy="95" r="2.5" fill="#302d29" />
+              <circle cx="91" cy="95" r="2.5" fill="#302d29" />
+              <path d="M74 110q6 5 12 0" fill="none" />
+            </g>
+          )}
+        </g>
+      </svg>
+    );
+  }
   return (
     <svg
       className={`living-avatar ${portrait ? 'avatar-portrait' : ''}`}
       viewBox={portrait ? '30 7 100 112' : '0 0 160 240'}
       role="img"
-      aria-label={`${stageName} · ${expression}`}
+      aria-label={`${look ? look + ' · ' : ''}${stageName} · ${expression}`}
+      data-presentation={presentation}
       data-avatar={a.key}
       data-stage={stage}
       data-expression={expression}

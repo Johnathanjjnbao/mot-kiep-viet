@@ -1,4 +1,11 @@
 import {
+  initChildhoodFinance,
+  settleChildhoodFinance,
+  applyChildMoney,
+  requestMinorFinance,
+  contextualChildhood,
+} from './childhood';
+import {
   requestCreator,
   settleCreators,
   closeCreatorsAtEnd,
@@ -10,6 +17,7 @@ import {
   hasEmploymentRules,
   hasEnterpriseRules,
   hasCreatorRules,
+  hasRealismRules,
   discretionaryCount,
 } from '../domain/rules';
 import {
@@ -228,6 +236,12 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   if (setup.currency) run.setup.currency = setup.currency;
   run.setup.expansion = setup.expansion ?? 'family';
   if (setup.lifeRules) run.setup.lifeRules = setup.lifeRules;
+  if (hasRealismRules(run))
+    run.setup.presentation =
+      setup.presentation ?? (hashSeed('realism-presentation:' + seed) % 2 ? 'girl' : 'boy');
+  else if (setup.presentation !== undefined || setup.hairstyle !== undefined)
+    throw Error('Ngoại hình được chọn chỉ dành cho luật cuộc đời mới.');
+  if (hasRealismRules(run) && setup.hairstyle) run.setup.hairstyle = setup.hairstyle;
   if (hasAcademicRules(run))
     run.academics = { applications: [], studies: [], qualifications: [], focus: null };
   if (hasEmploymentRules(run))
@@ -282,13 +296,23 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
     if (run.player.traits.includes('Ưa yên tĩnh')) run.player.stats.mood += 3;
     if (run.player.traits.includes('Thích giúp đỡ')) run.player.stats.social += 3;
   }
-  transact(run, 'opening', 'Khoản gia đình để dành cho bạn', {
-    cash: designMoney(
+  if (hasRealismRules(run))
+    initChildhoodFinance(
       run,
-      [25, 70, 150, 300, 600][run.household.resources] +
-        residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
-    ),
-  });
+      designMoney(
+        run,
+        [25, 70, 150, 300, 600][run.household.resources] +
+          residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
+      ),
+    );
+  else
+    transact(run, 'opening', 'Khoản gia đình để dành cho bạn', {
+      cash: designMoney(
+        run,
+        [25, 70, 150, 300, 600][run.household.resources] +
+          residentParents(run).filter((p) => p.personality?.includes('frugal')).length * 25,
+      ),
+    });
   note(
     run,
     'Một cuộc đời bắt đầu',
@@ -399,7 +423,7 @@ const rawActiveDefinition = (run: GameRun) => {
     : annualDefinition;
 };
 export const activeDefinition = (run: GameRun) => {
-  const event = rawActiveDefinition(run);
+  const event = contextualChildhood(run, rawActiveDefinition(run));
   if (!event || run.setup.currency !== 'vnd-v1') return event;
   return {
     ...event,
@@ -423,6 +447,8 @@ export const activeDefinition = (run: GameRun) => {
   };
 };
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 12 && !hasRealismRules(run)) return false;
+  if (hasRealismRules(run) && ageOf(run) < 18 && event.version !== 12) return false;
   if (event.version === 11 && !creatorSceneEligible(run, event.id)) return false;
   if (event.version === 10 && !businessSceneEligible(run, event.id)) return false;
   if (event.version === 9 && !isAnnual(run)) return false;
@@ -460,7 +486,12 @@ function selectEvent(run: GameRun) {
     return;
   }
   let options = EVENTS.filter(
-    (e) => eventEligible(run, e) && (!isAnnual(run) || ageOf(run) >= 3 || e.version === 9),
+    (e) =>
+      eventEligible(run, e) &&
+      (!isAnnual(run) ||
+        ageOf(run) >= 3 ||
+        e.version === 9 ||
+        (hasRealismRules(run) && e.version === 12)),
   );
   if (!options.length) options = [FALLBACK];
   const dynamic = !!run.setup.lifeRules && ageOf(run) < 18 && (!isAnnual(run) || ageOf(run) >= 3);
@@ -525,6 +556,9 @@ function startCareer(
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'child-money':
+      applyChildMoney(run, e.operation, e.amount, id);
+      break;
     case 'creator':
       applyCreatorStory(run, e.operation);
       break;
@@ -743,6 +777,7 @@ function tick(run: GameRun) {
       record.incomeFactor = 1 + (random(run, 'world') - 0.5) * (1 - job.stability);
     }
   }
+  if (hasRealismRules(run) && run.month === 216) settleChildhoodFinance(run);
   settleMonth(run);
   settleBusinesses(run);
   settleCreators(run);
@@ -1036,6 +1071,17 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
     discretionaryCount(run) >= 120
   )
     throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
+  if (action.type === 'minor-finance') {
+    const next = requestMinorFinance(run, action),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error('Hãy hoàn tất câu chuyện trước khi đổi phần tiền cá nhân.');
+    return next;
+  }
   if (action.type === 'creator') {
     const next = requestCreator(run, action),
       active = activeDefinition(next);

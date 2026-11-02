@@ -1,4 +1,11 @@
 import type { Enterprise } from './enterprise';
+import type {
+  ChildhoodFinance,
+  MinorAction,
+  Presentation,
+  DecisionActor,
+  ChildMoneyOperation,
+} from './childhood';
 import type { CreatorEconomy, CreatorAction, CreatorOperation } from './creator-economy';
 import type { EnterpriseAction } from './enterprise-actions';
 import type { BusinessOperation } from './enterprise-actions';
@@ -154,6 +161,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'child-money'; operation: ChildMoneyOperation; amount: number }
   | { kind: 'creator'; operation: CreatorOperation }
   | { kind: 'enterprise'; operation: BusinessOperation }
   | { kind: 'employment'; operation: EmploymentOperation }
@@ -214,6 +222,7 @@ export interface Choice {
   };
 }
 export interface EventDefinition {
+  decisionActor?: DecisionActor;
   id: string;
   version: number;
   category: Category;
@@ -260,6 +269,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | MinorAction
   | CreatorAction
   | EnterpriseAction
   | AcademicAction
@@ -270,10 +280,18 @@ export type RunAction =
   | { type: 'choose'; eventId: string; choiceId: string }
   | { type: 'manage'; action: ManageAction; career?: CareerId };
 export interface RunSetup {
+  presentation?: Presentation;
+  hairstyle?: 'short' | 'long' | 'curly';
   /** Immutable denomination; absent historical saves retain design money. */
   currency?: 'dsm-v1' | 'vnd-v1';
   lifeRules?:
-    'dynamic-v1' | 'education-v1' | 'career-v1' | 'annual-v1' | 'enterprise-v1' | 'creator-v1';
+    | 'dynamic-v1'
+    | 'education-v1'
+    | 'career-v1'
+    | 'annual-v1'
+    | 'enterprise-v1'
+    | 'creator-v1'
+    | 'realism-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -288,6 +306,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  childhoodFinance?: ChildhoodFinance;
   creator?: CreatorEconomy;
   enterprise?: { ventures: Enterprise[]; lastSceneMonth: number };
   employment?: EmploymentState;

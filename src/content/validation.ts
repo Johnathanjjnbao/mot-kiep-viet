@@ -53,6 +53,13 @@ export const conditionSchema = z
   .strict();
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
+    z
+      .object({
+        kind: z.literal('child-money'),
+        operation: z.enum(['gift', 'earn', 'save', 'spend', 'household-cost']),
+        amount: z.number().int().min(0).max(10),
+      })
+      .strict(),
     z.object({ kind: z.literal('creator'), operation: z.enum(CREATOR_OPERATIONS) }).strict(),
     z.object({ kind: z.literal('enterprise'), operation: z.enum(BUSINESS_OPERATIONS) }).strict(),
     z
@@ -208,6 +215,7 @@ export const eventSchema = z
       })
       .strict(),
     arc: id.optional(),
+    decisionActor: z.enum(['caregiver', 'child', 'player']).optional(),
   })
   .strict();
 const walk = (effects: Effect[]): Effect[] =>
@@ -227,6 +235,31 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
       .map((e) => (e.kind === 'flag' ? e.flag : '')),
   );
   for (const e of events) {
+    if (e.version === 12) {
+      const low = e.condition.minAge ?? 0,
+        high = e.condition.maxAge ?? 82;
+      if (
+        high > 17 ||
+        e.decisionActor !== (high < 3 ? 'caregiver' : 'child') ||
+        (low < 3 && high >= 3)
+      )
+        errors.push(`Minor actor/age ${e.id}`);
+      for (const c of e.choices)
+        for (const fx of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ])) {
+          if (!['stat', 'flag', 'habit', 'child-money', 'relationship'].includes(fx.kind))
+            errors.push(`Minor effect ${e.id}/${fx.kind}`);
+          if (
+            fx.kind === 'child-money' &&
+            ((fx.operation === 'earn' && low < 13) ||
+              (['save', 'spend'].includes(fx.operation) && low < 6))
+          )
+            errors.push(`Minor money age ${e.id}`);
+        }
+    }
     const result = eventSchema.safeParse(e);
     if (!result.success) errors.push(`${e.id}: ${result.error.message}`);
     if (ids.has(e.id)) errors.push(`Duplicate ID ${e.id}`);

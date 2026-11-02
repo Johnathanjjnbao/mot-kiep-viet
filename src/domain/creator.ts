@@ -60,9 +60,19 @@ const label = z
   );
 export const setupSchema = z
   .object({
+    presentation: z.enum(['boy', 'girl']).optional(),
+    hairstyle: z.enum(['short', 'long', 'curly']).optional(),
     currency: z.enum(['dsm-v1', 'vnd-v1']).optional(),
     lifeRules: z
-      .enum(['dynamic-v1', 'education-v1', 'career-v1', 'annual-v1', 'enterprise-v1', 'creator-v1'])
+      .enum([
+        'dynamic-v1',
+        'education-v1',
+        'career-v1',
+        'annual-v1',
+        'enterprise-v1',
+        'creator-v1',
+        'realism-v1',
+      ])
       .optional(),
     expansion: z.enum(['wardrobe', 'social', 'family']).optional(),
     cohort: z.number().int().min(1975).max(2026),

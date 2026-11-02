@@ -1,3 +1,5 @@
+import { hasRealismRules } from '../domain/rules';
+import { ChildhoodFinance } from './ChildhoodFinance';
 import { useState } from 'react';
 import { EnterprisePanel } from './EnterprisePanel';
 import { CreatorEconomyPanel } from './CreatorEconomyPanel';
@@ -162,6 +164,7 @@ function WorkPanel({
   );
 }
 export function FinancePanel({ run, act }: Props) {
+  if (hasRealismRules(run) && run.month < 216) return <ChildhoodFinance run={run} act={act} />;
   const enabled = ageOf(run) >= 18 && run.status !== 'ended',
     f = run.finance;
   const actions = [

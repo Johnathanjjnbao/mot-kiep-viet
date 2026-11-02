@@ -69,7 +69,7 @@ export async function businessJourney(page: Page, url: string, prefix: string) {
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   let r = await readGuestRun(page);
-  expect(['enterprise-v1', 'creator-v1']).toContain(r.setup.lifeRules);
+  expect(['enterprise-v1', 'creator-v1', 'realism-v1']).toContain(r.setup.lifeRules);
   expect(r.setup.currency).toBe('vnd-v1');
   for (let i = 0; i < 60 && r.month < 216; i++) r = await businessDecision(page);
   expect(r.month).toBe(216);
@@ -95,12 +95,12 @@ export async function businessJourney(page: Page, url: string, prefix: string) {
   expect(b.status).toBe('suspended');
   const card = page.locator('[data-enterprise="enterprise:0"]');
   await expect(card.getByTestId('business-total-profit')).toContainText('-');
-  await card.getByLabel('Số tiền chuyển giữa bạn và tiệm', { exact: true }).fill('30000000');
+  await card.getByLabel('Số tiền chuyển giữa bạn và tiệm', { exact: true }).fill('20000000');
   await card.getByRole('button', { name: 'Góp thêm vốn', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect
     .poll(async () => (await readGuestRun(page)).enterprise!.ventures[0].totals.contributed)
-    .toBe(34000000);
+    .toBe(24000000);
   await card.getByLabel('Định giá', { exact: true }).selectOption('balanced');
   await card.getByLabel('Mức hàng muốn dự trữ (0–200 món)', { exact: true }).fill('20');
   await card.getByLabel('Quảng bá có phí mỗi tháng', { exact: true }).uncheck();

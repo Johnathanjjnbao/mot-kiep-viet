@@ -1,5 +1,15 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## realism-v1 — ownership và trình bày (0.3.9)
+
+`setup.lifeRules=realism-v1` là selector mới bất biến, kế thừa creator-v1 qua capability predicates. Save cũ không tự đổi luật, tiền tệ hay ngoại hình. `setup.presentation` lưu boy/girl, chọn ngẫu nhiên bằng hash namespace riêng, không tiêu thụ RNG mô phỏng và không suy từ tên. `setup.hairstyle` tùy chọn dùng cho cả hai cách thể hiện. Thiếu selector mới tiếp tục render avatar cũ.
+
+`childhoodFinance` ghi quỹ hộ, owner run.id và các posting riêng. Opening của hộ không vào `finance.cash`. Mọi tiền đứng tên trẻ vẫn qua `transact`; chuyển hộ→trẻ có cùng ID và hai posting đối ứng, được invariant đối chiếu từng cặp. Quà dưới6 vào savings giữ hộ; tiêu vặt6–17, thù lao việc nhỏ13+ và thao tác minor-finance được strict Zod/CAS/120 discretionary kiểm tra. Không vay hoặc tài sản nghề nghiệp trước18. Clock hộ dừng ở216 tháng, đánh dấu adultAccess nhưng không chuyển quỹ hộ sang cá nhân; giữ sổ lịch sử. Không có thêm action hàng tháng.
+
+Pool v12 chỉ cho realism tuổi0–17, actor caregiver0–2/child3–17.45 cảnh tác giả/180 lựa chọn; validator cấm cash/career/adult effects, schedule lách tuổi và earn sớm. Năm callback có điều kiện dùng cờ trải nghiệm đọc sách/chia chăm sóc/lập ngân sách/việc nhỏ/dự án; bổ sung kết quả và kỹ năng cho cảnh sau. Adult tiếp tục engine creator hiện hành. UI chỉ đọc run và dispatch; HUD dưới6 hiển thị savings đứng tên con, không gọi quỹ hộ là tiền trong túi.
+
+Giữ engine/content3.0.0/schema4 vì selector capability đã nằm trong setup canonical;14 golden cũ khóa riêng,2 golden realism mới.512actions,120 quản lý,5MiB không đổi. Không migration SQL mới; cloud envelope003 giữ nguyên, không suy diễn PGlite thành Auth thật.
+
 ## annual-v1 (0.3.7-yearly.1)
 
 Setup bất biến annual-v1 kế thừa academics/employment; selector cũ giữ nguyên. annual.ts suy tuổi đã quyết định từ choices canonical, không dùng journal/seen làm mốc. advance chọn cảnh ở cùng tháng nếu tuổi còn nợ, nếu đã chọn thì tick tối đa tới sinh nhật sau hoặc interrupt đầu tiên. Không ghi đè active focus; academic/social/family giữ ưu tiên và resume. Nghỉ học làm mất điều kiện của employment-search thì chỉ thay cảnh đó ở cùng tháng. tick không ép hồi ký82 cho annual; health vẫn quyết định death.

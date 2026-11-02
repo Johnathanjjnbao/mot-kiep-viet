@@ -1,5 +1,14 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## v0.3.9 đang kiểm chứng — tiếp nối1b339ba (02/11/2026)
+
+Đời mới dùng selector bất biến `realism-v1`, kế thừa toàn bộ creator/enterprise/annual/education/employment. Tách quỹ hộ và tiền đứng tên trẻ; trẻ dưới6 tuổi không có tiền tự chi, quà vào tiết kiệm giữ hộ, tiêu vặt từ6, việc nhỏ có thù lao từ13, đủ18 chỉ mở quyền với tiền thuộc mình. Quỹ hộ không nhập tài sản cá nhân. Có45 cảnh riêng cho tuổi0–17/180 lựa chọn, vai người chăm sóc ở0–2 và năm nhánh nối trải nghiệm cũ. Ngoại hình trai/gái và kiểu tóc chọn riêng, được lưu theo đời; em bé nằm/ngồi/chập chững, sáu giai đoạn tuổi. Thẻ lựa chọn tương phản cao giữ khung HUD và ngân sách cuộn.
+
+Các mốc cục bộ đã kiểm: đường sinh→6→13→18→100+, năm dạng gia đình nghèo/giàu; preview bé gái tóc ngắn khớp và lưu/tải qua UI desktop/mobile; gia đình3con+job+shop+channel+120 quản lý tới107 tuổi,374actions/986017bytes, canonical/import khớp; đại học và đời123 tuổi cũng khớp.14 golden lịch sử giữ nguyên, thêm2 golden realism riêng. verify cuối300 tests/31 files,16 golden PASS.1000 đời mới/1000 canonical replay PASS:0 vi phạm, max462 actions/919340 bytes/5790 postings; đủ45 cảnh mới. Lượt E2E đầu88/96, sau sửa kỳ vọng và fixture có16 focused PASS (gồm8 ca cũ fail +6 viewport×20); không nhận lượt đầu là fullcommandPASS.6 native contexts và production smoke build cuối PASS. Secret scan cuối1656 text objects/0 findings PASS. Sáu viewport trên build cuối, gồm5 callback canonical và ví rỗng,6/6 PASS. CI/live đang chờ. Chưa tuyên bố phát hành. Cloud owner login NOT RUN; không SQL/Auth/RLS/DB-ID thay đổi.
+
+F (freelance contracts, gaming độc lập, collaboration, idol) còn INCOMPLETE; không coi niche creator hiện có là đã làm xong F. Xem LIFE_REALISM_PROGRESS.md. Các phần phía dưới là lịch sử.
+
+
 ## Đã phát hành 0.3.8-creator.1 — G5 guest VERIFIED PASS (02/11/2026)
 
 Tiếp tục đúng checkpoint, không xây lại game. Baseline7dc19a2 → checkpointA927e734 → cửa hàngc61bc65 đã xác minh → nguồn creator **1b356715e079541c214ee50b16cf93a7f0cab189**. [CI41329517842](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41329517842) build/deploy completed/success;286tests/29files và94E2E khôngskip PASS trên CI. [Live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repo](https://github.com/Johnathanjjnbao/mot-kiep-viet). JS/CSS/SW live khớp SHA-256 build. Sáu browser contexts Chromium/Firefox/WebKit ×desktop/mobile chơi thật cả cửa hàng và creator PASS; G5 guest desktop/mobile full life,5family forms, history/font/save/load/export/import PASS. Tạo nhân vật từ0→19→YouTube, canonical adult→TikTokLIVEgaming/gear/xét/payout/zero-income/loss/rest/ba slot/reload/đóng và1995gate đều kiểm trong UI thật. Không dựa vào HTTP200 hoặc unit reducer riêng để gọi deployed.

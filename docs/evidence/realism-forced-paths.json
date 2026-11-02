@@ -1,0 +1,30 @@
+{
+  "status": "VERIFIED PASS",
+  "family": {
+    "seed": "family-life-0",
+    "age": 107,
+    "actions": 374,
+    "bytes": 986017,
+    "transactions": 6008,
+    "children": 3,
+    "optional": 120,
+    "shops": 1,
+    "channels": 1
+  },
+  "university": {
+    "seed": "university-0",
+    "age": 21,
+    "actions": 48,
+    "bytes": 143617,
+    "transactions": 897,
+    "children": 0
+  },
+  "longLife": {
+    "seed": "realism-canonical",
+    "age": 123,
+    "actions": 251,
+    "bytes": 651814,
+    "transactions": 4574,
+    "children": 0
+  }
+}

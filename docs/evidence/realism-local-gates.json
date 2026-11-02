@@ -1,0 +1,66 @@
+{
+  "status": "LOCAL GATES VERIFIED; CI/live PENDING",
+  "sourceBaseline": "1b339ba1a1ab1a406700ef376d99ea1811343b0a",
+  "verify": {
+    "tests": 300,
+    "files": 31,
+    "goldens": 16,
+    "historicalGoldensUnchanged": 14
+  },
+  "browser": {
+    "initialFull": {
+      "passed": 88,
+      "failed": 8,
+      "reason": "Old finance expectations, initial recovery capital and purchases at6 with insufficient owned cash; no failed command represented as PASS"
+    },
+    "finalFocused": {
+      "passed": 16,
+      "failed": 0,
+      "includesAllEightFixedCases": true,
+      "includesSixViewportsWith20Decisions": true
+    },
+    "nativeContexts": 6,
+    "nativeStatus": "VERIFIED PASS",
+    "finalSixViewports": "6 PASS on final build incl5 canonical callbacks and empty-wallet fallback"
+  },
+  "simulation": {
+    "runs": 1000,
+    "canonicalReplays": 1000,
+    "violations": 0,
+    "fallbacks": 0,
+    "missingAges": 0,
+    "skippedAges": 0,
+    "maxActions": 462,
+    "maxBytes": 919340,
+    "maxTotalPostings": 5790,
+    "maxHouseholdPostings": 578,
+    "maxReplayMs": 800,
+    "maxSampledHeapBytes": 111276792,
+    "newAuthoredScenesObserved": 45,
+    "financialFallbackRegression": "Final1000/replay rerun after zero-wallet/household fallback; dedicated canonical empty-wallet fixture and five callback fixtures measured across six viewports"
+  },
+  "forcedFamily": {
+    "children": 3,
+    "shops": 1,
+    "channels": 1,
+    "discretionary": 120,
+    "age": 107,
+    "actions": 374,
+    "bytes": 986017,
+    "postings": 6008
+  },
+  "production": "VERIFIED PASS with VITE_BASE_PATH=/mot-kiep-viet/ on final build",
+  "auditProduction": 0,
+  "secretScan": {
+    "objects": 1656,
+    "findings": 0
+  },
+  "cloudOwner": "NOT RUN",
+  "legacyProofsRestoredByteForByte": 94,
+  "remaining": "F1/F2/F4/F3 careers after A-D live release",
+  "bundleWarning": {
+    "entryMinifiedBytes": 1292401,
+    "gzipBytesApprox": 390860,
+    "status": "Vite >500kB warning retained; no threshold suppression"
+  }
+}

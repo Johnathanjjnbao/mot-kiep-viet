@@ -1,4 +1,9 @@
-import { hasAnnualRules, hasEnterpriseRules, discretionaryCount } from '../domain/rules';
+import {
+  hasAnnualRules,
+  hasEnterpriseRules,
+  hasRealismRules,
+  discretionaryCount,
+} from '../domain/rules';
 import { creatorReason, monetizationReady, creatorPolicyReason } from '../engine/creator-economy';
 import { businessReason } from '../engine/business';
 import { designMoney } from '../domain/currency';
@@ -45,6 +50,22 @@ export function simulateLife(
         run.actions.filter((a) =>
           ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
         ).length < 114;
+    if (
+      hasRealismRules(run) &&
+      managementAvailable &&
+      run.month >= 72 &&
+      run.month < 216 &&
+      run.finance.cash > 0 &&
+      run.actions.filter((a) => a.type === 'minor-finance').length < (run.month >= 156 ? 2 : 1)
+    ) {
+      run = dispatch(run, {
+        type: 'minor-finance',
+        operation: run.month >= 156 ? 'spend' : 'save',
+        amount: 1,
+        expected: run.actions.length,
+      });
+      continue;
+    }
     if (run.creator && managementAvailable && !creatorReason(run)) {
       const channels = run.creator.channels,
         total = channels.length + (run.enterprise?.ventures.length ?? 0);

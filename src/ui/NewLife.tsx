@@ -32,6 +32,7 @@ export function NewLife({
     [seed, setSeed] = useState(''),
     [setup, setSetup] = useState<RunSetup>({
       currency: 'vnd-v1',
+      lifeRules: 'realism-v1',
       cohort: 1995,
       region: 'northern-village',
       name: 'Nguyễn Minh An',
@@ -64,6 +65,7 @@ export function NewLife({
   const portraitRun = createRun(rawPortraitRun.seed, {
     ...rawPortraitRun.setup,
     currency: 'vnd-v1',
+    lifeRules: 'realism-v1',
   });
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
@@ -146,7 +148,7 @@ export function NewLife({
     } else
       onStart(seed.trim() || generatedSeed, {
         ...portraitRun.setup,
-        lifeRules: 'creator-v1',
+        lifeRules: 'realism-v1',
         currency: 'vnd-v1',
       });
   }
@@ -218,8 +220,17 @@ export function NewLife({
                 </dd>
                 <dt>Môi trường</dt>
                 <dd>{setup.environment === 'urban' ? 'Đô thị' : 'Nông thôn'}</dd>
-                <dt>Khoản để dành</dt>
-                <dd>{formatMoney(portraitRun.finance.cash, portraitRun)}</dd>
+                <dt>Ngoại hình</dt>
+                <dd>{portraitRun.setup.presentation === 'girl' ? 'Bé gái' : 'Bé trai'}</dd>
+                <dt>Tiền đứng tên con</dt>
+                <dd>
+                  {formatMoney(portraitRun.finance.savings, portraitRun)} · người chăm sóc giữ hộ
+                </dd>
+                <dt>Quỹ hộ chăm sóc</dt>
+                <dd>
+                  {formatMoney(portraitRun.childhoodFinance!.cash, portraitRun)} · không phải tiền
+                  cá nhân
+                </dd>
                 <dt>Gia cảnh</dt>
                 <dd>{WEALTH[setup.wealth ?? 2]}</dd>
                 <dt>Người chăm sóc</dt>
@@ -244,7 +255,7 @@ export function NewLife({
                 onClick={() =>
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
-                    lifeRules: 'creator-v1',
+                    lifeRules: 'realism-v1',
                     currency: 'vnd-v1',
                   })
                 }
@@ -288,6 +299,43 @@ export function NewLife({
                         Gợi ý tên
                       </button>
                     </div>
+                    <label htmlFor="presentation">Ngoại hình nhân vật</label>
+                    <select
+                      id="presentation"
+                      value={setup.presentation ?? ''}
+                      onChange={(e) =>
+                        update({
+                          presentation: e.target.value
+                            ? (e.target.value as 'boy' | 'girl')
+                            : undefined,
+                        })
+                      }
+                    >
+                      <option value="">Để hạt giống chọn</option>
+                      <option value="boy">Bé trai</option>
+                      <option value="girl">Bé gái</option>
+                    </select>
+                    <label htmlFor="hairstyle">Kiểu tóc</label>
+                    <select
+                      id="hairstyle"
+                      value={setup.hairstyle ?? ''}
+                      onChange={(e) =>
+                        update({
+                          hairstyle: e.target.value
+                            ? (e.target.value as 'short' | 'long' | 'curly')
+                            : undefined,
+                        })
+                      }
+                    >
+                      <option value="">Theo mẫu ngoại hình</option>
+                      <option value="short">Tóc ngắn</option>
+                      <option value="long">Tóc dài</option>
+                      <option value="curly">Tóc xoăn</option>
+                    </select>
+                    <p className="fine-print">
+                      Ngoại hình chỉ là hình ảnh; không quyết định tên, tính cách, học tập hay nghề
+                      nghiệp. Mọi kiểu tóc đều dùng được.
+                    </p>
                     <label htmlFor="birth-year">Năm sinh (1975–2026)</label>
                     <input
                       id="birth-year"

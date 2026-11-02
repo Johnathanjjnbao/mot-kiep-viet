@@ -50,7 +50,12 @@ describe('authored content and eligibility', () => {
       arcs: 7,
       errors: [],
     });
-    expect(validateContent()).toMatchObject({ total: 205, arcs: 7, errors: [] });
+    expect(validateContent(EVENTS.filter((e) => e.version < 12))).toMatchObject({
+      total: 205,
+      arcs: 7,
+      errors: [],
+    });
+    expect(validateContent()).toMatchObject({ total: 250, arcs: 7, errors: [] });
   });
   it('detects duplicate IDs and broken references', () => {
     const events = structuredClone(EVENTS);

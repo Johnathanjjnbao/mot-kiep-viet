@@ -1,3 +1,5 @@
+import { hasRealismRules } from '../domain/rules';
+import { settleChildhoodFinance } from './childhood';
 import { designMoney } from '../domain/currency';
 import type { GameRun, Transaction } from '../domain/model';
 import { residentParents } from '../domain/creator';
@@ -15,6 +17,12 @@ export function transact(
   label: string,
   delta: Partial<Pick<Transaction, 'cash' | 'savings' | 'debt' | 'assets'>>,
 ) {
+  if (
+    hasRealismRules(run) &&
+    run.month < 216 &&
+    ((delta.debt ?? 0) > 0 || (delta.assets ?? 0) !== 0)
+  )
+    throw Error('Trẻ chưa dùng khoản vay hoặc tài sản người lớn.');
   const f = run.finance;
   let ids = transactionIds.get(f);
   if (!ids) {
@@ -65,6 +73,16 @@ export function mandatoryCost(run: GameRun, id: string, label: string, amount: n
 }
 export function settleMonth(run: GameRun) {
   if (run.finance.settledThrough >= run.month) throw new Error('Month already settled');
+  if (hasRealismRules(run) && run.month < 216) {
+    settleChildhoodFinance(run);
+    const interest = Math.floor(run.finance.savings * 0.0015);
+    if (interest)
+      transact(run, `month:${run.month}:savings-interest`, 'Lãi khoản tiết kiệm đứng tên con', {
+        savings: interest,
+      });
+    run.finance.settledThrough = run.month;
+    return;
+  }
   const age = ageOf(run),
     key = `month:${run.month}`;
   const job = currentCareer(run);

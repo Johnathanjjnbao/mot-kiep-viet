@@ -1,5 +1,14 @@
 # Master Plan — Một Kiếp Việt
 
+## v0.3.9 đang kiểm chứng — tiếp nối1b339ba (02/11/2026)
+
+Đời mới dùng selector bất biến `realism-v1`, kế thừa toàn bộ creator/enterprise/annual/education/employment. Tách quỹ hộ và tiền đứng tên trẻ; trẻ dưới6 tuổi không có tiền tự chi, quà vào tiết kiệm giữ hộ, tiêu vặt từ6, việc nhỏ có thù lao từ13, đủ18 chỉ mở quyền với tiền thuộc mình. Quỹ hộ không nhập tài sản cá nhân. Có45 cảnh riêng cho tuổi0–17/180 lựa chọn, vai người chăm sóc ở0–2 và năm nhánh nối trải nghiệm cũ. Ngoại hình trai/gái và kiểu tóc chọn riêng, được lưu theo đời; em bé nằm/ngồi/chập chững, sáu giai đoạn tuổi. Thẻ lựa chọn tương phản cao giữ khung HUD và ngân sách cuộn.
+
+Các mốc cục bộ đã kiểm: đường sinh→6→13→18→100+, năm dạng gia đình nghèo/giàu; preview bé gái tóc ngắn khớp và lưu/tải qua UI desktop/mobile; gia đình3con+job+shop+channel+120 quản lý tới107 tuổi,374actions/986017bytes, canonical/import khớp; đại học và đời123 tuổi cũng khớp.14 golden lịch sử giữ nguyên, thêm2 golden realism riêng. verify cuối300 tests/31 files,16 golden PASS.1000 đời mới/1000 canonical replay PASS:0 vi phạm, max462 actions/919340 bytes/5790 postings; đủ45 cảnh mới. Lượt E2E đầu88/96, sau sửa kỳ vọng và fixture có16 focused PASS (gồm8 ca cũ fail +6 viewport×20); không nhận lượt đầu là fullcommandPASS.6 native contexts và production smoke build cuối PASS. Secret scan cuối1656 text objects/0 findings PASS. Sáu viewport trên build cuối, gồm5 callback canonical và ví rỗng,6/6 PASS. CI/live đang chờ. Chưa tuyên bố phát hành. Cloud owner login NOT RUN; không SQL/Auth/RLS/DB-ID thay đổi.
+
+F (freelance contracts, gaming độc lập, collaboration, idol) còn INCOMPLETE; không coi niche creator hiện có là đã làm xong F. Xem LIFE_REALISM_PROGRESS.md. Các phần phía dưới là lịch sử.
+
+
 ## Đã phát hành 0.3.7-yearly.1 — G5 guest VERIFIED PASS (01/11/2026)
 
 Source **1fb059cd73d5dc676724f705f58094f50dd30c70**, main; [CI41281828843](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41281828843) completed/success cho build và deploy. [Chơi bản live](https://johnathanjjnbao.github.io/mot-kiep-viet/), [repository](https://github.com/Johnathanjjnbao/mot-kiep-viet). Tiếp tục baseline da55d28; không làm lại Creator/A/B/C. Đời mới dùng annual-v1, trải nghiệm từng tuổi từ0, không ép kết thúc ở82. Đời/save cũ giữ luật,8golden cũ và frozen v1/v2; golden annual432954253 riêng. Engine/content3.0.0/schema4 và mọi ID lưu/history giữ nguyên.

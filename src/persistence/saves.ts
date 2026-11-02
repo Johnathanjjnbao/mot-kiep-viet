@@ -1,3 +1,4 @@
+import { minorActionSchema } from '../domain/childhood';
 import { enterpriseActionSchema } from '../domain/enterprise-actions';
 import { creatorActionSchema } from '../domain/creator-economy';
 import { parseSave as parseV2 } from '../legacy/v2/persistence/saves';
@@ -30,6 +31,7 @@ const career = z.enum([
   'business',
 ]);
 const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
+  minorActionSchema,
   creatorActionSchema,
   enterpriseActionSchema,
   z

@@ -1,0 +1,76 @@
+{
+  "status": "VERIFIED PASS",
+  "method": "WCAG relative luminance from browser computed RGB; disabled sampled on detached-style clone, no GameRun mutation",
+  "states": [
+    {
+      "name": "normal",
+      "background": "rgb(40, 51, 45)",
+      "text": "rgb(255, 249, 237)",
+      "hint": "rgb(224, 217, 201)",
+      "arrow": "rgb(255, 249, 237)",
+      "focus": false,
+      "outline": "none",
+      "outlineOffset": "5px",
+      "height": 81.875,
+      "textContrast": 12.5,
+      "hintContrast": 9.33,
+      "arrowContrast": 12.5
+    },
+    {
+      "name": "hover",
+      "background": "rgb(54, 77, 63)",
+      "text": "rgb(255, 249, 237)",
+      "hint": "rgb(224, 217, 201)",
+      "arrow": "rgb(255, 249, 237)",
+      "focus": false,
+      "outline": "none",
+      "outlineOffset": "5px",
+      "height": 81.875,
+      "textContrast": 8.74,
+      "hintContrast": 6.52,
+      "arrowContrast": 8.74
+    },
+    {
+      "name": "pressed",
+      "background": "rgb(29, 41, 33)",
+      "text": "rgb(255, 249, 237)",
+      "hint": "rgb(224, 217, 201)",
+      "arrow": "rgb(255, 249, 237)",
+      "focus": false,
+      "outline": "none",
+      "outlineOffset": "5px",
+      "height": 81.875,
+      "textContrast": 14.39,
+      "hintContrast": 10.74,
+      "arrowContrast": 14.39
+    },
+    {
+      "name": "keyboard-focus",
+      "background": "rgb(40, 51, 45)",
+      "text": "rgb(255, 249, 237)",
+      "hint": "rgb(224, 217, 201)",
+      "arrow": "rgb(255, 249, 237)",
+      "focus": true,
+      "outline": "solid",
+      "outlineOffset": "2px",
+      "height": 81.875,
+      "textContrast": 12.5,
+      "hintContrast": 9.33,
+      "arrowContrast": 12.5
+    },
+    {
+      "name": "disabled-style-clone",
+      "background": "rgb(236, 228, 211)",
+      "text": "rgb(102, 88, 73)",
+      "hint": "rgb(102, 88, 73)",
+      "arrow": "rgb(102, 88, 73)",
+      "focus": false,
+      "outline": "none",
+      "outlineOffset": "5px",
+      "height": 64,
+      "textContrast": 5.43,
+      "hintContrast": 5.43,
+      "arrowContrast": 5.43
+    }
+  ]
+}

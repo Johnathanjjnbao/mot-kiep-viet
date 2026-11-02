@@ -1,5 +1,6 @@
 import { hashSeed } from '../engine/random';
 import type { GameRun } from '../domain/model';
+import { hasRealismRules } from '../domain/rules';
 export const AGE_STAGES = [
   'Sơ sinh',
   'Tuổi thơ',
@@ -24,12 +25,25 @@ export function appearance(seed: string) {
   };
 }
 export function avatarState(
-  run: Pick<GameRun, 'seed' | 'month' | 'player'>,
+  run: Pick<GameRun, 'seed' | 'month' | 'player'> & Partial<Pick<GameRun, 'setup'>>,
   biologicalAge?: number,
 ) {
   const age = biologicalAge ?? Math.floor(run.month / 12);
   const stage = ageStage(age),
     identity = appearance(run.seed);
+  const presentation =
+    run.setup && hasRealismRules({ setup: run.setup }) ? run.setup.presentation : undefined;
+  if (presentation) {
+    const h = hashSeed('realism-portrait:' + run.seed + ':' + presentation);
+    const fabrics = ['#526d50', '#974733', '#3c5969', '#9a774b', '#6d586b'];
+    const base = fabrics.indexOf(identity.fabric);
+    identity.fabric = fabrics[(base + (presentation === 'girl' ? 2 : 0)) % fabrics.length];
+    const hairstyle = run.setup?.hairstyle ?? (presentation === 'girl' ? 'long' : 'short');
+    identity.key = 'realism:' + identity.key + ':' + presentation + ':' + hairstyle;
+    identity.style = hairstyle === 'long' ? 1 + (h % 2) : hairstyle === 'curly' ? 3 : h % 2 ? 4 : 0;
+    identity.face = (h >>> 5) % 3;
+    identity.silhouette = (h >>> 9) % 3;
+  }
   const expression =
     run.player.stats.health < 35
       ? 'Mệt mỏi'
@@ -40,5 +54,5 @@ export function avatarState(
           : run.player.stats.social > 65
             ? 'Tự tin'
             : 'Bình thản';
-  return { identity, age, stage, stageName: AGE_STAGES[stage], expression };
+  return { identity, age, stage, stageName: AGE_STAGES[stage], expression, presentation };
 }
