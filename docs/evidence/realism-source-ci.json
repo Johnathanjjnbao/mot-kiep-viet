@@ -1,0 +1,14 @@
+{
+  "source": "a2fc1b284a300fdfdbd0846b3cf5a68f283029b9",
+  "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41393793903",
+  "runId": 41393793903,
+  "status": "completed",
+  "conclusion": "success",
+  "buildJob": 125110665950,
+  "deployJob": 125113995904,
+  "verify": {"tests": 300, "files": 31, "historicalGoldensUnchanged": 14, "totalGoldens": 16},
+  "browser": {"passed": 96, "failed": 0, "skipped": 0, "duration": "8.7m"},
+  "secretScan": {"textObjectsScanned": 1686, "findings": []},
+  "productionSmoke": "success",
+  "deploy": "success"
+}

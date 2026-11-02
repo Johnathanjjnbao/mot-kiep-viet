@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL GATES VERIFIED; CI/live PENDING",
+  "status": "VERIFIED PASS; exact CI and live G5 verified",
   "sourceBaseline": "1b339ba1a1ab1a406700ef376d99ea1811343b0a",
   "verify": {
     "tests": 300,
@@ -21,7 +21,12 @@
     },
     "nativeContexts": 6,
     "nativeStatus": "VERIFIED PASS",
-    "finalSixViewports": "6 PASS on final build incl5 canonical callbacks and empty-wallet fallback"
+    "finalSixViewports": "6 PASS on final build incl5 canonical callbacks and empty-wallet fallback",
+    "ciFull": {
+      "passed": 96,
+      "skipped": 0,
+      "failed": 0
+    }
   },
   "simulation": {
     "runs": 1000,
@@ -62,5 +67,8 @@
     "entryMinifiedBytes": 1292401,
     "gzipBytesApprox": 390860,
     "status": "Vite >500kB warning retained; no threshold suppression"
-  }
+  },
+  "source": "a2fc1b284a300fdfdbd0846b3cf5a68f283029b9",
+  "ci": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41393793903",
+  "live": "VERIFIED PASS"
 }
