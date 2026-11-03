@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## v0.3.11 Living World & Assets — đang phát triển (04/11/2026)
+
+Tiếp tục baseline a3b7cad trên nhánh codex/living-world-assets-20261104; working tree ban đầu sạch, tag stable/remote đã đối chiếu. Ruleset assets-v1 dành cho đời mới, chưa bật default hoặc phát hành. Đang triển khai nhà ở trước, rồi phương tiện/thiết bị/PC và kiểm ngân sách đời dài. Context map, version plan và tiến trình ở LIVING_WORLD_ASSETS_PROGRESS.md. Không sửa backup stable hoặc nhận các số PASS cũ là kết quả mới. Website công khai hiện vẫn0.3.10-stable.1.
+
 ## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
 
 Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.
