@@ -1,4 +1,7 @@
 {
+  "authoritySHA256": "2f2905380e8a72c3b305880894097fa3f6daca684e331eaf62b47a437776467f",
+  "sourceSHA": "ed85da3543ac8f26efb848958e5048048725567b",
+  "startedAt": "2026-11-04T00:50:32.893Z",
   "status": "VERIFIED PASS",
   "ruleset": "assets-v1",
   "runs": 10,
@@ -8,9 +11,9 @@
   "maxActions": 336,
   "maxOptional": 108,
   "maxSaveBytes": 1018334,
-  "maxReplayMs": 591.009,
-  "totalReplayMs": 5316.733199999999,
-  "maxHeapBytes": 167875656,
+  "maxReplayMs": 576.675,
+  "totalReplayMs": 5199.051600000002,
+  "maxHeapBytes": 190959992,
   "minAge": 68,
   "maxAge": 92,
   "fallbackCount": 0,
@@ -61,8 +64,8 @@
     "living-relatives-visit": 3
   },
   "failures": [],
-  "elapsedMs": 19711.0959,
-  "averageReplayMs": 531.6733199999999,
+  "elapsedMs": 13407.130599999999,
+  "averageReplayMs": 519.9051600000001,
   "notes": [
     "invalid asset/era/affordability checks run inside every authoritative action and assertRun; failures are in invariantFailures",
     "Heap is a Node QA sample, not proof of browser leak behavior.",

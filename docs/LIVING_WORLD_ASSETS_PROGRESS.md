@@ -42,7 +42,7 @@ Tham chiếu Graft: model.ts:96–143,277–354; rules.ts:1–24; finance.ts:7�
 | Baseline/tag/remote/context map | VERIFIED PASS |
 | A: nhà ở đầy đủ | LOCAL PASS; chuẩn bị commit nền tảng |
 | B: phương tiện | LOCAL PASS; checkpoint transport đã bổ sung3ca canonical |
-| C: thiết bị | LOCAL PASS core + Edge desktop/mobile; checkpoint riêng tiếp theo |
+| C: thiết bị | LOCAL PASS;3ca thiết bị/import và2ca policy reserve mới |
 | D: PC Builder | LOCAL PASS core/cấu hình/financing + Edge desktop/mobile; checkpoint riêng tiếp theo |
 | E: tích hợp/narrative/ngân sách/gates/CI/live | INCOMPLETE; final1000/fullE2E/CI/live chưa chạy |
 
@@ -79,3 +79,9 @@ Trước commit nền tảng: typecheck/lint bổ sung PASS; secret scan2036text
 ## Checkpoint B — phương tiện
 
 Nền tảng A đã commit `f2aa36583125210d866db8bec95caf139b7ec63c`; final1000 đang chạy từ lõi ấy, kèm fingerprint nội dung/luật. Thêm3ca canonical phương tiện PASS: quyền sở hữu khác tập vận hành, hỗ trợ đi lại tối đa3không cấp lương/nghề; hai phương tiện thu đúng2,7triệu/tháng trong12tháng một posting gộp, hao mòn/sửa tốn tiền; bán/thay giữ lịch sử và chặn bán ID cũ lần hai. Hành trình Edge desktop/mobile đã mua/tập sử dụng ô tô và ảnh thật được xem. Không đổi engine/content trong checkpoint B; browser3engines/finalrelease còn PENDING.
+
+## Checkpoint C — thiết bị và negative import
+
+Checkpoint B `ed85da3` đã commit.3ca thiết bị mới PASS: tier có lợi ích nhỏ nhưng không sinh lương/kênh/thu nhập; sửa tốn tiền và không reset tuổi, thay xóa ownership cũ; parser từ chối sửa owner, thêm tiền hoặc command field lạ. UI ghi rõ chỉ số hỗ trợ là tổng của các đồ đang giữ. Không gán mức tính toán của PC cho riêng điện thoại.
+
+Lượt1000 đầu đã dừng sau khi ghi100/1000 và gặp seed103/118: policy tự nghỉ việc rồi cố resume học dù phần dự trữ đã hết chỗ cho bước thứ hai. Đây là engine từ chối optional command, không phải chấp nhận mua vượt tiền. Đã sửa policy để kiểm phần dự trữ giữa hai thao tác, kể cả mua/mặc đồ; thêm2regression canonical PASS. Không sửa luật hoặc bỏ hành động trong đời người chơi. Lượt dở không được nhận là1000PASS; log giữ ngoài repo. Fresh verify sau sửa:456tests/45files,29golden lịch sử,content365/errors0,lint/typecheck/Pages-base build PASS. Final1000 sẽ chạy lại trọn bộ từ checkpoint C.

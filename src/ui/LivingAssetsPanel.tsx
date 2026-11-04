@@ -208,7 +208,7 @@ function OwnedItem({ run, a, ask }: { run: GameRun; a: OwnedLivingAsset; ask: As
             ? canOperateVehicle(run, a)
               ? 'Đủ điều kiện vận hành theo tham số game.'
               : 'Sở hữu không tự cho phép vận hành; cần phần tập sử dụng và sức khỏe phù hợp.'
-            : `Đồ dùng hỗ trợ việc số ở mức có giới hạn; hiện mức hỗ trợ tính toán ${benefits.computing.toFixed(1)}/6.`}
+            : `Tổng hỗ trợ của các đồ dùng đang giữ: việc số ${benefits.digital.toFixed(1)}/6, tính toán ${benefits.computing.toFixed(1)}/6, sáng tạo ${benefits.creator.toFixed(1)}/5. Không tự tạo thu nhập.`}
       </p>
       <div className="living-action-row">
         {a.category === 'home' && (

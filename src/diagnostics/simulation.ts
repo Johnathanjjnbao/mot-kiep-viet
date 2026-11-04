@@ -239,6 +239,7 @@ export function simulateLife(
         run.actions.filter((a) => a.type === 'academic').length < 35
       ) {
         if (currentCareer(run)) run = manage(run, 'quit-job');
+        if (storyCapacityReason(run)) continue;
         run = dispatch(run, {
           type: 'academic',
           operation: 'resume',
@@ -358,12 +359,14 @@ export function simulateLife(
           item: clothing,
           expected: run.actions.length,
         });
-        run = dispatch(run, {
-          type: 'wardrobe',
-          operation: 'equip',
-          item: clothing,
-          expected: run.actions.length,
-        });
+        if (!storyCapacityReason(run))
+          run = dispatch(run, {
+            type: 'wardrobe',
+            operation: 'equip',
+            item: clothing,
+            expected: run.actions.length,
+          });
+        if (hasAssetsRules(run)) continue;
       }
       if (
         managementAvailable &&
@@ -387,6 +390,7 @@ export function simulateLife(
         run = manage(run, 'buy-home');
       if (
         managementAvailable &&
+        !storyCapacityReason(run) &&
         ageOf(run) >= 18 &&
         run.finance.cash > designMoney(run, 150) &&
         policy === 1
@@ -395,6 +399,7 @@ export function simulateLife(
       if (
         ageOf(run) >= 18 &&
         managementAvailable &&
+        !storyCapacityReason(run) &&
         run.finance.liability.principal > 0 &&
         run.finance.cash > designMoney(run, 80) &&
         policy === 2

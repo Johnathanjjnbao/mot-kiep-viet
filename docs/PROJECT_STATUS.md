@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Checkpoint C v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
+
+Thiết bị có3ca mới về lợi ích có trần/sửa/thay/negative import;2ca policy seed103/118 bảo vệ bước quản lý kế tiếp sát dự trữ. Fresh verify456tests/45files và29golden cũ PASS,content365/errors0. Lượt1000 đầu bị dừng vì policy tự nối thao tác sau khi reserve đã chặn; không nhận là PASS, sẽ chạy lại trọn bộ từ C. Default/main/live stable chưa đổi. Xem LIVING_WORLD_ASSETS_PROGRESS.md.
+
 ## Checkpoint B v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
 
 Nền tảng nhà/tài sản đã commit f2aa365; thêm3ca phương tiện canonical PASS, kiểm quyền sở hữu/tập dùng, giới hạn2xe,12tháng chi phí/hao mòn/sửa và thay/bán không lặp. Runtime giữ nguyên từ A; final1000 đang chạy. Default/main/live stable giữ nguyên. Chi tiết LIVING_WORLD_ASSETS_PROGRESS.md; finalgates/CI/live chưa hoàn tất.
