@@ -41,7 +41,7 @@ Tham chiếu Graft: model.ts:96–143,277–354; rules.ts:1–24; finance.ts:7�
 |---|---|
 | Baseline/tag/remote/context map | VERIFIED PASS |
 | A: nhà ở đầy đủ | LOCAL PASS; chuẩn bị commit nền tảng |
-| B: phương tiện | LOCAL PASS core + Edge desktop/mobile; checkpoint riêng tiếp theo |
+| B: phương tiện | LOCAL PASS; checkpoint transport đã bổ sung3ca canonical |
 | C: thiết bị | LOCAL PASS core + Edge desktop/mobile; checkpoint riêng tiếp theo |
 | D: PC Builder | LOCAL PASS core/cấu hình/financing + Edge desktop/mobile; checkpoint riêng tiếp theo |
 | E: tích hợp/narrative/ngân sách/gates/CI/live | INCOMPLETE; final1000/fullE2E/CI/live chưa chạy |
@@ -75,3 +75,7 @@ Vốn cửa hàng được giữ độc lập trong finance.assets; không bị 
 Các mốc trên là local. Final1000, golden assets riêng, fullE2E,3engines×2devices, production smoke cuối, audit/secret scan, main push/CI/live còn INCOMPLETE. Không Auth/RLS/SQL mới; migration003 cho phép envelope schema4/actions512, không có allowlist chặn type mới. Owner login và fresh live A/B/anon vẫn NOT RUN.
 
 Trước commit nền tảng: typecheck/lint bổ sung PASS; secret scan2036text objects (working files,publicdist,reachableGitblobs)/0findings PASS. Auditproduction0; auditall12moderate/0high/0critical trong nhánh ESLint/minimatch của dev tools hiện có. Không đổi dependency hoặc downgrade cưỡng bức để làm đẹp báo cáo. .env.local chỉ có3biến public client config, không có tài khoản synthetic A/B sẵn dùng; không tạo Auth identities mới.
+
+## Checkpoint B — phương tiện
+
+Nền tảng A đã commit `f2aa36583125210d866db8bec95caf139b7ec63c`; final1000 đang chạy từ lõi ấy, kèm fingerprint nội dung/luật. Thêm3ca canonical phương tiện PASS: quyền sở hữu khác tập vận hành, hỗ trợ đi lại tối đa3không cấp lương/nghề; hai phương tiện thu đúng2,7triệu/tháng trong12tháng một posting gộp, hao mòn/sửa tốn tiền; bán/thay giữ lịch sử và chặn bán ID cũ lần hai. Hành trình Edge desktop/mobile đã mua/tập sử dụng ô tô và ảnh thật được xem. Không đổi engine/content trong checkpoint B; browser3engines/finalrelease còn PENDING.
