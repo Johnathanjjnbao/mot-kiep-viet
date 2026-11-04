@@ -1,4 +1,5 @@
 import { currentProject } from '../engine/freelance';
+import { totalDebt } from '../engine/finance';
 import { STORY_ARCS } from '../content/arcs';
 import {
   ArrowRight,
@@ -400,8 +401,7 @@ export function Summary({
             run.finance.assets.reduce((n, a) => n + a.value, 0),
             run,
           )}{' '}
-          · Để dành: {money(run.finance.savings, run)} · Còn nợ:{' '}
-          {money(run.finance.liability.principal, run)}
+          · Để dành: {money(run.finance.savings, run)} · Còn nợ: {money(totalDebt(run), run)}
         </p>
       </article>
       <div className="summary-actions">

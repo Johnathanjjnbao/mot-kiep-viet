@@ -197,6 +197,7 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
         {screen === 'history' && (
           <Deferred key="history" onBack={() => setScreen('home')}>
             <LifeHistory
+              refreshKey={session.saveStatus}
               key={auth.account?.userId ?? 'guest'}
               repository={repository}
               run={run}

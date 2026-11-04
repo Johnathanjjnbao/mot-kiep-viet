@@ -9,7 +9,7 @@ import { found } from './business-fixture';
 import { startChannel } from './creator-economy-fixture';
 import { businessReason } from '../src/engine/business';
 import { creatorReason } from '../src/engine/creator-economy';
-export function assetsCombined(index = 0) {
+export function assetsCombined(index = 0, fillFrom = 65) {
   let r = clearAssetStory(creativeGraduateParent(index, 'assets-v1'));
   const checkpoints: Record<string, GameRun> = { parent: r };
   const act = (a: Parameters<typeof assetAction>[1]) => {
@@ -85,7 +85,7 @@ export function assetsCombined(index = 0) {
         continue;
       }
       // Deliberately fill the shared discretionary ceiling after the asset loop, through real transfers.
-      if (age >= 65 && (r.finance.cash >= 5_000_000 || r.finance.savings > 0)) {
+      if (age >= fillFrom && (r.finance.cash >= 5_000_000 || r.finance.savings > 0)) {
         r = dispatch(r, {
           type: 'manage',
           action: r.finance.savings ? 'withdraw-money' : 'save-money',

@@ -43,8 +43,8 @@ Tham chiếu Graft: model.ts:96–143,277–354; rules.ts:1–24; finance.ts:7�
 | A: nhà ở đầy đủ | LOCAL PASS; chuẩn bị commit nền tảng |
 | B: phương tiện | LOCAL PASS; checkpoint transport đã bổ sung3ca canonical |
 | C: thiết bị | LOCAL PASS;3ca thiết bị/import và2ca policy reserve mới |
-| D: PC Builder | LOCAL PASS core/cấu hình/financing + Edge desktop/mobile; checkpoint riêng tiếp theo |
-| E: tích hợp/narrative/ngân sách/gates/CI/live | INCOMPLETE; final1000/fullE2E/CI/live chưa chạy |
+| D: PC Builder | LOCAL PASS;8golden assets,PC financing/upgrade và history browser |
+| E: tích hợp/narrative/ngân sách/gates/CI/live | INCOMPLETE;1000/replay đã hoàn tất, fullE2E/cross-browser/CI/live còn PENDING |
 
 Gates sẽ ghi lệnh, kết quả mới, SHA, CI và ảnh thật khi thực hiện. Chưa có tuyên bố v0.3.11 đã deployed.
 
@@ -85,3 +85,17 @@ Nền tảng A đã commit `f2aa36583125210d866db8bec95caf139b7ec63c`; final1000
 Checkpoint B `ed85da3` đã commit.3ca thiết bị mới PASS: tier có lợi ích nhỏ nhưng không sinh lương/kênh/thu nhập; sửa tốn tiền và không reset tuổi, thay xóa ownership cũ; parser từ chối sửa owner, thêm tiền hoặc command field lạ. UI ghi rõ chỉ số hỗ trợ là tổng của các đồ đang giữ. Không gán mức tính toán của PC cho riêng điện thoại.
 
 Lượt1000 đầu đã dừng sau khi ghi100/1000 và gặp seed103/118: policy tự nghỉ việc rồi cố resume học dù phần dự trữ đã hết chỗ cho bước thứ hai. Đây là engine từ chối optional command, không phải chấp nhận mua vượt tiền. Đã sửa policy để kiểm phần dự trữ giữa hai thao tác, kể cả mua/mặc đồ; thêm2regression canonical PASS. Không sửa luật hoặc bỏ hành động trong đời người chơi. Lượt dở không được nhận là1000PASS; log giữ ngoài repo. Fresh verify sau sửa:456tests/45files,29golden lịch sử,content365/errors0,lint/typecheck/Pages-base build PASS. Final1000 sẽ chạy lại trọn bộ từ checkpoint C.
+
+## Checkpoint D — PC, hồi ký và kiểm chứng đời dài
+
+PC đã có9nhóm/41linh kiện, tương thích socket/RAM/form/clearance/lưu trữ/tản nhiệt/nguồn, build tiền mặt hoặc trả trước50%/24tháng, thay linh kiện/bán/sửa với chứng từ riêng. Browser Edge desktop/mobile đã nâng vỏ→nguồn→GPU, vay PC8,65triệu và vay nhà348,075triệu, canonical từng bước PASS. Trước1995 panel giải thích chưa có PC thay vì đưa9ô trống; máy đã mua hiển thị cấu hình thật đang giữ. UI đọc draft và chỉ dispatch khi xác nhận.
+
+8golden assets mới khóa độc lập29golden lịch sử: opening,cọc hư hại/rời thuê,mortgage,PC financed+upgrade,bán xử lý nhà,combined86tuổi,long112tuổi và death107tuổi còn2.299.996₫ nợ PC.3ca PC economy kiểm không trẻ hóa CPU khi thay vỏ, không thu hồi nhầm giá linh kiện mới và giới hạn12hồ sơ vay. Không sửa expected của golden cũ. Fresh verify cuối D:468tests/47files,37golden tổng,content365/errors0,lint/typecheck/build Pages-base PASS.
+
+Final1000 đã hoàn tất trên cùng luật/content/parser từ `ea4ae64`:1.000đời +1.000strict canonical replay,0vi phạm/0mismatch/0fallback/0tuổi thiếu-bỏ, max371actions/109optional/1.169.112bytes, tuổi62–100,1.000người từng sở hữu/thuê và291người từng vay. Báo cáo [assets-1000-lives.json](evidence/assets-1000-lives.json) giữ rõ2batch:999đời hợp lệ của lượt đầu; seed955 bị engine từ chối đổi tài sản khi pending story mất điều kiện, được policy xử lý như một lần từ chối rồi trả lời câu chuyện trước. Chỉ chạy lại seed955; `git diff --quiet ea4ae64 -- src/domain src/engine src/content src/persistence` xác nhận không đổi luật. Giữ [lượt FAIL ban đầu](evidence/assets-1000-initial-guard-failure.json),không nhận lượt ấy là một lệnh1000PASS. Presentation counters gồm cả prefix đã thử; tổng tài chính/hành động chỉ tính1.000đời đã hoàn tất.
+
+[Forced paths](evidence/assets-forced-paths.json):11fixture canonical, trong đó combined có bằng thật/3con/8lượt nghề/tiệm+kênh/housing moves/ô tô/3lần thay điện thoại/PCvay+nâng cấp tới86tuổi,324actions/107optional/1.033.032bytes; biến thể120optional tới85tuổi/333actions; long-life112tuổi; death107tuổi còn nợ;12vay đã tất toán và lần13bị từ chối. Reserve-boundary churn thực sự chạm dự báo512 ở198actions, từ chối optional tiếp rồi kết thúc tự nhiên97tuổi/348actions, không cắt log/tuổi. Không gọi đây là canonical đời511actions. Input giả513 chỉ là negative parser check và bị từ chối.
+
+Browser history mới2/2PASS: kết thúc112/107tuổi, số nợ Summary gồm cả khoản vay tài sản,2hồi ký/export canonical, mở đời đang chơi khác vẫn giữ2bản. Đã sửa UI refresh khi archive vừa hoàn tất; trước đó mở lịch sử quá nhanh có thể giữ danh sách rỗng cũ. Chờ đọc2save dài có thể vượt5giây nên test chờ đúng điều kiện tới20giây; không coi việc tăng timeout là cải thiện hiệu năng. Cả số dư/hành động/archive vẫn được kiểm, có trạng thái đang giữ hồi ký và nút thử lại khi lỗi. Không đổi DB ID hoặc format history.
+
+Default/package/main/live vẫn stable ở checkpoint D. E còn: bật default mới ở candidate đã bảo vệ, full130E2E,cross3engines×2devices,profileCPU4×,production smoke,secret scan/audit cuối,main push/exact-SHA CI/live. Entry khoảng1,337MB/gzip404KB, panel riêng22,62KB; giữ cảnh báo500KB, chưa tuyên bố tăng tốc. Owner login/fresh cloud A/B/anon NOT RUN; không Auth/RLS/SQL mới.

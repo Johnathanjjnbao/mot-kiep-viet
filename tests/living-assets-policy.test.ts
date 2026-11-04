@@ -5,7 +5,7 @@ import { FAMILIES } from '../src/domain/creator';
 import type { RunSetup } from '../src/domain/model';
 import { discretionaryCount } from '../src/domain/rules';
 import { canonical, parseSave, snapshot } from '../src/persistence/saves';
-for (const i of [103, 118])
+for (const i of [103, 118, 955])
   it('finishes when a second optional step no longer fits the story reserve: seed ' + i, () => {
     const families = Object.keys(FAMILIES) as NonNullable<RunSetup['family']>[];
     const setup: RunSetup = {

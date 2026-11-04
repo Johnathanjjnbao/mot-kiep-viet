@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Checkpoint D v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
+
+PC build/vay/nâng cấp đã chơi bằng UI;8golden assets mới +29cũ, fresh verify468tests/47files PASS.1.000đời/1.000canonical replay hoàn tất qua999+1seed955 được chạy tiếp trên cùng luật, max371actions/1.169.112bytes,0vi phạm/mismatch/fallback/tuổi thiếu. Giữ báo cáo FAIL ban đầu và bằng chứng resume; không gọi lượt đầu là1000PASS. Forced combined3con/bằng/nghề/tiệm+kênh/thay đồ,112tuổi và107tuổi còn nợ đềuPASS. History2Edge contexts PASS sau sửa refresh khi archive hoàn tất. Default/main/live stable chưa đổi; E còn full130E2E/cross-browser/profile/production/CI/live. Xem LIVING_WORLD_ASSETS_PROGRESS.md.
+
 ## Checkpoint C v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
 
 Thiết bị có3ca mới về lợi ích có trần/sửa/thay/negative import;2ca policy seed103/118 bảo vệ bước quản lý kế tiếp sát dự trữ. Fresh verify456tests/45files và29golden cũ PASS,content365/errors0. Lượt1000 đầu bị dừng vì policy tự nối thao tác sau khi reserve đã chặn; không nhận là PASS, sẽ chạy lại trọn bộ từ C. Default/main/live stable chưa đổi. Xem LIVING_WORLD_ASSETS_PROGRESS.md.

@@ -129,7 +129,21 @@ export function assetsOptional(r: GameRun, policy: number): GameRun | null {
       expected: r.actions.length,
       ...candidate,
     };
-    if (!livingAssetReason(r, action)) return dispatch(r, action);
+    if (!livingAssetReason(r, action)) {
+      try {
+        return dispatch(r, action);
+      } catch (error) {
+        // A pending choice may depend on the cash/ownership being changed. The engine-owned
+        // clone is rejected; leave the original life untouched and answer its story first.
+        if (
+          error instanceof Error &&
+          error.message ===
+            'Hãy giải quyết câu chuyện đang chờ trước khi đổi tài sản. Tiền và tài sản chưa thay đổi.'
+        )
+          return null;
+        throw error;
+      }
+    }
   }
   return null;
 }

@@ -55,9 +55,63 @@ const report = {
   scenes: {} as Record<string, number>,
   failures: [] as { seed: string; message: string }[],
 };
+const resumePath = process.argv.find((a) => a.startsWith('--resume='))?.slice('--resume='.length);
+const prior = resumePath
+  ? (JSON.parse(readFileSync(resumePath, 'utf8')) as typeof report & { elapsedMs: number })
+  : undefined;
+let resumeAudit: Record<string, unknown> | undefined;
+let retryIndices: Set<number> | undefined;
+if (prior) {
+  if (
+    !/^[0-9a-f]{40}$/.test(prior.sourceSHA) ||
+    prior.ruleset !== 'assets-v1' ||
+    prior.replays !== prior.runs ||
+    prior.runs + prior.failures.length !== count ||
+    prior.failures.some(
+      (f) =>
+        f.message !==
+        'Hãy giải quyết câu chuyện đang chờ trước khi đổi tài sản. Tiền và tài sản chưa thay đổi.',
+    )
+  )
+    throw Error('Only completed batches with this expected optional-command rejection can resume');
+  execFileSync('git', [
+    'diff',
+    '--quiet',
+    prior.sourceSHA,
+    '--',
+    'src/domain',
+    'src/engine',
+    'src/content',
+    'src/persistence',
+  ]);
+  retryIndices = new Set(prior.failures.map((f) => Number(f.seed.replace('assets-release-', ''))));
+  if (
+    [...retryIndices].some((i) => !Number.isInteger(i) || i < 0 || i >= count) ||
+    retryIndices.size !== prior.failures.length
+  )
+    throw Error('Invalid retry seed list');
+  const currentCombinedFingerprint = report.authoritySHA256;
+  resumeAudit = {
+    from: resumePath,
+    completedPreviously: prior.runs,
+    retriedSeeds: prior.failures,
+    unchangedRulesVerifiedAgainst: prior.sourceSHA,
+    previousCombinedRulesAndPolicySHA256: prior.authoritySHA256,
+    currentCombinedRulesAndPolicySHA256: currentCombinedFingerprint,
+    resumedAt: new Date().toISOString(),
+    note: 'Only the diagnostic policy now handles a rejected optional command; successful prior lives and their canonical replays are retained. No game rules/content/save parser changed.',
+  };
+  Object.assign(report, prior, {
+    authoritySHA256: currentCombinedFingerprint,
+    status: 'INCOMPLETE',
+    invariantFailures: 0,
+    failures: [],
+  });
+}
 let longest: GameRun | undefined, largest: GameRun | undefined;
 const start = performance.now();
 for (let i = 0; i < count; i++) {
+  if (retryIndices && !retryIndices.has(i)) continue;
   const seed = 'assets-release-' + i,
     presented = new Set<string>();
   try {
@@ -150,20 +204,27 @@ writeFileSync(
   JSON.stringify(
     {
       ...report,
-      elapsedMs: performance.now() - start,
+      elapsedMs: (prior?.elapsedMs ?? 0) + performance.now() - start,
+      resumeAudit,
       averageReplayMs: report.totalReplayMs / Math.max(1, report.replays),
       notes: [
         'invalid asset/era/affordability checks run inside every authoritative action and assertRun; failures are in invariantFailures',
         'Heap is a Node QA sample, not proof of browser leak behavior.',
         'Scene reachability additionally checked by25 canonical authored fixtures.',
+        'Elapsed time is summed batch runtime. Scene presentation counts include attempted prefixes; completed-life finance/action totals count successful lives only.',
       ],
     },
     null,
     2,
   ) + '\n',
 );
-if (longest) writeFileSync('.local/assets-high-actions.json', JSON.stringify(snapshot(longest)));
-if (largest) writeFileSync('.local/assets-largest-save.json', JSON.stringify(snapshot(largest)));
+if (longest && (!prior || longest.actions.length > prior.maxActions))
+  writeFileSync('.local/assets-high-actions.json', JSON.stringify(snapshot(longest)));
+if (
+  largest &&
+  (!prior || Buffer.byteLength(JSON.stringify(snapshot(largest))) > prior.maxSaveBytes)
+)
+  writeFileSync('.local/assets-largest-save.json', JSON.stringify(snapshot(largest)));
 console.log(
   JSON.stringify({
     status: report.status,

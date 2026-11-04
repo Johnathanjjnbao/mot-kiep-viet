@@ -361,6 +361,34 @@ function PcBuilder({ run, ask }: { run: GameRun; ask: Ask }) {
   const upfront = payment === 'loan' ? quote.down : pc.price;
   const overBudget = pc.price > budget,
     current = run.livingAssets!.owned.find((a) => a.category === 'pc');
+  if (current)
+    return (
+      <section className="living-pc" aria-label="Cấu hình máy đang giữ">
+        <h3>Cấu hình máy đang giữ</h3>
+        <dl className="living-numbers">
+          {PART_SLOTS.map((slot) => (
+            <div key={slot}>
+              <dt>{PART_LABELS[slot]}</dt>
+              <dd>{pcPart(current.parts![slot])!.name}</dd>
+            </div>
+          ))}
+        </dl>
+        <p>
+          Thay linh kiện trong mục sở hữu phía trên. Nếu muốn ráp máy khác, hãy bán máy đang giữ
+          trước; một cấu hình chưa mua không thay đổi chiếc máy này.
+        </p>
+      </section>
+    );
+  if (run.world.year < 1995)
+    return (
+      <section className="living-pc" aria-label="Máy tính theo thời kỳ">
+        <h3>Chưa có máy tự ráp trong bối cảnh này</h3>
+        <p>
+          Danh mục PC của mô phỏng bắt đầu từ năm 1995. Bạn chưa cần chọn linh kiện hoặc trả tiền;
+          có thể giữ ngân sách và tiếp tục câu chuyện.
+        </p>
+      </section>
+    );
   return (
     <section className="living-pc" aria-label="Lắp ráp máy tính">
       <h3>Lắp một chiếc máy để dùng</h3>
@@ -475,11 +503,7 @@ function PcBuilder({ run, ask }: { run: GameRun; ask: Ask }) {
           {quote.rateBps / 100}%/tháng trên gốc còn lại. {quote.reason}
         </p>
       )}
-      {current ? (
-        <p>
-          Máy tự ráp hiện có đã nằm trong mục sở hữu. Nâng cấp ở đó hoặc bán trước khi ráp máy khác.
-        </p>
-      ) : overBudget ? (
+      {overBudget ? (
         <button className="button secondary" disabled>
           Giảm tổng giá hoặc đổi ngân sách
         </button>
@@ -740,6 +764,12 @@ export function LivingAssetsPanel({ run, act, onBack, onStory }: Props) {
                 : 'Công cụ cho những việc hằng ngày'}
           </h3>
           <div className="living-shop">
+            {!catalog.length && (
+              <p>
+                Thời kỳ này chưa có lựa chọn trong danh mục thiết bị. Bạn có thể giữ ngân sách và
+                trở lại sau.
+              </p>
+            )}
             {catalog.map((d) => (
               <ShopItem key={d.id} run={run} definition={d} locality={locality} ask={ask} />
             ))}

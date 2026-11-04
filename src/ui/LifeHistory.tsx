@@ -14,11 +14,13 @@ export function LifeHistory({
   identity,
   onNew,
   repository = guestRepository,
+  refreshKey,
 }: {
   run: GameRun | null;
   identity: string;
   onNew: () => void;
   repository?: GameRepository;
+  refreshKey?: string;
 }) {
   const [records, setRecords] = useState<LifeRecord[]>([]),
     [selected, setSelected] = useState<LifeRecord | null>(null),
@@ -26,6 +28,7 @@ export function LifeHistory({
     [message, setMessage] = useState('Đang đọc lịch sử…'),
     [busy, setBusy] = useState(false);
   const file = useRef<HTMLInputElement>(null);
+  const archiving = run?.status === 'ended' && refreshKey === 'Đang tự lưu…';
   const refresh = useCallback(async () => {
     try {
       setRecords(await repository.history());
@@ -36,6 +39,8 @@ export function LifeHistory({
   }, [repository]);
   useEffect(() => {
     void refresh();
+  }, [refresh, refreshKey]);
+  useEffect(() => {
     if (repository instanceof AccountRepository)
       void repository
         .moreHistory()
@@ -120,8 +125,10 @@ export function LifeHistory({
           Tải thêm lịch sử từ đám mây
         </button>
       )}
-      <p role="status">{busy ? 'Đang xử lý…' : message}</p>
-      {!records.length && !busy && (
+      <p role="status">
+        {busy ? 'Đang xử lý…' : archiving ? 'Đang giữ lại kiếp vừa kết thúc…' : message}
+      </p>
+      {!records.length && !busy && !archiving && (
         <p className="history-empty">
           Chưa có kiếp hoàn tất. Khi bạn đến hồi ký hoặc cuộc đời khép lại, game sẽ tự giữ một bản ở
           đây.
