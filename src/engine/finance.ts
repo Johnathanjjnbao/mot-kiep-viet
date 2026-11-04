@@ -1,21 +1,32 @@
-import { hasRealismRules } from '../domain/rules';
+import { hasAssetsRules, hasRealismRules } from '../domain/rules';
 import { settleChildhoodFinance } from './childhood';
 import { designMoney } from '../domain/currency';
 import type { GameRun, Transaction } from '../domain/model';
 import { residentParents } from '../domain/creator';
 import { ageOf, currentCareer, monthlyExpense, monthlyIncome } from '../content/world';
+export const assetDebt = (r: GameRun) =>
+  hasAssetsRules(r) ? (r.livingAssets?.loans.reduce((n, loan) => n + loan.principal, 0) ?? 0) : 0;
+export const totalDebt = (r: GameRun) => r.finance.liability.principal + assetDebt(r);
+export interface FinancialAssetChange {
+  id: string;
+  name: string;
+  value: number | null;
+}
 export const netWorth = (r: GameRun) =>
   r.finance.cash +
   r.finance.savings +
   r.finance.assets.reduce((n, a) => n + a.value, 0) -
-  r.finance.liability.principal;
+  totalDebt(r);
 const transactionIds = new WeakMap<GameRun['finance'], Set<string>>();
 // The sole writer of monetary balances. Internal mutations operate on an engine-owned clone.
 export function transact(
   run: GameRun,
   id: string,
   label: string,
-  delta: Partial<Pick<Transaction, 'cash' | 'savings' | 'debt' | 'assets'>>,
+  delta: Partial<Pick<Transaction, 'cash' | 'savings' | 'debt' | 'assets' | 'loanDebt'>> & {
+    loanId?: string;
+  },
+  changes?: FinancialAssetChange[],
 ) {
   if (
     hasRealismRules(run) &&
@@ -30,8 +41,44 @@ export function transact(
     transactionIds.set(f, ids);
   }
   if (ids.has(id)) throw new Error(`Duplicate transaction: ${id}`);
-  for (const v of Object.values(delta))
-    if (!Number.isSafeInteger(v)) throw new Error('Invalid transaction amount');
+  for (const [key, value] of Object.entries(delta))
+    if (key !== 'loanId' && !Number.isSafeInteger(value))
+      throw new Error('Invalid transaction amount');
+  const loan = delta.loanId
+    ? run.livingAssets?.loans.find((l) => l.id === delta.loanId)
+    : undefined;
+  if (delta.loanDebt !== undefined || delta.loanId !== undefined) {
+    if (
+      !hasAssetsRules(run) ||
+      !loan ||
+      delta.loanDebt === undefined ||
+      loan.owner !== 'player:' + run.id ||
+      !Number.isSafeInteger(loan.principal + delta.loanDebt) ||
+      loan.principal + delta.loanDebt < 0
+    )
+      throw Error('Khoản vay tài sản hoặc đối ứng không hợp lệ.');
+  }
+  let nextAssets = f.assets;
+  if (changes) {
+    if (!hasAssetsRules(run) || new Set(changes.map((c) => c.id)).size !== changes.length)
+      throw Error('Đối ứng tài sản không hợp lệ.');
+    nextAssets = f.assets.map((a) => ({ ...a }));
+    let change = 0;
+    for (const c of changes) {
+      if (c.value !== null && (!Number.isSafeInteger(c.value) || c.value < 0))
+        throw Error('Giá trị tài sản không hợp lệ.');
+      const index = nextAssets.findIndex((a) => a.id === c.id),
+        previous = index < 0 ? 0 : nextAssets[index].value;
+      if (c.value === null) {
+        if (index < 0) throw Error('Không thể xóa tài sản không có trong sổ.');
+        nextAssets.splice(index, 1);
+      } else if (index < 0) nextAssets.push({ id: c.id, name: c.name, value: c.value });
+      else nextAssets[index] = { id: c.id, name: c.name, value: c.value };
+      change += (c.value ?? 0) - previous;
+    }
+    if (!Number.isSafeInteger(change) || change !== (delta.assets ?? 0))
+      throw Error('Giá trị tài sản không khớp đối ứng.');
+  }
   const tx: Transaction = {
     id,
     month: run.month,
@@ -50,6 +97,8 @@ export function transact(
     )
   )
     throw new Error('Balance overflow');
+  if (loan) loan.principal += tx.loanDebt ?? 0;
+  if (changes) f.assets = nextAssets;
   f.cash += tx.cash;
   f.savings += tx.savings;
   f.liability.principal += tx.debt;

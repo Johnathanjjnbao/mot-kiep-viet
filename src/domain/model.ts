@@ -1,3 +1,4 @@
+import type { LivingAssets, LivingAssetAction, LivingStoryOperation } from './living-assets';
 import type { ArtisticAction, ArtStoryOperation } from './artistic';
 import type { Enterprise } from './enterprise';
 import type { CreativeCareers, CreativeAction, CreativeStoryOperation } from './creative-careers';
@@ -122,6 +123,8 @@ export interface Transaction {
   savings: number;
   debt: number;
   assets: number;
+  loanDebt?: number;
+  loanId?: string;
 }
 export interface Asset {
   id: string;
@@ -164,6 +167,7 @@ export interface JournalEntry {
 }
 export type LifeJournal = JournalEntry[];
 export type Effect =
+  | { kind: 'living'; operation: LivingStoryOperation }
   | { kind: 'freelance'; operation: FreelanceStoryOperation }
   | { kind: 'creative'; operation: CreativeStoryOperation }
   | { kind: 'artistic'; operation: ArtStoryOperation }
@@ -275,6 +279,7 @@ export interface Wardrobe {
 }
 export type PresentationContext = 'interview' | 'ceremony' | 'exercise' | 'creative' | 'thrifty';
 export type RunAction =
+  | LivingAssetAction
   | FreelanceAction
   | CreativeAction
   | ArtisticAction
@@ -302,7 +307,8 @@ export interface RunSetup {
     | 'creator-v1'
     | 'realism-v1'
     | 'creative-v1'
-    | 'stable-v1';
+    | 'stable-v1'
+    | 'assets-v1';
   expansion?: 'wardrobe' | 'social' | 'family';
   cohort: Cohort;
   region: RegionId;
@@ -317,6 +323,7 @@ export interface RunSetup {
   playerTraits?: PlayerPersonality[];
 }
 export interface GameRun {
+  livingAssets?: LivingAssets;
   freelance?: FreelanceState;
   creative?: CreativeCareers;
   childhoodFinance?: ChildhoodFinance;

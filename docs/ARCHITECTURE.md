@@ -1,5 +1,15 @@
 # Thiết kế triển khai · Một Kiếp Việt
 
+## assets-v1 — tài sản cá nhân (v0.3.11 đang kiểm chứng)
+
+Selector assets-v1 bất biến kế thừa stable-v1; engine/content3.0.0/schema4 giữ nguyên. `livingAssets` chỉ có ở đời mới này. Catalog22mục và41linh kiện mô phỏng tách khỏi ownership. Nhà/xe/thiết bị/PC đang giữ tối đa8, hai nhà/hai phương tiện và mỗi loại công cụ một món; hồ sơ vay tối đa12. Đồ bán giữ dấu mốc, hành động và chứng từ; không tích lũy object đã bán.
+
+`finance.assets` là giá trị tài sản hiện hành duy nhất. Cọc là khoản phải thu có khấu trừ, không phải quyền sở hữu nhà. Vốn tiệm giữ sổ độc lập và cùng tồn tại với đồ dùng. `transact` kiểm đối ứng giá trị, số nguyên và loan principal riêng; net worth trừ nợ sinh hoạt và nợ mua tài sản đúng một lần. Monthly settlement thu phí, hao mòn, lãi/gốc và xử lý chậm trả không thêm user action. PC dùng giá/tuổi từng linh kiện để định giá và thu hồi; thay vỏ không trẻ hóa CPU.
+
+Lợi ích học/làm số/đi lại/sáng tạo có trần; không tự cấp bằng, nghề, khách hàng hoặc doanh thu thêm.25cảnh v17 có context từ trạng thái thật; cảnh tài chính khẩn cấp một lần có thể đi trước thông báo tìm việc, thông báo ấy vẫn chờ. Focus học/xã hội/gia đình và hàng đợi milestone giữ nguyên. UI chỉ gửi command strict với expected sequence; panel tải chậm trong Tài chính, dùng xác nhận và chống chạm lặp.
+
+Đời assets-v1 dự trữ `2×max(0,160−tuổi)+40` action cho diễn tiến trước khi nhận thêm thao tác chủ động. Đây là phần dự trữ quản lý, không bỏ lựa chọn, không cắt replay hoặc ép chết;512/120/5MiB không đổi. Câu chuyện vẫn tiếp tục khi hết quyền quản lý. Kế hoạch500–1.000năm tách tại [ASSET_LONG_LIFE_DESIGN.md](ASSET_LONG_LIFE_DESIGN.md), chưa triển khai. Kết quả kiểm chứng/phát hành ở [LIVING_WORLD_ASSETS_PROGRESS.md](LIVING_WORLD_ASSETS_PROGRESS.md).
+
 ## realism-v1 — ownership và trình bày (0.3.9)
 
 `setup.lifeRules=realism-v1` là selector mới bất biến, kế thừa creator-v1 qua capability predicates. Save cũ không tự đổi luật, tiền tệ hay ngoại hình. `setup.presentation` lưu boy/girl, chọn ngẫu nhiên bằng hash namespace riêng, không tiêu thụ RNG mô phỏng và không suy từ tên. `setup.hairstyle` tùy chọn dùng cho cả hai cách thể hiện. Thiếu selector mới tiếp tục render avatar cũ.

@@ -1,3 +1,4 @@
+import { assetBenefits } from '../domain/asset-benefits';
 import { designMoney } from '../domain/currency';
 import type { GameRun } from '../domain/model';
 import type { Enterprise, ProductCategory, RetailPolicy } from '../domain/enterprise';
@@ -201,7 +202,10 @@ export function settleRetailOwned(run: GameRun, e: Enterprise) {
   assertEnterprise(run, e);
   if (run.status !== 'playing' || e.status === 'closed' || run.month !== e.settledThrough + 1)
     throw Error('Business month already settled, skipped or inactive');
-  const fixed = designMoney(run, 6 + (e.policy.marketing ? 4 : 0)),
+  const fixed = Math.floor(
+      designMoney(run, 6 + (e.policy.marketing ? 4 : 0)) *
+        (1 - Math.min(0.04, assetBenefits(run).digital * 0.008)),
+    ),
     before = e.cash;
   const report = {
     month: run.month,

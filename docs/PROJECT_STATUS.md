@@ -1,5 +1,9 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Checkpoint A v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
+
+Nhánh codex/living-world-assets-20261104 tiếp tục baseline a3b7cad. Lõi nhà/cọc/vay và tài sản dùng chung, UI4nhóm,22catalog/41linh kiện,25cảnh mới đã chơi/lưu/replay được. Fresh verify448tests/42files,29golden lịch sử và content365/errors0 PASS; Edge desktop/mobile2/2journeys,6viewport×25cảnh×20lựa chọn PASS. Giữ default stable-v1; main/live vẫn0.3.10-stable.1. Final1000, golden assets, fullE2E/cross-browser, CI/live còn PENDING. Chi tiết và lỗi đã tìm/sửa ở LIVING_WORLD_ASSETS_PROGRESS.md; các đoạn dưới giữ làm lịch sử.
+
 ## v0.3.11 Living World & Assets — đang phát triển (04/11/2026)
 
 Tiếp tục baseline a3b7cad trên nhánh codex/living-world-assets-20261104; working tree ban đầu sạch, tag stable/remote đã đối chiếu. Ruleset assets-v1 dành cho đời mới, chưa bật default hoặc phát hành. Đang triển khai nhà ở trước, rồi phương tiện/thiết bị/PC và kiểm ngân sách đời dài. Context map, version plan và tiến trình ở LIVING_WORLD_ASSETS_PROGRESS.md. Không sửa backup stable hoặc nhận các số PASS cũ là kết quả mới. Website công khai hiện vẫn0.3.10-stable.1.

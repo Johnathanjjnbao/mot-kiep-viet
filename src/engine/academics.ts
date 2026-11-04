@@ -1,3 +1,4 @@
+import { assetBenefits } from '../domain/asset-benefits';
 import { hasAcademicRules } from '../domain/rules';
 import { designMoney, formatMoney } from '../domain/currency';
 import type { GameRun } from '../domain/model';
@@ -108,7 +109,9 @@ export function requestAcademic(input: GameRun, a: AcademicAction, roll: Roll) {
   if (input.academics.focus || input.social?.focus || input.family?.focus)
     throw Error('Hãy giải quyết sự kiện đang chờ trước.');
   const management = input.actions.filter((x) =>
-    ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(x.type),
+    ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(
+      x.type,
+    ),
   ).length;
   if (
     (input.family && management >= 120) ||
@@ -234,6 +237,7 @@ export function resolveAcademic(r: GameRun, method: AcademicMethod, roll: Roll) 
               r.player.stats.stress * 0.2 -
               p.difficulty * 0.2 +
               { steady: 8, project: 3, work: -10 }[method] +
+              assetBenefits(r).study +
               (roll(r) * 36 - 18),
           ),
         );

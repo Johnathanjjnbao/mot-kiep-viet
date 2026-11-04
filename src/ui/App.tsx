@@ -1,3 +1,4 @@
+import { hasAssetsRules } from '../domain/rules';
 import { currencyOf } from '../domain/currency';
 import { version as appVersion } from '../../package.json';
 import { lazy, useEffect, useRef, useState } from 'react';
@@ -33,10 +34,13 @@ const AccountPanel = lazy(() =>
 );
 const Wardrobe = lazy(() => import('./Wardrobe').then((m) => ({ default: m.Wardrobe })));
 const CareerPanel = lazy(() => import('./Panels').then((m) => ({ default: m.CareerPanel })));
+const LivingAssetsPanel = lazy(() =>
+  import('./LivingAssetsPanel').then((m) => ({ default: m.LivingAssetsPanel })),
+);
 const FinancePanel = lazy(() => import('./Panels').then((m) => ({ default: m.FinancePanel })));
 const PeoplePanel = lazy(() => import('./Panels').then((m) => ({ default: m.PeoplePanel })));
 type Screen = 'home' | 'new' | 'play' | 'journal' | 'history';
-type GameTab = 'story' | 'career' | 'finance' | 'people' | 'wardrobe';
+type GameTab = 'story' | 'career' | 'finance' | 'people' | 'wardrobe' | 'assets';
 type Dialog = 'help' | 'settings' | 'saves' | 'account' | null;
 function readSetting(key: string) {
   try {
@@ -261,8 +265,16 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                     ).map((t) => (
                       <button
                         key={t.id}
-                        className={tab === t.id ? 'tab-active' : ''}
-                        aria-current={tab === t.id ? 'page' : undefined}
+                        className={
+                          tab === t.id || (tab === 'assets' && t.id === 'finance')
+                            ? 'tab-active'
+                            : ''
+                        }
+                        aria-current={
+                          tab === t.id || (tab === 'assets' && t.id === 'finance')
+                            ? 'page'
+                            : undefined
+                        }
                         onClick={() => setTab(t.id)}
                       >
                         <t.Icon size={16} aria-hidden="true" />
@@ -282,7 +294,18 @@ function GameApp({ auth }: { auth: ReturnType<typeof useAccount> }) {
                     ) : tab === 'career' ? (
                       <CareerPanel run={run} act={act} />
                     ) : tab === 'finance' ? (
-                      <FinancePanel run={run} act={act} />
+                      <FinancePanel
+                        run={run}
+                        act={act}
+                        onAssets={hasAssetsRules(run) ? () => setTab('assets') : undefined}
+                      />
+                    ) : tab === 'assets' ? (
+                      <LivingAssetsPanel
+                        run={run}
+                        act={act}
+                        onBack={() => setTab('finance')}
+                        onStory={() => setTab('story')}
+                      />
                     ) : tab === 'wardrobe' ? (
                       <Wardrobe run={run} act={act} />
                     ) : (

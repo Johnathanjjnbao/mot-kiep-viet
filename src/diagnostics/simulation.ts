@@ -1,9 +1,12 @@
 import { creativeOptional } from './creative-policy';
+import { assetsOptional } from './assets-policy';
 import {
   hasAnnualRules,
   hasEnterpriseRules,
   hasRealismRules,
   hasCreativeRules,
+  hasAssetsRules,
+  storyCapacityReason,
   detailedBooks,
   discretionaryCount,
 } from '../domain/rules';
@@ -46,13 +49,15 @@ export function simulateLife(
   ) {
     assertRun(run);
     onStep?.(run);
-    const managementAvailable = hasEnterpriseRules(run)
-      ? discretionaryCount(run) < 108
-      : !run.employment ||
-        !run.family ||
-        run.actions.filter((a) =>
-          ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
-        ).length < 114;
+    const managementAvailable =
+      !storyCapacityReason(run) &&
+      (hasEnterpriseRules(run)
+        ? discretionaryCount(run) < 108
+        : !run.employment ||
+          !run.family ||
+          run.actions.filter((a) =>
+            ['manage', 'wardrobe', 'social', 'family-talk', 'academic'].includes(a.type),
+          ).length < 114);
     if (
       hasRealismRules(run) &&
       managementAvailable &&
@@ -68,6 +73,13 @@ export function simulateLife(
         expected: run.actions.length,
       });
       continue;
+    }
+    if (hasAssetsRules(run) && managementAvailable) {
+      const assets = assetsOptional(run, policy);
+      if (assets) {
+        run = assets;
+        continue;
+      }
     }
     if (hasCreativeRules(run) && managementAvailable) {
       const native = creativeOptional(run, policy);
@@ -369,6 +381,7 @@ export function simulateLife(
         managementAvailable &&
         run.finance.cash > designMoney(run, 950) &&
         !run.finance.assets.length &&
+        !hasAssetsRules(run) &&
         policy % 2 === 0
       )
         run = manage(run, 'buy-home');

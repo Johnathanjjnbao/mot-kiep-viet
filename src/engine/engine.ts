@@ -1,3 +1,5 @@
+import { livingSceneEligible, applyLivingAssetStory } from './living-asset-stories';
+import { initLivingAssets, requestLivingAsset, settleLivingAssets } from './living-assets';
 import { stableSceneEligible } from './stable-stories';
 import {
   requestArtistic,
@@ -37,6 +39,7 @@ import {
   applyCreatorStory,
 } from './creator-economy';
 import {
+  hasAssetsRules,
   hasAcademicRules,
   hasEmploymentRules,
   hasEnterpriseRules,
@@ -44,6 +47,7 @@ import {
   hasRealismRules,
   hasCreativeRules,
   discretionaryCount,
+  storyCapacityReason,
 } from '../domain/rules';
 import {
   requestEnterprise,
@@ -323,6 +327,7 @@ export function createRun(seed: string, requested?: RunSetup): GameRun {
   }
   if (hasCreativeRules(run)) initFreelance(run);
   initCreativeCareers(run);
+  initLivingAssets(run);
   if (hasRealismRules(run))
     initChildhoodFinance(
       run,
@@ -473,7 +478,19 @@ export const activeDefinition = (run: GameRun) => {
     })),
   };
 };
+const legacyHousingEffect = (e: Effect): boolean =>
+  e.kind === 'housing' || (e.kind === 'schedule' && e.effects.some(legacyHousingEffect));
 export function eventEligible(run: GameRun, event: typeof FALLBACK) {
+  if (event.version === 17 && !livingSceneEligible(run, event.id)) return false;
+  if (
+    hasAssetsRules(run) &&
+    event.choices.some((c) =>
+      [...c.effects, ...(c.chance?.success ?? []), ...(c.chance?.failure ?? [])].some(
+        legacyHousingEffect,
+      ),
+    )
+  )
+    return false;
   if (event.version === 16 && !stableSceneEligible(run, event.id)) return false;
   if (event.version === 15 && !artisticSceneEligible(run, event.id)) return false;
   if (event.version === 14 && !creativeSceneEligible(run, event.id)) return false;
@@ -510,7 +527,11 @@ function selectEvent(run: GameRun) {
     return;
   }
   if (focusAcademic(run)) return;
-  if (employmentInterrupt(run)) {
+  const urgentAssets =
+    hasAssetsRules(run) &&
+    EVENTS.some((e) => e.version === 17 && e.priority > 10 && eventEligible(run, e));
+  // A once-only financial decision may precede the job notice; the notice remains pending.
+  if (employmentInterrupt(run) && !urgentAssets) {
     if (nextFamily(run)) return;
     run.employment!.notice = false;
     run.activeEvent = { id: 'employment-search', month: run.month };
@@ -587,6 +608,9 @@ function startCareer(
 function applyEffect(run: GameRun, e: Effect, source: string, index: number) {
   const id = `${source}:${index}`;
   switch (e.kind) {
+    case 'living':
+      applyLivingAssetStory(run, e.operation, `${source}:${index}:living`);
+      break;
     case 'artistic':
       applyArtisticStory(run, e.operation);
       break;
@@ -827,6 +851,7 @@ function tick(run: GameRun) {
   settleArtistic(run);
   settleCreators(run);
   settleFreelance(run);
+  settleLivingAssets(run);
   tickEmployment(run, (r) => random(r, 'world'));
   const age = ageOf(run),
     stats = run.player.stats;
@@ -927,6 +952,7 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
     source = `choice:${run.choices.length}:${eventId}`;
   selected.effects.forEach((e, i) => applyEffect(run, e, source, i));
   let outcome = selected.outcome;
+  if (selected.effects.some((e) => e.kind === 'living')) outcome += ' ' + (run.lastOutcome ?? '');
   if (run.social?.focus || run.family?.focus || run.academics?.focus)
     outcome += ' ' + (run.lastOutcome ?? '');
   if (selected.chance) {
@@ -994,7 +1020,7 @@ export function choose(input: GameRun, eventId: string, choiceId: string): GameR
   refreshSocial(run);
   syncEmployment(run);
   if (run.player.stats.health <= 0) conclude(run, 'death');
-  return run;
+  return reconcileLivingPending(run);
 }
 export function manage(
   input: GameRun,
@@ -1007,6 +1033,10 @@ export function manage(
     return frozen2.manage(input as Parameters<typeof frozen2.manage>[0], action, career);
   }
   if (input.engineVersion !== ENGINE_VERSION) throw new Error('Bản lưu v1 chỉ đọc.');
+  if (hasAssetsRules(input) && ['buy-home', 'move-home'].includes(action))
+    throw Error('Mở Đời sống → Nhà ở để xem giá, cọc và khoản vay của cuộc đời này.');
+  const capacity = storyCapacityReason(input);
+  if (capacity) throw Error(capacity);
   if (hasCreativeRules(input) && discretionaryCount(input) >= 120)
     throw Error('Đã dùng hết lượt quản lý; hãy tiếp tục câu chuyện.');
   if (input.status === 'ended' || ageOf(input) < 18)
@@ -1117,9 +1147,40 @@ export function manage(
     note(run, active.title, 'Hoàn cảnh đã thay đổi trước khi bạn quyết định.');
     run.activeEvent = null;
   }
-  return run;
+  return reconcileLivingPending(run);
+}
+function reconcileLivingPending(r: GameRun): GameRun {
+  if (
+    hasAssetsRules(r) &&
+    r.activeEvent?.id.startsWith('living-') &&
+    !livingSceneEligible(r, r.activeEvent.id)
+  ) {
+    note(
+      r,
+      'Hoàn cảnh tài sản đã đổi',
+      'Tình huống chưa quyết định được thay bằng một tình huống phù hợp, ở cùng mốc tuổi.',
+    );
+    r.activeEvent = null;
+    selectEvent(r);
+  }
+  return r;
 }
 export function dispatch(run: GameRun, action: RunAction): GameRun {
+  const capacity = storyCapacityReason(run);
+  if (!['choose', 'advance'].includes(action.type) && capacity) throw Error(capacity);
+  if (action.type === 'living-assets') {
+    const next = requestLivingAsset(run, action),
+      active = activeDefinition(next);
+    if (
+      active &&
+      (!eligible(next, active.condition) ||
+        active.choices.filter((c) => !choiceReason(next, c)).length < 4)
+    )
+      throw Error(
+        'Hãy giải quyết câu chuyện đang chờ trước khi đổi tài sản. Tiền và tài sản chưa thay đổi.',
+      );
+    return reconcileLivingPending(next);
+  }
   if (
     hasEnterpriseRules(run) &&
     !['choose', 'advance'].includes(action.type) &&
@@ -1142,7 +1203,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy hoàn tất câu chuyện trước khi đổi hồ sơ biểu diễn.');
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'creative') {
     const next = requestCreative(run, action);
@@ -1161,7 +1222,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy hoàn tất câu chuyện trước khi đổi nhánh sáng tạo.');
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'freelance') {
     const next = requestFreelance(run, action);
@@ -1179,7 +1240,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy hoàn tất câu chuyện trước khi đổi hồ sơ khách hàng.');
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'minor-finance') {
     const next = requestMinorFinance(run, action),
@@ -1190,7 +1251,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy hoàn tất câu chuyện trước khi đổi phần tiền cá nhân.');
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'creator') {
     const next = requestCreator(run, action),
@@ -1201,7 +1262,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy hoàn tất câu chuyện đang chờ trước khi chuyển hướng kênh.');
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'enterprise') {
     const next = requestEnterprise(run, action),
@@ -1214,7 +1275,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
       throw Error(
         'Hãy hoàn tất câu chuyện đang chờ trước khi chuyển vốn; tiền và cửa hàng chưa thay đổi.',
       );
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'academic') {
     const next = requestAcademic(run, action, (r) => random(r, 'event')),
@@ -1231,7 +1292,7 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
       );
       next.activeEvent = null;
       selectEvent(next);
-      return next;
+      return reconcileLivingPending(next);
     }
     if (
       active &&
@@ -1239,10 +1300,10 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
         active.choices.filter((c) => !choiceReason(next, c)).length < 4)
     )
       throw Error('Hãy giải quyết câu chuyện đang chờ trước khi thay đổi việc học.');
-    return next;
+    return reconcileLivingPending(next);
   }
-  if (action.type === 'family-talk') return requestFamily(run, action);
-  if (action.type === 'social') return requestSocial(run, action);
+  if (action.type === 'family-talk') return reconcileLivingPending(requestFamily(run, action));
+  if (action.type === 'social') return reconcileLivingPending(requestSocial(run, action));
   if (action.type === 'wardrobe') {
     const next = applyWardrobe(run, action),
       active = activeDefinition(next);
@@ -1254,11 +1315,12 @@ export function dispatch(run: GameRun, action: RunAction): GameRun {
       throw Error(
         'Hãy giải quyết câu chuyện đang chờ trước khi chi khoản này. Tiền và tủ đồ chưa thay đổi.',
       );
-    return next;
+    return reconcileLivingPending(next);
   }
   if (action.type === 'advance') return advance(run);
-  if (action.type === 'choose') return choose(run, action.eventId, action.choiceId);
-  return manage(run, action.action, action.career);
+  if (action.type === 'choose')
+    return reconcileLivingPending(choose(run, action.eventId, action.choiceId));
+  return reconcileLivingPending(manage(run, action.action, action.career));
 }
 export function replay(seed: string, setup: RunSetup, actions: RunAction[]): GameRun {
   if (!setup.expansion && !hasEnterpriseRules({ setup }))

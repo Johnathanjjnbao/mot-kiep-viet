@@ -18,14 +18,14 @@ export async function creativeViewportJourney(
   url: string,
   config: Config,
   prefix = 'creative-local',
-  fixtures: 'creative' | 'stable' = 'creative',
+  fixtures: 'creative' | 'stable' | 'assets' = 'creative',
 ) {
   const rows = JSON.parse(
     readFileSync(`tests/data/${fixtures}-viewport-replays.json`, 'utf8'),
   ) as Case[];
   const context = await browser.newContext({
     viewport: { width: config.width, height: config.height },
-    ...(browser.browserType().name() === 'firefox' ? {} : {isMobile: !!config.mobile}),
+    ...(browser.browserType().name() === 'firefox' ? {} : { isMobile: !!config.mobile }),
     hasTouch: !!config.mobile,
     reducedMotion: 'reduce',
   });
@@ -55,7 +55,13 @@ export async function creativeViewportJourney(
       }
     }
     const starter = rows.find(
-      (x) => x.id === (fixtures === 'creative' ? 'fl-service-writing' : 'stable-first-boundary'),
+      (x) =>
+        x.id ===
+        (fixtures === 'creative'
+          ? 'fl-service-writing'
+          : fixtures === 'assets'
+            ? 'living-room-1'
+            : 'stable-first-boundary'),
     )!;
     let r = replay(starter.seed, starter.setup, starter.actions);
     await importStudent(page, r);
@@ -65,8 +71,8 @@ export async function creativeViewportJourney(
       await assertDecisionViewport(page);
       const e = activeDefinition(r)!;
       const available = e.choices
-        .map((c, index) => ({ c, index }))
-        .filter(({ c }) => !choiceReason(r, c));
+        .filter((c) => !choiceReason(r, c))
+        .map((c, index) => ({ c, index }));
       expect(available.length).toBeGreaterThanOrEqual(4);
       const { c, index } =
         available[
@@ -80,6 +86,10 @@ export async function creativeViewportJourney(
       if (config.mobile)
         await expect.poll(() => Date.now() - lastTouch, { intervals: [50] }).toBeGreaterThan(620);
       lastTouch = Date.now();
+      await expect(page.getByTestId('event-choice').nth(index)).toHaveAttribute(
+        'data-choice-id',
+        c.id,
+      );
       await clickChoiceWithoutDocumentScroll(page, index, !!config.mobile);
       await expect.poll(async () => canonical(await readGuestRun(page))).toBe(canonical(next));
       r = next;

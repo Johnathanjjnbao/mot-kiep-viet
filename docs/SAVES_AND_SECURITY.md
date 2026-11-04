@@ -65,3 +65,10 @@ Lỗi quota/bộ nhớ được báo, cho xuất save/thử lại; không tự x
 Trước thay engine/content: xuất các save mẫu, giữ bản engine tương ứng, bổ sung migration có test hoặc báo không tương thích rõ ràng. Đừng đổi luật nhưng giữ nguyên version sau phát hành.
 
 Mỗi mốc được giữ bằng commit cục bộ. Có thể tạo nhánh mới từ một commit đã kiểm chứng để so sánh; giữ công việc đang làm trước. Với nhánh đã chia sẻ sau này, dùng revert để bảo toàn lịch sử. Không cần xóa save, reset repository hay chạy clean để quay lại một phiên bản mã.
+## assets-v1 — bổ sung v0.3.11, chưa phát hành
+
+Giữ schema4, DB ID, UUID cuộc đời, autosave/3slot và kho history hiện hành. Selector assets-v1 nằm trong setup canonical, không gán tài sản cho đời cũ. Action `living-assets` qua strict Zod allowlist, đúng trường cho từng thao tác và expected sequence; ownership, thời kỳ, đủ tiền, điều kiện vay và cấu hình PC đều kiểm lại trong engine. Nhập/tải phát lại toàn log và so canonical, không tin số tiền hoặc đồ sở hữu từ snapshot tự khai. Cọc và nợ mua tài sản có posting đối ứng; tài sản tiệm vẫn kiểm bằng sổ tiệm.
+
+512actions/120thao tác/5MiB không tăng. Khi dự báo thiếu phần câu chuyện, chỉ chặn nhận thêm thao tác quản lý; không loại hành động cũ, không bỏ tháng/tuổi, không cắt memoir. Thiết kế segment tương lai chưa áp dụng: [ASSET_LONG_LIFE_DESIGN.md](ASSET_LONG_LIFE_DESIGN.md).
+
+Không thay Auth/RLS/SQL hoặc worker token source, không thay service worker cache policy. Owner login và fresh live A/B/anon QA chỉ nhận PASS khi đã chạy thật; hiện NOT RUN. Giá/linh kiện dùng tên mô phỏng, không có API giá hoặc dữ liệu riêng của người chơi.

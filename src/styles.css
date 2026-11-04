@@ -3804,3 +3804,60 @@ meter::-moz-meter-bar {
 .channel-careers{border-top:1px solid var(--line);margin-top:1.5rem;padding-top:1.5rem}.channel-careers h4{font-family:var(--serif);font-size:1.3rem;margin:1.2rem 0 .75rem}.channel-careers p{margin:.7rem 0}.channel-careers .client-controls{display:flex;flex-wrap:wrap;align-items:end;gap:.75rem;margin:1rem 0}.channel-careers .client-controls label{display:block;flex-basis:100%}.channel-careers select{min-width:0;max-width:100%;flex:1 1 14rem;min-height:44px}.channel-careers button{min-height:44px}.freelance-panel>.eyebrow{display:block;margin-top:1.25rem}.gaming-career{padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
 
 .artistic-panel>.eyebrow{display:block;margin-top:1.25rem}.artistic-panel button,.artistic-panel select{min-height:44px}.artistic-panel .client-controls label{flex-basis:100%}.artistic-panel .client-controls select{flex:1 1 14rem;max-width:100%;min-width:0}.artistic-panel .client-controls p{flex-basis:100%}
+/* Living World: scoped management UI; story/HUD sizing remains in the established shell. */
+.living-panel { min-width: 0; }
+.living-panel h2 { font-size: 2.2rem; line-height: 1.2; }
+.living-panel > p { max-width: 70ch; }
+.living-top, .living-action-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+.living-top { justify-content: space-between; margin-bottom: 20px; }
+.living-balance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 18px 0; border-block: 1px solid var(--line); }
+.living-balance span { display: grid; gap: 5px; font-size: .8rem; }
+.living-balance strong { font-size: 1rem; overflow-wrap: anywhere; }
+.living-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 24px 0; }
+.living-tabs button { min-width: 0; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 8px; border: 1px solid var(--line); border-radius: 3px; font: inherit; font-size: .82rem; }
+.living-tabs .living-selected { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.living-tabs svg { flex: 0 0 auto; }
+.living-panel h3 { margin: 28px 0 16px; font-size: 1.55rem; }
+.living-panel h4 { margin: 0 0 10px; font-size: 1.2rem; line-height: 1.35; }
+.living-panel label { display: block; font-size: .88rem; margin: 12px 0; }
+.living-panel select, .living-panel input { display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 46px; padding: 10px; margin: 8px 0 14px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; }
+.living-panel .button, .living-panel .text-button { min-height: 44px; }
+.living-panel .fine-print { line-height: 1.75; }
+.living-notice { margin: 16px 0; padding: 14px 16px; border-left: 3px solid var(--rust); background: var(--soft); font-size: .86rem; overflow-wrap: anywhere; }
+.living-notice p { margin: 4px 0; }
+.living-notice ul { margin: 0; padding-left: 20px; }
+.living-shop { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.living-shop-item { padding: 20px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); min-width: 0; }
+.living-shop-item p { font-size: .87rem; }
+.living-numbers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+.living-numbers div { min-width: 0; }
+.living-numbers dt { font-size: .76rem; color: var(--muted); }
+.living-numbers dd { margin: 5px 0 0; font-size: 1rem; font-weight: 600; overflow-wrap: anywhere; }
+.living-residence { padding: 20px; border-top: 3px solid var(--leaf); background: var(--surface); }
+.living-residence h3 { margin-top: 0; }
+.living-owned { border: 1px solid var(--line); border-radius: 3px; padding: 22px; margin: 16px 0; background: var(--surface); }
+.living-owned-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.living-owned-heading span { font-size: .74rem; color: var(--muted); }
+.living-action { margin: 8px 0; min-width: 0; }
+.living-action small { display: block; max-width: 50ch; margin-top: 8px; font-size: .78rem; line-height: 1.65; color: var(--muted); }
+.living-action .button { white-space: normal; text-align: left; max-width: 100%; }
+.living-owned .living-action-row > .living-action { flex: 1 1 190px; }
+.living-upgrade { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--line); }
+.living-upgrade summary { min-height: 44px; cursor: pointer; }
+.living-part-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+.living-loans { margin-top: 28px; padding-top: 12px; border-top: 1px solid var(--line); }
+.living-loans article { padding: 16px 0; }
+.living-entry > div { flex: 1 1 270px; }
+.living-entry p { font-size: .83rem; }
+@media (max-width: 900px) {
+  .living-shop { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .living-balance { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .living-balance span { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: baseline; }
+  .living-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .living-part-grid { grid-template-columns: minmax(0, 1fr); }
+  .living-panel h2 { font-size: 2rem; }
+  .living-owned, .living-shop-item, .living-residence { padding: 16px; }
+  .living-top { gap: 8px; }
+}

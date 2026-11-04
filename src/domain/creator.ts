@@ -74,6 +74,7 @@ export const setupSchema = z
         'realism-v1',
         'creative-v1',
         'stable-v1',
+        'assets-v1',
       ])
       .optional(),
     expansion: z.enum(['wardrobe', 'social', 'family']).optional(),

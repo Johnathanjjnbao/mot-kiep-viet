@@ -1,0 +1,77 @@
+{
+  "status": "VERIFIED PASS",
+  "covered": 25,
+  "missing": [],
+  "summaries": [
+    {
+      "mode": "rental",
+      "seed": "university-0",
+      "age": 108,
+      "actions": 233,
+      "bytes": 979578
+    },
+    {
+      "mode": "owner",
+      "seed": "university-0",
+      "age": 113,
+      "actions": 235,
+      "bytes": 1078464
+    },
+    {
+      "mode": "poor",
+      "seed": "university-0",
+      "age": 99,
+      "actions": 298,
+      "bytes": 974980
+    },
+    {
+      "mode": "loan",
+      "seed": "university-0",
+      "age": 96,
+      "actions": 294,
+      "bytes": 878682
+    },
+    {
+      "mode": "family",
+      "seed": "university-1",
+      "age": 87,
+      "actions": 250,
+      "bytes": 851876
+    },
+    {
+      "mode": "rental",
+      "seed": "university-1",
+      "age": 114,
+      "actions": 251,
+      "bytes": 1033549
+    },
+    {
+      "mode": "owner",
+      "seed": "university-1",
+      "age": 109,
+      "actions": 238,
+      "bytes": 1045802
+    },
+    {
+      "mode": "poor",
+      "seed": "university-1",
+      "age": 98,
+      "actions": 296,
+      "bytes": 964479
+    },
+    {
+      "mode": "loan",
+      "seed": "university-1",
+      "age": 98,
+      "actions": 296,
+      "bytes": 895345
+    },
+    {
+      "mode": "family",
+      "seed": "university-1",
+      "age": 87,
+      "actions": 250,
+      "bytes": 851876
+    }
+  ]
+}

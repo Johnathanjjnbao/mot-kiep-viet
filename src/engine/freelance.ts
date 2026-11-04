@@ -1,3 +1,4 @@
+import { assetBenefits } from '../domain/asset-benefits';
 import type { GameRun } from '../domain/model';
 import {
   freelanceActionSchema,
@@ -65,6 +66,7 @@ function workQuality(r: GameRun, p: ClientProject) {
     30 +
       (r.player.stats.knowledge + r.player.stats.skill) / 4 +
       degreeBonus(r, p) +
+      Math.min(3, assetBenefits(r).computing) +
       r.freelance!.reputation / 10 -
       r.player.stats.stress / 7 -
       workload +

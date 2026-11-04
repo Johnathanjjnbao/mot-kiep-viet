@@ -22,7 +22,8 @@ export function academicApplicant(
     | 'creator-v1'
     | 'realism-v1'
     | 'creative-v1'
-    | 'stable-v1' = 'education-v1',
+    | 'stable-v1'
+    | 'assets-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   let r = createRun('university-' + index, {
@@ -74,7 +75,8 @@ export function admittedStudent(
     | 'creator-v1'
     | 'realism-v1'
     | 'creative-v1'
-    | 'stable-v1' = 'education-v1',
+    | 'stable-v1'
+    | 'assets-v1' = 'education-v1',
   currency?: RunSetup['currency'],
 ) {
   for (let i = start; i < start + 100; i++) {

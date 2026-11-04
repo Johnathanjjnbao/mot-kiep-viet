@@ -1,3 +1,4 @@
+import { LIVING_STORY_OPERATIONS } from '../domain/living-assets';
 import { ART_STORY_OPERATIONS } from '../domain/artistic';
 import { CREATIVE_STORY_OPERATIONS } from '../domain/creative-careers';
 import { FREELANCE_STORY_OPERATIONS } from '../domain/freelance';
@@ -56,6 +57,7 @@ export const conditionSchema = z
   .strict();
 const effect: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('kind', [
+    z.object({ kind: z.literal('living'), operation: z.enum(LIVING_STORY_OPERATIONS) }).strict(),
     z.object({ kind: z.literal('artistic'), operation: z.enum(ART_STORY_OPERATIONS) }).strict(),
     z
       .object({ kind: z.literal('creative'), operation: z.enum(CREATIVE_STORY_OPERATIONS) })
@@ -245,6 +247,18 @@ export function validateContent(events: EventDefinition[] = EVENTS) {
       .map((e) => (e.kind === 'flag' ? e.flag : '')),
   );
   for (const e of events) {
+    if (e.version === 17) {
+      if ((e.condition.minAge ?? 0) < 18 || e.choices.length < 4)
+        errors.push(`Living scene contract ${e.id}`);
+      for (const c of e.choices)
+        for (const f of walk([
+          ...c.effects,
+          ...(c.chance?.success ?? []),
+          ...(c.chance?.failure ?? []),
+        ]))
+          if (!['stat', 'flag', 'habit', 'living'].includes(f.kind))
+            errors.push(`Living direct money effect ${e.id}`);
+    }
     if (e.version === 16) {
       if ((e.condition.minAge ?? 0) < 18 || !e.once || e.choices.length !== 4)
         errors.push(`Stable scene contract ${e.id}`);

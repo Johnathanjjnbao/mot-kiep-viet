@@ -1,3 +1,4 @@
+import { assetBenefits } from '../domain/asset-benefits';
 import { hasEmploymentRules } from '../domain/rules';
 import { designMoney, formatMoney, currencyText } from '../domain/currency';
 import type { CareerId, GameRun } from '../domain/model';
@@ -54,7 +55,9 @@ export function jobProbability(r: GameRun, id: CareerId) {
         (related ? 0.12 : 0) +
         Math.min(0.12, experience / 600) +
         Math.min(0.09, rejections * 0.03) +
-        (r.player.traits.includes('Kiên trì') ? 0.015 : 0),
+        (r.player.traits.includes('Kiên trì') ? 0.015 : 0) +
+        assetBenefits(r).travel / 100 +
+        (['tech', 'office', 'business'].includes(id) ? assetBenefits(r).computing / 200 : 0),
     ),
   );
 }

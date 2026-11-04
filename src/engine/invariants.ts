@@ -1,3 +1,5 @@
+import { assertLivingAssets } from './living-assets';
+import { livingSceneEligible } from './living-asset-stories';
 import { assertArtistic } from './artistic';
 import { assertCreativeCareers } from './creative-careers';
 import { assertFreelance } from './freelance';
@@ -18,6 +20,7 @@ import { activeDefinition, eligible, partnerOf, choiceReason } from './engine';
 export function assertRun(run: GameRun) {
   if (run.engineVersion === '2.0.0')
     return assertFrozen2(run as Parameters<typeof assertFrozen2>[0]);
+  assertLivingAssets(run);
   assertWardrobe(run);
   assertSocial(run);
   assertFamily(run);
@@ -125,6 +128,7 @@ export function assertRun(run: GameRun) {
   )
     fail('scheduled lifecycle');
   const active = activeDefinition(run);
+  if (active?.version === 17 && !livingSceneEligible(run, active.id)) fail('living scene context');
   if (active && active.choices.filter((c) => !choiceReason(run, c)).length < 4)
     fail('fewer than four enabled choices');
   if (run.engineVersion === '3.0.0') {

@@ -1,3 +1,4 @@
+import { assetBenefits } from '../domain/asset-benefits';
 import { gamingEffects } from './creative-careers';
 import type { GameRun } from '../domain/model';
 import {
@@ -258,6 +259,19 @@ export function settleCreators(r: GameRun) {
       report.cost = cost;
       const gaming = gamingEffects(r, c);
       c.skill = cap(c.skill + 1);
+      const hardware = assetBenefits(r);
+      if (r.month % 3 === 0)
+        c.quality = cap(
+          c.quality +
+            Math.min(
+              2,
+              Math.floor(
+                (c.policy.niche === 'gaming'
+                  ? Math.max(hardware.creator, hardware.gaming)
+                  : hardware.creator) / 2,
+              ),
+            ),
+        );
       if (gaming) {
         c.quality = cap(c.quality + gaming.quality);
         c.engagement = cap(c.engagement + gaming.engagement);

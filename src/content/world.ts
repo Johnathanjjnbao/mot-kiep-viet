@@ -1,3 +1,4 @@
+import { hasAssetsRules } from '../domain/rules';
 import { hasCreativeRules } from '../domain/rules';
 import { designMoney } from '../domain/currency';
 import type { CareerDefinition, GameRun, Region, WorldState } from '../domain/model';
@@ -323,7 +324,7 @@ export function monthlyExpense(run: GameRun) {
         ? 1
         : 10 +
           (run.setup.environment === 'urban' ? 2 : 0) +
-          (run.household.housing === 'rent' ? 6 : 0) +
+          (!hasAssetsRules(run) && run.household.housing === 'rent' ? 6 : 0) +
           (run.social?.people.some((p) => p.cohabiting) ? 3 : 0) +
           children * 3) * run.world.costFactor,
     ),

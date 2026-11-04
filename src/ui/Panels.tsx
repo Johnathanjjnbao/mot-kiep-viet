@@ -1,3 +1,6 @@
+import { hasAssetsRules } from '../domain/rules';
+import { totalDebt } from '../engine/finance';
+import { livingMonthlyCost } from '../engine/living-assets';
 import { ArtisticPanel } from './ArtisticPanel';
 import { FreelancePanel } from './FreelancePanel';
 import { hasRealismRules, hasCreativeRules } from '../domain/rules';
@@ -190,7 +193,7 @@ function WorkPanel({
     </section>
   );
 }
-export function FinancePanel({ run, act }: Props) {
+export function FinancePanel({ run, act, onAssets }: Props & { onAssets?: () => void }) {
   if (hasRealismRules(run) && run.month < 216) return <ChildhoodFinance run={run} act={act} />;
   const enabled = ageOf(run) >= 18 && run.status !== 'ended',
     f = run.finance;
@@ -232,7 +235,7 @@ export function FinancePanel({ run, act }: Props) {
         {[
           ['Tiền mặt', money(f.cash, run)],
           ['Để dành', money(f.savings, run)],
-          ['Còn nợ', money(f.liability.principal, run)],
+          ['Còn nợ', money(totalDebt(run), run)],
           ['Tài sản ròng', money(netWorth(run), run)],
         ].map(([label, value]) => (
           <div key={label}>
@@ -253,8 +256,10 @@ export function FinancePanel({ run, act }: Props) {
         {currencyOf(run) === 'vnd-v1'
           ? 'VND theo sức mua thiết kế năm 2026, không phải giá danh nghĩa lịch sử.'
           : 'đSM là đơn vị sức mua của game, không phải VNĐ.'}{' '}
-        Lãi vay 0,4%/tháng nhập gốc; tiết kiệm 0,15%/tháng, làm tròn xuống. Thiếu tiền cho sinh hoạt
-        bắt buộc sẽ rút tiết kiệm, rồi ghi khoản vay bù.
+        Lãi vay sinh hoạt 0,4%/tháng nhập gốc; tiết kiệm 0,15%/tháng, làm tròn xuống. Thiếu tiền cho
+        sinh hoạt bắt buộc sẽ rút tiết kiệm, rồi ghi khoản vay bù.
+        {hasAssetsRules(run) &&
+          ' Khoản vay mua tài sản có gốc, lãi và kỳ trả riêng trong Đời sống.'}
       </p>
       <div className="finance-actions">
         {actions.map((a) => (
@@ -269,41 +274,61 @@ export function FinancePanel({ run, act }: Props) {
           </button>
         ))}
       </div>
-      <div className="housing-card">
-        <Home size={25} aria-hidden="true" />
-        <div>
-          <h3>
-            {run.household.housing === 'family'
-              ? 'Mái nhà gia đình'
-              : run.household.housing === 'rent'
-                ? 'Một căn phòng trọ'
-                : 'Căn nhà của bạn'}
-          </h3>
-          <p>
-            {run.household.housing === 'rent'
-              ? 'Tiền thuê được tính trong sinh hoạt phí.'
-              : 'Không có phí thuê nhà.'}
-          </p>
-        </div>
-        <div className="button-row">
-          <button
-            className="text-button"
-            disabled={!enabled || run.household.housing === 'owned'}
-            onClick={() => act({ type: 'manage', action: 'move-home' })}
-          >
-            {run.household.housing === 'family' ? 'Ra ở trọ' : 'Về nhà gia đình'}
-          </button>
-          <button
-            className="text-button"
-            disabled={
-              !enabled || f.cash < designMoney(run, 600) || f.assets.some((a) => a.id === 'home')
-            }
-            onClick={() => act({ type: 'manage', action: 'buy-home' })}
-          >
-            Mua nhà · {money(designMoney(run, 600), run)}
+      {hasAssetsRules(run) ? (
+        <div className="housing-card living-entry">
+          <Home size={25} aria-hidden="true" />
+          <div>
+            <h3>Đời sống và tài sản</h3>
+            <p>
+              Nhà ở, phương tiện, thiết bị và PC Builder. Xem tiền phải trả ngay, chi phí tháng và
+              quyền sở hữu trước khi quyết định.
+            </p>
+            <p>
+              Đang dành {money(livingMonthlyCost(run), run)}/tháng cho thuê và duy trì tài sản, tách
+              khỏi sinh hoạt cơ bản.
+            </p>
+          </div>
+          <button className="button primary" onClick={onAssets}>
+            Mở Đời sống và tài sản
           </button>
         </div>
-      </div>
+      ) : (
+        <div className="housing-card">
+          <Home size={25} aria-hidden="true" />
+          <div>
+            <h3>
+              {run.household.housing === 'family'
+                ? 'Mái nhà gia đình'
+                : run.household.housing === 'rent'
+                  ? 'Một căn phòng trọ'
+                  : 'Căn nhà của bạn'}
+            </h3>
+            <p>
+              {run.household.housing === 'rent'
+                ? 'Tiền thuê được tính trong sinh hoạt phí.'
+                : 'Không có phí thuê nhà.'}
+            </p>
+          </div>
+          <div className="button-row">
+            <button
+              className="text-button"
+              disabled={!enabled || run.household.housing === 'owned'}
+              onClick={() => act({ type: 'manage', action: 'move-home' })}
+            >
+              {run.household.housing === 'family' ? 'Ra ở trọ' : 'Về nhà gia đình'}
+            </button>
+            <button
+              className="text-button"
+              disabled={
+                !enabled || f.cash < designMoney(run, 600) || f.assets.some((a) => a.id === 'home')
+              }
+              onClick={() => act({ type: 'manage', action: 'buy-home' })}
+            >
+              Mua nhà · {money(designMoney(run, 600), run)}
+            </button>
+          </div>
+        </div>
+      )}
       <h3 className="ledger-title">Những khoản gần đây</h3>
       <div className="ledger" role="table" aria-label="Sổ giao dịch gần đây">
         <div role="row" className="ledger-header">
@@ -324,9 +349,13 @@ export function FinancePanel({ run, act }: Props) {
               <span role="cell">
                 {t.cash !== 0
                   ? `${t.cash > 0 ? '+' : ''}${money(t.cash, run)}`
-                  : t.debt
-                    ? `Nợ +${money(t.debt, run)}`
-                    : `Để dành +${money(t.savings, run)}`}
+                  : t.loanDebt
+                    ? `Nợ tài sản ${t.loanDebt > 0 ? '+' : ''}${money(t.loanDebt, run)}`
+                    : t.assets
+                      ? `Giá trị tài sản ${t.assets > 0 ? '+' : ''}${money(t.assets, run)}`
+                      : t.debt
+                        ? `Nợ +${money(t.debt, run)}`
+                        : `Để dành +${money(t.savings, run)}`}
               </span>
             </div>
           ))}

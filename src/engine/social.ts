@@ -1,3 +1,4 @@
+import { hasAssetsRules } from '../domain/rules';
 import { designMoney } from '../domain/currency';
 import type { GameRun, EventDefinition } from '../domain/model';
 import type { SocialAction, SocialOperation, SocialPerson, SocialStatus } from '../domain/social';
@@ -219,7 +220,9 @@ export function requestSocial(input: GameRun, a: SocialAction) {
   if (
     input.actions.filter((a) => a.type === 'social').length >= (input.family ? 40 : 80) ||
     input.actions.filter((a) =>
-      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(a.type),
+      ['manage', 'wardrobe', 'social', 'family-talk', 'academic', 'enterprise', 'creator'].includes(
+        a.type,
+      ),
     ).length >= (input.family ? 120 : 250)
   )
     throw Error('Đã đạt giới hạn quản lý; hãy tiếp tục câu chuyện.');
@@ -342,9 +345,14 @@ export function applySocial(r: GameRun, op: SocialOperation): string {
         p.status = 'cohabiting';
         p.cohabiting = true;
         bridge(r, p, true);
-        r.household.housing = 'rent';
-        r.household.moved = true;
-        text = 'Hai người thuê phòng sống chung; chi phí sinh hoạt hằng tháng thay đổi.';
+        if (hasAssetsRules(r))
+          text =
+            'Hai người sắp xếp sống chung tại chỗ ở hiện tại; chi phí sinh hoạt thay đổi. Hợp đồng thuê hoặc chuyển nhà vẫn cần thu xếp riêng trong Đời sống.';
+        else {
+          r.household.housing = 'rent';
+          r.household.moved = true;
+          text = 'Hai người thuê phòng sống chung; chi phí sinh hoạt hằng tháng thay đổi.';
+        }
       } else text = `${name} chưa thấy đủ an tâm để chuyển nhà.`;
       break;
     case 'propose':

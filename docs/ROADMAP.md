@@ -1,5 +1,11 @@
 # Backlog sau beta v0.3
 
+## Đang kiểm chứng v0.3.11 Living World & Assets (04/11/2026)
+
+Phạm vi được chủ dự án mở mới: nhà thuê/sở hữu/vay, phương tiện, thiết bị và PC Builder. Đang phát triển trên nhánh codex/living-world-assets-20261104; chưa phát hành, default stable-v1 giữ tới khi qua gates. Chi tiết ở LIVING_WORLD_ASSETS_PROGRESS.md. Những đoạn “nhà/xe/PC còn backlog” phía dưới là lịch sử của bản stable.
+
+Giữ tên mốc v0.4 Supernatural Longevity và các mục ngoài phạm vi như du học/di cư/quân sự/VND danh nghĩa. Thiết kế lưu500–1.000năm mới là đề xuất riêng trong ASSET_LONG_LIFE_DESIGN.md, không coi là hỗ trợ đã có.
+
 ## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
 
 Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.

@@ -1,3 +1,4 @@
+import { livingAssetActionSchema } from '../domain/living-assets';
 import { artisticActionSchema } from '../domain/artistic';
 import { creativeActionSchema } from '../domain/creative-careers';
 import { freelanceActionSchema } from '../domain/freelance';
@@ -34,6 +35,7 @@ const career = z.enum([
   'business',
 ]);
 const action: z.ZodType<RunAction> = z.discriminatedUnion('type', [
+  livingAssetActionSchema,
   minorActionSchema,
   freelanceActionSchema,
   creativeActionSchema,

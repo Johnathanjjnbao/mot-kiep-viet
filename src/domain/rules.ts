@@ -1,6 +1,8 @@
 import type { GameRun } from './model';
 type Context = Pick<GameRun, 'setup'>;
-export const hasStableRules = (r: Context) => r.setup.lifeRules === 'stable-v1';
+export const hasAssetsRules = (r: Context) => r.setup.lifeRules === 'assets-v1';
+export const hasStableRules = (r: Context) =>
+  r.setup.lifeRules === 'stable-v1' || hasAssetsRules(r);
 export const hasCreativeRules = (r: Context) =>
   r.setup.lifeRules === 'creative-v1' || hasStableRules(r);
 export const hasRealismRules = (r: Context) =>
@@ -22,3 +24,10 @@ export const hasAcademicRules = (r: Context) =>
   r.setup.lifeRules === 'education-v1' || hasEmploymentRules(r);
 export const discretionaryCount = (r: GameRun) =>
   r.actions.filter((a) => !['choose', 'advance'].includes(a.type)).length;
+
+// New lives reserve story room before accepting optional operations. Nothing is trimmed or fast-forwarded.
+export const storyCapacityReason = (r: GameRun): string | null =>
+  hasAssetsRules(r) &&
+  r.actions.length + 2 * Math.max(0, 160 - Math.floor(r.month / 12)) + 40 >= 512
+    ? 'Cần giữ phần bản lưu còn lại cho câu chuyện; hãy tiếp tục cuộc đời trước khi quản lý thêm.'
+    : null;

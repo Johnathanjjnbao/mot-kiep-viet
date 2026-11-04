@@ -29,7 +29,7 @@ export function nativeLongStep(r: GameRun) {
 }
 export function creativeGraduateParent(
   startIndex = 0,
-  lifeRules: 'creative-v1' | 'stable-v1' = 'creative-v1',
+  lifeRules: 'creative-v1' | 'stable-v1' | 'assets-v1' = 'creative-v1',
 ) {
   const seen = new Set<string>();
   for (let i = startIndex; i < startIndex + 80; i++) {
@@ -68,7 +68,7 @@ export function creativeGraduateParent(
 }
 export function creativeFullPortfolio(
   startIndex = 0,
-  lifeRules: 'creative-v1' | 'stable-v1' = 'creative-v1',
+  lifeRules: 'creative-v1' | 'stable-v1' | 'assets-v1' = 'creative-v1',
 ) {
   let r = creativeGraduateParent(startIndex, lifeRules);
   for (let i = 0; i < 24 && businessReason(r); i++) r = nativeLongStep(r);
