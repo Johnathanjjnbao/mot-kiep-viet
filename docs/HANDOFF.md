@@ -1,5 +1,10 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## v0.3.11-assets.1 — LOCAL VERIFIED PASS, chờ CI/live (04/11/2026)
+
+Tiếp tục từ baseline a3b7cad; checkpoint mới nhất 15372d4. Đã hoàn tất nhà/xe/thiết bị/PC và selector assets-v1 cho đời mới. Local: 468 tests/47 files, 37 golden; 130 E2E trong một lượt 34,4 phút; 1.000 đời/1.000 replay theo báo cáo 999+1; sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile; production smoke và 49 file build khớp byte. Typecheck/lint sau sửa test PASS. Không sửa luật/save frozen hoặc chạy lại mô phỏng.
+
+Profile CPU 4× đã đo, chưa thấy tăng tốc; save lớn nhất nhập khoảng 5,3 giây và heap tăng khi import lặp cần điều tra tiếp. Production audit 0; dev audit 12 moderate, 0 high/critical; scan sau checkpoint 2.191 objects/0 findings. CI được cấp 60 phút theo thời gian bộ 130 ca, giữ đủ gate. Chưa push/deploy ở mốc này; owner login/fresh live JWT A/B/anon NOT RUN. Báo cáo: LIVING_WORLD_ASSETS_RELEASE_REPORT.md; tiến trình giữ đầy đủ ở LIVING_WORLD_ASSETS_PROGRESS.md. Bản stable/tag/backup không đổi. Các mục dưới giữ làm lịch sử.
 ## Nghiệm thu v0.3.11 — đang tiếp tục, chưa phát hành (04/11/2026)
 
 Giữ checkpoint E `0e8a0b02`; không chạy lại từ đầu. Cross-browser production dist 6/6 và production smoke đã PASS; secret scan 2.170 text objects/0 findings. Full 130 E2E lượt đầu có lỗi, đang sửa test còn mong default cũ và điều tra landscape; chưa có full-suite PASS. 468 tests/37 golden và 1.000 đời/replay vẫn có hiệu lực, luật không đổi. Profile CPU 4× đã MEASURED (xem LIVING_WORLD_ASSETS_PERFORMANCE.md); chưa thấy tăng tốc, heap tăng trong các chuỗi import cần điều tra tiếp. Đúng-SHA CI và live G5 còn thiếu. Main/live vẫn stable. Báo cáo hiện tại: LIVING_WORLD_ASSETS_RELEASE_REPORT.md; lịch sử chi tiết: LIVING_WORLD_ASSETS_PROGRESS.md.

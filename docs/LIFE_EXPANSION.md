@@ -1,5 +1,10 @@
 # Life Expansion — bốn mốc phát hành
 
+## v0.3.11-assets.1 — LOCAL VERIFIED PASS, chờ CI/live (04/11/2026)
+
+Tiếp tục từ baseline a3b7cad; checkpoint mới nhất 15372d4. Đã hoàn tất nhà/xe/thiết bị/PC và selector assets-v1 cho đời mới. Local: 468 tests/47 files, 37 golden; 130 E2E trong một lượt 34,4 phút; 1.000 đời/1.000 replay theo báo cáo 999+1; sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile; production smoke và 49 file build khớp byte. Typecheck/lint sau sửa test PASS. Không sửa luật/save frozen hoặc chạy lại mô phỏng.
+
+Profile CPU 4× đã đo, chưa thấy tăng tốc; save lớn nhất nhập khoảng 5,3 giây và heap tăng khi import lặp cần điều tra tiếp. Production audit 0; dev audit 12 moderate, 0 high/critical; scan sau checkpoint 2.191 objects/0 findings. CI được cấp 60 phút theo thời gian bộ 130 ca, giữ đủ gate. Chưa push/deploy ở mốc này; owner login/fresh live JWT A/B/anon NOT RUN. Báo cáo: LIVING_WORLD_ASSETS_RELEASE_REPORT.md; tiến trình giữ đầy đủ ở LIVING_WORLD_ASSETS_PROGRESS.md. Bản stable/tag/backup không đổi. Các mục dưới giữ làm lịch sử.
 ## Đã phát hành 0.3.10-stable.1 — VERIFIED PASS (03/11/2026)
 
 Đã phát hành **0.3.10-stable.1**, nguồn `a07e34faac8e024fd842603f1355e1cabc980a86` trên main. Tag annotated: `pre-hiatus-v0.3.10-stable.1`. [CI nguồn41514755281](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41514755281) completed/success cho build và deploy, đủ 401 tests và 120 E2E; riêng E2E trên CI mất 25,4 phút.

@@ -22,7 +22,7 @@ Chuỗi input mới không đi vào SQL, shell,eval hoặc HTML không escape tr
 
 ## Persistence, account và service worker
 
-Không đổi Auth/RLS/SQL, worker token source, ID database hoặc cache policy của service worker. Diff so baseline ở src/cloud,supabase,public/sw.js và workflow rỗng. Migration003 hiện hành cho phép envelope schema4/actions512; không có allowlist action cũ cần nới. Điều này không thay cho kiểm Auth/JWT thật.
+Không đổi Auth/RLS/SQL, worker token source, ID database hoặc cache policy của service worker. Diff so baseline ở src/cloud,supabase,public/sw.js rỗng. Workflow chỉ nâng ngân sách job từ 40 lên 60 phút sau khi lượt local 130 E2E cần 34,4 phút; không bỏ gate hoặc đổi quyền. Migration003 hiện hành cho phép envelope schema4/actions512; không có allowlist action cũ cần nới. Điều này không thay cho kiểm Auth/JWT thật.
 
 Archive giữ UUID ngoài RNG và kho history độc lập. Browser mới xác minh hai đời112/107tuổi, khoản nợ tài sản còn sau death, export canonical và mở autosave khác vẫn giữ hai hồi ký. UI refresh khi archive hoàn tất để tránh đọc danh sách rỗng cũ; không sửa hoặc xóa các record để che lỗi. Summary tính cả nợ tài sản.
 
@@ -43,5 +43,6 @@ Chưa sửa chuỗi dev trong phiên này: audit đề xuất đổi major/downg
 -25cảnh/100nhánh canonical, sáu viewport×20lựa chọn; [forced paths](evidence/assets-forced-paths.json) kiểm dự trữ,120optional,12loans và death còn nợ.
 - [Sáu browser combinations local](evidence/assets-browsers-local.json) gồm tạo đời mới,tài sản,financing,nâng PC,save/load,history. Chromium là Edge; Firefox mobile là viewport/touch, không phải thiết bị thật.
 - Secret scan checkpoint A:2036text objects/0findings, gồm working/publicdist/reachableGitblobs. Scan cuối trước push và CI sẽ được ghi riêng trong progress; không dùng mốc cũ làm kết quả scan cuối.
+- Scan sau checkpoint `15372d4`: **2.191 text objects, 0 findings**, gồm working files, public dist và toàn bộ reachable history. [Raw report](evidence/assets-secret-scan-local.json). CI sẽ quét tiếp đúng commit được push.
 
 Chưa có patch Critical/High cần phê duyệt. Review này không thay pentest backend hoặc fresh cloud deny QA. CI/live của release chỉ nhận VERIFIED PASS khi đúng SHA hoàn tất và được chơi trên URL thật; trạng thái ở LIVING_WORLD_ASSETS_PROGRESS.md.
