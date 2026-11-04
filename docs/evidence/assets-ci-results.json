@@ -1,0 +1,14 @@
+{
+  "source": "b428f1af00bdca17619a7d5711a67a616874661e",
+  "run": 41802031719,
+  "job": 126479866834,
+  "status": "VERIFIED PASS",
+  "resultLines": [
+    "2026-11-04T08:50:11.7409108Z  Test Files  47 passed (47)",
+    "2026-11-04T08:50:11.7423368Z       Tests  468 passed (468)",
+    "2026-11-04T08:50:45.8044709Z   \"textObjectsScanned\": 2186,",
+    "2026-11-04T08:50:45.8045498Z   \"findings\": []",
+    "2026-11-04T09:22:23.2010171Z   130 passed (31.0m)",
+    "2026-11-04T09:22:25.7998857Z   \"status\": \"VERIFIED PASS\","
+  ]
+}

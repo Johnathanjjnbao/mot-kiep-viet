@@ -1,0 +1,142 @@
+{
+  "status": "VERIFIED PASS",
+  "source": "b428f1af00bdca17619a7d5711a67a616874661e",
+  "url": "https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41802031719",
+  "id": 41802031719,
+  "createdAt": "2026-11-04T08:46:04Z",
+  "updatedAt": "2026-11-04T09:23:28Z",
+  "jobs": [
+    {
+      "id": 126479866834,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-04T08:46:07Z",
+      "completedAt": "2026-11-04T09:22:34Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:46:08Z",
+          "completedAt": "2026-11-04T08:46:09Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:46:09Z",
+          "completedAt": "2026-11-04T08:46:18Z"
+        },
+        {
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:46:18Z",
+          "completedAt": "2026-11-04T08:46:19Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:46:19Z",
+          "completedAt": "2026-11-04T08:47:07Z"
+        },
+        {
+          "name": "Run npm run verify",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:47:07Z",
+          "completedAt": "2026-11-04T08:50:23Z"
+        },
+        {
+          "name": "Run node scripts/scan-secrets.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:50:23Z",
+          "completedAt": "2026-11-04T08:50:45Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:50:45Z",
+          "completedAt": "2026-11-04T08:51:21Z"
+        },
+        {
+          "name": "Run npm run test:e2e",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T08:51:21Z",
+          "completedAt": "2026-11-04T09:22:23Z"
+        },
+        {
+          "name": "Run npm run test:production",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:23Z",
+          "completedAt": "2026-11-04T09:22:25Z"
+        },
+        {
+          "name": "Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:25Z",
+          "completedAt": "2026-11-04T09:22:28Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:28Z",
+          "completedAt": "2026-11-04T09:22:31Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:31Z",
+          "completedAt": "2026-11-04T09:22:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:31Z",
+          "completedAt": "2026-11-04T09:22:31Z"
+        }
+      ]
+    },
+    {
+      "id": 126496263616,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-04T09:22:38Z",
+      "completedAt": "2026-11-04T09:23:27Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:38Z",
+          "completedAt": "2026-11-04T09:22:39Z"
+        },
+        {
+          "name": "Deploy Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:22:39Z",
+          "completedAt": "2026-11-04T09:23:25Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-04T09:23:25Z",
+          "completedAt": "2026-11-04T09:23:25Z"
+        }
+      ]
+    }
+  ]
+}

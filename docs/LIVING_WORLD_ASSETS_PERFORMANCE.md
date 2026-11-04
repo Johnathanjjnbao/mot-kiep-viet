@@ -25,6 +25,8 @@ Baseline là dist đã thử phục hồi của stable `a3b7cad877bb58810ea7d34f
 
 Ba tiến trình mới khác, cùng CPU/viewport/cache; dùng acquired, save lớn nhất của lượt 1.000 đời và prefix quyết định cuối của combined-life. Trung vị:
 
+Save lớn nhất theo byte có 315 hành động; đời có max 371 hành động là một mẫu khác. Không gộp hai cực trị thành một fixture.
+
 | Phép đo | ms |
 |---|---:|
 | Trang chủ sẵn sàng |880|

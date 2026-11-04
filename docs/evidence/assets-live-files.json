@@ -1,0 +1,253 @@
+{
+  "url": "https://johnathanjjnbao.github.io/mot-kiep-viet/",
+  "commit": "b428f1af00bdca17619a7d5711a67a616874661e",
+  "status": "VERIFIED PASS",
+  "scope": "all JS/CSS/fonts plus service worker",
+  "checks": [
+    {
+      "path": "/mot-kiep-viet/assets/index-BAQlToWD.js",
+      "sha256": "c79fe616ea8001aeb73b9fb8ede4d0c0d492de643f0aca6197c6651742b86539",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/index-BtoiYsX7.css",
+      "sha256": "d50756c3116bad2a234b1f8310f290d3f16e39d40a566249f84113e03e397db3",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/sw.js",
+      "sha256": "c36f3ab70fe23bf3e2f6a6507dee5094c719c69afc2677c911dc2efac0e505eb",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/AccountPanel-DSH4kwM0.js",
+      "sha256": "afe211f4b7b2c2b95fe5dbe435cf5cd79d63b5eec8928585a39cddac058750ac",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff",
+      "sha256": "c0190200223755a3c52bb47b9cf6c3604f19288599cfbbe5026904d5d439f7d7",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+      "sha256": "03d1b589cff172e1a670b3573e731d3380bc326f80cf83b0d3504e3188e2e074",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+      "sha256": "b621f77d35f777023aa11ca524462d511b4b28a813adbc0e9d15a10fc61dfe4e",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff",
+      "sha256": "0a905f6bc6f1120d20ad3dde690989db3149a98227026f2de47dca6aef71edab",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff",
+      "sha256": "f900efb46ec81e9ff6017c6868f3f47cebde34ac87da16cc587da0e0b1f4c1d4",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+      "sha256": "9503dec2a7c532c8331e9600bcafea287a4fd208573b8668d85ab8d8de1863c7",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+      "sha256": "f7a2811e471c2973a1179ce39da3ad6bb8082381aa8d1535ccfcbc3d6d78a052",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-400-normal-DYBYyMQr.woff",
+      "sha256": "efff7513dcb30c597007e5d55f8fe5563d0023b276b120b711fad71e0845a9d5",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-CK0UkkKf.woff",
+      "sha256": "efa04a80e26991987639ada83ea6eeecdebedb8012f8999ae6805fff20f9456d",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+      "sha256": "947d592eb7676914507ff68fc11fcf2cfdecd6ebaf0fa2af6047f66a63ea7d0f",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BeUwKxhG.woff",
+      "sha256": "4143c6d457aca1bc2d395a5954b9c62ada458fc2b9395c2a63cc69a13c55db53",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+      "sha256": "20cc75daeaaaa0fa8af2b616b2de2b2900f0ce14ae8e9faa47d272cedd93827f",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff",
+      "sha256": "4d50c7991ca377aef28fb1fb24d4ce7ea64d69f6bd2661e7e74fb9d9fef11dc0",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+      "sha256": "dc085e2fba3414e5c5bf1e6172f921a9f81c5859946a4ed3d63c1e470d96a9e2",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff",
+      "sha256": "6b81283a46623b9a99bc7a1800f936549ead1f871d1dfcd803ddcd18c433a7d8",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+      "sha256": "86341610cbe907eecf461c9159c168d5efb52bb1a33963813a08f520555d8e66",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff",
+      "sha256": "2d68010bd89add4c477e9c9c3ef29b78a68f76439309f4633c91a8674e9ba751",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+      "sha256": "97658c6f9a384f29a3005c3d96e2a0d1c810192cf68979071c290f5a377a9f99",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/common-BbR76_zD.js",
+      "sha256": "62b072f07d24252b7df00e4d1d918ca821261347679015d4a78e4b77c8487ade",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/creator-BisDyaKr.js",
+      "sha256": "88649759fe88cfb96e16f082655f110060a25575866011c67bc4ca8363d50727",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/house-DlWtLefx.js",
+      "sha256": "c00c0c1d60974bcd80abf68f0fa6fe61faa755b5000f6b49fd35b830efb23f56",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/LegacyLife-DJ33klMB.js",
+      "sha256": "824ffe40da430ceed41a4d102a3986b219c8128570c07923344e0e4493c99bc9",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/LifeHistory-BXprn-IU.js",
+      "sha256": "8434635441ebea024a0320f4b71cd4d9ca5912a5f7d52e942aa77055daeb6b45",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/LivingAssetsPanel-HnDyVlwg.js",
+      "sha256": "7e1d8f011f8378f6b7ec96753de82b69ba6a832dce99028745bf19636a918d84",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+      "sha256": "fa9b900403949d9a723106752a5c8ad2797012a0c9057427b1da2db72d552148",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-400-italic-CNZoH1hn.woff",
+      "sha256": "ab00ea8fdff77ad93c0c1e71ec9404366e166ff26346064605cbfba34b9b46bc",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+      "sha256": "e66067814f1c672d33a457e4f4d102c818b481420e2234cf685ebdbf2f443904",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-400-normal-gRTjlS2D.woff",
+      "sha256": "76e600318cebb11dd31d917fe621d2b79cfa4be0830d035fcb125f9db44e69c9",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+      "sha256": "5613e2fc8377392c02e8ac9d55014689fb5320a5f2a7be55e8088a314728ac2c",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-500-normal-DFwuUcdu.woff",
+      "sha256": "37855d65f9af181a63471d3f56e734bcf9e620b43671762f3518c4e9d2ae125e",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+      "sha256": "b775f4faa4ffd1bbb36db8c9504c95af98d82e37209f3a6253915c7cae919d6a",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-400-italic-qdgKLcPG.woff",
+      "sha256": "b775ddf12ec400d5a87d26a8f83771ae3f01a6766488fd24f13bd31efb5c11f9",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-DYA1XoQK.woff",
+      "sha256": "71a53423ccc6b2a1d7d73c8ade3979b824cb7e7de056765efdc31ac954aa5894",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+      "sha256": "9d9350535facb67450976945ae249ab8ade73e4909deb3deaa756caa5e7dbb59",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+      "sha256": "9b553af5de5ebba87ea66530fa0cc05a3e5ed68c4a051915af0bc21188a9df9c",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-latin-ext-500-normal-CZruMFou.woff",
+      "sha256": "43c90337b564275ddc4d97f22779a1bf8830d93a9e04aa6258ecd01e5a895e4f",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+      "sha256": "f7e98aa7b0c65d422b06851f7a5f148dca71df9083f19f0ed0ca888bc96055ad",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-400-italic-QbB8kb5s.woff",
+      "sha256": "26b6547a8d0e5aacf0ad0ca8472336e579a3a4aac59f2fbcdb473f0f31ede33b",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-BekUZro8.woff",
+      "sha256": "550fc5405146a355fd5e59dc9e75fd781af5ece5536e3e67fd57977c7b3754e4",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+      "sha256": "8c86fceeb18a3edd641e9102f47450eebde912a3501368671b161e82fbf26e19",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-BEAbKU8A.woff",
+      "sha256": "30c1ddd70569e361b96928029c4e7b769467f3cbf31422ab6020c14ce10f743f",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+      "sha256": "f950f15b6fab6593349cdad92849419530bd4305d9a2edd4145cfc42d0c2c5a1",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/Panels-phE3Bg21.js",
+      "sha256": "fdcc8fc8c41a74c00bbd0c61b8d322e768aed93740f96c23af914e79e004bf57",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/rules-CrgjVhOl.js",
+      "sha256": "86f02ac9f4a5d7d1f558e3fd33c439fe51ae1acdc1069b946cf632f98178532f",
+      "status": "VERIFIED PASS"
+    },
+    {
+      "path": "/mot-kiep-viet/assets/Wardrobe-B5ewC9YS.js",
+      "sha256": "71c3bbfcfc9339ba42652d597fb59290dd19004d989b094b469d1b9de0b36045",
+      "status": "VERIFIED PASS"
+    }
+  ]
+}

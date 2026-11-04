@@ -6,7 +6,7 @@
 | Low |0|
 | Tổng |12gói, không đồng nghĩa12lỗ hổng độc lập|
 
-# Security review — Living World & Assets
+# Đánh giá bảo mật — Living World & Assets
 
 Ngày04/11/2026. Phạm vi: đường dữ liệu mới của assets-v1, từ UI command/import tới replay, quyền sở hữu, sổ tiền, lưu/khôi phục và lịch sử. Đây là review có phạm vi, kết hợp đọc luồng và kiểm thử động; không phải chứng nhận toàn bộ ứng dụng không có lỗ hổng.
 
@@ -46,3 +46,5 @@ Chưa sửa chuỗi dev trong phiên này: audit đề xuất đổi major/downg
 - Scan sau checkpoint `15372d4`: **2.191 text objects, 0 findings**, gồm working files, public dist và toàn bộ reachable history. [Raw report](evidence/assets-secret-scan-local.json). CI sẽ quét tiếp đúng commit được push.
 
 Chưa có patch Critical/High cần phê duyệt. Review này không thay pentest backend hoặc fresh cloud deny QA. CI/live của release chỉ nhận VERIFIED PASS khi đúng SHA hoàn tất và được chơi trên URL thật; trạng thái ở LIVING_WORLD_ASSETS_PROGRESS.md.
+
+Release `b428f1a`: CI41802031719 completed/success, scan CI **2.186 text objects/0 findings**; [trích log](evidence/assets-ci-results.json). Đã đối chiếu hash 49 tệp trên live, guest G5 2/2 và asset journeys sáu browser contexts PASS. Các ca guest chỉ thao tác kho cục bộ trong context QA riêng; không tạo/xóa Auth identity hoặc dữ liệu production. Owner login/fresh live JWT A/B/anon vẫn **NOT RUN**. Bằng chứng này không thay trạng thái Auth còn thiếu hoặc đóng các cảnh báo dev/performance.

@@ -1,5 +1,15 @@
 # Life Expansion — bốn mốc phát hành
 
+## Đã phát hành 0.3.11-assets.1 — VERIFIED PASS (04/11/2026)
+
+Source `b428f1af00bdca17619a7d5711a67a616874661e` đã lên main và Pages. [CI41802031719](https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41802031719) completed/success cho build/deploy: 468 tests/47 files, 130 E2E/31 phút, production smoke và scan 2.186 objects/0 findings. Website thật khớp hash 49 tệp JS/CSS/font/SW; G5 khách desktop/mobile 2/2 và asset journeys Chromium/Firefox/WebKit × desktop/mobile 6/6 PASS, gồm nhà/xe/thiết bị/PC/vay/nâng cấp/save-load/hai hồi ký dài.
+
+Đời mới dùng assets-v1; đời cũ giữ ruleset/schema đã ghi. Có 22 mục nhà/xe/thiết bị, 41 linh kiện/chín nhóm, 25 cảnh/100 nhánh. Local 37 golden (29 cũ nguyên vẹn), full130 E2E một lượt, 1.000 đời/replay theo báo cáo 999+1 và forced112 tuổi/nợ sau death đều PASS. Không chạy lại hoặc cắt dữ liệu để nhận PASS; tag/backup stable giữ nguyên.
+
+Còn mở: 12 moderate dev tooling (production audit 0), replay/import dài trên CPU yếu và heap tăng qua import lặp; chưa tuyên bố tăng tốc hoặc không leak. Owner login/fresh live JWT A/B/anon NOT RUN, không thay Auth/RLS/SQL. Bản bàn giao thêm cấu hình G5 công khai đã chạy PASS2/2/typecheck/lint và bằng chứng; không đổi mã game. Sau push tài liệu tiếp tục xác minh workflow cuối đúng HEAD. Chi tiết ở [báo cáo](LIVING_WORLD_ASSETS_RELEASE_REPORT.md), [tiến trình](LIVING_WORLD_ASSETS_PROGRESS.md), [hiệu năng](LIVING_WORLD_ASSETS_PERFORMANCE.md) và [bảo mật](LIVING_WORLD_ASSETS_SECURITY.md). Các mục dưới giữ làm lịch sử.
+## v0.3.11-assets.1 — đã push main, CI đang chạy (04/11/2026)
+
+Source `b428f1af00bdca17619a7d5711a67a616874661e` đã fast-forward và push main. CI đúng SHA: https://github.com/Johnathanjjnbao/mot-kiep-viet/actions/runs/41802031719 . Verify, secret scan và cài Chromium đã thành công; E2E đang chạy. Chưa nhận là deployed. Sau CI success phải kiểm hash và chơi live desktop/mobile, rồi commit/push bằng chứng và kiểm workflow cuối. Không chạy lại 1.000 đời hoặc triển khai lại tính năng đã xong. Các gate local và giới hạn ở LIVING_WORLD_ASSETS_RELEASE_REPORT.md; các mục bên dưới là lịch sử.
 ## v0.3.11-assets.1 — LOCAL VERIFIED PASS, chờ CI/live (04/11/2026)
 
 Tiếp tục từ baseline a3b7cad; checkpoint mới nhất 15372d4. Đã hoàn tất nhà/xe/thiết bị/PC và selector assets-v1 cho đời mới. Local: 468 tests/47 files, 37 golden; 130 E2E trong một lượt 34,4 phút; 1.000 đời/1.000 replay theo báo cáo 999+1; sáu tổ hợp Chromium/Firefox/WebKit × desktop/mobile; production smoke và 49 file build khớp byte. Typecheck/lint sau sửa test PASS. Không sửa luật/save frozen hoặc chạy lại mô phỏng.
