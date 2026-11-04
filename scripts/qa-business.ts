@@ -70,7 +70,7 @@ export async function businessJourney(page: Page, url: string, prefix: string) {
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   let r = await readGuestRun(page);
-  expect(r.setup.lifeRules).toBe('stable-v1');
+  expect(r.setup.lifeRules).toBe('assets-v1');
   expect(r.setup.currency).toBe('vnd-v1');
   for (let i = 0; i < 60 && r.month < 216; i++) r = await businessDecision(page);
   expect(r.month).toBe(216);

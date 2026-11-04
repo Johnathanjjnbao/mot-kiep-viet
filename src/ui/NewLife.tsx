@@ -32,7 +32,7 @@ export function NewLife({
     [seed, setSeed] = useState(''),
     [setup, setSetup] = useState<RunSetup>({
       currency: 'vnd-v1',
-      lifeRules: 'stable-v1',
+      lifeRules: 'assets-v1',
       cohort: 1995,
       region: 'northern-village',
       name: 'Nguyễn Minh An',
@@ -66,7 +66,7 @@ export function NewLife({
   const portraitRun = createRun(rawPortraitRun.seed, {
     ...rawPortraitRun.setup,
     currency: 'vnd-v1',
-    lifeRules: 'stable-v1',
+    lifeRules: 'assets-v1',
   });
   function update(patch: Partial<RunSetup>) {
     setSetup({ ...setup, ...patch });
@@ -149,7 +149,7 @@ export function NewLife({
     } else
       onStart(seed.trim() || generatedSeed, {
         ...portraitRun.setup,
-        lifeRules: 'stable-v1',
+        lifeRules: 'assets-v1',
         currency: 'vnd-v1',
       });
   }
@@ -256,7 +256,7 @@ export function NewLife({
                 onClick={() =>
                   onStart(seed.trim() || generatedSeed, {
                     ...availableSetup,
-                    lifeRules: 'stable-v1',
+                    lifeRules: 'assets-v1',
                     currency: 'vnd-v1',
                   })
                 }

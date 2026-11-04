@@ -4,7 +4,7 @@
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\Users\\triba\\OneDrive\\Desktop\\game\\node_modules\\@playwright\\test\\cli.js",
       "test",
-      "tests/e2e/assets-history.spec.ts",
+      "tests/e2e/living-assets.spec.ts",
       "--project=desktop-edge",
       "--project=mobile-edge"
     ],
@@ -185,13 +185,13 @@
   },
   "suites": [
     {
-      "title": "assets-history.spec.ts",
-      "file": "assets-history.spec.ts",
+      "title": "living-assets.spec.ts",
+      "file": "living-assets.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "assets: natural old-age ending and debt survive independent life history",
+          "title": "living assets: housing, vehicle, devices, PC and canonical saves",
           "ok": true,
           "tags": [],
           "tests": [
@@ -206,12 +206,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 64142,
+                  "duration": 14266,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-04T07:14:22.702Z",
+                  "startTime": "2026-11-04T07:30:41.893Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -219,13 +219,13 @@
               "status": "expected"
             }
           ],
-          "id": "de29d7867b1f3cb766ce-db7df773e567d97dd58e",
-          "file": "assets-history.spec.ts",
+          "id": "7d29cbb02f4b60eec226-fef03ce9dbbcd75ed3ab",
+          "file": "living-assets.spec.ts",
           "line": 3,
           "column": 1
         },
         {
-          "title": "assets: natural old-age ending and debt survive independent life history",
+          "title": "living assets: housing, vehicle, devices, PC and canonical saves",
           "ok": true,
           "tags": [],
           "tests": [
@@ -240,12 +240,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 62159,
+                  "duration": 14198,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-04T07:15:27.965Z",
+                  "startTime": "2026-11-04T07:30:57.109Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -253,8 +253,8 @@
               "status": "expected"
             }
           ],
-          "id": "de29d7867b1f3cb766ce-0b1de7df577ef86e8db1",
-          "file": "assets-history.spec.ts",
+          "id": "7d29cbb02f4b60eec226-03d12c48d138a4aea99f",
+          "file": "living-assets.spec.ts",
           "line": 3,
           "column": 1
         }
@@ -263,8 +263,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-04T07:14:20.896Z",
-    "duration": 129824.44,
+    "startTime": "2026-11-04T07:30:39.998Z",
+    "duration": 32163.643,
     "expected": 2,
     "skipped": 0,
     "unexpected": 0,

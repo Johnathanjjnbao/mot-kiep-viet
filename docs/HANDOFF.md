@@ -1,5 +1,9 @@
 # Bàn giao MVP cục bộ · Một Kiếp Việt
 
+## Candidate0.3.11-assets.1 — chưa phát hành (04/11/2026)
+
+Checkpoint D46b1c86 đã giữ an toàn. NewLife của candidate dùng assets-v1, package0.3.11-assets.1; chỉ đời mới nhận luật này, save cũ giữ nguyên. Fresh verify468tests/47files/37golden PASS,Edge desktop/mobile tạo đời mới và asset journeys2/2PASS.1.000đời/replay đã hoàn tất theo báo cáo999+1. Chưa push/deploy; còn full130E2E/buildproduction,cross6,profile,scan/audit cuối,CI/live. Main/site công khai vẫn stable0.3.10. Chi tiết LIVING_WORLD_ASSETS_PROGRESS.md.
+
 ## Checkpoint D v0.3.11 — LOCAL PASS, chưa phát hành (04/11/2026)
 
 PC build/vay/nâng cấp đã chơi bằng UI;8golden assets mới +29cũ, fresh verify468tests/47files PASS.1.000đời/1.000canonical replay hoàn tất qua999+1seed955 được chạy tiếp trên cùng luật, max371actions/1.169.112bytes,0vi phạm/mismatch/fallback/tuổi thiếu. Giữ báo cáo FAIL ban đầu và bằng chứng resume; không gọi lượt đầu là1000PASS. Forced combined3con/bằng/nghề/tiệm+kênh/thay đồ,112tuổi và107tuổi còn nợ đềuPASS. History2Edge contexts PASS sau sửa refresh khi archive hoàn tất. Default/main/live stable chưa đổi; E còn full130E2E/cross-browser/profile/production/CI/live. Xem LIVING_WORLD_ASSETS_PROGRESS.md.

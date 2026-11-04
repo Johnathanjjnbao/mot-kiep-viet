@@ -59,7 +59,7 @@ export async function creatorEconomyJourney(page: Page, url: string, prefix: str
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   let expected = await readGuestRun(page);
-  expect(expected.setup.lifeRules).toBe('stable-v1');
+  expect(expected.setup.lifeRules).toBe('assets-v1');
   expect(expected.setup.currency).toBe('vnd-v1');
   for (let i = 0; i < 70 && expected.month < 228; i++) expected = await creatorDecision(page);
   expect(expected.month).toBe(228);

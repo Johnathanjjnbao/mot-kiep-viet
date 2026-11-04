@@ -305,6 +305,7 @@ export async function livingAssetsNewLifeJourney(
   await page.getByLabel('Hạt giống (tùy chọn)', { exact: true }).fill(seed);
   await page.getByRole('button', { name: 'Xem trước cuộc đời', exact: true }).click();
   await page.getByRole('button', { name: 'Bắt đầu với nhân vật này', exact: true }).click();
+  await page.getByRole('button', { name: 'Bắt đầu câu chuyện', exact: true }).click();
   await expect(page.getByTestId('event-choice').first()).toBeVisible();
   let r = await readGuestRun(page);
   expect(r.setup.lifeRules).toBe('assets-v1');

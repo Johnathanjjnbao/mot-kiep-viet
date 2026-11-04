@@ -99,3 +99,9 @@ Final1000 đã hoàn tất trên cùng luật/content/parser từ `ea4ae64`:1.00
 Browser history mới2/2PASS: kết thúc112/107tuổi, số nợ Summary gồm cả khoản vay tài sản,2hồi ký/export canonical, mở đời đang chơi khác vẫn giữ2bản. Đã sửa UI refresh khi archive vừa hoàn tất; trước đó mở lịch sử quá nhanh có thể giữ danh sách rỗng cũ. Chờ đọc2save dài có thể vượt5giây nên test chờ đúng điều kiện tới20giây; không coi việc tăng timeout là cải thiện hiệu năng. Cả số dư/hành động/archive vẫn được kiểm, có trạng thái đang giữ hồi ký và nút thử lại khi lỗi. Không đổi DB ID hoặc format history.
 
 Default/package/main/live vẫn stable ở checkpoint D. E còn: bật default mới ở candidate đã bảo vệ, full130E2E,cross3engines×2devices,profileCPU4×,production smoke,secret scan/audit cuối,main push/exact-SHA CI/live. Entry khoảng1,337MB/gzip404KB, panel riêng22,62KB; giữ cảnh báo500KB, chưa tuyên bố tăng tốc. Owner login/fresh cloud A/B/anon NOT RUN; không Auth/RLS/SQL mới.
+
+## Candidate E —0.3.11-assets.1, chỉ ở nhánh phát triển
+
+D đã commit `46b1c866f2df9bb1342505a498415740268e061e`. Bật assets-v1 ở cả4đường setup/portrait/quick-start/confirm của NewLife; chỉ ảnh hưởng đời tạo mới. Package/lockfile đổi version0.3.11-assets.1, không đổi dependency. Fresh verify468tests/47files/37golden/content365errors0/Pages-base build PASS. Edge desktop/mobile đã tạo đời assets từ giao diện, chọn2cảnh tuổi nhỏ rồi chơi nhà/xe/điện thoại/PC+vay/nâng cấp/save-load PASS2/2. Các assertion của active browser suites về default được đổi sang assets-v1; fixture/golden stable/frozen giữ nguyên. Script qa-pre-hiatus-personas vẫn là công cụ lịch sử dành cho stable0.3.10.
+
+Chưa push main hoặc deploy. Full130E2E trên build sản xuất,6browser combinations,production smoke,profileCPU4×,scan/audit cuối và exact-SHA CI/live đang PENDING. Backup/tag stable không đổi; chỉ đọc đường dẫn bản dist đã restore để chuẩn bị benchmark so sánh, không sửa bộ phục hồi.
