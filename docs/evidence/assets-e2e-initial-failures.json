@@ -1,0 +1,71 @@
+{
+  "status": "FAIL",
+  "stats": {
+    "startTime": "2026-11-04T07:34:56.239Z",
+    "duration": 1537579.034,
+    "expected": 125,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  },
+  "failed": [
+    {
+      "file": "game.spec.ts",
+      "line": 30,
+      "title": "starts, decides, saves, reloads, imports, reaches an ending, and begins another life",
+      "project": "desktop-edge",
+      "status": "unexpected",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"stable-v1\"\nReceived: \"assets-v1\"\n\n  66 |   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();\n  67 |   const ended = await readGuestRun(page);\n> 68 |   expect(ended.setup.lifeRules).toBe('stable-v1');\n     |                                 ^\n  69 |   expect(ended.setup.currency).toBe('vnd-v1');\n  70 |   expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');\n  71 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\game.spec.ts:68:33"
+      ]
+    },
+    {
+      "file": "game.spec.ts",
+      "line": 146,
+      "title": "adult career, savings, household costs, and invalid import feedback work through the UI",
+      "project": "desktop-edge",
+      "status": "unexpected",
+      "errors": [
+        "Test timeout of 90000ms exceeded.",
+        "Error: locator.click: Test timeout of 90000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Ra ở trọ', exact: true })\n\n\n  173 |   await page.getByRole('button', { name: 'Vay 10.000.000 ₫', exact: true }).click();\n  174 |   await page.getByRole('button', { name: 'Trả tối đa 10.000.000 ₫' }).click();\n> 175 |   await page.getByRole('button', { name: 'Ra ở trọ', exact: true }).click();\n      |                                                                     ^\n  176 |   await expect(page.locator('.housing-card')).toContainText('Một căn phòng trọ');\n  177 |   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);\n  178 |   await page.getByRole('button', { name: 'Lưu và tải game' }).click();\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\game.spec.ts:175:69"
+      ]
+    },
+    {
+      "file": "game.spec.ts",
+      "line": 30,
+      "title": "starts, decides, saves, reloads, imports, reaches an ending, and begins another life",
+      "project": "mobile-edge",
+      "status": "unexpected",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"stable-v1\"\nReceived: \"assets-v1\"\n\n  66 |   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();\n  67 |   const ended = await readGuestRun(page);\n> 68 |   expect(ended.setup.lifeRules).toBe('stable-v1');\n     |                                 ^\n  69 |   expect(ended.setup.currency).toBe('vnd-v1');\n  70 |   expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');\n  71 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\game.spec.ts:68:33"
+      ]
+    },
+    {
+      "file": "game.spec.ts",
+      "line": 146,
+      "title": "adult career, savings, household costs, and invalid import feedback work through the UI",
+      "project": "mobile-edge",
+      "status": "unexpected",
+      "errors": [
+        "Test timeout of 90000ms exceeded.",
+        "Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-4\\traces\\8b1bb1493a64c9fc3ab6-29fdefc4ae6bb1f21ff7-recording3.network' -> 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-4\\traces\\8b1bb1493a64c9fc3ab6-29fdefc4ae6bb1f21ff7-recording3-pwnetcopy-1.network'",
+        "Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-4\\traces\\8b1bb1493a64c9fc3ab6-29fdefc4ae6bb1f21ff7-recording2.trace'",
+        "Error: locator.click: Test ended.\nCall log:\n  - waiting for getByRole('button', { name: 'Ra ở trọ', exact: true })\n\n\n  173 |   await page.getByRole('button', { name: 'Vay 10.000.000 ₫', exact: true }).click();\n  174 |   await page.getByRole('button', { name: 'Trả tối đa 10.000.000 ₫' }).click();\n> 175 |   await page.getByRole('button', { name: 'Mở Đời sống và tài sản', exact: true }).click();\n      |                                                                     ^\n  176 |   await page\n  177 |     .getByTestId('catalog-rent-room')\n  178 |     .getByRole('button', { name: 'Thuê và chuyển tới', exact: true })\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\game.spec.ts:175:69",
+        "Error: ENOENT: no such file or directory, open 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-4\\42db6c3d54d5d1e9879d9fda0b7e00f3.zip'"
+      ]
+    },
+    {
+      "file": "creative-viewport.spec.ts",
+      "line": 5,
+      "title": "creative34 authored scenes and20 first/middle/last decisions: landscape",
+      "project": "decision-viewports",
+      "status": "unexpected",
+      "errors": [
+        "Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-6\\traces\\bc27b3a21f813d67431b-2d095e43ec2e334999bd-recording45.network' -> 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-6\\traces\\bc27b3a21f813d67431b-2d095e43ec2e334999bd-recording45-pwnetcopy-1.network'\n\n   at ..\\..\\scripts\\qa-creative-viewport.ts:125\n\n  123 |     throw error;\n  124 |   } finally {\n> 125 |     await context.close();\n      |                   ^\n  126 |   }\n  127 | }\n  128 |\n    at creativeViewportJourney (C:\\Users\\triba\\OneDrive\\Desktop\\game\\scripts\\qa-creative-viewport.ts:125:19)\n    at C:\\Users\\triba\\OneDrive\\Desktop\\game\\tests\\e2e\\creative-viewport.spec.ts:10:5",
+        "Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-6\\traces\\bc27b3a21f813d67431b-2d095e43ec2e334999bd-recording44.trace'",
+        "Error: ENOENT: no such file or directory, open 'C:\\Users\\triba\\OneDrive\\Desktop\\game\\test-results\\.playwright-artifacts-6\\a39239cd7422365c803c857e0df7f4f1.zip'"
+      ]
+    }
+  ],
+  "note": "Four obsolete default/housing assertions corrected; the fifth is ENOENT caused by overlapping Playwright runs sharing output directories. Raw initial report retained privately; a fresh complete sequential run is required."
+}

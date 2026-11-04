@@ -1,0 +1,290 @@
+{
+  "status": "VERIFIED PASS",
+  "url": "http://127.0.0.1:5186/mot-kiep-viet/",
+  "label": "local",
+  "combinations": 6,
+  "results": [
+    {
+      "engine": "chromium",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "mobileEmulation": false,
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    },
+    {
+      "engine": "chromium",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "mobileEmulation": true,
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    },
+    {
+      "engine": "firefox",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "mobileEmulation": "viewport and touch; Firefox has no isMobile option",
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    },
+    {
+      "engine": "firefox",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "mobileEmulation": "viewport and touch; Firefox has no isMobile option",
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    },
+    {
+      "engine": "webkit",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "mobileEmulation": false,
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    },
+    {
+      "engine": "webkit",
+      "device": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "mobileEmulation": true,
+      "fresh": {
+        "status": "VERIFIED PASS",
+        "newDefault": "assets-v1",
+        "birthToAge": 2,
+        "decisions": 2,
+        "minorOwnedAssets": 0
+      },
+      "assets": {
+        "status": "VERIFIED PASS",
+        "rental": true,
+        "homeCash": true,
+        "cancelUnchanged": true,
+        "vehicleAndTraining": true,
+        "deviceReplacement": true,
+        "pcCompatibility": true,
+        "pcPurchase": true,
+        "pcUpgrade": true,
+        "mortgage": true,
+        "pcFinancing": true,
+        "earlyEraNoAnachronism": true,
+        "saveSlots": 3,
+        "exportImport": true,
+        "reload": true,
+        "keyboardFocus": true,
+        "axeViolations": 0,
+        "errors": []
+      },
+      "history": {
+        "status": "VERIFIED PASS",
+        "naturalEndAges": [
+          112,
+          107
+        ],
+        "outstandingAssetLoan": 2299996,
+        "historyRecords": 2,
+        "exportCanonical": true,
+        "newAutosavePreservedHistory": true
+      }
+    }
+  ]
+}

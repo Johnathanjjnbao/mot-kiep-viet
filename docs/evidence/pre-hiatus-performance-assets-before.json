@@ -1,0 +1,365 @@
+{
+  "url": "http://127.0.0.1:5197/mot-kiep-viet/",
+  "label": "assets-before",
+  "context": "Fresh Edge process per trial; desktop1440x1000, CPU4x, local HTTP, cache disabled; UI+IndexedDB latency; not field performance",
+  "samples": [
+    {
+      "homeMs": 863.2490000000003,
+      "creatorMs": 156.3436999999999,
+      "importMs": 719.5634999999997,
+      "reloadMs": 936.9907000000012,
+      "importLargeMs": 4399.635400000001,
+      "largeActions": 356,
+      "decisionsMs": [
+        182.20039999999972,
+        164.09159999999974,
+        144.2426999999998,
+        169.77319999999963,
+        150.79890000000069,
+        162.35799999999927,
+        175.0695999999998,
+        173.47430000000077,
+        167.23440000000028,
+        170.34879999999976,
+        164.6238999999996,
+        174.46630000000005,
+        193.91989999999987,
+        174.5649000000003,
+        167.57790000000023,
+        173.98620000000028,
+        188.2470999999996,
+        191.3049000000001,
+        199.92370000000028,
+        190.9472999999998
+      ],
+      "resources": [
+        {
+          "name": "index-QTnHY1g0.js",
+          "bytes": 1376037
+        },
+        {
+          "name": "index-CJm0KIi7.css",
+          "bytes": 74937
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "bytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "bytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "bytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "bytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "bytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "bytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "bytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "bytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "bytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "bytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "bytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "bytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "bytes": 23624
+        },
+        {
+          "name": "newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+          "bytes": 15068
+        }
+      ],
+      "heapsBytesAfterGC": [
+        11635448,
+        12122640,
+        12503400,
+        12801216,
+        13053916,
+        13288012,
+        13589016,
+        13884400,
+        14094340,
+        14344240,
+        14557184,
+        14793788,
+        15002320,
+        15217496,
+        15425136,
+        15632556,
+        15850484,
+        16056868,
+        16264880,
+        16527756
+      ],
+      "errors": []
+    },
+    {
+      "homeMs": 870.5116000000016,
+      "creatorMs": 195.38560000000143,
+      "importMs": 715.6468999999997,
+      "reloadMs": 968.6840999999986,
+      "importLargeMs": 4568.5072999999975,
+      "largeActions": 356,
+      "decisionsMs": [
+        178.48140000000058,
+        167.66939999999886,
+        158.84279999999853,
+        146.59740000000238,
+        153.54149999999936,
+        166.995600000002,
+        201.14199999999983,
+        175.1803,
+        166.45319999999992,
+        176.40040000000226,
+        178.94440000000031,
+        181.40729999999894,
+        168.08710000000065,
+        175.9372000000003,
+        176.54019999999946,
+        185.77750000000015,
+        183.71809999999823,
+        183.15619999999763,
+        200.66509999999835,
+        243.122800000001
+      ],
+      "resources": [
+        {
+          "name": "index-QTnHY1g0.js",
+          "bytes": 1376037
+        },
+        {
+          "name": "index-CJm0KIi7.css",
+          "bytes": 74937
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "bytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "bytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "bytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "bytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "bytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "bytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "bytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "bytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "bytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "bytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "bytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "bytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "bytes": 23624
+        },
+        {
+          "name": "newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+          "bytes": 15068
+        }
+      ],
+      "heapsBytesAfterGC": [
+        11629772,
+        12105268,
+        12479336,
+        12795472,
+        13048652,
+        13282180,
+        13585244,
+        13880164,
+        14090460,
+        14340404,
+        14555240,
+        14791516,
+        14998848,
+        15213648,
+        15419108,
+        15626612,
+        15845444,
+        16052352,
+        16265992,
+        16523972
+      ],
+      "errors": []
+    },
+    {
+      "homeMs": 888.4272999999957,
+      "creatorMs": 177.26610000000073,
+      "importMs": 673.1826999999976,
+      "reloadMs": 976.3430000000008,
+      "importLargeMs": 4529.299299999999,
+      "largeActions": 356,
+      "decisionsMs": [
+        168.89319999999861,
+        174.57939999999508,
+        216.215200000006,
+        165.42720000000554,
+        172.5535000000018,
+        165.21919999999955,
+        175.1093000000037,
+        158.2754000000059,
+        185.30399999999645,
+        188.13620000000083,
+        171.7030999999988,
+        174.5702999999994,
+        177.25500000000466,
+        180.11680000000342,
+        179.67929999999615,
+        173.58899999999994,
+        205.0043000000005,
+        203.6984999999986,
+        202.95479999999952,
+        188.0127999999968
+      ],
+      "resources": [
+        {
+          "name": "index-QTnHY1g0.js",
+          "bytes": 1376037
+        },
+        {
+          "name": "index-CJm0KIi7.css",
+          "bytes": 74937
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "bytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "bytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "bytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "bytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "bytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "bytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "bytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "bytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "bytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "bytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "bytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "bytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "bytes": 23624
+        },
+        {
+          "name": "newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+          "bytes": 15068
+        }
+      ],
+      "heapsBytesAfterGC": [
+        11613076,
+        12082744,
+        12472724,
+        12770304,
+        13022684,
+        13256916,
+        13559324,
+        13854536,
+        14063984,
+        14328768,
+        14542248,
+        14780492,
+        14987404,
+        15202708,
+        15409168,
+        15618140,
+        15836712,
+        16041848,
+        16251496,
+        16514400
+      ],
+      "errors": []
+    }
+  ],
+  "status": "MEASURED"
+}

@@ -1,0 +1,323 @@
+{
+  "status": "MEASURED",
+  "url": "http://127.0.0.1:5199/mot-kiep-viet/",
+  "label": "local",
+  "context": "Fresh Edge process per trial; desktop1440x1000,CPU4x,cache disabled,local HTTP. Import includes strict validation and autosave observation; history archival may complete later. Synthetic measurements, not field performance. Heap samples do not prove absence of leaks.",
+  "samples": [
+    {
+      "trial": 0,
+      "homeMs": 862.0904000000005,
+      "importAcquiredMs": 1518.8428999999996,
+      "lazyPanelMs": 1336.4183999999996,
+      "importLargestMs": 5303.1567,
+      "importLongMs": 4892.398300000001,
+      "reloadLongMs": 4889.9038,
+      "largestActions": 315,
+      "largestBytes": 1169112,
+      "heapsBytesAfterRequestedGC": [
+        14816552,
+        15778976,
+        16346612,
+        16907664,
+        17420640
+      ],
+      "resources": [
+        {
+          "name": "index-BAQlToWD.js",
+          "encodedBytes": 1337204
+        },
+        {
+          "name": "common-BbR76_zD.js",
+          "encodedBytes": 13799
+        },
+        {
+          "name": "rules-CrgjVhOl.js",
+          "encodedBytes": 891
+        },
+        {
+          "name": "creator-BisDyaKr.js",
+          "encodedBytes": 90100
+        },
+        {
+          "name": "index-BtoiYsX7.css",
+          "encodedBytes": 78712
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "encodedBytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encodedBytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encodedBytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "encodedBytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "encodedBytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "encodedBytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "encodedBytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "encodedBytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "encodedBytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "encodedBytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "encodedBytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "encodedBytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "encodedBytes": 23624
+        },
+        {
+          "name": "be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encodedBytes": 22032
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+          "encodedBytes": 13608
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encodedBytes": 12176
+        }
+      ],
+      "errors": []
+    },
+    {
+      "trial": 1,
+      "homeMs": 879.6138000000028,
+      "importAcquiredMs": 1550.6949999999997,
+      "lazyPanelMs": 1323.0391000000018,
+      "importLargestMs": 5339.502100000005,
+      "importLongMs": 4720.7918999999965,
+      "reloadLongMs": 4793.695999999996,
+      "largestActions": 315,
+      "largestBytes": 1169112,
+      "heapsBytesAfterRequestedGC": [
+        14853928,
+        15819064,
+        16388416,
+        16947772,
+        17462652
+      ],
+      "resources": [
+        {
+          "name": "index-BAQlToWD.js",
+          "encodedBytes": 1337204
+        },
+        {
+          "name": "common-BbR76_zD.js",
+          "encodedBytes": 13799
+        },
+        {
+          "name": "rules-CrgjVhOl.js",
+          "encodedBytes": 891
+        },
+        {
+          "name": "creator-BisDyaKr.js",
+          "encodedBytes": 90100
+        },
+        {
+          "name": "index-BtoiYsX7.css",
+          "encodedBytes": 78712
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "encodedBytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encodedBytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encodedBytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "encodedBytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "encodedBytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "encodedBytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "encodedBytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "encodedBytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "encodedBytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "encodedBytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "encodedBytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "encodedBytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "encodedBytes": 23624
+        },
+        {
+          "name": "be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encodedBytes": 22032
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+          "encodedBytes": 13608
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encodedBytes": 12176
+        }
+      ],
+      "errors": []
+    },
+    {
+      "trial": 2,
+      "homeMs": 895.7232000000004,
+      "importAcquiredMs": 1526.1586000000025,
+      "lazyPanelMs": 1331.242600000005,
+      "importLargestMs": 5152.761599999998,
+      "importLongMs": 4835.862200000003,
+      "reloadLongMs": 4835.3034999999945,
+      "largestActions": 315,
+      "largestBytes": 1169112,
+      "heapsBytesAfterRequestedGC": [
+        14811732,
+        15780284,
+        16346824,
+        16961928,
+        17453268
+      ],
+      "resources": [
+        {
+          "name": "index-BAQlToWD.js",
+          "encodedBytes": 1337204
+        },
+        {
+          "name": "common-BbR76_zD.js",
+          "encodedBytes": 13799
+        },
+        {
+          "name": "rules-CrgjVhOl.js",
+          "encodedBytes": 891
+        },
+        {
+          "name": "creator-BisDyaKr.js",
+          "encodedBytes": 90100
+        },
+        {
+          "name": "index-BtoiYsX7.css",
+          "encodedBytes": 78712
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2",
+          "encodedBytes": 13056
+        },
+        {
+          "name": "be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encodedBytes": 21168
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encodedBytes": 11532
+        },
+        {
+          "name": "newsreader-latin-400-normal-BFBkh4jY.woff2",
+          "encodedBytes": 22480
+        },
+        {
+          "name": "be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+          "encodedBytes": 21892
+        },
+        {
+          "name": "newsreader-latin-400-italic-CEihAR-f.woff2",
+          "encodedBytes": 24340
+        },
+        {
+          "name": "newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+          "encodedBytes": 5428
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2",
+          "encodedBytes": 13548
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+          "encodedBytes": 12172
+        },
+        {
+          "name": "newsreader-latin-ext-400-normal-svq1FPys.woff2",
+          "encodedBytes": 14212
+        },
+        {
+          "name": "newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+          "encodedBytes": 5556
+        },
+        {
+          "name": "newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+          "encodedBytes": 15228
+        },
+        {
+          "name": "newsreader-latin-500-normal-B66TYsaK.woff2",
+          "encodedBytes": 23624
+        },
+        {
+          "name": "be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encodedBytes": 22032
+        },
+        {
+          "name": "be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2",
+          "encodedBytes": 13608
+        },
+        {
+          "name": "be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encodedBytes": 12176
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

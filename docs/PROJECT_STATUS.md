@@ -1,5 +1,8 @@
 # Một Kiếp Việt — trạng thái dự án và quy tắc làm việc
 
+## Nghiệm thu v0.3.11 — đang tiếp tục, chưa phát hành (04/11/2026)
+
+Giữ checkpoint E `0e8a0b02`; không chạy lại từ đầu. Cross-browser production dist 6/6 và production smoke đã PASS; secret scan 2.170 text objects/0 findings. Full 130 E2E lượt đầu có lỗi, đang sửa test còn mong default cũ và điều tra landscape; chưa có full-suite PASS. 468 tests/37 golden và 1.000 đời/replay vẫn có hiệu lực, luật không đổi. Profile CPU 4× đã MEASURED (xem LIVING_WORLD_ASSETS_PERFORMANCE.md); chưa thấy tăng tốc, heap tăng trong các chuỗi import cần điều tra tiếp. Đúng-SHA CI và live G5 còn thiếu. Main/live vẫn stable. Báo cáo hiện tại: LIVING_WORLD_ASSETS_RELEASE_REPORT.md; lịch sử chi tiết: LIVING_WORLD_ASSETS_PROGRESS.md.
 ## Candidate0.3.11-assets.1 — chưa phát hành (04/11/2026)
 
 Checkpoint D46b1c86 đã giữ an toàn. NewLife của candidate dùng assets-v1, package0.3.11-assets.1; chỉ đời mới nhận luật này, save cũ giữ nguyên. Fresh verify468tests/47files/37golden PASS,Edge desktop/mobile tạo đời mới và asset journeys2/2PASS.1.000đời/replay đã hoàn tất theo báo cáo999+1. Chưa push/deploy; còn full130E2E/buildproduction,cross6,profile,scan/audit cuối,CI/live. Main/site công khai vẫn stable0.3.10. Chi tiết LIVING_WORLD_ASSETS_PROGRESS.md.

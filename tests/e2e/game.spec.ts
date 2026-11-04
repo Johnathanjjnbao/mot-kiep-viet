@@ -65,7 +65,7 @@ test('starts, decides, saves, reloads, imports, reaches an ending, and begins an
   }
   await expect(page.getByRole('heading', { name: /Một đời đã sống/ })).toBeVisible();
   const ended = await readGuestRun(page);
-  expect(ended.setup.lifeRules).toBe('stable-v1');
+  expect(ended.setup.lifeRules).toBe('assets-v1');
   expect(ended.setup.currency).toBe('vnd-v1');
   expect(await page.locator('.summary-card').innerText()).not.toContain('đSM');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -172,8 +172,16 @@ test('adult career, savings, household costs, and invalid import feedback work t
   await page.getByRole('button', { name: 'Rút tối đa 10.000.000 ₫' }).click();
   await page.getByRole('button', { name: 'Vay 10.000.000 ₫', exact: true }).click();
   await page.getByRole('button', { name: 'Trả tối đa 10.000.000 ₫' }).click();
-  await page.getByRole('button', { name: 'Ra ở trọ', exact: true }).click();
-  await expect(page.locator('.housing-card')).toContainText('Một căn phòng trọ');
+  await page.getByRole('button', { name: 'Mở Đời sống và tài sản', exact: true }).click();
+  await page
+    .getByTestId('catalog-rent-room')
+    .getByRole('button', { name: 'Thuê và chuyển tới', exact: true })
+    .click();
+  await page.getByRole('button', { name: 'Xác nhận quyết định', exact: true }).click();
+  await expect
+    .poll(async () => (await readGuestRun(page)).livingAssets?.lease?.catalogId)
+    .toBe('rent-room');
+  await expect(page.locator('.living-panel')).toContainText('Phòng trọ vừa túi tiền');
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole('button', { name: 'Lưu và tải game' }).click();
   await page.getByLabel('Chọn tệp game đã lưu').setInputFiles({
